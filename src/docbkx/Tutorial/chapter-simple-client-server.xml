@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xml:id="chap-client-server"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title xml:id="chapter-getting-started">Hello World: Simple Client/Server
+  Tutorial</title>
+
+  <section>
+    <title>Goal</title>
+
+    <para>The goal of this tutorial is to show you how to build a simple
+    distributed test with a client and a server running on separate machines.
+    We are going to use an Apache server as the server, put some data into it,
+    and then from a separate machine test that the data can be accessed
+    remotely. The end result, or the solution, of this tutorial can be found
+    in SlipStream™ in the public project
+    <filename>Public/Tutorials/HelloWorld</filename>.</para>
+  </section>
+
+  <section>
+    <title>Create a New Project</title>
+
+    <para>To host the different modules we will create in this tutorial, first
+    create a new top level project. Simply click on the "Start" button on the
+    welcme page. If you have not logged-in, you will be asked to do so. You will
+    then be shown the root projects page, which will only list the projects
+    for which you have read access. To create a new project, click the "New Project"
+    button. Give this project a unique name. Fill-in the form and save it.
+    That's it; you have now created a new project. In this new project, create
+    another project called, say, "HelloWorld" in which we will perform this
+    tutorial.</para>
+
+    <para>The "Authorization" tab gives you access to the authorization for
+    this module. As you can tell, by default, the project is only visible to
+    you, as this is the default for each module you create.
+	This means that nobody else will see this project in the
+    root project list. To share this project with others, simply hit the Edit
+    button, and check the checkbox corresponding to <literal>Read</literal>
+    either for <literal>Public</literal>, if you want to share the all
+    logged-in users, or <literal>Group</literal>, if you want to have
+    finer control of whom you want to share with. For Group, you will need
+    to provide a list of comma separated user names you want to share with.
+    Group definition will be inherited by default by all children of this
+    project, such that you don't have to repeat this information.</para>
+  </section>
+
+  <section>
+    <title>Apache Server Machine Image Module</title>
+
+    <para>Now that we have a project to work in, we need to create a couple of
+    machine image modules: one for the server and another for the test suite.
+    You can do this by navigating to the new project you've created in the
+    previous step and clicking the "New Machine Image" button. This will add a
+    new image to the current project.</para>
+
+    <para>As with most forms in the application, you will see a summary tab,
+    followed by different more specialized tabs. In <emphasis>view</emphasis>
+    mode, only the parts that are defined are displayed, whereas in
+    <emphasis>edit</emphasis> mode, all the available tabs are displayed. For
+    example, <emphasis>Machine Image</emphasis>s have two specialized tabs:
+    <emphasis>Creation</emphasis> and <emphasis>Deployment</emphasis>. Call
+    this new machine image <literal>apache</literal>. The following
+    subsections provide information for the other parts of the form.</para>
+
+    <para>As briefly explained in the introduction section, SlipStream™
+    supports two main workflows: "image creation" and "deployment execution".
+    The advantage of creating new specific virtual machine is that during
+    execution, these machine will be up and running very quickly, at the price
+    of creating once a new machine, a process that can take several minutes,
+    depending on the cloud service you are using.
+    Therefore, for this tutorial, we will not create new machines but simply
+    rely on the deployment instructions (called <emphasis>Target</emphasis>s).
+    We do however encourage you to consider creating new machine
+    images whenever appropriate to improve the performance of you deployments.
+    For this refer to the SlipStream™ Reference Manual.</para>
+
+    <section>
+      <title>Image Reference</title>
+
+      <para>The <emphasis>Reference</emphasis> tab contains information
+      specifying the mapping between SlipStream™ machine image models (or
+      templates)
+      and real machine images at the cloud service level. SlipStream™ supports
+      the concept of inheritance between machine image modules, which is a
+      powerful feature for building machines incrementally. For this tutorial
+      however, we'll start simple and base our image on an existing base
+      image. A base image in SlipStream™ is simply a module that points to an
+      existing image, not built by SlipStream™. You can see it as a
+      bootstrap.</para>
+
+      <para>By default, SlipStream™ ships with references to a few base
+      images, such as Ubuntu, Fedora and CentOS. They are located in the
+      <filename>Public/BaseImages</filename> public project.</para>
+
+      <para>We will base our server and test suite machine images on the
+      standard Ubuntu image (<link
+      xlink:href="http://www.ubuntu.com">details</link>). <!--) machine image.
+        However, SlipStream™ cannot directly use standard machine images,
+        since it needs to instrument the boot process in order for the image
+        to contact the SlipStream™ server to know what it needs to do.
+        SlipStream™ ships with several machine images that have already been
+        modified, which we call <emphasis>stock</emphasis> images (as they are
+        simply a standard image with only the SlipStream™ client being called
+        at the end of the boot procedure). Creating new stock images is
+        relatively straightforward as described step by step in the Reference
+        Manual. The "Pre Installation Recipe" text area of the definition
+        section is used for creating stock images.</para>--> To select this
+      machine image as the base image to our Apache server image, in edit
+      mode, select the <emphasis>Reference</emphasis> tab and click on the
+      "Choose Reference" button. This will bring up the <emphasis>Chooser
+      Window</emphasis>. In this window navigate to the
+      <filename>Public/BaseImages/Ubuntu/...</filename> machine image and
+      click on the "Select" button. Don't save the newly created machine image
+      yet - we will continue working on it by defining input/output
+      parameters. Actually, do not worry if you do hit the save button.
+      SlipStream will simply attempt to validate the image and report
+      any missing information as an error at the top of the window.</para>
+
+      <!--
+
+        <note>
+          <para>If you are interested in the content of the reference Ubuntu
+          image (<link
+          xlink:href="http://groups.google.com/group/ec2ubuntu">details</link>),
+          you can simply instantiate the image and explore its content. A
+          simple way to do this is with the Firefox browser using the
+          Elasticfox plug-in (see <xref linkend="appendix-resources" />) and
+          instantiate the AMI defined in the "Machine Image ID" field of the
+          <filename>Public/Images/Ubuntu v8.04</filename> machine
+          image.</para>
+        </note>
+
+        -->
+
+      <!--<note>
+          <para>SlipStream™ by default ships with a public root project
+          (called <filename>Public</filename>), which contains a set of public
+          machine images (in <filename>Public/Images</filename>), including
+          reference and stock images for you to use.</para>
+        </note>
+      -->
+    </section>
+
+    <section>
+      <title>Instance Parameters</title>
+
+      <section>
+	    <title>Cloud Parameters</title>Virtual machine properties
+        (e.g. number of
+        CPUs, RAM, network, extra disks) are defined and understood differently
+        by the different cloud providers. The <emphasis>Parameters</emphasis>
+        tab includes a separate section for each available cloud.
+        You only need to configure the section that corresponds to the cloud
+        service you intend to use.</section>
+
+      <section>
+        <title>Input/Output parameters</title>
+
+        <para>Using a IaaS cloud service, we cannot predict the IP address nor
+        the hostname of virtual machines before they are instantiated. While
+        there are common services to specify IP addresses, such as Amazon's
+        Elastic IP, they are limited in number. Therefore, it is not practical
+        to leverage such a service as a general solution since we would run
+        out of addresses very quickly.</para>
+
+        <para>To alleviate this problem, SlipStream™ embeds in the image
+        boot-up sequence a small script which will make available metadata to
+        other images running as part of the same deployment.</para>
+
+        <para>This discovery feature can be configured using
+        <emphasis>Input</emphasis> and <emphasis>Output</emphasis> parameters
+        in the <emphasis>Parameters</emphasis> tab. Further, this feature also
+        provides a simple synchronization mechanism to control the order in
+        which the different services are brought up. For example, a client
+        will wait for the server it needs to contact to configure and start,
+        while in turn the server might need to wait for a database to
+        initialize before it can accept connections. We will see more of this
+        feature in the test suite client image creation section below.</para>
+
+        <para>SlipStream™ allows virtual machines to be synchronized. In our
+        current tutorial, we will want that the test suite only fires once the
+        web server is ready to accept connections. To do this, we use
+        input/output parameters.</para>
+
+        <para>Let's go back to our tutorial. Select the
+        <emphasis>Parameters</emphasis> tab. You will see that by default
+        SlipStream™ provides <literal>hostname</literal> and
+        <literal>instanceid</literal> "Output" parameters. Now we will create
+        a couple of other output parameters. Click on the <emphasis>Add
+        Parameter</emphasis> button at the bottom of the "Output" section.
+        Create this way a new parameter called <literal>port</literal> and the
+        other called <literal>ready</literal>.</para>
+
+        <para>The <literal>hostname</literal> and <literal>port</literal>
+        parameters will be used to inform the test suite how to connect to the
+        web server, while the <literal>ready</literal> parameter will tell it
+        when the server is ready for the test to be executed.</para>
+
+        <para>We can also give some of our parameters default. In this case,
+        give the <literal>port</literal> parameter a default value of say,
+        <literal>8080</literal>.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>Deployment</title>
+
+      <para>SlipStream™ supports the creation of new machine images. This can
+      be done using the <emphasis>Creation</emphasis> tab. However, for
+      sake of simplicity, we will not create new machine images here and rely
+      on the machine image deployment scripts, called
+      <emphasis>Target</emphasis>s as defined in the
+      <emphasis>Deployment</emphasis> tab.</para>
+
+      <section>
+        <title>Targets</title>
+
+        <para>During the execution of a deployment, each image goes through a
+        boot-up sequence, where SlipStream™ executes user scripts. These user
+        scripts are called <emphasis>Target</emphasis>s. The currently
+        available targets are: <literal>execute</literal> and
+        <literal>report</literal>. These targets can be defined using the
+        "Targets" sub-section in the "Deployment" tab of the image (in edit
+        mode by clicking "Add Target" button).</para>
+
+        <para>The target code is expected to exit with a zero (i.e.
+        <literal>0</literal>) return code for normal execution and a non-zero
+        (i.e. <literal>!0</literal>) in the case of error or failure. Returning a
+        non-zero return code will set the abort flag the run to <emphasis>Failing
+        </emphasis>. The scripts can
+        also sets the abort flag, using for example the SlipStream™ command
+        <command>ss-abort</command>). Once the abort flag
+        is set, the entire run will abort. See the Reference Manual for
+        further details on the deployment execution sequence.</para>
+
+        <para>The <emphasis>execute</emphasis> target is meant, 
+        as its name suggests, to execute
+        a script or a program corresponding to the behavior this image is
+        meant to adopt during a deployment. For example, if the image
+        corresponds to a test suite, the execute target will contain a call to
+        execute the test suite.</para>
+
+        <para>While the <emphasis>execute</emphasis> target runs during the
+        <emphasis>Running</emphasis> phase of the run, the <emphasis>report
+        </emphasis> target
+        runs during the <emphasis>Sending Report</emphasis> phase of the run.
+        This is the right time to gather reports. Remember that by default
+        machines are released (i.e. destroyed) at the end of each run, which
+        means that it is a good idea to gather enough information in the
+        reports to help troubleshoot problems or to gather performance data
+        for further analysis. This information is archived on the SlipStream™
+        server.</para> 
+
+		<para>You can configure SlipStream™ not to
+        release the machines at the end of the execution by changing your user
+        configuration.</para>
+
+        <para>In this tutorial, we will use the <emphasis>report
+	    </emphasis> target in
+        order to retrieve the Apache logs to verify the correct execution of
+        the server, or investigate any errors reported during server access
+        from the remote test suite.</para>
+
+        <para>We can now add standard packages to our reference machine image.
+        Select the <emphasis>Deployment</emphasis> tab. Click on "Add Target"
+        and select from the dropdown list <emphasis>execute</emphasis> as
+        the target name.</para>
+
+        <para><programlisting>#!/bin/sh -xe
+apt-get update -y
+apt-get install -y apache2
+</programlisting> This recipe will simply update the packages installed on the
+        system and add the Apache web server to the system.</para>
+
+        <note>Note that we run the shell script with -e (exit immediately if
+        any untested command fails - "halt on an error" behavior) and -x
+        (write each command to stderr before it is executed) parameters. This
+        is a good practice for the <emphasis>execute</emphasis> target.
+        Whereas, running <emphasis>report</emphasis>
+        target with -e might not be a good idea as one would be interested in
+        collecting as much logging info from the node as possible
+        while tolerating cases when certain logs or outputs would not
+        available.</note>
+
+        <para>Now we need to add some simple data to the Apache server for the
+        test suite to retrieve. We do this by appending to the script defined
+        above the following text:</para>
+
+        <programlisting>echo 'Hello from Apache deployed by SlipStream!' &gt; /var/www/data.txt</programlisting>
+
+        <para>This will simply add text to a data file available at the root
+        of the Apache server.</para>
+
+        <para>Another interesting modification to the Apache server is to
+        change the port on which the web server is listening. To do that, add
+        the following commands to our script:</para>
+
+        <programlisting>service apache2 stop
+port=$(ss-get port)
+sed -i -e 's/^Listen.*$/Listen '$port'/' /etc/apache2/ports.conf
+sed -i -e 's/^NameVirtualHost.*$/NameVirtualHost *:'$port'/' \
+          /etc/apache2/ports.conf
+sed -i -e 's/^&lt;VirtualHost.*$/&lt;VirtualHost *:'$port'&gt;/' \
+          /etc/apache2/sites-available/default
+service apache2 start
+ss-set ready true</programlisting>
+
+        <para>This will first stop Apache, so we can change its configuration.
+        Then it will retrieve the <literal>port</literal> parameter from the
+        SlipStream™ server for the specific run. For this we use the
+        SlipStream™ command <literal>ss-get</literal>. We then modify the
+        configuration using the port value. After restarting the Apache
+        server, we set the <literal>ready</literal> parameter to
+        <literal>true</literal><!-- (the value actually does not matter) -->.
+        This will inform the test suite that the server is ready to accept
+        connections.</para>
+
+        <para>Here is what the final script should look like:</para>
+
+        <programlisting>#!/bin/sh -xe
+apt-get update -y
+apt-get install -y apache2
+
+echo 'Hello from Apache deployed by SlipStream!' &gt; /var/www/data.txt
+
+service apache2 stop
+
+port=$(ss-get port)
+
+sed -i -e 's/^Listen.*$/Listen '$port'/' /etc/apache2/ports.conf
+sed -i -e 's/^NameVirtualHost.*$/NameVirtualHost *:'$port'/' \
+          /etc/apache2/ports.conf
+sed -i -e 's/^&lt;VirtualHost.*$/&lt;VirtualHost *:'$port'&gt;/' \
+          /etc/apache2/sites-available/default
+
+service apache2 start
+ss-set ready true</programlisting>
+
+        <para>Now create a <emphasis>report</emphasis> target by clicking the "Add
+        Target" button, then select <literal>report</literal> from the drop
+        down list and copy and paste the following text in the text area:</para>
+
+        <programlisting>#!/bin/sh -x
+cp /var/log/apache2/access.log $SLIPSTREAM_REPORT_DIR
+cp /var/log/apache2/error.log $SLIPSTREAM_REPORT_DIR</programlisting>
+
+        <para>This script copies the standard Apache log files (i.e. access
+        and error) to the standard reports area. The directory
+        <filename>/tmp/slipstream/reports</filename> is the default location
+        in which the SlipStream™ client will expect the reports to be when
+        bundling and uploading the final reports to the SlipStream™
+        server.</para>
+
+        <para>Now click the save button to commit
+        your changes. You will be prompted to provide an optional commit message.
+        SlipStream keeps a copy of each saved version of all modules (e.g.
+        Project, Image, Deployment). Therefore, you can always go back to
+		previous versions of modules
+        by clicking the "other versions" link on the
+        <emphasis>Summary</emphasis> tab on the "Version" row. You will then
+        see a list of all versions, with the save action timestamp and an
+        optional comment.</para>
+      </section>
+
+      <section>
+        <title>Output Parameters</title>
+
+        <para>By default, when an image is created, SlipStream™ creates output
+        parameters called <parameter>hostname</parameter> and
+        <parameter>instanceid</parameter>. At runtime, these output parameters
+        are automatically filled by SlipStream™ and will contain the hostname of
+        the image instance and the unique identifier of the instance according
+        to the cloud service used. This means that other images, as part of
+        the same deployment, will be able to find this image. In the next
+        section when defining the test suite (client) image, we will leverage
+        this feature.</para>
+      </section>
+    </section>
+
+    <para>Now that we have created an Apache machine image module to act as
+    our web server in our client/server tutorial, we next need to create the
+    corresponding client to contact this server.</para>
+  </section>
+
+  <section>
+    <title>Test Suite Client Image Module</title>
+
+    <para>To go with the Apache server machine image we have created in the
+    the previous section, we will now build a client machine image module
+    containing a simple test suite client.</para>
+
+    <para>Since we now have a bit more experience with building images, here
+    is a more condensed set of instructions for the client image. Following
+    the same steps as for the Apache server, create in the same project a new
+    <literal>Machine Image</literal>. Let us call this new image
+    "testclient".</para>
+
+    <section>
+      <title>Image Reference</title>
+
+      <para>First, in edit mode, select the <emphasis>Reference</emphasis>
+	  tab and choose the
+      same Ubuntu image as for the Apache server machine image (i.e.
+      <literal>Public/BaseImages/Ubuntu/...</literal>) using the chooser
+      button.</para>
+    </section>
+
+    <section>
+      <title>Instance parameters</title>
+
+      <section>
+         
+        <title>Instance Type</title>
+
+        Physical properties (e.g. number of CPUs, RAM, network) of running
+		image instances can be for each configured cloud. By default, the
+		referenced image values will be inherited.
+      </section>
+
+      <section>
+        <title>Input/Output parameters</title>
+
+        <para>As mentioned earlier, it does not make much sense for the test
+        suite to execute before the server is ready to accept connections.
+        While we could loop inside the test suite waiting for the server to
+        respond, this is not elegant, and it will not scale as we create more
+        complex deployments where, for example, a database must be up and
+        running before the server is ready to accept connections. Also we
+        still do not know where the server is, since we cannot predict
+        virtual machine IP addresses. We will use the synchronisation feature
+        of SlipStream™ to provide synchronization between our machines,
+        without having to expose this issue to our user code.</para>
+
+        <para>As we discussed when defining the Apache server
+        image, the hostname for each machine is automatically resolved by
+        SlipStream™ during the early part of the boot-up sequence. In order to
+        leverage this, we simply need to declare a new input parameter called,
+        for example <parameter>webserver.hostname</parameter>. Do this, in
+        edit mode, by clicking on the <emphasis>Parameters</emphasis> tab. We
+        will see how this parameter is associated with the
+        <parameter>hostname</parameter> output parameter of the Apache server
+        in the next section. What is important to understand at this stage is
+        that while we are focusing on building a simple client/server
+        deployment, the simple test suite we are defining does not know about
+        the specifics of the web server image we have already created, nor
+        does it need to. By creating this input parameter, we are simply
+        stating a requirement where this input parameter must be resolved
+        before this test suite can be executed. It therefore does not know
+        which image this requirement will be fulfilled by.</para>
+
+        <para>Along the same lines, we'll need a <literal>webserver.port
+		</literal> and <literal>webserver.ready</literal> input parameters.</para>
+      </section>
+    </section>
+
+    <section>
+       
+      <title>Deployment</title>
+
+      <para>Under the <emphasis>Deployment</emphasis> tab, create a new
+      <literal>execute</literal> target with the following content:</para>
+
+      <programlisting>#!/bin/sh -xe
+# Wait for the metadata to be resolved
+web_server_ip=$(ss-get --timeout 360 webserver.hostname)
+web_server_port=$(ss-get --timeout 360 webserver.port)
+ss-get --timeout 360 webserver.ready
+
+# Execute the test
+ENDPOINT=http://${web_server_ip}:${web_server_port}/data.txt
+wget -O /tmp/data.txt ${ENDPOINT} &amp;&amp; \
+    ss-set statecustom "OK: $(cat /tmp/data.txt)" || \
+    ss-abort "Could not get the test file: ${ENDPOINT}"</programlisting>
+
+      <para>The above bash script simply uses the SlipStream™ command line
+      client to retrieve the <literal>hostname</literal> and the
+      <literal>port</literal> parameters to use to connect to the web server.
+      It also reads the <literal>ready</literal> indicating that the server is
+      ready to receive connections. By default the <command>ss-get</command>
+      command is blocking, which means that the command will wait until the
+      parameter is set (or a timeout occurs) before returning. Then, we
+      <command>wget</command> the default web page and ensures that this
+      retrieval was successful.</para>
+
+      <para>To make the demo a bit more lively, we then use the
+      <command>ss-display</command> to display information in the
+	  SlipStream™ dashboard. Under the hood, the command simply sets the
+	  <literal>statecustom</literal> parameter.</para>
+
+      <note>Instead of using the command-line interface, we could have used
+      the Python API (we like Python at SixSq ;-), and created a PyUnit
+      test case instead.</note>
+
+      <note>For more details on the client command-line and Python API, refer
+      to the SlipStream™ Reference Manual.</note>
+
+      <para>The script above will exit with a zero return code if the test
+      suite succeeds, or a non-zero return code if the assertion fails or
+      another error occurs in the script execution, such as if the SlipStream™
+      client cannot reach the SlipStream™ server or if any parameter (e.g.
+      <literal>webserver.hostname</literal> in this case) is not
+      defined.</para>
+
+      <para>Since the execution of this script already redirects the standard
+      output and error to the reports directory, we do not need to add a
+      report target to get the output of the test suite execution.</para>
+
+      However, for the demonstration's sake, we may add the following
+	  report target which would bundle the file downloaded from the server
+	  with the execution report. 
+	
+      <programlisting>#!/bin/sh -x
+cp /tmp/data.txt $SLIPSTREAM_REPORT_DIR</programlisting>
+
+    </section>
+  </section>
+
+  <section>
+    <title>Deployment Module to Run it All</title>
+
+    <para>Now that we have two machine image modules to work with, we will
+    create a deployment module to run these images to form our simple
+    client/server system test.</para>
+
+    <para>Go back to your project and click on the <literal>New
+    Deployment</literal> button. Give it a sensible name, say
+    <literal>client_server</literal>. You will see that deployments have the
+    concept of <emphasis>Node</emphasis>. A Node in SlipStream™ is a group
+	of running instance of the same image. For this tutorial, we need to add two nodes
+    corresponding to our Apache server and our test suite. To do this follow
+    these simple steps in edit mode:</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Add a new node, in the <emphasis>Nodes</emphasis> tab, by
+        clicking on the "Add Node" button. This will open a chooser window. In
+        the chooser, navigate and select your apache image. You will only be
+        able to select an module of type <literal>Image</literal>.
+		Now name this nods <literal>apache1</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para>Do the same for the test suite. As you can see, SlipStream™
+        automatically pulls the input parameters of the selected machine image
+        module for you to resolve. Call the node 
+		<literal>testclient1</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para>Set the "Linked to" field of the
+        <parameter>webserver.hostname</parameter> parameter to
+        <parameter>apache1:hostname</parameter> (where "apache1" corresponds
+        to the name of the node you have given in the first step). This means
+        that when the <literal>apache1</literal>'s
+        <parameter>hostname</parameter> parameter will be set as part of the
+        node execution sequence, the <parameter>webserver.hostname</parameter>
+        parameter of the "testclient1" node will also be set, linking them
+        together. The autocompletion dropdown will guide you to help choose the
+        right parameter. Link the following <literal>testclient1</literal>
+        input paramters to <literal>apache1</literal> as well:
+        <parameter>webserver.port</parameter> to
+        <parameter>apache1:port</parameter> and
+        <parameter>webserver.ready</parameter> to
+        <parameter>apache1:ready</parameter>.</para>
+      </listitem>
+
+      <listitem>
+        <para>Save the deployment.</para>
+      </listitem>
+    </orderedlist>
+
+    <para>We are now ready to run our new test deployment.</para>
+  </section>
+
+  <section>
+    <title>Execute Distributed Test</title>
+
+    <para>To launch the distributed test, simply click on the <emphasis>
+	Run</emphasis> button of
+    the deployment you have created above. Sit back, relax and enjoy the
+    show!</para>
+
+    <para>The execution instance created for each submission allows you to
+    track the progress of the deployment run. Once the deployment is completed,
+    you can access the reports generated by the different nodes, by clicking
+    on the <emphasis>Results</emphasis> link.</para>
+
+    <para>You can access all your runs by clicking on the "dashboard"
+    link at the top right of every page. To only list the execution of a given
+    deployment module, select the <emphasis>Runs</emphasis> tab.
+    of a given deployment.</para>
+
+	<para>If you are wondering what the <emphasis>Run...</emphasis> button
+	does, have a go.  It will allow you to change the default parameters,
+	the number of instances for each node and also change the cloud
+	the different nodes will be deployed on. If you are interested, continue
+	with the <emphasis>Performance Example using Apache</emphasis> tutorial.</para>
+
+    <para>Thanks for taking the time to learn about SlipStream™ and please if
+    there's anything we can do to improve this tutorial or the application
+    itself, don't hesitate in getting back to us at
+    <email>support@sixsq.com</email>.</para>
+  </section>
+</chapter>

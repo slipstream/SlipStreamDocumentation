@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Introduction</title>
+
+  <para>SlipStream™ captures information about machine images and system
+  deployments. It provides a mechanism for automatically deploying system
+  configurations and running a battery of tests against the deployed
+  configuration. Benefits of the system include:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>Explicit capture of machine and system configuration, reducing the
+      risk of information loss from personnel changes.</para>
+    </listitem>
+
+    <listitem>
+      <para>Improved reproducibility via defined machine and deployment
+      "recipes".</para>
+    </listitem>
+
+    <listitem>
+      <para>Reduced effort by handling machine deployment and clean up
+      automatically.</para>
+    </listitem>
+
+    <listitem>
+      <para>Better team cohesion and communication by making full deployment
+      accessible to everyone in software production team.</para>
+    </listitem>
+  </itemizedlist>
+
+  <para>Users (software developers, integrators, testers, and deployment
+  experts) interact with SlipStream™ via a web interface. They can define
+  their machine images system deployments via the web interface. Once a
+  deployment is defined, the user can launch an instance of the deployment,
+  run tests against it (either automatically or manually), and then collect
+  the test results.</para>
+
+  <para>The SlipStream™ system consists of four components: a server, a
+  client, a database, and a "cloud". The server acts as the central point of
+  the system, providing the web interface to users and acting as the contact
+  point for resources running in the cloud. The client interface, used
+  principally in machine images running in the cloud, permits command line and
+  programmatic access to the server. A database stores all of the metadata
+  related to the machine images and deployments. The "cloud" contains
+  computing and storage resources that are used to instantiate dynamically
+  system deployments.</para>
+</chapter>

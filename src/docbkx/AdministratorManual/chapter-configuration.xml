@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Configuring SlipStream™</title>
+
+  <para>The SlipStream™ server is configured via the file
+  <filename>config.properties</filename> located at the root of the
+  distribution. At a minimum, the values giving the base URL of the service,
+  the database connection parameters, and the SSL certificate must be
+  provided. Other parameters may be changed if necessary. </para>
+
+  <section>
+    <title>SSL Certificate</title>
+
+    <para>Sensitive credentials are passed between a user's browser and the
+    SlipStream™ server; consequently, the server must be configured to use
+    SSL. The metadata describing machines and deployments may also contain
+    proprietary information and be similarly sensitive. The server can either
+    be secured with a commercial certificate (signed by a well-known
+    certificate authority) or a self-signed certificate.</para>
+
+    <section>
+      <title>Using a Commercial Certificate</title>
+
+      <para>A commercial certificate signed by a well-known certificate
+      authority is the easiest to configure. These certificates are trusted by
+      default in most browsers and by most java distributions. Follow the
+      instructions of your chosen provider to obtain a signed certificate.
+      Usually, this certificate is delivered in X509 form
+      (<filename>*.pem</filename> file). To use this for the SlipStream™
+      server it must be converted either to PKCS12 for JKS format. </para>
+
+      <para>To convert, the certificate and key into a PKCS12 format do the
+      following:</para>
+
+      <programlisting>openssl pkcs12 -in name.crt -inkey name.key -o name.p12</programlisting>
+
+      <para>The resulting file will contain both the certificate and key. Be
+      sure to remember the password used to secure the PKCS12 file.</para>
+
+      <para>To convert, to JKS (Java Key Store) format, do the
+      following:</para>
+
+      <programlisting>keytool -cert name.crt -key name.key</programlisting>
+
+      <para>The resulting file will contain both the certificate and key. Be
+      sure to remember the password used to secure the JKS file.</para>
+
+      <para>You do not need to set the <parameter>truststore.*</parameter>
+      parameters when using a commercial certificate.</para>
+    </section>
+
+    <section>
+      <title>Using a Self-signed Certificate</title>
+
+      <para>The advantage of a self-signed certificate is that it can be
+      created with no cost. The disadvantage is that it is not trusted by
+      default by web browsers nor by the java distributions. The SlipStream™
+      server and client can be configured to trust the self-signed
+      certificate. Web browsers will generally warn users that the certificate
+      is not trusted, but give the user the option to ignore the
+      warning.</para>
+
+      <para>To create a self-signed certificate, do the following:</para>
+
+      <programlisting>openssl xxxx</programlisting>
+
+      <para>or using the keytool command:</para>
+
+      <programlisting>keytool xxxx</programlisting>
+
+      <para>Convert the certificate and key into either a PKCS12 format or JKS
+      format with the commands from the previous section.</para>
+
+      <para>You must also create a "trust store" containing the certificate of
+      the self-signed certificate. The generated trust store must also contain
+      the certificates from the usual list of trusted certificate authorities.
+      Locate the file <filename>cacerts</filename> in your java distribution.
+      Create a new keystore with the same certificates with the following
+      command:</para>
+
+      <programlisting>keytool xxxx</programlisting>
+
+      <para>If the <filename>cacerts</filename> file has not be modified on
+      your system, the default password will be "changeit". You can set the
+      password for the new keystore to be anything you would like. Now add the
+      certificate from your self-signed certificate to the new
+      keystore:</para>
+
+      <programlisting>keytool yyyy</programlisting>
+
+      <para>You must set the <parameter>truststore.*</parameter> parameters in
+      the configuration file when using a self-signed certificate.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Adding Superuser</title>
+
+    <para>The system must contain a superuser that can modify all modules in
+    the system and create users. To provide the initial parameters for the
+    superuser, use the command <command>ss-init-superuser</command>. This
+    command will prompt you for the necessary information and create (or
+    update) the superuser information in the database. Either the database
+    information can be provided on the command line or given in the
+    <filename>config.properties</filename> file.</para>
+  </section>
+
+  <section>
+    <title>Configuration Parameters</title>
+
+    <para>The following table lists the parameters for the SlipSteam™ server
+    and gives a brief description of each.</para>
+
+    <table>
+      <title>SlipStream™ Configuration Parameters</title>
+
+      <tgroup cols="3">
+        <thead>
+          <row>
+            <entry align="center">Parameter</entry>
+
+            <entry>Required</entry>
+
+            <entry align="center">Description</entry>
+          </row>
+        </thead>
+
+        <tbody>
+          <row>
+            <entry><parameter>restlet.url</parameter></entry>
+
+            <entry>Yes</entry>
+
+            <entry>The base URL for the SlipStream™ server containing the
+            hostname and port.</entry>
+          </row>
+
+          <row>
+            <entry><parameter>keystore.path</parameter></entry>
+
+            <entry>Yes</entry>
+
+            <entry>The path to the keystore containing the SSL certificate and
+            key for the server.</entry>
+          </row>
+
+          <row>
+            <entry><parameter>keystore.type</parameter></entry>
+
+            <entry>No</entry>
+
+            <entry>The type of keystore being used. This will default to
+            PKCS12 if the keystore name ends with ".p12" or ".pks". It will
+            default to "JKS", otherwise.</entry>
+          </row>
+
+          <row>
+            <entry><parameter>keystore.password</parameter></entry>
+
+            <entry>Yes</entry>
+
+            <entry>The plain text password for the given keystore.</entry>
+          </row>
+
+          <row>
+            <entry><parameter>keystore.key.password</parameter></entry>
+
+            <entry>Yes</entry>
+
+            <entry>The plain text password of the key inside the
+            keystore.</entry>
+          </row>
+
+          <row>
+            <entry><parameter>jdbc.driver</parameter></entry>
+
+            <entry>Yes</entry>
+
+            <entry>The full class name of the JDBC driver to use.</entry>
+          </row>
+
+          <row>
+            <entry><parameter>jdbc.user</parameter></entry>
+
+            <entry>Yes</entry>
+
+            <entry>The user to use when contacting the database.</entry>
+          </row>
+
+          <row>
+            <entry><parameter>jdbc.password</parameter></entry>
+
+            <entry>Yes</entry>
+
+            <entry>The password for the database.</entry>
+          </row>
+
+          <row>
+            <entry><parameter>jdbc.root.url</parameter></entry>
+
+            <entry>Yes</entry>
+
+            <entry>The JDBC URL for the database server.</entry>
+          </row>
+
+          <row>
+            <entry><parameter>jdbc.url</parameter></entry>
+
+            <entry>Yes</entry>
+
+            <entry>The full JDBC URL to the database to use for
+            SlipStream™.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+</chapter>

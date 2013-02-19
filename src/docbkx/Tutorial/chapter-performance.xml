@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Performance Example using Apache</title>
+
+  <section>
+    <title>Goal</title>
+
+    <para>The goal of this tutorial is to demonstrate how SlipStream™ can be
+    used to automate performance testing, reusing existing deployments.
+	A single parameter is required to instruct SlipStream™ to
+    instantiate several instances of a single image, without needing any
+    duplication of metadata in SlipStream™. We will use this feature to define
+    a performance test, where several test suites will be launched together to
+    create a higher load on the Apache server we already created in the
+    <emphasis>Simple Client/Server</emphasis> tutorial. With a slight
+	modification to the test
+    suite, such that instead of downloading a document once, we will loop over
+    a few times such that we can study the behaviour of Apache (or any server)
+    under load.</para>
+
+    <para>If you have not performed the <emphasis>Simple Client/Server
+	</emphasis> tutorial, you
+    can find a solution of the tutorial in the area
+    <filename>Public/HelloWorld</filename>. However, we assume that you have
+    acquired the knowledge presented in that first tutorial.</para>
+  </section>
+
+  <section>
+    <title>Create new Project</title>
+
+    <para>In your home project (refer to the <emphasis>Simple Client/Server
+	</emphasis> tutorial),
+    create another project called, say, <literal>Performance_Tutorial</literal>.</para>
+  </section>
+
+  <section>
+    <title>Create a new Deployment Module</title>
+
+    <para>Create a new deployment module in the <literal>Performance_Tutorial</literal>
+	project
+    called, say, <literal>deployment</literal>. In this deployment we need to add two nodes
+    corresponding to our Apache server and a test suite. To start with, we
+    will reuse the Simple Client/Server tutorial test suite.</para>
+
+    <para>In this tutorial, we introduce the concept of <emphasis>multiplicity
+	</emphasis>. This
+    means that by setting a multiplicity value on a node, we instruct
+    SlipStream™ to instantiate at runtime several times the same virtual
+    machine, but with a distinct image names. When instantiating nodes with
+    multiplicity, SlipStream™ creates entries in the run instance in the
+    form <literal>&lt;nodename&gt;-&lt;i&gt;</literal> where
+    <varname>i</varname> is an index ranging from 1 to the value given to the
+    multiplicity field.</para>
+
+    <para>To do this follow these steps:</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Add a new node, by clicking on the <emphasis>Add Node</emphasis>
+		button. This will
+        open the chooser window. In
+        the chooser, navigate and select your apache image. You will only be
+        able to select a module of type Image. Now name this node
+        <literal>apache</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para>Do the same for the test suite as we have done for the Simple
+        Client/Server tutorial. Name it <literal>testsuite</literal>.</para>
+      </listitem>
+
+      <listitem>
+        <para>On the <literal>testsuite</literal> node, set the
+		<emphasis>Multiplicity</emphasis> field to <literal>3</literal>. 
+        This means that have
+        defined a testsuite node that will represent 3 distinct testsuite
+ 		image instances. At runtime, the
+        three testsuite will be called respectively:
+        <literal>testsuite-1</literal>, <literal>testsuite-2</literal> and
+        <literal>testsuite-3</literal>. </para>
+      </listitem>
+
+      <listitem>
+        <para>Here as well, we need to resolve the testsuite's input parameter
+        requirement. Set the <emphasis>Linked to</emphasis> field of the
+        <parameter>webserver.hostname</parameter> parameter to
+        <literal>apache:hostname</literal> (where <literal>apache</literal>
+ 		corresponds to
+        the name of the node you have given in the first step). This means
+        that when the <parameter>apache:hostname</parameter> parameter will be
+        set as part of the apache node execution sequence, the
+        <literal>webserver.hostname</literal> parameter of the testsuite
+        nodes will also be set, linking them together.</para>
+      </listitem>
+
+      <listitem>
+        <para>Save the deployment.</para>
+      </listitem>
+    </orderedlist>
+
+    <para>We are now ready to submit our new deployment test.</para>
+  </section>
+
+  <section>
+    <title>Execute Distributed Test</title>
+
+    <para>To launch the distributed test, simply click on the "Run" button
+    of the deployment you have created above.</para>
+
+    <para>The execution instance created for each submission allows you to
+    track the progress of the distributed test. When the test is completed,
+    you can access the reports generated by the different nodes, by clicking
+    on the "Results" link.</para>
+
+    <para>In the report, you will now see an entry for each test suite,
+    containing the specific report of the test suite instance.</para>
+
+    <para>While this is interesting, we can do better. Next, we will modify
+    the test suite to increase the load.</para>
+  </section>
+
+  <section>
+    <title>Increasing the Load on the Server</title>
+
+    <para>Instead of simply reusing the test suite from the simple
+    client/server tutorial, we could upgrade the test suite, in which we could
+    for example loop a few times over getting the data, and record the access
+    time for each retrieval. We could also perform this data retrieval from
+    several threads, to make sure we saturate the network, and this by
+    increasing the threads over time. By resubmitting this deployment and
+    varying the multiplicity number, we should see how the number of clients
+    and requests affect the web server's response time. Finally, we could also
+    increase the size of the retrieved document, to increase again the load of
+    the server and the network. We leave this exercise to the user and are
+    looking forward to hearing your solutions.</para>
+  </section>
+</chapter>

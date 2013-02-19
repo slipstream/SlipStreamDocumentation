@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Project Module</title>
+
+  <section>
+    <title>Introduction</title>
+
+    <para><emphasis>Projects</emphasis> in SlipStream are similar to
+    directories or folders in normal file systems. They basically provide
+    grouping. Projects can contain other projects, which are normally used to
+    organise all the other metadata modules. Like all items in SlipStream,
+    Projects are version controlled and have specific access control
+    parameters. By default, Projects are private to their owner, but can be
+    made public.</para>
+  </section>
+
+  <section>
+    <title>Root Project</title>
+
+    <para>SlipStream follows a <emphasis>shared root project</emphasis> model.
+    This means that all projects share the same namespace. This doesn't mean
+    that your root project must be public, on the contrary, it simply means
+    that its name must be unique with respect to other root projects.
+    SlipStream will report an error if you choose a name already used by
+    another user.</para>
+
+    <para>To access the Root Project of the public installation, go here:
+    <link
+    xlink:href="https://slipstream.sixsq.com/module">slipstream.sixsq.com/projects</link>.
+    Like most pages in SlipStream, this page requires to login to the
+    application. From this page, you will be able to create new projects by
+    clicking on the <literal>New Project</literal> link (see <xref
+        linkend="fig-new-project">
+        .
+      </xref>), or view existing projects, that are either public or owned by
+    you.</para>
+
+    <figure xml:id="fig-new-project">
+      <title>New Project</title>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata align="center" contentwidth="14cm"
+                     fileref="images/Projects/new-project.png" format="PNG"></imagedata>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </section>
+
+  <section>
+    <title>Standard Project</title>
+
+    <para>With the exception of the Root Project described above, which only
+    contains a list of projects your user has access to, sub-projects contain
+    further information. This information is described in this section.</para>
+
+    <section>
+      <title>Viewing Project</title>
+
+      <para>To view a project details, navigate to the project by clicking on
+      its parent name from the root project. On the project page, you will
+      have access to the <emphasis>Summary</emphasis> tab (<xref
+          linkend="fig-project-summary">
+          .
+        </xref>), selected by default, as well as the
+      <emphasis>Authorization</emphasis> tab (<xref
+          linkend="fig-project-authorization">
+          .
+        </xref>), which gives you access to the access control parameters of
+      the module.</para>
+
+      <figure xml:id="fig-project-summary">
+        <title>Project Summary</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata align="center" contentwidth="14cm"
+                       fileref="images/Projects/project-summary.png"
+                       format="PNG"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <figure xml:id="fig-project-authorization">
+        <title>Project Authorization</title>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata align="center" contentwidth="14cm"
+                       fileref="images/Projects/project-authorization.png"
+                       format="PNG"></imagedata>
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+
+    <section>
+      <title>Editing Project</title>
+
+      <para>To edit your account, navigate to the project by clicking on its
+      parent name from the root project. On the desired project page hit the
+      <emphasis>Edit</emphasis> button.</para>
+
+      <section>
+        <title>Summary</title>
+
+        <para>The default tab for Project module is the
+        <emphasis>Summary</emphasis>. On that tab, your can edit general
+        information such as description, as well as creating new
+        modules.</para>
+
+        <para>To create a new module (e.g. Sub-Project, Machine Image, Disk
+        Image, Deployment), press respective button in Modules sections of
+        <emphasis>Summary</emphasis> tab (<xref linkend="fig-project-summary">
+            .
+          </xref>). You will then be redirected to a new page in which you'll
+        be able to fill the information corresponding to the new
+        module.</para>
+      </section>
+
+      <xi:include href="section-tab-authorization.xml" xpointer="element(/1)" />
+    </section>
+  </section>
+</chapter>

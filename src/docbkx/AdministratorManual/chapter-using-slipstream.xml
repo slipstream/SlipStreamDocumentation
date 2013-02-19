@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Using SlipStream™</title>
+
+  <section>
+    <title>Adding Users</title>
+
+    <para>One the service has been started, you must add the real users to the
+    system. From the main page click on "Start SlipStream" and log in as
+    "super". Once logged in, click on the "users" link. Click on the "Add
+    User" button and fill in the form for each user. You need only fill in the
+    user name and password. When users first log into their account, they can
+    provide the remaining information, such as the Amazon credentials.</para>
+  </section>
+
+  <section>
+    <title>Further Information</title>
+
+    <para>Information about the capabilities of the SlipStream™ system and how
+    to use it can be found in the User Manual. </para>
+  </section>
+</chapter>

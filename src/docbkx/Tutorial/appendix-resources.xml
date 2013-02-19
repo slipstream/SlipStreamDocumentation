@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appendix version="5.0" xml:id="appendix-resources"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:m="http://www.w3.org/1998/Math/MathML"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <title>Resources</title>
+
+  <!-- <section>
+    <title>Amazon Services</title>
+
+    <para><link xlink:href="http://aws.amazon.com/ec2/">Elastic Computing
+    Cloud (EC2)</link>: The AWS service that provides computing resources by
+    running virtual machine images. A limited number of fixed IP addresses can
+    be assigned to images via the Elastic IP service.</para>
+
+    <para><link xlink:href="http://aws.amazon.com/s3/">Simple Storage Service
+    (S3)</link>: The basic AWS service for storing files. It is used with EC2
+    to store machine images.</para>
+
+    <para><link xlink:href="http://aws.amazon.com/ebs/">Elastic Block Service
+    (EBS)</link>: A "disk" image that can be mounted by machine images in EC2.
+    It uses the S3 service behind the scenes, but provides a real "disk"
+    device to the machine images. </para>
+  </section> -->
+
+  <section>
+    <title>Apache Server</title>
+
+    <para>The <link xlink:href="http://httpd.apache.org/">Apache Web
+    Server</link> is a popular web server maintained by the <link
+    xlink:href="http://www.apache.org/">Apache Software
+    Foundation</link>.</para>
+  </section>
+
+  <!-- <section>
+    <title>Firefox</title>
+
+    <para>The <link
+    xlink:href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=609">Elasticfox
+    plug in</link> for the <link
+    xlink:href="http://www.mozilla.com/en-US/firefox/">Firefox browser</link>
+    makes interacting with the Amazon Web Services easy. </para>
+  </section> -->
+
+  <section>
+    <title>Ubuntu and Debian AMIs</title>
+
+    <para>A set of public Ubuntu and Debian AMIs are maintained by the
+    community. Information about them can be obtained from the <link
+    xlink:href="http://alestic.com/">Alestic web site</link> and support from
+    the <link xlink:href="http://groups.google.com/group/ec2ubuntu">ec2ubuntu
+    Google Group</link>.</para>
+  </section>
+
+  <section>
+    <title>CentOS</title>
+
+    <para>CentOS 6 images have been prepared by <link
+    xlink:href="http://www.rightscale.com/">RightScale</link>.</para>
+  </section>
+</appendix>

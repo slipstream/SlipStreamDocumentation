@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appendix version="5.0" xml:id="appendix-create-image"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:m="http://www.w3.org/1998/Math/MathML"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <title xml:id="appendix-image-creation">Creating Machine Images</title>
+
+  <section>
+    <title>Prerequisites</title>
+
+    <para>Note: before you start, you'll need valid EC2 credentials</para>
+  </section>
+
+  <section>
+    <title>EC2 Image Creation</title>
+
+    <para>Start EC2 base instance. For example: Reference Ubuntu AMI id:
+    ami-6a57b203.</para>
+
+    <para>Note: Assuming you've followed to EC2 getting started
+    instructions:</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Start an instance, using for example the Elasticfox plugin. Make
+        sure you do the following to make sure you can access the
+        resource:</para>
+
+        <orderedlist>
+          <listitem>
+            <para>select the gsg-keypair keypair so that you can be
+            authenticated when loging-in</para>
+          </listitem>
+
+          <listitem>
+            <para>select the default security group, such that you have access
+            to the resource from outside</para>
+          </listitem>
+        </orderedlist>
+      </listitem>
+
+      <listitem>
+        <para>Login to it:</para>
+
+        <programlisting>ssh -i id_rsa-gsg-keypair root@&lt;public-instance-address&gt;</programlisting>
+      </listitem>
+    </orderedlist>
+  </section>
+
+  <section>
+    <title>Adding ²One to the Image</title>
+
+    <para>Download the base scripts for ²One (note that "2one.hopto.org" is a
+    place-holder for a publicly reachable):</para>
+
+    <programlisting>mkdir -p /opt/2one/client
+wget http://2one.hopto.org:8182/repository/release/2one/2OneClientPy/versions/latest/packages/2OneClientPy.tgz -O /opt/2one/client/2OneClientPy.tgz
+tar zxvf /opt/2one/client/2OneClientPy.tgz -C /opt/2one/client/
+cp /opt/2one/client/2OneClientPy/scripts/2one-node-execution.bootstrap /etc/init.d</programlisting>
+
+    <para>this will add the bootstrap file in the bootstrap sequence (works
+    for Ubuntu!)</para>
+
+    <programlisting>update-rc.d 2one-node-execution.bootstrap defaults 99</programlisting>
+
+    <para>Install the <package>httplib2</package> Python library. If you're
+    using a package manager, the package is called
+    <package>python-httplib2</package>. You can also find the installation
+    instructions here.</para>
+  </section>
+
+  <section>
+    <title>Adding your own code to the image</title>
+
+    <para>Now add the user behavior to the image:</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Create a script called: /root/2onesession/doit</para>
+      </listitem>
+
+      <listitem>
+        <para>Make sure it is executable</para>
+      </listitem>
+    </orderedlist>
+
+    <para>This file is the entry point to your code. Here is the expected
+    behavior of the executable:</para>
+
+    <orderedlist>
+      <listitem>
+        <para>For service images (i.e. not tests) this script should start
+        programs, application and services in the background (e.g. using &amp;
+        at the end of the commands)</para>
+      </listitem>
+
+      <listitem>
+        <para>For test images (which control the termination of the deployment
+        execution), the test script should block until the test has
+        completed.</para>
+      </listitem>
+
+      <listitem>
+        <para>All valuable reports should be copied into the /tmp/2onereports
+        directory (create it if necessary).</para>
+      </listitem>
+    </orderedlist>
+
+    <para>If your image doesn't require to run specific code (as in the Apache
+    example), but you want to retrieve important information like log files,
+    create a script /root/2onesession/prepare-reports (again make sure it's
+    executable). This script should copy all files to the /tmp/2onereports
+    directory (create it if necessary).</para>
+
+    <para>TODO: implement this service/test background thing as different
+    bootstrap script</para>
+  </section>
+
+  <section>
+    <title>Packaging the Image</title>
+
+    <para>Still logged-in, execute the following instructions:</para>
+
+    <programlisting>cd /mnt</programlisting>
+
+    <para>Copy your EC2 keys to your instance, for example:</para>
+
+    <programlisting>scp &lt;user-name&gt;@&lt;home-server&gt;:ec2-keys/*.pem .</programlisting>
+
+    <para>Replacing the .pem files with yours, next bundle the instances as an
+    AMI:</para>
+
+    <programlisting>ec2-bundle-vol -k &lt;pk-XXX&gt;.pem -c &lt;cert-XXX&gt;.pem -u &lt;Account-Number&gt;</programlisting>
+
+    <para>Your Account Number can be found at the top of the AWS Account
+    Activity page. But make sure you remove the "-" in the number.</para>
+
+    <para>You will be prompted for the image architecture or you can use the
+    "-r" option. You may also want to specify an image prefix to give the
+    image a descriptive name.</para>
+
+    <para>Upload the bundle to S3.</para>
+
+    <para>Note: For the moment, the target must be publicly accessible for
+    ²One to find it. This will be fixed in a future release when we introduce
+    user EC2 credentials (TODO):</para>
+
+    <programlisting>ec2-upload-bundle -b &lt;S3-bucket-name&gt; -m /tmp/image.manifest.xml -a &lt;Your-Access-Key-ID&gt; -s &lt;Your-Secret-Access-Key&gt;</programlisting>
+  </section>
+
+  <section>
+    <title>Register the Image</title>
+
+    <para>The image needs to be registered with EC2 so that it can find it.
+    You can do the registration from Elasticfox as well (just click on the
+    white cross with green background!), or from where you've installed the
+    EC2 command-line client. Write down the unique AMI number that EC2
+    returns. Using the EC2 command-line client, here's the command:</para>
+
+    <programlisting>ec2-register /tmp/image.manifest.xml</programlisting>
+
+    <para>That's it you're done :-)</para>
+  </section>
+
+  <section>
+    <title>Create a new image instance in ²One</title>
+
+    <para>With the image created above, you can now instruct ²One to use it as
+    part of an automatic deployment. Here are the steps to do that.</para>
+
+    <section>
+      <title>Modelling in ²One</title>
+
+      <para>Model the image in ²One. Here are the steps to do that:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Create a new project or use an existing one</para>
+        </listitem>
+
+        <listitem>
+          <para>Create a new image in that project</para>
+        </listitem>
+
+        <listitem>
+          <para>Create a new version for this image</para>
+        </listitem>
+
+        <listitem>
+          <para>If this image requires inputs and/or provides output to other
+          images to use, define them in the version</para>
+        </listitem>
+
+        <listitem>
+          <para>Assign the image type to AMI</para>
+        </listitem>
+
+        <listitem>
+          <para>Set the image id to the id returned by the manifest
+          registration step above</para>
+        </listitem>
+
+        <listitem>
+          <para>Create a new deployment (in the same project or somewhere
+          else)</para>
+        </listitem>
+
+        <listitem>
+          <para>Create a new version for this deployment</para>
+        </listitem>
+
+        <listitem>
+          <para>Select the in an existing new image and corresponding version
+          in ²One (using the web interface).</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section>
+      <title>Automatic Test Execution</title>
+
+      <para>TODO</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Miscellaneous Notes</title>
+
+    <para>For creating an orchestrator image:</para>
+
+    <programlisting>wget http://2one.hopto.org:8182/repository/release/2one/2OneClientPy/versions/latest/packages/2OneClientPy.tgz -O /opt/2one/client/2OneClientPy.tgz
+tar zxvf /opt/2one/client/2OneClientPy.tgz -C /opt/2one/client/
+cp /opt/2one/client/2OneClientPy/scripts/2one-orchestrator.bootstrap /etc/init.local</programlisting>
+
+    <para>this will add the bootstrap file in the bootstrap sequence (works
+    for Ubuntu!)</para>
+
+    <programlisting>update-rc.d 2one-orchestrator.bootstrap start 99 S .</programlisting>
+
+    <para>Upload the bundle.</para>
+
+    <programlisting>ec2-upload-bundle -b meb.images/2one/orchestrator-ubuntu-8.04 -m /tmp/image.manifest.xml -a &lt;Your-Access-Key-ID&gt; -s &lt;Your-Secret-Access-Key&gt;</programlisting>
+
+    <para>To update the tarball of the client on the rep (TODO: add this as a
+    target to the main build.xml file)</para>
+
+    <programlisting>tar zcvf /home/meb/workspace/2OneExecuctionService/repository/release/2one/2OneClientPy/versions/latest/packages/2OneClientPy.tgz 2OneClientPy</programlisting>
+  </section>
+</appendix>

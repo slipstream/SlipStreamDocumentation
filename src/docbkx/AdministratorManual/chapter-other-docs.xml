@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Other Documentation</title>
+
+  <section>
+    <title>SlipStream™ Manuals</title>
+
+    <itemizedlist>
+      <listitem>
+        <para>User Manual</para>
+      </listitem>
+
+      <listitem>
+        <para>Administrator Manual</para>
+      </listitem>
+
+      <listitem>
+        <para>Reference Manual</para>
+      </listitem>
+
+      <listitem>
+        <para>Tutorial</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Links to Third-party Software</title>
+
+    <itemizedlist>
+      <listitem>
+        <para>MySQL (link to website, link to JDBC driver, link to
+        manuals)</para>
+      </listitem>
+
+      <listitem>
+        <para>Derby (link to website, link to JDBC driver, link to
+        manuals)</para>
+      </listitem>
+
+      <listitem>
+        <para>Java Keytool documentation</para>
+      </listitem>
+
+      <listitem>
+        <para>Others?</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</chapter>

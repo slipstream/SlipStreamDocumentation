@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter id="getting-started" version="5.0"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <title>Getting Started</title>
+
+  <section>
+    <title>Introduction</title>
+
+    <para>SlipStream™, by SixSq, is a framework for the automatic deployment
+    and testing of n-tier and distributed software systems. It makes extensive
+    use of cloud computing technologies to provide dynamic near-production
+    environments for realistic runtime creation of systems, permitting
+    software stakeholders to assert their ability to release the software into
+    production on a continuous basis. SlipStream™ relies on virtualization for
+    deploying machines and uses a cloud computing back-end to manage the
+    life-cycle of virtual images. SlipStream™ can use several cloud backends,
+    simultaneously. Please refer to the SixSq website for the list of
+    supported clouds. For this tutorial, we assume that you are using
+    a <link xlink:href="http://stratuslab.eu">StratusLab</link> cloud.
+    Therefore, if you are using a different cloud, the configuration 
+    parameters might be slightly different.  SlipStream
+    will continue to support more cloud back-ends, as needed and
+    requested.</para>
+
+    <para>SlipStream™ is available as public
+	<link xlink:href="http://slipstream.sixsq.com">hosted service</link>, our
+	hosted service supports a number of clouds. Before you can
+    successfully use these clouds, you will need to have valid accounts with
+    them.</para>
+
+    <para>This tutorial document is composed of several tutorials of
+    increasing complexity, designed to get you started on SlipStream™ as fast
+    and simply as possible. The first <link
+    linkend="chap-client-server">Simple Client/Server Tutorial</link> uses the
+    Apache2 web server to demonstrate a "hello world" of distributed system
+    tests using SlipStream™. In this first tutorial, we show you how to use
+    existing base images to create a deployment to test a simple client/server
+    pair running on two different virtual machines in the cloud.</para>
+
+    <para>Reusing the first tutorial, we then move to a slightly more complex
+    scenario where we show you how with a few button clicks the first tutorial
+    can be turned into a powerful performance system test. This second case
+    deploys several clients in parallel to show how to produce increased load
+    on the web server.</para>
+
+    <!--
+
+    <para>Another tutorial, also building from the first <link
+    linkend="chap-client-server">Simple Client/Server Tutorial</link>, shows
+    how a disk image can be used for data intensive tests and when permanent
+    storage is required. In that tutorial, you will define a disk image, which
+    is a persistent storage mechanism, which can be attached to different
+    machine images. This is useful when complex or large datasets are required
+    to perform tests or initialise services, without having to 'bake' into
+    each image a large dataset, in other words decoupling data from machine
+    images.</para>
+
+    -->
+
+    <!--<para>We conclude with a real life tutorial, where we show you how we at
+    SixSq are using SlipStream™ ourselves to build and test SlipStream™. In
+    this last tutorial, we describe the steps we use to build one of the main
+    components of SlipStream™, namely the orchestrator.</para>
+
+    -->
+
+    <para>We execute the tutorials in this document daily to make sure that
+    the fundamentals of these tutorials are sound. However, if you experience
+    problems going through these tutorials, you'll find a special appendix to
+    this document with troubleshooting tips. If you think that any of these
+    tutorials are not clear, confusing, missing insights or could simply be
+    made better, please help us improving them by sending your feedback to
+    <email>support@sixsq.com</email>.</para>
+  </section>
+
+  <section>
+    <title>Tutorial Solutions</title>
+
+    <para>You can find the solutions to the SlipStream™ tutorials on the
+    server in the <filename>Public/Tutorials</filename> project area. All of
+    the required projects are publicly readable, you therefore only need a
+    standard SlipStream™ account to view them.</para>
+  </section>
+
+  <section>
+    <title>Key Concepts</title>
+
+    <para>Before we start the tutorial, here are a few important SlipStream™
+    concepts that will come up often. SlipStream™ is accessed via a web
+    application. SixSq runs a public <link
+    xlink:href="http://slipstream.sixsq.com/">SlipStream™ hosted service</link>.
+	Your organization may run it's own SlipStream™ service;
+    if so, contact your administrator to find the address of the server. If
+    you have your own SlipStream™ instance and you want to use it for this
+    tutorial, please make sure that your instance of SlipStream™ includes the
+    Tutorial SlipStream™ Projects, which ships with the product by
+    default.</para>
+
+    <!--
+
+    <para>By default, SlipStream™ runs in protected mode and can only be
+    accessed using the secure HTTPS protocol. This is important in order to
+    protect your personal credentials and any sensitive information that may
+    be storing in your definition and execution procedures.</para>
+
+    -->
+
+    <para>Metadata about your images and deployments are organized into
+    projects in SlipStream™. Each project consists of a number of
+    modules. The modules may be <emphasis>Project</emphasis>,
+    <emphasis>Machine Image</emphasis> or <emphasis>Deployment</emphasis>
+    modules. Here is a short description of these module types:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>Project</term>
+
+        <listitem>
+          <para>A container of modules used to provide logical grouping. A
+          project may contain other projects allowing a hierarchical
+          organization for large projects.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Machine image</term>
+
+        <listitem>
+          <para>A module that contains information about machine images,
+          including cloud specific unique identifier and/or recipes to create
+          the machine image. The recipe information consists of a set of
+          packages to install and a script for configuring the machine. Unique
+          identifiers are specific to the corresponding cloud they belong to.
+          This module also includes input/output parameters such that the
+          machine can be synchronized as part of a deployment.</para>
+        </listitem>
+      </varlistentry>
+
+      <!--
+
+      <varlistentry>
+        <term>Disk image</term>
+
+        <listitem>
+          <para>A module that contains data that can be reused during tests
+          and machine image build and execution. This is implemented with the
+          Amazon's Elastic Block Service (EBS) and will appear to virtual
+          machines as a mounted disk.</para>
+        </listitem>
+      </varlistentry>
+
+      -->
+
+      <varlistentry>
+        <term>Deployment</term>
+
+        <listitem>
+          <para>A module that describes nodes to which machine images are
+          associated, as well as synchronization and coordination between
+          these.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>The web interface allows the parameters for each of these modules to
+    be defined, edited, versioned and saved.</para>
+
+    <para>We also have three main workflows in SlipStream™: <emphasis>Image
+    Creation</emphasis> and <emphasis>Deployment</emphasis>. Here is a short
+    explanation of what they are:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>Image Creation</term>
+
+        <listitem>
+          <para>Creation of a new machine image at the cloud service level,
+          such that it can be reused in deployments. This means that
+          SlipStream™ instantiates a reference (i.e. already existing) image,
+          from which it will add software and configuration, before saving it
+          as a new image for further reuse.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Deployment Execution (or Run)</term>
+
+        <listitem>
+          <para>Deployment of several machines together, synchronizing their
+          setup such that the software in each machine fires in the right
+          order, automatically.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+	<para>It is also possible to run a single image, without deployment
+	support, for convenience.</para>
+
+    <para>These terms will be referred to throughout this document.</para>
+  </section>
+
+  <section>
+    <title>Access Control</title>
+
+	<para>Access control can be defined for each module in SlipStream™.
+	Further, three levels of control are available: 
+	<emphasis>User</emphasis>, <emphasis>Group</emphasis> and
+	<emphasis>Public</emphasis>.  For each level, different actions can
+	be granted (e.g. read, execute). Groups are dynamically defined, as
+	a simple list of users and can be inherited.
+	</para>
+
+  </section>
+
+  <section>
+    <title>User Setup</title>
+
+    <para>SlipStream™ is a secure web application requiring a personal
+    account. To register for an account, fill in the <link
+    xlink:href="http://slipstream.sixsq.com/register">registration
+    form</link>. Make sure you provide a valid email address as it will be
+    used to validate your account. Once you've received the email, hit the
+    confirmation link to activate your account. From that point-on, you are
+    good to go on SlipStream™.</para>
+
+    <!-- <para>By default, on the public hosted service, SlipStream™ is
+	configured to use the StratusLab
+    reference cloud service for "cloud" resources. In order to build images
+    and execute deployments, you must have an <link
+    xlink:href="http://stratuslab.eu/">StratusLab account</link> and you must
+    fill your SlipStream™ profile with your StratusLab username and password.
+    The simplest way to request a StratusLab account is to access the 
+	StratusLab <link xlink:href="http://register.stratuslab.eu:8444">registration
+	page</link>. SlipStream™ supports several other cloud services, if you
+	prefer to use another cloud service, simply change the default in your
+	user configuration, and provide the corresponding credentials.</para> -->
+	
+    <para>To start with SlipStream™, on the welcome page, click on Start or
+    the Start button, or the login
+    link at the top right of the screen. Once logged in, go to you account.
+    Once there, click the Edit button and select the "Properties" tab. Each
+    available cloud has a corresponding section (see the comments
+    next to the fields for guidance). Configure each cloud section you
+    plan to use and save changes. Now you should be good to go!</para>
+
+  </section>
+</chapter>

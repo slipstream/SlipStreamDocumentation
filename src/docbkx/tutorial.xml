@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book id="Tutorial" version="5.0" xmlns="http://docbook.org/ns/docbook"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:m="http://www.w3.org/1998/Math/MathML"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title>SlipStream™ Tutorial</title>
+
+    <subtitle>
+      <?eval ${project.version}?>
+    </subtitle>
+
+    <author>
+      <orgname>SixSq Sàrl</orgname>
+    </author>
+
+    <org>
+      <orgname>SixSq Sàrl</orgname>
+
+      <address>15 rue du Pré-de-la-Fontaine
+1217 Geneva
+Switzerland</address>
+
+      <uri type="website">http://www.sixsq.com/</uri>
+    </org>
+
+    <pubdate>
+      <?eval ${buildDate}?>
+    </pubdate>
+
+    <date>
+      <?eval ${buildDate}?>
+    </date>
+
+    <productnumber>
+      <?eval ${project.version}?>
+    </productnumber>
+
+    <copyright>
+      <year>2013</year>
+
+      <holder>SixSq Sàrl</holder>
+    </copyright>
+
+    <legalnotice>
+      <para>This work is licensed under the Creative Commons
+      Attribution-NoDerivs 3.0 Unported License. To view a copy of this
+      license, visit http://creativecommons.org/licenses/by-nd/3.0/ or send a
+      letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+      California, 94041, USA.</para>
+
+      <mediaobject>
+        <imageobject role="html">
+          <imagedata contentwidth="3cm" fileref="images/by-nd.png"
+                     format="PNG" />
+        </imageobject>
+
+        <imageobject role="fo">
+          <imagedata contentwidth="3cm" fileref="images/by-nd.svg"
+                     format="SVG" />
+        </imageobject>
+      </mediaobject>
+    </legalnotice>
+
+    <mediaobject>
+      <imageobject role="html">
+        <imagedata contentwidth="8cm" fileref="images/sixsq.png" format="PNG" />
+      </imageobject>
+
+      <imageobject>
+        <imagedata contentwidth="8cm" fileref="images/sixsq.svg" format="SVG" />
+      </imageobject>
+    </mediaobject>
+  </info>
+
+  <xi:include href="Tutorial/chapter-introduction.xml" xpointer="element(/1)" />
+
+  <xi:include href="Tutorial/chapter-simple-client-server.xml"
+              xpointer="element(/1)" />
+
+  <!-- <xi:include href="Tutorial/chapter-performance.xml" xpointer="element(/1)" /> -->
+
+  <!--
+
+  <xi:include href="Tutorial/chapter-slipstream.xml" xpointer="element(/1)" />
+
+  -->
+
+  <xi:include href="Tutorial/appendix-troubleshooting.xml"
+              xpointer="element(/1)" />
+
+  <xi:include href="Tutorial/appendix-resources.xml" xpointer="element(/1)" />
+</book>

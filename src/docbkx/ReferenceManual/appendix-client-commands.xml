@@ -1,0 +1,1278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appendix version="5.0" xml:id="chap-client-command-reference"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:m="http://www.w3.org/1998/Math/MathML"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns:db="http://docbook.org/ns/docbook">
+  <title>Client Command Reference</title>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-abort</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-abort</refname>
+
+      <refpurpose>set the abort flag</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-abort</command>
+
+        <arg><option>--cancel</option></arg>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg choice="opt"
+        rep="norepeat"><replaceable>reason</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-abort</command> command controls the abort flag
+      for a deployment. The reason for setting the abort flag can be set via
+      the <replaceable>reason</replaceable> argument.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--cancel</option></term>
+
+          <listitem>
+            <para>Remove the abort flag. Useful when debugging on a remote
+            node.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Only print the minimum information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Prints additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-attach-volume</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-attach-volume</refname>
+
+      <refpurpose>attach an EBS volume to a running instance</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-attach-volume</command>
+
+        <arg><option>--format</option></arg>
+
+        <arg><option>--format-type</option></arg>
+
+        <arg><option>--copy</option></arg>
+
+        <arg><option>--timeout</option>=<replaceable>minutes</replaceable></arg>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg choice="req"
+        rep="norepeat"><replaceable>volume-id</replaceable></arg>
+
+        <arg><replaceable>mount-dir</replaceable></arg>
+
+        <arg><replaceable>device-name</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-attach-volume</command> command will attach an EBS
+      volume given by <replaceable>volume-id</replaceable> to a running
+      instance.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--format</option></term>
+
+          <listitem>
+            <para>If set, format the device. This cannot be specified at the
+            same time as <option>--copy</option>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--format-type</option></term>
+
+          <listitem>
+            <para>Format used for formatting the device. The default is
+            ext3.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--copy</option></term>
+
+          <listitem>
+            <para>Create a copy (via a snapshot) of the original volume and
+            mount this copy instead of the original volume. Cannot be set at
+            the same time as <option>--format</option>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--timeout</option>=<replaceable>minutes</replaceable></term>
+
+          <listitem>
+            <para>Maximum timeout (in minutes) for creating the volume. The
+            default value is 30 minutes.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-authenticate</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-authenticate</refname>
+
+      <refpurpose>create an authentication cookie for SlipStream
+      service</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-authenticate</command>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-authenticate</command> command create an
+      authentication cookie for the SlipStream service.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-build-image</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-build-image</refname>
+
+      <refpurpose>create a machine image from SlipStream metadata</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-build-image</command>
+
+        <arg><option>--createinstance</option></arg>
+
+        <arg><option>--strictversion</option></arg>
+
+        <arg><option>--timeout</option>=<replaceable>minutes</replaceable></arg>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-build-image</command> command will create a
+      machine image from SlipStream metadata.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--createinstance</option></term>
+
+          <listitem>
+            <para>Create a new image for the base image before installing
+            packages and running the recipe. By default, a new instance is not
+            created.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--strictversion</option></term>
+
+          <listitem>
+            <para>Use the exact version specified by the reference. By
+            default, the latest version of the resource is used.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--timeout</option>=<replaceable>minutes</replaceable></term>
+
+          <listitem>
+            <para>Maximum timeout (in minutes) for building the image. The
+            default value is 30 minutes.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-create-volume</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-create-volume</refname>
+
+      <refpurpose>creates a new disk image from SlipStream
+      metadata</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-create-volume</command>
+
+        <arg><option>--timeout</option>=<replaceable>minutes</replaceable></arg>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>size</replaceable></arg>
+
+        <arg><replaceable>zone</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-create-volume</command> command will create a new
+      disk image with the given <replaceable>size</replaceable> in megabytes.
+      By default, the disk image will be created in the same
+      <replaceable>zone</replaceable> as the current image instance.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--timeout</option>=<replaceable>minutes</replaceable></term>
+
+          <listitem>
+            <para>Maximum timeout (in minutes) for creating the volume. The
+            default value is 30 minutes.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-download</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-download</refname>
+
+      <refpurpose>attach an EBS volume to a running instance</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-download</command>
+
+        <arg><option>--targetdir</option></arg>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>path</replaceable></arg>
+
+        <arg><replaceable>output</replaceable></arg>
+
+        <arg><replaceable>username</replaceable></arg>
+
+        <arg><replaceable>password</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-download</command> command will download the
+      artifact from the referenced path to the current working directory or to
+      the specified target directory. If <replaceable>output</replaceable> is
+      specified, it will be used for the local name; otherwise, the basename
+      of the <replaceable>path</replaceable> is used. The
+      <replaceable>username</replaceable> and
+      <replaceable>password</replaceable> only need to be specified when
+      running the command standalone outside of a SlipStream execution.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--targetdir</option></term>
+
+          <listitem>
+            <para>The directory in which to write the downloaded artifact. By
+            default, the current working directory is used.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-export</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-export</refname>
+
+      <refpurpose>export module metadata</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-export</command>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg choice="req"
+        rep="norepeat"><replaceable>resource-name</replaceable></arg>
+
+        <arg><replaceable>username</replaceable></arg>
+
+        <arg><replaceable>password</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-export</command> command extract the referenced
+      module referenced by <replaceable>resource-name</replaceable> to disk.
+      The <replaceable>username</replaceable> and
+      <replaceable>password</replaceable> only need to specified if running
+      the command standalone outside of a SlipStream execution.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-get</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-get</refname>
+
+      <refpurpose>get key/value pairs from info sys restlet</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-get</command>
+
+        <arg><option>--ignoreabort</option></arg>
+
+        <arg><option>--noblock</option></arg>
+
+        <arg><option>--timeout</option>=<replaceable>minutes</replaceable></arg>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>key</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-get</command> command retrieve the value
+      associated with the given <replaceable>key</replaceable>. The command
+      will normally block until a value for the given
+      <replaceable>key</replaceable> has been published or the timeout
+      expires.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--ignoreabort</option></term>
+
+          <listitem>
+            <para>Ignore the abort flag if set. Normally all
+            <command>ss-get</command> commands will fail if the abort flag is
+            set.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--noblock</option></term>
+
+          <listitem>
+            <para>By default, the command will block until the requested value
+            is published or until the timeout expires. This option turns off
+            this blocking behavior.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--timeout</option>=<replaceable>minutes</replaceable></term>
+
+          <listitem>
+            <para>Maximum timeout (in minutes) for retrieving the value of the
+            <replaceable>key</replaceable>. The default value is 5
+            minutes.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-import</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-import</refname>
+
+      <refpurpose>imports SlipStream module metadata from the local
+      disk</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-import</command>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg><replaceable>username</replaceable></arg>
+
+        <arg><replaceable>password</replaceable></arg>
+
+        <arg choice="req"
+        rep="repeat"><replaceable>filename</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-import</command> command will import a module from
+      the serialized information in the file named
+      <replaceable>filename</replaceable>. Multiple files can be specified.
+      The <replaceable>username</replaceable> and
+      <replaceable>password</replaceable> only need to be specified if running
+      the command standalone outside of a SlipStream execution.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-install-package</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-install-package</refname>
+
+      <refpurpose>install a package</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-install-package</command>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg rep="repeat"><replaceable>package</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-install-package</command> command will install the
+      named package(s) on the machine.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-publish-volume</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-publish-volume</refname>
+
+      <refpurpose>a command to publish an EBS volume id to module
+      metadata</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-publish-volume</command>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg choice="opt"
+        rep="norepeat"><replaceable>volume-id</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-publish-volume</command> command will publish an
+      EBS volume id to module metadata. If the
+      <replaceable>volume-id</replaceable> is not specified, the value in
+      <filename>/tmp/slipstream/volumeid</filename> will be used.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-reset-deployment</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-reset-deployment</refname>
+
+      <refpurpose>reset the state of a deployment</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-reset-deployment</command>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-reset-deployment</command> command will reset the
+      state of the deployment. All counters are set to 1 except the terminate
+      counter that is set to 2.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-set</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-set</refname>
+
+      <refpurpose>set the value of a parameter</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-set</command>
+
+        <arg><option>--decrement</option></arg>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>key</replaceable></arg>
+
+        <arg choice="req"><replaceable>value</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-set</command> command will set the parameter named
+      by <replaceable>key</replaceable> to the given
+      <replaceable>value</replaceable>. The <replaceable>value</replaceable>
+      is required unless the <option>--decrement</option> option is used. If
+      the <option>--decrement</option> option is used, the
+      <replaceable>value</replaceable> will be ignored.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--decrement</option></term>
+
+          <listitem>
+            <para>Decrement the value of the named parameter. This implies
+            that the current value of the parameter can be cast to an
+            integer.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-upload</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-upload</refname>
+
+      <refpurpose>upload a file into S3</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-upload</command>
+
+        <arg><option>--public</option></arg>
+
+        <arg><option>--cancel</option></arg>
+
+        <arg><option>--quiet</option></arg>
+
+        <arg><option>--verbose</option></arg>
+
+        <arg><option>-h</option> | <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>file</replaceable></arg>
+
+        <arg choice="req"><replaceable>destination</replaceable></arg>
+
+        <arg><replaceable>username</replaceable></arg>
+
+        <arg><replaceable>password</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-upload</command> command will upload the given
+      <replaceable>file</replaceable> into the
+      <replaceable>destination</replaceable>, a location in S3. The format of
+      <replaceable>destination</replaceable> is
+      <replaceable>bucket-name</replaceable>:[<replaceable>path</replaceable>].
+      The <replaceable>username</replaceable> and
+      <replaceable>password</replaceable> are only required when running the
+      command standalone outside of a SlipStream execution.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--public</option></term>
+
+          <listitem>
+            <para>Set the object as publicly readable.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--cancel</option></term>
+
+          <listitem>
+            <para>Remove the abort flag. (Useful for debugging on a remote
+            node.)</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--quiet</option></term>
+
+          <listitem>
+            <para>Print minimal information.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--verbose</option></term>
+
+          <listitem>
+            <para>Print additional information (default).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>Show this message.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refentry>
+</appendix>
