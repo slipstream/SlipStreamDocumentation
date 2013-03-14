@@ -5,14 +5,14 @@
 	<groupId>com.sixsq.slipstream</groupId>
 	<artifactId>SlipStreamDocumentation</artifactId>
 	<packaging>pom</packaging>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<name>SlipStreamDocumentation</name>
 	<url>http://sixsq.com/</url>
 
 	<parent>
 		<groupId>com.sixsq.slipstream</groupId>
 		<artifactId>SlipStream</artifactId>
-		<version>1.2-SNAPSHOT</version>
+		<version>1.2</version>
 		<!-- <relativePath>../SlipStreamParent</relativePath> -->
 	</parent>
 
@@ -25,9 +25,9 @@
 	</repositories>
 
 	<scm>
-		<connection>scm:git:ssh://git@github.com/SixSq/SlipStreamDocumentation.git</connection>
-		<url>scm:git:ssh://git@github.com/SixSq/SlipStreamDocumentation.git</url>
-		<developerConnection>scm:git:ssh://git@github.com/SixSq/SlipStreamDocumentation.git</developerConnection>
+		<connection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</connection>
+		<url>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</url>
+		<developerConnection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</developerConnection>
 		<tag>SlipStreamDocumentation-1.1</tag>
   </scm>
 
