@@ -19,7 +19,7 @@
     SlipStream Tutorial document, which presents SlipStream using a series of
     specific examples. We suggest you work with both documents to get up to
     speed quickly. You can also use the SlipStream mailing list at the
-    address: slipstream-support@sixsq.com, if you have any questions.</para>
+    address: support@sixsq.com, if you have any questions.</para>
 
     <para>The SlipStream application has two main workflows: <emphasis>Image
     Creation</emphasis> and <emphasis>Deployment</emphasis>. Lets review these
@@ -30,6 +30,9 @@
     vary the number of machines running clients, servers and databases, since
     they are parameterised in SlipStream, which gives you great flexibility to
     explore different deployment models in a few simple button clicks.</para>
+    
+    <para>You can also deploy different deployments on different clouds, and
+    even deploy parts of a deployment on different clouds, simultaneously.</para>
 
     <para>The underlying cloud environment that SlipStream targets cannot
     predict hostnames or IP addresses. This is a common trait of
@@ -57,7 +60,7 @@
     using the SlipStream dashboard, which provides a graphical representation
     of execution. The dashboard represents each deployed virtual machine,
     including its current state and custom information if provided. <!-- This feature is described in section XXX. -->
-    <!-- TODO: describe this feature! --> At the end of all execution, a
+    <!-- TODO: describe this feature! --> At the end of all executions, a
     consolidated report is made available to the user, including detailed log
     files, if configured, to review the execution.</para>
 
@@ -77,38 +80,33 @@
   <section>
     <title>Image Creation</title>
 
-    <para>Before you can deploy your system in SlipStream, you'll need machine
-    images, containing the different tiers you want to deploy. Machine images
-    in SlipStream are simply virtual machine images, with a simple
-    modification to their boot sequence. You can use already registered
-    virtual machines in the cloud environment that your SlipStream
-    installation targets (e.g. StratusLab service (via Marketplace image ID)
-    or Amazon's EC2 for the public service), or you can create your own.
-    Please refer to the cloud providers documentation for creating new base
-    virtual images if you don't want to or can't start with existing
-    ones.</para>
+    <para>Before you can deploy your system with SlipStream, you will need to
+    choose machine images. For this you can start from already
+    registered virtual machines in the cloud environment that your SlipStream
+    installation targets, or create your own machine images, based on existing 
+    base images.  If the default base images provided in your SlipStream
+    installation are not appropriate, you can create new base machine images. 
+    For this, please refer to the cloud providers documentation.</para>
 
-    <para>The public SlipStream service targets StratusLab and Amazon's EC2
-    cloud services. StratusLab (via Marketplace) and Amazon already provide a
-    rich set of base images.</para>
-
-    <!--     Some have already been upgraded to work out of the box for SlipStream. We call these images
-    <emphasis>stock images</emphasis>. You'll find public stock images in the
+    <para>By default, SlipStream ships with a few public machine image
+    definitions (e.g. Ubuntu, CentOS, Fedora). You'll find these base images in the
     <literal
     xlink:href="https://slipstream.sixsq.com/projects/Public">Public</literal>
-    project in SlipStream.
- -->
+    project in SlipStream.</para>
 
-    <para><xref linkend="fig-image-creation-workflow">
-         . 
+    <para>From these base images, you can create custom images. <xref linkend="fig-image-creation-workflow">
       </xref> shows the different steps you can follow to create images. You
     can start from a plain image (as in point 1). In this case you will have
     to create a new machine image, referencing the plain image you want to
-    base your image on, and provide a <literal>pre-recipe</literal> script.
-    This pre-recipe script installs the SlipStream client dependencies onto
-    the plain image <!-- (see xxx for details) -->. Once you've built this
-    image, you'll have a new stock image (as shown on point 4), which you can
-    further customise. If you start from a stock image (point 2), which is the
+    base your image on, and provide a <literal>pre-recipe</literal> script, if 
+    if necessary.
+    This pre-recipe script is responsible for installing the SlipStream client
+    dependencies onto the plain image  (e.g.
+    Python >=2.6).  If the plain image already fulfills the SlipStream client
+    dependencies, then the plain image can be considered as a base image.<!-- (see xxx for details) -->.          
+    If not, you will have to build this image using SlipStream.  Once you have built this
+    image, you will have a new base image (as shown on point 4), which you can
+    further customise. If you start from a base image (point 2), which is the
     fastest and easiest way to go, you can then provide a list of packages to
     install (a.k.a. apt/yum for Linux based machines) and/or a recipe script.
     This will install and configure your machine such that it can be (re)used
@@ -138,8 +136,8 @@
         linkend="fig-machine-image-inheritance">
          . 
       </xref>. The inheritance mechanism is implemented using reference <!-- (see xxx for details) -->.
-    Note that while parameters and properties are inherited, scripts (i.e.
-    pre-recipes, recipe, execute and report) and packages are not
+    Note that while parameters are inherited, scripts (e.g.
+    pre-recipes, recipe) and packages are not
     inherited.</para>
 
     <figure xml:id="fig-machine-image-inheritance">
@@ -184,27 +182,29 @@
       </mediaobject>
     </figure>
 
-    <para>Looking at the user interface for a machine image, you'll see that
+    <para>Looking at the user interface for a machine image, you will see that
     we can also define an <emphasis>deployment scripts</emphasis>. These are
     scripts that will be executed during the execution of a machine image,
-    every time the machine boots as part of a deployment. We'll look at these
+    every time the machine boots as part of a deployment. We will look at these
     scripts in the next section.</para>
 
-    <para>Now that we've looked at the highlights of the image creation
-    workflow, we'll look at how to combine machine images into a deployment
-    model that can be executed to mimic a near-production multi-tier software
-    system deployment.</para>
+    <para>Now that we have looked at the highlights of the image creation
+    workflow, we will look at how to combine machine images into a deployment
+    model that can be executed to provision a multi-tier software
+    system in the cloud.</para>
   </section>
 
   <section>
     <title>Deployment</title>
 
     <para>Deployments in SlipStream refers to the launch of a set of virtual
-    machines, as part of a coherent software system. We already mentioned the
+    machines, as part of a coherent software system or multi-tier application.
+    We already mentioned the
     example of a client/server/database 3-tier architecture. In this section
     we give an overview of what a deployment is made of and how to take
     advantage of the synchronisation feature SlipStream offers for controlling
-    the deployment of inter-dependent machines.</para>
+    the deployment of inter-dependent machines, and the coordination of the
+    services running inside these machines.</para>
 
     <para linkend="fig-deployment-deployment-model">In the previous section,
     we briefly introduced the image creation model. For
@@ -212,7 +212,7 @@
     in <xref linkend="fig-deployment-deployment-model">
          . 
       </xref>. The Orchestrator pattern is also used to control the
-    instantiation of the virtual machines that as described in the deployment
+    instantiation of the virtual machines that are described in the deployment
     model the user wants to execute. In this diagram, the orchestrator
     instantiates three virtual machines called: <emphasis>Node 1</emphasis>,
     <emphasis>Node i</emphasis> and <emphasis>Node N</emphasis>.</para>
@@ -243,14 +243,16 @@
         linkend="chap-deployment-module">
          . 
       </xref> provides further details on the definition of deployments. For
-    now, what's important to understand is that machine images, which can be
+    now, what is important to understand is that machine images, which can be
     generic units of reuse, can be combined, shared and reused in flexible
     ways between different deployments. For example, the same machine images
-    (with or without Disk Images attached) can be combine together using
+    (with or without extra disks attached) can be combine together using
     different deployment models, such that they can form the basis for a
-    simple functional test, end-to-end system test. Further, increasing the
+    simple functional test, end-to-end system test or a real application
+    deployment. Further, increasing the
     number of nodes can turn a basic deployment into a powerful performance or
-    stress test. For example, you could use this feature to deploy and test
+    stress test, or provide a real operational system.
+    For example, you could use this feature to deploy and test
     the same system with a range of back-end databases, to verify the the
     system behaves correctly for all back-ends, automatically, without having
     to deal with the manual work of deploying and maintaining several back-end
@@ -259,10 +261,10 @@
     <para>The following figure (<xref
         linkend="fig-deployment-sequence-diagram">
          . 
-      </xref>) show the high-level sequence diagram of a deployment. The
+      </xref>) shows the high-level sequence diagram of a deployment. The
     SlipStream Server launches a dedicated SlipStream Orchestrator, a
     dedicated virtual machine for the execution of the deployment. The
-    orchestrator analysis the deployment model and launches the required nodes
+    orchestrator analyses the deployment model and launches the required nodes
     (instances of machine images) and coordinates them. This coordination
     includes a few rendezvous points during the deployment for each node. This
     is described in further details a little later in this section. As
@@ -272,7 +274,7 @@
     executes a set of user scripts. These scripts are:
     <emphasis>execute</emphasis> and <emphasis>report</emphasis>. The execute
     script is there to call the normal business logic for this node, while the
-    report scripts responsibility is to gather all the logs and other
+    report script's responsibility is to gather all the logs and other
     important files and sources of information to be added to the execution
     report. Once the execution scripts have run and all the reports have been
     compiled and sent back to the SlipStream Server, the orchestrator normally
@@ -308,7 +310,7 @@
         linkend="fig-deployment-deployment-model">
          . 
       </xref> is a high level sequence diagram showing how the synchronisation
-    API is used such that the <literal>Node 1</literal> waits for a value set
+    API is used such that <literal>Node 1</literal> waits for a value set
     by <literal>Node 2</literal>. In this example, the execute script runs
     until it hits a synchronisation point (using either the SlipStream
     command-line client or Python API). At this point, the script blocks,
@@ -340,7 +342,7 @@
     <para>Deployments go through a simple set of states, as described in <xref
         linkend="fig-deployment-sequence">
          . 
-      </xref>. In that figure, states illustrated with a dotted lined boxes
+      </xref>. In this figure, states illustrated with a dotted lined boxes
     correspond to states that are internal to SlipStream while boxes with a
     solid line represent optional states where user scripts can be executed,
     if defined.</para>
@@ -365,22 +367,22 @@
 
     <para>It is worth noting that each virtual machine during a deployment
     execution goes through these states, whether a failure is detected during
-    the execution or not. Further, the SlipStream client will force a
+    the deployment or not. Further, the SlipStream client will force a
     synchronisation point at different points on the sequence. These
     synchronisation points are the following:</para>
 
     <itemizedlist>
       <listitem>
-        <para>After <emphasis>Initialize</emphasis>: allows each machine to
+        <para>After <emphasis>Initializing</emphasis>: allows each machine to
         have completed its boot sequence before the transition to the
-        <emphasis>Execute</emphasis> state is allowed.</para>
+        <emphasis>Running</emphasis> state is allowed.</para>
       </listitem>
 
       <listitem>
-        <para>After <emphasis>Execute</emphasis>: ensures that the execution
+        <para>After <emphasis>Running</emphasis>: ensures that the execution
         has completed before the <emphasis>Report</emphasis> scripts is
-        executed. This is important such that the report includes all the
-        actions that have taken place during the <emphasis>Execute</emphasis>
+        executed. This is important such that the reports include all the
+        actions that have taken place during the <emphasis>Running</emphasis>
         state.</para>
       </listitem>
     </itemizedlist>

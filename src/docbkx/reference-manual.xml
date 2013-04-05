@@ -82,8 +82,8 @@ Switzerland</address>
   <xi:include href="ReferenceManual/chapter-deployment.xml"
               xpointer="element(/1)" />
 
-  <xi:include href="ReferenceManual/chapter-versioning.xml"
-              xpointer="element(/1)" />
+  <!-- <xi:include href="ReferenceManual/chapter-versioning.xml"
+                xpointer="element(/1)" /> -->
 
   <xi:include href="ReferenceManual/chapter-image-creation.xml"
               xpointer="element(/1)" />
@@ -92,11 +92,11 @@ Switzerland</address>
   <xi:include href="ReferenceManual/chapter-bootup-sequence.xml" xpointer="element(/1)" />
  -->
 
-  <xi:include href="ReferenceManual/chapter-runtime-properties.xml"
-              xpointer="element(/1)" />
+  <!-- <xi:include href="ReferenceManual/chapter-runtime-properties.xml"
+                xpointer="element(/1)" /> -->
 
-  <xi:include href="ReferenceManual/chapter-best-practices.xml"
-              xpointer="element(/1)" />
+  <!-- <xi:include href="ReferenceManual/chapter-best-practices.xml"
+                xpointer="element(/1)" /> -->
 
   <xi:include href="ReferenceManual/chapter-maven-integration.xml"
 			  xpointer="element(/1)" />

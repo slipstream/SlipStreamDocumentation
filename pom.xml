@@ -12,8 +12,7 @@
 	<parent>
 		<groupId>com.sixsq.slipstream</groupId>
 		<artifactId>SlipStream</artifactId>
-		<version>1.2</version>
-		<!-- <relativePath>../SlipStreamParent</relativePath> -->
+		<version>1.4-SNAPSHOT</version>
 	</parent>
 
 	<repositories>
@@ -28,7 +27,7 @@
 		<connection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</connection>
 		<url>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</url>
 		<developerConnection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</developerConnection>
-		<tag>SlipStreamDocumentation-1.1</tag>
+		<tag>SlipStreamDocumentation-1.4</tag>
   </scm>
 
 	<build>

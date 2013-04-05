@@ -9,9 +9,8 @@
   <title>Image Creation Process</title>
 
   	<para>SlipStream defines two types of images: Normal Images and Base Images.
-  	Normal Images are images that SlipStream either builds or that extend other
-  	images. Base Images are images built outside of SlipStream and comply with
-  	SlipStream contextualization requirements.
+  	Normal Images are images that SlipStream can build, extending other
+  	images (i.e. base or normal). Base Images are images built outside of SlipStream.
   	</para>
   	
   	<para>In this section, you will find specific instructions regarding the
@@ -64,74 +63,10 @@
 		<title>Base Image Creation Process
 		</title>
   		 
-		<para>On the base image creation process for StratusLab consult documentation on 
-     	the StratusLab project web site <link
-      	xlink:href="http://www.stratuslab.eu">http://www.stratuslab.eu</link>
-      	</para>
+		<para>For base image creation, please consult the corresponding cloud provider
+		or distribution documentation.</para>
 
- 	<section xml:id="base_image_creation_process_stratuslab">
- 		<title>StratusLab cloud</title>
 
-    <figure xml:id="fig-base-image-creation">
-      <title>Defining a base image</title>
-
-      <mediaobject>
-        <imageobject>
-          <imagedata align="center" contentwidth="14cm"
-                     fileref="images/MachineImage/machine-image-base.png"
-                     format="PNG"></imagedata>
-        </imageobject>
-      </mediaobject>
-    </figure>
-
-	</section>
-    
-	<section><title>Amazon cloud</title>
-
-		<para>Amazon images used with SlipStream have to be contextualized before
-		they can be used in Deployments.</para>
-
-		<para>An image contextualization procedure is very simple and fast.</para>
-
-		<orderedlist>
-        	<listitem>Launch an instance of your chosen AMI with Amazon interface.</listitem>
-			<listitem>Connect to it with SSH</listitem>
-			<listitem>Run the following:
-				<programlisting>cat > /usr/bin/awscontext &lt;&lt; EOF
-#!/bin/sh -e
-# SlipStream contextualization script for VMs on Amazon.
-# Usage example:
-#  * place to /usr/bin/awscontext
-#  * launch from /etc/rc.local
-
-CONTEXT_FILE=/tmp/context.sh
-
-curl -o $CONTEXT_FILE http://169.254.169.254/1.0/user-data
-
-. $CONTEXT_FILE
-
-VARS=`cat $CONTEXT_FILE | egrep -e '^[a-zA-Z\-\_0-9]*=' | sed 's/=.*$//'`
-for v in $VARS; do
- export $v
-done
-
-INIT_SCRIPT=/tmp/init_extra.sh
-echo $SCRIPT_EXEC > $INIT_SCRIPT
-sh $INIT_SCRIPT
-EOF
-chmod 0755 /usr/bin/awscontext
-				</programlisting></listitem>
-
-	        <listitem>Add /usr/bin/awscontext to /etc/rc.local</listitem>
-    	    <listitem>Create a new image out of the modified one: on the Amazon interface
-			for the current instance choose Create Image (EBS AMI) and follow the
-			simple instructions.</listitem>
-        <listitem>Newly created AMI will appear in the list of your AMIs shortly.</listitem>
-	</orderedlist>
-	
-	<para>Now the new AMI is ready to be used with SlipStream.</para>
-
-	</section>
   </section>
 
 <!-- 

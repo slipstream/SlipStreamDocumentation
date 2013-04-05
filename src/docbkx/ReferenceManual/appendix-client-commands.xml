@@ -105,573 +105,6 @@
     </info>
 
     <refmeta>
-      <refentrytitle>ss-attach-volume</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-attach-volume</refname>
-
-      <refpurpose>attach an EBS volume to a running instance</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-attach-volume</command>
-
-        <arg><option>--format</option></arg>
-
-        <arg><option>--format-type</option></arg>
-
-        <arg><option>--copy</option></arg>
-
-        <arg><option>--timeout</option>=<replaceable>minutes</replaceable></arg>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-
-        <arg choice="req"
-        rep="norepeat"><replaceable>volume-id</replaceable></arg>
-
-        <arg><replaceable>mount-dir</replaceable></arg>
-
-        <arg><replaceable>device-name</replaceable></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-attach-volume</command> command will attach an EBS
-      volume given by <replaceable>volume-id</replaceable> to a running
-      instance.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--format</option></term>
-
-          <listitem>
-            <para>If set, format the device. This cannot be specified at the
-            same time as <option>--copy</option>.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--format-type</option></term>
-
-          <listitem>
-            <para>Format used for formatting the device. The default is
-            ext3.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--copy</option></term>
-
-          <listitem>
-            <para>Create a copy (via a snapshot) of the original volume and
-            mount this copy instead of the original volume. Cannot be set at
-            the same time as <option>--format</option>.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--timeout</option>=<replaceable>minutes</replaceable></term>
-
-          <listitem>
-            <para>Maximum timeout (in minutes) for creating the volume. The
-            default value is 30 minutes.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
-      <refentrytitle>ss-authenticate</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-authenticate</refname>
-
-      <refpurpose>create an authentication cookie for SlipStream
-      service</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-authenticate</command>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-authenticate</command> command create an
-      authentication cookie for the SlipStream service.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
-      <refentrytitle>ss-build-image</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-build-image</refname>
-
-      <refpurpose>create a machine image from SlipStream metadata</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-build-image</command>
-
-        <arg><option>--createinstance</option></arg>
-
-        <arg><option>--strictversion</option></arg>
-
-        <arg><option>--timeout</option>=<replaceable>minutes</replaceable></arg>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-build-image</command> command will create a
-      machine image from SlipStream metadata.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--createinstance</option></term>
-
-          <listitem>
-            <para>Create a new image for the base image before installing
-            packages and running the recipe. By default, a new instance is not
-            created.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--strictversion</option></term>
-
-          <listitem>
-            <para>Use the exact version specified by the reference. By
-            default, the latest version of the resource is used.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--timeout</option>=<replaceable>minutes</replaceable></term>
-
-          <listitem>
-            <para>Maximum timeout (in minutes) for building the image. The
-            default value is 30 minutes.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
-      <refentrytitle>ss-create-volume</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-create-volume</refname>
-
-      <refpurpose>creates a new disk image from SlipStream
-      metadata</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-create-volume</command>
-
-        <arg><option>--timeout</option>=<replaceable>minutes</replaceable></arg>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-
-        <arg choice="req" rep="norepeat"><replaceable>size</replaceable></arg>
-
-        <arg><replaceable>zone</replaceable></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-create-volume</command> command will create a new
-      disk image with the given <replaceable>size</replaceable> in megabytes.
-      By default, the disk image will be created in the same
-      <replaceable>zone</replaceable> as the current image instance.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--timeout</option>=<replaceable>minutes</replaceable></term>
-
-          <listitem>
-            <para>Maximum timeout (in minutes) for creating the volume. The
-            default value is 30 minutes.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
-      <refentrytitle>ss-download</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-download</refname>
-
-      <refpurpose>attach an EBS volume to a running instance</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-download</command>
-
-        <arg><option>--targetdir</option></arg>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-
-        <arg choice="req" rep="norepeat"><replaceable>path</replaceable></arg>
-
-        <arg><replaceable>output</replaceable></arg>
-
-        <arg><replaceable>username</replaceable></arg>
-
-        <arg><replaceable>password</replaceable></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-download</command> command will download the
-      artifact from the referenced path to the current working directory or to
-      the specified target directory. If <replaceable>output</replaceable> is
-      specified, it will be used for the local name; otherwise, the basename
-      of the <replaceable>path</replaceable> is used. The
-      <replaceable>username</replaceable> and
-      <replaceable>password</replaceable> only need to be specified when
-      running the command standalone outside of a SlipStream execution.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--targetdir</option></term>
-
-          <listitem>
-            <para>The directory in which to write the downloaded artifact. By
-            default, the current working directory is used.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
-      <refentrytitle>ss-export</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-export</refname>
-
-      <refpurpose>export module metadata</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-export</command>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-
-        <arg choice="req"
-        rep="norepeat"><replaceable>resource-name</replaceable></arg>
-
-        <arg><replaceable>username</replaceable></arg>
-
-        <arg><replaceable>password</replaceable></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-export</command> command extract the referenced
-      module referenced by <replaceable>resource-name</replaceable> to disk.
-      The <replaceable>username</replaceable> and
-      <replaceable>password</replaceable> only need to specified if running
-      the command standalone outside of a SlipStream execution.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
       <refentrytitle>ss-get</refentrytitle>
 
       <manvolnum>1</manvolnum>
@@ -747,311 +180,6 @@
           </listitem>
         </varlistentry>
 
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
-      <refentrytitle>ss-import</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-import</refname>
-
-      <refpurpose>imports SlipStream module metadata from the local
-      disk</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-import</command>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-
-        <arg><replaceable>username</replaceable></arg>
-
-        <arg><replaceable>password</replaceable></arg>
-
-        <arg choice="req"
-        rep="repeat"><replaceable>filename</replaceable></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-import</command> command will import a module from
-      the serialized information in the file named
-      <replaceable>filename</replaceable>. Multiple files can be specified.
-      The <replaceable>username</replaceable> and
-      <replaceable>password</replaceable> only need to be specified if running
-      the command standalone outside of a SlipStream execution.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
-      <refentrytitle>ss-install-package</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-install-package</refname>
-
-      <refpurpose>install a package</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-install-package</command>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-
-        <arg rep="repeat"><replaceable>package</replaceable></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-install-package</command> command will install the
-      named package(s) on the machine.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
-      <refentrytitle>ss-publish-volume</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-publish-volume</refname>
-
-      <refpurpose>a command to publish an EBS volume id to module
-      metadata</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-publish-volume</command>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-
-        <arg choice="opt"
-        rep="norepeat"><replaceable>volume-id</replaceable></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-publish-volume</command> command will publish an
-      EBS volume id to module metadata. If the
-      <replaceable>volume-id</replaceable> is not specified, the value in
-      <filename>/tmp/slipstream/volumeid</filename> will be used.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>-h</option>, <option>--help</option></term>
-
-          <listitem>
-            <para>Show this message.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsection>
-  </refentry>
-
-  <refentry>
-    <info>
-      <productnumber>@VERSION@</productnumber>
-
-      <productname>SlipStream</productname>
-
-      <date>@DATE@</date>
-    </info>
-
-    <refmeta>
-      <refentrytitle>ss-reset-deployment</refentrytitle>
-
-      <manvolnum>1</manvolnum>
-    </refmeta>
-
-    <refnamediv>
-      <refname>ss-reset-deployment</refname>
-
-      <refpurpose>reset the state of a deployment</refpurpose>
-    </refnamediv>
-
-    <refsynopsisdiv>
-      <cmdsynopsis>
-        <command>ss-reset-deployment</command>
-
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-      </cmdsynopsis>
-    </refsynopsisdiv>
-
-    <refsection>
-      <title>Description</title>
-
-      <para>The <command>ss-reset-deployment</command> command will reset the
-      state of the deployment. All counters are set to 1 except the terminate
-      counter that is set to 2.</para>
-    </refsection>
-
-    <refsection>
-      <title>Options</title>
-
-      <variablelist>
         <varlistentry>
           <term><option>--quiet</option></term>
 
@@ -1170,6 +298,10 @@
     </refsection>
   </refentry>
 
+  
+
+
+
   <refentry>
     <info>
       <productnumber>@VERSION@</productnumber>
@@ -1180,52 +312,36 @@
     </info>
 
     <refmeta>
-      <refentrytitle>ss-upload</refentrytitle>
+      <refentrytitle>ss-display</refentrytitle>
 
       <manvolnum>1</manvolnum>
     </refmeta>
 
     <refnamediv>
-      <refname>ss-upload</refname>
+      <refname>ss-display</refname>
 
-      <refpurpose>upload a file into S3</refpurpose>
+      <refpurpose>display message in the dashboard</refpurpose>
     </refnamediv>
 
     <refsynopsisdiv>
       <cmdsynopsis>
-        <command>ss-upload</command>
+        <command>ss-display</command>
 
-        <arg><option>--public</option></arg>
+        <arg><option>-v</option>, <option>--verbose</option></arg>
 
-        <arg><option>--cancel</option></arg>
+        <arg><option>-h</option>, <option>--help</option></arg>
 
-        <arg><option>--quiet</option></arg>
-
-        <arg><option>--verbose</option></arg>
-
-        <arg><option>-h</option> | <option>--help</option></arg>
-
-        <arg choice="req" rep="norepeat"><replaceable>file</replaceable></arg>
-
-        <arg choice="req"><replaceable>destination</replaceable></arg>
-
-        <arg><replaceable>username</replaceable></arg>
-
-        <arg><replaceable>password</replaceable></arg>
+        <arg choice="req" rep="norepeat"><replaceable>message</replaceable></arg>
       </cmdsynopsis>
     </refsynopsisdiv>
 
     <refsection>
       <title>Description</title>
 
-      <para>The <command>ss-upload</command> command will upload the given
-      <replaceable>file</replaceable> into the
-      <replaceable>destination</replaceable>, a location in S3. The format of
-      <replaceable>destination</replaceable> is
-      <replaceable>bucket-name</replaceable>:[<replaceable>path</replaceable>].
-      The <replaceable>username</replaceable> and
-      <replaceable>password</replaceable> are only required when running the
-      command standalone outside of a SlipStream execution.</para>
+      <para>The <command>ss-display</command> command is a convenience command
+      to display a message in the dashboard. It is useful to make the deployment
+      more lively, showing for example at which step the deployment scripts are
+      at.</para>
     </refsection>
 
     <refsection>
@@ -1233,35 +349,10 @@
 
       <variablelist>
         <varlistentry>
-          <term><option>--public</option></term>
+          <term><option>-v</option>, <option>--verbose</option></term>
 
           <listitem>
-            <para>Set the object as publicly readable.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--cancel</option></term>
-
-          <listitem>
-            <para>Remove the abort flag. (Useful for debugging on a remote
-            node.)</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--quiet</option></term>
-
-          <listitem>
-            <para>Print minimal information.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--verbose</option></term>
-
-          <listitem>
-            <para>Print additional information (default).</para>
+            <para>verbose level. Add more to get more details.</para>
           </listitem>
         </varlistentry>
 
@@ -1269,10 +360,505 @@
           <term><option>-h</option>, <option>--help</option></term>
 
           <listitem>
-            <para>Show this message.</para>
+            <para>show this help message and exit</para>
           </listitem>
         </varlistentry>
       </variablelist>
     </refsection>
   </refentry>
+
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-execute</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-execute</refname>
+
+      <refpurpose>execute/trigger a run (i.e. image build, simple run, deployment)</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-execute</command>
+
+        <arg><option>-v</option>, <option>--verbose</option></arg>
+
+        <arg><option>-h</option>, <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>module-uri</replaceable>
+        Full URL to the module to execute. For example Public/Tutorials/HelloWorld/client_server</arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-execute</command> executes/triggers a run (i.e. image build, simple run,      
+      deployment).</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>-v</option>, <option>--verbose</option></term>
+
+          <listitem>
+            <para>verbose level. Add more to get more details.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>show this help message and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-u</option>, <option>--username</option></term>
+
+          <listitem>
+            <para>SlipStream username</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-p</option>, <option>--password</option></term>
+
+          <listitem>
+            <para>SlipStream password</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--cookie</option></term>
+
+          <listitem>
+            <para>SlipStream cookie</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--endpoint</option></term>
+
+          <listitem>
+            <para>SlipStream server endpoint</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--parameters</option></term>
+
+          <listitem>
+            <para>Deployment or image parameters override. The key must
+              be in a form: <replaceable>node-name</replaceable>:<replaceable>parameter-name</replaceable>. Several
+              pairs can be provided comma separated</para>
+          </listitem>
+        </varlistentry>
+        </variablelist>
+    </refsection>
+  </refentry>
+  
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-module-get</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-module-get</refname>
+
+      <refpurpose>get/retrieve module definition as xml</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-module-get</command>
+
+        <arg><option>-v</option>, <option>--verbose</option></arg>
+
+        <arg><option>-h</option>, <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>[module-uri]</replaceable>
+        Name of the module to list or show. For example Public/Tutorials/HelloWorld/client_server</arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-module-get</command> get/retrieves a module definition as xml.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>-v</option>, <option>--verbose</option></term>
+
+          <listitem>
+            <para>verbose level. Add more to get more details.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>show this help message and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-u</option>, <option>--username</option></term>
+
+          <listitem>
+            <para>SlipStream username</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-p</option>, <option>--password</option></term>
+
+          <listitem>
+            <para>SlipStream password</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--cookie</option></term>
+
+          <listitem>
+            <para>SlipStream cookie</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--endpoint</option></term>
+
+          <listitem>
+            <para>SlipStream server endpoint</para>
+          </listitem>
+        </varlistentry>
+
+        </variablelist>
+    </refsection>
+  </refentry>
+  
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-run-get</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-run-get</refname>
+
+      <refpurpose>get/retrieve run as xml</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-run-get</command>
+
+        <arg><option>-v</option>, <option>--verbose</option></arg>
+
+        <arg><option>-h</option>, <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>[run]</replaceable>
+        Run id to show. For example 0c1d1212-1753-47cf-9fb6-486bb9dd7873.
+        By default, lists all user runs</arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-run-get</command> get/retrieves a run definition as xml.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>-v</option>, <option>--verbose</option></term>
+
+          <listitem>
+            <para>verbose level. Add more to get more details.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>show this help message and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-u</option>, <option>--username</option></term>
+
+          <listitem>
+            <para>SlipStream username</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-p</option>, <option>--password</option></term>
+
+          <listitem>
+            <para>SlipStream password</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--cookie</option></term>
+
+          <listitem>
+            <para>SlipStream cookie</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--endpoint</option></term>
+
+          <listitem>
+            <para>SlipStream server endpoint</para>
+          </listitem>
+        </varlistentry>
+
+        </variablelist>
+    </refsection>
+  </refentry>
+  
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-user-get</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-user-get</refname>
+
+      <refpurpose>get/retrieve user definition as xml</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-user-get</command>
+
+        <arg><option>-v</option>, <option>--verbose</option></arg>
+
+        <arg><option>-h</option>, <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>[run]</replaceable>
+        user to show. For example joe. By default, lists all users,
+        but requires privileged account</arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-user-get</command> get/retrieves a user definition as xml.</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>-v</option>, <option>--verbose</option></term>
+
+          <listitem>
+            <para>verbose level. Add more to get more details.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>show this help message and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-u</option>, <option>--username</option></term>
+
+          <listitem>
+            <para>SlipStream username</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-p</option>, <option>--password</option></term>
+
+          <listitem>
+            <para>SlipStream password</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--cookie</option></term>
+
+          <listitem>
+            <para>SlipStream cookie</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--endpoint</option></term>
+
+          <listitem>
+            <para>SlipStream server endpoint</para>
+          </listitem>
+        </varlistentry>
+
+        </variablelist>
+    </refsection>
+  </refentry>
+  
+  <refentry>
+    <info>
+      <productnumber>@VERSION@</productnumber>
+
+      <productname>SlipStream</productname>
+
+      <date>@DATE@</date>
+    </info>
+
+    <refmeta>
+      <refentrytitle>ss-module-put</refentrytitle>
+
+      <manvolnum>1</manvolnum>
+    </refmeta>
+
+    <refnamediv>
+      <refname>ss-module-put</refname>
+
+      <refpurpose>put/update a module definition as xml</refpurpose>
+    </refnamediv>
+
+    <refsynopsisdiv>
+      <cmdsynopsis>
+        <command>ss-module-put</command>
+
+        <arg><option>-v</option>, <option>--verbose</option></arg>
+
+        <arg><option>-h</option>, <option>--help</option></arg>
+
+        <arg choice="req" rep="norepeat"><replaceable>[module-uri]</replaceable></arg>
+      </cmdsynopsis>
+    </refsynopsisdiv>
+
+    <refsection>
+      <title>Description</title>
+
+      <para>The <command>ss-module-put</command> puts/updates a module definition as xml.</para>
+      <para>The <replaceable>[module-uri]</replaceable> argument is the name of the module to list or show. For example Public/Tutorials/HelloWorld/client_server</para>
+    </refsection>
+
+    <refsection>
+      <title>Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>-v</option>, <option>--verbose</option></term>
+
+          <listitem>
+            <para>verbose level. Add more to get more details.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-h</option>, <option>--help</option></term>
+
+          <listitem>
+            <para>show this help message and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-u</option>, <option>--username</option></term>
+
+          <listitem>
+            <para>SlipStream username</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>-p</option>, <option>--password</option></term>
+
+          <listitem>
+            <para>SlipStream password</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--cookie</option></term>
+
+          <listitem>
+            <para>SlipStream cookie</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--endpoint</option></term>
+
+          <listitem>
+            <para>SlipStream server endpoint</para>
+          </listitem>
+        </varlistentry>
+
+        </variablelist>
+    </refsection>
+  </refentry>
+  
+  
+  
 </appendix>
