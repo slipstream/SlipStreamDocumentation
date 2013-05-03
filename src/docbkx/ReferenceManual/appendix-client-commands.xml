@@ -124,7 +124,7 @@
 
         <arg><option>--noblock</option></arg>
 
-        <arg><option>--timeout</option>=<replaceable>minutes</replaceable></arg>
+        <arg><option>--timeout</option>=<replaceable>seconds</replaceable></arg>
 
         <arg><option>--quiet</option></arg>
 
@@ -171,12 +171,12 @@
         </varlistentry>
 
         <varlistentry>
-          <term><option>--timeout</option>=<replaceable>minutes</replaceable></term>
+          <term><option>--timeout</option>=<replaceable>seconds</replaceable></term>
 
           <listitem>
-            <para>Maximum timeout (in minutes) for retrieving the value of the
-            <replaceable>key</replaceable>. The default value is 5
-            minutes.</para>
+            <para>Maximum timeout (in seconds) for retrieving the value of the
+            <replaceable>key</replaceable>. The default value is 60
+            seconds.</para>
           </listitem>
         </varlistentry>
 
