@@ -541,32 +541,32 @@ cp /tmp/data.txt $SLIPSTREAM_REPORT_DIR</programlisting>
         clicking on the "Add Node" button. This will open a chooser window. In
         the chooser, navigate and select your apache image. You will only be
         able to select an module of type <literal>Image</literal>.
-		Now name this nods <literal>apache1</literal>.</para>
+		Now name this nods <literal>apache</literal>.</para>
       </listitem>
 
       <listitem>
         <para>Do the same for the test suite. As you can see, SlipStream™
         automatically pulls the input parameters of the selected machine image
         module for you to resolve. Call the node 
-		<literal>testclient1</literal>.</para>
+		<literal>testclient</literal>.</para>
       </listitem>
 
       <listitem>
         <para>Set the "Linked to" field of the
         <parameter>webserver.hostname</parameter> parameter to
-        <parameter>apache1:hostname</parameter> (where "apache1" corresponds
+        <parameter>apache:hostname</parameter> (where "apache" corresponds
         to the name of the node you have given in the first step). This means
-        that when the <literal>apache1</literal>'s
+        that when the <literal>apache</literal>'s
         <parameter>hostname</parameter> parameter will be set as part of the
         node execution sequence, the <parameter>webserver.hostname</parameter>
-        parameter of the "testclient1" node will also be set, linking them
+        parameter of the "testclient" node will also be set, linking them
         together. The autocompletion dropdown will guide you to help choose the
-        right parameter. Link the following <literal>testclient1</literal>
-        input paramters to <literal>apache1</literal> as well:
+        right parameter. Link the following <literal>testclient</literal>
+        input paramters to <literal>apache</literal> as well:
         <parameter>webserver.port</parameter> to
-        <parameter>apache1:port</parameter> and
+        <parameter>apache:port</parameter> and
         <parameter>webserver.ready</parameter> to
-        <parameter>apache1:ready</parameter>.</para>
+        <parameter>apache:ready</parameter>.</para>
       </listitem>
 
       <listitem>
