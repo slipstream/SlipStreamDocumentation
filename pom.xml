@@ -1,218 +1,31 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.sixsq.slipstream</groupId>
-	<artifactId>SlipStreamDocumentation</artifactId>
-	<packaging>pom</packaging>
-	<version>1.8-SNAPSHOT</version>
-	<name>SlipStreamDocumentation</name>
-	<url>http://sixsq.com/</url>
+  <groupId>com.sixsq.slipstream</groupId>
+  <artifactId>SlipStreamDocumentation</artifactId>
+  <packaging>pom</packaging>
+  <version>1.8-SNAPSHOT</version>
+  <name>SlipStreamDocumentation</name>
+  <url>http://sixsq.com/</url>
 
-	<parent>
-		<groupId>com.sixsq.slipstream</groupId>
-		<artifactId>SlipStream</artifactId>
-		<version>1.8-SNAPSHOT</version>
-	</parent>
+  <parent>
+    <groupId>com.sixsq.slipstream</groupId>
+    <artifactId>SlipStream</artifactId>
+    <version>1.8-SNAPSHOT</version>
+  </parent>
 
-	<repositories>
-		<repository>
-			<id>maven-restlet</id>
-			<name>Public online Restlet repository</name>
-			<url>http://maven.restlet.org</url>
-		</repository>
-	</repositories>
+  <modules>
+    <module>common</module>
+    <module>docs</module>
+    <module>pkg</module>
+  </modules>
 
-	<scm>
-		<connection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</connection>
-		<url>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</url>
-		<developerConnection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</developerConnection>
-		<tag>SlipStreamDocumentation-1.4</tag>
+  <scm>
+    <connection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</connection>
+    <url>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</url>
+    <developerConnection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</developerConnection>
+    <tag>SlipStreamDocumentation-1.4</tag>
   </scm>
-
-	<build>
-
-		<plugins>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<classesDirectory>${project.build.directory}/docbkx</classesDirectory>
-					<includes>
-						<include>html/*.html</include>
-						<include>pdf/*.pdf</include>
-					</includes>
-					<phase>install</phase>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>com.agilejava.docbkx</groupId>
-				<artifactId>docbkx-maven-plugin</artifactId>
-				<executions>
-
-					<execution>
-						<id>create-pdf</id>
-						<goals>
-							<goal>generate-pdf</goal>
-						</goals>
-						<configuration>
-							<foCustomization>${basedir}/src/docbkx/sixsq-style-fo.xsl</foCustomization>
-						</configuration>
-						<phase>prepare-package</phase>
-					</execution>
-
-					<execution>
-						<id>create-epub</id>
-						<goals>
-							<goal>generate-epub</goal>
-						</goals>
-						<configuration>
-							<epubCustomization>${basedir}/src/docbkx/epub-customization.xsl</epubCustomization>
-							<epubAutolabel>true</epubAutolabel>
-							<epubNcxDepth>2</epubNcxDepth>
-							<htmlStylesheet>slipstream.css</htmlStylesheet>
-							<htmlhelpEnumerateImages>true</htmlhelpEnumerateImages>
-							<preProcess>
-								<copy todir="${project.build.directory}/docbkx/epub/acknowledgements/images">
-									<fileset dir="src/docbkx/images">
-										<include name="**/*.png" />
-									</fileset>
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/administrator-manual/images">
-									<fileset dir="src/docbkx/images">
-										<include name="**/*.png" />
-									</fileset>
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/reference-manual/images">
-									<fileset dir="src/docbkx/images">
-										<include name="**/*.png" />
-									</fileset>
-									<fileset dir="src/docbkx/ReferenceManual/images">
-										<include name="**/*.png" />
-										<exclude name="**/machine-image-authorization.png" />
-									</fileset>
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/terms-of-service/images">
-									<fileset dir="src/docbkx/images">
-										<include name="**/*.png" />
-									</fileset>
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/torque-use-case/images">
-									<fileset dir="src/docbkx/images">
-										<include name="**/*.png" />
-									</fileset>
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/tutorial/images">
-									<fileset dir="src/docbkx/images">
-										<include name="**/*.png" />
-									</fileset>
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/acknowledgements" file="src/docbkx/slipstream.css">
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/administrator-manual" file="src/docbkx/slipstream.css">
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/reference-manual" file="src/docbkx/slipstream.css">
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/terms-of-service" file="src/docbkx/slipstream.css">
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/torque-use-case" file="src/docbkx/slipstream.css">
-								</copy>
-								<copy todir="${project.build.directory}/docbkx/epub/tutorial" file="src/docbkx/slipstream.css">
-								</copy>
-							</preProcess>
-						</configuration>
-						<phase>prepare-package</phase>
-					</execution>
-
-					<execution>
-						<id>create-html</id>
-						<goals>
-							<goal>generate-html</goal>
-						</goals>
-						<configuration>
-							<paperType>A4</paperType>
-							<sectionAutolabel>true</sectionAutolabel>
-							<calloutGraphics>false</calloutGraphics>
-							<calloutUnicode>true</calloutUnicode>
-							<htmlStylesheet>slipstream.css</htmlStylesheet>
-						</configuration>
-						<phase>prepare-package</phase>
-					</execution>
-
-					<execution>
-						<id>create-manpages</id>
-						<goals>
-							<goal>generate-manpages</goal>
-						</goals>
-						<configuration>
-							<manOutputBaseDir>${project.build.directory}/docbkx/man/</manOutputBaseDir>
-							<manOutputInSeparateDir>true</manOutputInSeparateDir>
-							<manOutputSubdirsEnabled>true</manOutputSubdirsEnabled>
-
-							<postProcess>
-								<echo>Converting man pages to plain text...</echo>
-								<exec executable="${basedir}/src/scripts/man2text.sh">
-									<arg file="${project.build.directory}/docbkx/man" />
-								</exec>
-							</postProcess>
-						</configuration>
-						<phase>prepare-package</phase>
-					</execution>
-
-				</executions>
-				<configuration>
-					<xincludeSupported>true</xincludeSupported>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<configuration>
-					<descriptors>
-						<descriptor>src/main/assembly/client-bundle.xml</descriptor>
-						<descriptor>src/main/assembly/server-bundle.xml</descriptor>
-					</descriptors>
-				</configuration>
-
-				<executions>
-
-					<execution>
-						<id>bundle</id>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<phase>package</phase>
-					</execution>
-
-				</executions>
-
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>regenerate-epub</id>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<executable>src/main/scripts/make-epub.py</executable>
-							<arguments>
-								<argument>target/docbkx/epub</argument>
-							</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-		</plugins>
-
-	</build>
 
 </project>

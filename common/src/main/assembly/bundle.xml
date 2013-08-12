@@ -1,0 +1,17 @@
+<assembly>
+  <id>bundle</id>
+
+  <includeBaseDirectory>false</includeBaseDirectory>
+
+  <formats>
+    <format>zip</format>
+  </formats>
+
+  <fileSets>
+    <fileSet>
+      <directory>target/results</directory>
+      <outputDirectory></outputDirectory>
+    </fileSet>
+  </fileSets>
+
+</assembly>

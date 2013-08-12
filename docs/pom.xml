@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>docs</artifactId>
+  <packaging>pom</packaging>
+  <name>Documents</name>
+
+  <parent>
+    <groupId>com.sixsq.slipstream</groupId>
+    <artifactId>SlipStreamDocumentation</artifactId>
+    <version>1.8-SNAPSHOT</version>
+  </parent>
+
+  <modules>
+    <module>administrator-manual</module>
+    <module>acknowledgements</module>
+    <module>reference-manual</module>
+    <module>terms-of-service</module>
+    <module>torque-use-case</module>
+    <module>tutorial</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>common</artifactId>
+        <version>${project.version}</version>
+        <type>zip</type>
+        <scope>provided</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  
+  <build>
+    <pluginManagement>
+
+      <plugins>
+
+        <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+
+          <executions>
+            <execution>
+              <id>copy-common</id>
+              <goals>
+                <goal>unpack-dependencies</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>target/build</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <executions>
+
+            <execution>
+              <phase>process-resources</phase>
+              <goals>
+                <goal>copy-resources</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>${basedir}/target/build</outputDirectory>
+                <nonFilteredFileExtensions>
+                  <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+                  <nonFilteredFileExtension>graffle</nonFilteredFileExtension>
+                </nonFilteredFileExtensions>
+                <resources>
+                  <resource>
+                    <directory>${basedir}/src/main/resources</directory>
+                    <filtering>true</filtering>
+                  </resource>
+                  <resource>
+                    <directory>${basedir}/src/main/markdown</directory>
+                    <filtering>false</filtering>
+                    <excludes>
+                      <exclude>**/title.txt</exclude>
+                    </excludes>
+                  </resource>
+                  <resource>
+                    <directory>${basedir}/src/main/markdown</directory>
+                    <filtering>true</filtering>
+                    <includes>
+                      <include>**/title.txt</include>
+                    </includes>
+                  </resource>
+                </resources>
+              </configuration>
+            </execution>
+
+            <execution>
+              <id>final-resources</id>
+              <phase>process-resources</phase>
+              <goals>
+                <goal>copy-resources</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>${basedir}/target/results</outputDirectory>
+                <nonFilteredFileExtensions>
+                  <nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+                </nonFilteredFileExtensions>
+                <resources>
+                  <resource>
+                    <directory>${basedir}/target/build</directory>
+                    <filtering>false</filtering>
+                    <includes>
+                      <include>images/**/*</include>
+                      <include>css/**/*</include>
+                    </includes>
+                  </resource>
+                </resources>
+              </configuration>
+            </execution>
+
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <executions>
+
+            <execution>
+              <id>all-docs</id>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+              <phase>compile</phase>
+              <configuration>
+                <workingDirectory>${basedir}/target/build</workingDirectory>
+                <executable>python</executable>
+                <arguments>
+                  <argument>${basedir}/target/build/process-docs.py</argument>
+                  <argument>${basedir}/target/results</argument>
+                  <argument>${project.artifactId}</argument>
+                </arguments>
+              </configuration>
+            </execution>
+
+          </executions>
+
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+
+          <executions>
+            <execution>
+              <id>bundle</id>
+              <goals>
+                <goal>single</goal>
+              </goals>
+              <phase>package</phase>
+              <configuration>
+                <appendAssemblyId>false</appendAssemblyId>
+                <descriptors>
+                  <descriptor>${basedir}/target/build/bundle.xml</descriptor>
+                </descriptors>
+              </configuration>
+            </execution>
+          </executions>
+
+        </plugin>
+
+      </plugins>
+
+    </pluginManagement>
+
+  </build>
+</project>

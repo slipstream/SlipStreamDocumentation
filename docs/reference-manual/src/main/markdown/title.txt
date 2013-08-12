@@ -1,0 +1,6 @@
+% SlipStream Reference Manual
+% SixSq Sarl
+% Version ${project.version}
+
+
+

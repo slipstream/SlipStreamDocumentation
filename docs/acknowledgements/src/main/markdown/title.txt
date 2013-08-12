@@ -1,0 +1,6 @@
+% Acknowledgements 
+% SixSq Sarl
+% Version ${project.version}
+
+
+

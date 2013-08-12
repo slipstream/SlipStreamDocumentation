@@ -1,0 +1,6 @@
+% SlipStream Administrator Manaual
+% SixSq Sarl
+% Version ${project.version}
+
+
+
