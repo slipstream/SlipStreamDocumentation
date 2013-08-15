@@ -20,7 +20,7 @@ parameters might be slightly different. SlipStream will continue to
 support more cloud back-ends, as needed and requested.
 
 SlipStream™ is available as public [hosted
-service](http://slipstream.sixsq.com), our hosted service supports a
+service](https://slipstream.sixsq.com), our hosted service supports a
 number of clouds. Before you can successfully use these clouds, you will
 need to have valid accounts with them.
 
@@ -61,7 +61,7 @@ Key Concepts
 Before we start the tutorial, here are a few important SlipStream™
 concepts that will come up often. SlipStream™ is accessed via a web
 application. SixSq runs a public [SlipStream™ hosted
-service](http://slipstream.sixsq.com/). Your organization may run it's
+service](https://slipstream.sixsq.com/). Your organization may run it's
 own SlipStream™ service; if so, contact your administrator to find the
 address of the server. If you have your own SlipStream™ instance and you
 want to use it for this tutorial, please make sure that your instance of
@@ -129,7 +129,7 @@ User Setup
 
 SlipStream™ is a secure web application requiring a personal account. To
 register for an account, fill in the [registration
-form](http://slipstream.sixsq.com/register). Make sure you provide a
+form](https://slipstream.sixsq.com/register). Make sure you provide a
 valid email address as it will be used to validate your account. Once
 you've received the email, hit the confirmation link to activate your
 account. From that point-on, you are good to go on SlipStream™.
