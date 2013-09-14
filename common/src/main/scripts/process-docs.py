@@ -8,7 +8,7 @@ class DocProcessor(object):
     """generate html, pdf, and epub from markdown sources"""
 
     commands = {'html': ['pandoc',
-                         '--write=html5', '--css=css/slipstream.css',
+                         '--write=html5', '--css=css/slipstream-docs.css',
                          '--standalone', '--toc', '--number-sections', 
                          '-o %s', 'title.txt'],
                 'epub': ['pandoc',
