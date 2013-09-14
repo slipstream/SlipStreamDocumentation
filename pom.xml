@@ -25,7 +25,6 @@
     <connection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</connection>
     <url>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</url>
     <developerConnection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</developerConnection>
-    <tag>SlipStreamDocumentation-1.4</tag>
   </scm>
 
 </project>
