@@ -1,36 +1,106 @@
-Introduction
-============
+# Introduction
 
-SlipStream™ captures information about machine images and system
-deployments. It provides a mechanism for automatically deploying system
-configurations and running a battery of tests against the deployed
-configuration. Benefits of the system include:
+Developed by SixSq, SlipStream™ is a multi-cloud coordinated
+provisioning and image factory engine. In other words, it is an
+engineering Platform as a Service (PaaS) solution to support
+production deployment in the cloud, as well as development, testing,
+certification and deployment processes into Infrastructure as a
+Service (IaaS) cloud environments.
 
--   Explicit capture of machine and system configuration, reducing the
-    risk of information loss from personnel changes.
+**The core of SlipStream™, as well as several connectors, are released
+  under the Apache 2.0 license**.
 
--   Improved reproducibility via defined machine and deployment
-    "recipes".
+## Main Features
 
--   Reduced effort by handling machine deployment and clean up
-    automatically.
+In more detail, SlipStream™ currently provides the following features: 
 
--   Better team cohesion and communication by making full deployment
-    accessible to everyone in software production team.
+* **Multi-machine Provisioning System**: SlipStream™ allows users to
+    define and execute deployments, based on high-level recipes,
+    independently from the cloud on which the recipes will be applied.
+    Deployments include coordination and orchestration of virtual
+    machines, including ordering and synchronisation of
+    services. Figure 1 shows a screenshot of the SlipStream™ control
+    dashboard of a multi-machine deployment.
 
-Users (software developers, integrators, testers, and deployment
-experts) interact with SlipStream™ via a web interface. They can define
-their machine images system deployments via the web interface. Once a
-deployment is defined, the user can launch an instance of the
-deployment, run tests against it (either automatically or manually), and
-then collect the test results.
+  For example, users can deploy, in a single action, on-demand, entire
+  mutli-tier software systems. With SlipStream™, this operation takes
+  a few minutes, often compared to hours if not days using custom
+  solutions.
 
-The SlipStream™ system consists of four components: a server, a client,
-a database, and a "cloud". The server acts as the central point of the
-system, providing the web interface to users and acting as the contact
-point for resources running in the cloud. The client interface, used
-principally in machine images running in the cloud, permits command line
-and programmatic access to the server. A database stores all of the
-metadata related to the machine images and deployments. The "cloud"
-contains computing and storage resources that are used to instantiate
-dynamically system deployments.
+* **Multi-cloud Provisioning**: SlipStream™ supports multi-cloud
+    deployments. This means users have the choice of a number of cloud
+    service providers and technologies (public and/or private) when
+    deploying virtual machines, from within the same SlipStream™
+    service. Furthermore, users can choose to deploy different parts
+    of a deployment on different cloud services or regions, such that
+    redundant and resilient behaviour is reached.  Figure 2 shows a
+    screenshot of the SlipStream™ control dashboard of a multi-cloud
+    deployment.  SlipStream™ supports different clouds using a
+    connector design.  The available connectors are listed in Table 1.
+
+  To illustrate, users can deploy applications (e.g. computing
+  clusters, load balanced applications, multi-media processing
+  pipelines) across several cloud providers, in order to improve data
+  proximity & resilience, while reducing costs.
+
+* **Support continuous integration processes with continuous
+    deployment**: SlipStream™ encourages users to parameterise image
+    creation and deployment recipes, such that key parameters
+    (e.g. software version, package location, dependencies,
+    inter-relationships) can be provided at runtime. This means that
+    it is easy to integrate SlipStream™ with continuous integration
+    servers to provide a full deployment chain.
+	
+  For instance, users can provision complete server-side systems in a
+  single action in order to test and certify a specific version of the
+  system.
+
+* **Independence from specific IaaS interfaces and hypervisors**: the
+    SlipStream™ recipes are independent of specific IaaS interfaces,
+    therefore avoiding vendor lock-in, allowing you to focus on
+    configuration and deployment, instead of the specifics of each
+    IaaS.
+
+  For example, users can seamlessly apply the same image construction
+  recipes and multi-machine deployments to different cloud providers,
+  yielding the same results every time.
+
+* **Community sharing platform**: the SlipStream™ data model permits
+    users to decide to share their image and deployment recipes with
+    other users, thus contributing to a community effort, something
+    dear to agile and DevOps principles.
+
+## Supported Clouds
+
+SlipStream™ communicates to IaaS clouds services via a connector
+architecture. A growing number of connectors are available. The
+connectors talking to open source IaaS implementations are released
+under the same open source license as the SlipStream™ core, while
+connectors to proprietary solutions are closed source and available
+via a commercial license.
+
+The following is the latest update on availability of cloud connectors:
+
+* **StratusLab** (including OpenNebula)
+* **OpenStack**
+* **Abiquo**
+* **CloudSigma**
+* **Amazon EC2**
+* **VMWare vCloud** (new!!)
+* **OCCI** (soon)
+* **Physical / Fixed**
+* **CloudStack** (soon)
+* **Microsoft IaaS Azure** (soon)
+
+Notes: 
+
+1. The Abiquo, Amazon EC2 and CloudSigma connectors are released under
+a SixSq proprietary license.
+
+1. A VMWare vCloud Director connector is under development, such that
+SlipStream™ will be able to interface to VMWare-based IaaS cloud
+services.
+
+1. An OCCI compliant connector is also under development, such that
+SlipStream™ will be able to interface with OCCI compliant cloud
+services, e.g. the EGI Federated Cloud services.
