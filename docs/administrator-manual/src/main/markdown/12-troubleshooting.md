@@ -1,5 +1,0 @@
-Troubleshooting
-===============
-
-Common Problems
-===============
