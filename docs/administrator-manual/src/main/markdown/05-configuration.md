@@ -1,22 +1,51 @@
 # Configuration
 
-## Administrator Access
+Now that you have successfully started the SlipStream server, you will
+need to configure it.  Most of this configuration can be done through
+the web interface.
 
-The system must contain a superuser that can modify all modules in the
-system and create users. To provide the initial parameters for the
-superuser, use the command `ss-init-superuser`. This command will prompt
-you for the necessary information and create (or update) the superuser
-information in the database. Either the database information can be
-provided on the command line or given in the `config.properties` file.
+## Predefined Accounts
+
+The following table describes the predefined accounts for a new
+SlipStream™ installation.
+
+-----------------------------------------------------------------
+User  Password   Description
+-----------------------------------------------------------------
+super supeRsupeR The initial administrator account for the 
+                 service.  This account can modify the server 
+                 configuration and all modules.
+
+sixsq sixsQsixsQ Owner of pre-defined images and tutorials that
+                 are "public" and available to all authenticated
+                 users.
+
+test  test       A test account with no elevated privileges.
+-----------------------------------------------------------------
+
+**The passwords for these accounts should be changed immediately.** To
+do so log into the server with the "super" account.  After logging in,
+click on the "users" icon to see a list of users.  You should see a
+list of users like the following screenshot.
+
+![SlipStream™ Users Page](images/screenshot-users.png)
+
+Click on the username, then on the "edit" button.  Fill in the new
+password (twice) and click "save".  The password will be updated.  Do
+this for all three accounts.  Note: For the "super" account you will
+have to provide the current password.
 
 ## SSL Certificate
 
 Sensitive credentials are passed between a user's browser and the
 SlipStream™ server; consequently, the server must be configured to use
 SSL. The metadata describing machines and deployments may also contain
-proprietary information and be similarly sensitive. The server can
-either be secured with a commercial certificate (signed by a well-known
-certificate authority) or a self-signed certificate.
+proprietary information and be similarly sensitive.
+
+The server will initially start with a self-signed certificate that is
+included in the package.  You should either create a self-signed
+certificate for your host or better (and strongly recommended) use a
+commercial certificate signed by a well-known certificate authority.
 
 ### Using a Commercial Certificate
 
@@ -43,8 +72,12 @@ To convert, to JKS (Java Key Store) format, do the following:
 The resulting file will contain both the certificate and key. Be sure to
 remember the password used to secure the JKS file.
 
-You do not need to set the `truststore.*` parameters when using a
-commercial certificate.
+The resulting keystore must be saved in the file
+`/opt/slipstream/etc/jetty.jks`.  You must provide the password in the
+file `/opt/slipstream/etc/jetty-ssl-slipstream.xml`.
+
+After updating the certificate and configuration, restart the
+SlipStream™ server.
 
 ### Using a Self-signed Certificate
 
@@ -55,38 +88,31 @@ client can be configured to trust the self-signed certificate. Web
 browsers will generally warn users that the certificate is not trusted,
 but give the user the option to ignore the warning.
 
-To create a self-signed certificate, do the following:
+Follow the instructions found on the web to create a self-signed
+certificate.  Then use the same procedure to install this for the
+SlipStream™ server. 
 
-    openssl xxxx
+## Support Configuration
 
-or using the keytool command:
+The SlipStream often needs to send out email notifications, especially
+when validating email addresses during user registration.  These
+parameters are set in the "SlipStream_Support" pane of the server
+configuration. 
 
-    keytool xxxx
+To set these parameters click on the "wrench" icon at the top of the
+page.  You should see a configuration page like the following.  Fill
+in the fields with the correct information and click on the "save"
+button. 
 
-Convert the certificate and key into either a PKCS12 format or JKS
-format with the commands from the previous section.
-
-You must also create a "trust store" containing the certificate of the
-self-signed certificate. The generated trust store must also contain the
-certificates from the usual list of trusted certificate authorities.
-Locate the file `cacerts` in your java distribution. Create a new
-keystore with the same certificates with the following command:
-
-    keytool xxxx
-
-If the `cacerts` file has not be modified on your system, the default
-password will be "changeit". You can set the password for the new
-keystore to be anything you would like. Now add the certificate from
-your self-signed certificate to the new keystore:
-
-    keytool yyyy
-
-You must set the `truststore.*` parameters in the configuration file
-when using a self-signed certificate.
-
-## Web-based Configuration
-
-### Email Configuration
+![SlipStream™ Login Page](images/screenshot-cfg-support.png)
 
 ### Cloud Configuration
+
+On the configuration page, there is one pane for each supported
+cloud.  If the type of cloud you want to use isn't listed, then you
+will have to import the plugin for that cloud.
+
+See the documentation for each plugin for help on configuring the
+parameters. 
+
 
