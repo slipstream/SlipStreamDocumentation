@@ -10,7 +10,26 @@
   <fileSets>
     <fileSet>
       <directory>target/results</directory>
-      <outputDirectory></outputDirectory>
+      <outputDirectory>pdf</outputDirectory>
+      <includes>
+        <include>*.pdf</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>target/results</directory>
+      <outputDirectory>epub</outputDirectory>
+      <includes>
+        <include>*.epub</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>target/results</directory>
+      <outputDirectory>html</outputDirectory>
+      <includes>
+        <include>*.html</include>
+        <include>css/**/*</include>
+        <include>images/**/*</include>
+      </includes>
     </fileSet>
   </fileSets>
 
