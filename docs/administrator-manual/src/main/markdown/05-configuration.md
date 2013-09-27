@@ -16,11 +16,12 @@ super supeRsupeR The initial administrator account for the
                  service.  This account can modify the server 
                  configuration and all modules.
 
-sixsq sixsQsixsQ Owner of pre-defined images and tutorials that
+sixsq siXsQsiXsQ Owner of pre-defined images and tutorials that
                  are "public" and available to all authenticated
                  users.
 
-test  test       A test account with no elevated privileges.
+test  tesTtesT   A test account with standard privileges.
+
 -----------------------------------------------------------------
 
 **The passwords for these accounts should be changed immediately.** To
@@ -60,14 +61,14 @@ format.
 To convert, the certificate and key into a PKCS12 format do the
 following:
 
-    openssl pkcs12 -in name.crt -inkey name.key -o name.p12
+    $ openssl pkcs12 -in name.crt -inkey name.key -o name.p12
 
 The resulting file will contain both the certificate and key. Be sure to
 remember the password used to secure the PKCS12 file.
 
 To convert, to JKS (Java Key Store) format, do the following:
 
-    keytool -cert name.crt -key name.key
+    $ keytool -cert name.crt -key name.key
 
 The resulting file will contain both the certificate and key. Be sure to
 remember the password used to secure the JKS file.
