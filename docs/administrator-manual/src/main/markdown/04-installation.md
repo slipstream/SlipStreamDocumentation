@@ -6,30 +6,31 @@ the services can be started via standard SysV initialization scripts.
 
 ## Yum repository configuration
 
-The yum installer needs to be told where to find the packages.For this
+The yum installer needs to be told where to find the packages. For this
 create the following files:
+
+Note: please replace *<slipstream-yum-repository>* with a value provided
+by SixSq or from the yum repository you will have created.
 
     $ cat > /etc/yum.repos.d/slipstream.repo <<EOF
     [SlipStream-releases]
     name=SlipStream-releases
-    baseurl=http://ci.sixsq.com:8080/nexus/content/repositories/releases
-    enabled=1
-    protect=0
+    baseurl=<slipstream-yum-repository>
     gpgcheck=0
-    metadata_expire=30s
-    autorefresh=1
-    type=rpm-md
+    enabled=1
     EOF
 
-We also ship by default with the StratusLab client, which also requires
-a custom yum repo file:
+The current version of the SlipStream™ server package depends on
+the StratusLab client.  You therefore need to also tell yum where to find
+the StratusLab packages.  This can be done by creating the following yum
+repo file:
 
-    $ cat > /etc/yum.repos.d/slipstream.repo <<EOF
+    $ cat > /etc/yum.repos.d/stratuslab.repo <<EOF
     [StratusLab-Releases]
     name=StratusLab-Releases
     baseurl=http://yum.stratuslab.eu/releases/centos-6
     gpgcheck=0
-    enabled=0
+    enabled=1
     EOF
 
 Once these are in place it is a good idea to update your system with:
@@ -38,7 +39,7 @@ Once these are in place it is a good idea to update your system with:
 
 ## Install Packages
 
-The first step is the installation of the packages.  Just install the
+Once the yum system is setup, just install the
 package for the SlipStream™ server; it will pull in all of the
 necessary dependencies including the database.
 
