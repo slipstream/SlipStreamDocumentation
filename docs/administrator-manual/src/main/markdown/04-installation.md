@@ -47,6 +47,19 @@ necessary dependencies including the database.
 The software will be installed in the `/opt/slipstream` directory and
 the configuration files will be in `/etc/slipstream`.
 
+## SSH public/private keys
+
+The SlipStream™ server uses ssh for secure communication between the
+orchestrator and user virtual machines. By defaults these are the
+root private and public keys. Therefore ensure that these exists, or
+better generate a separate key pair and use these in the configuration.
+You can find these parameters in the *SlipStream_advanced* configuration
+section.  
+
+To generate a new key pair you can use:
+
+    $ ssh-keygen
+
 ## Start Database
 
 After this start the database:
