@@ -35,6 +35,42 @@ password (twice) and click "save".  The password will be updated.  Do
 this for all three accounts.  Note: For the "super" account you will
 have to provide the current password.
 
+## Configuration Parameters
+
+Once the application is installed, a few parameters must be configured
+before SlipStream™ can be used.  The following sections provide information
+regarding configuration.
+
+![SlipStream™ Configuration Page](images/screenshot-cfg-support.png)
+
+### Basic and Advanced Parameters
+
+The *SlipStream Basics* and *SlipStream Advanced* configuration section
+must be updated to reflect the current installation.  In these sections
+replace all occurrences of *example.com* with the appropriate value.
+All other parameters, with the exception of the *cloud connector*
+value should be kept unchanged.
+
+To set these parameters click on the "wrench" icon at the top of the
+page.  You should see a configuration page like the following.  Fill
+in the fields with the correct information and click on the "save"
+button. 
+
+### Support Parameters
+
+SlipStream needs to send out email notifications - e.g.
+when validating email addresses during user registration.  These
+parameters are set in the *SlipStream Support* section.
+
+## Cloud Configuration
+
+On the configuration page, there is one pane for each supported
+cloud.  If the type of cloud you want to use isn't listed, then you
+will have to import the plugin for that cloud.
+
+See the documentation for each connector for help on configuring the
+parameters. 
+
 ## SSL Certificate
 
 Sensitive credentials are passed between a user's browser and the
@@ -91,28 +127,3 @@ but give the user the option to ignore the warning.
 Follow the instructions found on the web to create a self-signed
 certificate.  Then use the same procedure to install this for the
 SlipStream™ server. 
-
-## Support Configuration
-
-The SlipStream often needs to send out email notifications, especially
-when validating email addresses during user registration.  These
-parameters are set in the "SlipStream_Support" pane of the server
-configuration. 
-
-To set these parameters click on the "wrench" icon at the top of the
-page.  You should see a configuration page like the following.  Fill
-in the fields with the correct information and click on the "save"
-button. 
-
-![SlipStream™ Login Page](images/screenshot-cfg-support.png)
-
-### Cloud Configuration
-
-On the configuration page, there is one pane for each supported
-cloud.  If the type of cloud you want to use isn't listed, then you
-will have to import the plugin for that cloud.
-
-See the documentation for each plugin for help on configuring the
-parameters. 
-
-
