@@ -90,16 +90,13 @@ The following is the latest update on availability of cloud connectors:
 * **OCCI** (soon)
 * **Physical / Fixed**
 * **CloudStack** (soon)
+* **IBM Smart Cloud Entry** (soon)
 * **Microsoft IaaS Azure** (soon)
 
 Notes: 
 
-1. The Abiquo, Amazon EC2 and CloudSigma connectors are released under
-a SixSq proprietary license.
-
-1. A VMWare vCloud Director connector is under development, such that
-SlipStream™ will be able to interface to VMWare-based IaaS cloud
-services.
+1. The Abiquo, Amazon EC2, CloudSigma and VMWare vCloud Director
+connectors are released under a SixSq proprietary license.
 
 1. An OCCI compliant connector is also under development, such that
 SlipStream™ will be able to interface with OCCI compliant cloud
