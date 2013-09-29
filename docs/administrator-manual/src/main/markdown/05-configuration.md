@@ -10,18 +10,17 @@ The following table describes the predefined accounts for a new
 SlipStream™ installation.
 
 -----------------------------------------------------------------
-User  Password   Description
------------------------------------------------------------------
-super supeRsupeR The initial administrator account for the 
-                 service.  This account can modify the server 
-                 configuration and all modules.
+User   Password    Description
+-----  ----------  ----------------------------------------------
+super  supeRsupeR  The initial administrator account for the 
+                   service.  This account can modify the server 
+                   configuration and all modules.
 
-sixsq siXsQsiXsQ Owner of pre-defined images and tutorials that
-                 are "public" and available to all authenticated
-                 users.
+sixsq  siXsQsiXsQ  Owner of pre-defined images and tutorials that
+                   are "public" and available to all authenticated
+                   users.
 
-test  tesTtesT   A test account with standard privileges.
-
+test   tesTtesT    A test account with standard privileges.
 -----------------------------------------------------------------
 
 **The passwords for these accounts should be changed immediately.** To
