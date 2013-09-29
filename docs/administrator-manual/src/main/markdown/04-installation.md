@@ -54,7 +54,7 @@ The SlipStream™ server uses ssh for secure communication between the
 orchestrator and user virtual machines. By defaults these are the
 root private and public keys. Therefore ensure that these exists, or
 better generate a separate key pair and use these in the configuration.
-You can find these parameters in the *SlipStream_advanced* configuration
+You can find these parameters in the *SlipStream Advanced* configuration
 section.  
 
 To generate a new key pair you can use:
