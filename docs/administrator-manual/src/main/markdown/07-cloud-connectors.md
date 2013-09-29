@@ -17,19 +17,19 @@ activate.  The following table provides the names of the connector
 classes you must use to activate the corresponding connector:
 
 -----------
-
-StratusLab (activated by default)   com.sixsq.slipstream.connector.stratuslab.StratusLabConnector   open-source
-
-Abiquo                              com.sixsq.slipstream.connector.abiquo.AbiquoConnector           proprietary
-
-OpenStack                           com.sixsq.slipstream.connector.openstack.OpenStackConnector     open-source
-
-VMWare vCloud                       com.sixsq.slipstream.connector.vcloud.VCloudConnector           proprietary
-
-Amazon EC2                          com.sixsq.slipstream.connector.aws.Ec2Connector                 proprietary
-
-CloudSigma                          com.sixsq.slipstream.connector.cloudsigma.CloudSigmaConnector   proprietary
-
+Cloud          SlipStream Connector Class Name
+-------------  ---------------------------------------
+StratusLab     com.sixsq.slipstream.connector.stratuslab.StratusLabConnector 
+                                                                             
+Abiquo         com.sixsq.slipstream.connector.abiquo.AbiquoConnector         
+                                                                             
+OpenStack      com.sixsq.slipstream.connector.openstack.OpenStackConnector   
+                                                                             
+VMWare vCloud  com.sixsq.slipstream.connector.vcloud.VCloudConnector         
+                                                                             
+Amazon EC2     com.sixsq.slipstream.connector.aws.Ec2Connector               
+                                                                             
+CloudSigma     com.sixsq.slipstream.connector.cloudsigma.CloudSigmaConnector 
 -----------
 
 Note that the default name of a connector can be overwritten.  Further,
@@ -43,27 +43,30 @@ The result of the above configuration will be to load the StratusLab connector
 three times, the first one with the default *stratuslab* name, while the second and
 third will be respectively called *lal* and *grnet*.
 
-## Connector Configuration
+## Connector Licenses
 
-The following sections provide details on how to configure the various
-cloud connectors.
+The connectors are released under different licenses, depending on the cloud
+solution they are design to interface with. Generally, connectors talking to
+open source IaaS cloud solutions are released under an open source license,
+while for proprietary IaaS solutions, the connectors are released under a
+proprietary license.
 
-Before loading a connector ensure that it has been installed. All
-connectors are normally installed using yum.
+-----------
+Cloud Solution / Service            License
+-------------  -----------------------------------------
+StratusLab     open-source (Apache 2.0)
+               
+Abiquo         proprietary
+               
+OpenStack      open-source (Apache 2.0)
+               
+VMWare vCloud  proprietary
+               
+Amazon EC2     proprietary
+               
+CloudSigma     proprietary
+-----------
 
-The following sections provide further configuration details on the
-different connectors. 
-
-### CloudSigma
-
-### Amazon EC2
-
-### OpenStack
-
-### StratusLab
-
-### VMWare vCloud
-
-### Abiquo
-
+To get details on the terms for proprietary licenses, please get in touch
+with SixSq.
 
