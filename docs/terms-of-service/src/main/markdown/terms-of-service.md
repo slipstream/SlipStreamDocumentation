@@ -222,8 +222,8 @@ Agent:
     copyright owner or authorized to act on the copyright owner's
     behalf.
 
-The Copyright Agent can be contacted by postal mail at SixSq Sàrl Route
-de Pré-Bois, 98 c/o Jawer 1215 Geneva Switzerlandor by email at
+The Copyright Agent can be contacted by postal mail at SixSq Sàrl Rue
+du Bois-du-Lan, 1217, Meyrin, Geneva, Switzerland or by email at
 <copyright@sixsq.com>.
 
 Third Party Cloud Providers
