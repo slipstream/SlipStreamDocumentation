@@ -33,15 +33,17 @@ repo file:
     enabled=1
     EOF
 
-Once these are in place it is a good idea to update your system with:
+Once these are in place it is a good idea to clear the cache and
+update your system with:
 
+    $ yum clean all
     $ yum update
 
 ## Install Packages
 
-Once the yum system is setup, just install the
-package for the SlipStream™ server; it will pull in all of the
-necessary dependencies including the database.
+Once the yum system is setup, just install the package for the
+SlipStream™ server; it will pull in all of the necessary dependencies
+including the database.
 
     $ yum install slipstream-server
 
@@ -50,16 +52,18 @@ the configuration files will be in `/etc/slipstream`.
 
 ## SSH public/private keys
 
-The SlipStream™ server uses ssh for secure communication between the
-orchestrator and user virtual machines. By defaults these are the
-root private and public keys. Therefore ensure that these exists, or
-better generate a separate key pair and use these in the configuration.
-You can find these parameters in the *SlipStream Advanced* configuration
-section.  
+The SlipStream™ server uses SSH for secure communication between the
+orchestrator and user virtual machines. By default these are the root
+private (`$HOME/.ssh/id_rsa`) and public (`$HOME/.ssh/id_rsa.pub`)
+keys.  Ensure that these exist, or better, generate a separate key
+pair for use with SlipStream.
 
-To generate a new key pair you can use:
+To generate a new key pair, use the command:
 
     $ ssh-keygen
+
+The parameters to indicate the key pair to use are found in the
+*SlipStream Advanced* configuration section of the web interface.
 
 ## Start Database
 
@@ -83,8 +87,9 @@ The server will automatically populate the empty database when the
 service initialzes. 
 
 You should now be able to contact the SlipStream™ server with a web
-browser using https.  Note that the service will initially use a self-signed
-certificate, so you may be warned by your browser about this.
+browser using https.  Note that the service will initially use a
+self-signed certificate, so you may be warned by your browser about
+this.
 
 You should be redirected to the login page that looks similar to
 the following screenshot.  If so, you are ready to configure the
