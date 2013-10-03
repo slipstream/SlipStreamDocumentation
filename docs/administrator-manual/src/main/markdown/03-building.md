@@ -139,7 +139,7 @@ development version.
 Most likely you will want to build a specific release.  To find all of
 the tagged versions, do:
 
-   $ (cd SlipStreamParent; git tag -l)
+    $ (cd SlipStreamParent; git tag -l)
 
 Choose the version you want from the list of tags.
 
