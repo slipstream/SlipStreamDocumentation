@@ -9,10 +9,6 @@ If you have bought a commercial license for the software, then a set
 of precompiled packages will be provided.  In this case, you can skip
 directly to the installation instructions in the next chapter.
 
-(**NOTE: Two of the repositories to build the complete SlipStream™
-system are not yet public.  These will be made public in the near
-future.**)
-
 ## Build Dependencies
 
 These instructions assume that you are building the software on an
@@ -20,9 +16,11 @@ These instructions assume that you are building the software on an
 distributions, but you may have to modify the packages or commands to
 suit the system you are using.
 
-You will need to configure your machine to use the [EPEL 6 package
-repository][epel].  Several of the packages required for the build are
-not available in the core CentOS 6 distribution.
+Several of the packages required for the build are not available in
+the core CentOS 6 distribution.  You will need to configure your
+machine to use the [EPEL 6 package repository][epel].  EPEL provides
+an RPM to do the configuration.  Just download the RPM and install it
+with `yum`.
 
 Most of the build dependencies can be installed directly with `yum`,
 although some recent python modules will need to be installed with
@@ -101,7 +99,7 @@ environment with:
     $ export PATH=$PATH:$MAVEN_HOME/bin
 
 The `mvn` command should now be visible.  The software will build with
-any version later than 2.2.1.
+any maven version later than 2.2.1.
 
 ## Checkout Sources
 
@@ -110,23 +108,48 @@ the sources from GitHub.  Clone the sources (`git clone`) from the
 following repositories into a common directory.  You may need to setup
 a `.gitconfig` file for `git`. 
 
-------------------------------------------------------------------
-Repository               URL
------------------------- -----------------------------------------
-SlipStreamParent         https://github.com/slipstream/SlipStreamParent
+------------------------
+Repository              
+------------------------
+SlipStreamParent        
+SlipStreamDocumentation 
+SlipStreamMta           
+SlipStreamUI            
+SlipStreamServer        
+SlipStreamServerDeps    
+SlipStreamClient        
+------------------------
 
-SlipStreamDocumentation  https://github.com/slipstream/SlipStreamDocumentation
+The URL for each repository is the name of the repository prefixed by:
 
-SlipStreamMta            https://github.com/slipstream/SlipStreamMta
+    https://github.com/slipstream/
 
-SlipStreamUI             https://github.com/slipstream/SlipStreamUI
+For instance to clone the SlipStreamParent repository, do:
 
-SlipStreamServer         https://github.com/slipstream/SlipStreamServer
+    $ git clone https://github.com/slipstream/SlipStreamParent
 
-SlipStreamServerDeps     _not yet public_
+This URL will allow read-only clones of the given repository.
 
-SlipStreamClient         _not yet public_
-------------------------------------------------------------------
+## SlipStream Versions
+
+The git repositories will contain a number of branches and tags.  By
+default, you will be on the `master` branch which contains the latest
+development version.
+
+Most likely you will want to build a specific release.  To find all of
+the tagged versions, do:
+
+   $ (cd SlipStreamParent; git tag -l)
+
+Choose the version you want from the list of tags.
+
+Once you've chosen the tag you want to build, checkout the tagged
+version of each of the repositories:
+
+    $ export VERSION=2.0.3
+    $ for i in SlipStream*; do (cd $i; git checkout $i-$VERSION); done
+
+This will checkout the same version for all of the different modules.
 
 ## Build and Package
 
