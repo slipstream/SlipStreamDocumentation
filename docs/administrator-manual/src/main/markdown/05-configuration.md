@@ -38,10 +38,16 @@ have to provide the current password.
 ## Configuration Parameters
 
 Once the application is installed, a few parameters must be configured
-before SlipStream™ can be used.  The following sections provide information
-regarding configuration.
+before SlipStream™ can be used.  To set these parameters click on the
+"wrench" icon at the top of the page.  You should see a configuration
+page like the following.  Fill in the fields with the correct
+information and click on the "save" button.
 
 ![SlipStream™ Configuration Page](images/screenshot-cfg-support.png)
+
+More information for the setting the parameters for each section is
+below.  You can also get more information within the interface by
+clicking on the question mark bullet to the right of the parameter.
 
 ### Basic and Advanced Parameters
 
@@ -51,32 +57,28 @@ replace all occurrences of *example.com* with the appropriate value.
 All other parameters, with the exception of the *cloud connector*
 value should be kept unchanged.
 
-To set these parameters click on the "wrench" icon at the top of the
-page.  You should see a configuration page like the following.  Fill
-in the fields with the correct information and click on the "save"
-button. 
-
 ### Support Parameters
 
-SlipStream needs to send out email notifications - e.g.
-when validating email addresses during user registration.  These
-parameters are set in the *SlipStream Support* section.
+SlipStream needs to send out email notifications, for example when
+validating email addresses during user registration.  These parameters
+are set in the *SlipStream Support* section.
 
 ## Cloud Configuration
 
 On the configuration page, there is one pane for each supported
-cloud.  If the type of cloud you want to use isn't listed, then you
+cloud.  If the type of cloud you want to use is not listed, then you
 will have to import the plugin for that cloud.
 
-See the documentation for each connector for help on configuring the
-parameters. 
+See the documentation for each connector for help on configuring its
+parameters.
 
 ## SSL Certificate
 
 Sensitive credentials are passed between a user's browser and the
-SlipStream™ server; consequently, the server must be configured to use
-SSL. The metadata describing machines and deployments may also contain
-proprietary information and be similarly sensitive.
+SlipStream™ server; the metadata describing machines and deployments
+may also contain proprietary information and be similarly sensitive.
+Consequently, the server must be configured to use SSL. The metadata
+describing machines and deployments may also contain
 
 The server will initially start with a self-signed certificate that is
 included in the package.  You should either create a self-signed
