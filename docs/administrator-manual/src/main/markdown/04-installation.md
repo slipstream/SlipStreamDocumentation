@@ -84,10 +84,10 @@ Next start SlipStream™.
     $ service slipstream start
 
 The server will automatically populate the empty database when the
-service initialzes. 
+service initizes. 
 
 You should now be able to contact the SlipStream™ server with a web
-browser using https.  Note that the service will initially use a
+browser using HTTPS.  Note that the service will initially use a
 self-signed certificate, so you may be warned by your browser about
 this.
 

@@ -4,7 +4,8 @@
 The SlipStream™ server has a standard web application architecture,
 with the server running within a Java web application container and
 using an SQL database for storing application data.  Consequently,
-many administrators will be familiar with its resource requirements.
+many administrators will be familiar with its configuration needs and
+modest resource requirements.
 
 ## Cloud Requirements
 
@@ -18,11 +19,11 @@ cloud(s) you will be making available through SlipStream™.
 Although the software will build and run on most *nix-like platforms,
 the software is tested, supported, and packaged for CentOS 6 systems.
 The packages should install and run correctly on any similar operating
-system. 
+system.
 
 ## Hardware Requirements
 
-The resource requirements of the SlipStream™ are modest.  Any modern,
+The resource requirements of SlipStream™ are modest.  Any modern,
 multicore, server-class machine should run the server without
 problems.  Several gigabytes of RAM should be dedicated to the Java
 Virtual Machine (JVM) running the services.  Similarly 10-20 GB of
@@ -37,11 +38,13 @@ large scale or intense use of the service.
 
 The server uses the standard HTTPS port (443).  Consequently, any
 firewalls on the machine or site must allow access to this port from
-the users' machines.  The server must also have access to the
-underlying cloud service endpoints, which will vary depending on the
-cloud infrastructures that will be used.
+the users' machines.
 
-If the underlying cloud infrastructure does not support
-contextualization, direct SSH access (port 22) to virtual machines
-within the cloud will also be required.
+The server must also have access to the underlying cloud service
+endpoints.  The ports used vary depending on the cloud infrastructures
+that is being accessed.
+
+If the underlying cloud infrastructure does not support virtual
+machine contextualization, direct SSH access (port 22) to virtual
+machines within the cloud is also required.
 

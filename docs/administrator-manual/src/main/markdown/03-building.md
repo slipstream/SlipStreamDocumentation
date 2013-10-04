@@ -37,35 +37,34 @@ will install all of the listed packages.
 ------------------------------------------------------------------
 Package                   Comment
 ------------------------  ----------------------------------------
-java-1.7.0-openjdk-devel  Used to compile and run the server.
+java-1.7.0-openjdk-devel  Used to compile and run the server
 
 python                    Needed for client CLI and testing
 
 python-devel              Needed to build some python module
-                          dependencies.
+                          dependencies
 
 pylint                    For analysis of python code
 
-python-pip                Used to install some python modules
+python-pip                Used to install python modules
 
-gcc                       Compilation of some c-bindings for 
-                          required python modules.
+gcc                       Compilation c-bindings for required
+                          python modules
 
-pandoc                    Pandoc system used to generate 
-                          documentation in various formats from
-                          markdown sources.
+pandoc                    Used to generate documentation from
+                          Markdown sources 
 
-texlive-latex             Used to generate PDF versions of docs.
+texlive-latex             Used to generate PDF versions of docs
 
-texlive-xetex             Used to generate PDF versions of docs.
+texlive-xetex             Used to generate PDF versions of docs
 
-git                       Source control system used to checkout
-                          code from GitHub.
+git                       Used to checkout source code from 
+                          GitHub
 
-rpm-build                 Necessary to build binary packages.
+rpm-build                 Creates binary distribution packages
 
-createrepo                Necessary to create local yum
-                          repository.
+createrepo                Create local yum repository from 
+                          generated RPM packages
 ------------------------------------------------------------------
 
 There are a few python modules that must be installed with `pip`.  The
@@ -112,11 +111,17 @@ a `.gitconfig` file for `git`.
 Repository              
 ------------------------
 SlipStreamParent        
+
 SlipStreamDocumentation 
+
 SlipStreamMta           
+
 SlipStreamUI            
+
 SlipStreamServer        
+
 SlipStreamServerDeps    
+
 SlipStreamClient        
 ------------------------
 

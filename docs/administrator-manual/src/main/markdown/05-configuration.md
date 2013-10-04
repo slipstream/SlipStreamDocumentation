@@ -65,7 +65,7 @@ are set in the *SlipStream Support* section.
 
 ## Cloud Configuration
 
-On the configuration page, there is one pane for each supported
+On the configuration page, there is one section for each supported
 cloud.  If the type of cloud you want to use is not listed, then you
 will have to import the plugin for that cloud.
 
