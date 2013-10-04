@@ -10,6 +10,8 @@ class DocProcessor(object):
     commands = {'html': ['pandoc',
                          '--write=html5', '--css=css/slipstream-docs.css',
                          '--standalone', '--toc', '--number-sections', 
+                         '--include-before-body', 'wrapper-begin.html', 
+                         '--include-after-body', 'wrapper-end.html', 
                          '-o %s', 'title.txt'],
                 'epub': ['pandoc',
                          '--write=epub', 
