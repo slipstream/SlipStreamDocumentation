@@ -110,19 +110,19 @@ a `.gitconfig` file for `git`.
 ------------------------
 Repository              
 ------------------------
-SlipStreamParent        
+SlipStreamParent
 
-SlipStreamDocumentation 
+SlipStreamDocumentation
 
-SlipStreamMta           
+SlipStreamMta
 
-SlipStreamUI            
+SlipStreamUI
 
-SlipStreamServer        
+SlipStreamServer
 
-SlipStreamServerDeps    
+SlipStreamServerDeps
 
-SlipStreamClient        
+SlipStreamClient
 ------------------------
 
 The URL for each repository is the name of the repository prefixed by:
