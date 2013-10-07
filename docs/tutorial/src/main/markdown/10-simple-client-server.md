@@ -1,8 +1,6 @@
-Hello World: Simple Client/Server Tutorial
-==========================================
+# Hello World: Simple Client/Server Tutorial
 
-Goal
-====
+## Goal
 
 The goal of this tutorial is to show you how to build a simple
 distributed test with a client and a server running on separate
@@ -12,8 +10,7 @@ accessed remotely. The end result, or the solution, of this tutorial can
 be found in SlipStream™ in the public project
 `Public/Tutorials/HelloWorld`.
 
-Create a New Project
-====================
+## Create a New Project
 
 To host the different modules we will create in this tutorial, first
 create a new top level project. Simply click on the "Start" button on
@@ -37,8 +34,7 @@ provide a list of comma separated user names you want to share with.
 Group definition will be inherited by default by all children of this
 project, such that you don't have to repeat this information.
 
-Apache Server Machine Image Module
-==================================
+## Apache Server Machine Image Module
 
 Now that we have a project to work in, we need to create a couple of
 machine image modules: one for the server and another for the test
@@ -66,8 +62,7 @@ to consider creating new machine images whenever appropriate to improve
 the performance of you deployments. For this refer to the SlipStream™
 Reference Manual.
 
-Image Reference
----------------
+## Image Reference
 
 The *Reference* tab contains information specifying the mapping between
 SlipStream™ machine image models (or templates) and real machine images
@@ -94,8 +89,7 @@ not worry if you do hit the save button. SlipStream will simply attempt
 to validate the image and report any missing information as an error at
 the top of the window.
 
-Instance Parameters
--------------------
+## Instance Parameters
 
 ### Cloud Parameters
 
@@ -147,8 +141,7 @@ tell it when the server is ready for the test to be executed.
 We can also give some of our parameters default. In this case, give the
 `port` parameter a default value of say, `8080`.
 
-Deployment
-----------
+## Deployment
 
 SlipStream™ supports the creation of new machine images. This can be
 done using the *Creation* tab. However, for sake of simplicity, we will
@@ -305,8 +298,7 @@ Now that we have created an Apache machine image module to act as our
 web server in our client/server tutorial, we next need to create the
 corresponding client to contact this server.
 
-Test Suite Client Image Module
-==============================
+## Test Suite Client Image Module
 
 To go with the Apache server machine image we have created in the the
 previous section, we will now build a client machine image module
@@ -317,15 +309,13 @@ more condensed set of instructions for the client image. Following the
 same steps as for the Apache server, create in the same project a new
 `Machine Image`. Let us call this new image "testclient".
 
-Image Reference
----------------
+### Image Reference
 
 First, in edit mode, select the *Reference* tab and choose the same
 Ubuntu image as for the Apache server machine image (i.e.
 `Public/BaseImages/Ubuntu/...`) using the chooser button.
 
-Instance parameters
--------------------
+### Instance parameters
 
 ### Instance Type
 
@@ -364,8 +354,7 @@ fulfilled by.
 Along the same lines, we'll need a `webserver.port
         ` and `webserver.ready` input parameters.
 
-Deployment
-----------
+## Deployment
 
 Under the *Deployment* tab, create a new `execute` target with the
 following content:
@@ -421,8 +410,7 @@ execution report.
     #!/bin/sh -x
     cp /tmp/data.txt $SLIPSTREAM_REPORT_DIR
 
-Deployment Module to Run it All
-===============================
+## Deployment Module to Run it All
 
 Now that we have two machine image modules to work with, we will create
 a deployment module to run these images to form our simple client/server
@@ -459,8 +447,7 @@ and our test suite. To do this follow these simple steps in edit mode:
 
 We are now ready to run our new test deployment.
 
-Execute Distributed Test
-========================
+## Execute Distributed Test
 
 To launch the distributed test, simply click on the *Run* button of the
 deployment you have created above. Sit back, relax and enjoy the show!

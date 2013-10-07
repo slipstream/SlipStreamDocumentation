@@ -1,8 +1,6 @@
-Troubleshooting
-===============
+# Troubleshooting
 
-Debugging a failing deployment
-==============================
+## Debugging a failing deployment
 
 When looking for the causes of a failed deployment, here are a few tips
 and tricks that might help you identifying the source of the problem.

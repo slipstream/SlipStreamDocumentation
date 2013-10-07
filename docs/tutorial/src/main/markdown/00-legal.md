@@ -5,7 +5,7 @@ Copyright (c) 2013, SixSq Sarl.
 This work by [SixSq Sarl][sixsq] is licensed under a [Creative Commons
 Attribution-NonCommercial-NoDerivs 3.0 Unported License][cc-license].
 
-![by-nc-nd](images/by-nc-nd.png)\ 
+![by-nc-nd](images/by-nc-nd)\ 
 
 
 [sixsq]: http://sixsq.com/
