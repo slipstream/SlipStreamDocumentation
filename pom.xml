@@ -3,6 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>SlipStreamDocumentation</artifactId>
+  <version>2.0.4-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>SlipStreamDocumentation</name>
   <url>http://sixsq.com/</url>
