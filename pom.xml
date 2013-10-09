@@ -5,6 +5,7 @@
   <artifactId>SlipStreamDocumentation</artifactId>
   <packaging>pom</packaging>
   <name>SlipStreamDocumentation</name>
+  <version>2.0.4</version>
   <url>http://sixsq.com/</url>
 
   <parent>
@@ -23,7 +24,7 @@
     <connection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</connection>
     <url>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</url>
     <developerConnection>scm:git:ssh://git@github.com/slipstream/SlipStreamDocumentation.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>SlipStreamDocumentation-2.0.4</tag>
   </scm>
 
 </project>
