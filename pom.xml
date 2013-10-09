@@ -6,7 +6,6 @@
   <version>2.0.4-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>SlipStreamDocumentation</name>
-  <version>2.0.4</version>
   <url>http://sixsq.com/</url>
 
   <parent>
