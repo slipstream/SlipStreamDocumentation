@@ -3,15 +3,14 @@
 SlipStream™ is a web application that can be accessed easily from any
 modern browser.  SixSq runs a public [SlipStream™ hosted
 service](https://slipstream.sixsq.com/) but you may also have access
-to another SlipStream™ server run your organization.  If so, contact
-your local administrator for the server's address.
+to another SlipStream™ server run by your organization.  If so,
+contact your local administrator for the server's address.
 
 ## Finding Your Way Around
 
 Metadata about your images and deployments are organized into projects
 in SlipStream™. Each project consists of a number of modules. The
-modules may be *Project*, *Machine Image* or *Deployment* modules. Here
-is a short description of these module types:
+modules may be _Project_, _Machine Image_ or _Deployment_ modules:
 
 Project
 :   A container of modules used to provide logical grouping. A project
@@ -19,18 +18,20 @@ Project
     large projects.
 
 Machine image
-:   A module that contains information about machine images, including
-    cloud specific unique identifier and/or recipes to create the
-    machine image. The recipe information consists of a set of packages
-    to install and a script for configuring the machine. Unique
-    identifiers are specific to the corresponding cloud they belong to.
-    This module also includes input/output parameters such that the
-    machine can be synchronized as part of a deployment.
+:   A module that contains information about a virtual machine image.
+    One type of machine image is a _reference image_.  These contain a
+    cloud-specific reference to identify this image within the
+    cloud. The other type of machine image, a _derived image_,
+    references (directly or indirectly) a base image and includes a
+    list of packages to install and/or recipes to configure the
+    machine.  These modules also include input/output parameters such
+    that the machine can be synchronized as part of a deployment.
 
 Deployment
-:   A module that describes nodes to which machine images are
-    associated, as well as synchronization and coordination between
-    these.
+:   A module that describes a coordinated deployment of one or more
+    nodes.  The deployment associates a machine image to each node and
+    defines the synchronizaton necessary for the coordinated
+    deployment.
 
 The web interface allows the parameters for each of these modules to be
 defined, edited, versioned and saved.
@@ -41,26 +42,29 @@ We also have two main workflows in SlipStream™: *Image Creation* and
 *Deployment*. Here is a short explanation of what they are:
 
 Image Creation
-:   Creation of a new machine image at the cloud service level, such
-    that it can be reused in deployments. This means that SlipStream™
-    instantiates a reference (i.e. already existing) image, from which
-    it will add software and configuration, before saving it as a new
-    image for further reuse.
+:   Builds an enhanced and customized machine image at the cloud
+    service level, which can be then be a component in service
+    deployments. SlipStream™ instantiates a virtual machine from a
+    reference image, adds software packages, configures services, and
+    then saves the new image for reuse.
 
 Deployment Execution (or Run)
-:   Deployment of several machines together, synchronizing their setup
-    such that the software in each machine fires in the right order,
-    automatically.
 
-It is also possible to run a single image, without deployment support,
-for convenience.
+:   The combined deployment of several machines, including the
+    automatic synchronization of the machines' services.  Essentially
+    a "one-click" automated deployment of complex services.
 
-These terms will be referred to throughout this document.
+For convenience, it is also possible to run a single image, without
+deployment support.  This is handy when you quickly want a new virtual
+machine for interactive development.
 
 ## Access Control
 
-Access control can be defined for each module in SlipStream™. Further,
-three levels of control are available: *User*, *Group* and *Public*. For
-each level, different actions can be granted (e.g. read, execute).
-Groups are dynamically defined, as a simple list of users and can be
-inherited.
+SlipStream™ has a consistent access control model for all of the
+modules.  Access control can be defined separately for the *User*,
+*Group* and *Public* levels.  For each, different permissions for
+module actions can be granted (e.g. read, execute).
+
+Groups are dynamically defined, as a simple list of SlipStream™ users.
+These groups can be inherited from a parent module or defined manually
+for each module.

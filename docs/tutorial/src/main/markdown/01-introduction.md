@@ -26,7 +26,7 @@ the next level, allowing the behavior of systems to be tested over the
 wide area network.
 
 This tutorial introduces SlipStream and describes how to get started
-using SlipStream™.  After this, a set of examples adapted for each
-type of user is provided.  As the examples build on previous examples
-and become increasingly more complex, readers will want to work
-through the examples from the beginning. 
+using it.  After this, a set of examples adapted for each type of user
+is provided.  As the examples build on previous examples and become
+increasingly more complex, readers will want to work through the
+examples from the beginning.
