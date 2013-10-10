@@ -160,24 +160,24 @@ This will checkout the same version for all of the different modules.
 
 The build is managed from the SlipStreamParent module.  Change into
 the root of that directory and use it as your working directory.
+Touch the file `.slipstream-build-all`.  This will signal Maven to do
+a complete compilation of all modules.
 
-In this directory, create and install the master pom file for the
-build.  The command is:
+Just to make sure that everything is working correctly and to start
+with a clean slate, do the following:
+
+    $ mvn clean
+
+This should download a bunch of Maven plugins and then finish with a
+long list of modules that have been built sucessfully.  If not, you
+will need to correct any problems before going on.
+
+Now start the complete build with:
 
     $ mvn install
 
-This should download a bunch of Maven plugins and then end
-sucessfully. 
-
-Now, touch the file `.slipstream-build-all`.  This will signal Maven
-to do a complete compilation of all modules.  Start the complete build
-with: 
-
-    $ mvn clean install -DBUILD_NUMBER=0 -DskipTests
-
 This will download a large number of build dependencies, but should
-eventually end successfully.  The "clean" is only necessary if a
-previous build failed for some reason. 
+eventually end successfully.
 
 ## Create Local Yum Repository
 
