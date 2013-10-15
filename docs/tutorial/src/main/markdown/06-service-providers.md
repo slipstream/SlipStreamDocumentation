@@ -25,20 +25,36 @@ images.
 
 As you saw previously, SlipStream™ provides a number of these in the
 "Public/BaseImages" module.  However, service providers will often
-want to make a larger set of images available.  The procedure for
-making new reference images available is straight-forward:
+want to make a larger set of images available.
 
-* Choose an existing candidate image within the target cloud
-  infrastructure. 
-* Install a compatible version of Python within that image.
-* Install the SlipStream™ client software in the image.
-* Make the modified image available in the cloud infrastructure's
-  image catalog.
+The SlipStream connectors will bootstrap the image through the
+contextualization process.  The lightweight bootstrap script does
+however require that `wget` and `python` v2.6+ be available.  This is
+the case for the majority of cases.
 
-Once the modified image is available, then it is simply a matter of
-referencing the image within SlipStream™.  
+For StratusLab, all of the standard images already have these
+dependencies, so it is easy to use those images through SlipStream.
+The procedure is:
 
-**TO BE COMPLETED...**
+1. In your home area, create a new project ("New Project" button) to
+hold your images.  Provide an appropriate name for the project and
+save it.
+
+2. Within the project (which should be open now), click on the "New
+Machine Image" button.  Provide an appropriate name and description.
+
+3. Before saving this, open the "Cloud Image Identifiers..." section.
+You then can click on the "Base image?" checkbox and provide the
+StratusLab Marketplace identifier for the image (see screenshot).
+
+4. Now save the image.
+
+This image can now be used through SlipStream like any other.  You can
+launch an instance of it directly or include it in a deployment.  Note
+that for base images, you can also provide deployment recipes and
+coordination parameters.
+
+![Create Base Image](images/screenshot-new-base-image.png)
 
 ### Creating New Images
 

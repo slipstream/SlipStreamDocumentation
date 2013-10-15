@@ -76,8 +76,8 @@ shutdown the virtual machine and release the associated resources.
 ## Deploy a Cluster
 
 While it is interesting to use SlipStream™ to deploy virtual machines,
-especially when dealing with multiple cloud infrastructure, it is even
-more appealing to deploy complete computing platforms.
+especially when dealing with multiple cloud infrastructures, it is
+even more appealing to deploy complete computing platforms.
 
 Scientific computing often requires the deployment of a dedicated
 batch cluster for scientific data analysis.  Procuring the necessary
