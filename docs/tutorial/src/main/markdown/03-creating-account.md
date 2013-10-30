@@ -7,10 +7,10 @@ private and to protect their cloud credentials.
 
 ## Registration
 
-You can register for a SlipStream™ account directly through the web
-interface.  On the login page, open the registration section, fill in
-the form, agree to the Terms of Service, and click the "register"
-button. 
+If enabled by the administrator, you can register for a SlipStream™
+account directly through the web interface.  On the login page, open
+the registration section, fill in the form, agree to the Terms of
+Service, and click the "register" button.
 
 The registration process will validate your email address by sending
 you a message with a confirmation link.  Visit the link and then wait
