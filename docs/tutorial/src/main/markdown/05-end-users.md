@@ -156,12 +156,15 @@ back to the master.
 The tutorials contain an example cluster deployment based on Torque.
 More information on Torque can be found on [their website][torque].
 Let's start a cluster and verify that it works.  Navigate to the
-"Public/Tutorials/torque" module. 
+"examples/tutorials/torque" module.  This contains image definitions
+for the Torque master and worker.  The "torque" deployment module
+defines the system configuration which by default contains two workers
+and one server.
 
-Click on the "Run" button to deploy a cluster with the default
-configuration of one master node and two worker nodes.  Once the
-deployment has completed the setup, you will be able to log into the
-master node as the user "tuser".
+In the "torque" deployment module, click on the "Run" button to deploy
+a cluster with the default configuration.  Once the deployment has
+completed the setup, you will be able to log into the master node as
+the user "tuser".
 
     $ ssh tuser@134.158.75.99 
 
