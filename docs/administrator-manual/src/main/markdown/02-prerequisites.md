@@ -25,9 +25,9 @@ system.
 
 The resource requirements of SlipStream™ are modest.  Any modern,
 multicore, server-class machine should run the server without
-problems.  Several gigabytes of RAM should be dedicated to the Java
-Virtual Machine (JVM) running the services.  Similarly 10-20 GB of
-disk space should be sufficient for initial use.
+problems.  At least 2 gigabytes of RAM should be dedicated to the Java
+Virtual Machine (JVM) running the service.  Similarly 10-20 GB of disk
+space should be sufficient for initial use.
 
 As with any service, the resource requirements for the server will
 increase with the number of users and with the number of system

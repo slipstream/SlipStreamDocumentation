@@ -18,9 +18,16 @@ suit the system you are using.
 
 Several of the packages required for the build are not available in
 the core CentOS 6 distribution.  You will need to configure your
-machine to use the [EPEL 6 package repository][epel].  EPEL provides
-an RPM to do the configuration.  Just download the RPM and install it
-with `yum`.
+machine to use the [EPEL 6 package repository][epel].
+
+EPEL provides an RPM to do the configuration.  Just download the RPM
+and install it with `yum`.
+
+    $ wget -nd <URL>
+    $ yum localinstall -y <downloaded RPM>
+
+You can find the URL and package name via the information in the "How
+can I use these extra packages?" section on the EPEL page.
 
 Most of the build dependencies can be installed directly with `yum`,
 although some recent python modules will need to be installed with

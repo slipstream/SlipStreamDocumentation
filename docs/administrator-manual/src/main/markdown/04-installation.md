@@ -33,6 +33,9 @@ repo file:
     enabled=1
     EOF
 
+You must also configure the machine for the [EPEL 6 repository][epel].
+The instructions for doing this can be found in the build chapter.
+
 Once these are in place it is a good idea to clear the cache and
 update your system with:
 
