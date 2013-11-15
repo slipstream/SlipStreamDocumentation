@@ -14,10 +14,7 @@
 
   <modules>
     <module>administrator-manual</module>
-    <module>acknowledgements</module>
-    <module>reference-manual</module>
     <module>terms-of-service</module>
-    <module>torque-use-case</module>
     <module>tutorial</module>
   </modules>
 
