@@ -31,8 +31,8 @@ want to make a larger set of images available.
 
 The majority of existing images for a cloud will be compatible with
 SlipStream.  However the SlipStream bootstrap process does require a
-couple of things: 1) the existance of `wget` on the machine and
-`python` v2.x (v2.6+).  Any existing image for a cloud meeting those
+couple of things: the existance of `wget` on the machine and `python`
+v2.x (v2.6+).  Any existing image for a cloud meeting those
 requirements can be used as a reference (or "base") image for
 SlipStream.
 
@@ -230,10 +230,12 @@ required because of very different resource requirements for the
 different components in the system and the desire to support scaling
 the system in response to changes in demand.
 
+<!--
 To demonstrate the abilities of SlipStream™ in this area, we will
 first revisit the Torque cluster example from the last chapter and
 then define a high-availability LAMP (Linux, Apache, MySQL, PHP)
 application.
+-->
 
 ### Coordinated Startup
 
@@ -270,6 +272,8 @@ various nodes, allowing for example, the PHP frontend to discover the
 location of the MySQL database.  Moreover, this system provides a way
 to synchronize the startup of services to allow staged deployments of
 services even if the virtual machines are deployed in bulk.
+
+<!--
 
 ### Revisiting the Torque Cluster
 
@@ -376,7 +380,9 @@ Although the coordination of the various services is somewhat involved
 for the person setting up the deployment, the result for the end-user
 is straightforward: click to get a private batch cluster!
 
+-->
 
+<!--
 ### High Availability LAMP Application
 
 Already you have seen how SlipStream™ can define single and multi-node
@@ -388,6 +394,8 @@ In this case, we will define a multi-tiered LAMP application with
 redundant services for high-availability. 
 
 **TO BE COMPLETED...**
+
+-->
 
 ## Making Modules Public
 

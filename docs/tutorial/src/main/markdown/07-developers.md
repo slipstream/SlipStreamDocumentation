@@ -193,6 +193,8 @@ current node or from other nodes. You can use the `ss-set` to set
 values, as from the standard targets an recipes, as well as `ss-get`
 to fetch key values.
 
+<!--
+
 ## Continuous Integration with SlipStream™
 
 The ability to automate complete system deployment and testing makes
@@ -207,3 +209,5 @@ the REST API.
 ### REST API
 
 **TO BE COMPLETED...**
+
+-->

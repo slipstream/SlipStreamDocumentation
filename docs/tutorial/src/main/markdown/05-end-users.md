@@ -133,6 +133,7 @@ the SlipStream™ interface.  Remember to save any information or data
 you created outside of the machine before terminating it.
 
 
+<!-- 
 ## Deploy a Cluster
 
 While it is interesting to use SlipStream™ to deploy virtual machines
@@ -208,6 +209,7 @@ As usual, the full cluster can be torn down by clicking on the
 "Terminate" button.  Save any results you want to keep outside of the
 deployment before shutting down the cluster.
 
+-->
 
 [rstudio]: http://www.rstudio.com
 [torque]: http://www.adaptivecomputing.com/products/open-source/torque/
