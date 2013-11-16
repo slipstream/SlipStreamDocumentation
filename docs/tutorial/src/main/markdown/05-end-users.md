@@ -133,7 +133,6 @@ the SlipStream™ interface.  Remember to save any information or data
 you created outside of the machine before terminating it.
 
 
-<!-- 
 ## Deploy a Cluster
 
 While it is interesting to use SlipStream™ to deploy virtual machines
@@ -165,22 +164,38 @@ and one server.
 In the "torque" deployment module, click on the "Run" button to deploy
 a cluster with the default configuration.  Once the deployment has
 completed the setup, you will be able to log into the master node as
-the user "tuser".
+the user "tuser".  (Look for the "master.1:hostname" property in the
+"master.1" section for the hostname or IP address.)
 
-    $ ssh tuser@134.158.75.99 
+    $ ssh tuser@134.158.75.190
 
 The deployment will have created the "tuser" account and configured it
-so that you can log in with your standard SSH key.  
+so that you can log in with your standard SSH key.  Once logged in,
+you can verify that cluster is correctly configured.
 
-Once logged in, you can verify that cluster is correctly configured.
+> **NOTE**: To use Torque to submit jobs, you must be logged in as a
+> **non-root** user.  Be sure to log in as "tuser" to follow the rest
+> of this example.
+
 Use the command `pbsnodes` to see the state of all of the workers.  
 
     $ pbsnodes -a
-    
-    $ TO BE COMPLETED...
 
-You will see that two worker nodes are available and free.  The master
-node is not configured to run jobs, so it will be marked as "down".
+    onevm-188.lal.in2p3.fr
+         state = free
+         np = 1
+         ntype = cluster
+         status = rectime=1384596949,varattr=,jobs=...
+
+    onevm-189.lal.in2p3.fr
+         state = free
+         np = 1
+         ntype = cluster
+         status = rectime=1384596950,varattr=,jobs=...
+
+You will see that two worker nodes are available and free.  (The
+status lines have been truncated.)  The master node is not configured
+to run jobs and will not appear in the list.
 
 To test that the cluster works correctly, create a job script
 (`job.sh`) with contents like the following:
@@ -197,7 +212,18 @@ cluster.
     $ for i in {1..20}; do qsub job.sh; done
     
     $ qstat
-    $ TO BE COMPLETED...
+
+    0.onevm-190 job.sh tuser   00:00:00 C batch          
+    1.onevm-190 job.sh tuser   00:00:00 C batch          
+    2.onevm-190 job.sh tuser   00:00:00 C batch          
+    3.onevm-190 job.sh tuser   00:00:00 C batch          
+    4.onevm-190 job.sh tuser   00:00:00 C batch          
+    5.onevm-190 job.sh tuser   00:00:00 C batch          
+    6.onevm-190 job.sh tuser          0 R batch          
+    7.onevm-190 job.sh tuser          0 R batch          
+    8.onevm-190 job.sh tuser          0 Q batch          
+    9.onevm-190 job.sh tuser          0 Q batch
+    ...
 
 You should see the jobs gradually advance from queued, to running, and
 then to the completed state.  As the jobs complete, you should see
@@ -205,11 +231,18 @@ files containing the stderr and stdout of the job in your directory.
 The stderr files should be empty and the stdout files should contain
 the hostname and two dates. 
 
+    $ cat job.sh.o9
+    onevm-189.lal.in2p3.fr
+    Sat Nov 16 10:20:33 UTC 2013
+    Sat Nov 16 10:20:53 UTC 2013
+
+If you look at all of the output files, you should see that jobs are
+being run on both of the worker nodes.
+
 As usual, the full cluster can be torn down by clicking on the
 "Terminate" button.  Save any results you want to keep outside of the
 deployment before shutting down the cluster.
 
--->
 
 [rstudio]: http://www.rstudio.com
 [torque]: http://www.adaptivecomputing.com/products/open-source/torque/
