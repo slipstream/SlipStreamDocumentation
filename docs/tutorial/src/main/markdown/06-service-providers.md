@@ -88,6 +88,10 @@ customized images.  The idea behind the image creation is simple:
 Once these are defined, SlipStream™ automates the creation of an
 image.
 
+> **NOTE**: Not all cloud connectors support the creation of new
+> images.  If the connectors you are using does not, then you should
+> not provide image creation packages or recipes.
+
 You have already seen an example of a customized image.  The RStudio
 image builds on the standard Ubuntu image, adding the RStudio
 software, its dependencies, and configuring the server.  If you open
