@@ -19,13 +19,14 @@ Project
 
 Machine image
 :   A module that contains information about a virtual machine image.
-    One type of machine image is a _reference image_.  These contain a
-    cloud-specific reference to identify this image within the
-    cloud. The other type of machine image, a _derived image_,
-    references (directly or indirectly) a base image and includes a
-    list of packages to install and/or recipes to configure the
-    machine.  These modules also include input/output parameters such
-    that the machine can be synchronized as part of a deployment.
+    One type of machine image is a _native image_.  These contain a
+    cloud-specific identifier for a particular cloud
+    infrastructure. The other type of machine image, a _reference
+    image_, references another image (which can be a native image or
+    another reference image) and includes a list of packages to
+    install and/or recipes to configure the machine.  These modules
+    also include input/output parameters such that the machine can be
+    synchronized as part of a deployment.
 
 Deployment
 :   A module that describes a coordinated deployment of one or more

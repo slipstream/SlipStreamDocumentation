@@ -15,7 +15,7 @@ can be used directly or as part of a coordinated deployment.
 Clicking on the "ubuntu-12.04" module, you should see a screenshot
 like the following.
 
-![Ubuntu Base Image](images/screenshot-ubuntu.png)
+![Ubuntu Native Image](images/screenshot-ubuntu.png)
 
 The sections provide various information about the image itself.  In
 this case this is a simple reference image for StratusLab clouds.  You

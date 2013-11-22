@@ -33,8 +33,7 @@ The majority of existing images for a cloud will be compatible with
 SlipStream.  However the SlipStream bootstrap process does require a
 couple of things: the existance of `wget` on the machine and `python`
 v2.x (v2.6+).  Any existing image for a cloud meeting those
-requirements can be used as a reference (or "base") image for
-SlipStream.
+requirements can be used as a native image for SlipStream™.
 
 Specifically for StratusLab, all of the standard images already have
 these dependencies.  To create new images, the procedure is the
@@ -53,7 +52,7 @@ save it.
 Machine Image" button.  Provide an appropriate name and description.
 
 4. Before saving this, open the "Cloud Image Identifiers..." section.
-You then can click on the "Base image?" checkbox and provide the
+You then can click on the "Native image?" checkbox and provide the
 StratusLab Marketplace identifier for the image (see the screenshot
 below).
 
@@ -61,7 +60,7 @@ below).
 
 This image can now be used through SlipStream like any other.  You can
 launch an instance of it directly or include it in a deployment.  Note
-that for base images, you can also provide deployment recipes and
+that for native images, you can also provide deployment recipes and
 coordination parameters.
 
 If you look carefully at the screenshot, you will see that you can
@@ -74,7 +73,7 @@ build on these independently of the underlying cloud.
 If you want to make this image available to other users, then see the
 section on making modules public. 
 
-![Create Base Image](images/screenshot-new-base-image.png)
+![Create Native Image](images/screenshot-new-base-image.png)
 
 ### Creating New Images
 
@@ -149,8 +148,9 @@ this is a rather time-consuming process (20-30 minutes) as the cloud
 must perform the installation and configuration and then copy the
 image contents.
 
-> **Note that images that are not reference (or "base") images, cannot
-> be run until they have been built.**
+> **Note that images that are not native images, and have image
+> creation recipes or packages cannot be run until they have been
+> built.**
 
 Some clouds may also require some additional treatment after they have
 been built.  For example, the created images must be signed and moved
