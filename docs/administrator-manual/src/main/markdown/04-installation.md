@@ -1,7 +1,7 @@
 # Installation
 
 Once the packages are available, installing the SlipStream™ server is
-as simple as installing a package with `yum`.  After the installation,
+as simple as installing packages with `yum`.  After the installation,
 the services can be started via standard SysV initialization scripts.
 
 ## Yum repository configuration
@@ -9,8 +9,8 @@ the services can be started via standard SysV initialization scripts.
 The yum installer needs to be told where to find the packages. For this
 create the following files:
 
-Note: please replace *<slipstream-yum-repository>* with a value provided
-by SixSq or from the yum repository you will have created.
+Note: please replace `<slipstream-yum-repository>` with a value
+provided by SixSq or from the yum repository you will have created.
 
     $ cat > /etc/yum.repos.d/slipstream.repo <<EOF
     [SlipStream-releases]
@@ -45,13 +45,19 @@ update your system with:
 ## Install Packages
 
 Once the yum system is setup, just install the package for the
-SlipStream™ server; it will pull in all of the necessary dependencies
-including the database.
+SlipStream™ server and the underlying database.  These packages will
+pull in all of the necessary dependencies.
 
-    $ yum install slipstream-server
+    $ yum install slipstream-server hsqldb-slipstream 
 
 The software will be installed in the `/opt/slipstream` directory and
 the configuration files will be in `/etc/slipstream`.
+
+The simplest deployment puts the database on the same machine as the
+SlipStream™ server.  However, it is also possible to place it on a
+separate server for high-availability deployments.  This is the reason
+that the database dependency is not included in the SlipStream™
+package.
 
 ## SSH public/private keys
 
