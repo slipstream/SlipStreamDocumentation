@@ -129,3 +129,20 @@ but give the user the option to ignore the warning.
 Follow the instructions found on the web to create a self-signed
 certificate.  Then use the same procedure to install this for the
 SlipStream™ server. 
+
+## Examples
+
+A set of examples that demonstrate the main features of SlipStream™
+are installed with the `slipstream-client` package on the machine, but
+are not installed in the service by default. 
+
+To add those examples to the service, run the command:
+
+    $ ss-module-upload \
+        -u sixsq -p PASSWORD \
+        --endpont=https://slipstream.example.com \
+        /usr/share/doc/slipstream/*.xml
+
+replacing the password and endpoint with the values for your service.
+This will upload all of the examples under the "sixsq" account.  These
+will be visible in the "examples" project on the welcome page.
