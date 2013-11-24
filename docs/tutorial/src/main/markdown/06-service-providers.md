@@ -230,6 +230,63 @@ hostname (or more usually the IP address) of the virtual machine.  The
 "instanceid" provides the virtual machine identifier within the cloud
 being used.
 
+## WordPress
+
+The deployment of WordPress, a common blogging platform, is 
+similar to the RStudio example.  A single customized appliance is
+created using a few input parameters from the user.
+
+For WordPress however, we will use Puppet to install and configure the
+service.  Puppet is a machine configuration and management system that
+allows a large number of services to be installed and configured
+through published Puppet modules.
+
+If you look in the deployment script for the
+"examples/tutorials/wordpress-appliance" module, you will find the
+following: 
+
+    ss-display "Installing Puppet client"
+
+    apt-get install -y puppet-common
+    apt-get install -y rubygems
+    gem install puppet-module
+
+which installs the Puppet client.  The Puppet tools can then be used
+to install the published module for WordPress:
+
+    ss-display "Installing WordPress manifest"
+    cd /etc/puppet/modules/
+    puppet module install jonhadfield/wordpress
+
+The next part of the script then retrieves the input parameters
+defined by the user for the administrator password, etc. and
+defined the Puppet configuration using those parameters. 
+
+The `init.pp` executes a script that uses a `curl` command to perform
+the service initialization.
+
+The last part of the script, just invokes Puppet to do the actual
+installation and configuration:
+
+    ss-display "Installing WordPress"
+
+    puppet apply -v wp.pp
+
+    ss-display "Configuring WordPress"
+
+    puppet apply -v init.pp
+
+    ss-display "WordPress ready to go!"
+
+You can then visit the deployed server with a brower to see the
+WordPress interface.
+
+The RStudio example used simple bash scripts to configure the service,
+where for WordPress, Puppet was used.  SlipStream™ remains agnostic
+towards the various service management toolkits; anything that can be
+launched from a script can be used to manage SlipStream™ images and
+deployments.
+
 ## Defining Systems
 
 While being able to customize individual machines is powerful, most
