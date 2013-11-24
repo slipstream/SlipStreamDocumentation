@@ -17,23 +17,27 @@ SlipStream™ allows its users to take advantage of this, while keeping
 track of the knowledge required to build those images and to
 understand their contents.
 
-### Reference Images
+### Native Images
 
 Unfortunately, it is next to impossible to create images that can be
 easily and reliably run on all of the popular cloud platforms.
-Because of this SlipStream™ references minimal images within each cloud
-platform to use as starting points for more complex, customized
-images.
+Because of this SlipStream™ references minimal images, called "native
+images" in SlipStream™, within each cloud platform to use as starting
+points for more complex, customized images.
 
-As you saw previously, SlipStream™ provides a number of these in the
-"examples/images" module.  However, service providers will often
-want to make a larger set of images available.
+As you saw previously, SlipStream™ provides a couple of these in the
+"examples/images" module.  However, service providers will often want
+to make a larger set of images available.
 
 The majority of existing images for a cloud will be compatible with
 SlipStream.  However the SlipStream bootstrap process does require a
-couple of things: the existance of `wget` on the machine and `python`
-v2.x (v2.6+).  Any existing image for a cloud meeting those
-requirements can be used as a native image for SlipStream™.
+couple of things:
+
+1. the existance of `wget` on the machine and
+2. `python` v2.x (v2.6+).
+
+Any existing image for a cloud meeting those requirements can be used
+as a native image for SlipStream™.
 
 Specifically for StratusLab, all of the standard images already have
 these dependencies.  To create new images, the procedure is the
@@ -75,9 +79,9 @@ section on making modules public.
 
 ![Create Native Image](images/screenshot-new-base-image.png)
 
-### Creating New Images
+### Creating Derived Images
 
-Once an appropriate reference image is available for a cloud
+Once an appropriate native image is available for a cloud
 infrastructure, SlipStream™ can automate the generation of further
 customized images.  The idea behind the image creation is simple:
 
@@ -85,13 +89,13 @@ customized images.  The idea behind the image creation is simple:
 2. Run a script defined by the user to configure the machine.
 
 Once these are defined, SlipStream™ automates the creation of an
-image.
+image.  These images are called "derived images" in SlipStream™.
 
 > **NOTE**: Not all cloud connectors support the creation of new
 > images.  If the connectors you are using does not, then you should
 > not provide image creation packages or recipes.
 
-You have already seen an example of a customized image.  The RStudio
+You have already seen an example of a derived image.  The RStudio
 image builds on the standard Ubuntu image, adding the RStudio
 software, its dependencies, and configuring the server.  If you open
 the RStudio appliance in the "examples/rstudio/rstudio-appliance"

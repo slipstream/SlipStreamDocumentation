@@ -21,11 +21,11 @@ Machine image
 :   A module that contains information about a virtual machine image.
     One type of machine image is a _native image_.  These contain a
     cloud-specific identifier for a particular cloud
-    infrastructure. The other type of machine image, a _reference
+    infrastructure. The other type of machine image, a _derived
     image_, references another image (which can be a native image or
-    another reference image) and includes a list of packages to
-    install and/or recipes to configure the machine.  These modules
-    also include input/output parameters such that the machine can be
+    another derived image) and includes a list of packages to install
+    and/or recipes to configure the machine.  These modules also
+    include input/output parameters such that the machine can be
     synchronized as part of a deployment.
 
 Deployment
@@ -43,11 +43,11 @@ We also have two main workflows in SlipStream™: *Image Creation* and
 *Deployment*. Here is a short explanation of what they are:
 
 Image Creation
-:   Builds an enhanced and customized machine image at the cloud
-    service level, which can be then be a component in service
-    deployments. SlipStream™ instantiates a virtual machine from a
-    reference image, adds software packages, configures services, and
-    then saves the new image for reuse.
+:   Builds an enhanced and customized machine image ("derived image") at
+    the cloud service level, which can be then be a component in
+    service deployments. SlipStream™ instantiates a virtual machine
+    from a reference image, adds software packages, configures
+    services, and then saves the new image for reuse.
 
 Deployment Execution (or Run)
 
