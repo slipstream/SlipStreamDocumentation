@@ -295,10 +295,11 @@ required because of very different resource requirements for the
 different components in the system and the desire to support scaling
 the system in response to changes in demand.
 
-<!--
 To demonstrate the abilities of SlipStream™ in this area, we will
-first revisit the Torque cluster example from the last chapter and
-then define a high-availability LAMP (Linux, Apache, MySQL, PHP)
+first revisit the Torque cluster example from the last chapter.
+
+<!--
+and then define a high-availability LAMP (Linux, Apache, MySQL, PHP)
 application.
 -->
 
@@ -337,8 +338,6 @@ various nodes, allowing for example, the PHP frontend to discover the
 location of the MySQL database.  Moreover, this system provides a way
 to synchronize the startup of services to allow staged deployments of
 services even if the virtual machines are deployed in bulk.
-
-<!--
 
 ### Revisiting the Torque Cluster
 
@@ -444,8 +443,6 @@ a cluster.
 Although the coordination of the various services is somewhat involved
 for the person setting up the deployment, the result for the end-user
 is straightforward: click to get a private batch cluster!
-
--->
 
 <!--
 ### High Availability LAMP Application
