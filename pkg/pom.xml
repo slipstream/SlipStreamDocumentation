@@ -16,37 +16,37 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>administrator-manual</artifactId>
-      <version>${project.version}</version>
+      <version>${slipstream.version}</version>
       <type>zip</type>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>acknowledgements</artifactId>
-      <version>${project.version}</version>
+      <version>${slipstream.version}</version>
       <type>zip</type>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>reference-manual</artifactId>
-      <version>${project.version}</version>
+      <version>${slipstream.version}</version>
       <type>zip</type>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>terms-of-service</artifactId>
-      <version>${project.version}</version>
+      <version>${slipstream.version}</version>
       <type>zip</type>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>torque-use-case</artifactId>
-      <version>${project.version}</version>
+      <version>${slipstream.version}</version>
       <type>zip</type>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>tutorial</artifactId>
-      <version>${project.version}</version>
+      <version>${slipstream.version}</version>
       <type>zip</type>
     </dependency>
   </dependencies>
