@@ -99,20 +99,29 @@ To convert, the certificate and key into a PKCS12 format do the
 following:
 
     $ openssl pkcs12 -in name.crt -inkey name.key -o name.p12
+    $ openssl pkcs12 -export -out name.p12 \
+        -inkey name.key \
+        -in name.crt \
+        -certfile ca-cert.pem 
 
 The resulting file will contain both the certificate and key. Be sure to
 remember the password used to secure the PKCS12 file.
 
-To convert, to JKS (Java Key Store) format, do the following:
+To convert the PKCS12 file to JKS (Java Key Store) format, do the
+following:
 
     $ keytool -cert name.crt -key name.key
+    $ keytool -v -importkeystore \
+        -srckeystore name.p12 -srcstoretype PKCS12 \
+        -destkeystore jetty.jks -deststoretype JKS 
 
 The resulting file will contain both the certificate and key. Be sure to
 remember the password used to secure the JKS file.
 
 The resulting keystore must be saved in the file
 `/opt/slipstream/etc/jetty.jks`.  You must provide the password in the
-file `/opt/slipstream/etc/jetty-ssl-slipstream.xml`.
+file `/opt/slipstream/server/start.d/50-ssl.ini`.  (Replace values for
+_all_ of the password parameters!)
 
 After updating the certificate and configuration, restart the
 SlipStream™ server.
