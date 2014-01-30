@@ -149,7 +149,7 @@ To add those examples to the service, run the command:
 
     $ ss-module-upload \
         -u sixsq -p PASSWORD \
-        --endpont=https://slipstream.example.com \
+        --endpoint=https://slipstream.example.com \
         /usr/share/doc/slipstream/*.xml
 
 replacing the password and endpoint with the values for your service.
