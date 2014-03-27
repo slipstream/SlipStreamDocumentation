@@ -143,9 +143,9 @@ Compliance with Laws
 --------------------
 
 You agree to comply with all applicable laws and regulations of the
-United States and foreign authorities, including, without limitation,
+Switzerland and foreign authorities, including, without limitation,
 laws regarding the transmission of technical data, such as encryption,
-exported from the United States or from the country in which You reside.
+exported from Switzerland or from the country in which You reside.
 You agree not to export, re-export or import the Software or any direct
 product thereof in violation of any such restrictions, laws or
 regulations, or without all necessary authorizations.
