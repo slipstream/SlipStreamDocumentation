@@ -48,7 +48,7 @@ Once the yum system is setup, just install the package for the
 SlipStream™ server and the underlying database.  These packages will
 pull in all of the necessary dependencies.
 
-    $ yum install slipstream-server hsqldb-slipstream 
+    $ yum install slipstream-server slipstream-hsqldb 
 
 The software will be installed in the `/opt/slipstream` directory and
 the configuration files will be in `/etc/slipstream`.
