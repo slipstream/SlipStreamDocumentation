@@ -1,30 +1,31 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
 
 import sys
 import os
 import subprocess
+
 
 class DocProcessor(object):
     """generate html, pdf, and epub from markdown sources"""
 
     commands = {'html': ['pandoc',
                          '--write=html5', '--css=css/slipstream-docs.css',
-                         '--standalone', '--toc', '--number-sections', 
-                         '--include-before-body', 'wrapper-begin.html', 
-                         '--include-after-body', 'wrapper-end.html', 
+                         '--standalone', '--toc', '--number-sections',
+                         '--include-before-body', 'wrapper-begin.html',
+                         '--include-after-body', 'wrapper-end.html',
                          '-o %s', 'title.txt'],
                 'epub': ['pandoc',
-                         '--write=epub', 
-                         '--standalone', '--toc', '--number-sections', 
+                         '--write=epub',
+                         '--standalone', '--toc', '--number-sections',
                          '-o %s', 'title.txt'],
                 'pdf': ['pandoc',
-                        '--standalone', '--toc', '--number-sections', 
+                        '--standalone', '--toc', '--number-sections',
                         '--include-in-header=pdf-header-includes.txt',
                         '--variable=geometry:a4paper',
                         '--variable=fontsize:12pt',
                         '--variable=documentclass:book',
                         '--variable=graphics:1',
-                        '--listings', 
+                        '--listings',
                         '-o %s', 'title.txt']}
 
     def get_markdown_sources(self):
@@ -32,6 +33,7 @@ class DocProcessor(object):
         for file in os.listdir('.'):
             if file.endswith('.md'):
                 markdown_sources.append(file)
+
         markdown_sources.sort()
         return markdown_sources
 
@@ -60,14 +62,14 @@ class DocProcessor(object):
         self.set_filenames()
 
     def exec_cmd(self, full_cmd):
-        p = subprocess.Popen(full_cmd, shell=True, 
-                             stdout=subprocess.PIPE, 
+        p = subprocess.Popen(full_cmd, shell=True,
+                             stdout=subprocess.PIPE,
                              stderr=subprocess.STDOUT)
         cmd_output = p.stdout.readlines()
         retval = p.wait()
         if retval != 0:
             raise Exception("error running command:\n%s\noutput:\n%s\n" % \
-                                (full_cmd, "\n".join(cmd_output)))
+                            (full_cmd, "\n".join(cmd_output)))
 
     def run(self):
         srcs = ' '.join(self.get_markdown_sources())
