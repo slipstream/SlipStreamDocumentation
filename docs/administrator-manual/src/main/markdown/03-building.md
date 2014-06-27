@@ -117,7 +117,7 @@ a `.gitconfig` file for `git`.
 ------------------------
 Repository              
 ------------------------
-SlipStreamParent
+SlipStream
 
 SlipStreamDocumentation
 
@@ -136,9 +136,9 @@ The URL for each repository is the name of the repository prefixed by:
 
     https://github.com/slipstream/
 
-For instance to clone the SlipStreamParent repository, do:
+For instance to clone the SlipStream repository, do:
 
-    $ git clone https://github.com/slipstream/SlipStreamParent
+    $ git clone https://github.com/slipstream/SlipStream
 
 This URL will allow read-only clones of the given repository.
 
@@ -151,7 +151,7 @@ development version.
 Most likely you will want to build a specific release.  To find all of
 the tagged versions, do:
 
-    $ (cd SlipStreamParent; git tag -l)
+    $ (cd SlipStream; git tag -l)
 
 Choose the version you want from the list of tags.
 
@@ -165,7 +165,7 @@ This will checkout the same version for all of the different modules.
 
 ## Build and Package
 
-The build is managed from the SlipStreamParent module.  Change into
+The build is managed from the SlipStream module.  Change into
 the root of that directory and use it as your working directory.
 Touch the file `.slipstream-build-all`.  This will signal Maven to do
 a complete compilation of all modules.
