@@ -55,6 +55,8 @@ pylint                    For analysis of python code
 
 python-pip                Used to install python modules
 
+python-mock               Mocking library used in unit tests
+
 gcc                       Compilation c-bindings for required
                           python modules
 
