@@ -121,8 +121,6 @@ SlipStream
 
 SlipStreamDocumentation
 
-SlipStreamMta
-
 SlipStreamUI
 
 SlipStreamServer
