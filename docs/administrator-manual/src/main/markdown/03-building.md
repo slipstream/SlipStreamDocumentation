@@ -181,10 +181,11 @@ will need to correct any problems before going on.
 
 Now start the complete build with:
 
-    $ mvn install
+    $ mvn install -DBUILD_NUMBER=1
 
 This will download a large number of build dependencies, but should
-eventually end successfully.
+eventually end successfully.  The value for the BUILD_NUMBER is
+arbitrary, but it must be set for the build to complete successfully.
 
 ## Create Local Yum Repository
 
