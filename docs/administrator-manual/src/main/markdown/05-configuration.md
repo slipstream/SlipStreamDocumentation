@@ -7,7 +7,7 @@ the web interface.
 ## Predefined Accounts
 
 The following table describes the predefined accounts for a new
-SlipStream™ installation.
+SlipStream installation.
 
 -----------------------------------------------------------------
 User   Password    Description
@@ -28,7 +28,7 @@ do so log into the server with the "super" account.  After logging in,
 click on the "users" icon to see a list of users.  You should see a
 list of users like the following screenshot.
 
-![SlipStream™ Users Page](images/screenshot-users.png)
+![SlipStream Users Page](images/screenshot-users.png)
 
 Click on the username, then on the "edit" button.  Fill in the new
 password (twice) and click "save".  The password will be updated.  Do
@@ -38,12 +38,12 @@ have to provide the current password.
 ## Configuration Parameters
 
 Once the application is installed, a few parameters must be configured
-before SlipStream™ can be used.  To set these parameters click on the
+before SlipStream can be used.  To set these parameters click on the
 "wrench" icon at the top of the page.  You should see a configuration
 page like the following.  Fill in the fields with the correct
 information and click on the "save" button.
 
-![SlipStream™ Configuration Page](images/screenshot-cfg-support.png)
+![SlipStream Configuration Page](images/screenshot-cfg-support.png)
 
 More information for the setting the parameters for each section is
 below.  You can also get more information within the interface by
@@ -75,7 +75,7 @@ parameters.
 ## SSL Certificate
 
 Sensitive credentials are passed between a user's browser and the
-SlipStream™ server; the metadata describing machines and deployments
+SlipStream server; the metadata describing machines and deployments
 may also contain proprietary information and be similarly sensitive.
 Consequently, the server must be configured to use SSL. The metadata
 describing machines and deployments may also contain
@@ -92,7 +92,7 @@ the easiest to configure. These certificates are trusted by default in
 most browsers and by most java distributions. Follow the instructions of
 your chosen provider to obtain a signed certificate. Usually, this
 certificate is delivered in X509 form (`*.pem` file). To use this for
-the SlipStream™ server it must be converted either to PKCS12 for JKS
+the SlipStream server it must be converted either to PKCS12 for JKS
 format.
 
 To convert, the certificate and key into a PKCS12 format do the
@@ -124,24 +124,24 @@ file `/opt/slipstream/server/start.d/50-ssl.ini`.  (Replace values for
 _all_ of the password parameters!)
 
 After updating the certificate and configuration, restart the
-SlipStream™ server.
+SlipStream server.
 
 ### Using a Self-signed Certificate
 
 The advantage of a self-signed certificate is that it can be created
 with no cost. The disadvantage is that it is not trusted by default by
-web browsers nor by the java distributions. The SlipStream™ server and
+web browsers nor by the java distributions. The SlipStream server and
 client can be configured to trust the self-signed certificate. Web
 browsers will generally warn users that the certificate is not trusted,
 but give the user the option to ignore the warning.
 
 Follow the instructions found on the web to create a self-signed
 certificate.  Then use the same procedure to install this for the
-SlipStream™ server. 
+SlipStream server. 
 
 ## Examples
 
-A set of examples that demonstrate the main features of SlipStream™
+A set of examples that demonstrate the main features of SlipStream
 are installed with the `slipstream-client` package on the machine, but
 are not installed in the service by default. 
 

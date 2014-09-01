@@ -1,7 +1,7 @@
 
 # Cloud Connectors
 
-SlipStream™ supports a variety of different cloud providers through a
+SlipStream supports a variety of different cloud providers through a
 set of cloud connectors.  Generally the connectors for open source
 cloud providers are also open source; those for commercial providers
 are released under a proprietary license.
@@ -12,7 +12,7 @@ The StratusLab connector is configured by default.  All of the other
 connectors must be activated.
 
 In the configuration page, under the *SlipStream Basics* section, you
-specify which connectors you want the SlipStream™ server to load and
+specify which connectors you want the SlipStream server to load and
 activate.  The following table provides the names of the connector
 classes you must use to activate the corresponding connector.
 

@@ -1,7 +1,7 @@
 
 # Maintenance
 
-SlipStream™, as for every service, needs proper care and feeding!
+SlipStream, as for every service, needs proper care and feeding!
 This chapter provides some information about best practices for this
 service.
 
@@ -20,7 +20,7 @@ there are configuration or resource problems.
 
 ## Database Backups
 
-The real value of a SlipStream™ instance is in the defined images and
+The real value of a SlipStream instance is in the defined images and
 deployments.  These and a full history are kept in the HSQLDB
 database.  This database should be backed up regularly to avoid having
 any of this valuable information lost.
