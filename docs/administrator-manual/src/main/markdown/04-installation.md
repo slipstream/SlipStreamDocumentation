@@ -39,7 +39,7 @@ Once the yum system is setup, just install the package for the
 SlipStream server and the underlying database.  These packages will
 pull in all of the necessary dependencies.
 
-    $ yum install slipstream-nginx-proxy slipstream-server slipstream-hsqldb 
+    $ yum install slipstream-server-nginx-proxy slipstream-server slipstream-hsqldb 
 
 This installs the software for the proxy, SlipStream server, and SQL
 database.
