@@ -39,34 +39,23 @@ Once the yum system is setup, just install the package for the
 SlipStream server and the underlying database.  These packages will
 pull in all of the necessary dependencies.
 
-    $ yum install slipstream-server-nginx-proxy slipstream-server slipstream-hsqldb 
+    $ yum install -y \
+        slipstream-server \
+        slipstream-server-nginx-conf \
+        slipstream-hsqldb 
 
-This installs the software for the proxy, SlipStream server, and SQL
+This installs the software for the SlipStream server, proxy, and SQL
 database.
 
-The software for SlipStream will be installed in the `/opt/slipstream`
-directory and the configuration files will be in `/etc/slipstream`.
+The software for SlipStream will be installed in the
+`/opt/slipstream/server` directory and the configuration files will be
+in `/etc/slipstream`.
 
-The simplest deployment puts the database on the same machine as the
-SlipStream server.  However, it is also possible to place it on a
-separate server for high-availability deployments.  This is the reason
-that the database dependency is not included in the SlipStream
+The simplest deployment puts the server, proxy, and database on the
+same machine.  However other deployment configurations, such as those
+for high-availability, are supported.  This is the reason that the
+proxy and database dependencies are not included in the server
 package.
-
-## SSH public/private keys
-
-The SlipStream server uses SSH for secure communication between the
-orchestrator and user virtual machines. By default these are the root
-private (`$HOME/.ssh/id_rsa`) and public (`$HOME/.ssh/id_rsa.pub`)
-keys.  Ensure that these exist, or better, generate a separate key
-pair for use with SlipStream.
-
-To generate a new key pair, use the command:
-
-    $ ssh-keygen
-
-The parameters to indicate the key pair to use are found in the
-*SlipStream Advanced* configuration section of the web interface.
 
 ## Start Database
 
@@ -74,8 +63,7 @@ After this start the database:
 
     $ service hsqldb start
 
-The database files will be stored eventually in
-`/opt/slipstream/SlipStreamDB/`.
+The database files will be stored in `/opt/slipstream/SlipStreamDB/`.
 
 **NOTE: The startup script will indicate that the start failed, but
 the database is indeed running correctly.**
@@ -93,8 +81,11 @@ service initializes.
 
 The SlipStream server runs behind an nginx proxy.  All of the
 necessary configuration will have been installed with the above
-packages. However you may need to restart nginx after starting
-SlipStream.
+packages.  The nginx server will need to be started:
+
+    $ service nginx start
+
+if the server wasn't already running before the installation.
 
 The nginx configuration package will generate a self-signed
 certificate for the server if one doesn't already exist.  For a
@@ -107,7 +98,26 @@ installation.
 You should now be able to contact the SlipStream server with a web
 browser using HTTPS; the URL should be `https://your_machine/`. 
 You should be redirected to the login page that looks similar to
-the following screenshot.  If so, you are ready to configure the
-server.
+the following screenshot.
+
+NOTE: If you're using the generated self-signed certificate your
+browser may display a warning.  You'll have to manually accept this
+certificate to proceed.
+
+NOTE: The service is actually initialized only the first time it is
+accessed.  Because of this, the response to the first request may take
+some time (tens of seconds).
+
+If everything looks good, you are ready to configure the server and/or
+install cloud connectors.
 
 ![SlipStream Login Page](images/screenshot-login.png)
+
+## Cloud Connectors
+
+SlipStream provides a uniform interface to multiple cloud providers
+through a set of "cloud connectors".  You must also install the cloud
+connector packages for the clouds that you want to support through
+your SlipStream server.  See the Cloud Connector chapter for the
+additional dependencies and installation instructions for each
+connector.

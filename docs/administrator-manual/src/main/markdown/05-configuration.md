@@ -67,77 +67,40 @@ are set in the *SlipStream Support* section.
 
 On the configuration page, there is one section for each supported
 cloud.  If the type of cloud you want to use is not listed, then you
-will have to import the plugin for that cloud.
+will have to install the connector for that cloud.
 
-See the documentation for each connector for help on configuring its
-parameters.
+See the cloud connector chapter for the installation and
+configuration.
 
 ## SSL Certificate
 
 Sensitive credentials are passed between a user's browser and the
 SlipStream server; the metadata describing machines and deployments
-may also contain proprietary information and be similarly sensitive.
-Consequently, the server must be configured to use SSL. The metadata
-describing machines and deployments may also contain
+may also contain similarly sensitive information.  Consequently, the
+SlipStream proxy is configured to force the use of HTTPS.
 
 The server will initially start with a self-signed certificate that is
-included in the package.  You should either create a self-signed
-certificate for your host or better (and strongly recommended) use a
-commercial certificate signed by a well-known certificate authority.
+generated during the initial startup of the proxy.  For production
+deployment, use of a commercial certificate signed by a well-known
+certificate authority is very strongly recommended.
 
-### Using a Commercial Certificate
-
-A commercial certificate signed by a well-known certificate authority is
-the easiest to configure. These certificates are trusted by default in
-most browsers and by most java distributions. Follow the instructions of
-your chosen provider to obtain a signed certificate. Usually, this
-certificate is delivered in X509 form (`*.pem` file). To use this for
-the SlipStream server it must be converted either to PKCS12 for JKS
+To obtain a commercial certificate, follow the instructions of your
+chosen provider.  Most providers will deliver the certificate and key
+as a pair of files in the X509 format (`*.pem` files).  If not, you
+will need to convert the delivered certificate and key to the X509
 format.
 
-To convert, the certificate and key into a PKCS12 format do the
-following:
+To install your certificate with SlipStream, copy the certificate and
+key to the files `server.crt` and `server.key` in the
+`/etc/nginx/ssl/server.crt` directory, respectively.
 
-    $ openssl pkcs12 -in name.crt -inkey name.key -o name.p12
-    $ openssl pkcs12 -export -out name.p12 \
-        -inkey name.key \
-        -in name.crt \
-        -certfile ca-cert.pem 
+NOTE: The key must **not** be password protected. 
 
-The resulting file will contain both the certificate and key. Be sure to
-remember the password used to secure the PKCS12 file.
+NOTE: Both files should be visible only to the `root` account.  Change
+the permissions to `0400` for these files.
 
-To convert the PKCS12 file to JKS (Java Key Store) format, do the
-following:
-
-    $ keytool -cert name.crt -key name.key
-    $ keytool -v -importkeystore \
-        -srckeystore name.p12 -srcstoretype PKCS12 \
-        -destkeystore jetty.jks -deststoretype JKS 
-
-The resulting file will contain both the certificate and key. Be sure to
-remember the password used to secure the JKS file.
-
-The resulting keystore must be saved in the file
-`/opt/slipstream/etc/jetty.jks`.  You must provide the password in the
-file `/opt/slipstream/server/start.d/50-ssl.ini`.  (Replace values for
-_all_ of the password parameters!)
-
-After updating the certificate and configuration, restart the
-SlipStream server.
-
-### Using a Self-signed Certificate
-
-The advantage of a self-signed certificate is that it can be created
-with no cost. The disadvantage is that it is not trusted by default by
-web browsers nor by the java distributions. The SlipStream server and
-client can be configured to trust the self-signed certificate. Web
-browsers will generally warn users that the certificate is not trusted,
-but give the user the option to ignore the warning.
-
-Follow the instructions found on the web to create a self-signed
-certificate.  Then use the same procedure to install this for the
-SlipStream server. 
+After updating the certificate and configuration, restart the nginx
+server.
 
 ## Examples
 
