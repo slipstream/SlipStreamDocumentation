@@ -324,6 +324,8 @@ automatically in the path when running SlipStream™ scripts.  You have
 already seen in the RStudio example, how output parameters are defined
 and set.
 
+> **Note that runtime parameters have a size limit of 4096 characters.**
+
 To allow for coordination between services on different machines, the
 parameters can act as semaphores.  Specifically, if the `ss-get`
 command is invoked for a parameter and the parameter has not yet been
