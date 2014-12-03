@@ -48,4 +48,4 @@ morekeywords={__global__, __device__},  % CUDA specific keywords
 
 \usepackage{graphicx}
 
-\titlepic{\includegraphics[width=0.7\textwidth]{images/sixsq.png}}
+\titlepic{\includegraphics{images/sixsq.png}}
