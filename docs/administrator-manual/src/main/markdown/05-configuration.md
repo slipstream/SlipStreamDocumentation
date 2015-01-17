@@ -74,33 +74,85 @@ configuration.
 
 ## SSL Certificate
 
-Sensitive credentials are passed between a user's browser and the
-SlipStream server; the metadata describing machines and deployments
-may also contain similarly sensitive information.  Consequently, the
-SlipStream proxy is configured to force the use of HTTPS.
+The SlipStream proxy is configured to force the use of HTTPS to
+protect the transfer of sensitive information (e.g. the users cloud
+credentials) while in transit.
 
-The server will initially start with a self-signed certificate that is
-generated during the initial startup of the proxy.  For production
-deployment, use of a commercial certificate signed by a well-known
-certificate authority is very strongly recommended.
+The server will start with a self-signed certificate that is generated
+during the initial startup of the proxy.  Most web browsers will warn
+users about self-signed certificates and may require them to create
+security exceptions to access services with those certificates.
+Consequently, the generated certificate should only be used for
+initial testing.
 
-To obtain a commercial certificate, follow the instructions of your
-chosen provider.  Most providers will deliver the certificate and key
-as a pair of files in the X509 format (`*.pem` files).  If not, you
-will need to convert the delivered certificate and key to the X509
-format.
+For production deployments, use of a commercial certificate signed by
+a well-known certificate authority is very strongly recommended.  This
+avoids the security warnings from browsers and makes user access to
+your SlipStream service easier and more secure.
 
-To install your certificate with SlipStream, copy the certificate and
-key to the files `server.crt` and `server.key` in the
-`/etc/nginx/ssl/server.crt` directory, respectively.
+### Obtaining a Commercial Certificate
 
-NOTE: The key must **not** be password protected. 
+This section describes the typical process and commands for obtaining
+a commercial certificate.  The process may be slightly different for
+your chosen certificate provider, so always check your provider's
+documentation. 
 
-NOTE: Both files should be visible only to the `root` account.  Change
-the permissions to `0400` for these files.
+Before a commercial provider can sign your certificate, you must
+generate a private key and a certificate signing request (CSR).  On
+Linux systems, the following command will generate both:
 
-After updating the certificate and configuration, restart the nginx
-server.
+    $ openssl req -nodes \
+                  -newkey rsa:2048 \
+                  -keyout server.key \
+                  -out server.csr
+
+The `-nodes` option is important to ensure that the key is **not**
+created with a password.  This command with then prompt you for the
+fields of the certificate's Distinguished Name (DN).  The Common Name
+(CN) in the DN **must** match the DNS name of your server.
+
+You must then send the CSR to your certificate provider.  This is
+usually done via a web form or an email.  Your provider will then
+return a signed certificate and optionally a bundle of certificates
+that were used to sign your certificate. 
+
+Verify that your certificate is in the X509 (`*.pem`) format.  The
+following command should print the certificate information, if it is
+in the correct format:
+
+    $ openssl x509 -in server.crt -noout -text
+
+If it does not, then you will need to use the `openssl` command to
+change the format of the certificate.  
+
+If your provider also returned a bundle of certificates used to sign
+your certificate, then you will need to concatenate your certificate
+and the certificates within the bundle.
+
+    $ cat myserver.crt bundle.crt > server.crt
+
+Change the names as appropriate.  **Your server certificate must be
+first within the concatenated file.**
+
+### Installing Your Certificate
+
+To install your certificate with SlipStream, copy the certificate (or
+concatenated file with the server certificate and the bundled
+certificates) and key to the files `server.crt` and `server.key` in
+the `/etc/nginx/ssl/server.crt` directory, respectively. **Both files
+should be visible only to the `root` account.** Change the permissions
+to `0400` for these files.
+
+After installing the certificate, restart the nginx server.  Verify
+that the certificate presented by the server contains the correct
+information.  The easiest way to do this is to connect to the
+SlipStream server with a browser and then click on the "lock" icon to
+view the certificate information.  This is slightly different in each
+browser.
+
+The nginx installation manual contains complete information for
+[configuring the proxy for HTTPS][nginx-https].  This documentation is
+useful in case you run into errors when starting the proxy.
 
 ## Examples
 
@@ -118,3 +170,6 @@ To add those examples to the service, run the command:
 replacing the password and endpoint with the values for your service.
 This will upload all of the examples under the "sixsq" account.  These
 will be visible in the "examples" project on the welcome page.
+
+
+[nginx-https]: http://nginx.org/en/docs/http/configuring_https_servers.html 
