@@ -1,5 +1,8 @@
 *~
 target
+_site/
+
+Gemfile.lock
 
 pom.xml.next
 pom.xml.releaseBackup

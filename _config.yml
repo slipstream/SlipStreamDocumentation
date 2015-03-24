@@ -1,0 +1,5 @@
+markdown: rdiscount
+pygments: true
+permalink: /:title.html
+name: "JDoc Example"
+baseurl: /jdoc-example
