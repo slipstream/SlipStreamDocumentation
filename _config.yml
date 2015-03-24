@@ -4,4 +4,4 @@ permalink: /:title.html
 name: "SlipStream Documentation"
 baseurl: /SlipStreamDocumentation
 encoding: utf-8
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md', '*~']
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md', 'target']
