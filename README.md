@@ -50,13 +50,17 @@ own branch for changes.  **Do not make any changes directly on the
 `gh-pages` branch.**
 
 When updating or adding sources, please:
- - Ensure the files remain as plain text in UTF-8 encoding.
+ - Ensure the files remain as plain text in US-ASCII encoding.
  - Use Unix line endings (and not Windows).
  - Use spaces and not tabs.
  - Wrap lines at column 72 and flow text.
 
 Using a consistent style in text format makes it easier to maintain
 the documentation.
+
+NOTE: Jekyll should be able to handle UTF-8 encodings, but 
+unfortunately doesn't seem to do so correctly.  This needs to be
+investigated.
 
 Test Changes
 ------------
