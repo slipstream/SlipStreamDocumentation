@@ -1,5 +1,5 @@
 markdown: rdiscount
-pygments: true
+highlighter: pygments
 permalink: /:title.html
 name: "JDoc Example"
 baseurl: /jdoc-example
