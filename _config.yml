@@ -1,5 +1,6 @@
 markdown: rdiscount
 highlighter: pygments
 permalink: /:title.html
-name: "JDoc Example"
-baseurl: /jdoc-example
+name: "SlipStream Documentation"
+baseurl: /SlipStreamDocumentation
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md']
