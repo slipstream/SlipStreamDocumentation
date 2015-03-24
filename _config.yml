@@ -3,4 +3,5 @@ highlighter: pygments
 permalink: /:title.html
 name: "SlipStream Documentation"
 baseurl: /SlipStreamDocumentation
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md']
+encoding: utf-8
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md', '*~']
