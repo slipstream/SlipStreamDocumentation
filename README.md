@@ -78,7 +78,7 @@ $ bundle exec jekyll serve
 ```
 The updated documentation will then appear on your local machine at:
 ```
-http://localhost:4000/SlipStreamDocumentation
+http://localhost:4000/
 ```
 Simply point your browser to that URL.  Recent versions of Jekyll
 (v2.4+) will watch for changes in the sources and automatically update
@@ -107,6 +107,13 @@ $ rake
 This will compile the site with Jekyll and then push all of the
 changes into the `gh-pages` branch.  From there, the updates will be
 published by GitHub Pages.
+
+You'll probably need to checkout the JDoc submodule again after the 
+site has been published.  Just run:
+```
+$ git submodule update
+```
+to bring the JDoc plugin back.
 
 
 [docs]: http://slipstream.github.io/SlipStreamDocumentation
