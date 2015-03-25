@@ -2,7 +2,12 @@
 title: SlipStream API
 ---
 
-The SlipStream service exposes a [compete REST API][api] which can
-easily be used from any programming language (or even from `curl`!). 
+SlipStream uses a Resource Oriented Architecture (ROA) and exposes a
+complete REST API.  The service's web interface directly uses the
+underlying SlipStream API.
+
+The [complete API documentation][api] of the SlipStream API is
+available from a separate server.
+
 
 [api]: http://slipstream.github.io/SlipStreamDocumentationAPI/
