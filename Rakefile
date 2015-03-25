@@ -22,7 +22,7 @@ require 'rubygems'
         system "git checkout -B gh-pages"
         system "rm -rf *"
         system "mv #{tmp}/* ."
-        system "mv _CNAME CNAME"
+        system "mv inactive_CNAME CNAME"
         message = "Site updated at #{Time.now.utc}"
         system "git add ."
         system "git commit -am #{message.shellescape}"
