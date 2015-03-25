@@ -2,6 +2,6 @@ markdown: kramdown
 highlighter: pygments
 permalink: /:title.html
 name: "SlipStream Documentation"
-baseurl: /SlipStreamDocumentation
+baseurl: ""
 encoding: utf-8
 exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md', 'target']
