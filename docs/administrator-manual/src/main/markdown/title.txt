@@ -1,3 +1,0 @@
-% SlipStream Administrator Manual
-% SixSq Sarl
-% Version ${project.version}
