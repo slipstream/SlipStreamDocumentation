@@ -1,6 +1,0 @@
-% SlipStream User Guide and Tutorial
-% SixSq Sarl
-% Version ${project.version}
-
-
-

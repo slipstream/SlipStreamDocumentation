@@ -10,4 +10,4 @@ The [complete API documentation][api] of the SlipStream API is
 available from a separate server.
 
 
-[api]: http://slipstream.github.io/SlipStreamDocumentationAPI/
+[api]: http://ssapi.sixsq.com

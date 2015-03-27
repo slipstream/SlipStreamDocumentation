@@ -1,6 +1,0 @@
-% Terms of Service
-% SixSq Sarl
-% Version ${project.version}
-
-
-
