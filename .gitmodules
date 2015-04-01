@@ -1,3 +1,4 @@
 [submodule "_plugins/jdoc"]
 	path = _plugins/jdoc
 	url = https://github.com/slipstream/jdoc.git
+	branch = master
