@@ -10,7 +10,7 @@ title: Release Notes
 [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.5-community...master)  
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.5-community...master)  
 
-## v2.5 - Mars 20th, 2015
+## v2.5 - 20 March 2015
 
 ### New features and bug fixes from v2.4.2
 
@@ -35,41 +35,49 @@ title: Release Notes
 
 ### Migration
 
-**IMPORTANT: v2.5 requires data migration from v2.4.2. The following steps MUST be followed:**
- 1. Upgrade SlipStream
- 2. Ensure SlipStream is running
- 3. Execute the following python script *012_edit_save_all_users.py* from the directory */opt/slipstream/server/migrations/*
+**IMPORTANT: v2.5 requires data migration from v2.4.2. The following
+  steps MUST be followed:**
+
+  1. Upgrade SlipStream
+  2. Ensure SlipStream is running
+  3. Execute the following python script *012_edit_save_all_users.py*
+     from the directory */opt/slipstream/server/migrations/*
  
- ```bash
- cd /opt/slipstream/server/migrations/
- python 012_edit_save_all_users.py <username> <password>
- ```
+     ```bash
+     cd /opt/slipstream/server/migrations/
+     python 012_edit_save_all_users.py <username> <password>
+     ```
     `<username>` and `<password>` have to be credentials of a SlipStream administrator.
+
  4. Stop SlipStream
  
- ```bash
- service slipstream stop
- ```
+    ```bash
+    service slipstream stop
+    ```
+
  5. Stop HSQLDB (or your DB engine)
  
- ```bash
- java -jar /opt/hsqldb/lib/sqltool.jar --inlineRc=url=jdbc:hsqldb:hsql://localhost:9001/slipstream,user=sa,password= --sql 'SHUTDOWN;' 
- ```
+     ```bash
+     java -jar /opt/hsqldb/lib/sqltool.jar --inlineRc=url=jdbc:hsqldb:hsql://localhost:9001/slipstream,user=sa,password= --sql 'SHUTDOWN;' 
+     ```
+
  6. Execute the following SQL script */opt/slipstream/server/migrations/013_convert_to_keep_running.sql*:
  
- ```bash
- java -jar /opt/hsqldb/lib/sqltool.jar --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/013_convert_to_keep_running.sql
- ```
+     ```bash
+     java -jar /opt/hsqldb/lib/sqltool.jar --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/013_convert_to_keep_running.sql
+     ```
+
  7. Start HSQLDB (or your DB engine)
  
- ```bash
- service hsqldb start # ignore start error
- ```
+    ```bash
+    service hsqldb start # ignore start error
+    ```
+
  8. Start SlipStream
  
- ```bash
- service slipstream start
- ```
+    ```bash
+    service slipstream start
+    ```
 
 ### Commits
 
@@ -79,7 +87,7 @@ title: Release Notes
 [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.4.2...v2.5-community)  
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.4.2...v2.5-community)  
 
-## v2.4.2 - February 28th, 2015
+## v2.4.2 - 28 February 2015
 
 ### New features and bug fixes from v2.4.0
 
@@ -97,11 +105,13 @@ title: Release Notes
 
 ### Migration
 
-**IMPORTANT: v2.4.2 requires data migration from v2.4.0. The following steps MUST be followed:**
+**IMPORTANT: v2.4.2 requires data migration from v2.4.0. The following
+  steps MUST be followed:**
+
  1. Stop SlipStream
  2. Stop HSQLDB (or your DB engine)
- 3. Execute the following SQL files located in /opt/slipstream/server/migrations:
-  * 011_add_maxprovisioningfailures_in_node.sql
+ 3. Execute the following SQL files located in `/opt/slipstream/server/migrations`:
+  * `011_add_maxprovisioningfailures_in_node.sql`
  4. Start HSQLDB (or your DB engine)
  5. Start SlipStream**
 
@@ -123,17 +133,19 @@ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:fi
 [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.4.0...v2.4.2)  
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.4.0...v2.4.2)  
 
-## v2.4.1 - February 20th, 2015
+## v2.4.1 - 20 February 2015
 
-This release is deprecated because of problems discovered after deployment.  Use the v2.4.2 release.
+This release is deprecated because of problems discovered after
+deployment.  Use the v2.4.2 release.
 
-## v2.4.0 - January 13th, 2015
+## v2.4.0 - 13 January 2015
 
 ### New features and bug fixes
 
 - New UI based on [Bootstrap](http://getbootstrap.com/)
 - Added export of users as CSV
-- Image Run will attach extra disk if defined in cloud parameters and the action is supported by the cloud connector
+- Image Run will attach extra disk if defined in cloud parameters and
+  the action is supported by the cloud connector
 - Minor updates and fixes in StratusLab and StratusLabIter connector
 
 ### Migration
@@ -148,12 +160,12 @@ No DB migration (from v2.3.9) is required.
 [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.3.9...v2.4.0)  
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.3.9...v2.4.0)  
 
-## v2.3.9 - December 19th, 2014
+## v2.3.9 - 19 December 2014
 
 ### New features and bug fixes
 
 - Bugfix of the service catalog on the welcome page.
-- Improvements in documentation around traoubleshooting of the user deployemnts.
+- Improvements in documentation around traoubleshooting of the user deployments.
 
 ### Commits
 
@@ -163,15 +175,17 @@ No DB migration (from v2.3.9) is required.
 [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.3.8...v2.3.9)  
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.3.8...v2.3.9)  
 
-## v2.3.8 - December 17th, 2014
+## v2.3.8 - 17 December 2014
 
 ### Migration procedure
 
-**IMPORTANT: v2.3.8 requires data migration from v2.3.7. The following steps MUST be followed:**
+**IMPORTANT: v2.3.8 requires data migration from v2.3.7. The following
+  steps MUST be followed:**
+
  1. Stop SlipStream
  2. Stop HSQLDB (or your DB engine)
- 3. Execute the following SQL files located in /opt/slipstream/server/migrations:
-  * 010_varchar_size_fix_3.sql
+ 3. Execute the following SQL files located in `/opt/slipstream/server/migrations`:
+  * `010_varchar_size_fix_3.sql`
  4. Start HSQLDB (or your DB engine)
  5. Start SlipStream**
 
@@ -200,13 +214,16 @@ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:fi
 [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/SlipStreamConnectors-2.3.7...v2.3.8)  
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.7...v2.3.8)  
 
-## v2.3.7 - November 7th, 2014
+## v2.3.7 - 7 November 2014
 
 ### New features and bug fixes
 
-- Refactored cloud connector base classes to simplify connector development and maintenance on both Java and Python parts.
+- Refactored cloud connector base classes to simplify connector
+  development and maintenance on both Java and Python parts.
 - EC2 connector: migrated to the AWS python-boto 2.32.
-- StratusLab connector: RPM name changed - `slipstream-connector-stratuslab-python` obsoletes `stratuslab-slipstream-downloads`.
+- StratusLab connector: RPM name changed -
+  `slipstream-connector-stratuslab-python` obsoletes
+  `stratuslab-slipstream-downloads`.
 - Bug fixes.
 
 ### Migration
@@ -222,7 +239,7 @@ No DB migration (from v2.3.6) is required.
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.6...SlipStreamDocumentation-2.3.7)
 
 
-## v2.3.6 - October 29th, 2014
+## v2.3.6 - 29 October 2014
 
 ### New features and bug fixes
 
@@ -242,16 +259,20 @@ No DB migration (from v2.3.5) is required.
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.5...SlipStreamDocumentation-2.3.6)  
 
 
-## v2.3.5 - October 23th, 2014
+## v2.3.5 - 23 October 2014
 
 ### New features and bug fixes
 
 - Removed autocreation of the users test and sixsq.
 - Improvement of the logging.
-- Fixed a bug where the ownership of a module can be changed implicitly when editing the module (#14).
-- Fixed a bug in the orchestrator that can generate a error in a mutable run (#15).
-- Fixed a bug in the StratusLab connector that prevent to Run an Image with an extra disk (#16).
-- Fixed a bug in the vCloud connector that prevent it to work with SlipStream v2.3.4+ (#17).
+- Fixed a bug where the ownership of a module can be changed
+  implicitly when editing the module (#14).
+- Fixed a bug in the orchestrator that can generate a error in a
+  mutable run (#15).
+- Fixed a bug in the StratusLab connector that prevent to Run an Image
+  with an extra disk (#16).
+- Fixed a bug in the vCloud connector that prevent it to work with
+  SlipStream v2.3.4+ (#17).
 - Added support for building an image with ss-execute.
 
 ### Migration
@@ -266,16 +287,18 @@ No DB migration (from v2.3.4) is required.
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.4...SlipStreamDocumentation-2.3.5)  
 
 
-## v2.3.4 - October 3rd, 2014
+## v2.3.4 - 3 October 2014
 
 ### Migration procedure
 
-**IMPORTANT: v2.3.4 requires data migration from v2.3.0. The following steps MUST be followed:**
+**IMPORTANT: v2.3.4 requires data migration from v2.3.0. The following
+  steps MUST be followed:**
+
  1. Stop SlipStream
  2. Stop HSQLDB (or your DB engine)
- 3. Execute the following SQL files located in /opt/slipstream/server/migrations:
-  * 008_runtimeparameter_new_name_column.sql
-  * 009_embedded_authz_in_module.sql
+ 3. Execute the following SQL files located in `/opt/slipstream/server/migrations`:
+  * `008_runtimeparameter_new_name_column.sql`
+  * `009_embedded_authz_in_module.sql`
  4. Start HSQLDB (or your DB engine)
  5. Start SlipStream**
 
@@ -296,11 +319,15 @@ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:fi
 - All server-side connectors are now extracted in individual packages.
 - Added per-connector config files.
 - Improved XML importation.
-- Improved error reporting from SlipStream Clients to the SlipStream Server.
+- Improved error reporting from SlipStream Clients to the SlipStream
+  Server.
 - Increase the maximal size of runtime parameter values to 4096 bytes.
-- Fixed a bug which prevent to get the runtimeparameters 'ids' and 'multiplicity' with ss-get.
-- Fixed a bug where a failure in a deployment script might not be detected.
-- Fixed a bug where deployment refuse to start if the cloudservice is set to 'default'.
+- Fixed a bug which prevent to get the runtimeparameters 'ids' and
+  'multiplicity' with ss-get.
+- Fixed a bug where a failure in a deployment script might not be
+  detected.
+- Fixed a bug where deployment refuse to start if the cloudservice is
+  set to 'default'.
 - Fixed a bug of circular reference in modules.
 - Updated the documentation.
 
@@ -312,22 +339,23 @@ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:fi
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.0...SlipStreamDocumentation-2.3.4)  
 
 
-## v2.3.0 - August 14th, 2014
+## v2.3.0 - 14 August 2014
 
 ### New features and bug fixes
 
 - Mutable Run.
 - Some UI improvements related to the mutable run.
 - SlipStream Client is now tolerant to network fault.
-- Refactored the SlipStream Client. Connectors needs to be upgraded to work with this version.
-- Improved the security of all resources by generating a restricted cookie for each Run.
+- Refactored the SlipStream Client. Connectors needs to be upgraded to
+  work with this version.
+- Improved the security of all resources by generating a restricted
+  cookie for each Run.
 - When Metering is disabled the data collection is now also disabled.
 - Overall performance improvements.
 
 ### Migration
 
 No DB migration (from v2.2.5) is required.
-
 
 ### Commits
 
@@ -337,17 +365,21 @@ No DB migration (from v2.2.5) is required.
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.5...SlipStreamDocumentation-2.3.0)  
 
 
-## v2.2.5 - June 18th, 2014
+## v2.2.5 - 18 June 2014
 
 ### New features and bug fixes
 
 - Some UI improvements related to the new state machine.
-- In the UI when a Run page is loaded the delay of 10 seconds before the first update of the overview section was removed.
-- Added the ability for privileged users to see the vmstate in the Runs of other users.
+- In the UI when a Run page is loaded the delay of 10 seconds before
+  the first update of the overview section was removed.
+- Added the ability for privileged users to see the vmstate in the
+  Runs of other users.
 - Improved the migration of the garbage collector.
 - Improved the logging and the error handling of describeInstance.
 - Fixed an HTTP 500 when there is no user-agent in the request.
-- Fixed a bug where when you try to build an image, run a deployment or run an image, the latest version is always used even if you were not on the latest version when creating the Run.
+- Fixed a bug where when you try to build an image, run a deployment
+  or run an image, the latest version is always used even if you were
+  not on the latest version when creating the Run.
 
 
 ### Commits
@@ -358,14 +390,17 @@ No DB migration (from v2.2.5) is required.
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.4...SlipStreamDocumentation-2.2.5)  
 
 
-## v2.2.4 - June 13th, 2014
+## v2.2.4 - 13 June 2014
 
 ### Migration procedure
 
-**IMPORTANT: v2.2.4 requires data migration from v2.2.3. The following steps MUST be followed:**
+**IMPORTANT: v2.2.4 requires data migration from v2.2.3. The following
+  steps MUST be followed:**
+
  1. Stop SlipStream
  2. Stop HSQLDB (or your DB engine)
- 3. Execute the SQL files located in /opt/slipstream/server/migrations (files 006 and 007) 
+ 3. Execute the SQL files located in `/opt/slipstream/server/migrations`
+    (files 006 and 007)
  4. Start HSQLDB (or your DB engine)
  5. Start SlipStream**
 
@@ -379,9 +414,11 @@ java -jar /opt/hsqldb/lib/sqltool.jar --debug --autoCommit --inlineRc=url=jdbc:h
 - New State Machine.
 - New logic for the garbage collector.
 - Auto-discovery of connectors.
-- Fixed a bug where module parameters disappear of the old version when a new version is saved.
+- Fixed a bug where module parameters disappear of the old version
+  when a new version is saved.
 - Improved some RuntimeParameters.
-- Fixed a bug where SSH login with keys doesn't work on images with SELinux enabled.
+- Fixed a bug where SSH login with keys doesn't work on images with
+  SELinux enabled.
 - Improved messages displayed during a Build.
 - Added target script termination when abort flag is raised.
 - Improved the detection of VMs not killed in a final state.
@@ -394,17 +431,19 @@ java -jar /opt/hsqldb/lib/sqltool.jar --debug --autoCommit --inlineRc=url=jdbc:h
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.3...SlipStreamDocumentation-2.2.4)  
 
 
-## v2.2.3 - June 2nd, 2014
+## v2.2.3 - 2 June 2014
 
 ### New features and bug fixes
 
 - Improved error handling of CloudStack connector
 - Fixed a bug with SSH (paramiko)
 - Updated RPM packaging of SlipStream client
-- Updated xFilesFactor of graphite.  For local update run the following 
-```bash
-for f in $(find /var/lib/carbon/whisper/slipstream/ -name *.wsp); do whisper-resize $f --xFilesFactor=0 --aggregationMethod=max 10s:6h 1m:7d 10m:5y; done
-```
+- Updated xFilesFactor of graphite.  For local update run the
+  following
+
+  ```bash
+  for f in $(find /var/lib/carbon/whisper/slipstream/ -name *.wsp); do whisper-resize $f --xFilesFactor=0 --aggregationMethod=max 10s:6h 1m:7d 10m:5y; done
+  ```
 
 ### Commits
 
@@ -413,13 +452,12 @@ for f in $(find /var/lib/carbon/whisper/slipstream/ -name *.wsp); do whisper-res
 [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.2...SlipStreamClient-2.2.3)  
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.2...SlipStreamDocumentation-2.2.3)  
 
-
-
-## v2.2.2 - May 27th, 2014
+## v2.2.2 - 27 May 2014
 
 ### New features and bug fixes
 
-- Updated CloudStack connector to use the new TasksRunner when terminating instances
+- Updated CloudStack connector to use the new TasksRunner when
+  terminating instances
 - Force draw on usage panel, since now default section
 
 ### Commits
@@ -430,28 +468,35 @@ for f in $(find /var/lib/carbon/whisper/slipstream/ -name *.wsp); do whisper-res
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.1...SlipStreamDocumentation-2.2.2)  
 
 
-## v2.2.1 - May 26th, 2014
+## v2.2.1 - 26 May 2014
 
 ### Migration procedure
 
-**IMPORTANT: v2.2.1 requires data migration from v2.2.0. The following steps MUST be followed:**
+**IMPORTANT: v2.2.1 requires data migration from v2.2.0. The following
+  steps MUST be followed:**
+
  1. Stop SlipStream
  2. Stop HSQLDB (or your DB engine)
- 3. Execute the SQL files located in /opt/slipstream/server/migrations (file 005)
+ 3. Execute the SQL files located in `/opt/slipstream/server/migrations`
+    (file 005)
  4. Start HSQLDB (or your DB engine)
  5. Start SlipStream**
 
 ### New features and bug fixes
 
-- Multi-thread bulk VM creation can be limited for clouds that can't cope
+- Multi-thread bulk VM creation can be limited for clouds that can't
+  cope
 - Added support for CloudStack Advanced Zones as a sub-connector
 - Fix issues related to API doc and xml processing
-- Made c3p0 optional (see jar-persistence/src/main/resources/META-INF/persistence.xml for details)
+- Made c3p0 optional (see
+  jar-persistence/src/main/resources/META-INF/persistence.xml for
+  details)
 - Add persistence support for MySQL and Postgres
 - Update the OpenStack connector to use the new OpenStack CLI
 - Update poms following SlipStreamParent -> SlipStream git repo rename
 - Upgrade c3p0 version
-- Now using Apache HTTP client connector unstead of default Restlet Client connector
+- Now using Apache HTTP client connector unstead of default Restlet
+  Client connector
 - Streamline log entries for asynchronous activity
 - Upgrade Restlet to v2.2.1
 - Metering update communicate via temporary file instead of stdin
@@ -467,20 +512,24 @@ for f in $(find /var/lib/carbon/whisper/slipstream/ -name *.wsp); do whisper-res
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.0...SlipStreamDocumentation-2.2.1)  
 
 
-## v2.2.0 - May 10th, 2014
+## v2.2.0 - 10 May 2014
 
 ### Migration procedure
 
-**IMPORTANT: v2.2.0 requires data migration from v2.1.x. The following steps MUST be followed:**
+**IMPORTANT: v2.2.0 requires data migration from v2.1.x. The following
+  steps MUST be followed:**
+
  1. Stop SlipStream
  2. Stop HSQLDB (or your DB engine)
- 3. Execute the SQL files located in /opt/slipstream/server/migrations (files 001..004)
+ 3. Execute the SQL files located in `/opt/slipstream/server/migrations`
+    (files 001..004)
  4. Start HSQLDB (or your DB engine)
  5. Start SlipStream**
 
 ### New features and bug fixes
 
-- Fixed performance issue under heavy load due to HashMap causing infinite loop
+- Fixed performance issue under heavy load due to HashMap causing
+  infinite loop
 - Wrapping parameters of Parameterized into ConcurrentHashMap
 - Improved asynchronious behaviour
 - Improved metering feature
