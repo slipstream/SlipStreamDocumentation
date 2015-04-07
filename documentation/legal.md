@@ -2,7 +2,7 @@
 title: Legal
 ---
 
-## Copyright
+# Copyright
 
 Copyright (c) 2015, [SixSq Sarl][sixsq].
 
@@ -10,7 +10,7 @@ SixSq Sarl is the copyright holder for both the SlipStream software
 and documentation.  Use of the software and documentation are subject
 to the defined license terms.
 
-## Trademarks
+# Trademarks
 
 "SlipStream", "SixSq", "NuvlaBox", the SlipStream logo, SixSq logo,
 and NuvlaBox logo are trademarks or registered trademarks of SixSq
@@ -20,7 +20,7 @@ The SlipStream trademark and logo can be used only with unmodified
 copies of the SlipStream software.  All other trademarks and logos can
 be used only with explicit written permission from SixSq Sarl.
 
-## Software Licenses
+# Software Licenses
 
 The Community Edition of SlipStream is released under the [Apache 2.0
 license][apache2].  The source code can be found within the
@@ -29,7 +29,7 @@ license][apache2].  The source code can be found within the
 The Enterprise Edition of SlipStream is released only under a paid,
 proprietary license.
 
-## Documentation License
+# Documentation License
 
 The SlipStream documentation is licensed under a [Creative Commons
 Attribution-NonCommercial-NoDerivs 3.0 Unported License][cc-license].
