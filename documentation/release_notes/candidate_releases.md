@@ -28,11 +28,11 @@ No migration is required from v2.6 to v2.6.1.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.5...v2.6-community)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.5...v2.6-community)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.5...v2.6-community)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.5...v2.6-community)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.5...v2.6-community)
+[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.6-community...v2.6.1-community)  
+[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.6-community...v2.6.1-community)  
+[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.6-community...v2.6.1-community)  
+[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.6-community...v2.6.1-community)  
+[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.6-community...v2.6.1-community)
 
 ## v2.6 (candidate) - 2 April 2015
 
@@ -73,11 +73,11 @@ No migration is required from v2.5 to v2.6.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.5...v2.6-community)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.5...v2.6-community)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.5...v2.6-community)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.5...v2.6-community)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.5...v2.6-community)  
+[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.5-community...v2.6-community)  
+[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.5-community...v2.6-community)  
+[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.5-community...v2.6-community)  
+[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.5-community...v2.6-community)  
+[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.5-community...v2.6-community)  
 
 ## v2.5 (candidate) - 20 March 2015
 
