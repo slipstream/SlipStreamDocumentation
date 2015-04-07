@@ -27,9 +27,9 @@ must be cloned locally.  To make this process easier, we've created a
 
 From the command line (or from your graphical git client), checkout
 the bootstrap repository.  The command for this is:
-```
-$ git clone https://github.com/slipstream/SlipStreamBootstrap
-```
+
+    $ git clone https://github.com/slipstream/SlipStreamBootstrap
+
 This is a public GitHub URL, so you should be able to clone the
 repository from here either with or without a GitHub account.
 
@@ -38,10 +38,10 @@ repository from here either with or without a GitHub account.
 Once you've checked out the SlipStreamBootstrap repository, descend
 into the root of that repository.  From there, you can then use maven
 to clone all of the SlipStream repositories.
-```
-$ cd SlipStreamBootstrap
-$ mvn generate-sources
-```
+
+    $ cd SlipStreamBootstrap
+    $ mvn generate-sources
+
 All of the SlipStream component repositories will be cloned in the
 same directory.  The checkout by default will be at the HEAD of the
 master branch.  All of the repositories start with "SlipStream".
@@ -51,18 +51,18 @@ master branch.  All of the repositories start with "SlipStream".
 The above procedure will use the GitHub developer URLs, which require a
 GitHub account.  **If you do not have a GitHub account**, then use the
 command:
-```
-$ mvn -P public generate-sources
-```
+
+    $ mvn -P public generate-sources
+
 instead.  This uses the public URLs for the repositories.
 
 ## Branches or Tags
 
 By default, the **master** branch will be checked out.  If you want a
 different branch or tag, then use the following command:
-```
-$ mvn -Dslipstream.version.default=master generate-sources
-```
+
+    $ mvn -Dslipstream.version.default=master generate-sources
+
 setting the value of "master" to the desired branch or tag.  This will
 consistently use the same branch or tag for all components.  The tags
 for candidate and stable releases look like "v2.5-community".

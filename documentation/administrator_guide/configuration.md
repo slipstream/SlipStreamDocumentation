@@ -11,19 +11,17 @@ the web interface.
 The following table describes the predefined accounts for a new
 SlipStream installation.
 
------------------------------------------------------------------
-User   Password    Description
------  ----------  ----------------------------------------------
-super  supeRsupeR  The initial administrator account for the 
-                   service.  This account can modify the server 
-                   configuration and all modules.
-
-sixsq  siXsQsiXsQ  Owner of pre-defined images and tutorials that
-                   are "public" and available to all authenticated
-                   users.
-
-test   tesTtesT    A test account with standard privileges.
------------------------------------------------------------------
+| User| Password   | Description                                      |
+|:----|:-----------|:-------------------------------------------------|
+|super| supeRsupeR |  The initial administrator account for the       |
+|     |            |  service.  This account can modify the server    | 
+|     |            |  configuration and all modules.                  |
+|     |            |                                                  |
+|sixsq| siXsQsiXsQ |  Owner of pre-defined images and tutorials that  |
+|     |            |  are "public" and available to all authenticated |
+|     |            |  users.                                          |
+|     |            |                                                  |
+|test | tesTtesT   |  A test account with standard privileges.        |
 
 **The passwords for these accounts should be changed immediately.** To
 do so log into the server with the "super" account.  After logging in,
@@ -34,8 +32,10 @@ list of users like the following screenshot.
 
 Click on the username, then on the "edit" button.  Fill in the new
 password (twice) and click "save".  The password will be updated.  Do
-this for all three accounts.  Note: For the "super" account you will
-have to provide the current password.
+this for all three accounts.
+
+> Note that for the "super" account you will have to provide the
+> current password.
 
 ## Configuration Parameters
 

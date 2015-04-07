@@ -25,10 +25,8 @@ We're going to assume you're running OS X with [Homebrew] and
 [easy_install] available.  In this case, all of the necessary
 dependencies can be installed with:
 
-```
-$ sudo easy_install pip
-$ sudo pip install nose coverage paramiko mock pylint
-```
+    $ sudo easy_install pip
+    $ sudo pip install nose coverage paramiko mock pylint
 
 These dependencies are needed to run the unit tests for the python
 code. 
@@ -47,10 +45,8 @@ machine to use the [EPEL 6 package repository][epel].
 EPEL provides an RPM to do the configuration.  Just download the RPM
 and install it with `yum`.
 
-```
-$ wget -nd <URL>
-$ yum install -y <downloaded RPM>
-```
+    $ wget -nd <URL>
+    $ yum install -y <downloaded RPM>
 
 You can find the URL and package name via the information in the "How
 can I use these extra packages?" section on the [EPEL welcome
@@ -63,9 +59,7 @@ build.
 
 A command like:
 
-```
-$ yum install -y [packages]
-```
+    $ yum install -y [packages]
 
 will install all of the listed packages.
 
@@ -87,9 +81,7 @@ SlipStream code uses options and features that require more recent
 versions than those packaged for CentOS 6.  The following table
 provides details.  Use the command:
 
-```
-$ pip install nose coverage paramiko
-```
+    $ pip install nose coverage paramiko
 
 to install all of these packages.
 
@@ -107,10 +99,8 @@ environment to make the `mvn` command visible.
 Once you have downloaded and unpacked Maven, you can setup the
 environment with:
 
-```
-$ export MAVEN_HOME=<installation directory>/apache-maven-3.2.3
-$ export PATH=$PATH:$MAVEN_HOME/bin
-```
+    $ export MAVEN_HOME=<installation directory>/apache-maven-3.2.3
+    $ export PATH=$PATH:$MAVEN_HOME/bin
 
 The `mvn` command should now be visible.  The software will build with
 any maven version later than 3.0.2.
@@ -122,15 +112,58 @@ components.  To perform the full build, just drop into the
 "SlipStream" repository that you've checked out and perform the usual
 maven dance:
 
-```
-$ cd SlipStream
-$ mvn clean install
-```
+    $ cd SlipStream
+    $ mvn clean install
 
 This command will build and test all of the components.  If you wish
 to skip the tests, you can add the option `-DskipTests` to the maven
 command line.
 
+# Create Local Yum Repository
+
+If you're using CentOS 6, the easiest way to install the software is
+with `yum`, so we will create a local yum repository with all of the
+generated packages.
+
+In the directory containing all of the checked out repositories,
+create a subdirectory called `ss-packages`:
+
+    $ mkdir ss-packages
+
+and then collect all of the generated packages in this directory.  The
+shell magic for this is:
+
+    $ find . -name \*.rpm -exec cp {} ./ss-packages/ \; 
+
+It just copies each RPM package it finds into the `ss-packages`
+subdirectory.
+
+Now turn this subdirectory into a yum repository:
+
+    $ createrepo ss-packages
+
+This generates the repository metadata from all of the RPM packages.
+
+Finally, configure the system to use this local repository.  Create
+the file `/etc/yum.repos/local.repo` with the contents:
+
+    [local]
+    name=local
+    baseurl=file:///absolute/path/ss-packages
+    enabled=1
+    gpgcheck=0
+
+changing the `baseurl` value to the one appropriate for your system.
+Check that the created packages are visible:
+
+    $ yum clean all
+    $ yum search slipstream-server
+
+The response should indicate that the package was found.  If so, you
+are ready for the installation. 
+
+**NOTE**: If you're using your own package repository, **do not install
+the `slipstream-repos` RPM** as described in the installation chapter.
 
 [Homebrew]: http://brew.sh/
 [easy_install]: http://python-distribute.org/distribute_setup.py

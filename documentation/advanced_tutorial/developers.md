@@ -49,10 +49,10 @@ these types of images should be fairly straightforward.  You can see
 all of the details in the "apache" and "client" modules in the
 "examples/tutorials/service-testing" subproject.
 
-> **Note that we run the shell script with the options `-e`, to exit
+> Note that we run the shell script with the options `-e`, to exit
 > immediately if any untested command fails and `-x`, to write each
 > command to stderr before it is executed. This is a good practice for
-> the execute target.**
+> the execute target.
 
 ### Recovering Reports
 
@@ -84,11 +84,11 @@ The report script for the client is even simpler:
 This just copies the file downloaded from the server to the magic
 directory to allow it to be recovered.
 
-> **Note that for report script we have only used the `-x` option and
+> Note that for report script we have only used the `-x` option and
 > not the `-e` option.  The allows as much logging information as
 > possible to be collected, tolerating cases where certain logs or
 > outputs are not available.  This maximizes the information retrieved
-> from failed deployments.**
+> from failed deployments.
 
 ### Running the Test
 
@@ -148,8 +148,8 @@ finding the cause of the error:
     "Terminate" button. You can also use the corresponding native
     cloud interface.
 
-    > **Note that these settings will only affect new executions,
-    > therefore, they will not affect already running machines.**
+    > Note that these settings will only affect new executions,
+    > therefore, they will not affect already running machines.
 
 2.  Once you have made these changes re-run the failing deployment.
     Then, find the instance id of the failing machine. This id can be
@@ -193,22 +193,3 @@ Sometimes, you will also need to (re)set key/value pairs from the
 current node or from other nodes. You can use the `ss-set` to set
 values, as from the standard targets an recipes, as well as `ss-get`
 to fetch key values.
-
-<!--
-
-## Continuous Integration with SlipStream
-
-The ability to automate complete system deployment and testing makes
-SlipStream ideal for integrating with agile development processes.
-Deployments can be launched either via a maven plugin or directly with
-the REST API. 
-
-### Maven Plugin
-
-**TO BE COMPLETED...**
-
-### REST API
-
-**TO BE COMPLETED...**
-
--->

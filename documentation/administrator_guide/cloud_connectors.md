@@ -26,8 +26,8 @@ must install the packages for the clouds that you want to support
 through your SlipStream server.  See the sections below for detailed
 installation instructions for each cloud connector.
 
-Note: The SlipStream server must be restarted after installing or
-removing a cloud connector. 
+> Note that the SlipStream server must be restarted after installing
+> or removing a cloud connector.
 
 ### Making Connector Visible to Users
 
@@ -50,17 +50,16 @@ will load the StratusLab connector twice (with names "StratusLab" and
 The cloud and connector names are given in the following table.  Note
 that the connector names are case insensitive. 
 
-Cloud          Connector Name   License
--------------  ---------------  ------------------------
-CloudSigma     CloudSigma       proprietary              
-CloudStack     CloudStack       open-source (Apache 2.0) 
-Amazon EC2     AWS              proprietary              
-StratusLab     StratusLab       open-source (Apache 2.0) 
-OCCI           OCCI             open-source (Apache 2.0) 
-OpenStack      OpenStack        open-source (Apache 2.0) 
-PhysicalHost   PhysicalHost     open-source (Apache 2.0) 
-VMWare vCloud  vCloud           proprietary              
--------------  ---------------  ------------------------
+| Cloud        | Connector Name | License                 |
+|:-------------|:---------------|:------------------------|
+|CloudSigma    | CloudSigma     | proprietary             |
+|CloudStack    | CloudStack     | open-source (Apache 2.0)|
+|Amazon EC2    | AWS            | proprietary             |
+|StratusLab    | StratusLab     | open-source (Apache 2.0)|
+|OCCI          | OCCI           | open-source (Apache 2.0)|
+|OpenStack     | OpenStack      | open-source (Apache 2.0)|
+|PhysicalHost  | PhysicalHost   | open-source (Apache 2.0)|
+|VMWare vCloud | vCloud         | proprietary             |
 
 ## Connector Licenses
 

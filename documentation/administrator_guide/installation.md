@@ -6,13 +6,17 @@ Installing the SlipStream server is as simple as installing the binary
 packages with `yum`.  After the installation, the services can be
 started via standard SysV initialization scripts.
 
+These instructions assume that you will be using the prebuilt binary
+packages for SlipStream.  If you want to build your own packages from
+the source, refer to the Developers Guide.
+
 ## Yum repository configuration
 
 The yum installer needs to be told where to find the packages.  To do
 this download and install the following RPM package:
 
-    $ wget -nd http://yum.sixsq.com/slipstream/centos/6/slipstream-repos-1.0-1.noarch.rpm
-    $ yum install -y slipstream-repos-1.0-1.noarch.rpm
+    $ wget -nd http://yum.sixsq.com/slipstream/centos/6/slipstream-repos-2.0-1.noarch.rpm
+    $ yum install -y slipstream-repos-2.0-1.noarch.rpm
 
 This will create the necessary yum configuration file in
 `/etc/yum.repos.d`.  If you've built your own SlipStream packages, do

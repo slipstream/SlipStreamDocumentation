@@ -17,14 +17,12 @@ including MySQL and PostgreSQL.
 
 Create an HSQLDB definition file in your home area:
 
-```
-$ cat > ~/sqltool.rc << EOF
-urlid slipstream
-url jdbc:hsqldb:hsql://localhost/slipstream
-username SA
-password
-EOF
-```
+    $ cat > ~/sqltool.rc << EOF
+    urlid slipstream
+    url jdbc:hsqldb:hsql://localhost/slipstream
+    username SA
+    password
+    EOF
 
 The default username is "SA" and the default password is blank.
 
@@ -34,12 +32,10 @@ The HSQLDB database (a pure Java database) will have been downloaded
 to your local maven repository when you built SlipStream.  You can run
 the database with the downloaded jar file:
 
-```
-$ java -cp ~/.m2/repository/org/hsqldb/hsqldb/2.3.2/hsqldb-2.3.2.jar \
-       org.hsqldb.server.Server \
-       --database.0 file:slipstreamdb \
-       --dbname.0 slipstream &
-```
+    $ java -cp ~/.m2/repository/org/hsqldb/hsqldb/2.3.2/hsqldb-2.3.2.jar \
+           org.hsqldb.server.Server \
+           --database.0 file:slipstreamdb \
+           --dbname.0 slipstream &
 
 Note that starting the database in this way should not be done in
 production.  This is intended only for development testing. 
@@ -50,10 +46,8 @@ To run the server, drop into the `war` subdirectory in the
 `SlipStreamServer` module and then use Jetty to run the SlipStream web
 archive (war file). 
 
-```
-$ cd SlipStreamServer/war
-$ mvn jetty:run-war
-```
+    $ cd SlipStreamServer/war
+    $ mvn jetty:run-war
 
 If the last command returns an error like `JettyRunWarMojo :
 Unsupported major.minor version 51.0` look here to configure maven for
@@ -71,23 +65,17 @@ During development, especially when working on the UI with css and
 JavaScript files, to avoid the war building round trip, you can start
 the server pointing to source static location as following:
 
-```
-$ mvn jetty:run-war \
-      -Dstatic.content.location=file:../../SlipStreamUI/src/slipstream/ui/views 
-```
+    $ mvn jetty:run-war \
+          -Dstatic.content.location=file:../../SlipStreamUI/src/slipstream/ui/views 
 
 You can also change the database backend connection using the
 `persistence.unit`. For example:
 
-```
--Dpersistence.unit=mysql-schema
-```
+    -Dpersistence.unit=mysql-schema
 
 or
 
-```
--Dpersistence.unit=postgres-schema
-```
+    -Dpersistence.unit=postgres-schema
 
 You will obviously need to have either MySQL or Postgresql running
 when configuring the server in this way.
@@ -115,9 +103,7 @@ connector is the easiest way to get started. To do so, navigate to the
 [server configuration page](http://localhost:8080/configuration) and
 define a cloud connector instance in the SlipStream Basics section:
 
-```
-test-cloud:local
-```
+    test-cloud:local
 
 You must be logged in with an administrator account to do this.  The
 value of this field has the form "name1:connector1,name2:connector2";
@@ -132,13 +118,11 @@ For configuration of other cloud connectors, check our
 The client module includes examples from the tutorial that can be
 loaded.
 
-```
-$ cd ../../SlipStreamClient/client/src/main/python
-$ ./ss-module-upload.py \
-      --endpoint http://localhost:8080 \
-      -u test -p tesTtesT \
-      ../resources/doc/*
-```
+    $ cd ../../SlipStreamClient/client/src/main/python
+    $ ./ss-module-upload.py \
+          --endpoint http://localhost:8080 \
+          -u test -p tesTtesT \
+          ../resources/doc/*
 
 Change the username and password to an existing (preferably
 non-administrator) account.
