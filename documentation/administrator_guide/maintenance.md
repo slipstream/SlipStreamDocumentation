@@ -25,3 +25,18 @@ The real value of a SlipStream instance is in the defined images and
 deployments.  These and a full history are kept in the HSQLDB
 database.  This database should be backed up regularly to avoid having
 any of this valuable information lost.
+
+## Maintenance mode
+
+SlipStream can be set in maintenance mode to prevent users to access it and to display an explanatory message instead.
+Moreover the properly HTTP code ([503](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4)) will be returned so that search engines can handle that case correctly.
+
+##### Enable the maintenance mode
+
+To enable the maintenance mode, edit the file `/etc/nginx/conf.d/slipstream-extra/maintenance.map`.
+On this file, you can define which IPs are affected or not by the maintenance mode.
+
+Then execute the following command:
+```bash
+service nginx reload
+```
