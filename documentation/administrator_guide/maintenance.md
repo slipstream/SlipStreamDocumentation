@@ -28,15 +28,50 @@ any of this valuable information lost.
 
 ## Maintenance mode
 
-SlipStream can be set in maintenance mode to prevent users to access it and to display an explanatory message instead.
-Moreover the properly HTTP code ([503](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4)) will be returned so that search engines can handle that case correctly.
+SlipStream can be set in maintenance mode to prevent users to access it 
+and to display an explanatory message instead.
+Moreover the properly HTTP code 
+([503][error-503-spec]) 
+will be returned so that search engines can handle that case correctly.
 
-##### Enable the maintenance mode
+### Enable/disable the maintenance mode
 
 To enable the maintenance mode, edit the file `/etc/nginx/conf.d/slipstream-extra/maintenance.map`.
-On this file, you can define which IPs are affected or not by the maintenance mode.
+
+    # This file define which IPs will receive an error page which explain that the application is in maintenance.
+    # 0 - Maintenance disabled
+    # 1 - Maintenance enabled
+    # One IP per line
+    
+    default  0;
+    
+    # Localhost
+    "~^127\.[0-9]+\.[0-9]+\.[0-9]+$" 0;
+    
+    # Autoconfig IPs
+    # "~^169\.254\.[0-9]+\.[0-9]+$"  0;
+    
+    # Private subnets
+    # "~^10\.[0-9]+\.[0-9]+\.[0-9]+$"  0;
+    # "~^192\.168\.[0-9]+\.[0-9]+$"    0;
+    # "~^172\.(1[6-9]|2[0-9]|3[0-1])\.[0-9]+\.[0-9]+$"  0;
+
+On this file, you can define which IPs are affected or not by the 
+maintenance mode.
+On the original file above, everybody (`default`) will be affected 
+by the maintenance mode if you set it to `1` but SlipStream can 
+still be accessed from localhost (`~^127\.[0-9]+\.[0-9]+\.[0-9]+$`) 
+if you keep it to `0`.
 
 Then execute the following command:
-```bash
-service nginx reload
-```
+
+    $ service nginx reload
+
+To disable the maintenance mode, you have to set `default` and all
+custom IPs to `0`.
+
+### Customize error pages
+All error pages are static files that you can find in
+`/opt/slipstream/server/webapps/slipstream.war/static-content/error/`
+
+[error-503-spec]:http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.5.4
