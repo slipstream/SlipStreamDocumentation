@@ -69,7 +69,10 @@ No migration is required from v2.6 to v2.6.1.
 
 ### Migration
 
-No migration is required from v2.5 to v2.6.
+You have to execute the following script (while HSQLDB is running) to do the BD migration:
+```bash
+java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:hsql://localhost:9001/slipstream,user=sa,password= "UPDATE VmRuntimeParameterMapping SET hostnameRuntimeParameterUri = CONCAT(REGEXP_SUBSTRING(vmstateRuntimeParameterUri,'^[^:]+'),':hostname') WHERE hostnameRuntimeParameterUri IS NULL;"
+```
 
 ### Commits
 
