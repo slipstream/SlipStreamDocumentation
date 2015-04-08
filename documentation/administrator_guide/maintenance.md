@@ -68,7 +68,7 @@ Then execute the following command:
     $ service nginx reload
 
 To disable the maintenance mode, you have to set `default` and all
-custom IPs to `0`.
+custom IPs to `0`. And then reload nginx (see command above).
 
 ### Customize error pages
 All error pages are static files that you can find in
