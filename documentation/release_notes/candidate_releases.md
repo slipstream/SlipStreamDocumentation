@@ -70,9 +70,8 @@ No migration is required from v2.6 to v2.6.1.
 ### Migration
 
 You have to execute the following script (while HSQLDB is running) to do the BD migration:
-```bash
-java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:hsql://localhost:9001/slipstream,user=sa,password= "UPDATE VmRuntimeParameterMapping SET hostnameRuntimeParameterUri = CONCAT(REGEXP_SUBSTRING(vmstateRuntimeParameterUri,'^[^:]+'),':hostname') WHERE hostnameRuntimeParameterUri IS NULL;"
-```
+
+    java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:hsql://localhost:9001/slipstream,user=sa,password= --sql "UPDATE VmRuntimeParameterMapping SET hostnameRuntimeParameterUri = CONCAT(REGEXP_SUBSTRING(vmstateRuntimeParameterUri,'^[^:]+'),':hostname') WHERE hostnameRuntimeParameterUri IS NULL;"
 
 ### Commits
 
@@ -110,46 +109,35 @@ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:hs
 **IMPORTANT: v2.5 requires data migration from v2.4.2. The following
   steps MUST be followed:**
 
-  1. Upgrade SlipStream
-  2. Ensure SlipStream is running
-  3. Execute the following python script *012_edit_save_all_users.py*
-     from the directory */opt/slipstream/server/migrations/*
- 
-     ```bash
-     cd /opt/slipstream/server/migrations/
-     python 012_edit_save_all_users.py <username> <password>
-     ```
+1. Upgrade SlipStream
+2. Ensure SlipStream is running
+3. Execute the following python script *012_edit_save_all_users.py*
+   from the directory */opt/slipstream/server/migrations/*
+
+        $ cd /opt/slipstream/server/migrations/
+        $ python 012_edit_save_all_users.py <username> <password>
+
     `<username>` and `<password>` have to be credentials of a SlipStream administrator.
 
- 4. Stop SlipStream
+4. Stop SlipStream
  
-    ```bash
-    service slipstream stop
-    ```
+        $ service slipstream stop
 
- 5. Stop HSQLDB (or your DB engine)
+5. Stop HSQLDB (or your DB engine)
  
-     ```bash
-     java -jar /opt/hsqldb/lib/sqltool.jar --inlineRc=url=jdbc:hsqldb:hsql://localhost:9001/slipstream,user=sa,password= --sql 'SHUTDOWN;' 
-     ```
+        $ ss-db-shutdown
 
- 6. Execute the following SQL script */opt/slipstream/server/migrations/013_convert_to_keep_running.sql*:
+6. Execute the following SQL script */opt/slipstream/server/migrations/013_convert_to_keep_running.sql*:
  
-     ```bash
-     java -jar /opt/hsqldb/lib/sqltool.jar --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/013_convert_to_keep_running.sql
-     ```
+        $ java -jar /opt/hsqldb/lib/sqltool.jar --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/013_convert_to_keep_running.sql
 
- 7. Start HSQLDB (or your DB engine)
+7. Start HSQLDB (or your DB engine)
  
-    ```bash
-    service hsqldb start # ignore start error
-    ```
+        $ service hsqldb start # ignore start error
 
- 8. Start SlipStream
+8. Start SlipStream
  
-    ```bash
-    service slipstream start
-    ```
+        $ service slipstream start
 
 ### Commits
 
