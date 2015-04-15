@@ -9,13 +9,41 @@ deployments.
 
 ## Development commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.6-community...master)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.6-community...master)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.6-community...master)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.6-community...master)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.6-community...master)  
+[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.7-community...master)  
+[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.7-community...master)  
+[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.7-community...master)  
+[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.7-community...master)  
+[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.7-community...master)  
 
-## v2.6.1 (candidate) - 7 April 2015
+## v2.7 (candidate) - 15 April 2015
+
+### New features and bug fixes from v2.7
+
+- Bug fixes for launching and accessing Windows virtual machines
+- Support for v5.5 of vCloud API
+- Allow input parameters to be specified for simple image run to avoid
+  having to create a deployment for this
+- Add back App Store to the image chooser
+- Add custom error pages for SlipStream frontend proxy
+- Make forward/backward navigation more natural (avoid URLs with
+  fragment changes in history)
+- Improve rendering of tables on mobile devices 
+
+### Migration
+
+No migration is required from v2.6.1 to v2.7.
+
+### Commits
+
+[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.6.1-community...v2.7-community) 
+[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.6.1-community...v2.7-community)  
+[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.6.1-community...v2.7-community) 
+[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.6.1-community...v2.7-community)  
+[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.6.1-community...v2.7-community)
+
+## v2.6.1 (stable) - 7 April 2015
+
+**This release has been promoted to a stable release.**
 
 ### New features and bug fixes from v2.6
 
@@ -54,7 +82,6 @@ No migration is required from v2.6 to v2.6.1.
 - Fix bugs in v2.5 that caused SlipStream to stop responding to
   requests and that caused ready applications to be moved to
   "finalizing" incorrectly
-
 - Improve standard example applications: Ubuntu Standalone, CentOS
   Standalone, Wordpress, and LAMP++
 - Improve monitoring of service with collectd
@@ -146,3 +173,11 @@ You have to execute the following script (while HSQLDB is running) to do the BD 
 [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.4.2...v2.5-community)  
 [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.4.2...v2.5-community)  
 [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.4.2...v2.5-community)  
+
+## v2.4.2 (stable) - 28 February 2015
+
+**This release has been promoted to a stable release.**
+
+For this and previous stable releases see the "Stable Releases" page.
+
+
