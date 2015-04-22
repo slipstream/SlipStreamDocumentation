@@ -1,5 +1,5 @@
 ---
-title: Developers
+title: Multiple Image Applications
 ---
 
 SlipStream provides an ideal platform for deploying and testing

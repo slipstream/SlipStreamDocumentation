@@ -1,5 +1,5 @@
 ---
-title: End Users
+title: Single Image Applications
 ---
 
 End-users will likely use SlipStream as a **resource provisioning
