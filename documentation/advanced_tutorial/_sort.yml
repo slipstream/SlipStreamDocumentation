@@ -3,6 +3,7 @@ SlipStream_Overview
 application_lifecycle
 key_concepts
 web_interface_tour
+LAMP_Demo
 accounts
 remote_machine_access
 module_organization
@@ -12,8 +13,3 @@ SlipStream_Client
 multi_node_applications
 mutable_deployments
 building_images
-defining_images
-single_image_applications
-defining_applications
-multiple_image_applications
-service_providers
