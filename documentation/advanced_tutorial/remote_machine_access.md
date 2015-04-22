@@ -120,3 +120,9 @@ package manager (or Google) to find and to install a VNC client.
 > with a VNC client, verify that the machine support VNC and that the
 > necessary ports (5900-5902) are open in the cloud's firewall.
 {: .important}
+
+# Exercises
+
+  1. Ensure you have an SSH client installed on your machine
+  2. Ensure you have an SSH key pair, generating one if necessary
+  3. Configure your user profile with your SSH public key

@@ -117,6 +117,11 @@ Add your Ultimum credential to your SlipStream account:
 You will now be able to use the Ultimum cloud with your account
 through SlipStream. 
 
+# Exercises
+
+  1. Register for an account on the SlipStream server
+  2. Configure your profile with your Exoscale and Ultimum accounts
+
 
 [exoscale]: https://www.exoscale.ch
 [exoscale-register]: https://exoscale.ch/register

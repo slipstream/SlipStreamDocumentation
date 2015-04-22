@@ -6,6 +6,11 @@ web_interface_tour
 accounts
 remote_machine_access
 module_organization
+standalone_images
+single_node_applications
+multi_node_applications
+mutable_deployments
+building_images
 defining_images
 single_image_applications
 defining_applications
