@@ -13,6 +13,7 @@ In this section you will learn how to:
   - Combine image definitions into a multi-node deployment
   - Connect parameters between application components
   - Coordinate the configuration of the components
+  - Spread a deployment between clouds
 
 # Deployment Modules
 
@@ -51,3 +52,7 @@ resilient services can be controlled and managed through SlipStream.
   2. Automate the connection between client and server, using the
      parameters to define what text should be expected from the
      server.
+  3. Deploy the client and server in different clouds and verify that
+     the deployment works.
+  4. Modify the deployment to have two clients.  Run the deployment,
+     placing the two clients in different clouds.
