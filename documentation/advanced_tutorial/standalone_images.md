@@ -13,6 +13,21 @@ In this section you'll learn how to:
   - Run a simple image, and
   - Update the software within the running machine instance 
 
+# Cloud Firewalls
+
+Currently SlipStream does not manage the firewalls associated with the
+cloud infrastructures.  Because of this, you must configure the
+default firewall settings on the clouds you use to open the ports you
+need for your applications.  For this tutorial, opening the following
+ports are useful.
+
+| SSH     | TCP      | 22        |
+| VNC     | TCP      | 5900-5902 |
+| RDP     | TCP, UDP | 3389      |
+| HTTP    | TCP      | 80        |
+| HTTPS   | TCP      | 443       |
+| MongoDB | TCP      | 27017     |
+
 # Run a Virtual Machine
 
 At its simplest, SlipStream can be used to launch individual virtual
@@ -139,10 +154,13 @@ shutdown the virtual machine and release the associated resources.
 # Exercises
 
   1. Run a machine (either Ubuntu or CentOS) through SlipStream,
-     verifying that you can access the machine via SSH.
+     verifying that you can access the machine via SSH.  Note the
+     number of CPUs (`/proc/cpuinfo`) and RAM (`/proc/meminfo`). 
   2. Copy and create your own version of a simple machine, customizing
-     the metadata for the image. 
+     the metadata and the resources for the image.
   3. Verify that you can run and log into your copied image.
+     Determine if the resource allocation has changed.
+  4. Deploy a web server on the image and ensure it works.
 
 
 [rstudio]: http://www.rstudio.com

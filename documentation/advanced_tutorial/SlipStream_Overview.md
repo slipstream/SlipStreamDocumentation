@@ -29,10 +29,10 @@ A number of different types of people within an organization can
 benefit from SlipStream.  We're created personas to describe those
 people and how they benefit.
 
-| ![alice]  | Alice is busy working on different projects.  She needs IT applications and resources, but has little patience for IT related issues.  She benefits from the SlipStream App Store where she can start the applications she needs with one click. |
-| ![bob]    | Bob manages a number of workers taking advantage of cloud resources.  He wants an overview of their use of those resources to understand costs and their evolving needs.  SlipStream provides the ability to monitor resource utilization. |
-| ![clara]  | Clara develops cloud applications for people within her organization.  She benefits from SlipStream be creating a rich catalog of services that can be automatically and reliably deployed. |
-| ![dave]   | Dave manages the SlipStream installation.  He's able to integrate his own cloud infrastructure into SlipStream and control what external cloud resources are available to his users.  |
+| ![alice]  | **Alice** is busy working on different projects.  She needs IT applications and resources, but has little patience for IT related issues.  She benefits from the SlipStream App Store where she can start the applications she needs with one click. |
+| ![bob]    | **Bob** manages a number of workers taking advantage of cloud resources.  He wants an overview of their use of those resources to understand costs and their evolving needs.  SlipStream provides the ability to monitor resource utilization. |
+| ![clara]  | **Clara** develops cloud applications for people within her organization.  She benefits from SlipStream be creating a rich catalog of services that can be automatically and reliably deployed. |
+| ![dave]   | **Dave** manages the SlipStream installation.  He's able to integrate his own cloud infrastructure into SlipStream and control what external cloud resources are available to his users.  |
 
 # Interacting with SlipStream
 

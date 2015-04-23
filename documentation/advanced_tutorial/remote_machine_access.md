@@ -57,7 +57,16 @@ configure your user profile with this information.
 
 ## Windows
 
-** TO BE DONE. **
+The standard SSH client to use on Windows is [PuTTY][putty].  Download
+and install this on your machine.
+
+You will then need to generate a key pair for PuTTY.  The easiest is
+to generate a key pair on a Linux machine and then import this into
+PuTTY.  You can also generate it within PuTTY and convert it to the
+required format (OpenSSH) for accessing machines. 
+
+The information in this [StackOverflow thread][so-ssh] and the
+[documentation from AWS][aws-ssh] may be helpful.
 
 # Adding SSH Key to User Profile
 
@@ -117,7 +126,7 @@ easily downloaded and installed for all operating systems.  Use your
 package manager (or Google) to find and to install a VNC client.
 
 > Many machines do not have VNC installed.  Before trying to connect
-> with a VNC client, verify that the machine support VNC and that the
+> with a VNC client, verify that the machine supports VNC and that the
 > necessary ports (5900-5902) are open in the cloud's firewall.
 {: .important}
 
@@ -126,3 +135,8 @@ package manager (or Google) to find and to install a VNC client.
   1. Ensure you have an SSH client installed on your machine
   2. Ensure you have an SSH key pair, generating one if necessary
   3. Configure your user profile with your SSH public key
+
+
+[putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/
+[so-ssh]: http://stackoverflow.com/questions/2224066/how-to-convert-ssh-keypairs-generated-using-puttygenwindows-into-key-pairs-use
+[aws-ssh]: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html

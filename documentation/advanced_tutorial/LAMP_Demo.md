@@ -14,7 +14,7 @@ The LAMP++ (Linux, Apache, MongoDB, and PHP) application is an example
 through multiple web front-ends and a distributed MongoDB database. By
 default, the deployment has:
 
-  - An HAProxy node for load-balancing the web front-ends
+  - 1 HAProxy node for load-balancing the web front-ends
   - 2 web front-ends running Apache
   - 3 MongoDB nodes running with a quorum of 2
 

@@ -176,7 +176,7 @@ Despite the marketing hype, cloud technologies offer real benefits to
 users.  With cloud infrastructures, people can rapidly deploy large
 applications without associated large, up-front capital costs.
 Moreover, they can optimize these applications easily, running them in
-environment tuned to the application's requirements, deploying
+environments tuned to the application's requirements, deploying
 services near clients to minimize latencies, and scaling resources to
 match customer demand.
 

@@ -29,12 +29,6 @@ where you can follow the status of the application.
 
 ![Wordpress Run Dialog](images/screenshot-wordpress-run.png)
 
-One thing to notice is that there is an "orchestrator" involved in the
-deployment.  In a deployment (rather than a single image), much of the
-work associated with configuring a machine is delegated to the
-orchestrator.  This additional machine will disappear once the
-deployment is complete (except for a run that is marked at "mutable").
-
 If you look at the definition of the `wordpress-appliance` (follow
 links back on the module definition), you will see where the
 parameters for the image are defined. 
@@ -65,10 +59,22 @@ deployment is similar to that from Wordpress, although it uses just a
 bash script for installation rather than a configuration management
 system like Puppet. 
 
+![R-Studio Deployment](images/screenshot-rstudio-run.png)
+
+One thing to notice is that there is an "orchestrator" involved in the
+deployment.  In a deployment (rather than a single image), much of the
+work associated with configuring a machine is delegated to the
+orchestrator.  This additional machine will disappear once the
+deployment is complete (except for a run that is marked at "mutable").
+For a one-node deployment, the orchestrator isn't very useful.
+However, it is necessary when dealing with multi-node applications.
+
 Because there may be many instances of a given application running, it
 is necessary to ensure that only the person deploying the application
 has access to it.  If you deploy R-Studio from the App Store, you will
 be faced with a login page when accessing the instance.
+
+![R-Studio Login Page](images/screenshot-rstudio-login.png)
 
 Where can this information be found?  In the deployment parameters.
 The username and password can be found in the `rstudio.1:rstudio_user`
@@ -109,4 +115,3 @@ and Wordpress deployments to guess how these commands work.
      class. 
   5. Protect the web server with a randomly generated password.
      Define the parameters to pass this information to the user. 
-
