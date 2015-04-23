@@ -14,6 +14,19 @@ In this section you'll learn how to:
   - Find the scripts used to install and configure a machine
   - Reset the abort status for a failed deployment
 
+# Installation
+
+The SlipStream client is installed by default on all machines started
+through SlipStream.  If you want to install it on your local machine,
+it can be installed with `pip`, the python installer.  
+
+Just running the following should work:
+
+    $ pip install slipstream-client
+
+You will obviously need to have python (v2.6+, not v3.x) installed on the
+machine.  
+
 # Major Client Commands
 
 There are actually just a few commands in the SlipStream client that
@@ -94,3 +107,4 @@ copy them back into SlipStream.
   4. Set and clear the abort flag for your deployment.  How does the
      behavior of `ss-set` and `ss-get` change when the abort flag is
      set? 
+  5. Optionally install the client on your laptop.

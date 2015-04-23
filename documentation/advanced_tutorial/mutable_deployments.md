@@ -84,6 +84,9 @@ SixSq GitHub repository.
   4. Deploy a mutable run, giving 0 as the number of machines for the
      clients.  Does this work?  Can you add these types of machines
      later? 
-
+  5. Define the mutation scripts for your deployment and ensure that
+     they are called when machines are added or removed.
+  6. How would you collect information from the application to 
+     automatically scale an application?
 
 [mutability-scripts]: https://github.com/slipstream/SlipStreamClient/tree/master/client
