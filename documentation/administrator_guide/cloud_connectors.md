@@ -9,7 +9,7 @@ are released under a proprietary license.
 
 Doing the following:
 
-    $ yum search stratuslab-connector-
+    $ yum search slipstream-connector-
 
 will list all of the available cloud connector packages.
 
