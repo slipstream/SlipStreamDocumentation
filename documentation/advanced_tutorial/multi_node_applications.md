@@ -49,10 +49,11 @@ resilient services can be controlled and managed through SlipStream.
 
   1. Create your own client machine and verify that it can talk with
      your web server. 
-  2. Automate the connection between client and server, using the
-     parameters to define what text should be expected from the
-     server.
-  3. Deploy the client and server in different clouds and verify that
-     the deployment works.
+  2. Automate the connection between client and server, checking the
+     return values from the protected and unprotected pages.
+  3. Deploy the client node and server node in different clouds and 
+     verify that the deployment works.
+  4. Change the number of client nodes and verify that they all 
+     perform the correct checks of the web server.
   4. Modify the deployment to have two clients.  Run the deployment,
      placing the two clients in different clouds.
