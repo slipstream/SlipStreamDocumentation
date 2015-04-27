@@ -108,12 +108,18 @@ This will compile the site with Jekyll and then push all of the
 changes into the `gh-pages` branch.  From there, the updates will be
 published by GitHub Pages.
 
-You'll probably need to checkout the JDoc submodule again after the 
-site has been published.  Just run:
+Error with Unknown Tag "doc_menu"
+---------------------------------
+
+You need to checkout the JDoc submodule.  Just run:
 ```
-$ git submodule update
+$ git submodule update --init --recursive 
 ```
-to bring the JDoc plugin back.
+
+This will reinitialize the JDoc submodule.  The publishing into the
+`gh_pages` branch removes the submodule contents, so you'll probably
+need to do this after publishing (or if you didn't use the
+`--recursive` option on the clone).
 
 
 [docs]: http://slipstream.github.io/SlipStreamDocumentation
