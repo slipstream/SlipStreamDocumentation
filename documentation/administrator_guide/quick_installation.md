@@ -23,7 +23,7 @@ This script will do the following actions on your machine:
   - Allow incoming SSH connections (port 22)
   - Allow incoming HTTP connections (port 80)
   - Allow incoming HTTPS connections (port 443)
-  - Deny all others incoming connections
+  - Deny all other incoming connections
   - Deny forwarding
 - Start nginx, HSQLDB and SlipStream
 
