@@ -85,3 +85,18 @@ The following table shows the availability of the cloud connectors.
 |Physical/Fixed        |  open source | available    |
 |StratusLab            |  open source | available    |
 |VMWare vCloud         |  proprietary | available    |
+
+## SlipStream editions
+
+SlipStream is available in two versions, the **Community** one and the
+**Enterprise** one.
+
+Proprietary connectors (see above) are only available on the Enterprise edition.
+
+For each version we maintain three repositories:
+
+- Snapshots (most recent code base but may be unstable)
+- Candidates (should be stable but this is not for production)
+- Releases (stable releases for production)
+
+

@@ -71,9 +71,6 @@ After this start the database:
 
 The database files will be stored in `/opt/slipstream/SlipStreamDB/`.
 
-**NOTE: The startup script will indicate that the start failed, but
-the database is indeed running correctly.**
-
 ## Start SlipStream
 
 Next start SlipStream.
