@@ -8,7 +8,7 @@ started via standard SysV initialization scripts.
 
 These instructions assume that you will be using the prebuilt binary
 packages for SlipStream.  If you want to build your own packages from
-the source, refer to the Developers Guide.
+the source, refer to the Developer Guide.
 
 ## Yum repository configuration
 

@@ -29,7 +29,7 @@ This script will do the following actions on your machine:
 
 These instructions assume that you will be using the prebuilt binary
 packages for SlipStream.  If you want to build your own packages from
-the source, refer to the Developers Guide.
+the source, refer to the Developer Guide.
 
 
 ## Run the quick installation script
@@ -53,9 +53,9 @@ running but without any connectors.
 
 ## Cloud Connectors
 
-The quick install script install all open-source connectors.
+The quick install script installs all open-source connectors.
 
-If you have installed the enterprise version, you have to install all
+If you have installed the enterprise edition, you have to install all
 connectors you have a license for.
 
 To install connectors simply execute the following command.
