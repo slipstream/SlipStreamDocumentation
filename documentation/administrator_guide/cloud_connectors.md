@@ -52,13 +52,13 @@ that the connector names are case insensitive.
 
 | Cloud        | Connector Name | License                 |
 |:-------------|:---------------|:------------------------|
+|Amazon EC2    | AWS            | proprietary             |
 |CloudSigma    | CloudSigma     | proprietary             |
 |CloudStack    | CloudStack     | open-source (Apache 2.0)|
-|Amazon EC2    | AWS            | proprietary             |
-|StratusLab    | StratusLab     | open-source (Apache 2.0)|
 |OCCI          | OCCI           | open-source (Apache 2.0)|
 |OpenStack     | OpenStack      | open-source (Apache 2.0)|
 |PhysicalHost  | PhysicalHost   | open-source (Apache 2.0)|
+|StratusLab    | StratusLab     | open-source (Apache 2.0)|
 |VMWare vCloud | vCloud         | proprietary             |
 
 ## Connector Licenses
@@ -201,7 +201,7 @@ configuration for the "fedcloud.egi.eu" VO.
 
 #### Installation
 
-You can install the OpenStack connector with:
+You can install the OCCI connector with:
 
     $ yum install slipstream-connector-occi
 
