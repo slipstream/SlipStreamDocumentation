@@ -63,7 +63,9 @@ To install connectors simply execute the following command.
 The placeholder `{list of connector names}` has to be replaced by the
 list (space separated) of connector names to install.
 
-    $ curl -sSfL https://raw.githubusercontent.com/slipstream/SlipStream/master/install/ss-install-connectors.sh | bash -s {list of connector names}
+The placeholder `{repokind}` has to have the same value as in the previous command.
+
+    $ curl -sSfL https://raw.githubusercontent.com/slipstream/SlipStream/master/install/ss-install-connectors.sh | bash -s -- -r {repokind} {list of connector names}
 
 Once all needed connectors are installed, restart SlipStream with:
 
