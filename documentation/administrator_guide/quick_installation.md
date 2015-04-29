@@ -53,7 +53,8 @@ running but without any connectors.
 
 ## Cloud Connectors
 
-The quick install script installs all open-source connectors.
+If you have installed community edition of SlipStream, the quick install 
+script already installed all the open-source connectors.
 
 If you have installed the enterprise edition, you have to install all
 connectors you have a license for.
