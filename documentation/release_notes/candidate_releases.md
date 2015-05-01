@@ -34,7 +34,29 @@ deployments.
 
 ### Migration
 
-**Database migration is required from v2.7 to v2.8.**
+**Database migration is required from v2.7 to v2.8. The following
+  steps MUST be followed:**
+
+1. Upgrade SlipStream
+2. Stop SlipStream
+ 
+        $ service slipstream stop
+
+3. Stop HSQLDB (or your DB engine)
+ 
+        $ service hsqldb stop
+
+6. Execute the following SQL script */opt/slipstream/server/migrations/014_enumvalues_size_fix.sql*:
+ 
+        $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/014_enumvalues_size_fix.sql
+
+7. Start HSQLDB (or your DB engine)
+ 
+        $ service hsqldb start
+
+8. Start SlipStream
+ 
+        $ service slipstream start
 
 ### Commits
 
