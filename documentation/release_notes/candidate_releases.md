@@ -9,13 +9,42 @@ deployments.
 
 ## Development commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.7-community...master)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.7-community...master)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.7-community...master)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.7-community...master)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.7-community...master)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.8-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.8-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.8-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.8-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.8-community...master)  
 
-## v2.7 (candidate) - 15 April 2015
+## v2.8 (candidate) - 29 April 2015
+
+### New features and bug fixes in v2.8
+
+- allow connectors to indicate when a VM is usable (for usage records)
+- improve logging (more concise messages, longer retention times)
+- provide quick installation script with documentation of procedure
+- provide "event" resource with standard lifecycle events
+- expose "usage" summary as a resource
+- updated advanced tutorial for current release
+- fix bug which prevented deployments from being saved
+- fix bug which erased parameters starting with "http://"
+- fix deadlock associated with multiple database clients
+- fix run ordering by time
+- fix truncation of fields hiding information (popovers used everywhere)
+- improve rendering of errors to make the cause more visible
+
+### Migration
+
+**Database migration is required from v2.7 to v2.8.**
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.7-community...v2.8-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.7-community...v2.8-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.7-community...v2.8-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.7-community...v2.8-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.7-community...v2.8-community)
+
+## v2.7 (stable) - 15 April 2015
 
 ### New features and bug fixes from v2.7
 
@@ -35,11 +64,11 @@ No migration is required from v2.6.1 to v2.7.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.6.1-community...v2.7-community) 
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.6.1-community...v2.7-community)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.6.1-community...v2.7-community) 
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.6.1-community...v2.7-community)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.6.1-community...v2.7-community)
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.6.1-community...v2.7-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.6.1-community...v2.7-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.6.1-community...v2.7-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.6.1-community...v2.7-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.6.1-community...v2.7-community)
 
 ## v2.6.1 (stable) - 7 April 2015
 
@@ -56,11 +85,11 @@ No migration is required from v2.6 to v2.6.1.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.6-community...v2.6.1-community)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.6-community...v2.6.1-community)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.6-community...v2.6.1-community)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.6-community...v2.6.1-community)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.6-community...v2.6.1-community)
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.6-community...v2.6.1-community)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.6-community...v2.6.1-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.6-community...v2.6.1-community)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.6-community...v2.6.1-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.6-community...v2.6.1-community)
 
 ## v2.6 (candidate) - 2 April 2015
 
@@ -102,11 +131,11 @@ You have to execute the following script (while HSQLDB is running) to do the BD 
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.5-community...v2.6-community)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.5-community...v2.6-community)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.5-community...v2.6-community)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.5-community...v2.6-community)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.5-community...v2.6-community)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.5-community...v2.6-community)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.5-community...v2.6-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.5-community...v2.6-community)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.5-community...v2.6-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.5-community...v2.6-community)  
 
 ## v2.5 (candidate) - 20 March 2015
 
@@ -168,11 +197,11 @@ You have to execute the following script (while HSQLDB is running) to do the BD 
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.4.2...v2.5-community)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.4.2...v2.5-community)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.4.2...v2.5-community)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.4.2...v2.5-community)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.4.2...v2.5-community)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.4.2...v2.5-community)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.4.2...v2.5-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.4.2...v2.5-community)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.4.2...v2.5-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.4.2...v2.5-community)  
 
 ## v2.4.2 (stable) - 28 February 2015
 

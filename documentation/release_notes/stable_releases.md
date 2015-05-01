@@ -7,6 +7,32 @@ stable releases that are listed here.  Stable releases are supported
 by SixSq and are appropriate for production deployments.  In general,
 we recommend that people use the latest stable release. 
 
+## v2.7 (stable) - 15 April 2015
+
+### New features and bug fixes from v2.7
+
+- Bug fixes for launching and accessing Windows virtual machines
+- Support for v5.5 of vCloud API
+- Allow input parameters to be specified for simple image run to avoid
+  having to create a deployment for this
+- Add back App Store to the image chooser
+- Add custom error pages for SlipStream frontend proxy
+- Make forward/backward navigation more natural (avoid URLs with
+  fragment changes in history)
+- Improve rendering of tables on mobile devices 
+
+### Migration
+
+No migration is required from v2.6.1 to v2.7.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.6.1-community...v2.7-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.6.1-community...v2.7-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.6.1-community...v2.7-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.6.1-community...v2.7-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.6.1-community...v2.7-community)
+
 ## v2.6.1 (stable) - 7 April 2015
 
 ### New features and bug fixes
@@ -123,11 +149,11 @@ You have to execute the following script (while HSQLDB is running) to do the BD 
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.4.2...v2.6.1-community)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.4.2...v2.6.1-community)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.4.2...v2.6.1-community)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.4.2...v2.6.1-community)
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.4.2...v2.6.1-community)
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.4.2...v2.6.1-community)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.4.2...v2.6.1-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.4.2...v2.6.1-community)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.4.2...v2.6.1-community)
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.4.2...v2.6.1-community)
 
 ## v2.4.2 - 28 February 2015
 
@@ -168,11 +194,11 @@ Example command to execute the migration script:
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.4.0...v2.4.2)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.4.0...v2.4.2)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.4.0...v2.4.2)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.4.0...v2.4.2)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.4.0...v2.4.2)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.4.0...v2.4.2)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.4.0...v2.4.2)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.4.0...v2.4.2)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.4.0...v2.4.2)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.4.0...v2.4.2)  
 
 ## v2.4.1 - 20 February 2015
 
@@ -195,11 +221,11 @@ No DB migration (from v2.3.9) is required.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.3.9...v2.4.0)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.3.9...v2.4.0)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.3.9...v2.4.0)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.3.9...v2.4.0)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.3.9...v2.4.0)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.3.9...v2.4.0)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.3.9...v2.4.0)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.3.9...v2.4.0)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.3.9...v2.4.0)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.3.9...v2.4.0)  
 
 ## v2.3.9 - 19 December 2014
 
@@ -210,11 +236,11 @@ No DB migration (from v2.3.9) is required.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/v2.3.8...v2.3.9)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/v2.3.8...v2.3.9)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/v2.3.8...v2.3.9)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.3.8...v2.3.9)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.3.8...v2.3.9)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.3.8...v2.3.9)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.3.8...v2.3.9)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.3.8...v2.3.9)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.3.8...v2.3.9)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.3.8...v2.3.9)  
 
 ## v2.3.8 - 17 December 2014
 
@@ -249,11 +275,11 @@ Example command to execute the migration script:
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.7...v2.3.8)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.7...v2.3.8)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.7...v2.3.8)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/SlipStreamConnectors-2.3.7...v2.3.8)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.7...v2.3.8)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.7...v2.3.8)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.7...v2.3.8)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.7...v2.3.8)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/SlipStreamConnectors-2.3.7...v2.3.8)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.7...v2.3.8)  
 
 ## v2.3.7 - 7 November 2014
 
@@ -273,11 +299,11 @@ No DB migration (from v2.3.6) is required.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.6...SlipStreamServer-2.3.7)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.6...SlipStreamUI-2.3.7)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.6...SlipStreamClient-2.3.7)  
-[Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/SlipStreamConnectors-2.3.6...SlipStreamConnectors-2.3.7)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.6...SlipStreamDocumentation-2.3.7)
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.6...SlipStreamServer-2.3.7)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.6...SlipStreamUI-2.3.7)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.6...SlipStreamClient-2.3.7)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/SlipStreamConnectors-2.3.6...SlipStreamConnectors-2.3.7)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.6...SlipStreamDocumentation-2.3.7)
 
 
 ## v2.3.6 - 29 October 2014
@@ -294,10 +320,10 @@ No DB migration (from v2.3.5) is required.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.5...SlipStreamServer-2.3.6)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.5...SlipStreamUI-2.3.6)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.5...SlipStreamClient-2.3.6)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.5...SlipStreamDocumentation-2.3.6)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.5...SlipStreamServer-2.3.6)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.5...SlipStreamUI-2.3.6)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.5...SlipStreamClient-2.3.6)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.5...SlipStreamDocumentation-2.3.6)  
 
 
 ## v2.3.5 - 23 October 2014
@@ -322,10 +348,10 @@ No DB migration (from v2.3.4) is required.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.4...SlipStreamServer-2.3.5)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.4...SlipStreamUI-2.3.5)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.4...SlipStreamClient-2.3.5)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.4...SlipStreamDocumentation-2.3.5)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.4...SlipStreamServer-2.3.5)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.4...SlipStreamUI-2.3.5)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.4...SlipStreamClient-2.3.5)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.4...SlipStreamDocumentation-2.3.5)  
 
 
 ## v2.3.4 - 3 October 2014
@@ -374,11 +400,10 @@ Example command to execute the migration script:
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.0...SlipStreamServer-2.3.4)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.0...SlipStreamUI-2.3.4)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.0...SlipStreamClient-2.3.4)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.0...SlipStreamDocumentation-2.3.4)  
-
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.3.0...SlipStreamServer-2.3.4)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.3.0...SlipStreamUI-2.3.4)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.3.0...SlipStreamClient-2.3.4)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.3.0...SlipStreamDocumentation-2.3.4)  
 
 ## v2.3.0 - 14 August 2014
 
@@ -400,10 +425,10 @@ No DB migration (from v2.2.5) is required.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.5...SlipStreamServer-2.3.0)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.5...SlipStreamUI-2.3.0)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.5...SlipStreamClient-2.3.0)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.5...SlipStreamDocumentation-2.3.0)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.5...SlipStreamServer-2.3.0)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.5...SlipStreamUI-2.3.0)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.5...SlipStreamClient-2.3.0)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.5...SlipStreamDocumentation-2.3.0)  
 
 
 ## v2.2.5 - 18 June 2014
@@ -425,10 +450,10 @@ No DB migration (from v2.2.5) is required.
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.4...SlipStreamServer-2.2.5)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.4...SlipStreamUI-2.2.5)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.4...SlipStreamClient-2.2.5)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.4...SlipStreamDocumentation-2.2.5)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.4...SlipStreamServer-2.2.5)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.4...SlipStreamUI-2.2.5)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.4...SlipStreamClient-2.2.5)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.4...SlipStreamDocumentation-2.2.5)  
 
 
 ## v2.2.4 - 13 June 2014
@@ -466,10 +491,10 @@ Example command to execute the migration script:
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.3...SlipStreamServer-2.2.4)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.3...SlipStreamUI-2.2.4)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.3...SlipStreamClient-2.2.4)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.3...SlipStreamDocumentation-2.2.4)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.3...SlipStreamServer-2.2.4)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.3...SlipStreamUI-2.2.4)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.3...SlipStreamClient-2.2.4)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.3...SlipStreamDocumentation-2.2.4)  
 
 
 ## v2.2.3 - 2 June 2014
@@ -488,10 +513,10 @@ Example command to execute the migration script:
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.2...SlipStreamServer-2.2.3)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.2...SlipStreamUI-2.2.3)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.2...SlipStreamClient-2.2.3)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.2...SlipStreamDocumentation-2.2.3)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.2...SlipStreamServer-2.2.3)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.2...SlipStreamUI-2.2.3)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.2...SlipStreamClient-2.2.3)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.2...SlipStreamDocumentation-2.2.3)  
 
 ## v2.2.2 - 27 May 2014
 
@@ -503,10 +528,10 @@ Example command to execute the migration script:
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.1...SlipStreamServer-2.2.2)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.1...SlipStreamUI-2.2.2)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.1...SlipStreamClient-2.2.2)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.1...SlipStreamDocumentation-2.2.2)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.1...SlipStreamServer-2.2.2)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.1...SlipStreamUI-2.2.2)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.1...SlipStreamClient-2.2.2)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.1...SlipStreamDocumentation-2.2.2)  
 
 
 ## v2.2.1 - 26 May 2014
@@ -547,10 +572,10 @@ Example command to execute the migration script:
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.0...SlipStreamServer-2.2.1)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.0...SlipStreamUI-2.2.1)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.0...SlipStreamClient-2.2.1)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.0...SlipStreamDocumentation-2.2.1)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.2.0...SlipStreamServer-2.2.1)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.2.0...SlipStreamUI-2.2.1)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.2.0...SlipStreamClient-2.2.1)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.2.0...SlipStreamDocumentation-2.2.1)  
 
 
 ## v2.2.0 - 10 May 2014
@@ -587,8 +612,8 @@ Example command to execute the migration script:
 
 ### Commits
 
-[Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.1.16...SlipStreamServer-2.2.0)  
-[UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.1.16...SlipStreamUI-2.2.0)  
-[Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.1.16...SlipStreamClient-2.2.0)  
-[Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.1.16...SlipStreamDocumentation-2.2.0)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/SlipStreamServer-2.1.16...SlipStreamServer-2.2.0)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/SlipStreamUI-2.1.16...SlipStreamUI-2.2.0)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.1.16...SlipStreamClient-2.2.0)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.1.16...SlipStreamDocumentation-2.2.0)  
 
