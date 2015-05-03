@@ -103,7 +103,7 @@ create that reference one of these images.
 > The names (t-shirt sizes) and resource definitions are not standard
 > between the cloud services.  You will need to consult the
 > documentation for each service to understand the correct values.
-{: .tip}
+{: .important}
 
 # Installing a Web Server
 

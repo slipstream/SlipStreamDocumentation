@@ -28,6 +28,7 @@ installation instructions for each cloud connector.
 
 > Note that the SlipStream server must be restarted after installing
 > or removing a cloud connector.
+{: .important}
 
 ### Making Connector Visible to Users
 

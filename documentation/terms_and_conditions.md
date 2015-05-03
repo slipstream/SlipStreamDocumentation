@@ -11,13 +11,12 @@ associated with the SlipStream service.
 Terms of Service
 ================
 
-> **Important**
->
 > BY CHECKING THE "I AGREE" BUTTON DURING REGISTRATION AND/OR ACCESSING
 > THIS SERVICE, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD AND AGREE
 > TO BE BOUND BY THESE TERMS OF SERVICE. IF YOU DO NOT AGREE TO ALL OF
 > THESE TERMS OF SERVICE YOU WILL NOT BE GIVEN ACCESS TO USE THE
 > SERVICE.
+{: .important}
 
 Description of Service
 ----------------------
