@@ -86,7 +86,7 @@ that are already running.
 > Your SSH public key must be on a single line in the OpenSSH format.
 > If you have more than one key, then each must appear on a separate
 > line.
-{: .important}
+{: .warning}
 
 # Remote Desktop Protocol
 

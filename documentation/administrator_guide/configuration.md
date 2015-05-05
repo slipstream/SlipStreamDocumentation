@@ -36,6 +36,7 @@ this for all three accounts.
 
 > Note that for the "super" account you will have to provide the
 > current password.
+{: .important}
 
 ## Configuration Parameters
 

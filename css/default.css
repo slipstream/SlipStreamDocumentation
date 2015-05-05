@@ -381,23 +381,6 @@ a {
 #content del {
   color: #000;
 }
-#content blockquote {
-  padding: 1em 1em 1.625em 1em;
-  font-family: georgia, serif;
-  font-style: italic;
-}
-#content blockquote:before {
-  content: "\201C";
-  font-size: 3em;
-  margin-left: -0.625em;
-  font-family: georgia, serif;
-  color: #aaa;
-  line-height: 0;
-}
-#content blockquote > p {
-  padding: 0;
-  margin: 0;
-}
 #content strong {
   font-weight: bold;
 }
