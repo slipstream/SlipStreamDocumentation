@@ -87,15 +87,25 @@ directly with `yum`.  The following table lists the RPM packages that
 must be installed and describes how those packages are used within the
 build.
 
-A command like:
+The command:
 
-    $ yum install -y [packages]
+    $ yum install -y \
+          java-1.8.0-openjdk-devel \
+          python \
+          python-devel \
+          pylint \
+          python-pip \
+          python-mock \
+          gcc \
+          git \
+          rpm-build \
+          createrepo
 
 will install all of the listed packages.
 
 | Package                      | Comment                                  |
 |:-----------------------------|:-----------------------------------------|
-| java-1.7.0-openjdk-devel     | Compile and run the server               |
+| java-1.8.0-openjdk-devel     | Compile and run the server               |
 | python                       | Client CLI build and testing             |
 | python-devel                 | Needed for python module dependencies    |
 | pylint                       | Analysis of python code                  |
@@ -147,15 +157,26 @@ All of the build dependencies can be installed directly with `yum`.
 The following table lists the RPM packages that must be installed and
 describes how those packages are used within the build.
 
-A command like:
+The command:
 
-    $ yum install -y [packages]
+    $ yum install -y \
+          java-1.8.0-openjdk-devel \
+          python \
+          python-devel \
+          pylint \
+          python-mock \
+          git \
+          python-nose \
+          python-coverage \
+          python-paramiko \
+          rpm-build \
+          createrepo
 
 will install all of the listed packages.
 
 | Package                      | Comment                                  |
 |:-----------------------------|:-----------------------------------------|
-| java-1.7.0-openjdk-devel     | Compile and run the server               |
+| java-1.8.0-openjdk-devel     | Compile and run the server               |
 | python                       | Client CLI build and testing             |
 | python-devel                 | Needed for python module dependencies    |
 | pylint                       | Analysis of python code                  |
@@ -164,8 +185,8 @@ will install all of the listed packages.
 | python-nose                  | Unit testing for python code             |
 | python-coverage              | Coverage testing for python code         |
 | python-paramiko              | SSH library for python                   |
-| **rpm-build**                | Creates binary distribution packages     |
-| **createrepo**               | Create local yum repository              |
+| rpm-build                    | Creates binary distribution packages     |
+| createrepo                   | Create local yum repository              |
 
 Note that currently the packaging is not working on CentOS 7.  To
 avoid build failures leave out the `rpm-build` and `createrepo`
