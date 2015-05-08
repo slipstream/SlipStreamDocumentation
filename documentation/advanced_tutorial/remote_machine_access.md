@@ -57,16 +57,54 @@ configure your user profile with this information.
 
 ## Windows
 
-The standard SSH client to use on Windows is [PuTTY][putty].  Download
-and install this on your machine.
+The standard SSH client to use on Windows is [PuTTY][putty].  You will
+need both the `putty.exe` and `puttygen.exe` executables.  Download
+these executables and put them in a convenient location.
 
-You will then need to generate a key pair for PuTTY.  The easiest is
-to generate a key pair on a Linux machine and then import this into
-PuTTY.  You can also generate it within PuTTY and convert it to the
-required format (OpenSSH) for accessing machines. 
+### Key Pair
 
-The information in this [StackOverflow thread][so-ssh] and the
-[documentation from AWS][aws-ssh] may be helpful.
+The SSH protocol requires a pair of cryptographic keys; one private
+and the other public.  You will need to generate a key pair to use
+with SlipStream and the underlying cloud infrastructures. 
+
+Launch PuTTyGen.  You should see a screenshot like the following.
+
+![PuTTyGen Start Page](images/screenshot-puttygen-start.png)
+
+Launch PuTTyGen and then click on the "Generate" button.  Move your
+mouse around in the empty rectangle to generate some randomness for
+the key generation process.
+
+![PuTTyGen Key Generation](images/screenshot-puttygen-random.png)
+
+When the process is finished.  You will see a window like the
+following.
+
+![PuTTyGen Key](images/screenshot-puttygen-key.png)
+
+The value you want to copy and paste into the SlipStream SSH key
+configuration is given in the box entitled "Public key for pasting
+into OpenSSH authorized_keys file".  Ensure that you copy the **entire
+value** and that the pasted value is **entirely on one line**. 
+
+You must save the public and private keys to use when you want to
+connect to a virtual machine.  Click on the "Save public key" and
+"Save private key" buttons to do so.  You can answer "Yes" when asked
+whether to save the private key without a password. 
+
+### Using the Key Pair
+
+To access a remote machine running the SSH daemon, you will need to
+use the key pair that you've generated.  Start `putty.exe` and then
+navigate in the tree on the left to "SSH -> Auth".  You can then add
+the private key to use by clicking on the "Browse" button and
+selecting the private key that you saved earlier. 
+
+![PuTTyGen Key](images/screenshot-putty-config.png)
+
+You may want to download and configure `paegent.exe` with your private
+key to avoid having to specify the private key for each session.  See
+the PuTTy documentation for how to do this.
 
 # Adding SSH Key to User Profile
 
