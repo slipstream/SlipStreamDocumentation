@@ -9,11 +9,35 @@ deployments.
 
 ## Development commits
 
-  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.8-community...master)  
-  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.8-community...master)  
-  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.8-community...master)  
-  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.8-community...master)  
-  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.8-community...master)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.9-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.9-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.9-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.9-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.9-community...master)  
+
+## v2.9 (candidate) - 18 May 2015
+
+### New features and bug fixes in v2.9
+
+- only allow configured clouds to be used in UI
+- provide pagination of event and usage resources
+- package scripts for preparing usage summaries
+- reduce resource requirements for collected metrics
+- patch timezone handling bug in UI
+- fix storage of service configuration enum parameters
+- remove unnecessary dependencies in build artifacts
+
+### Migration
+
+A database migrations from v2.8 to v2.9 is not needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.8-community...v2.9-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.8-community...v2.9-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.8-community...v2.9-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.8-community...v2.9-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.8-community...v2.9-community)
 
 ## v2.8 (candidate) - 29 April 2015
 
