@@ -18,7 +18,7 @@ The core languages used in development are Java and Python.  Make sure
 that you have the development environments for those two languages
 installed.  You will need the versions:
 
-  - Java 1.7+
+  - Java 1.8+
   - Python 2.6+ (but not 3.0+)
 
 See the appropriate installation instructions for your operating
@@ -90,6 +90,7 @@ build.
 The command:
 
     $ yum install -y \
+          git \
           java-1.8.0-openjdk-devel \
           python \
           python-devel \
@@ -97,7 +98,6 @@ The command:
           python-pip \
           python-mock \
           gcc \
-          git \
           rpm-build \
           createrepo
 
@@ -105,6 +105,7 @@ will install all of the listed packages.
 
 | Package                      | Comment                                  |
 |:-----------------------------|:-----------------------------------------|
+| git                          | Download sources from GitHub             |
 | java-1.8.0-openjdk-devel     | Compile and run the server               |
 | python                       | Client CLI build and testing             |
 | python-devel                 | Needed for python module dependencies    |
@@ -112,7 +113,6 @@ will install all of the listed packages.
 | python-pip                   | Installation of python modules           |
 | python-mock                  | Mocking library used in unit tests       |
 | gcc                          | c-bindings for python module dependencies|
-| git                          | Download sources from GitHub             |
 | rpm-build                    | Creates binary distribution packages     |
 | createrepo                   | Create local yum repository              |
 
@@ -160,12 +160,12 @@ describes how those packages are used within the build.
 The command:
 
     $ yum install -y \
+          git \
           java-1.8.0-openjdk-devel \
           python \
           python-devel \
           pylint \
           python-mock \
-          git \
           python-nose \
           python-coverage \
           python-paramiko \
@@ -176,21 +176,73 @@ will install all of the listed packages.
 
 | Package                      | Comment                                  |
 |:-----------------------------|:-----------------------------------------|
+| git                          | Download sources from GitHub             |
 | java-1.8.0-openjdk-devel     | Compile and run the server               |
 | python                       | Client CLI build and testing             |
 | python-devel                 | Needed for python module dependencies    |
 | pylint                       | Analysis of python code                  |
 | python-mock                  | Mocking library used in unit tests       |
-| git                          | Download sources from GitHub             |
 | python-nose                  | Unit testing for python code             |
 | python-coverage              | Coverage testing for python code         |
 | python-paramiko              | SSH library for python                   |
 | rpm-build                    | Creates binary distribution packages     |
 | createrepo                   | Create local yum repository              |
 
-Note that currently the packaging is not working on CentOS 7.  To
-avoid build failures leave out the `rpm-build` and `createrepo`
-packages for now.
+> Currently the packaging is not working on CentOS 7.  To avoid build
+> failures leave out the `rpm-build` and `createrepo` packages.
+{: .important}
+
+## Ubuntu 14.04
+
+Ubuntu is **not** a supported production platform for SlipStream;
+nonetheless, it can be used for development and testing.
+
+These instructions assume that you are building the software on an
+up-to-date, minimal Ubuntu 14.04 system.
+
+All of the build dependencies can be installed directly with
+`apt-get`. The following table lists the packages that must be
+installed and describes how those packages are used within the build.
+
+The command:
+
+    $ apt-get install -y \
+          git \
+          openjdk-7-jdk \
+          python-minimal \
+          pylint \
+          python-mock \
+          python-nose \
+          python-coverage \
+          python-paramiko \
+          rpm \
+          createrepo
+
+will install all of the listed packages.
+
+| Package                      | Comment                                  |
+|:-----------------------------|:-----------------------------------------|
+| git                          | Download sources from GitHub             |
+| openjdk-7-jdk                | Compile and run the server               |
+| python-minimal               | Client CLI build and testing             |
+| python-devel                 | Needed for python module dependencies    |
+| pylint                       | Analysis of python code                  |
+| python-mock                  | Mocking library used in unit tests       |
+| python-nose                  | Unit testing for python code             |
+| python-coverage              | Coverage testing for python code         |
+| python-paramiko              | SSH library for python                   |
+| rpm                          | Creates binary distribution packages     |
+| createrepo                   | Create local yum repository              |
+
+> Running the tests requires Java 1.8 to run. Either you can install
+> Java 1.8 from an unofficial repository or simply skip the tests
+> using the maven `-skipTests` option.
+{: .important}
+
+The SlipStream RPM packages will be built if you install the `rpm` and
+`createrepo` packages; however, they cannot be used to install and run
+the SlipStream server. Follow the instructions for running a test
+version of the server from the respository sources.
 
 # Build Tools
 
@@ -199,13 +251,16 @@ modules also requiring [Leiningen].
 
 ## Maven
 
-Download and install the latest [Maven] release from the Apache Maven
-website.  Unfortunately the Maven version supplied by most operating
-systems is too old to work with the SlipStream build.
+Download and install the **latest** [Maven] release from the Apache
+Maven website.  You will need to download the [Maven
+distribution][mvn-download] (choose the most recent binary
+distribution), unpack the distribution and modify the environment to
+make the `mvn` command visible.
 
-You will need to download the [Maven distribution][mvn-download]
-(choose the most recent binary distribution), unpack the distribution
-and modify the environment to make the `mvn` command visible.
+> The Maven version supplied by most operating systems is too old to
+> work with the SlipStream build. You must have at least version
+> 3.2.0.
+{: .warning}
 
 Once you have downloaded and unpacked Maven, you can setup the
 environment with:
