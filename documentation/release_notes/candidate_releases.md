@@ -9,13 +9,42 @@ deployments.
 
 ## Development commits
 
-  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.9-community...master)  
-  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.9-community...master)  
-  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.9-community...master)  
-  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.9-community...master)  
-  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.9-community...master)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.10-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.10-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.10-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.10-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.10-community...master)  
 
-## v2.9 (candidate) - 18 May 2015
+## v2.10 (candidate) - 7 June 2015
+
+### New features and bug fixes in v2.10
+
+- interactive tour available through SlipStream interface (beta)
+- clicking on dashboard gauges opens the corresponding cloud section
+- allow event and usage resources to be filtered
+- disallow changes to parameter types through UI to be consistent with
+  server 
+- improve contextualization mechanisms for Windows
+- allow admins to choose contextualization method used for a cloud
+- fix: dashboard gauges incorrectly rendered in some cases
+- fix: wrong version comment sometimes displayed for module
+- fix: module logo is not displayed
+- fix: Windows deployments intermittently fail
+- fix: "noscript" message was not working when JavaScript 
+
+### Migration
+
+A database migration from v2.9 to v2.10 is not needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.9-community...v2.10-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.9-community...v2.10-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.9-community...v2.10-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.9-community...v2.10-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.9-community...v2.10-community)
+
+## v2.9 (stable) - 18 May 2015
 
 ### New features and bug fixes in v2.9
 
@@ -29,7 +58,7 @@ deployments.
 
 ### Migration
 
-A database migrations from v2.8 to v2.9 is not needed.
+A database migration from v2.8 to v2.9 is not needed.
 
 ### Commits
 
