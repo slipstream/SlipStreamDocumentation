@@ -21,11 +21,10 @@ deployments.
 
 - users can now receive daily cloud usage emails (turn on via
   parameter in user profile)
-- extend server for better support of application scaling
-- allow cloud contextualization method to be chosen via connector
-  configuration
-- SlipStream server now requires Java 1.8 (previous versions are EOL);
-  the code base will now start using Java 1.8 features
+- changes to the server for better support of application scaling
+- the cloud contextualization method can be chosen through the
+  cloud connector configuration
+- Java 1.8 is now required by the SlipStream server
 - fix: handling of open subsection in URL 
 - fix: catch EINTR interrupt to prevent script failures on Windows
 - fix: invalid URL when clicking on VM gauge in dashboard
@@ -35,7 +34,7 @@ deployments.
 
 ### Migration
 
-**TDB**: A database migration is required from v2.10 to v2.11!!
+A database migration from v2.10 to v2.11 is not needed.
 
 ### Commits
 
