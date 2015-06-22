@@ -9,11 +9,41 @@ deployments.
 
 ## Development commits
 
-  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.10-community...master)  
-  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.10-community...master)  
-  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.10-community...master)  
-  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.10-community...master)  
-  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.10-community...master)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.11-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.11-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.11-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.11-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.11-community...master)  
+
+## v2.11 (candidate) - 22 June 2015
+
+### New features and bug fixes in v2.11
+
+- users can now receive daily cloud usage emails (turn on via
+  parameter in user profile)
+- extend server for better support of application scaling
+- allow cloud contextualization method to be chosen via connector
+  configuration
+- SlipStream server now requires Java 1.8 (previous versions are EOL);
+  the code base will now start using Java 1.8 features
+- fix: handling of open subsection in URL 
+- fix: catch EINTR interrupt to prevent script failures on Windows
+- fix: invalid URL when clicking on VM gauge in dashboard
+- fix: problem with scaling scripts not being called on scaling
+  actions 
+- fix: various browser issues with embedded SlipStream tour
+
+### Migration
+
+**TDB**: A database migration is required from v2.10 to v2.11!!
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.10-community...v2.11-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.10-community...v2.11-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.10-community...v2.11-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.10-community...v2.11-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.10-community...v2.11-community)
 
 ## v2.10 (candidate) - 7 June 2015
 
