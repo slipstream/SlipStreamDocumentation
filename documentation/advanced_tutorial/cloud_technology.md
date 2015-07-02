@@ -39,23 +39,24 @@ However, virtualization is only one, critical component of a cloud.
 
 ## Simple, Universal APIs
 
-Nearly since machines have been networked together, there have been
-ways to federate those machines (and their running services) into a
-larger computing platform, with access to the federated or distributed
+Since machines have been networked together, there have been ways to
+federate those machines (and their running services) into a larger
+computing platform, with access to the federated or distributed
 resources governed by an Application Programming Interface (API).
 
 Examples of generic APIs include CORBA and Web Services (via WSDL and
-co.).  These APIs and the associated computing platforms have had
-limited uptake because of their complexity and limited
-interoperability between different implementations.
+co.).  These APIs and the associated computing platforms have been
+adopted by industry, but are not popular with developers because of
+their complexity and limited interoperability between different
+implementations.
 
 Recently there has been a backlash against such complex and
 heavyweight APIs.  The current trend is towards Resource Oriented
-Architectures with "REST" APIs reusing the ubiquitous HTTP protocol.
-The result has been APIs with simple, uniform SCRUD (Search, Create,
-Read, Update, Delete) actions for resources defined by URLs.  Basing
-this on the HTTP protocol means that these simple APIs are universally
-accessible from all programming languages.
+Architectures and "REST" APIs that reuse the ubiquitous HTTP
+protocol.  The result has been APIs with simple, uniform SCRUD
+(Search, Create, Read, Update, Delete) actions for resources defined
+by URLs.  Basing this on the HTTP protocol means that these simple
+APIs are universally accessible from all programming languages.
 
 The use of simple REST APIs for cloud services is the another key
 component for the popularity of the cloud.
@@ -68,9 +69,9 @@ them.  Consequently, having a ubiquitous and reliable network
 infrastructure is a prerequisite for the wide adoption of any remote
 computing platform, the cloud included.
 
-Having widely-available, reliable, high-bandwidth connections from
-nearly any device was a necessary precursor to the adoption of the
-cloud. 
+The current reality of phones, tablets, and computers connected by
+cellular networks, wifi, and high-bandwidth, wired connections
+provides universal, reliable, 24/7 access for the cloud.
 
 ## Bringing Them Together
 

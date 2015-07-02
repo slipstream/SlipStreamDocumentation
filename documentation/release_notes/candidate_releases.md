@@ -9,11 +9,93 @@ deployments.
 
 ## Development commits
 
-  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.8-community...master)  
-  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.8-community...master)  
-  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.8-community...master)  
-  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.8-community...master)  
-  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.8-community...master)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.11-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.11-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.11-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.11-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.11-community...master)  
+
+## v2.11 (candidate) - 22 June 2015
+
+### New features and bug fixes in v2.11
+
+- users can now receive daily cloud usage emails (turn on via
+  parameter in user profile)
+- changes to the server for better support of application scaling
+- the cloud contextualization method can be chosen through the
+  cloud connector configuration
+- Java 1.8 is now required by the SlipStream server
+- fix: handling of open subsection in URL 
+- fix: catch EINTR interrupt to prevent script failures on Windows
+- fix: invalid URL when clicking on VM gauge in dashboard
+- fix: problem with scaling scripts not being called on scaling
+  actions 
+- fix: various browser issues with embedded SlipStream tour
+
+### Migration
+
+A database migration from v2.10 to v2.11 is not needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.10-community...v2.11-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.10-community...v2.11-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.10-community...v2.11-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.10-community...v2.11-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.10-community...v2.11-community)
+
+## v2.10 (candidate) - 7 June 2015
+
+### New features and bug fixes in v2.10
+
+- interactive tour available through SlipStream interface (beta)
+- clicking on dashboard gauges opens the corresponding cloud section
+- allow event and usage resources to be filtered
+- disallow changes to parameter types through UI to be consistent with
+  server 
+- improve contextualization mechanisms for Windows
+- allow admins to choose contextualization method used for a cloud
+- fix: dashboard gauges incorrectly rendered in some cases
+- fix: wrong version comment sometimes displayed for module
+- fix: module logo is not displayed
+- fix: Windows deployments intermittently fail
+- fix: "noscript" message was not working when JavaScript 
+
+### Migration
+
+A database migration from v2.9 to v2.10 is not needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.9-community...v2.10-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.9-community...v2.10-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.9-community...v2.10-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.9-community...v2.10-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.9-community...v2.10-community)
+
+## v2.9 (stable) - 18 May 2015
+
+### New features and bug fixes in v2.9
+
+- only allow configured clouds to be used in UI
+- provide pagination of event and usage resources
+- package scripts for preparing usage summaries
+- reduce resource requirements for collected metrics
+- patch timezone handling bug in UI
+- fix storage of service configuration enum parameters
+- remove unnecessary dependencies in build artifacts
+
+### Migration
+
+A database migration from v2.8 to v2.9 is not needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.8-community...v2.9-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.8-community...v2.9-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.8-community...v2.9-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.8-community...v2.9-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.8-community...v2.9-community)
 
 ## v2.8 (candidate) - 29 April 2015
 

@@ -50,10 +50,10 @@ archive (war file).
     $ mvn jetty:run-war
 
 If the last command returns an error like `JettyRunWarMojo :
-Unsupported major.minor version 51.0` look here to configure maven for
-Java 7 on Mac OS X: 
-[Configuring Maven to use Java 7 on Mac OS
-X](http://www.jayway.com/2013/03/08/configuring-maven-to-use-java-7-on-mac-os-x/).
+Unsupported major.minor version 51.0` make sure you have Java 8
+installed.  You can find the appropriate download from the Java web
+site.  You may also want to consult [this article][java-osx-setup] for
+setting up the environment.
 
 As you can see, we run SlipStream as a war behind Jetty.  Now that the
 server's running, visit
@@ -130,3 +130,6 @@ non-administrator) account.
 You now only need to configure the cloud parameters of a user
 (e.g. "test"). And add the cloud IDs to the native images
 (e.g. Ubuntu, CentOS) you just created.
+
+
+[java-osx-setup]: http://www.jayway.com/2013/03/08/configuring-maven-to-use-java-7-on-mac-os-x/

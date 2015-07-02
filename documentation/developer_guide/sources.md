@@ -15,7 +15,7 @@ The fastest way to checkout all of the source code is through the
 need to have the following installed on your development machine:
 
   - A [git] client,
-  - A java development environment (JDK), version 1.7 or later, and
+  - A java development environment (JDK), version 1.8 or later, and
   - [Maven], version 3.2.0 or later.
 
 Ensure that all of these are installed and working correctly before

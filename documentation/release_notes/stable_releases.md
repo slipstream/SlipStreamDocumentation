@@ -7,6 +7,76 @@ stable releases that are listed here.  Stable releases are supported
 by SixSq and are appropriate for production deployments.  In general,
 we recommend that people use the latest stable release. 
 
+## v2.9 (stable) - 18 May 2015
+
+### From v2.8 (candidate) to v2.9 (stable)
+
+- only allow configured clouds to be used in UI
+- provide pagination of event and usage resources
+- package scripts for preparing usage summaries
+- reduce resource requirements for collected metrics
+- patch timezone handling bug in UI
+- fix storage of service configuration enum parameters
+- remove unnecessary dependencies in build artifacts
+
+### From v2.7 (stable) to  v2.8 (candidate)
+
+- allow connectors to indicate when a VM is usable (for usage records)
+- improve logging (more concise messages, longer retention times)
+- provide quick installation script with documentation of procedure
+- provide "event" resource with standard lifecycle events
+- expose "usage" summary as a resource
+- updated advanced tutorial for current release
+- fix bug which prevented deployments from being saved
+- fix bug which erased parameters starting with "http://"
+- fix deadlock associated with multiple database clients
+- fix run ordering by time
+- fix truncation of fields hiding information (popovers used everywhere)
+- improve rendering of errors to make the cause more visible
+
+### Migration
+
+The migration procedures should be run in the order from the last
+stable release to the current release.
+
+#### From v2.8 (candidate) to v2.9 (stable)
+
+No migration required.
+
+#### From v2.7 (stable) to v2.8 (candidate)
+
+**Database migration is required from v2.7 to v2.8. The following
+  steps MUST be followed:**
+
+1. Upgrade SlipStream
+2. Stop SlipStream
+ 
+        $ service slipstream stop
+
+3. Stop HSQLDB (or your DB engine)
+ 
+        $ service hsqldb stop
+
+6. Execute the following SQL script */opt/slipstream/server/migrations/014_enumvalues_size_fix.sql*:
+ 
+        $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/014_enumvalues_size_fix.sql
+
+7. Start HSQLDB (or your DB engine)
+ 
+        $ service hsqldb start
+
+8. Start SlipStream
+ 
+        $ service slipstream start
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.7-community...v2.9-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.7-community...v2.9-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.7-community...v2.9-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.7-community...v2.9-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.7-community...v2.9-community)
+
 ## v2.7 (stable) - 15 April 2015
 
 ### New features and bug fixes from v2.7

@@ -38,6 +38,10 @@ If you are going to install the enterprise version of SlipStream you have
 to install the certificate (yum-client.crt and yum-client.key) provided by
 SixSq into `/etc/slipstream/`.
 
+> If you're behind a web proxy, see the "Installation via Web Proxy"
+> section before starting.
+{: .warning}
+
 The following command will take care of the installation of SlipStream.
 
 The placeholder `{edition}` has to be replaced by `community` or
@@ -84,4 +88,28 @@ cloud connectors.
 
 ![SlipStream Login Page](images/screenshot-login.png)
 
+## Installation via Web Proxy
+
+If you are installing SlipStream from behind a web proxy, you'll
+need some additional configuration to ensure that the scripts and
+packages can be downloaded through the proxy.  Set the following
+environmental variables:
+
+    http_proxy=http://user:password@ip_addr:3128/
+    HTTPS_PROXY=https://user:password@ip_addr:3128/
+    HTTP_PROXY=http://user:password@ip_addr:3128/
+
+replacing the `user`, `password`, and `ip_addr` with the appropriate
+values.  This allows the commands `curl` and `rpm` to access
+everything. 
+
+In addition, you need to add the following lines to `/etc/yum.conf`:
+
+    # The proxy server - proxy server:port number
+    proxy=http://xxx.xxx.xxx.xxx:3128
+    # The account details for yum connections
+    proxy_username=xxx
+    proxy_password=yyy
+
+again replacing the values as appropriate.
 
