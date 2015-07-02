@@ -187,6 +187,9 @@ a {
   padding: 10px 0;
   text-decoration: none;
 }
+#header #logo > img {
+  max-width: 220px;
+}
 #nav {
   float: left;
   width: 230px;
@@ -478,3 +481,4 @@ a {
     width: 100px;
   }
 }
+
