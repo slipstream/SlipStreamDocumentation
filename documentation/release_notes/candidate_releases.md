@@ -21,14 +21,19 @@ deployments.
 
 - reduced dependency from jdk to jre
 - migrated to java 8
-- provide more metrics from connectors (cpu, ram, instance type, root disk size)
+- provide more metrics from connectors (cpu, ram, instance type, root 
+  disk size)
 - multiple bug fixes and improvements in UI
 - run page refreshes asynchronously on background
-- on run page alert (abort) messages are truncated (full abort message can still be seen in Global section)
+- on run page alert (abort) messages are truncated (full abort message 
+  can still be seen in Global section)
 - display a loading screen while waiting for request from the server
-- added an ability for machine executor (orchestrator and node) to survive reboot of the host they are running on
-- more metrics can now be returned by OpenStack and CloudStack connectors
-- VMs section of dashboard can now display cpu, ram, instance type and root disk size if provided by the cloud connectors
+- added an ability for machine executor (orchestrator and node) to 
+  survive reboot of the host they are running on
+- more metrics can now be returned by OpenStack and CloudStack 
+  connectors
+- VMs section of dashboard can now display cpu, ram, instance type and 
+  root disk size if provided by the cloud connectors
 - improved collection of the usage records
 
 ### Migration
