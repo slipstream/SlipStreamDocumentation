@@ -9,11 +9,63 @@ deployments.
 
 ## Development commits
 
-  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.11-community...master)  
-  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.11-community...master)  
-  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.11-community...master)  
-  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.11-community...master)  
-  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.11-community...master)  
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.13-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.13-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.13-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.13-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.13-community...master)
+
+## v2.13 (candidate) - 29 July 2015
+
+### New features and bug fixes in v2.13
+
+- reduced dependency from jdk to jre
+- migrated to java 8
+- provide more metrics from connectors (cpu, ram, instance type, root disk size)
+- multiple bug fixes and improvements in UI
+- run page refreshes asynchronously on background
+- on run page alert (abort) messages are truncated (full abort message can still be seen in Global section)
+- display a loading screen while waiting for request from the server
+- added an ability for machine executor (orchestrator and node) to survive reboot of the host they are running on
+- more metrics can now be returned by OpenStack and CloudStack connectors
+- VMs section of dashboard can now display cpu, ram, instance type and root disk size if provided by the cloud connectors
+- improved collection of the usage records
+
+### Migration
+
+A database migration from v2.12 to v2.13 is not needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.12-community...v2.13-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.12-community...v2.13-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.12-community...v2.13-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.12-community...v2.13-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.12-community...v2.13-community)
+
+## v2.12 (candidate) - 10 July 2015
+
+### New features and bug fixes in v2.12
+
+- added documentation on obtaining API Key and Secret on CloudStack
+- improved packaging of python code for cloud connectors
+- updated and improved example image and deployment modules that are shipped with SlipStream; added documentation on how to publish the modules to running SlipStream instance
+- bug fixes and improvements of the machine executor (orchestrator and node)
+- initial implementation of vertical scaling of node instances
+- new SlipStream dashboard layout with correspondingly adapted tour
+- numerous fixes and improvements in UI
+
+### Migration
+
+A database migration from v2.11 to v2.12 is not needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.11-community...v2.12-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.11-community...v2.12-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.11-community...v2.12-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.11-community...v2.12-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.11-community...v2.12-community)
 
 ## v2.11 (candidate) - 22 June 2015
 
