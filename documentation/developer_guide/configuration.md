@@ -1,144 +1,66 @@
 ---
-title: Configuration from Files
+title: Configuring
 ---
 
-At this point you have a naked SlipStream instance running on your
-system. This is great, but you probably want a few basic configuration
-items loaded for your instance to be useable and useful.
+To do anything useful with the local SlipStream server, you will need
+to configure it.
 
-The following instructions describe how you can drive the entire
-configuration of SlipStream by simply dropping a few files on the
-file system and restarting the service.
+You can either use the web UI that you just started, or use [configuration
+files](/documentation/developer_guide/configuration.html).
 
-The configuration files will only be loaded once, on an empty system.
-It is therefore safe to restart the SlipStream service with modified
-configuration files. A specific post request can be invoked to force
-a reload of the files.
+## User(s)
 
-## File System Structure
+During the initial startup of the server, an administrator account
+("super") will be created.  The initial password for this account is
+"supeRsupeR".  You should log in as this user, visit the profile page
+(single user icon at top), and change the password to another value.
 
-Initially, SlipStream will look for configuration files in the file
-system to load. Typically, the loader will look for files in the
-following locations, stopping at the first occurrence:
+Alternatively, you can change the password on first server startup
+by [dropping a password file in your configuration directory](/documentation/developer_guide/configuration.html#password).
 
-    /etc/slipstream/
-    ~/.slipstream/
+You can also create new user accounts by visiting the "users" page
+(*Configuration* -> *Users* from top nav bar), or
+[dropping user configuration files](/documentation/developer_guide/configuration.html#user).
 
-Inside this structure of the expected configuration is a follows:
+## Connector(s)
 
-| Configuration file    | Meaning                                |
-|:----------------------|:---------------------------------------|
-| `./slipstream.conf`   | Main configuration file                |
-| `./connectors/*.conf` | Connector specific configuration files |
-| `./modules/*.xml`     | Module definition files                |
-| `./cloud-ids/*.conf`  | Unique cloud image identifiers         |
-| `./users/*.xml`       | User definition files                  |
-| `./passwords/*`       | User passwords                         |
+Once the server is up and running you need to configure a connector
+before trying to deploy a module. Out of the box, using the local
+connector is the easiest way to get started. To do so, navigate to the
+[server configuration page](http://localhost:8080/configuration) and
+define a cloud connector instance in the SlipStream Basics section:
 
-Note that these files are not created by default during a standard
-installation.
+    test-cloud:local
 
-## Main Configuration File
+You must be logged in with an administrator account to do this.  The
+value of this field has the form "name1:connector1,name2:connector2";
+multiple instances of a single connector are permitted.  If the name
+isn't given, it defaults to the connector name.
 
-The main configuration file is normally placed in /etc/slipstream
-when performing a standard installation. The default values are taken from
-the [system default] shipped with SlipStream.
+For configuration of other cloud connectors, check our
+[blog](http://sixsq.com/blog/index.html).
 
-If you want to override these defaults, a good place to start is from the [system default]
-file, that you can modify and drop in one of the standard location (see previous
-section). 
+Alternatively, you can create new connector instance
+by [dropping connector configuration files in your configuration directory]
+(/documentation/developer_guide/configuration.html#connector).
 
-> Do not forget to rename the default file to `slipstream.conf`. 
-{: .warning}
+## Load base images and apps modules
 
+The client module includes examples containing base images and tutorial that can be
+loaded.
 
-## Connector Configuration Files
+    $ cd ../../SlipStreamClient/client/src/main/python
+    $ ./ss-module-upload.py \
+          --endpoint http://localhost:8080 \
+          -u test -p tesTtesT \
+          ../resources/doc/*
 
-Each connector can be configured by simply dropping a configuration file
-in the `./connctors/` directory. While the same can be achieved using the
-main configuration file, we recommend you split your connector configuration
-in separate files. This method is also more configuration management
-tool friendly, such as Puppet, Chef or Ansible.
+Change the username and password to an existing (preferably
+non-administrator) account.
 
-The connector configuration file must include the `cloud.connector.class`
-and the name given to the connector instance must be used to qualify
-all other configuration parameter. Here is an example of a connector file
-to configure the Exoscale cloud:
+You now only need to configure the cloud parameters of a user
+(e.g. "test"). And add the cloud IDs to the native images
+(e.g. Ubuntu, CentOS) you just created.
 
-    cloud.connector.class = exoscale-ch-gva:cloudstack
-    exoscale-ch-gva.endpoint = https://api.exoscale.ch/compute
-    exoscale-ch-gva.zone = CH-GV2
-    exoscale-ch-gva.quota.vm = 20
-    exoscale-ch-gva.orchestrator.imageid = 605d1ad4-b3b2-4b60-af99-843c7b8278f8
-    exoscale-ch-gva.orchestrator.instance.type = Micro
-    exoscale-ch-gva.native-contextualization = linux-only
-
-> Do not forget to have a `cloud.connector.class` key in each file. 
-{: .warning}
-
-You can have as many connector configuration files as you wish.
-
-> If you are using the enterprise edition, makes sure you have the license
-matching the number of connector instance configured.
-{: .warning}
-
-
-## Module Configuration Files
-
-To load automatically module definitions (i.e. projects, images and deployments),
-simply drop module files in the `./modules` configuration directory. These
-files (now in xml and soon in json) can be retrieved from a live SlipStream
-instance by simply GETting the module or appending `?media=xml` to the end of
-a URL, either using your browser, curl or any other http tool.
-
-
-## Unique Cloud Identifier Configuration Files
-
-As you build a full SlipStream system configuration, you will also need to
-provide unique cloud identifiers, especially for base images. Typically, these
-files will be cloud service specific. Here is an example of a unique cloud identifier
-file for Exoscale:
-
-    apps/Minecraft/minecraft-server = exoscale-ch-gva:aaabbbccc
-
-where the key is the module to set, and the value is composed of a `:`
-separated tuple, composed of the cloud service name and the unique value.
-
-> Ensure the cloud service name part of the value matches the cloud service
-name defined via the `cloud.connector.class` configuration parameter.
-{: .warning}
-
-
-## User Configuration Files
-
-The last piece of configuration required to have a fully functional system
-is one or several users. By default, SlipStream will create a privileged user
-during the first startup of the service. But you can add more users to the system
-dropping files in the `./users/` configuration directory.
-
-As for modules (see above), user configuration files can be created GETting
-existing users.
-
-For security reasons, since user passwords are never transmitted over the wire once the user is
-registered, a second set of configuration file is required to define the
-user password.  Only a hashed version of the password is kept in the database.
-
-
-## User Password Configuration File
-
-As mentioned above, the password of each user must be defined using separate
-files, located in the `./passwords/` directory.  The file name must march the
-username, without any extension. The file must only contain the password in
-clear text.
-
-Here is an example of the content of the password file for the user `test`:
-
-    $ cat ./passwords/test
-    test:Change_Me
-
-> Ensure each password file has the exact same name as the user it corresponds
-to, without any extension.
-{: .warning}
-
-
-[system default]: https://github.com/slipstream/SlipStreamServer/blob/master/jar-connector/src/main/resources/com/sixsq/slipstream/configuration/default.config.properties
+Building on these base images, you can [install apps]() from the
+[Nuvla&trade;](http://nuv.la) service.
