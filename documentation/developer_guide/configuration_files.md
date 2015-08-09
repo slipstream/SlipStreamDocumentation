@@ -15,7 +15,7 @@ It is therefore safe to restart the SlipStream service with modified
 configuration files. A specific post request can be invoked to force
 a reload of the files.
 
-> If your SlipStream server is already, don't forget to restart
+> If your SlipStream server is already started, don't forget to restart
 it for the configuration files to be loaded.
 {: .warning}
 
@@ -28,7 +28,7 @@ following locations, stopping at the first occurrence:
     /etc/slipstream/
     ~/.slipstream/
 
-Inside this structure of the expected configuration is a follows:
+Inside this structure of the expected configuration is as follows:
 
 | Configuration file    | Meaning                                |
 |:----------------------|:---------------------------------------|
@@ -59,7 +59,7 @@ section).
 ## Connector Configuration Files<a name="connector" />
 
 Each connector can be configured by simply dropping a configuration file
-in the `./connctors/` directory. While the same can be achieved using the
+in the `./connectors/` directory. While the same can be achieved using the
 main configuration file, we recommend you split your connector configuration
 in separate files. This method is also more configuration management
 tool friendly, such as Puppet, Chef or Ansible.
@@ -143,7 +143,7 @@ user password.  Only a hashed version of the password is kept in the database.
 ## User Password Configuration File<a name="password" />
 
 As mentioned above, the password of each user must be defined using separate
-files, located in the `./passwords/` directory.  The file name must march the
+files, located in the `./passwords/` directory.  The file name must match the
 username, without any extension. The file must only contain the password in
 clear text.
 
