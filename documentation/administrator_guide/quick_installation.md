@@ -92,7 +92,7 @@ cloud connectors.
 
 To configure your SlipStream server you can either use the user interface or
 drive the configuration from configuration files. Refer to the dedicated
-[configuration files documentation page](/documentation/developer_guide/configuration.html)
+[configuration files documentation page](/documentation/developer_guide/configuration_files.html)
 for more details.
 
 This will allow you to define configuration for:
