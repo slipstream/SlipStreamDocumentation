@@ -6,7 +6,7 @@ To do anything useful with the local SlipStream server, you will need
 to configure it.
 
 You can either use the web UI that you just started, or use [configuration
-files](/documentation/developer_guide/configuration.html).
+files](/documentation/developer_guide/configuration_files.html).
 
 ## User(s)
 
@@ -16,11 +16,11 @@ During the initial startup of the server, an administrator account
 (single user icon at top), and change the password to another value.
 
 Alternatively, you can change the password on first server startup
-by [dropping a password file in your configuration directory](/documentation/developer_guide/configuration.html#password).
+by [dropping a password file in your configuration directory](/documentation/developer_guide/configuration_files.html#password).
 
 You can also create new user accounts by visiting the "users" page
 (*Configuration* -> *Users* from top nav bar), or
-[dropping user configuration files](/documentation/developer_guide/configuration.html#user).
+[dropping user configuration files](/documentation/developer_guide/configuration_files.html#user).
 
 ## Connector(s)
 
