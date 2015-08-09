@@ -111,7 +111,7 @@ or more instances of this connector by either:
  1. Using the UI, go to the *System* -> *Configuration* and in the
     *SlipStream Basics* add a new connector class declaration.
  1. Drop a configuration file and restart the service. See [Configuration
-    from File](/documentation/developer_guide/configuration.html) documentation
+    from File](/documentation/developer_guide/configuration_files.html) documentation
     for details.
 
 ### OpenStack Connector
@@ -138,7 +138,7 @@ or more instances of this connector by either:
  1. Using the UI, go to the *System* -> *Configuration* and in the
     *SlipStream Basics* add a new connector class declaration.
  1. Drop a configuration file and restart the service. See [Configuration
-    from File](/documentation/developer_guide/configuration.html) documentation
+    from File](/documentation/developer_guide/configuration_files.html) documentation
     for details.
 
 ### OCCI Connector
@@ -227,6 +227,6 @@ or more instances of this connector by either:
  1. Using the UI, go to the *System* -> *Configuration* and in the
     *SlipStream Basics* add a new connector class declaration.
  1. Drop a configuration file and restart the service. See [Configuration
-    from File](/documentation/developer_guide/configuration.html) documentation
+    from File](/documentation/developer_guide/configuration_files.html) documentation
     for details.
 
