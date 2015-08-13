@@ -105,7 +105,7 @@ a simple procedure. Once you have the xml files, simply drop them in the
 > Modules will only be loaded from file if no modules already exist.
 {: .warning}
 
-[More information about loading apps](https://github.com/slipstream/apps/blob/master/README.md)
+[More information about loading apps](https://github.com/slipstream/apps)
 is available. 
 
 ## Unique Cloud Identifier Configuration Files
@@ -150,7 +150,7 @@ clear text.
 Here is an example of the content of the password file for the user `test`:
 
     $ cat ./passwords/test
-    test:Change_Me
+    Change_Me
 
 You can also, using such a password file change the password of the `super`
 user created automatically during the first execution of the service. However,
