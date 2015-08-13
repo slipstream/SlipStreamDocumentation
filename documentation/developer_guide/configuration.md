@@ -62,5 +62,5 @@ You now only need to configure the cloud parameters of a user
 (e.g. "test"). And add the cloud IDs to the native images
 (e.g. Ubuntu, CentOS) you just created.
 
-Building on these base images, you can [install apps]() from the
+Building on these base images, you can [install apps](https://github.com/slipstream/apps) from the
 [Nuvla&trade;](http://nuv.la) service.
