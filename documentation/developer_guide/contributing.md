@@ -1,5 +1,6 @@
 ---
 title: Contributing
+head-title: SlipStream Developer Guide&#58; Contributing
 ---
 
 SixSq appreciates bug reports and feedback.  Please provide feedback

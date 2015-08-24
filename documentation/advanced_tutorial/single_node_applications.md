@@ -1,5 +1,6 @@
 ---
 Title: Single Node Applications
+head-title: SlipStream Advanced Tutorial&#58; Single Node Applications
 ---
 
 Many common applications require only a single node to run.  These

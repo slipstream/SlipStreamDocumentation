@@ -1,5 +1,6 @@
 ---
 title: Configuring
+head-title: SlipStream Developer Guide&#58; Configuring
 ---
 
 To do anything useful with the local SlipStream server, you will need

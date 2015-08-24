@@ -1,5 +1,6 @@
 ---
 title: SlipStream API
+head-title: SlipStream Developer Guide&#58; SlipStream API
 ---
 
 SlipStream uses a Resource Oriented Architecture (ROA) and exposes a

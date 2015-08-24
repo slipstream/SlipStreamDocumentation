@@ -1,5 +1,6 @@
 ---
 title: Prerequisities
+head-title: SlipStream Administrator Guide&#58; Prerequisities
 ---
 
 The SlipStream server has a standard, n-tier web application

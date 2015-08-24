@@ -1,5 +1,6 @@
 ---
 Title: Multinode Applications
+head-title: SlipStream Advanced Tutorial&#58; Multinode Applications
 ---
 
 Although some useful applications can be deployed as single nodes,

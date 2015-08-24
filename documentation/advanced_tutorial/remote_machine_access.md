@@ -1,5 +1,6 @@
 ---
 title: Remote Machine Access
+head-title: SlipStream Advanced Tutorial&#58; Remote Machine Access
 ---
 
 If the deployment of an application works correctly, then you can just

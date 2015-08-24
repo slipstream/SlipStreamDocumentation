@@ -1,5 +1,5 @@
 ---
-title: Legal
+title: SlipStream&#58; Legal
 ---
 
 # Copyright

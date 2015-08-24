@@ -1,5 +1,6 @@
 ---
 title: Quick Installation
+head-title: SlipStream Administrator Guide&#58; Quick Installation
 ---
 
 An automated installation script is available to install SlipStream and all of

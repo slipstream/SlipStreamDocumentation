@@ -1,5 +1,6 @@
 ---
 title: Configuration from Files
+head-title: SlipStream Developer Guide&#58; Configuration from Files
 ---
 
 At this point you have a naked SlipStream instance running on your

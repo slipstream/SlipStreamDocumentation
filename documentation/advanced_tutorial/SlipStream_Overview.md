@@ -1,5 +1,6 @@
 ---
 title: SlipStream Overview
+head-title: SlipStream Advanced Tutorial&#58; SlipStream Overview
 ---
 
 Although cloud technologies provide real benefits to their users, they

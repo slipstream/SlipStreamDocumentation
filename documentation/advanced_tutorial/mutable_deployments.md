@@ -1,5 +1,6 @@
 ---
 Title: Mutable Deployments
+head-title: SlipStream Advanced Tutorial&#58; Mutable Deployments
 ---
 
 Very few, if any, applications experience a constant load.  Most

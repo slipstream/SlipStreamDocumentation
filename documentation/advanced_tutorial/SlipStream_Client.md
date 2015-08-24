@@ -1,5 +1,6 @@
 ---
 Title: SlipStream Client
+head-title: SlipStream Advanced Tutorial&#58; SlipStream Client
 ---
 
 The "parameter database" that is maintained for the deployment of an
@@ -24,8 +25,23 @@ Just running the following should work:
 
     $ pip install slipstream-client
 
-You will obviously need to have python (v2.6+, not v3.x) installed on the
-machine.  
+You will need to have python (v2.6+, not v3.x) installed on the
+machine.
+
+To interact with a SlipStream run from your local machine, you can
+create a configuration file called `slipstream.context` as follows,
+which will mimic the contextualisation that takes place in the VM
+(see section: [Modifying the Environment](#env) below):
+
+    $ cat slipstream.context
+    [contextualization]
+    diid = 8d7c3727-77f1-4e0a-aca1-32bc4a9db83a
+    username = alice
+    password = 12341234
+    serviceurl = https://nuv.li
+    node_instance_name = node99.1
+  
+Note that the `uuid` key correspond to the run id.
 
 # Major Client Commands
 
@@ -33,10 +49,11 @@ There are actually just a few commands in the SlipStream client that
 are used in deployment scripts and in debugging.  The following table
 summarizes them.
 
-| `ss-get`    | Retrieves a named parameter, waiting if the parameter has not yet been set. | 
-| `ss-set`    | Sets the value of a named parameter |
-| `ss-random` | Generates a random string value and optionally sets a named parameter with this value |
-| `ss-abort`  | Use to set (or to clear with the `--cancel` option) the deployment abort flag. |
+| `ss-get`     | Retrieves a named parameter, waiting if the parameter has not yet been set. | 
+| `ss-set`     | Sets the value of a named parameter |
+| `ss-random`  | Generates a random string value and optionally sets a named parameter with this value |
+| `ss-abort`   | Use to set (or to clear with the `--cancel` option) the deployment abort flag. |
+| `ss-display` | Use to set a string in the run for display purposes. |
 
 All of the parameters used in the deployment must have been defined in
 the images used in the deployment.  Trying to set or get an undefined
@@ -47,7 +64,7 @@ quite simple, the fact that `ss-get` will wait for a value to be set
 allows it to act as a semaphore to coordinate the configuration
 scripts on different machines in a multi-node deployment.
 
-# Modifying the Environment
+# Modifying the Environment<a name="env"></a>
 
 SlipStream minimizes its footprint within the machines it deploys to
 avoid any unintended interference with the deployed applications.

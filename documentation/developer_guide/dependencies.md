@@ -1,5 +1,6 @@
 ---
 title: Dependencies
+head-title: SlipStream Developer Guide&#58; Dependencies
 ---
 
 To build SlipStream, you need to have a variety of languages, tools,

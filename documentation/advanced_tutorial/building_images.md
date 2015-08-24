@@ -1,5 +1,6 @@
 ---
 Title: Building Images
+head-title: SlipStream Advanced Tutorial&#58; Building Images
 ---
 
 Being able to build an image allows the installation steps to be done

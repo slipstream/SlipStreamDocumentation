@@ -1,5 +1,6 @@
 ---
 title: Cloud Connectors
+head-title: SlipStream Administrator Guide&#58; Cloud Connectors 
 ---
 
 SlipStream supports a variety of different cloud providers through a

@@ -1,5 +1,6 @@
 ---
 title: Building from Sources
+head-title: SlipStream Developer Guide&#58; Building from Sources
 ---
 
 # Build Everything

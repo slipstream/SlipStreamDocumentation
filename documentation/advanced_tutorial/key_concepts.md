@@ -1,5 +1,6 @@
 ---
 title: Key Concepts
+head-title: SlipStream Advanced Tutorial&#58; Key Concepts
 ---
 
 There are a few key concepts that are important to understand so that

@@ -1,5 +1,6 @@
 ---
 title: Running Locally
+head-title: SlipStream Developer Guide&#58; Running Locally
 ---
 
 The following instructions describe how to run the SlipStream server

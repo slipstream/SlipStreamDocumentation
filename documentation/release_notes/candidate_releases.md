@@ -1,5 +1,6 @@
 ---
 title: Candidate Releases
+head-title: SlipStream&#58; Candidate Releases
 ---
 
 Results from each development iteration (sprint) are packaged into

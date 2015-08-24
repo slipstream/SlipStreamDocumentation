@@ -1,5 +1,6 @@
 ---
 title: Developer Guide
+head-title: SlipStream Developer Guide
 ---
 
 # SlipStream

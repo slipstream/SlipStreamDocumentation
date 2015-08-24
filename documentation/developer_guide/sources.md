@@ -1,5 +1,6 @@
 ---
 title: Source Code
+head-title: SlipStream Developer Guide&#58; Source Code
 ---
 
 All of the SlipStream source code is stored in [GitHub] repositories.

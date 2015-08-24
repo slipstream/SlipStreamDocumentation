@@ -1,5 +1,6 @@
 ---
 title: Advanced Tutorial
+head-title: SlipStream Advanced Tutorial
 ---
 
 Developed by SixSq, **SlipStream is a multi-cloud application
