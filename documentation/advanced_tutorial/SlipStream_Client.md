@@ -41,7 +41,7 @@ which will mimic the contextualisation that takes place in the VM
     serviceurl = https://nuv.la
     node_instance_name = node99.1
   
-Note that the `uuid` key correspond to the run id.
+Note that the `diid` key correspond to the run id.
 
 # Major Client Commands
 
@@ -50,8 +50,8 @@ are used in deployment scripts and in debugging.  The following table
 summarizes them.
 
 | `ss-get`     | Retrieves a named parameter, waiting if the parameter has not yet been set. | 
-| `ss-set`     | Sets the value of a named parameter |
-| `ss-random`  | Generates a random string value and optionally sets a named parameter with this value |
+| `ss-set`     | Sets the value of a named parameter. |
+| `ss-random`  | Generates a random string value and optionally sets a named parameter with this value. |
 | `ss-abort`   | Use to set (or to clear with the `--cancel` option) the deployment abort flag. |
 | `ss-display` | Use to set a string in the run for display purposes. |
 
@@ -74,6 +74,12 @@ the SlipStream client commands accessible.
 Usually you will want to do the following:
 
     $ source /tmp/slipstream.setenv
+
+or alternatively, if the above file is not present (e.g., after the VM reboot 
+it can be deleted by the system)
+
+    $ source /opt/slipstream/client/sbin/slipstream.setenv
+
 
 You should then have all of the SlipStream client commands (all
 prefixed with `ss-`) in your path.  All of the commands support the
@@ -108,7 +114,10 @@ Instead, you can:
 
 This allows for a much faster development cycle.  The deployment
 scripts can be found in the files `/tmp/tmp*` and the logs from the
-initial execution of these scripts are below `/tmp/slipstream/`.  
+initial execution of these scripts are below
+
+  * `/var/log/slipstream/client` on Linux
+  * `%TMP%\slipstream\reports` on Windows.
 
 Once the problems in the deployment scripts have been ironed out, just
 copy them back into SlipStream. 
