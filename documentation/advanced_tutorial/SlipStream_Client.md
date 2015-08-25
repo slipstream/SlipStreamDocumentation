@@ -38,7 +38,7 @@ which will mimic the contextualisation that takes place in the VM
     diid = 8d7c3727-77f1-4e0a-aca1-32bc4a9db83a
     username = alice
     password = 12341234
-    serviceurl = https://nuv.li
+    serviceurl = https://nuv.la
     node_instance_name = node99.1
   
 Note that the `uuid` key correspond to the run id.
