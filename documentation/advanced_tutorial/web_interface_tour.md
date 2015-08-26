@@ -1,5 +1,6 @@
 ---
 Title: Tour of Web Interface
+head-title: SlipStream Advanced Tutorial&#58; Tour of Web Interface
 ---
 
 # Home Page

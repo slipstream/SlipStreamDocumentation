@@ -1,5 +1,6 @@
 ---
 title: Cloud Connectors
+head-title: SlipStream Administrator Guide&#58; Cloud Connectors 
 ---
 
 SlipStream supports a variety of different cloud providers through a
@@ -280,8 +281,13 @@ visible.
 #### Configuration
 
 To allow users to take advantage of this connector, you must add one
-or more instances of this connector in the *SlipStream Basics* section
-of the server configuration.
+or more instances of this connector by either:
+
+ 1. Using the UI, go to the *System* -> *Configuration* and in the
+    *SlipStream Basics* add a new connector class declaration.
+ 1. Drop a configuration file and restart the service. See [Configuration
+    from File](/documentation/developer_guide/configuration_files.html) documentation
+    for details.
 
 ### OpenStack Connector
 
@@ -307,9 +313,14 @@ to the list of clouds your SlipStream can talk to.
 
 ##### Load the connector in SlipStream
 
-Once the connector software is installed, you can configure SlipStream to load
-this connector by either setting the parameter in the configuration file (i.e.
-`/etc/slipstream/slipstream.conf`) or via the web interface.
+To allow users to take advantage of this connector, you must add one
+or more instances of this connector by either:
+
+ 1. Using the UI, go to the *System* -> *Configuration* and in the
+    *SlipStream Basics* add a new connector class declaration.
+ 1. Drop a configuration file and restart the service. See [Configuration
+    from File](/documentation/developer_guide/configuration_files.html) documentation
+    for details.
 
 
 ##### Configuration file
@@ -540,8 +551,13 @@ visible.
 #### Configuration
 
 To allow users to take advantage of this connector, you must add one
-or more instances of this connector in the *SlipStream Basics* section
-of the server configuration.
+or more instances of this connector by either:
+
+ 1. Using the UI, go to the *System* -> *Configuration* and in the
+    *SlipStream Basics* add a new connector class declaration.
+ 1. Drop a configuration file and restart the service. See [Configuration
+    from File](/documentation/developer_guide/configuration_files.html) documentation
+    for details.
 
 
 ### CloudStack Connector

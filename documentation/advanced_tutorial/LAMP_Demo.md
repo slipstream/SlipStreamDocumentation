@@ -1,5 +1,6 @@
 ---
 Title: LAMP Demo
+head-title: SlipStream Advanced Tutorial&#58; LAMP Demo
 ---
 
 Resiliant, high-availability deployments of 3-tiered web applications

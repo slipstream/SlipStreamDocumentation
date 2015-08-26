@@ -1,5 +1,6 @@
 ---
 Title: Module Organization
+head-title: SlipStream Advanced Tutorial&#58; Module Organization
 ---
 
 Once you have more than a few modules within SlipStream you will want

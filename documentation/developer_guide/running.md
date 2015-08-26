@@ -1,5 +1,6 @@
 ---
 title: Running Locally
+head-title: SlipStream Developer Guide&#58; Running Locally
 ---
 
 The following instructions describe how to run the SlipStream server
@@ -40,9 +41,14 @@ the database with the downloaded jar file:
 Note that starting the database in this way should not be done in
 production.  This is intended only for development testing. 
 
-## Running SlipStream
+# SlipStream Services
 
-To run the server, drop into the `war` subdirectory in the
+SlipStream is composed of two main services. This section describes
+how to start these services.
+
+## Running the Main SlipStream Service
+
+To run the main server, drop into the `war` subdirectory in the
 `SlipStreamServer` module and then use Jetty to run the SlipStream web
 archive (war file). 
 
@@ -80,56 +86,38 @@ or
 You will obviously need to have either MySQL or Postgresql running
 when configuring the server in this way.
 
-# Configuring SlipStream
+You are now ready to [configure](/documentation/developer_guide/configuration.html)
+your new SlipStream server.
 
-To do anything useful with the local SlipStream server, you will need
-to configure it.  
+> If you intend to configure your system from configuration files,
+do not start your service just yet and read on.
+{: .warning}
 
-## User(s)
+## Running the Ancillary SlipStream Service
 
-During the initial startup of the server, an administrator account
-("super") will be created.  The initial password for this account is
-"supeRsupeR".  You should log in as this user, visit the profile page
-(single user icon at top), and change the password to another value.
+This service includes additional resources, such as `event` and `usage` resources.
+As opposed to the main service written in Java, this service is written
+in Clojure.
 
-You can also create new user accounts by visiting the "users" page
-(group of people icon at top).
 
-## Connector(s)
+    /usr/bin/java
+      -Ddb.config.path=<db.spec>
+      -Dlogfile.path=<environment.name>
+      -cp .../SlipStreamServer-war-<version>.war
+        com.sixsq.slipstream.ssclj.app.main 8201
 
-Once the server is up and running you need to configure a connector
-before trying to deploy a module. Out of the box, using the local
-connector is the easiest way to get started. To do so, navigate to the
-[server configuration page](http://localhost:8080/configuration) and
-define a cloud connector instance in the SlipStream Basics section:
+`db.spec` is the path to the file containing the database definition - 
+e.g. *config-hsqldb-mem.edn*.
 
-    test-cloud:local
+Typical content could look like:
 
-You must be logged in with an administrator account to do this.  The
-value of this field has the form "name1:connector1,name2:connector2";
-multiple instances of a single connector are permitted.  If the name
-isn't given, it defaults to the connector name.
+    {:db {
+      :classname    "org.hsqldb.jdbc.JDBCDriver"
+      :subprotocol  "hsqldb"
+      :subname      "mem://localhost:9012/devresources"
+      :make-pool?   true}}
 
-For configuration of other cloud connectors, check our
-[blog](http://sixsq.com/blog/index.html).
-
-## Load default modules
-
-The client module includes examples from the tutorial that can be
-loaded.
-
-    $ cd ../../SlipStreamClient/client/src/main/python
-    $ ./ss-module-upload.py \
-          --endpoint http://localhost:8080 \
-          -u test -p tesTtesT \
-          ../resources/doc/*
-
-Change the username and password to an existing (preferably
-non-administrator) account.
-
-You now only need to configure the cloud parameters of a user
-(e.g. "test"). And add the cloud IDs to the native images
-(e.g. Ubuntu, CentOS) you just created.
+Note that the log file will be named after the value of `environment.name`.
 
 
 [java-osx-setup]: http://www.jayway.com/2013/03/08/configuring-maven-to-use-java-7-on-mac-os-x/

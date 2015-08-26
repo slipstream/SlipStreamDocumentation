@@ -1,5 +1,6 @@
 ---
-Title: Application Lifecycle
+title: Application Lifecycle
+head-title: SlipStream Advanced Tutorial&#58; Application Lifecycle
 ---
 
 # Application Lifecycle in Clouds

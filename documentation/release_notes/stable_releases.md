@@ -1,5 +1,6 @@
 ---
 title: Stable Releases
+head-title: SlipStream&#58; Stable Releases
 ---
 
 Releases that pass our quality control and testing are promoted to

@@ -1,5 +1,6 @@
 ---
 title: Introduction
+head-title: SlipStream Advanced Tutorial&#58; Introduction
 ---
 
 Developed by SixSq, SlipStream is a multi-cloud, coordinated

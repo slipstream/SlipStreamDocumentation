@@ -1,5 +1,6 @@
 ---
 Title: Standalone Images
+head-title: SlipStream Advanced Tutorial&#58; Standalone Images
 ---
 
 End-users will likely use SlipStream as a **resource provisioning

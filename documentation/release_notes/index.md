@@ -1,5 +1,6 @@
 ---
 title: Release Notes
+head-title: SlipStream&#58; Release Notes
 ---
 
 Production deployments should use recent stable releases. The latest

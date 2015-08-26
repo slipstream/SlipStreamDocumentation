@@ -1,5 +1,6 @@
 ---
 title: Introduction
+head-title: SlipStream Administrator Guide&#58; Introduction
 ---
 
 SlipStream, developed by SixSq, is a multi-cloud, coordinated

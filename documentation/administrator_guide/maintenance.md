@@ -1,5 +1,6 @@
 ---
 title: Maintenance
+head-title: SlipStream Administrator Guide&#58; Maintenance
 ---
 
 SlipStream, as for every service, needs proper care and feeding!

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: Home&#58; SlipStream Documentation
 ---
 
 ### SlipStream Documentation

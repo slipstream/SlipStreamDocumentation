@@ -1,5 +1,6 @@
 ---
 title: Candidate Releases
+head-title: SlipStream&#58; Candidate Releases
 ---
 
 Results from each development iteration (sprint) are packaged into
@@ -9,13 +10,39 @@ deployments.
 
 ## Development commits
 
-  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.13-community...master)  
-  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.13-community...master)  
-  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.13-community...master)  
-  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.13-community...master)  
-  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.13-community...master)
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.14-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.14-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.14-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.14-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.14-community...master)
 
-## v2.13 (candidate) - 29 July 2015
+## v2.14 (candidate) - 13 August 2015
+
+### New features and bug fixes in v2.14
+
+- add SlipStream instance to the text of usage email messages
+- mark Java 1.7 as conflicting with SlipStream RPM package
+  installation
+- improve mechanism for initial bootstrap configuration of server from
+  configuration files
+- change URLs for event (and other clojure) resources from camel-case
+  to kebab-case
+- change change CIMI root resource api/CloudEntryPoint
+- fix: pagination of results in UI
+- fix: crash of node executor on empty target script output
+
+
+### Migration
+
+A database migration from v2.13 to v2.14 is not needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.13-community...v2.14-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.13-community...v2.14-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.13-community...v2.14-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.13-community...v2.14-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.13-community...v2.14-community)
 
 ### New features and bug fixes in v2.13
 

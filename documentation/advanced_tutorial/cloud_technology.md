@@ -1,5 +1,6 @@
 ---
 Title: Cloud Technology
+head-title: SlipStream Advanced Tutorial&#58; Cloud Technology
 ---
 
 Because of the hype surrounding cloud technologies, the term "cloud"

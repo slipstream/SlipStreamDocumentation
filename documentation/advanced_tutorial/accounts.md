@@ -1,5 +1,6 @@
 ---
 title: Accounts
+head-title: SlipStream Advanced Tutorial&#58; Accounts
 ---
 
 SlipStream is a secure web application that allows individuals to
