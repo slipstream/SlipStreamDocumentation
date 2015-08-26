@@ -116,6 +116,9 @@ by either setting the parameter in the configuration file
 
 **Configuration file**
 
+> This method works only before the first launch of SlipStream.
+{: .warning}
+
 The list of connector instances SlipStream uses is defined by the
 `cloud.connector.class` configuration parameter:
 
@@ -310,6 +313,9 @@ this connector by either setting the parameter in the configuration file (i.e.
 
 
 ##### Configuration file
+
+> This method works only before the first launch of SlipStream.
+{: .warning}
 
 The list of connector instances SlipStream uses is defined by the
 `cloud.connector.class` configuration parameter:
@@ -563,6 +569,9 @@ this connector by either setting the parameter in the configuration file (i.e.
 
 ##### Configuration file
 
+> This method works only before the first launch of SlipStream.
+{: .warning}
+
 The list of connector instances SlipStream uses is defined by the
 `cloud.connector.class` configuration parameter:
 
@@ -754,6 +763,9 @@ file (i.e. `/etc/slipstream/slipstream.conf`) or via the web interface.
 
 
 ###### Configuration file
+
+> This method works only before the first launch of SlipStream.
+{: .warning}
 
 The list of connector instances SlipStream uses is defined by the
 `cloud.connector.class` configuration parameter:
