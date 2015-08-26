@@ -231,7 +231,7 @@ You can find the list of all possible values [here][ec2-instance-types].
 The Orchestrator doesn't need a big amount of resources so you can choose a
 small instance type (like `t2.micro` or `t2.small`).
 
-#### Configure native images for this connector isnstance
+#### Configure native images for this connector instance
 
 Now you need to update SlipStream native images to add the image id and some
 parameters specific to EC2.
@@ -459,7 +459,7 @@ And then configure the default amount of CPU and RAM on the tab *OpenStack*
 (or the name you gave your OpenStack connector earlier) of the section *Cloud
 Configuration*.
 
-![SlipStream Image - edit mode]
+![SlipStream Image - edit mode OpenStack]
 
 ##### User credentials
 
@@ -916,7 +916,7 @@ And then configure the default amount of CPU and RAM on the tab *vCloud*
 (or the name you gave your OpenStack connector earlier) of the section
 *Cloud Configuration*.
 
-![SlipStream Image - edit mode]
+![SlipStream Image - edit mode vCloud]
 
 ##### User credentials
 
@@ -929,25 +929,23 @@ profile to take advantage of your new connector.
 [support-email]: mailto:support@sixsq.com
 [saas]: http://sixsq.com/products/slipstream-tryme.html
 [ec2-instance-types]: https://aws.amazon.com/ec2/instance-types/
-[SlipStream Configuation - Basics section]: http://sixsq.com/img/content/blogs/cloud-config-param-screenshot.png
-[SlipStream Configuation - EC2 section]: http://sixsq.com/img/content/blogs/doc_EC2_ss_system_parameters.png
-[SlipStream Configuation - OpenStack section]: http://sixsq.com/img/content/blogs/doc_OpenStack_ss_system_parameters.png
-[Openstack web interface - Access & Security - API Access]: http://sixsq.com/img/content/blogs/doc_OpenStack_endpoint.png
-[Openstack web interface - Image details]: http://sixsq.com/img/content/blogs/doc_OpenStack_imageId.png
-[SlipStream Image - edit mode]: http://sixsq.com/img/content/blogs/doc_OpenStack_image_parameters.png
-[SlipStream Configuation - Basics section]: http://sixsq.com/img/content/blogs/cloud-config-param-screenshot2.png
-[SlipStream Configuation - CloudStack section]: http://sixsq.com/img/content/blogs/doc_cloudstack_ss_system_parameters.png
+[SlipStream Configuation - Basics section]: images/screenshot-cloud-config-param.png
+[SlipStream Configuation - EC2 section]: images/screenshot-EC2_ss_system_parameters.png
+[SlipStream Configuation - OpenStack section]: images/screenshot-OpenStack_ss_system_parameters.png
+[SlipStream Configuation - CloudStack section]: images/screenshot-cloudstack_ss_system_parameters.png
+[SlipStream Configuation - vCloud section]: images/screenshot-vCloud_ss_system_parameters.png
+[Openstack web interface - Access & Security - API Access]: images/screenshot-OpenStack_endpoint.png
+[Openstack web interface - Image details]: images/screenshot-OpenStack_imageId.png
+[SlipStream Image - edit mode OpenStack]: images/screenshot-OpenStack_image_parameters.png
+[SlipStream Image - edit mode vCloud]: images/screenshot-vCloud_image_parameters.png
+[vCloud web interface - Virtual Datacenters]: images/screenshot-vCloud_vdc.png
+[vCloud web interface - Catalog]: images/screenshot-vCloud_imageId.png
 [cloudmonkey]: https://cwiki.apache.org/confluence/display/CLOUDSTACK/CloudStack+cloudmonkey+CLI
 [Exoscale Open Cloud API]: https://community.exoscale.ch/api/compute/
 [listZones]: https://cloudstack.apache.org/docs/api/apidocs-4.0.0/domain_admin/listZones.html
 [listTemplates]: https://cloudstack.apache.org/docs/api/apidocs-4.0.0/domain_admin/listTemplates.html
 [available templates]: https://www.exoscale.ch/open-cloud/templates/
 [listServiceOfferings]: https://cloudstack.apache.org/docs/api/apidocs-4.0.0/domain_admin/listServiceOfferings.html
-[SlipStream Configuation - Basics section]: http://sixsq.com/img/content/blogs/cloud-config-param-screenshot.png
-[SlipStream Configuation - vCloud section]: http://sixsq.com/img/content/blogs/doc_vCloud_ss_system_parameters.png
-[vCloud web interface - Virtual Datacenters]: http://sixsq.com/img/content/blogs/doc_vCloud_vdc.png
-[vCloud web interface - Catalog]: http://sixsq.com/img/content/blogs/doc_vCloud_imageId.png
-[SlipStream Image - edit mode]: http://sixsq.com/img/content/blogs/doc_vCloud_image_parameters.png
 
 
 
