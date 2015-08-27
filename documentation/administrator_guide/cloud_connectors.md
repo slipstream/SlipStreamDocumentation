@@ -180,8 +180,7 @@ define these parameters using the configuration file, we only show here how to
 do it using the web user interface.
 
 With the connector loaded in SlipStream, a new section in the configuration
-page will appear, allowing you to configure how the connector is to communicate
-with the IaaS cloud endpoint.
+page will appear, allowing you to configure how the connector should communicate with the IaaS cloud endpoint.
 
 ![SlipStream Configuation - EC2 section]
 
@@ -387,8 +386,7 @@ can also define these parameters using the configuration file, we only show
 here how to do it using the web user interface.
 
 With the connector loaded in SlipStream, a new section in the configuration
-page will appear, allowing you to configure how the connector is to
-communicate with the IaaS cloud endpoint.
+page will appear, allowing you to configure how the connector should communicate with the IaaS cloud endpoint.
 
 **Type name of the service which provides the instances functionality**
 
@@ -647,7 +645,7 @@ can also define these parameters using the configuration file, we only show
 here how to do it using the web user interface.
 
 With the connector loaded in SlipStream, a new section in the configuration
-page will appear, allowing you to configure how the connector is to
+page will appear, allowing you to configure how the connector should
 communicate with the IaaS cloud endpoint.
 
 ![SlipStream Configuation - CloudStack section]
