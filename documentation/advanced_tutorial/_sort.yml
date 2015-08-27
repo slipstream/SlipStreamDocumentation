@@ -11,5 +11,5 @@ standalone_images
 single_node_applications
 SlipStream_Client
 multi_node_applications
-mutable_deployments
+scalable_deployments
 building_images
