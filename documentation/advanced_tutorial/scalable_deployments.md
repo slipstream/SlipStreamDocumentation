@@ -17,7 +17,7 @@ In this section you will learn how to:
 # Types of Scaling
 
 By default, the resource allocation of a deployment is fixed when the
-deployment is started.  However clicking on the "Scalable Deployment"
+deployment is started.  However clicking on the "Scalable deployment"
 option in run dialog will allow the deployment to be vertically and horizontally 
 scaled through the SlipStream API. The following scaling actions are possible:
 
