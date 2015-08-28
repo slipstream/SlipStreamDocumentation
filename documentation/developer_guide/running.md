@@ -99,17 +99,24 @@ This service includes additional resources, such as `event` and `usage` resource
 As opposed to the main service written in Java, this service is written
 in Clojure.
 
+To run the service from the `ssclj` repository, use the jar file that
+contains all of the service dependencies:
 
     /usr/bin/java
       -Ddb.config.path=<db.spec>
       -Dlogfile.path=<environment.name>
-      -cp .../SlipStreamServer-war-<version>.war
-        com.sixsq.slipstream.ssclj.app.main 8201
+      -cp .:target/SlipStreamCljResources-jar-<version>-jar-with-dependencies.jar
+      com.sixsq.slipstream.ssclj.app.main 8201
 
-`db.spec` is the path to the file containing the database definition - 
-e.g. *config-hsqldb-mem.edn*.
+Changing the name of the generated jar file as needed.
 
-Typical content could look like:
+The directory containing the `db.spec` file must be on the classpath
+(here it is "`.`"). You can add other dependencies to the classpath as
+needed.  The service will start on the port 8200 by default or you can
+provide an argument to change the port (port 8201 in the example).
+
+The `db.spec` is the path to the file containing the database
+definition (e.g. *config-hsqldb-mem.edn*). Typical content looks like:
 
     {:db {
       :classname    "org.hsqldb.jdbc.JDBCDriver"
