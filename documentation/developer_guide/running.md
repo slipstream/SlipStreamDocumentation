@@ -105,7 +105,7 @@ contains all of the service dependencies:
     /usr/bin/java
       -Ddb.config.path=<db.spec>
       -Dlogfile.path=<environment.name>
-      -cp .:target/SlipStreamCljResources-jar-2.15-SNAPSHOT-jar-with-dependencies.jar
+      -cp .:target/SlipStreamCljResources-jar-<version>-jar-with-dependencies.jar
       com.sixsq.slipstream.ssclj.app.main 8201
 
 Changing the name of the generated jar file as needed.
