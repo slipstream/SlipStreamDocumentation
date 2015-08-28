@@ -146,7 +146,7 @@ Only CPU or RAM can be specified.
 The same way one can scale down the size of the VM(s) by simply defining the 
 required size of the VM(s).
 
-## Attaching and Detaching Disks
+## Attach and Detach Disks
 
 To add an extra disk of the desired size the following command should be used:
 
