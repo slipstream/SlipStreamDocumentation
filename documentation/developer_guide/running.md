@@ -105,26 +105,18 @@ contains all of the service dependencies:
     /usr/bin/java
       -Ddb.config.path=<db.spec>
       -Dlogfile.path=<environment.name>
-      -cp target/SlipStreamCljResources-jar-2.15-SNAPSHOT-jar-with-dependencies.jar
+      -cp .:target/SlipStreamCljResources-jar-2.15-SNAPSHOT-jar-with-dependencies.jar
       com.sixsq.slipstream.ssclj.app.main 8201
 
-You can add other dependencies to the classpath as needed.  The
-service will start on the port 8200 by default or you can provide an
-argument to change the port (port 8201 in the example).
+Changing the name of the generated jar file as needed.
 
-If you do not need to add anything to the classpath, then the somewhat
-simpler command can be used:
+The directory containing the `db.spec` file must be on the classpath
+(here it is "`.`"). You can add other dependencies to the classpath as
+needed.  The service will start on the port 8200 by default or you can
+provide an argument to change the port (port 8201 in the example).
 
-    /usr/bin/java
-      -Ddb.config.path=<db.spec>
-      -Dlogfile.path=<environment.name>
-      -jar target/SlipStreamCljResources-jar-2.15-SNAPSHOT-jar-with-dependencies.jar 8201
-
-With this form of the command, you cannot provide additional
-directories or jar files for the class path.
-
-In both cases, the `db.spec` is the path to the file containing the database definition
-(e.g. *config-hsqldb-mem.edn*). Typical content looks like:
+The `db.spec` is the path to the file containing the database
+definition (e.g. *config-hsqldb-mem.edn*). Typical content looks like:
 
     {:db {
       :classname    "org.hsqldb.jdbc.JDBCDriver"
