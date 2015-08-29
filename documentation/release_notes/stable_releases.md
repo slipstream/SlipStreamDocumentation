@@ -8,6 +8,92 @@ stable releases that are listed here.  Stable releases are supported
 by SixSq and are appropriate for production deployments.  In general,
 we recommend that people use the latest stable release. 
 
+## v2.14 (stable) - 13 August 2015
+
+### From 2.13 (candidate) to v2.14 (stable)
+
+- add SlipStream instance to the text of usage email messages
+- mark Java 1.7 as conflicting with SlipStream RPM package
+  installation
+- improve mechanism for initial bootstrap configuration of server from
+  configuration files
+- change URLs for event (and other clojure) resources from camel-case
+  to kebab-case
+- change change CIMI root resource api/CloudEntryPoint
+- fix: pagination of results in UI
+- fix: crash of node executor on empty target script output
+
+### From 2.12 (candidate) to v2.13 (candidate)
+
+- reduced dependency from jdk to jre
+- migrated to java 8
+- provide more metrics from connectors (cpu, ram, instance type, root 
+  disk size)
+- multiple bug fixes and improvements in UI
+- run page refreshes asynchronously on background
+- on run page alert (abort) messages are truncated (full abort message 
+  can still be seen in Global section)
+- display a loading screen while waiting for request from the server
+- added an ability for machine executor (orchestrator and node) to 
+  survive reboot of the host they are running on
+- more metrics can now be returned by OpenStack and CloudStack 
+  connectors
+- VMs section of dashboard can now display cpu, ram, instance type and 
+  root disk size if provided by the cloud connectors
+- improved collection of the usage records
+
+### From 2.11 (candidate) to v2.12 (candidate)
+
+- added documentation on obtaining API Key and Secret on CloudStack
+- improved packaging of python code for cloud connectors
+- updated and improved example image and deployment modules that are shipped with SlipStream; added documentation on how to publish the modules to running SlipStream instance
+- bug fixes and improvements of the machine executor (orchestrator and node)
+- initial implementation of vertical scaling of node instances
+- new SlipStream dashboard layout with correspondingly adapted tour
+- numerous fixes and improvements in UI
+
+### From 2.10 (candidate) to v2.11 (candidate)
+
+- users can now receive daily cloud usage emails (turn on via
+  parameter in user profile)
+- changes to the server for better support of application scaling
+- the cloud contextualization method can be chosen through the
+  cloud connector configuration
+- Java 1.8 is now required by the SlipStream server
+- fix: handling of open subsection in URL 
+- fix: catch EINTR interrupt to prevent script failures on Windows
+- fix: invalid URL when clicking on VM gauge in dashboard
+- fix: problem with scaling scripts not being called on scaling
+  actions 
+- fix: various browser issues with embedded SlipStream tour
+
+### From v2.9 (stable) to v2.10 (candidate)
+
+- interactive tour available through SlipStream interface (beta)
+- clicking on dashboard gauges opens the corresponding cloud section
+- allow event and usage resources to be filtered
+- disallow changes to parameter types through UI to be consistent with
+  server 
+- improve contextualization mechanisms for Windows
+- allow admins to choose contextualization method used for a cloud
+- fix: dashboard gauges incorrectly rendered in some cases
+- fix: wrong version comment sometimes displayed for module
+- fix: module logo is not displayed
+- fix: Windows deployments intermittently fail
+- fix: "noscript" message was not working when JavaScript 
+
+### Migration
+
+No migration is needed from v2.9 to v2.14.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.9-community...v2.14-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.9-community...v2.14-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.9-community...v2.14-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.9-community...v2.14-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.9-community...v2.14-community)
+
 ## v2.9 (stable) - 18 May 2015
 
 ### From v2.8 (candidate) to v2.9 (stable)

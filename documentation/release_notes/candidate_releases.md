@@ -10,13 +10,47 @@ deployments.
 
 ## Development commits
 
-  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.14-community...master)  
-  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.14-community...master)  
-  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.14-community...master)  
-  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.14-community...master)  
-  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.14-community...master)
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.15-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.15-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.15-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.15-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.15-community...master)
 
-## v2.14 (candidate) - 13 August 2015
+## v2.15 (candidate) - 29 August 2015
+
+### New features and bug fixes in v2.15
+
+- documentation for horizontal and vertical scaling of applications
+  (horizontal scaling is supported by all connectors; **vertical scaling
+  is currently only supported by flexiant and okeanos connectors**)
+- update terminology in UI: mutable changed to scalable
+- dashboard improvements: auto-refresh, service URL link, and
+  terminate button
+- improve layout of workflow scripts on image modules
+- allow SlipStream configuration to be dumped and restored from files
+- change location of log files to permanent `/var/log/slipstream` location
+- upgrade jetty (9.3.2), libcloud (0.18.0), and other java/clojure
+  dependencies 
+- fix: failures on CloudStack connector when service returns empty
+  body in requests
+- fix: make CIMI CloudEntryPoint conform to standard
+- fix: pagination in image and deployment pages
+- fix: pagination in run section of a module
+- fix: state of the run is not shown on run page
+
+### Migration
+
+**TODO**: A database migration from v2.14 to v2.15 may be needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.14-community...v2.15-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.14-community...v2.15-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.14-community...v2.15-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.14-community...v2.15-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.14-community...v2.15-community)
+
+## v2.14 (stable) - 13 August 2015
 
 ### New features and bug fixes in v2.14
 
@@ -30,7 +64,6 @@ deployments.
 - change change CIMI root resource api/CloudEntryPoint
 - fix: pagination of results in UI
 - fix: crash of node executor on empty target script output
-
 
 ### Migration
 
