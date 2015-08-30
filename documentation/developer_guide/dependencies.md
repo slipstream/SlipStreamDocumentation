@@ -189,10 +189,6 @@ will install all of the listed packages.
 | rpm-build                    | Creates binary distribution packages     |
 | createrepo                   | Create local yum repository              |
 
-> Currently the packaging is not working on CentOS 7.  To avoid build
-> failures leave out the `rpm-build` and `createrepo` packages.
-{: .important}
-
 ## Ubuntu 14.04
 
 Ubuntu is **not** a supported production platform for SlipStream;
