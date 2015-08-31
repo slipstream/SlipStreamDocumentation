@@ -36,7 +36,6 @@ deployments.
 - fix: make CIMI CloudEntryPoint conform to standard
 - fix: pagination in image and deployment pages
 - fix: pagination in run section of a module
-- fix: state of the run is not shown on run page
 
 ### Migration
 
