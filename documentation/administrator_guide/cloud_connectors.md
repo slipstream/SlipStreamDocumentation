@@ -74,7 +74,7 @@ are released under a proprietary license.
 To get details on the terms for proprietary licenses, please get in
 touch with SixSq.
 
-## Connector installation and configuration
+## Connector Installation and Configuration
 
 The installation and the configuration of the connectors are specific to each
 connector so they are documented in separate pages:

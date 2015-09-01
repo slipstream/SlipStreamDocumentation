@@ -78,7 +78,7 @@ You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
 [`Parameters`](#parameters) paragraph below.
 
-### With a configuration file
+### With a Configuration File
 
 Please see [Configuration from File] for details about this method of
 configuration.
@@ -156,7 +156,7 @@ The second is the amount of RAM in GB the Orchestrator will have.
 The Orchestrator doesn't need a big amount of resources so 1 CPU and 1 GB of RAM
 should be enough - e.g. `(1,1)`.
 
-## Configure native images for this connector instances
+## Configure Native Images for This Connector Instances
 
 Now you need to update SlipStream native images to add the image id and some
 parameters for vCloud.

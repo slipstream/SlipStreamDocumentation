@@ -80,7 +80,7 @@ You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
 [`Parameters`](#parameters) paragraph below.
 
-### With a configuration file
+### With a Configuration File
 
 Please see [Configuration from File] for details about this method of
 configuration.
@@ -151,7 +151,7 @@ You can find the list of all possible values [here][ec2-instance-types].
 The Orchestrator doesn't need a big amount of resources so you can choose a
 small instance type (like `t2.micro` or `t2.small`).
 
-## Configure native images for this connector instance
+## Configure Native Images for This Connector Instance
 
 Now you need to update SlipStream native images to add the image id and some
 parameters specific to EC2.
@@ -168,7 +168,7 @@ Add the image id for EC2 in the section named
 And then configure the default amount of CPU and RAM on the tab *ec2* (or the
 name you gave your EC2 connector earlier) of the section *Cloud Configuration*.
 
-## User credentials
+## User Credentials
 
 Now that the connector is configured and the native images updated, inform your
 users that they need to configure their credentials for EC2 in their user

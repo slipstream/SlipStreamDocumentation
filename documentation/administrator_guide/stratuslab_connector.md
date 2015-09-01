@@ -3,9 +3,7 @@ title: StratusLab Connector
 head-title: SlipStream Administrator Guide&#58; StratusLab Connector
 ---
 
-### StratusLab Connector
-
-#### Preparation
+## Preparation
 
 The StratusLab connector requires packages from the StratusLab cloud
 distribution (notably the python API).  Configure your server to use
@@ -21,7 +19,7 @@ the StratusLab yum repository.
 If the configuration was successful, a `yum search` for "stratuslab"
 should provide a list of all of the StratusLab packages.
 
-#### Installation
+## Installation
 
 Once the StratusLab packages are available, you install the SlipStream
 connector for StratusLab:
@@ -76,7 +74,7 @@ With the connector loaded in SlipStream, a new section in the configuration
 page will appear, allowing you to configure how the connector is to
 communicate with the IaaS cloud endpoint.
 
-### With a configuration file
+### With a Configuration File
 
 Please see [Configuration from File] for details about this method of
 configuration.
@@ -96,7 +94,7 @@ with the "demo" SL infrastructure provided by the StratusLab project:
     stratuslab.marketplace.endpoint = https://marketplace.stratuslab.eu/marketplace
     stratuslab.orchestrator.instance.type = m1.small
 
-## Configure native images for this connector instance
+## Configure Native Images for This Connector Instance
 
 Now you need to update SlipStream native images to add the image id and some
 parameters for StratusLab.
@@ -113,7 +111,7 @@ And then configure the default *instance type* on the tab *StratusLab*
 (or the name you gave your StratusLab connector earlier)
 of the section *Cloud Configuration*.
 
-## User credentials
+## User Credentials
 
 Now that the connector is configured and the native images updated, inform
 your users that they need to configure their credentials for StratusLab in

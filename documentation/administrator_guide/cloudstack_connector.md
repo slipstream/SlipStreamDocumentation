@@ -69,7 +69,7 @@ You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
 [`Parameters`](#parameters) paragraph below.
 
-### With a configuration file
+### With a Configuration File
 
 Please see [Configuration from File] for details about this method of
 configuration.
@@ -131,7 +131,7 @@ suits your need.
 #### Flavor of the Orchestrator
 
 The flavor (instance type) is a name which is linked to a hardware
-specification defined by the Cloud. The Orchestrator doesn't need a big amount
+specification defined by the Cloud. The Orchestrator doesn't need a large amount
 of resources so you can choose a small flavor (like 1 CPU and 512 MB of RAM).
 
 Use the `name` value from the [listServiceOfferings] results:
@@ -158,7 +158,7 @@ CloudStack Cloud.
 
 Example: `https://api.exoscale.ch/compute`
 
-## Configure native images for this connector instance
+## Configure Native Images for This Connector Instance
 
 Now you need to update SlipStream native images to add the image id and some
 parameters for CloudStack.
@@ -175,7 +175,7 @@ And then configure the default amount of CPU and RAM on the tab *CloudStack*
 (or the name you gave your CloudStack connector earlier) of the section *Cloud
 Configuration*.
 
-## User credentials
+## User Credentials
 
 Now that the connector is configured and the native images updated, inform
 your users that they need to configure their credentials for CloudStack in

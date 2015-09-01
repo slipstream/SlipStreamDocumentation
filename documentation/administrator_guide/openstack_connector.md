@@ -3,7 +3,7 @@ title: OpenStack Connector
 head-title: SlipStream Administrator Guide&#58; OpenStack Connector
 ---
 
-#### Installation
+## Installation
 
 You can install the OpenStack connector with:
 
@@ -63,7 +63,7 @@ You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
 [`Parameters`](#parameters) paragraph below.
 
-### With a configuration file
+### With a Configuration File
 
 Please see [Configuration from File] for details about this method of
 configuration.
@@ -149,7 +149,7 @@ please go on the OpenStack web interface and find a link called *Flavor* or
 *Instance type*. The Orchestrator doesn't need a big amount of resources so
 you can choose a small flavor (like 1 CPU and 512 MB of RAM).
 
-## Configure native images for this connector instance
+## Configure Native Images for This Connector Instance
 
 Now you need to update SlipStream native images to add the image id and some
 parameters for OpenStack.
@@ -168,7 +168,7 @@ of the section *Cloud Configuration*.
 
 ![SlipStream Image - edit mode OpenStack]
 
-## User credentials
+## User Credentials
 
 Now that the connector is configured and the native images updated, inform
 your users that they need to configure their credentials for OpenStack in
