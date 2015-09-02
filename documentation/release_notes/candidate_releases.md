@@ -39,7 +39,7 @@ deployments.
 
 ### Migration
 
-**TODO**: A database migration from v2.14 to v2.15 may be needed.
+A database migration from v2.14 to v2.15 is not needed.
 
 ### Commits
 
