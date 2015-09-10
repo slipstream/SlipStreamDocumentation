@@ -8,7 +8,7 @@ visit the [associated GitHub Pages site][docs] instead.
 Overview
 --------
 
-All of the SlipStream documentation is written in [Restructured
+All of the SlipStream documentation is written in [reStructured
 Text][reST] and then transformed into HTML via [Sphinx][sphinx].  The
 generated pages are then pushed into the `gh-pages` branch which are
 then served by [GitHub Pages][pages].
@@ -37,7 +37,7 @@ read-only URLs for it.
 Editing Documentation
 ---------------------
 
-All of the source documentation is written in [Restructured
+All of the source documentation is written in [reStructured
 Text][reST] format.
 
 Simply update the documentation files in the `sources` subdirectory.
