@@ -90,11 +90,9 @@ Publishing Changes
 
 To publish the changes simply run the command:
 ```
-$ rake
+$ ./publish.sh
 ```
-This will compile the site with Jekyll and then push all of the
-changes into the `gh-pages` branch.  From there, the updates will be
-published by GitHub Pages.
+This will push all of the documentation to the `gh-pages` branch.
 
 
 [docs]: http://slipstream.github.io/SlipStreamDocumentation
