@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -o errexit #abort if any command fails
 
+# Script taken from the following repository, shared
+# under the BSD license.
+#
+# https://github.com/X1011/git-directory-deploy
+
 deploy_directory=${GIT_DEPLOY_DIR:-build/html}
 deploy_branch=${GIT_DEPLOY_BRANCH:-ghtest}
 
