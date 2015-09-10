@@ -7,7 +7,7 @@ set -o errexit #abort if any command fails
 # https://github.com/X1011/git-directory-deploy
 
 deploy_directory=${GIT_DEPLOY_DIR:-build/html}
-deploy_branch=${GIT_DEPLOY_BRANCH:-ghtest}
+deploy_branch=${GIT_DEPLOY_BRANCH:-gh-pages}
 
 #if no user identity is already set in the current git environment, use this:
 default_username=${GIT_DEPLOY_USERNAME:-deploy.sh}
