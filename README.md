@@ -3,23 +3,24 @@ SlipStream Documentation Sources
 
 This repository contains the **sources** for all of the SlipStream
 documentation.  If you are looking for the **documentation itself**,
-visit the [associated GitHub Pages site][docs] instead.
+visit the [documentation website][docs] instead.
 
 Overview
 --------
 
 All of the SlipStream documentation is written in [reStructured
 Text][reST] and then transformed into HTML via [Sphinx][sphinx].  The
-generated pages are then pushed into the `gh-pages` branch which are
-then served by [GitHub Pages][pages].
+generated pages are then built on the ReadTheDocs website.
 
 To update or add documentation:
  - Clone this repository.
- - Edit or add source files in the `docs` subdirectory,
-   organizing them hierarchically.
+ - Create a branch for your changes.
+ - Edit or add source files in the `docs` subdirectory, organizing
+   them hierarchically.
  - Test the changes by running Sphinx locally and viewing the result.
- - Commit the changes to the repository.
- - Publish the updated pages.
+ - Commit the changes to the repository and create pull request.
+ - When the pull request is merged, a webhook will trigger an update
+   on the ReadTheDocs site.
 
 The following sections describe each of these steps in more detail.
 
@@ -34,15 +35,23 @@ $ git clone git@github.com:slipstream/SlipStreamDocumentation.git
 If you don't have write access to this repository, then use one of the
 read-only URLs for it.
 
+Create Branch
+-------------
+
+Create a separate branch to hold your changes for review.  
+```
+$ git checkout -b mydocs
+```
+Push the branch to GitHub when you want to create a pull request. 
+
 Editing Documentation
 ---------------------
 
 All of the source documentation is written in [reStructured
 Text][reST] format.
 
-Simply update the documentation files in the `docs` subdirectory.
-Either use the `master` branch or your own branch for changes.  **Do
-not make any changes directly on the `gh-pages` branch.**
+Simply update the documentation files in the `docs` subdirectory.  Use
+your own branch for changes.
 
 When updating or adding sources, please:
  - Ensure the files remain as plain text in US-ASCII encoding.
@@ -79,24 +88,19 @@ Commit Changes
 --------------
 
 This is a standard git repository, so committing the changes means
-just following the standard git workflow--either using branches and
-pull requests or just commiting to master.
-
-Note that this will save your changes in the central repository but it
-will **not** publish the changes to the GitHub Pages website!
+just following the standard git workflow.  Push your branch to the
+GitHub repository and create a pull request through the GitHub web
+interface. 
 
 Publishing Changes
 ------------------
 
-To publish the changes simply run the command:
-```
-$ ./publish.sh
-```
-This will push all of the documentation to the `gh-pages` branch.
+The changes will be published on the ReadTheDocs site automatically
+when the pull request has been merged.  There is a GitHub webhook that
+triggers a rebuild of the documentation on changes. 
 
 
-[docs]: http://slipstream.github.io/SlipStreamDocumentation
+[docs]: http://ssdocs.sixsq.com
 [reST]: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
 [sphinx]: http://sphinx-doc.org
 [rtdcss]: https://github.com/snide/sphinx_rtd_theme
-[pages]: https://pages.github.com
