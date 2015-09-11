@@ -15,7 +15,7 @@ then served by [GitHub Pages][pages].
 
 To update or add documentation:
  - Clone this repository.
- - Edit or add source file in the `sources` subdirectory,
+ - Edit or add source files in the `docs` subdirectory,
    organizing them hierarchically.
  - Test the changes by running Sphinx locally and viewing the result.
  - Commit the changes to the repository.
@@ -40,7 +40,7 @@ Editing Documentation
 All of the source documentation is written in [reStructured
 Text][reST] format.
 
-Simply update the documentation files in the `sources` subdirectory.
+Simply update the documentation files in the `docs` subdirectory.
 Either use the `master` branch or your own branch for changes.  **Do
 not make any changes directly on the `gh-pages` branch.**
 
