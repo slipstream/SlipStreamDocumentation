@@ -1,3 +1,5 @@
+.. _dg-cfg:
+
 Configuration
 =============
 
@@ -5,8 +7,7 @@ To do anything useful with the local SlipStream server, you will need to
 configure it.
 
 You can either use the web UI that you just started, or use
-`configuration
-files </documentation/developer_guide/configuration_files.html>`__.
+:ref:`configuration files <dg-cfg-files>`.
 
 User(s)
 -------
@@ -17,13 +18,13 @@ During the initial startup of the server, an administrator account
 (single user icon at top), and change the password to another value.
 
 Alternatively, you can change the password on first server startup by
-`dropping a password file in your configuration
-directory </documentation/developer_guide/configuration_files.html#password>`__.
+:ref:`dropping a password file in your configuration directory
+<dg-cfg-files-password>`.
 
 You can also create new user accounts by visiting the "users" page
-(*Configuration* -> *Users* from top nav bar), or `dropping user
-configuration
-files </documentation/developer_guide/configuration_files.html#user>`__.
+(*Configuration* -> *Users* from top nav bar), or dropping user
+configuration files in your configuration directory (see
+:ref:`dg-cfg-files-user`).
 
 Connector(s)
 ------------
@@ -46,9 +47,9 @@ isn't given, it defaults to the connector name.
 For configuration of other cloud connectors, check our
 `blog <http://sixsq.com/blog/index.html>`__.
 
-Alternatively, you can create new connector instance by [dropping
-connector configuration files in your configuration directory]
-(/documentation/developer\_guide/configuration.html#connector).
+Alternatively, you can create new connector instance by :ref:`dropping
+connector configuration files in your configuration directory
+<dg-cfg-files-connector>`.
 
 Load base images and apps modules
 ---------------------------------

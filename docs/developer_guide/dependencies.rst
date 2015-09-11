@@ -42,7 +42,7 @@ The primary platform used by the SlipStream developers is Mac OS X.
 Consequently, this is a well-understood and well-supported SlipStream
 development environment. We're going to assume you're running OS X with
 `Homebrew <http://brew.sh/>`__ and
-`easy\_install <http://python-distribute.org/distribute_setup.py>`__
+`easy\_install <https://pythonhosted.org/setuptools/easy_install.html>`__
 available.
 
 Most of the necessary dependencies are already installed by default in

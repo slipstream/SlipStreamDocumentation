@@ -94,9 +94,8 @@ connector is to communicate with the IaaS cloud endpoint.
 With a Configuration File
 -------------------------
 
-Please see `Configuration from
-File </documentation/developer_guide/configuration_files.html>`__ for
-details about this method of configuration.
+Please see :ref:`dg-cfg-files` for details about this method of
+configuration.
 
 Here is an example, which will configure the StratusLab connector to
 interact with the "demo" SL infrastructure provided by the StratusLab
@@ -124,8 +123,7 @@ some parameters for StratusLab.
 
 This can be done via the UI or via configuration file. Documentation
 about how to do it via configuration file can be found here
-`Configuration from File - Cloud Identifier configuration
-files </documentation/developer_guide/configuration_files.html#unique-cloud-identifier-configuration-files>`__
+:ref:`dg-cfg-files-unique-cloud-identifier`.
 
 Please go on a SlipStream base image (e.g. Ubuntu 14.04) and click on
 the *Edit* button. Add the image id for StratusLab in the section named

@@ -249,7 +249,7 @@ New features and bug fixes in v2.8
 -  expose "usage" summary as a resource
 -  updated advanced tutorial for current release
 -  fix bug which prevented deployments from being saved
--  fix bug which erased parameters starting with "http://"
+-  fix bug which erased parameters starting with ``http://``
 -  fix deadlock associated with multiple database clients
 -  fix run ordering by time
 -  fix truncation of fields hiding information (popovers used

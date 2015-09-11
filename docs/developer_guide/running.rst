@@ -99,9 +99,8 @@ or
 You will obviously need to have either MySQL or Postgresql running when
 configuring the server in this way.
 
-You are now ready to
-`configure </documentation/developer_guide/configuration.html>`__ your
-new SlipStream server.
+You are now ready to :ref:`configure <dg-cfg>` your new SlipStream
+server.
 
 .. warning::
 

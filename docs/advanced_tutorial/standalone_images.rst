@@ -21,12 +21,19 @@ firewall settings on the clouds you use to open the ports you need for
 your applications. For this tutorial, opening the following ports are
 useful.
 
-| SSH \| TCP \| 22 \|
-| VNC \| TCP \| 5900-5902 \|
-| RDP \| TCP, UDP \| 3389 \|
-| HTTP \| TCP \| 80 \|
-| HTTPS \| TCP \| 443 \|
-| MongoDB \| TCP \| 27017 \|
++--------+----------+-------------+
+| SSH    | TCP      | 22          |
++--------+----------+-------------+
+| VNC    | TCP      | 5900-5902   |
++--------+----------+-------------+
+| RDP    | TCP, UDP | 3389        |
++--------+----------+-------------+
+| HTTP   | TCP      | 80          |
++--------+----------+-------------+
+| HTTPS  | TCP      | 443         |
++--------+----------+-------------+
+| MongoDB| TCP      | 27017       |
++--------+----------+-------------+
 
 Run a Virtual Machine
 ---------------------
@@ -68,7 +75,7 @@ is actively updated, so that you can see when the machine is available.
 
 To see the status of the virtual machine, just hover over the box
 representing the virtual machine. When it is ready, you can either click
-on the service link at the top if your browser is setup for "ssh://"
+on the service link at the top if your browser is setup for ``ssh://``
 URLs.
 
 .. figure:: images/screenshot-ubuntu-run2.png

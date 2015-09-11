@@ -1,3 +1,5 @@
+.. _dg-cfg-files:
+
 Configuration Files
 ===================
 
@@ -71,6 +73,8 @@ previous section).
 
     Do not forget to rename the default file to ``slipstream.conf``.
 
+.. _dg-cfg-files-connector:
+
 Connector Configuration Files
 -----------------------------
 
@@ -131,6 +135,8 @@ SlipStream service.
 `More information about loading
 apps <https://github.com/slipstream/apps>`__ is available.
 
+.. _dg-cfg-files-unique-cloud-identifier:
+
 Unique Cloud Identifier Configuration Files
 -------------------------------------------
 
@@ -153,6 +159,8 @@ identifier.
     service name defined via the ``cloud.connector.class`` configuration
     parameter.
 
+.. _dg-cfg-files-user:
+
 User Configuration Files
 ------------------------
 
@@ -169,6 +177,8 @@ For security reasons, since user passwords are never transmitted over
 the wire once the user is registered, a second set of configuration file
 is required to define the user password. Only a hashed version of the
 password is kept in the database.
+
+.. _dg-cfg-files-password:
 
 User Password Configuration File
 --------------------------------

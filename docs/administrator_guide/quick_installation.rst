@@ -104,10 +104,9 @@ Configuration
 -------------
 
 To configure your SlipStream server you can either use the user
-interface or drive the configuration from configuration files. Refer to
-the dedicated `configuration files documentation
-page </documentation/developer_guide/configuration_files.html>`__ for
-more details.
+interface or drive the configuration from configuration files. Refer
+to the dedicated :ref:`configuration files documentation page
+<dg-cfg-files>` for more details.
 
 This will allow you to define configuration for:
 
