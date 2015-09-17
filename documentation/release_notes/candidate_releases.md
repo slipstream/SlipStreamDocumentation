@@ -38,11 +38,13 @@ deployments.
 
 ### Migration
 
-A database migration from v2.15 to v2.16 is not needed.  However two
-files must be renamed by hand:
+A database migration from v2.15 to v2.16 is not needed.  However, when
+upgrading from previous versions two files must be renamed by hand:
 
- - `mv XXX YYY`
- - `mv XXX YYY`
+- `mv /etc/default/slipstream.rpmnew /etc/default/slipstream`
+- `mv /etc/default/ssclj.rpmnew /etc/default/ssclj`
+
+This is not needed on a fresh installations of v2.16.
 
 ### Commits
 
