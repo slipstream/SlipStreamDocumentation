@@ -20,12 +20,12 @@ deployments.
 
 ### New features and bug fixes in v2.16
 
- - HTML representations of event and usage resources
+ - HTML representations of event and usage resources available
  - improved configuration for cloud connector configuration
- - upgrade to latest libcloud release for all connectors
+ - upgrade to latest libcloud release (0.18.0) for all connectors
  - allow easier automated installation from configuration files
  - allow finer control over information dumped in `ss-config-dump`
- - create open security group to avoid app. failures on cloud that
+ - create open security group to avoid app. failures on clouds that
    support it 
  - add prototype user-editable service catalog (enterprise)
  - fix: `ss-config-dump` for unaliased connector names
