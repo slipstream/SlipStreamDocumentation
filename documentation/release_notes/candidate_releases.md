@@ -10,11 +10,47 @@ deployments.
 
 ## Development commits
 
-  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.15-community...master)  
-  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.15-community...master)  
-  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.15-community...master)  
-  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.15-community...master)  
-  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.15-community...master)
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.16-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.16-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.16-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.16-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.16-community...master)
+
+## v2.16 (candidate) - 18 September 2015
+
+### New features and bug fixes in v2.16
+
+ - HTML representations of event and usage resources
+ - improved configuration for cloud connector configuration
+ - upgrade to latest libcloud release for all connectors
+ - allow easier automated installation from configuration files
+ - allow finer control over information dumped in `ss-config-dump`
+ - create open security group to avoid app. failures on cloud that
+   support it 
+ - add prototype user-editable service catalog (enterprise)
+ - fix: `ss-config-dump` for unaliased connector names
+ - fix: reintroduce older EC2 VM sizes
+ - fix: allow multiple versions of Java on SlipStream machines
+ - fix: missing python dependency in packages for cloud connectors
+ - fix: incorrect path for dependency in OpenStack and CloudStack
+   connectors
+ - fix: run parameters not shown on image module
+
+### Migration
+
+A database migration from v2.15 to v2.16 is not needed.  However two
+files must be renamed by hand:
+
+ - `mv XXX YYY`
+ - `mv XXX YYY`
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.15-community...v2.16-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.15-community...v2.16-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.15-community...v2.16-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.15-community...v2.16-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.15-community...v2.16-community)
 
 ## v2.15 (candidate) - 29 August 2015
 
