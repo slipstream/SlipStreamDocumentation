@@ -24,10 +24,10 @@ deployments.
  - Allow initialization of resources before starting server (clojure server)
  - Clean up main and server namespaces for ssclj server (clojure server)
  - Make dashboard the welcome page
+ - Add back the environment variable SLIPSTREAM_CONNECTOR_INSTANCE
  - fix: terminate button is properly updated after closing dialog
  - fix: fixed an issue which prevented multi-cloud deployment to work
- - Add back the environment variable SLIPSTREAM_CONNECTOR_INSTANCE
-
+ - fix: add missing index in resources table (clojure server)
 
 ### Migration
 
