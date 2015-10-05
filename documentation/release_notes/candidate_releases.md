@@ -10,11 +10,11 @@ deployments.
 
 ## Development commits
 
-  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.16-community...master)  
-  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.16-community...master)  
-  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.16-community...master)  
-  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.16-community...master)  
-  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.16-community...master)
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.17-community...master)  
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.17-community...master)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.17-community...master)  
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.17-community...master)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.17-community...master)
 
 ## v2.17 (candidate) - 5 october 2015
 
