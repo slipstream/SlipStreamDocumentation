@@ -23,9 +23,11 @@ deployments.
  - Allow use of the http-kit or aleph web application containers (clojure server)
  - Allow initialization of resources before starting server (clojure server)
  - Clean up main and server namespaces for ssclj server (clojure server)
- - Make dashboard the welcome page
+ - After launching a run, the user gets redirected to the dashboard
+  (previously the redirection was to the run page)
  - Add back the environment variable SLIPSTREAM_CONNECTOR_INSTANCE
  - fix: terminate button is properly updated after closing dialog
+  in the dashboard
  - fix: fixed an issue which prevented multi-cloud deployment to work
  - fix: add missing index in resources table (clojure server)
 
