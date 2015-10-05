@@ -16,6 +16,31 @@ deployments.
   - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.16-community...master)  
   - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.16-community...master)
 
+## v2.17 (candidate) - 5 october 2015
+
+### New features and bug fixes in v2.17
+
+ - Allow use of the http-kit or aleph web application containers (clojure server)
+ - Allow initialization of resources before starting server (clojure server)
+ - Clean up main and server namespaces for ssclj server (clojure server)
+ - Make dashboard the welcome page
+ - fix: terminate btn is properly updated after closing dialog
+ - fix: fixed an issue which prevented multi-cloud deployment to work
+ - Add back the environment variable SLIPSTREAM_CONNECTOR_INSTANCE
+
+
+### Migration
+
+A database migration from v2.16 to v2.17 is not needed.
+
+### Commits
+
+  - [Server](https://github.com/slipstream/SlipStreamServer/compare/v2.16-community...v2.17-community) 
+  - [UI](https://github.com/slipstream/SlipStreamUI/compare/v2.16-community...v2.17-community)  
+  - [Client](https://github.com/slipstream/SlipStreamClient/compare/v2.16-community...v2.17-community) 
+  - [Connectors](https://github.com/slipstream/SlipStreamConnectors/compare/v2.16-community...v2.17-community)  
+  - [Documentation](https://github.com/slipstream/SlipStreamDocumentation/compare/v2.16-community...v2.17-community)
+
 ## v2.16 (candidate) - 18 September 2015
 
 ### New features and bug fixes in v2.16
