@@ -6,6 +6,82 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v2.17 (candidate) - 5 october 2015
+----------------------------------
+
+New features and bug fixes in v2.17
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  Allow use of the http-kit or aleph web application containers
+   (clojure server)
+-  Allow initialization of resources before starting server (clojure
+   server)
+-  Clean up main and server namespaces for ssclj server (clojure server)
+-  After launching a run, the user gets redirected to the dashboard
+   (previously the redirection was to the run page)
+-  Add back the environment variable SLIPSTREAM\_CONNECTOR\_INSTANCE
+-  fix: terminate button is properly updated after closing dialog in the
+   dashboard
+-  fix: fixed an issue which prevented multi-cloud deployment to work
+-  fix: add missing index in resources table (clojure server)
+
+Migration
+~~~~~~~~~
+
+A database migration from v2.16 to v2.17 is not needed.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.16-community...v2.17-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.16-community...v2.17-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.16-community...v2.17-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.16-community...v2.17-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.16-community...v2.17-community>`__
+
+v2.16 (candidate) - 18 September 2015
+-------------------------------------
+
+New features and bug fixes in v2.16
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  HTML representations of event and usage resources available
+-  improved configuration for cloud connector configuration
+-  upgrade to latest libcloud release (0.18.0) for all connectors
+-  allow easier automated installation from configuration files
+-  allow finer control over information dumped in ``ss-config-dump``
+-  create open security group to avoid app. failures on clouds that
+   support it
+-  add prototype user-editable service catalog (enterprise)
+-  fix: ``ss-config-dump`` for unaliased connector names
+-  fix: reintroduce older EC2 VM sizes
+-  fix: allow multiple versions of Java on SlipStream machines
+-  fix: missing python dependency in packages for cloud connectors
+-  fix: incorrect path for dependency in OpenStack and CloudStack
+   connectors
+-  fix: run parameters not shown on image module
+
+Migration
+~~~~~~~~~
+
+A database migration from v2.15 to v2.16 is not needed. However, when
+upgrading from previous versions two files must be renamed by hand:
+
+-  ``mv /etc/default/slipstream.rpmnew /etc/default/slipstream``
+-  ``mv /etc/default/ssclj.rpmnew /etc/default/ssclj``
+
+This is not needed on a fresh installations of v2.16.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.15-community...v2.16-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.15-community...v2.16-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.15-community...v2.16-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.15-community...v2.16-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.15-community...v2.16-community>`__
+
+
 v2.15 (candidate) - 29 August 2015
 ----------------------------------
 
