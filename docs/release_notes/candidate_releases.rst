@@ -15,7 +15,7 @@ New features and bug fixes in v2.18
 -  Make the Dashboard the landing page for users
 -  Provide a streamlined Exoscale connector
 -  Provide an alpha Microsoft Azure connector
--  Expand metrics to include root disk volumes
+-  Include root disk volumes for StratusLab clouds
 -  Improve units for displaying cloud resource usage
 -  Consolidated monthly usage available through API
 -  Improve EC2 connector to catch errors related to VPC change and to
@@ -26,7 +26,40 @@ New features and bug fixes in v2.18
 Migration
 ~~~~~~~~~
 
-A database migration from v2.17 to v2.18 is not needed.
+**Database migration is required from v2.17 to v2.18. The following steps
+MUST be followed:**
+
+1. Upgrade SlipStream
+2. Stop SlipStream
+
+   ::
+
+       $ service slipstream stop
+
+3. Stop HSQLDB (or your DB engine)
+
+   ::
+
+       $ service hsqldb stop
+
+4. Execute the following SQL script
+   */opt/slipstream/server/migrations/014\_enumvalues\_size\_fix.sql*:
+
+   ::
+
+       $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/014_enumvalues_size_fix.sql
+
+5. Start HSQLDB (or your DB engine)
+
+   ::
+
+       $ service hsqldb start
+
+6. Start SlipStream
+
+   ::
+
+       $ service slipstream start
 
 Commits
 ~~~~~~~
