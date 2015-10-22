@@ -43,11 +43,11 @@ MUST be followed:**
        $ service hsqldb stop
 
 4. Execute the following SQL script
-   */opt/slipstream/server/migrations/014\_enumvalues\_size\_fix.sql*:
+   */opt/slipstream/server/migrations/015_compute_timestamp_usage.sql*:
 
    ::
 
-       $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/014_enumvalues_size_fix.sql
+       $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/sscljdb,user=sa,password= /opt/slipstream/server/migrations/015_compute_timestamp_usage.sql
 
 5. Start HSQLDB (or your DB engine)
 
