@@ -13,8 +13,6 @@ New features and bug fixes in v2.18
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  Make the Dashboard the landing page for users
--  Provide a streamlined Exoscale connector
--  Provide an alpha Microsoft Azure connector
 -  Include root disk volumes for StratusLab clouds
 -  Improve units for displaying cloud resource usage
 -  Consolidated monthly usage available through API
