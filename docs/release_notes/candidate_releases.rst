@@ -6,6 +6,71 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v2.18 (candidate) - 23 october 2015
+-----------------------------------
+
+New features and bug fixes in v2.18
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  Make the Dashboard the landing page for users
+-  Dashboard, Modules, App Store, and Service Catalog are split in the
+   UI and have direct links from top menubar
+-  Include root disk volumes for StratusLab clouds
+-  Improve units for displaying cloud resource usage
+-  Consolidated monthly usage available through API
+-  Improve EC2 connector to catch errors related to VPC change and to
+   provide more informative error message
+-  fix: add missing module in SlipStream client package for `pip`
+   (affected `ss-config-dump` command)
+
+Migration
+~~~~~~~~~
+
+**Database migration is required from v2.17 to v2.18. The following steps
+MUST be followed:**
+
+1. Upgrade SlipStream
+2. Stop SlipStream
+
+   ::
+
+       $ service slipstream stop
+
+3. Stop HSQLDB (or your DB engine)
+
+   ::
+
+       $ service hsqldb stop
+
+4. Execute the following SQL script
+   */opt/slipstream/server/migrations/015_compute_timestamp_usage.sql*:
+
+   ::
+
+       $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/sscljdb,user=sa,password= /opt/slipstream/server/migrations/015_compute_timestamp_usage.sql
+
+5. Start HSQLDB (or your DB engine)
+
+   ::
+
+       $ service hsqldb start
+
+6. Start SlipStream
+
+   ::
+
+       $ service slipstream start
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.17-community...v2.18-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.17-community...v2.18-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.17-community...v2.18-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.17-community...v2.18-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.17-community...v2.18-community>`__
+
+
 v2.17 (candidate) - 5 october 2015
 ----------------------------------
 
