@@ -11,7 +11,6 @@ can also pose challenges. At the IaaS level for instance:
    application as a whole which is tedious and error-prone
 
 SlipStream is designed to overcome these challenges to make the
-management of cloud applications easier.
 
 -  SlipStream is a **Multi-cloud Application Management Platform**.
 -  SlipStream remains **neutral** with respect to different cloud
@@ -74,9 +73,8 @@ remove machines from a running application.
 SlipStream Deployments
 ----------------------
 
-This tutorial uses the `SlipStream
-SaaS <https://slipstream.sixsq.com>`__, a SlipStream instance operated
-by SixSq and free to use. Individuals and organizations can use this
+This tutorial uses the `Nuvla <https://nuv.la>`__, a SlipStream instance operated
+by SixSq as a SaaS and free to use. Individuals and organizations can use this
 service to manage their applications on a large number of supported
 cloud services.
 
