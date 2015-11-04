@@ -52,15 +52,20 @@ There are actually just a few commands in the SlipStream client that are
 used in deployment scripts and in debugging. The following table
 summarizes them.
 
-| ``ss-get`` \| Retrieves a named parameter, waiting if the parameter
-  has not yet been set. \|
-| ``ss-set`` \| Sets the value of a named parameter. \|
-| ``ss-random`` \| Generates a random string value and optionally sets a
-  named parameter with this value. \|
-| ``ss-abort`` \| Use to set (or to clear with the ``--cancel`` option)
-  the deployment abort flag. \|
-| ``ss-display`` \| Use to set a string in the run for display purposes.
-  \|
++----------------+------------------------------------------------------+
+| ``ss-get``     | Retrieves a named parameter, waiting if the          |
+|                | parameter has not yet been set.                      |
++----------------+------------------------------------------------------+
+| ``ss-set``     | Sets the value of a named parameter.                 |
++----------------+------------------------------------------------------+
+| ``ss-random``  | Generates a random string value and optionally sets  |
+|                | a named parameter with this value.                   |
++----------------+------------------------------------------------------+
+| ``ss-abort``   | Use to set (or to clear with the ``--cancel`` option)|
+|                | the deployment abort flag.                           |
++----------------+------------------------------------------------------+
+| ``ss-display`` | Use to set a string in the run for display purposes. |
++----------------+------------------------------------------------------+
 
 All of the parameters used in the deployment must have been defined in
 the images used in the deployment. Trying to set or get an undefined
