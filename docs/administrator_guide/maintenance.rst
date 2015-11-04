@@ -14,7 +14,10 @@ click on the "dashboard" icon at the top of the page.
 Log Files
 ---------
 
-The service log files are located in ``/opt/slipstream/server/logs``.
+The Web service log files are located in ``/opt/slipstream/server/logs``.
+For the API Service, they are located in ``/var/log/slipstream/ssclj``.
+(The configuration of API Service logging is
+driven by ``/opt/slipstream/ssclj/resources/log4j.properties``)
 These are named by date and rotated daily (or when the service is
 restarted). You should regularly review errors in the log to see if
 there are configuration or resource problems.
@@ -85,3 +88,30 @@ Customize error pages
 
 All error pages are static files that you can find in
 ``/opt/slipstream/server/webapps/slipstream.war/static-content/error/``
+
+Authentication keys
+-------------------
+
+SlipStream is automatically installed with a default set of public/private keys for user authentication.
+
+Keys regeneration
+~~~~~~~~~~~~~~~~~
+
+You may want to regenerate public and private keys. To do so, execute the following commands:
+
+::
+
+  $ cd /tmp
+   $ mkdir keys
+   $ cd keys
+   $ openssl genrsa -aes128 -out auth_privkey.pem 2048
+   $ openssl rsa -pubout -in auth_privkey.pem -out auth_pubkey.pem
+   // Remember the passphrase you will choose during this process !
+
+   // copy both keys for authentication server
+   $ cp *pem /opt/slipstream/ssclj/resources/
+   // copy public key for Web Server
+   $ cp auth_pubkey.pem \
+     /opt/slipstream/server/webapps/slipstream.war/WEB-INF/classes/
+
+  // restart both servers    
