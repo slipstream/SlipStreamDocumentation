@@ -114,4 +114,20 @@ You may want to regenerate public and private keys. To do so, execute the follow
    $ cp auth_pubkey.pem \
      /opt/slipstream/server/webapps/slipstream.war/WEB-INF/classes/
 
-  // restart both servers    
+
+Adapt passphrase value in ``/opt/slipstream/ssclj/resources/db.spec``.
+
+Restart authentication server:
+
+::
+
+  service sssclj restart
+
+Any error in configuration (keys do not match or wrong passphrase used) will result in errors (users login) like:
+
+::
+
+  2015-11-04 14:13:42,470 ERROR - Unexpected exception thrown: exception using cipher - please check password and data.
+  org.bouncycastle.openssl.EncryptionException: exception using cipher - please check password and data.
+  ...
+  Caused by: javax.crypto.BadPaddingException: Given final block not properly padded
