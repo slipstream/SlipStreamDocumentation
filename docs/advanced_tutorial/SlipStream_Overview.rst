@@ -97,6 +97,14 @@ service is deployed and maintained by SixSq, but is running on a
 customer's IT infrastructure.
 
 .. |alice| image:: media/alice.png
+   :height 115
+   :width 100
 .. |bob| image:: media/bob.png
+   :height 115
+   :width 100
 .. |clara| image:: media/clara.png
+   :height 115
+   :width 100
 .. |dave| image:: media/dave.png
+   :height 115
+   :width 100
