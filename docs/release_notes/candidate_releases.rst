@@ -19,7 +19,6 @@ For users:
    precise to make understanding SlipStream easier.
 
 For users and administrators:
-
  - There is now a prototype (alpha) Azure connector available, which
    will be extended to a production connection over the next couple of
    releases.
@@ -30,7 +29,6 @@ For users and administrators:
    edit/save child images when a parent has been modified.
 
 For administrators:
-
  - There is now a configuration option that will allow server metrics
    (e.g. request responses, request rates, service resource usage) to
    be pushed to a Graphite server.
@@ -42,7 +40,6 @@ For administrators:
    server, allowing the service to be more tightly secured.
 
 For everyone, a few bug fixes:
-
  - Modify the introductory tour to follow the new application layout.
  - When an attribute error is raised, provide a correct error message
    rather than a misleading one referring to an illegal state.
