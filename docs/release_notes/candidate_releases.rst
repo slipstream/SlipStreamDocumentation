@@ -12,13 +12,13 @@ v2.19 (candidate) - 10 November 2015
 New features and bug fixes in v2.19
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For users:
+For users [Alice, Clara]:
  - The run page has been enhanced to show the time-ordered list of
    events associated with a run.
  - The vocabulary in the interface has been made more clear and
    precise to make understanding SlipStream easier.
 
-For users and administrators:
+For users [Alice, Clara] and administrators [Dave]:
  - There is now a prototype (alpha) Azure connector available, which
    will be extended to a production connection over the next couple of
    releases.
@@ -28,7 +28,7 @@ For users and administrators:
  - Allow the proper inheritance of image parameters to avoid having to
    edit/save child images when a parent has been modified.
 
-For administrators:
+For administrators [Dave]:
  - There is now a configuration option that will allow server metrics
    (e.g. request responses, request rates, service resource usage) to
    be pushed to a Graphite server.
@@ -39,7 +39,7 @@ For administrators:
  - SElinux can now be used for the machine running the SlipStream
    server, allowing the service to be more tightly secured.
 
-For everyone, a few bug fixes:
+For everyone [Alice, Bob, Clara, Dave], a few bug fixes:
  - Modify the introductory tour to follow the new application layout.
  - When an attribute error is raised, provide a correct error message
    rather than a misleading one referring to an illegal state.
@@ -49,6 +49,9 @@ For everyone, a few bug fixes:
    visible.
  - Truncate log error messages in run parameters to avoid masking the
    real error with an internal server error (500).
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
 
 Migration
 ~~~~~~~~~
