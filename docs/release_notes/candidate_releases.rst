@@ -6,6 +6,68 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v2.19 (candidate) - 10 November 2015
+------------------------------------
+
+New features and bug fixes in v2.19
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For users:
+ - The run page has been enhanced to show the time-ordered list of
+   events associated with a run.
+ - The vocabulary in the interface has been made more clear and
+   precise to make understanding SlipStream easier.
+
+For users and administrators:
+
+ - There is now a prototype (alpha) Azure connector available, which
+   will be extended to a production connection over the next couple of
+   releases.
+ - There is a specialized cloud connector for the Exoscale cloud
+   platform that allows images to be referenced by name, disk sizes to
+   be controlled, and platform-specific instance sizes.
+ - Allow the proper inheritance of image parameters to avoid having to
+   edit/save child images when a parent has been modified.
+
+For administrators:
+
+ - There is now a configuration option that will allow server metrics
+   (e.g. request responses, request rates, service resource usage) to
+   be pushed to a Graphite server.
+ - Logging levels have been reduced in many cases to avoid noise in the 
+   logs.
+ - A new authentication system is being used that will allow external
+   authentication mechanisms to be used for a SlipStream server.
+ - SElinux can now be used for the machine running the SlipStream
+   server, allowing the service to be more tightly secured.
+
+For everyone, a few bug fixes:
+
+ - Modify the introductory tour to follow the new application layout.
+ - When an attribute error is raised, provide a correct error message
+   rather than a misleading one referring to an illegal state.
+ - Upgrade internal SSH libraries to allow deployment to work with
+   newer versions of Ubuntu (15.04+).
+ - Correct a problem that caused new projects to be created but not
+   visible.
+ - Truncate log error messages in run parameters to avoid masking the
+   real error with an internal server error (500).
+
+Migration
+~~~~~~~~~
+
+Database migration is **not** required from v2.18 to v2.19.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.18-community...v2.19-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.18-community...v2.19-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.18-community...v2.19-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.18-community...v2.19-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.18-community...v2.19-community>`__
+
+
 v2.18 (candidate) - 23 october 2015
 -----------------------------------
 
