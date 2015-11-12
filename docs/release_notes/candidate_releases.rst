@@ -6,7 +6,7 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
-v2.19 (candidate) - 10 November 2015
+v2.19 (candidate) - 12 November 2015
 ------------------------------------
 
 New features and bug fixes in v2.19
