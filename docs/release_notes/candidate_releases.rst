@@ -6,6 +6,36 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v2.19.1 (candidate) - 17 November 2015
+--------------------------------------
+
+New features and bug fixes in v2.19.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For everyone [Alice, Bob, Clara, Dave], a couple bug fixes:
+ - Fix instabilities in the authentication system that caused erratic
+   behavior.
+ - Make the application deployment workflow more reliable by introducing
+   retries when encountering transient failures.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Database migration is **not** required from v2.19 to v2.19.1.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.19-community...v2.19.1-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.19-community...v2.19.1-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.19-community...v2.19.1-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.19-community...v2.19.1-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.19-community...v2.19.1-community>`__
+
+
 v2.19 (candidate) - 12 November 2015
 ------------------------------------
 
