@@ -127,3 +127,15 @@ the events for that application.
 This page is also instructive because is shows the complete list of
 application states.  From the events, you can also understand how much
 time is spent in each state.
+
+Help
+----
+
+You can also get help, by consulting the SlipStream documentation,
+Knowledge Base, or by contacting SixSq directly.
+
+.. image:: images/screenshots/help.png
+   :alt: Getting Help
+   :width: 70%
+   :align: center
+
