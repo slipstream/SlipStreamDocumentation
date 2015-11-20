@@ -115,7 +115,7 @@ These log files are always found in the last section, labeled "Reports",
 of the "Run" page. They can be downloaded from the server and examined
 in the case of deployment errors.
 
-.. figure:: images/screenshot-lamp-reports.png
+.. figure:: images/screenshots/lamp-reports.png
    :alt: Report Section
 
    Report Section

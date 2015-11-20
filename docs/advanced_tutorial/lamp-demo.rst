@@ -26,7 +26,7 @@ the front-ends.
 The run page for this deployment shows the topology of the application
 that will be deployed.
 
-.. figure:: images/screenshot-lamp-run-ready.png
+.. figure:: images/screenshots/lamp-run-ready.png
    :alt: LAMP Run Page
 
    LAMP Run Page
@@ -36,7 +36,7 @@ database node is being accessed and the distribution of write requests
 between the two front-end servers. The requests are roughly distributed
 uniformly between the front end servers.
 
-.. figure:: images/screenshot-lamp-webui.png
+.. figure:: images/screenshots/lamp-webui.png
    :alt: LAMP Web UI
 
    LAMP Web UI
@@ -50,7 +50,7 @@ front-end nodes and turning off the apache server. In this case all of
 the requests will go through a single front end. This screenshot shows
 the asymmetry.
 
-.. figure:: images/screenshot-lamp-one-fe.png
+.. figure:: images/screenshots/lamp-one-fe.png
    :alt: LAMP One Front-end
 
    LAMP One Front-end

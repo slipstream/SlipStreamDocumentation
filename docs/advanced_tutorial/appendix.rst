@@ -79,7 +79,7 @@ SlipStream and the underlying cloud infrastructures.
 
 Launch PuTTyGen. You should see a screenshot like the following.
 
-.. figure:: images/screenshot-puttygen-start.png
+.. figure:: images/screenshots/puttygen-start.png
    :alt: PuTTyGen Start Page
 
    PuTTyGen Start Page
@@ -88,14 +88,14 @@ Launch PuTTyGen and then click on the "Generate" button. Move your mouse
 around in the empty rectangle to generate some randomness for the key
 generation process.
 
-.. figure:: images/screenshot-puttygen-random.png
+.. figure:: images/screenshots/puttygen-random.png
    :alt: PuTTyGen Key Generation
 
    PuTTyGen Key Generation
 
 When the process is finished. You will see a window like the following.
 
-.. figure:: images/screenshot-puttygen-key.png
+.. figure:: images/screenshots/puttygen-key.png
    :alt: PuTTyGen Key
 
    PuTTyGen Key
@@ -119,7 +119,7 @@ navigate in the tree on the left to "SSH -> Auth". You can then add the
 private key to use by clicking on the "Browse" button and selecting the
 private key that you saved earlier.
 
-.. figure:: images/screenshot-putty-config.png
+.. figure:: images/screenshots/putty-config.png
    :alt: PuTTyGen Key
 
    PuTTyGen Key

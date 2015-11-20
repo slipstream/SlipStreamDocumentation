@@ -25,7 +25,7 @@ are tied together.
 The first section of the new deployment page just asks for generic
 information about the deployment.
 
-.. figure:: images/screenshot-deployment-dialog-summary.png
+.. figure:: images/screenshots/deployment-dialog-summary.png
    :alt: New Deployment Page
 
    New Deployment Page
@@ -35,7 +35,7 @@ comprise the full application deployment. If there are input parameters
 for a node, then you can set the values here or provide a link to
 another node's output parameter.
 
-.. figure:: images/screenshot-deployment-dialog-nodes.png
+.. figure:: images/screenshots/deployment-dialog-nodes.png
    :alt: New Deployment Page
 
    New Deployment Page
@@ -50,7 +50,7 @@ through an active HA load balancer. This serves as an excellent starting
 point for complex deployments and shows how complex, resilient services
 can be controlled and managed through SlipStream.
 
-.. figure:: images/screenshot-lamp-nodes.png
+.. figure:: images/screenshots/lamp-nodes.png
    :alt: New Deployment Page
 
    New Deployment Page

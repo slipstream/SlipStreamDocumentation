@@ -31,20 +31,20 @@ tutorial in order.
 .. toctree::
    :maxdepth: 2
 
-   slipstream_defined
+   slipstream-defined
    prerequisites
-   cloud_technology
-   slipstream_ecosystem
-   key_concepts
-   web_interface_tour
-   LAMP_Demo
+   cloud-technology
+   slipstream-ecosystem
+   key-concepts
+   web-interface-tour
+   lamp-demo
    workspace
-   standalone_images
-   single_node_applications
-   SlipStream_Client
-   multi_node_applications
-   automated_interactions
-   scalable_deployments
-   building_images
+   standalone-images
+   single-node-applications
+   slipstream-client
+   multi-node-applications
+   automated-interactions
+   scalable-deployments
+   building-images
    roadmap
    appendix

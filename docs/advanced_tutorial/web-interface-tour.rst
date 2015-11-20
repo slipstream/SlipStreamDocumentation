@@ -18,7 +18,7 @@ server. The main components of this page are:
 -  The footer contains information about the version of SlipStream being
    used and legal information.
 
-.. figure:: media/screenshot-home-page.png
+.. figure:: images/screenshots/PLACEHOLDER.png
    :alt: home\_page
 
    home\_page
@@ -41,7 +41,7 @@ of the application. The main components are:
 To change the information in your profile, you click on the "Edit"
 button, make your changes, and then click on "Save".
 
-.. figure:: media/screenshot-user-profile.png
+.. figure:: images/screenshots/PLACEHOLDER.png
    :alt: user\_profile
 
    user\_profile
@@ -63,7 +63,7 @@ configured clouds. The sections are:
 -  The last section "Metering" provides a time-based overview of your
    activity on the clouds.
 
-.. figure:: media/screenshot-dashboard.png
+.. figure:: images/screenshots/PLACEHOLDER.png
    :alt: dashboard
 
    dashboard
@@ -74,7 +74,7 @@ Sources of Documentation
 From the main menu bar, you can also find links to relevant
 documentation resources and access to the SlipStream support address.
 
-.. figure:: media/screenshot-help.png
+.. figure:: images/screenshots/PLACEHOLDER.png
    :alt: help
 
    help

@@ -46,7 +46,7 @@ or as part of a coordinated deployment.
 Clicking on the ``ubuntu-12.04-standalone`` module, you should see a
 screenshot like the following.
 
-.. figure:: images/screenshot-ubuntu.png
+.. figure:: images/screenshots/ubuntu.png
    :alt: Ubuntu Native Image
 
    Ubuntu Native Image
@@ -68,7 +68,7 @@ To run an instance of this machine, click on the "Run" button. This will
 redirect you to a page showing the status of the deployment. This page
 is actively updated, so that you can see when the machine is available.
 
-.. figure:: images/screenshot-ubuntu-run1.png
+.. figure:: images/screenshots/ubuntu-run1.png
    :alt: Run Monitoring Page
 
    Run Monitoring Page
@@ -78,7 +78,7 @@ representing the virtual machine. When it is ready, you can either click
 on the service link at the top if your browser is setup for ``ssh://``
 URLs.
 
-.. figure:: images/screenshot-ubuntu-run2.png
+.. figure:: images/screenshots/ubuntu-run2.png
    :alt: Run Monitoring Page
 
    Run Monitoring Page
@@ -104,7 +104,7 @@ need to give the IP address of the machine to your VNC client, **with
 obtained from the parameter ``machine:vnc_password`` in the "Machine"
 section of the "Run" page.
 
-.. figure:: images/screenshot-ubuntu-vnc-pwd.png
+.. figure:: images/screenshots/ubuntu-vnc-pwd.png
    :alt: VNC Password Parameter
 
    VNC Password Parameter
@@ -116,7 +116,7 @@ Very often you will want to tailor the resources allocated to the
 machine. These configurations are done on a per-cloud basis in the
 "Cloud Configuration" section of the image.
 
-.. figure:: images/screenshot-cloud-params-ubuntu.png
+.. figure:: images/screenshots/cloud-params-ubuntu.png
    :alt: Cloud Parameters
 
    Cloud Parameters
@@ -178,7 +178,7 @@ Then provide a customized front page and start the server.
 You can then view the page via a web browser and verify that the server
 is running and serves up the correct file.
 
-.. figure:: images/screenshot-ubuntu-web.png
+.. figure:: images/screenshots/ubuntu-web.png
    :alt: Deployed with SlipStream
 
    Deployed with SlipStream

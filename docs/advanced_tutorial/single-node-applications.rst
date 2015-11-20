@@ -20,7 +20,7 @@ platform. To deploy an instance of Wordpress, just click on the "Deploy"
 button from the App Store. You will presented with a run dialog that
 requests the values for a few parameters.
 
-.. figure:: images/screenshot-wordpress-run-dialog.png
+.. figure:: images/screenshots/wordpress-run-dialog.png
    :alt: Wordpress Run Dialog
 
    Wordpress Run Dialog
@@ -29,7 +29,7 @@ Filling in those parameters and then clicking on the "Run Image" button
 will launch the image and bring up the usual "Run" page where you can
 follow the status of the application.
 
-.. figure:: images/screenshot-wordpress-run.png
+.. figure:: images/screenshots/wordpress-run.png
    :alt: Wordpress Run Dialog
 
    Wordpress Run Dialog
@@ -37,7 +37,7 @@ follow the status of the application.
 If you look at the definition of the ``wordpress`` image, you will see
 where the parameters for the image are defined.
 
-.. figure:: images/screenshot-wordpress-parameters.png
+.. figure:: images/screenshots/wordpress-parameters.png
    :alt: Wordpress Parameters
 
    Wordpress Parameters
@@ -64,7 +64,7 @@ to the R statistical analysis software. The actual deployment is similar
 to that from Wordpress, although it uses just a bash script for
 installation rather than a configuration management system like Puppet.
 
-.. figure:: images/screenshot-rstudio-run.png
+.. figure:: images/screenshots/rstudio-run.png
    :alt: R-Studio Deployment
 
    R-Studio Deployment
@@ -74,7 +74,7 @@ is necessary to ensure that only the person deploying the application
 has access to it. If you deploy R-Studio from the App Store, you will be
 faced with a login page when accessing the instance.
 
-.. figure:: images/screenshot-rstudio-login.png
+.. figure:: images/screenshots/rstudio-login.png
    :alt: R-Studio Login Page
 
    R-Studio Login Page

@@ -129,7 +129,7 @@ script on it.
 After the provisioning cycle, you will see the additional node instance
 in the deployment.
 
-.. figure:: images/screenshot-lamp-scale-up.png
+.. figure:: images/screenshots/lamp-scale-up.png
    :alt: LAMP with 1 New Web Node
 
    LAMP with 1 New Web Node
@@ -152,7 +152,7 @@ after the given node instance(s) have been removed.
 Again, after the (un-)provisioning cycle, the removed node instances
 will disappear from the deployment.
 
-.. figure:: images/screenshot-lamp-scale-down.png
+.. figure:: images/screenshots/lamp-scale-down.png
    :alt: LAMP with Web Nodes Removed
 
    LAMP with Web Nodes Removed
