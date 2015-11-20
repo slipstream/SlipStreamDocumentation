@@ -1,44 +1,51 @@
 Key Concepts
 ============
 
-There are a few key concepts that are important to understand so that
-you can get the most out of the service.
+There are a few key concepts that are important to understand how the
+various resources are put together to define and to manage cloud
+applications.
 
 Application Model
 -----------------
 
-Image: Encapsulates cloud-specific parameters such as number of CPU,
-available RAM, and network security groups.  
+SlipStream uses a hierarchical description of applications to allow
+for the maximum portability and easy scaling of applications when they
+are deployed.  Applications are composed of parameterized components
+which reference generic virtual machine images.  The following diagram
+shows this composition.
 
-<-- transformed into components via user-defined "recipes" or scripts --> 
+.. image:: images/diagrams/application-model.png
+   :width: 70%
+   :align: center
 
-Component: A parameterized, single-VM service that can be deployed
-individually or as part of a more complex application. 
-
-<-- bundled into applications, linking component parameters and
-defining a topology --> 
-
-Application: A complete service containing one or more individual
-components.  Each component can have multiple instances and an
-application can span cloud infrastructures. 
-
+By isolating the cloud-specific information in the images, SlipStream
+enhances the portability of the applications.  Similarly by defining
+the application topology separate from the components, it makes it
+easier to scale the various functional parts of the application as
+needed.
 
 Vocabulary
 ----------
 
-Image
+We have recently updated the vocabulary we use to describe the various
+resources within SlipStream to make the concepts more intuitive.  This
+new vocabulary hasn't made it through all of the code and
+documentation, so you may come across some of the old terms.  The
+older terms are shown in parentheses. 
+
+Image (base or native image)
     A virtual machine image that encapsulates cloud-specific
     information, such as image identifiers, sizes of a machine, and
     associated security groups.  The referenced, native images in each
     cloud are expected to be effectively identical.
 
-Component
+Component (machine image, node)
     A single virtual machine definition that references an Image and
     may contain scripts for the installation and configuration of
     additional services.  These components can be parameterized and
     can often be run as standalone applications. 
 
-Application
+Application (deployment)
     An application brings together one or more components into a
     coordinated deployment of cooperating virtual machines.  This
     allows complex (potentially multi-cloud) applications to be
@@ -56,63 +63,3 @@ Run
     A deployed (running) application or application component. A "run"
     encapsulates all of the runtime information of the application and
     acts as a resource by which the application is managed.
-
-
-Finding Your Way Around
------------------------
-
-Metadata about your images and deployments are organized into projects
-in SlipStream. Each project consists of a number of modules. The modules
-may be *Project*, *Machine Image* or *Deployment* modules:
-
-Project
-    A container of modules used to provide logical grouping. A project
-    may contain other projects allowing a hierarchical organization for
-    large projects.
-Machine image
-    A module that contains information about a virtual machine image.
-    One type of machine image is a *native image*. These contain a
-    cloud-specific identifier for a particular cloud infrastructure. The
-    other type of machine image, a *reference image*, references another
-    image (which can be a native image or another reverence image) and
-    includes a list of packages to install and/or recipes to configure
-    the machine. These modules also include input/output parameters such
-    that the machine can be synchronized as part of a deployment.
-Deployment
-    A module that describes a coordinated deployment of one or more
-    nodes. The deployment associates a machine image to each node and
-    defines the synchronizaton necessary for the coordinated deployment.
-
-The web interface allows the parameters for each of these modules to be
-defined, edited, versioned and saved.
-
-Versioning
-----------
-
-The full history of all modules is always saved in the SlipStream
-server. Each modified module has a unique version number allowing you to
-deploy a specific version of a module or the latest.
-
-Published modules always refer to a specific version of the module.
-
-Workflows
----------
-
-We also have two main workflows in SlipStream: *Deployment* and *Image
-Creation*. Here is a short explanation of what they are:
-
-Deployment Execution (or Run)
-    The combined deployment of several machines, including the automatic
-    synchronization of the machines' services. Essentially a "one-click"
-    automated deployment of complex services.
-Image Creation
-    Builds an enhanced and customized machine image ("reference image")
-    at the cloud service level, which can be then be a component in
-    service deployments. SlipStream instantiates a virtual machine from
-    a reference image, adds software packages, configures services, and
-    then saves the new image for reuse.
-
-For convenience, it is also possible to run a single image, without
-deployment support. This is handy when you quickly want a new virtual
-machine for interactive development.
-
