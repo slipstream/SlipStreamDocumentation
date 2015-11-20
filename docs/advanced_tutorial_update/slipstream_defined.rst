@@ -13,4 +13,10 @@ termination.
    :width: 70%
    :align: center
 
+You can use SlipStream either from the Nuvla_ service maintained by
+SixSq or via an on-premise, private installation of SlipStream.
+
+
+.. _Nuvla: http://nuv.la
+
 .. _SixSq: http://sixsq.com

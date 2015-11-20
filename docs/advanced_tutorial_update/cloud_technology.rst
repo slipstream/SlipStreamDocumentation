@@ -107,14 +107,3 @@ up in the context of "cloud bursting", where remote cloud resources
 (public clouds) are used when a local cloud resource (private cloud)
 becomes saturated.
 
-SlipStream's Role
------------------
-
-TO BE COMPLETED!!!
-
- - What are the primary problems with IaaS cloud platforms?
-
- - How does SlipStream address these?
-
- - Where does SlipStream fit into this?  Allows people to combine all
-   types of IaaS clouds to build a customized cloud platform. 

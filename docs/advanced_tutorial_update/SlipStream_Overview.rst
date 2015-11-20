@@ -1,5 +1,17 @@
-SlipStream Overview
-===================
+SlipStream's Role
+=================
+
+TO BE COMPLETED!!!
+
+ - What are the primary problems with IaaS cloud platforms?
+
+ - How does SlipStream address these?
+
+ - Where does SlipStream fit into this?  Allows people to combine all
+   types of IaaS clouds to build a customized cloud platform. 
+
+ORIGINAL MATERIAL
+-----------------
 
 Although cloud technologies provide real benefits to their users, they
 can also pose challenges. At the IaaS level for instance:
@@ -79,22 +91,6 @@ remove machines from a running application.
 
    ss-blocks
 
-SlipStream Deployments
-----------------------
-
-This tutorial uses the `Nuvla <https://nuv.la>`__, a SlipStream instance operated
-by SixSq as a SaaS and free to use. Individuals and organizations can use this
-service to manage their applications on a large number of supported
-cloud services.
-
-SlipStream can also be installed on-premise allowing more control over
-what clouds are available to an organization's users and permitting
-access to its own private cloud infrastructures. The organization
-purchases a subscription or perpetual license and runs the service.
-
-Managed on-premise installations are also possible, where the SlipStream
-service is deployed and maintained by SixSq, but is running on a
-customer's IT infrastructure.
 
 .. |alice| image:: media/alice.png
    :height: 115

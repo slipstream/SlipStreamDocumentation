@@ -1,5 +1,8 @@
+Web Interface Tour
+==================
+
 Home Page
-=========
+---------
 
 The home page is the first page you will see after logging into the
 server. The main components of this page are:

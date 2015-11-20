@@ -13,23 +13,24 @@ workstation are below.
 Nuvla Account
 -------------
 
-Nuvla_ (running the SlipStream software) is a secure web service
-operated by SixSq that allows people to access transparently multiple
-cloud infrastructures. Separate accounts allow users to keep their
-work private and to protect their cloud credentials.
+SlipStream allows people to use multiple cloud infrastructures
+transparently and easily. Individual accounts on the SlipStream
+service allow users to keep their work private and to protect their
+cloud credentials.
 
-You can register for a Nuvla account directly through the service.
+This tutorial assumes that you're using Nuvla_, a free SlipStream
+server operated by SixSq.  You can register for a Nuvla account
+directly through the service.
 
 .. tip::
 
-    This tutorial assumes that you're using Nuvla. If you're using
-    another SlipStream installation, just replace the Nuvla endpoint
-    with the endpoint of your SlipStream installation.  Note that the
-    administrator of the SlipStream service may not allow open
-    registration of users.
+    If you're using another SlipStream installation, replace the Nuvla
+    endpoint with the endpoint of your SlipStream installation.  Note
+    that the administrator of the SlipStream service may not allow
+    open registration of users.
 
-The procedure follows the usual pattern for web application
-registration and should be familiar.  Nonetheless, the detailed
+The registration procedure follows the usual pattern for web
+applications and should be familiar.  Nonetheless, the detailed
 instructions for creating an account on Nuvla are:
 
  1. Fill in the registration form on the Nuvla `login page
