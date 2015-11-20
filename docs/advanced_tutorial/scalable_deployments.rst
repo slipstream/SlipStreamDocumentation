@@ -12,6 +12,7 @@ In this section you will learn how to:
 -  Scale the application through the API
 -  Respond to resource changes to update configurations
 
+
 Types of Scaling
 ----------------
 
@@ -72,27 +73,27 @@ exist to alter the service configuration appropriately.
 
 The available hooks are defined in the following table.
 
-+--------------+--------------------------+---------------------------------------------------+
-| Script       | Action                   | When Executed                                     | 
-+==============+==========================+===================================================+
-| "On VM Add"  | *horizontal scale up*    | after addition of new VMs on all the VMs of the   |
-|              |                          | deployment except the ones that were just added.  |
-+--------------+--------------------------+---------------------------------------------------+
-|"On VM Remove"| *horizontal scale down*  | after the removal of the requested VMs on all     |
-|              |                          | the VMs left in the deployment.                   |
-+--------------+--------------------------+---------------------------------------------------+
-|"Pre-Scale"   | *horizontal scale down*  | before VMs removal action, on the VMs targeted    |
-|              |                          | for the removal, and therefore, before the        |
-|              |                          | "On VM Remove" script                             |
-+--------------+--------------------------+---------------------------------------------------+
-|              | *vertical scale up/down* | before any vertical scaling action (VM resizing   |
-|              |                          | or attaching/detaching of extra disk) on the VMs  |
-|              |                          | that are subject to the scaling action.           |
-+--------------+--------------------------+---------------------------------------------------+
-|"Post-Scale"  | *vertical scale up/down* | after any vertical scaling action (VM resizing or |
-|              |                          | attaching/detaching of extra disk) on the VMs that| 
-|              |                          | are subject to the scaling action.                |
-+--------------+--------------------------+---------------------------------------------------+
+============== ========================== =================================================== 
+Script         Action                     When Executed                                       
+============== ========================== =================================================== 
+"On VM Add"    *horizontal scale up*      | after addition of new VMs on all the VMs of the    
+                                          | deployment except the ones that were just added.   
+-------------- -------------------------- --------------------------------------------------- 
+"On VM Remove" *horizontal scale down*    | after the removal of the requested VMs on all      
+                                          | the VMs left in the deployment.                    
+-------------- -------------------------- --------------------------------------------------- 
+"Pre-Scale"    *horizontal scale down*    | before VMs removal action, on the VMs targeted     
+                                          | for the removal, and therefore, before the         
+                                          | "On VM Remove" script                              
+-------------- -------------------------- --------------------------------------------------- 
+"Pre-Scale"    *vertical scale up/down*   | before any vertical scaling action (VM resizing    
+                                          | or attaching/detaching of extra disk) on the
+                                          | VMs that are subject to the scaling action.            
+-------------- -------------------------- --------------------------------------------------- 
+"Post-Scale"   *vertical scale up/down*   | after any vertical scaling action (VM resizing
+                                          | or attaching/detaching of extra disk) on the 
+                                          | VMs that are subject to the scaling action.
+============== ========================== =================================================== 
 
 Some information about `how to write those
 scripts <https://github.com/slipstream/SlipStreamClient/tree/master/client>`__
@@ -222,17 +223,21 @@ for the changes made to the VM.
 The examples of the **"Pre-Scale"** and **"Post-Scale"** can be found
 `here <https://github.com/slipstream/SlipStreamClient/tree/master/client>`__.
 
-Exercises
----------
+.. warning::
 
-1. Deploy your web server and client as a mutable run.
-2. Use the SlipStream client to add another client to the system,
-   verifying that it sees the web server correctly.
-3. Use the SlipStream client to remove one of the clients from the
-   system, verifying that the machine has indeed disappeared.
-4. Deploy a mutable run, giving 0 as the number of machines for the
-   clients. Does this work? Can you add these types of machines later?
-5. Define the mutation scripts for your deployment and ensure that they
-   are called when machines are added or removed.
-6. How would you collect information from the application to
-   automatically scale an application?
+   Provide Elasticsearch example to show scaling.  Provide the
+   "health" check as part of the endpoint to be shown.
+
+.. admonition:: EXERCISES
+
+   1. Deploy your web server and client as a mutable run.
+   2. Use the SlipStream client to add another client to the system,
+      verifying that it sees the web server correctly.
+   3. Use the SlipStream client to remove one of the clients from the
+      system, verifying that the machine has indeed disappeared.
+   4. Deploy a mutable run, giving 0 as the number of machines for the
+      clients. Does this work? Can you add these types of machines later?
+   5. Define the mutation scripts for your deployment and ensure that they
+      are called when machines are added or removed.
+   6. How would you collect information from the application to
+      automatically scale an application?

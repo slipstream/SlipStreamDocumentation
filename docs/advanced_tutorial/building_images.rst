@@ -15,3 +15,21 @@ debugged and working because:
 On the other hand the additional effort can significantly speed the
 application deployment for frequently deployed applications, improving
 the customer's experience and reducing their costs.
+
+Trouble Points
+--------------
+
+TO BE COMPLETED!!!
+
+ - Persistent network configuration
+ - Privacy, credential leakage
+ - Kernel upgrades
+ - Consistency between clouds with and without user images
+   - "duplicated" updates between scripts
+   - rebooting for kernel updates
+
+.. admonition:: EXERCISES
+
+   1. Optimize an image and verify that it works the same on both clouds.
+   2. Create a data appliance.
+

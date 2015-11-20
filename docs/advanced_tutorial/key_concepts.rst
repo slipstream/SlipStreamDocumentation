@@ -4,6 +4,60 @@ Key Concepts
 There are a few key concepts that are important to understand so that
 you can get the most out of the service.
 
+Application Model
+-----------------
+
+Image: Encapsulates cloud-specific parameters such as number of CPU,
+available RAM, and network security groups.  
+
+<-- transformed into components via user-defined "recipes" or scripts --> 
+
+Component: A parameterized, single-VM service that can be deployed
+individually or as part of a more complex application. 
+
+<-- bundled into applications, linking component parameters and
+defining a topology --> 
+
+Application: A complete service containing one or more individual
+components.  Each component can have multiple instances and an
+application can span cloud infrastructures. 
+
+
+Vocabulary
+----------
+
+Image
+    A virtual machine image that encapsulates cloud-specific
+    information, such as image identifiers, sizes of a machine, and
+    associated security groups.  The referenced, native images in each
+    cloud are expected to be effectively identical.
+
+Component
+    A single virtual machine definition that references an Image and
+    may contain scripts for the installation and configuration of
+    additional services.  These components can be parameterized and
+    can often be run as standalone applications. 
+
+Application
+    An application brings together one or more components into a
+    coordinated deployment of cooperating virtual machines.  This
+    allows complex (potentially multi-cloud) applications to be
+    defined and managed as a single entity.
+
+Project
+    A "folder" that allows Image, Component, and Application
+    definitions to be organized hierarchically. 
+
+Module
+    A generic name for Image, Component, Application, and Project
+    definitions.
+
+Run
+    A deployed (running) application or application component. A "run"
+    encapsulates all of the runtime information of the application and
+    acts as a resource by which the application is managed.
+
+
 Finding Your Way Around
 -----------------------
 
@@ -62,14 +116,3 @@ For convenience, it is also possible to run a single image, without
 deployment support. This is handy when you quickly want a new virtual
 machine for interactive development.
 
-Access Control
---------------
-
-SlipStream has a consistent access control model for all of the modules.
-Access control can be defined separately for the *User*, *Group* and
-*Public* levels. For each, different permissions for module actions can
-be granted (e.g. read, execute).
-
-Groups are dynamically defined, as a simple list of SlipStream users.
-These groups can be inherited from a parent module or defined manually
-for each module.

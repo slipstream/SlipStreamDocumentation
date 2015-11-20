@@ -85,26 +85,6 @@ username and password can be found in the ``machine:rstudio_user`` and
 ``ss-random`` command from the deployment script and communicated
 through SlipStream to the user.
 
-Making Modules Public
----------------------
-
-Often you will want to share an image or deployment with another user.
-You can do this by modifying the permissions in the module definition.
-Looking at the Wordpress definition, you can see the following.
-
-.. figure:: images/screenshot-wordpress-acl.png
-   :alt: Wordpress Permissions
-
-   Wordpress Permissions
-
-By letting "Public" view and run the deployment, it can be shared with
-other users. If you want to share with a more constrained group, then
-you can provide the list of users and set the "Group" permissions.
-
-Public applications can also be "Published" in the App Store. Once this
-is done, the application will be visible from a tile on everyone's home
-page. Only accounts with administrator priviledges can publish modules.
-
 Exercises
 ---------
 
