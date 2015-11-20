@@ -1,80 +1,129 @@
-Web Interface Tour
-==================
+Web Interface
+=============
 
-Home Page
----------
+Inline Tour
+-----------
 
-The home page is the first page you will see after logging into the
-server. The main components of this page are:
+We postponed going through the inline tour of the SlipStream interface
+to allow us to concentrate on the configuration of our cloud
+credentials.   We will go through that tour now because it:
 
--  The menu bar at the top of the page (and all pages) provides links to
-   the other major pages within the application, notably the dashboard
-   and user profile.
--  The first accordian section of the page is the SlipStream App Store,
-   containing predefined applications that can be launced at the click
-   of a button.
--  The second accordian section contains a hierarchy of your own modules
-   and those that have been shared with you.
--  The footer contains information about the version of SlipStream being
-   used and legal information.
+- Provides a good overview of the major sections of the SlipStream web
+  interface and
+- Verifies that our user profile and cloud accounts have been
+  configured correctly.
 
-.. figure:: images/screenshots/PLACEHOLDER.png
-   :alt: home\_page
+To activate the tour, choose the "Start guided tour" option below the
+"Help" menu.  You should see a splash screen like the following:
 
-   home\_page
+.. image:: images/screenshots/tour-splash-screen.png
+   :alt: Tour Splash Screen
+   :width: 70%
+   :align: center
+
+Click on the "Yes, go for the tour!" button to follow the tour.  This
+will lead you through the interface and show you how to deploy a
+simple application from the App Store.
+
+The tour is aimed at "Alice", but it is useful also for developers
+("Clara") to see how the App Store can simplify the deployment of
+cloud applications for end-users.
+
+.. note::
+
+   In the tour workflow, you were redirected to the run page after you
+   started an application.  In the normal workflow, you are redirected
+   to the dashboard instead.
+
+.. admonition:: EXERCISES
+
+   1. Follow the tour and verify that the Wordpress deployment works
+      for your account.  If you have any problems, be sure to correct
+      them before going on. 
 
 User Profile
 ------------
 
-Your user profile can be opened by hovering over your name in the menu
-bar and clicking on "Profile". This submenu also allows you to log out
-of the application. The main components are:
+You already saw and updated your user profile when you were
+configuring your account earlier.  This page contains all of your user
+parameters, several of which are worth pointing out explicitly.
 
--  The first accordian section ("Summary") contains your personal
-   information, including your password.
--  The second section ("General") contains your SlipStream preferences,
-   most importantly the default behavior when running applications and
-   your SSH key.
--  The remaining sections contain your credentials for individual cloud
-   services.
+The "Keep running after deployment" indicates what SlipStream will do
+by default when it is finished deploying an application onto a cloud
+infrastructure.  The default is "On success".  The possible values
+are: 
 
-To change the information in your profile, you click on the "Edit"
-button, make your changes, and then click on "Save".
+- "On success"
+    Leave the application running until you explicitly terminate it.
 
-.. figure:: images/screenshots/PLACEHOLDER.png
-   :alt: user\_profile
+- "On error"
+    Leave the application running only in the case of an error to
+    allow you to debug the problems.
 
-   user\_profile
+- "Never"
+    Always terminate the application.
 
-Dashboard
----------
+- "Always"
+    Always leave the application running.
 
-The dashboard contains an overview of your activity on all of the
-configured clouds. The sections are:
+Pay attention to values that leave the applications running.  They
+will continue to use cloud resources (and incur charges) until you
+explicitly terminate them. 
 
--  The "Usage" section gives a quick visual overview of the number of
-   your machines running on each cloud service.
--  The "Deployments/Runs/Builds" section gives a full list of recent
-   applications, with links to a detailed "Run" page and the module
-   definition.
--  The "Virtual Machines" section provides a detailed list of the
-   virtual machines that are running on each cloud and the associated
-   SlipStream "Run" (if any).
--  The last section "Metering" provides a time-based overview of your
-   activity on the clouds.
+The second parameter of interest is the "Cloud usage email"
+option. You can choose either "daily" or "never".  If you choose
+daily, you'll receive a daily reminder of your cloud resource usage.
+This can be useful reminder to stop applications that you've forgotten
+about! 
 
-.. figure:: images/screenshots/PLACEHOLDER.png
-   :alt: dashboard
+.. image:: images/screenshots/profile-general-section.png
+   :alt: Parameters in User Profile General Section
+   :width: 70%
+   :align: center
 
-   dashboard
+Usage
+-----
 
-Sources of Documentation
-------------------------
+In the menu under your username, you can also find the "Usage" page.
+This page gives you a summary of your cloud usage (per day) over
+time.  This is the information that will be emailed to you if you
+activated that option. 
 
-From the main menu bar, you can also find links to relevant
-documentation resources and access to the SlipStream support address.
+.. image:: images/screenshots/usage.png
+   :alt: Cloud Resource Usage Page
+   :width: 70%
+   :align: center
 
-.. figure:: images/screenshots/PLACEHOLDER.png
-   :alt: help
+The usage is calculated each morning, so it will initially be empty.
+It should show some activity tomorrow!
 
-   help
+Events
+------
+
+SlipStream records events for important changes in the application
+lifecycle.  These events can be used to understand the timeline of a
+given application deployment.  All of the events related to your
+account can be seen on the "Events" page, which can be found in the
+menu under your username.
+
+The page will look like the following screenshot.  You should have
+events in the list related to the deployment of Wordpress from the web
+interface tour. 
+
+.. image:: images/screenshots/events.png
+   :alt: Events Page
+   :width: 70%
+   :align: center
+
+When trying to see events related to a particular application
+deployment (run), visit the run page.  It contains a section with just
+the events for that application. 
+
+.. image:: images/screenshots/events-run.png
+   :alt: Events Page
+   :width: 70%
+   :align: center
+
+This page is also instructive because is shows the complete list of
+application states.  From the events, you can also understand how much
+time is spent in each state.
