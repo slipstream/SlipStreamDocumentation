@@ -2,8 +2,8 @@ Cloud Technology
 ================
 
 Cloud technologies have reached levels of maturity and market
-penetration such that organizations have to justify why they are
-**not** using cloud rather than the other way around.
+penetration such that organizations have to justify why they are *not*
+using cloud rather than the other way around.
 
 This has occurred because cloud technologies offer real benefits to
 users and organizations. With cloud infrastructures, people can easily
@@ -18,21 +18,21 @@ Critical Components
 There are three critical components of cloud technologies that have
 lead to its success:
 
- - Mature Virtualization Technologies: virtualization techniques have
-   been directly integrated into mainstream operating systems and
-   modern CPUs. This integration allows use of virtualization a
-   negligible impact on performance.
+- Mature Virtualization Technologies
+    Virtualization techniques have been directly integrated into
+    mainstream operating systems and modern CPUs. This integration
+    allows use of virtualization a negligible impact on performance.
 
- - Simple, Universal APIs: Most clouds use Resource Oriented
-   Architectures and "REST" APIs that reuse the ubiquitous HTTP
-   protocol.  Doing so makes the service universally accessible from
-   all programming languages and reuses the well understood HTTP
-   service model.
+- Simple, Universal APIs
+    Most clouds use Resource Oriented Architectures and "REST" APIs
+    that reuse the ubiquitous HTTP protocol.  Doing so makes the
+    service universally accessible from all programming languages and
+    reuses the well understood HTTP service model.
 
- - Ubiquitous, Reliable Networking: Robust cellular networks, wifi,
-   and high-bandwidth, wired connections provides universal, reliable,
-   24/7 access to critical services hosted in remote infrastructures
-   like clouds.
+- Ubiquitous, Reliable Networking
+    Robust cellular networks, wifi, and high-bandwidth, wired
+    connections provides universal, reliable, 24/7 access to critical
+    services hosted in remote infrastructures like clouds.
 
 Cloud technologies combine these components enabling cloud platforms
 to provide efficient, powerful computing resources that consumers can
@@ -52,26 +52,29 @@ discussing cloud platforms.
 Service Models
 ~~~~~~~~~~~~~~
 
-The "service model" for a cloud answers the question: **What resources
-are provided by the cloud?** NIST and others define three general
-service models:
+The "service model" answers the question: **What resources are
+provided by the cloud?** NIST and others define three general service
+models:
 
--  **Software as a Service (SaaS)**: Provides a complete application to
-   a customer hosted on a cloud platform to provide lower latencies,
-   better bandwidth, scaling, or other features. Typically the customer
-   will access the service through a web browser or another client on
-   the customers computer.
--  **Platform as a Service (PaaS)**: Provides a programming environment
-   and cloud infrastructure featuring high-level capabilities like
-   load-balancing, scaling, etc., relieving the programmer from having
-   to construct those service from scratch in the application. Typically
-   the customer is an application developer who accesses the service
-   through a proprietary, language-specific API.
--  **Infrastucture as a Service (IaaS)**: Provides access to raw
-   computing resources (virtual machines, storage, etc.) that can be
-   provisioned (and released) rapidly. Customers access these services
-   either through a simple (usually REST) API or through a web
-   interface.
+- Software as a Service (SaaS)
+    Provides a complete application to a customer hosted on a cloud
+    platform to provide lower latencies, better bandwidth, scaling, or
+    other features. Typically the customer will access the service
+    through a web browser or another client on the customers computer.
+
+- Platform as a Service (PaaS)
+    Provides a programming environment and cloud infrastructure
+    featuring high-level capabilities like load-balancing, scaling,
+    etc., relieving the programmer from having to construct those
+    services from scratch in the application. Typically the customer
+    is an application developer who accesses the service through a
+    proprietary, language-specific API.
+
+- Infrastucture as a Service (IaaS)
+    Provides access to raw computing resources (virtual machines,
+    storage, etc.) that can be provisioned (and released)
+    rapidly. Customers access these services either through a simple
+    (usually REST) API or through a web interface.
 
 These service models are often presented as a hierarchy as a PaaS is
 often built over a IaaS, as well as a SaaS over a PaaS.
@@ -83,23 +86,28 @@ same cloud infrastructure.
 Deployment Models
 ~~~~~~~~~~~~~~~~~
 
-The "deployment model" for a cloud answers the question: **Who will be
-using the cloud infrastructure?** NIST provides three deployment models:
+The "deployment model" answers the question: **Who will be using the
+cloud infrastructure?** NIST defines three deployment models:
 
--  **Private**: These are infrastructures in which the computing
-   resources are co-located with the primary users of the
-   infrastructure. The users typically pay for the computing resources
-   directly and run them as a cloud for their own purposes.
--  **Community**: These are infrastructures run for a group of
-   collaborating institutes with similar aims. The users usually pay for
-   some fraction of the resources in the cloud and share those resources
-   with others in the community. Allocation of resources between people
-   is usually done via "horse trading."
--  **Public**: This is an infrastructure in which the resources are
-   offered to the general public. The customers pay for the resources
-   directly usually via a credit card. The computing resources are
-   housed in data centers controlled by the owner of the cloud, not by
-   the customer.
+- Private
+    These are infrastructures in which the computing resources are
+    co-located with the primary users of the infrastructure. The users
+    typically pay for the computing resources directly and run them as
+    a cloud for their own purposes.
+
+- Community
+    These are infrastructures run for a group of collaborating
+    institutes with similar aims. The users usually pay for some
+    fraction of the resources in the cloud and share those resources
+    with others in the community. Allocation of resources between
+    people is usually done via "horse trading."
+
+- Public
+    This is an infrastructure in which the resources are offered to
+    the general public. The customers pay for the resources directly
+    usually via a credit card. The computing resources are housed in
+    data centers controlled by the owner of the cloud, not by the
+    customer.
 
 NIST actually defines a fourth deployment model, **Hybrid Cloud**, which
 is really just a mix of the other deployment models. This usually comes

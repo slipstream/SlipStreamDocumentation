@@ -43,7 +43,7 @@ module.  The following screenshot shows the available permissions for
 a typical project.  The access control information is always visible
 in the "Authorizations" section of the module.
 
-.. figure:: images/screenshot-PLACEHOLDER.png
+.. figure:: images/screenshots/PLACEHOLDER.png
    :alt: Authorizations Panel for a Module
 
    Authorizations Panel for a Module

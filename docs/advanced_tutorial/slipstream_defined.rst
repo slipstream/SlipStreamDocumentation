@@ -9,7 +9,7 @@ infrastructures, SlipStream manages cloud application through the full
 lifecycle: deployment, configuration, validation, scaling, and
 termination.
 
-.. image:: images/cloud-application-lifecycle.png
+.. image:: images/diagrams/cloud-application-lifecycle.png
    :width: 70%
    :align: center
 
