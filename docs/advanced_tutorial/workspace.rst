@@ -6,10 +6,28 @@ and modules (image, component, and application definitions).  At the
 top-level, you will see your projects as well as any projects that
 have been shared with you.
 
+.. image:: images/screenshots/workspace-root.png
+   :alt: Workspace Root Folder
+   :width: 70%
+   :align: center
+
 "Projects" are essentially folders, in which you can keep related
 images, components, and applications together.  As projects can
 contain other projects, you can create hierarchies to help organize
 your work. 
+
+There are two important projects that are shared with everyone:
+
+- The "examples/images" project contains basic operating system images
+  (like Ubuntu 14.04 and CentOS 6) that are reused extensively in the
+  definition of application components.
+- The "apps" project contains set of application definitions created
+  by SixSq to highlight features of SlipStream and to serve as a basis
+  for your own applications. 
+
+When you have time, it is instructive to look through the definitions
+of those components and applications to understand how to take
+advantage of SlipStream features.
 
 .. important::
 
@@ -43,10 +61,10 @@ module.  The following screenshot shows the available permissions for
 a typical project.  The access control information is always visible
 in the "Authorizations" section of the module.
 
-.. figure:: images/screenshots/PLACEHOLDER.png
-   :alt: Authorizations Panel for a Module
-
-   Authorizations Panel for a Module
+.. image:: images/screenshots/project-acl.png
+   :alt: Authorizations Panel for a Project
+   :width: 70%
+   :align: center
 
 Using the access control mechanisms, you can **share your work with
 other people on the SlipStream server**.  You can also request that
