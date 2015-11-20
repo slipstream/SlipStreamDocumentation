@@ -39,12 +39,13 @@ tutorial in order.
    web-interface-tour
    lamp-demo
    workspace
-   standalone-images
-   single-node-applications
+   images
+   components-1
    slipstream-client
-   multi-node-applications
+   components-2
+   applications
    automated-interactions
-   scalable-deployments
+   scalable-applications
    building-images
    roadmap
    appendix

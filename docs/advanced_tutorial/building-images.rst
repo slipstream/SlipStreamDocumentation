@@ -1,5 +1,5 @@
-Building Images
-===============
+Optimizing Applications
+=======================
 
 Being able to build an image allows the installation steps to be done
 only once and reduces the startup latency for the image and application.
@@ -15,6 +15,11 @@ debugged and working because:
 On the other hand the additional effort can significantly speed the
 application deployment for frequently deployed applications, improving
 the customer's experience and reducing their costs.
+
+Reducing Startup Latencies
+--------------------------
+
+TO BE COMPLETED!!!
 
 Trouble Points
 --------------

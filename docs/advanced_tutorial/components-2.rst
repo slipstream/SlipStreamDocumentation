@@ -1,5 +1,5 @@
-Single Node Applications
-========================
+Components Part II
+==================
 
 Many common applications require only a single node to run. These simple
 can also usually be easily parameterized so that a single application

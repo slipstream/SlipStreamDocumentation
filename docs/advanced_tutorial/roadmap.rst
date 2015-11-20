@@ -1,6 +1,7 @@
 Roadmap
 =======
 
+ - Networking: Control of firewalls, and beyond!
  - Container vs. Virtual Machine technologies
  - APIs: movement towards CIMI
  - Underlying technologies: clojure, clojurescript, NoSQL databases

@@ -1,5 +1,5 @@
-Multinode Applications
-======================
+Applications
+============
 
 Although some useful applications can be deployed as single nodes, most
 applications nowadays are large, multilayer beasts with several

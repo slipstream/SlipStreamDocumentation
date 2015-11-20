@@ -1,5 +1,5 @@
-Scalable Deployments
-====================
+Scalable Applications
+=====================
 
 Very few, if any, applications experience a constant load. Most
 experience large fluctuations in the load, needing adjustments to the
