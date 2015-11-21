@@ -44,7 +44,7 @@ tutorial in order.
    slipstream-client
    components-2
    applications
-   automated-interactions
+   automating-slipstream
    scalable-applications
    building-images
    roadmap

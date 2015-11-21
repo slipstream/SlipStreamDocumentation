@@ -2,9 +2,19 @@ Workspace
 =========
 
 The workspace allows you to create, store, and organize your projects
-and modules (image, component, and application definitions).  At the
-top-level, you will see your projects as well as any projects that
-have been shared with you.
+and modules (image, component, and application definitions).
+
+In this section you'll learn how to:
+
+- Create and navigate projects,
+- Protect or share your projects and modules, and
+- Understand versioning within SlipStream.
+
+Projects
+--------
+
+At the top-level of the workspace, you will see your projects as well
+as any projects that have been shared with you.
 
 .. image:: images/screenshots/workspace-root.png
    :alt: Workspace Root Folder

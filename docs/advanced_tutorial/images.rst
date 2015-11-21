@@ -1,7 +1,7 @@
 Images
 ======
 
-An image defines virtual machine image that encapsulates
+An image defines a virtual machine image that encapsulates
 cloud-specific information.  **All** application components must
 eventually reference an image that can be provisioned in the selected
 cloud(s).
@@ -16,97 +16,158 @@ In this section you'll learn how to:
 "Native" Images
 ---------------
 
-TO BE COMPLETED!!!
+To have full application portability between clouds, you must have
+functionally equivalent virtual machine images available in each of
+the clouds.
 
-Machine Resources
------------------
+One way to achieve this is to create identical virtual machine image
+files and upload them into every cloud you want to use.  In theory
+this is the best approach but in practice it doesn't work well
+because:
 
-Very often you will want to tailor the resources allocated to the
-machine. These configurations are done on a per-cloud basis in the
-"Cloud Configuration" section of the image.
+- Some cloud providers do not allow user-created images,
+- Other cloud providers modify uploaded images (e.g. by changing the
+  kernel), and
+- Maintaining images for every cloud becomes a significant burden.
 
-.. image:: images/screenshots/cloud-params-ubuntu.png
+Practical cloud application portability requires another approach.
+
+SlipStream's approach overcomes these problems by reusing existing
+images supplied by the cloud providers.  A SlipStream image definition
+references existing ("native") virtual machine images in each cloud,
+creating a group of functionally equivalent images (e.g. a "minimal
+Ubuntu 12.04" image).  The slight differences between the images in
+various clouds rarely (if ever) have any noticable affect on the cloud
+application and we free ourselves maintaining our own images.
+
+.. note:
+
+   You might say that this only works for simple images like minimal
+   distributions of common operating systems.  You are right!  We will
+   see in the coming chapters how SlipStream components allow you to
+   customize the virtual machines that you use.
+
+If you look at the definition of the "examples/images/ubuntu-14.04"
+image, you'll see the list of native image identifiers in each cloud
+in the "Cloud Image Identifiers and Image Hierarchy" section. 
+
+.. image:: images/screenshots/ubuntu-image-ids.png
+   :alt: Native Image Identifiers
+   :width: 70%
+   :align: center
+
+When creating a new image, you'll need to find the appropriate image
+identifiers through the cloud provider's interface.  On Ultimum, you
+can find the identifiers through the "Images" tab in their `web
+console <https://console.ultimum-cloud.com>`__.  For Exoscale, the
+identifiers are available from a `separate web page
+<https://www.exoscale.ch/open-cloud/templates/>`__.
+
+VM Size
+-------
+
+Very often you will want to tailor the CPU, RAM, and other resources
+allocated to the machine.  Specifying the "size" of a virtual machine
+is another area where the cloud providers differ.  Within an image,
+the size is defined, per-cloud, in the "Cloud Configuration" section.
+
+.. image:: images/screenshots/ubuntu-size.png
    :alt: Cloud Parameters
    :width: 70%
    :align: center
 
-Normally, you will not be able to change the resource allocation for
-image definitions that are not owned by you. However, you can make a
-copy of the image and change the resource allocations in the copy.
-Similarly, you can update the resource allocations in other images you
-create that reference one of these images.
+Some providers allow you to specify the CPU and RAM resources
+explicitly; others only allow you to specify a "t-shirt" size.  **You
+will have to consult documentation from the cloud providers to
+understand the allowed values and their meanings.** The following
+table shows the differing sizes for Exoscale and Ultimum.
+
+============ ============= === ========
+Exoscale     Ultimum       CPU RAM (GB)
+============ ============= === ========
+Micro        --             1      0.5
+Tiny         Basic          1        1
+Small        Standard       2        2
+Medium       --             2        4
+--           Standard Plus  4        4
+Large        --             4        8
+Extra-large  --             4       16
+--           Large          8        8
+Huge         --             8       32
+--           Large Plus    16       16
+--           Extra Large   32       32
+============ ============= === ========
+  
+You will not be able to change the resource allocation for image
+definitions for the shared images (or more generally for any image not
+owned by you).  However you can get around this by:
+
+- Making a copy of the image within SlipStream and modifying your
+  copy, or
+- Updating the size in the components you create that reference a
+  shared image.
+
+We will see how values can be inherited or changed when we see what
+can be done with components. 
+
+Networking
+----------
+
+Currently SlipStream takes a very simple approach to managing network
+connectivity to virtual machines.  On clouds that support it,
+SlipStream will create a security group (set of firewall rules) called
+"slipstream_managed" that allows access on any port from anywhere. 
+
+When you use the standard shared image definitions, the
+"slipstream_managed" security group will be used, allowing the
+services on the machine to be accessed through the network.  Note on
+the previous screenshot that there is a parameter to specify what
+security group(s) to use.
+
+You can more tightly secure your deployed applications by:
+
+- Running a firewall within your images (and components) and/or 
+- Specifying a different security group in your image definitions
+
+In production, you should take every opportunity to secure your
+running systems.  In the interests of simplicity, this tutorial does
+not follow best practices in this respect.
 
 .. important::
 
-    The names (t-shirt sizes) and resource definitions are not standard
-    between the cloud services. You will need to consult the
-    documentation for each service to understand the correct values.
+   For clouds that do not support security groups (or their
+   equivalent), you must manually adjust the networking parameters for
+   the machines that are deployed. 
 
-Security Groups
----------------
+Deploy a VM
+-----------
 
-Currently SlipStream does not manage the firewalls associated with the
-cloud infrastructures. Because of this, you must configure the default
-firewall settings on the clouds you use to open the ports you need for
-your applications. For this tutorial, opening the following ports are
-useful.
+At its simplest, SlipStream can be used as a multi-cloud VM management
+console.  To show how this is done, navigate to the ``examples/images``
+project, which contains a set of minimal images you can use.
 
-+--------+----------+-------------+
-| SSH    | TCP      | 22          |
-+--------+----------+-------------+
-| VNC    | TCP      | 5900-5902   |
-+--------+----------+-------------+
-| RDP    | TCP, UDP | 3389        |
-+--------+----------+-------------+
-| HTTP   | TCP      | 80          |
-+--------+----------+-------------+
-| HTTPS  | TCP      | 443         |
-+--------+----------+-------------+
-| MongoDB| TCP      | 27017       |
-+--------+----------+-------------+
-
-Run a Virtual Machine
----------------------
-
-At its simplest, SlipStream can be used to launch individual virtual
-machines. To show how this is done, navigate to the ``examples/images``
-module. You will see a set of minimal images that can be used directly
-or as part of a coordinated deployment.
-
-Clicking on the ``ubuntu-12.04-standalone`` module, you should see a
-screenshot like the following.
+Clicking on the ``ubuntu-14.04`` module and then on "Deploy...", you
+should see a screenshot like the following.
 
 .. image:: images/screenshots/ubuntu.png
    :alt: Ubuntu Native Image
    :width: 70%
    :align: center
 
-The sections provide various information about the image itself. In this
-case this is a simple native image for all clouds. You can see the
-actual image identifier that will be used in each cloud in the "Cloud
-Image Identifiers..." section.
-
-.. tip::
-
-    Both simple and "standalone" versions of the basic images are
-    provided. The "standalone" versions provide a clickable link to log
-    into the machine via SSH and also provide a VNC (or RPC) server to
-    use a remote desktop. Use "standalone" for quick access to a
-    machine; use the simple versions for references in other images.
-
-To run an instance of this machine, click on the "Run" button. This will
-redirect you to a page showing the status of the deployment. This page
-is actively updated, so that you can see when the machine is available.
+From the run dialog you can choose the cloud to use and then deploy
+the image by clicking on the dialogs' "Deploy..." button.  This will
+redirect you to the dashboard, where you will see a new entry for the
+image. 
 
 .. image:: images/screenshots/ubuntu-run1.png
    :alt: Run Monitoring Page
    :width: 70%
    :align: center
 
-To see the status of the virtual machine, just hover over the box
-representing the virtual machine. When it is ready, you can either click
-on the service link at the top if your browser is setup for ``ssh://``
-URLs.
+You can either follow the progress of the machine from the dashboard
+or click on the "ID" to see the more detailed run page.  On the run
+page, you can find the IP address of the machine and an SSH link in
+the "machine" section.
 
 .. image:: images/screenshots/ubuntu-run2.png
    :alt: Run Monitoring Page
@@ -114,38 +175,40 @@ URLs.
    :align: center
 
 Or you can log in manually from the command line, using the username and
-IP address on the run page:
+IP address on the run page::
 
-::
+    advanced_tutorial> ssh root@185.19.29.193
+    [...]
+    Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.13.0-49-generic x86_64)
+    [...]
+    root@machine3b8f1456-cb5d-49ba-b7d5-430f97642850:~# 
 
-    $ ssh ubuntu@185.19.28.26
-    Welcome to Ubuntu 12.04.5 LTS (GNU/Linux 3.2.0-70-virtual x86_64)
-    ...
-    $
+Or if your browser is configured for SSH links, you can click on the
+link for the parameter "machine:url.ssh". 
 
 .. important::
 
-    Note that the user name may change depending on the underlying
-    native image being used. The names "root" and "ubuntu" are common.
-
-You might also want to try to log into the machine through VNC. You will
-need to give the IP address of the machine to your VNC client, **with
-':1' appended to the end**. The password for the connection can be
-obtained from the parameter ``machine:vnc_password`` in the "Machine"
-section of the "Run" page.
-
-.. image:: images/screenshots/ubuntu-vnc-pwd.png
-   :alt: VNC Password Parameter
-   :width: 70%
-   :align: center
+    Note that the username may change depending on the underlying
+    native image being used. The usernames "root" and "ubuntu" are
+    common.  The username may not be correct in the parameters as they
+    are not always uniform across cloud providers.
 
 .. admonition:: EXERCISES 
 
-   1. Run a machine (either Ubuntu or CentOS) through SlipStream,
-      verifying that you can access the machine via SSH. Note the
-      number of CPUs (``/proc/cpuinfo``) and RAM (``/proc/meminfo``).
-   2. Copy and create your own version of a simple machine,
-      customizing the metadata and the resources for the image.
-   3. Verify that you can run and log into your copied
-      image. Determine if the resource allocation has changed.
-   4. Deploy a web server on the image and ensure it works.
+   1. Create a copy of the Ubuntu 14.04 image and change the size
+      for either Exoscale or Ultimum.  Leave the other unchanged.
+   2. Deploy the copy on both Exoscale and Ultimum. Note the
+      deployment times. 
+   3. Verify that you can log into both machines with SSH.
+
+   4. Verify that the number of CPUs (``/proc/cpuinfo``) and the RAM
+      (``/proc/meminfo``) are the values expected from the size.
+   5. Try to deploy and access a web server on the deployed machine.
+      The commands to use are::
+
+          $ apt-get update
+          $ apt-get install -y nginx
+          $ service nginx start
+
+      You should then be able to navigate to "http://ip_address/" and
+      see an nginx welcome page.
