@@ -193,6 +193,9 @@ link for the parameter "machine:url.ssh".
     common.  The username may not be correct in the parameters as they
     are not always uniform across cloud providers.
 
+Running simple virtual machines in this way is often useful for quick
+debugging or developing service installation recipes. 
+
 .. admonition:: EXERCISES 
 
    1. Create a copy of the Ubuntu 14.04 image and change the size
