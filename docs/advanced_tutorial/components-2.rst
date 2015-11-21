@@ -1,102 +1,111 @@
 Components Part II
 ==================
 
-Many common applications require only a single node to run. These simple
-can also usually be easily parameterized so that a single application
-definition can be used to start many customized instances.
+Now that you have a component that runs a web server, create a second
+component that will run the tests against the server that you've been
+running by hand.
 
-In this section you'll learn how to:
+In this section you'll exercise the knowledge from building the web
+server in building the test client.  This shows how you can develop
+and test components individually.
 
--  Parameterize an application
--  Understand how installation and configuration is automated
--  Pass information between the application and the user
--  Share a deployment with other users
+Testing Goals
+-------------
 
-Wordpress
----------
+To test the web server fully, you should check that the conditions in
+the following table are true.
 
-One example of a simple application is Wordpress, a common blogging
-platform. To deploy an instance of Wordpress, just click on the "Deploy"
-button from the App Store. You will presented with a run dialog that
-requests the values for a few parameters.
+============ ============ ===========
+Web Page     credentials? HTTP status
+============ ============ ===========
+unprotected         none         200
+protected           none         401
+protected          wrong         401
+protected        correct         200
+============ ============ ===========
 
-.. figure:: images/screenshots/wordpress-run-dialog.png
-   :alt: Wordpress Run Dialog
+Since the point of the exercise is learning about SlipStream and not
+shell programming, you can use the following (inelegant!) script to
+make the above tests.  The script takes three parameters: host,
+username, and password::
 
-   Wordpress Run Dialog
+    #!/bin/bash
 
-Filling in those parameters and then clicking on the "Run Image" button
-will launch the image and bring up the usual "Run" page where you can
-follow the status of the application.
+    exit_code=0
 
-.. figure:: images/screenshots/wordpress-run.png
-   :alt: Wordpress Run Dialog
+    web_hostname=$1
+    web_user=$2
+    web_password=$3
+    web_url_unprotected="http://${web_hostname}/"
+    web_url_protected="http://${web_hostname}/protected/"
 
-   Wordpress Run Dialog
+    # Check that web page responds with 200.
+    rc=`curl -s -o /dev/null -w "%{http_code}" ${web_url_unprotected}`
+    echo "Return code from unprotected page is " ${rc}
+    if [ "${rc}" -ne "200" ]; then
+      echo "Return code from unprotected page was not 200."
+      exit_code=1
+    fi
 
-If you look at the definition of the ``wordpress`` image, you will see
-where the parameters for the image are defined.
+    # Check that web page responds with 401.
+    rc=`curl -s -o /dev/null -w "%{http_code}" ${web_url_protected}`
+    echo "Return code from protected page w/o password is " ${rc}
+    if [ "${rc}" -ne "401" ]; then
+      echo "Return code from protected page was not 401."
+      exit_code=1
+    fi
 
-.. figure:: images/screenshots/wordpress-parameters.png
-   :alt: Wordpress Parameters
+    # Check that web page responds with 401.
+    rc=`curl -u ${web_user}:WRONG_PWD -s -o /dev/null -w "%{http_code}" ${web_url_protected}`
+    echo "Return code from protected page w/ wrong password is " ${rc}
+    if [ "${rc}" -ne "401" ]; then
+      echo "Return code from protected page was not 401."
+      exit_code=1
+    fi
 
-   Wordpress Parameters
+    # Check that web page responds with 200.
+    rc=`curl -u ${web_user}:${web_password} -s -o /dev/null -w "%{http_code}" ${web_url_protected}`
+    echo "Return code from protected page w/ password is " ${rc}
+    if [ "${rc}" -ne "200" ]; then
+      echo "Return code from protected page was not 200."
+      exit_code=1
+    fi
 
-When creating a new image, you are free to define any parameters that
-make sense for your application. Note however, that the values are all
-string values and any validation must be handled by the deployment
-script.
+    # set the customstate to inform user about the result
+    ss-set statecustom "Web client exit code: ${exit_code}"
 
-Under the "Execute" tab on this same page, you can see the deployment
-script that is used. The parameters can be controlled via the SlipStream
-client's ``ss-set`` and ``ss-get`` commands. More on this later.
+    exit ${exit_code}
 
-You'll also notice that this configuration uses the Puppet configuration
-management system. SlipStream is agnostic concerning what tools are used
-for installation and configuration; you are free to use your existing
-tools and knowledge when importing applications into SlipStream.
+.. important::
 
-R-Studio
---------
+   Be careful to escape variable references (or avoid them entirely)
+   when writing the above script to the system. 
 
-R-Studio is a data analysis platform that provides a web-based interface
-to the R statistical analysis software. The actual deployment is similar
-to that from Wordpress, although it uses just a bash script for
-installation rather than a configuration management system like Puppet.
+.. important::
 
-.. figure:: images/screenshots/rstudio-run.png
-   :alt: R-Studio Deployment
+   Also be careful to make the script you create executable with the
+   command ``chmod a+x script_name.sh``!
 
-   R-Studio Deployment
 
-Because there may be many instances of a given application running, it
-is necessary to ensure that only the person deploying the application
-has access to it. If you deploy R-Studio from the App Store, you will be
-faced with a login page when accessing the instance.
+Web Client
+----------
 
-.. figure:: images/screenshots/rstudio-login.png
-   :alt: R-Studio Login Page
+Before developing your web client, you should ask yourself the
+following questions to plan your attack strategy:
 
-   R-Studio Login Page
+- Where should the above checking script be installed?
+- Does the script need any additional software installed?
+- What input and/or output parameters need to be defined? 
+- How to pass the needed values to the checking script?
+- What happens if the checking starts before the web server is ready?
 
-Where can this information be found? In the deployment parameters. The
-username and password can be found in the ``machine:rstudio_user`` and
-``machine:rstudio_pswd`` parameters. The password was generated with the
-``ss-random`` command from the deployment script and communicated
-through SlipStream to the user.
 
-Exercises
----------
+.. admonition:: EXERCISES
 
-For these exercises, you'll need to use the SlipStream client commands
-that are discussed in detail in the next section. Use the R-Studio and
-Wordpress deployments to guess how these commands work.
-
-1. Modify your image, to install and configure a web server.
-2. Do the installation directly with a command in the deployment script
-   and also via a package definition.
-3. Create an input parameter that provides text on the home page of the
-   web site. Use this value to update the home page.
-4. Make the image public. Run the image of another person in the class.
-5. Protect the web server with a randomly generated password. Define the
-   parameters to pass this information to the user.
+   1. Create your own test client component.
+   2. Run the client pointing to a non-existant server, what happens?
+   3. Start your web server component.
+   4. Using interactive debugging, verify that the test client works.
+   5. Start a new client with the web server running, does the full
+      test work correctly without any manual intervention? 
+   6. Verify the correct behavior by downloading the reports.
