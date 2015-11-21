@@ -214,4 +214,6 @@ debugging or developing service installation recipes.
           $ service nginx start
 
       You should then be able to navigate to "http://ip_address/" and
-      see an nginx welcome page.
+      see an nginx welcome page.  You may have to add ``sudo`` before
+      these commands, if you had to log in with the "ubuntu" account
+      rather than "root". 
