@@ -41,7 +41,7 @@ tutorial in order.
    workspace
    images
    components-1
-   slipstream-client
+   debugging
    components-2
    applications
    automating-slipstream

@@ -63,25 +63,27 @@ see a "chooser" dialog, like in the following screenshot.
 
 Navigate to the ``examples/images/ubuntu-14.04`` and click on the
 "Select" button.  This will add the reference to the image
-description.  **Do not yet click on "Create".** 
+description.  **Do not click on "Create" yet.** 
 
 .. warning::
 
    There are two buttons to choose from in the chooser.  What's the
    difference?
 
-   - "Select": Chooses the given image and will use the **latest**
+   - **Select**: Chooses the given image and will use the **latest**
      version of the image when the component is deployed. 
 
-   - "Select exact version": Chooses the given image and will always
-     use this exact version when deploying the component. 
+   - **Select exact version**: Chooses the given image and will always
+     use this exact version when deploying the component.
 
    With the floating version, the component will always take advantage
    of improvements to the referenced image, with a slight possiblity
-   of running into breaking changes.  Locking the version avoids this
-   problem, but you may run into the case where the referenced image
-   has been removed by the provider.  Generally, you will almost
-   always want to choose "Select"!
+   of running into breaking changes.
+
+   Locking the version avoids this problem, but you may run into the
+   case where the referenced image has been removed by the provider.
+
+   Generally, you will almost always want to choose "Select"!
 
 Add Nginx
 ~~~~~~~~~
@@ -126,24 +128,32 @@ general guide:
    recipe.  This includes configuration based on the component's
    parameters.
 
+- Reporting
+   This will be executed when gathering up the reports from the
+   deployment. In addition to the usual files, you can add additional
+   files to be copied back to the SlipStream server. 
+
 - On VM add
    A recipe which is executed when an application containing the
-   component is "scaling up", that is adding new resources. 
+   component is "scaling up", that is adding new resources.
 
 - On VM remove
    A recipe which is executed when an application containing the
    component is "scaling down", that is removing existing resources.
 
-Using the recipe for installing the nginx server from before, we'll
-add the following to the "Pre-install" recipe::
+Ignore the scaling recipies for now.  You'll learn more about them
+later in the tutorial.
+
+Using the recipe for installing the nginx server from before, add the
+following to the "Pre-install" recipe::
 
     #!/bin/bash -xe
-    apt-get update
+    apt-get update -y
 
 which will update the configuration of the package manager. 
 
-We will then add the package "nginx" to the "Install packages"
-recipe. 
+Then add the package "nginx" to the "Install packages" recipe.  Nginx
+is a high-performance web server. 
 
 In the "Post-install" recipe, we want to create our customized welcome
 page, ensure that the nginx server is started, and that nginx always
@@ -189,7 +199,7 @@ create the component.
 
 You can then click on the "Deploy..." button to deploy the web server
 and ensure that it works as expected.  When visiting the URL for the
-machine: http://host_ip/, you should see something like the following
+machine "http://host_ip/", you should see something like the following
 screenshot.
 
 .. image:: images/screenshots/nginx-welcome.png
@@ -201,13 +211,13 @@ Parameterized Web Server
 ------------------------
 
 It wouldn't be very useful if we had to create a new component
-definition every time we wanted to change some behavior.  In the case
-of our web server example, we may want to customize the title of the
-page without having to remake the entire configuration. 
+definition every time we wanted to change some behavior.  To promote
+reuse of the component, we want to parameterize it.  In this case
+let's parameterize the title of the page.
 
-Also the integration with SlipStream itself isn't great.  To find the
-location of the server we have to dig through the parameters on the
-run page.  Let's also improve this in the next version of the
+At the same time, we'd like to provide more feedback about the
+application through SlipStream and make it easy to find the deployed
+web server.  Let's also improve this in the next version of the
 component. 
 
 Title Parameter
@@ -222,6 +232,10 @@ Parameters" section and add an input parameter called "title".
    :alt: Nginx Customized Welcome Page
    :width: 70%
    :align: center
+
+If you provide a value here, that will be the default value used when
+deploying the component.  If you don't specify anything, then this
+will force the user to provide a value. 
 
 Now we need to modify the recipes to use the value of this parameter
 in the configuration.  Change the welcome page definition in the
@@ -243,7 +257,7 @@ We will then replace "__TITLE__" with the actual parameter value.
 Deployment Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-And now we will must add some deployment-time configuration in the
+We must still add some deployment-time configuration in the
 "Deployment" recipe to take into account the parameter's value.  In
 the deployment recipe add the following::
 
@@ -327,22 +341,88 @@ recipe, so can't be used in the recipes that are executed earlier.
 Secured Web Server
 ------------------
 
-TO BE COMPLETED!!!
+Enhance the web server to also serve a protected page that can only be
+accessed with a username and password.  To do this you need to:
+
+- Create a page that we want to protect, 
+- Modify the nginx configuration to use basic authentication,
+- Create the credentials to use to access the page. 
+
+You'll need a utility from Apache to generate a username and password
+for the protected content.  Add the package "apache2-utils" to the
+"Install packages" recipe.
+
+In the "Post-install" recipe, update the server configuration::
+
+    cat > /etc/nginx/sites-enabled/mysite <<EOF
+    server {
+      listen 80 default_server;
+
+      root /var/www/html;
+      index index.html;
+
+      location /protected {
+        auth_basic "Restricted";
+        auth_basic_user_file /etc/nginx/htpasswd;
+      }
+    }
+    EOF
+
+Add an empty password file and create a protected page::
+
+    # create empty password file
+    touch /etc/nginx/htpasswd
+
+    # provide a page with a secret
+    mkdir -p /var/www/html/protected
+    cat > /var/www/html/protected/index.html <<EOF
+    <html>
+      <head>
+        <title>SECRET</title>
+      </head>
+
+      <body>
+        <h1>SECRET</h1>
+        <p>This is a protected page; username and password required.</p>
+      </body>
+    </html>
+    EOF
+
+Update the deployment script to generate a random password::
+
+    # create an entry in the password file
+    username='nginx-user'
+    password=`ss-random`
+    htpasswd -bc /etc/nginx/htpasswd ${username} ${password}
+
+    # publish this information in slipstream
+    ss-set username ${username}
+    ss-set password ${password}
+
+Notice that this publishes the username and password as parameters
+into SlipStream.  You must define those parameters in the component
+definition or the deployment will fail.  Add the "username" and
+"password" **output** parameters in the "Application Parameters"
+section.
+
+This can now be saved and deployed.  When it is available you should
+be able to see the old welcome page and see the secret page at
+``http://host_ip/protected/`` if you provide the username and
+password.  The values of those will be published in the parameters on
+the run page.
+
+.. note::
+
+   As generating a password is fairly common for securing services,
+   the SlipStream client provides the ``ss-random`` command to
+   facilitate this. Generating a password like this, allows the
+   running instance to be accessible only to its owner, while the
+   component definition can be shared.
 
 .. admonition:: EXERCISES
 
-   For these exercises, you'll need to use the SlipStream client
-   commands that are discussed in detail in the next section. Use the
-   R-Studio and Wordpress deployments to guess how these commands
-   work.
-
-   1. Modify your image, to install and configure a web server.
-   2. Do the installation directly with a command in the deployment
-      script and also via a package definition.
-   3. Create an input parameter that provides text on the home page of
-      the web site. Use this value to update the home page.
-   4. Make the image public. Run the image of another person in the
-      class.
-   5. Protect the web server with a randomly generated
-      password. Define the parameters to pass this information to the
-      user.
+   1. Create the simple web server and verify that it works.
+   2. Parameterize the web server and verify that you can change the
+      title through the input parameter.
+   3. Secure a part of the web server and verify that this protection
+      works as expected. 
