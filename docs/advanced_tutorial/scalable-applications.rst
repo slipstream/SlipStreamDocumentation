@@ -2,15 +2,15 @@ Scalable Applications
 =====================
 
 Very few, if any, applications experience a constant load. Most
-experience large fluctuations in the load, needing adjustments to the
+experience large fluctuations that require adjustments to the
 allocated resources to maintain responsiveness at peak demand and to
 avoid wasting resources when demand declines.
 
 In this section you will learn how to:
 
--  Deploy an application that can be scaled horizontally and vertically
--  Scale the application through the API
--  Respond to resource changes to update configurations
+- Deploy an application that can be scaled horizontally and vertically
+- Scale the application through the API
+- Respond to resource changes to update configurations
 
 
 Types of Scaling
@@ -22,32 +22,26 @@ option in run dialog will allow the deployment to be vertically and
 horizontally scaled through the SlipStream API. The following scaling
 actions are possible:
 
--  **Horizontal Scaling**
+- **Horizontal Scaling**
+   - add VM (scale up)
+   - remove VM (scale down)
 
-   -  add VM (scale up)
-   -  remove VM (scale down)
-
--  **Vertical Scaling**
-
-   -  change VM in size (CPU/RAM or instance type)
-   -  attach/detach extra disk to/from VM
+- **Vertical Scaling**
+   - change VM in size (CPU/RAM or instance type)
+   - attach/detach extra disk to/from VM
 
 When a run of a deployment is declared as scalable, the orchestrator VM
 will not be terminated when the initial deployment finishes. This
 necessary overhead allows the SlipStream to respond to requests to scale
 the deployment.
 
-.. important:: 
-   
-   The vertical scalability actions is a subject of the availability
-   of the implementation in the corresponding cloud connector.
-
 Triggering Scaling Actions
 --------------------------
 
-The scaling actions can be triggered through the SlipStream API or
-through the SlipStream CLI. Scaling actions are not yet supported in the
-web interface.
+For a running application, the scaling actions can be triggered
+through the SlipStream REST API or through the command line
+client. **Scaling actions are not yet supported in the web
+interface.**
 
 The API calls to trigger the scaling actions are available under the
 `Run section <http://ssapi.sixsq.com/#create-a-mutable-run>`__ of the
@@ -66,10 +60,10 @@ scaling actions on deployments and VMs.
 Scalability Workflow Hooks (Scripts)
 ------------------------------------
 
-Hooks that define application-specific scaling actions are available for
-running before, after and during the respective scalability actions. To
-support scalability properly, these reconfiguration hooks (scripts) must
-exist to alter the service configuration appropriately.
+Hooks that define application-specific scaling actions are available
+for running before, after and during the respective scalability
+actions.  These scripts are required so that the application
+components can be correctly reconfigured when scaling actions happen.
 
 The available hooks are defined in the following table.
 
@@ -109,7 +103,7 @@ notifying all of the machines in the application.
 
 The notification takes place by running the "On VM Add" script (if it
 exists) on all VMs, except the ones that were just added. On the newly
-added VMs only the deployment target script gets executed.
+added VMs only the deployment target script is executed.
 
 As an example, we can deploy the LAMP++ application with its default
 configuration, but marking it as a scalable deployment. This will result
@@ -129,10 +123,10 @@ script on it.
 After the provisioning cycle, you will see the additional node instance
 in the deployment.
 
-.. figure:: images/screenshots/lamp-scale-up.png
+.. image:: images/screenshots/lamp-scale-up.png
    :alt: LAMP with 1 New Web Node
-
-   LAMP with 1 New Web Node
+   :width: 70%
+   :align: center
 
 When removing node instances, you must specify exactly which node
 instance(s) you want to remove by providing their node instance ID(s).
@@ -152,10 +146,10 @@ after the given node instance(s) have been removed.
 Again, after the (un-)provisioning cycle, the removed node instances
 will disappear from the deployment.
 
-.. figure:: images/screenshots/lamp-scale-down.png
+.. image:: images/screenshots/lamp-scale-down.png
    :alt: LAMP with Web Nodes Removed
-
-   LAMP with Web Nodes Removed
+   :width: 70%
+   :align: center
 
 .. warning:: 
 
@@ -168,37 +162,42 @@ Vertical Scaling
 ----------------
 
 .. important:: 
-
-    The vertical scalability actions is a subject of the availability of
-    the implementation in the corresponding cloud connector.
+   
+   Vertical scalability is not available for all clouds.  It requires
+   the availability of the feature in the underlying cloud as well as
+   in the SlipStream cloud connector.
 
 Change the VM Size
 ------------------
 
-During the lifetime of the application user might discover that the
-certain node instances might benefit from more CPU/RAM and/or extra disk
-space. To request the resizing of the VM one should launch the following
-command, providing the desired new size of the VM as CPU and/or RAM, or
-instance type (this depends on the Cloud solution).
+An application manager may discover that a running application would
+be more efficient if certain virtual machines were allocated
+additional CPU, RAM, or disk space. To request the resizing of the VM
+from the command line, run the following command, providing the desired new
+size of the VM::
 
-::
+    $ ss-scale-resize --cpu 8 --ram 16 \
+        f9390d34-10b1-4621-bd05-f4d8c7557754 db 1 3
 
-    ss-scale-resize --cpu 8 --ram 16 f9390d34-10b1-4621-bd05-f4d8c7557754 db 1 3
-
-Only CPU or RAM can be specified.
+The size specification depends on the cloud being used.  Only CPU or
+RAM can be specified.
 
 The same way one can scale down the size of the VM(s) by simply defining
 the required size of the VM(s).
 
+.. note::
+
+   Virtual machines that are vertically scaled, will go through a
+   reboot cycle to force the new resource values to be taken into
+   account.
+
 Attach and Detach Disks
 -----------------------
 
-To add an extra disk of the desired size the following command should be
-used:
+To add an extra disk, the following command should be used::
 
-::
-
-    ss-scale-disk --attach 75 f9390d34-10b1-4621-bd05-f4d8c7557754 db 1 3
+    $ ss-scale-disk --attach 75 \
+        f9390d34-10b1-4621-bd05-f4d8c7557754 db 1 3
 
 The extra disk is attached as a block device and on Linux systems should
 appear as block device under the ``/dev`` folder usually as ``/dev/sd*``
@@ -206,12 +205,11 @@ or ``/dev/vd*``. The block device name depends on the virtualization
 driver used and this should be checked with the cloud provider.
 
 Detaching an extra disk requires either the block device name (e.g.,
-``/dev/vdc``) or its cloud ID (usually in the form of uuid). Here is the
-example of detaching of the extra disk by the block device name
+``/dev/vdc``) or its cloud ID (usually in the form of a UUID). Here is the
+example of detaching of the extra disk by the block device name::
 
-::
-
-    ss-scale-disk --detach /dev/vbc f9390d34-10b1-4621-bd05-f4d8c7557754 db 1 3
+    $ ss-scale-disk --detach /dev/vbc \
+        f9390d34-10b1-4621-bd05-f4d8c7557754 db 1 3
 
 In all the above cases the **"Pre-Scale"** and **"Post-Scale"** scripts
 will be run respectively right before and after the IaaS scaling action
