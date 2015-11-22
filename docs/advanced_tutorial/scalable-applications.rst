@@ -48,9 +48,7 @@ The API calls to trigger the scaling actions are available under the
 SlipStream API documentation.
 
 The SlipStream CLI comes with the following commands that trigger the
-scaling actions on deployments and VMs.
-
-::
+scaling actions on deployments and VMs::
 
     ss-node-add [options] <run> <node-name> [<number>]
     ss-node-remove [options] <run> <node-name> <ids> [<ids> ...]
@@ -89,8 +87,8 @@ Script         Action                     When Executed
                                           | VMs that are subject to the scaling action.
 ============== ========================== =================================================== 
 
-Some information about `how to write those
-scripts <https://github.com/slipstream/SlipStreamClient/tree/master/client>`__
+Detailed information about `how to write those scripts
+<https://github.com/slipstream/SlipStreamClient/tree/master/client>`__
 is available from the SixSq GitHub repository.
 
 Horizontal Scaling - Add or Remove VMs
@@ -105,36 +103,145 @@ The notification takes place by running the "On VM Add" script (if it
 exists) on all VMs, except the ones that were just added. On the newly
 added VMs only the deployment target script is executed.
 
-As an example, we can deploy the LAMP++ application with its default
-configuration, but marking it as a scalable deployment. This will result
-in a deployment with 6 node instances initially (1 load balancer, 2 web
-front-ends, and 3 MongoDB nodes).
+As an example, look at the Elasticsearch Cluster application.  Because
+Elasticsearch has its own discovery service and was designed for
+horizontal scaling it doesn't need elaborate hook scripts in the
+SlipStream configuration.
 
-The command to add one node instance of a particular node type to a
-deployment is:
+In the "Deployment" script, we can allow Elasticsearch to discover
+other members of the cluster by listing its peers in the
+configuration.  The code to do this is the following::
 
-::
+    # discover all of the workers
+    workers=$(echo `ss-get worker:ids` | tr ',' "\n")
 
-    $ ss-node-add f9390d34-10b1-4621-bd05-f4d8c7557754 web 1
+    # create list of their hostnames for discovery
+    hosts=""
+    for w in $workers; do
+      h=`ss-get worker.${w}:hostname`
+      hosts="${hosts} \"${h}\""
+    done
+    hosts=$(echo ${hosts} | tr ' ' ',')
 
-After the VM is booted, SlipStream executes the standard execution
-script on it.
+    # rewrite the elasticsearch configuration file
+    # this will allow all hosts to discover each other
+    cat > /etc/elasticsearch/elasticsearch.yml <<EOF
+    network.host: 0.0.0.0
+    discovery.zen.ping.unicast.hosts: [${hosts}]
+    EOF
 
-After the provisioning cycle, you will see the additional node instance
-in the deployment.
+The interesting part for this tutorial is the special variable
+"worker:ids" that lists all of the identifiers of the machines in the
+"worker" class.  These identifiers can then be used to recover the
+host names of all of the machines.  Those parameters look like
+"worker.2:hostname".  
 
-.. image:: images/screenshots/lamp-scale-up.png
-   :alt: LAMP with 1 New Web Node
+After the configuration of the service, we restart Elasticsearch to
+take into account the configuration changes.  Look in the application
+and component definition for details. 
+
+To see how the scaling works, deploy the elasticsearch-cluster
+application.
+
+.. image:: images/screenshots/elasticsearch-run-dialog.png
+   :alt: Elasticsearch Cluster Deployment
    :width: 70%
    :align: center
 
-When removing node instances, you must specify exactly which node
-instance(s) you want to remove by providing their node instance ID(s).
-The command for doing this is:
+To be able to scale the application later, **it is very important to
+tick the checkbox indicating that this is a scalable deployment!**  By
+default, this will deploy a cluster with two nodes.  
 
-::
+When the deployment is complete, it will provide a URL that gives the
+health of the cluster.  The important thing to look at is the number
+of nodes in the cluster.  It should initially be 2.  This is the
+result:: 
 
-    $ ss-node-remove f9390d34-10b1-4621-bd05-f4d8c7557754 web 1 2
+    {
+      "cluster_name" : "elasticsearch",
+      "status" : "green",
+      "timed_out" : false,
+      "number_of_nodes" : 2,
+      "number_of_data_nodes" : 2,
+      "active_primary_shards" : 0,
+      "active_shards" : 0,
+      "relocating_shards" : 0,
+      "initializing_shards" : 0,
+      "unassigned_shards" : 0,
+      "delayed_unassigned_shards" : 0,
+      "number_of_pending_tasks" : 0,
+      "number_of_in_flight_fetch" : 0,
+      "task_max_waiting_in_queue_millis" : 0,
+      "active_shards_percent_as_number" : 100.0
+    }
+
+The deployment worked correctly: the status is green and there are 2
+nodes. 
+
+To scale the run via the command line, use the `ss-node-add` command.
+It takes the run ID the type of node to scale ("worker" in our case)
+and the number of nodes to add::
+
+    $ ss-node-add ced28f99-e08b-4667-86db-73f53c059c58 worker 1
+
+This will drive the application through another provisioning phase for
+the new worker.  When the provisioning and configuration is complete,
+the application will return to the "Ready" state. 
+
+.. note::
+
+   Only one scaling action, on one type of node, can be done at any
+   one time.  Previous scaling actions must complete before a new one
+   can be started. 
+
+To do the same thing from the REST API, send a POST request to the
+URL::
+
+    https://nuv.la/run/ced28f99-e08b-4667-86db-73f53c059c58/worker
+
+the body of the request should be a form with the parameter "n" and
+the number of nodes to add. 
+
+.. image:: images/screenshots/elasticsearch-rest-add-request.png
+   :alt: Request to Add Node with REST
+   :width: 70%
+   :align: center
+
+.. image:: images/screenshots/elasticsearch-rest-add-response.png
+   :alt: Response to Adding Node with REST
+   :width: 70%
+   :align: center
+
+Note that the response gives the created node(s). 
+
+Just to verify that both of the add requests worked, look again at the
+health output from the service URL::
+
+    {
+      "cluster_name" : "elasticsearch",
+      "status" : "green",
+      "timed_out" : false,
+      "number_of_nodes" : 4,
+      "number_of_data_nodes" : 4,
+      "active_primary_shards" : 0,
+      "active_shards" : 0,
+      "relocating_shards" : 0,
+      "initializing_shards" : 0,
+      "unassigned_shards" : 0,
+      "delayed_unassigned_shards" : 0,
+      "number_of_pending_tasks" : 0,
+      "number_of_in_flight_fetch" : 0,
+      "task_max_waiting_in_queue_millis" : 0,
+      "active_shards_percent_as_number" : 100.0
+    }
+
+A heathy green with 4 nodes!  Perfect. 
+
+We can also remove nodes in nearly the same way.  The only difference
+is that you must specify exactly which node(s) you want to remove.
+From the command line, do the following::
+
+    $ ss-node-remove ced28f99-e08b-4667-86db-73f53c059c58 worker 1 
 
 Before the removal of the node instances, the "Pre-scale" script gets
 run on them. This allows to execute any application related pre-removal
@@ -143,20 +250,51 @@ actions on the targeted node instance.
 Similarly, the "On VM Remove" script will be run on each node instance
 after the given node instance(s) have been removed.
 
+None of those scripts are necessary for the Elasticsearch cluster. 
+
 Again, after the (un-)provisioning cycle, the removed node instances
 will disappear from the deployment.
 
-.. image:: images/screenshots/lamp-scale-down.png
-   :alt: LAMP with Web Nodes Removed
+Doing the same with the REST API, requires sending a DELETE request to
+the URL::
+
+    https://nuv.la/run/ced28f99-e08b-4667-86db-73f53c059c58/worker
+
+with a form body containing the "ids" parameter.  The values of "ids"
+must be a comma-separated list of machines to remove. 
+
+.. image:: images/screenshots/elasticsearch-rest-remove-request.png
+   :alt: Request to Remove a Node with REST
    :width: 70%
    :align: center
 
-.. warning:: 
+.. image:: images/screenshots/elasticsearch-rest-remove-response.png
+   :alt: Response to Removing a Node with REST
+   :width: 70%
+   :align: center
 
-    Note that the current LAMP++ deployment is not designed for
-    scalability. Although the node instances were added and removed from
-    the system, there are not any scalability scripts that handle a
-    reconfiguration of the overall system.
+After these actions, check the health and make sure it is green with 2
+nodes::
+
+    {
+      "cluster_name" : "elasticsearch",
+      "status" : "green",
+      "timed_out" : false,
+      "number_of_nodes" : 2,
+      "number_of_data_nodes" : 2,
+      "active_primary_shards" : 0,
+      "active_shards" : 0,
+      "relocating_shards" : 0,
+      "initializing_shards" : 0,
+      "unassigned_shards" : 0,
+      "delayed_unassigned_shards" : 0,
+      "number_of_pending_tasks" : 0,
+      "number_of_in_flight_fetch" : 0,
+      "task_max_waiting_in_queue_millis" : 0,
+      "active_shards_percent_as_number" : 100.0
+    }
+
+Everything looks to have worked correctly!
 
 Vertical Scaling
 ----------------
@@ -221,21 +359,10 @@ for the changes made to the VM.
 The examples of the **"Pre-Scale"** and **"Post-Scale"** can be found
 `here <https://github.com/slipstream/SlipStreamClient/tree/master/client>`__.
 
-.. warning::
-
-   Provide Elasticsearch example to show scaling.  Provide the
-   "health" check as part of the endpoint to be shown.
 
 .. admonition:: EXERCISES
 
-   1. Deploy your web server and client as a mutable run.
-   2. Use the SlipStream client to add another client to the system,
-      verifying that it sees the web server correctly.
-   3. Use the SlipStream client to remove one of the clients from the
-      system, verifying that the machine has indeed disappeared.
-   4. Deploy a mutable run, giving 0 as the number of machines for the
-      clients. Does this work? Can you add these types of machines later?
-   5. Define the mutation scripts for your deployment and ensure that they
-      are called when machines are added or removed.
-   6. How would you collect information from the application to
-      automatically scale an application?
+   1. Deploy an Elasticsearch cluster.
+   2. Add nodes through the command line or REST API.
+   3. Remove nodes through the command line or REST API. 
+
