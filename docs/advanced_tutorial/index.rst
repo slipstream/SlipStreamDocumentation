@@ -46,6 +46,6 @@ tutorial in order.
    applications
    automating-slipstream
    scalable-applications
-   building-images
+   faster-deployment
    roadmap
    appendix
