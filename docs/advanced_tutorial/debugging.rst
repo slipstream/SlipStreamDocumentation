@@ -26,17 +26,17 @@ server.  From there you can download them to diagnose any problems.
    :align: center
 
 In the "Reporting" recipe, you can copy any additional files that you
-would like bundled with the reports into
-``%TMP%\\slipstream\\reports`` on Windows and into
-``/var/log/slipstream/client`` on any other system.
+would like bundled with the reports into the location defined by the
+environmental variable ``SLIPSTREAM_REPORT_DIR``.
 
 Interactive Debugging
 ---------------------
 
 When creating a new application, very often there are bugs in the
-deployment scripts. Iteratively modifying the scripts through SlipStream
-and redeploying the machines can cause unnecessary delays. Instead, you
-can:
+deployment scripts. Iteratively modifying the scripts through
+SlipStream and redeploying the machines can cause unnecessary
+delays. **If you have selection the option to let failed deployments
+continue to run**, you can instead:
 
 1. Log into a failed deployment,
 2. Setup the environment for the SlipStream client (see below),
@@ -100,10 +100,12 @@ All of the parameters used in the deployment must have been defined in
 the images used in the deployment. Trying to set or get an undefined
 parameter will cause the command to raise an error.
 
-Although the "parameter database" and the associated commands are quite
-simple, the fact that ``ss-get`` will wait for a value to be set allows
-it to act as a semaphore to coordinate the configuration scripts on
-different machines in a multi-node deployment.
+.. important:: 
+
+   Although the "parameter database" and the associated commands are
+   quite simple, the fact that ``ss-get`` will wait for a value to be
+   set allows it to act as a semaphore to coordinate the configuration
+   scripts on different machines in a multi-node deployment.
 
 .. admonition:: EXERCISES
 

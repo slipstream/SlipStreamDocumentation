@@ -38,15 +38,31 @@ cloud applications for end-users.
 .. admonition:: EXERCISES
 
    1. Follow the tour and verify that the Wordpress deployment works
-      for your account.  If you have any problems, be sure to correct
-      them before going on. 
-
+      for your account.
+   2. Correct any problems that you encounter.  Be sure to terminate
+      your Wordpress deployment.
+ 
 User Profile
 ------------
 
 You already saw and updated your user profile when you were
 configuring your account earlier.  This page contains all of your user
 parameters, several of which are worth pointing out explicitly.
+
+.. image:: images/screenshots/profile-general-section.png
+   :alt: Parameters in User Profile General Section
+   :width: 70%
+   :align: center
+
+Default Cloud Parameter
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The "Default cloud" parameter indicates which cloud infrastructure
+will be used by default for your applications unless you specify
+another cloud explicitly.
+
+Keep Running Parameter
+~~~~~~~~~~~~~~~~~~~~~~
 
 The "Keep running after deployment" indicates what SlipStream will do
 by default when it is finished deploying an application onto a cloud
@@ -70,16 +86,13 @@ Pay attention to values that leave the applications running.  They
 will continue to use cloud resources (and incur charges) until you
 explicitly terminate them. 
 
-The second parameter of interest is the "Cloud usage email"
-option. You can choose either "daily" or "never".  If you choose
-daily, you'll receive a daily reminder of your cloud resource usage.
-This can be useful reminder to stop applications that you've forgotten
-about! 
+Usage Email Parameter
+~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: images/screenshots/profile-general-section.png
-   :alt: Parameters in User Profile General Section
-   :width: 70%
-   :align: center
+The third parameter of interest is the "Cloud usage email" option. You
+can choose either "daily" or "never".  If you choose daily, you'll
+receive a daily reminder of your cloud resource usage.  This can be
+useful reminder to stop applications that you've forgotten about!
 
 Usage
 -----
@@ -117,7 +130,7 @@ interface tour.
 
 When trying to see events related to a particular application
 deployment (run), visit the run page.  It contains a section with just
-the events for that application. 
+the events for that application deployment.
 
 .. image:: images/screenshots/events-run.png
    :alt: Events Page

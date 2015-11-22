@@ -28,6 +28,18 @@ example applications.
 As the exercises build on one another, readers will want to follow the
 tutorial in order.
 
+.. important::
+
+   The command line examples throughout the tutorial use Linux bash
+   syntax.  If you're using a different shell (csh, PowerShell, etc.),
+   you'll need to adjust the syntax accordingly. 
+
+   Similarly, the example application developed in the tutorial are
+   uniformly built over the Ubuntu operating system.  This is to
+   reduce distractions and make the tutorial as uniform as possible.
+   SlipStream supports a wide range of different operating systems,
+   including Windows.
+
 .. toctree::
    :maxdepth: 2
 

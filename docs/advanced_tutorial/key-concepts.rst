@@ -24,6 +24,13 @@ the application topology separate from the components, it makes it
 easier to scale the various functional parts of the application as
 needed.
 
+As a concrete example consider a 3-tier web application: the LAMP
+(Linux, Apache, MongoDB, and PHP) stack.  The components are the
+individual HAProxy (load balancer), Apache Web Server (front-end), and
+MongoDB worker (database).  Each of these are built over a minimal
+Ubuntu 14.04 virtual machine image that exists in the cloud
+infrastructure being used.
+
 Vocabulary
 ----------
 

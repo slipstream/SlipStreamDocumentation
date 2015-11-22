@@ -135,6 +135,12 @@ not follow best practices in this respect.
 
 .. important::
 
+   If you do specify your own security group in your images, you
+   need to maintain the same security group on all the clouds you use
+   to ensure that you can switch between clouds easily. 
+
+.. important::
+
    For clouds that do not support security groups (or their
    equivalent), you must manually adjust the networking parameters for
    the machines that are deployed. 
@@ -203,7 +209,6 @@ debugging or developing service installation recipes.
    2. Deploy the copy on both Exoscale and Ultimum. Note the
       deployment times. 
    3. Verify that you can log into both machines with SSH.
-
    4. Verify that the number of CPUs (``/proc/cpuinfo``) and the RAM
       (``/proc/meminfo``) are the values expected from the size.
    5. Try to deploy and access a web server on the deployed machine.
@@ -213,7 +218,7 @@ debugging or developing service installation recipes.
           $ apt-get install -y nginx
           $ service nginx start
 
-      You should then be able to navigate to "http://ip_address/" and
-      see an nginx welcome page.  You may have to add ``sudo`` before
-      these commands, if you had to log in with the "ubuntu" account
-      rather than "root". 
+      You should then be able to navigate to "http\://*ip_address*/"
+      and see an nginx welcome page.  You may have to add ``sudo``
+      before these commands, if you had to log in with the "ubuntu"
+      account rather than "root".

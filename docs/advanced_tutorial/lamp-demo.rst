@@ -17,7 +17,7 @@ The LAMP++ (Linux, Apache, MongoDB, and PHP) application is an example
 3-tier web application that uses a load balancer to distribute requests
 through multiple web front-ends and a distributed MongoDB database.
 
-By default, the deployment has:
+By default, the application has:
 
 -  1 HAProxy node for load-balancing the web front-ends
 -  2 web front-ends running Apache
@@ -31,8 +31,7 @@ the front-ends.
 Operation
 ---------
 
-The run page for this deployment shows the topology of the application
-that will be deployed.
+The run page for this application shows its deployment topology.
 
 .. image:: images/screenshots/lamp-run-ready.png
    :alt: LAMP Run Page

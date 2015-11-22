@@ -61,7 +61,7 @@ configuration steps are provided below.
 .. admonition:: EXERCISES
 
    1. Follow the Nuvla registration procedure to obtain an account.
-      Replace the temporary password and logout/login to verify that
+   2. Change the temporary password and logout/login to verify that
       it works.
 
 Cloud Infrastructure Accounts
@@ -116,7 +116,9 @@ Nuvla.
 .. admonition:: EXERCISES
 
    1. Follow the Exoscale registration procedure to obtain an account.
-      Add your Exoscale credentials to your user profile.
+   2. Add your Exoscale credentials to your user profile.
+   3. Set the "Default cloud" parameter to Exoscale in your user
+      profile. 
 
 Ultimum
 ~~~~~~~
@@ -146,7 +148,7 @@ Nuvla.
 .. admonition:: EXERCISES
 
    1. Follow the Ultimum registration procedure to obtain an account.
-      Add your Ultimum credentials to your user profile.
+   2. Add your Ultimum credentials to your user profile.
 
 
 Workstation Configuration

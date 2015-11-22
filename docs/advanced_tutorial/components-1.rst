@@ -100,49 +100,53 @@ section of the component.  Along the left edge you'll see the set of
 recipes that you can add.  They are essentially run in the order that
 they are listed. 
 
-What type of information do you add to each recipe?  Here is the
-general guide:
+.. important:: 
 
-- Pre-install
-   This is the first recipe to be executed.  It will be run before
-   SlipStream installs anything else on the machine (either the
-   SlipStream client or specified packages).  This can be used, for
-   instance, to update the package manager configuration on the
-   machine or to upgrade the system.
+   What type of information do you add to each recipe?  Here is the
+   general guide:
 
-- Install packages
-   This recipe is a list of packages to be installed on the
-   machine. SlipStream will use the appropriate package manager for
-   the operating system, which normally will also install any
-   dependencies.  This only supports Debian and RedHat families of
-   operating systems.  If you're using something else, install
-   packages manually with the "Post-install" recipe. 
+   - Pre-install
+      This is the first recipe to be executed.  It will be run before
+      SlipStream installs anything else on the machine (either the
+      SlipStream client or specified packages).  This can be used, for
+      instance, to update the package manager configuration on the
+      machine or to upgrade the system.
 
-- Post-install
-   This recipe should be used for any **static** configuration of the
-   machine.  That is configuration that will never need to be changed
-   during the deployment or operation of the machine.
+   - Install packages
+      This recipe is a list of packages to be installed on the
+      machine. SlipStream will use the appropriate package manager for
+      the operating system, which normally will also install any
+      dependencies.  This only supports Debian and RedHat families of
+      operating systems.  If you're using something else
+      (e.g. Windows), install packages manually with the
+      "Post-install" recipe.
 
-- Deployment
-   Dynamic configuration of the machine should be handled in this
-   recipe.  This includes configuration based on the component's
-   parameters.
+   - Post-install
+      This recipe should be used for any **static** configuration of
+      the machine.  That is configuration that will never need to be
+      changed during the deployment or operation of the machine.
 
-- Reporting
-   This will be executed when gathering up the reports from the
-   deployment. In addition to the usual files, you can add additional
-   files to be copied back to the SlipStream server. 
+   - Deployment
+      Dynamic configuration of the machine should be handled in this
+      recipe.  This includes configuration based on the component's
+      parameters.
 
-- On VM add
-   A recipe which is executed when an application containing the
-   component is "scaling up", that is adding new resources.
+   - Reporting
+      This will be executed when gathering up the reports from the
+      deployment. In addition to the usual files, you can add
+      additional files to be copied back to the SlipStream server.
 
-- On VM remove
-   A recipe which is executed when an application containing the
-   component is "scaling down", that is removing existing resources.
+   - On VM add
+      A recipe which is executed when an application containing the
+      component is "scaling up", that is adding new resources.  Ignore
+      this recipe for now, you'll learn more about it in the
+      application scaling chapter later.
 
-Ignore the scaling recipies for now.  You'll learn more about them
-later in the tutorial.
+   - On VM remove
+      A recipe which is executed when an application containing the
+      component is "scaling down", that is removing existing
+      resources.  Ignore this recipe for now, you'll learn more about
+      it in the application scaling chapter later.
 
 Using the recipe for installing the nginx server from before, add the
 following to the "Pre-install" recipe::
@@ -188,7 +192,7 @@ starts when the machine boots.  Add the following::
     EOF
 
 With these definitions you can now click on the "Create" button to
-create the component.
+create the component definition.
 
 .. warning::
 
@@ -197,10 +201,17 @@ create the component.
    recipes ``#!/bin/bash -xe`` (or similar)!  Note that the "-xe"
    options help with debugging when there are problems. 
 
+.. note::
+
+   Using the "-xe" options on the shebang line help with debugging
+   when there are problems.  The "-x" option will print each line in
+   the script to the stdout before executing it.  The "-e" option will
+   stop the script on the first error.
+
 You can then click on the "Deploy..." button to deploy the web server
 and ensure that it works as expected.  When visiting the URL for the
-machine "http://host_ip/", you should see something like the following
-screenshot.
+machine "http\://*host_ip*/", you should see something like the
+following screenshot.
 
 .. image:: images/screenshots/nginx-welcome.png
    :alt: Nginx Customized Welcome Page
@@ -211,22 +222,24 @@ Parameterized Web Server
 ------------------------
 
 It wouldn't be very useful if we had to create a new component
-definition every time we wanted to change some behavior.  To promote
-reuse of the component, we want to parameterize it.  In this case
-let's parameterize the title of the page.
+definition every time we wanted to change some behavior: like the
+location of a database, password for a server, descriptive text, etc.
+e want to parameterize the component to promote reuse.  In this case
+we'll keep it simple and parameterize the title of the page.
 
-At the same time, we'd like to provide more feedback about the
-application through SlipStream and make it easy to find the deployed
-web server.  Let's also improve this in the next version of the
-component. 
+At the same time, we'd like to provide more feedback (through
+SlipStream) about the state of the application and make it easy to
+find the deployed web server. We'll improve this in the next version
+of the component.
 
 Title Parameter
 ~~~~~~~~~~~~~~~
 
 Let's begin by defining an input parameter that allows the title to be
-specified.  You can copy your previous component or just modify the
-old one directly.  Click "Edit" and then go to the "Application
-Parameters" section and add an input parameter called "title".
+specified.  You can copy your previous component (look under the
+triangle next to the "Edit" button) or just modify the old one
+directly.  Click "Edit" and then go to the "Application Parameters"
+section and add an input parameter called "title".
 
 .. image:: images/screenshots/nginx-title-param.png
    :alt: Nginx Customized Welcome Page
@@ -277,6 +290,10 @@ the deployment recipe add the following::
     # provide status information through web UI
     ss-display "Webserver ready on ${hostname}!"
 
+This uses some magic commands that you've not seen yet.  These will be
+described in the next section.  There is also some help for these
+commands below the editor window in the web interface.
+
 Now you can save the component and deploy it.  When deploying it, you
 should see an input parameter in the run dialog.  Change the value so
 that you can be sure that it was used in the configuration.  Verify
@@ -306,8 +323,6 @@ parameter has been taken into account.
    :width: 70%
    :align: center
 
-We'll explain some of the magic in these scripts in the next section.
-
 Run Database
 ------------
 
@@ -333,10 +348,19 @@ parameter on a particular machine.  You'll find this in the section
 for the machine on the run page.  Notice that the input parameter we
 defined for the title, also shows up in the parameters of the machine.
 
+As seen above the ``hostname`` is automatically defined by SlipStream
+for each node.  This can reliably be used to recover the hostname of
+the machine running the recipe. 
+
 The commands such as ``ss-set``, ``ss-get``, etc. are installed
 automatically by SlipStream on the machine and can be used in the
-deployment recipe.  They are installed at the end of the post-install
-recipe, so can't be used in the recipes that are executed earlier. 
+deployment recipe.
+
+.. warning::
+
+   The ``ss-*`` commands are installed at the end of the post-install
+   recipe.  They **cannot** be used in the recipes that are executed
+   earlier. 
 
 Secured Web Server
 ------------------
@@ -407,9 +431,9 @@ section.
 
 This can now be saved and deployed.  When it is available you should
 be able to see the old welcome page and see the secret page at
-``http://host_ip/protected/`` if you provide the username and
-password.  The values of those will be published in the parameters on
-the run page.
+http\://*host_ip*/protected/ if you provide the username and password.
+The values of those will be published in the parameters on the run
+page.
 
 .. note::
 
