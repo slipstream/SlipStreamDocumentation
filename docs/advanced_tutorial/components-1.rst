@@ -191,6 +191,12 @@ starts when the machine boots.  Add the following::
     </html>
     EOF
 
+    # start web server on boot
+    update-rc.d nginx enable
+
+    # ensure web server is running with changes
+    service nginx restart
+
 With these definitions you can now click on the "Create" button to
 create the component definition.
 
