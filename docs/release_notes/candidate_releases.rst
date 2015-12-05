@@ -6,6 +6,82 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v2.20 (candidate) - 4 December 2015
+-----------------------------------
+
+New features and bug fixes in v2.20
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For application users [Alice]:
+ - Improve text and workflow of the embedded SlipStream tour text,
+   making it easier understand and follow.
+
+For application users and developers [Alice, Clara]:
+ - The events on the "run page" that shows the details of a cloud
+   application deployment are automatically refreshed, making it
+   easier to follow the timeline of an application.
+ - Fix a bug which caused virtual machines that were removed from the
+   deployment via the "scale-down" feature to not be terminated
+   correctly.
+
+For application developers [Clara]:
+ - The organization of the archive (tarball) containing the reports
+   has been flattened, making navigation to the reports easier.
+ - A script can now be defined for the orchestrator, which allows
+   deployment-wide actions for an application.  (Warning: beta
+   feature!).
+   
+For SlipStream administrators [Dave]:
+ - Better consistency when setting the SlipStream theme: the method
+   for configuring the default and non-default themes is now uniform.
+ - Extend the custom style sheet to allow the background of the active
+   menubar items to be set within a theme.
+ - Performance metrics related to the SlipStream servers themselves
+   are now pushed to the local Graphite server, where they can be
+   viewed.
+ - Username validation at registration is more strict to avoid
+   creation of accounts which wouldn't work correctly.
+ - Correct the CloudStack connector packaging which could cause the
+   symbolic links to CloudStack connector commands to be removed.
+ - Refine the nginx rate limits so that they do not kick in for normal
+   usage levels.
+ - Fix a bug where the administrator ("super") would not see the
+   events for all application deployments.
+
+For everyone [Alice, Bob, Clara, Dave]:
+ - Weekly and monthly summaries of the cloud resource usage are
+   available, in addition to the existing daily summary.
+ - New events have been added that provide a broader view of important
+   actions within the SlipStream server and managed cloud
+   applications.  The events indicate when the server was
+   started/stopped, when user profiles are updated, and when the
+   server configuration changes.
+ - Make the application deployment workflow more reliable by introducing
+   retries when encountering transient failures.
+ - Fix a bug where the usage records could be incorrect if the
+   SlipStream server was restarted.
+ - Fix pagination of entries on the run and module displays.
+   Requesting a new page happens immediately rather than waiting for
+   the next automatic refresh cycle.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Database migration is **not** required from v2.19.1 to v2.20.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.19.1-community...v2.20-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.19.1-community...v2.20-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.19.1-community...v2.20-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.19.1-community...v2.20-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.19.1-community...v2.20-community>`__
+
+
 v2.19.1 (candidate) - 17 November 2015
 --------------------------------------
 

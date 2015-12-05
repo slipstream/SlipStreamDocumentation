@@ -13,16 +13,20 @@ Text][reST] and then transformed into HTML via [Sphinx][sphinx].  The
 generated pages are then built on the ReadTheDocs website.
 
 To update or add documentation:
+
  - Clone this repository.
- - Create a branch for your changes.
+ - Checkout the `draft` branch.
  - Edit or add source files in the `docs` subdirectory, organizing
    them hierarchically.
  - Test the changes by running Sphinx locally and viewing the result.
- - Commit the changes to the repository and create pull request.
- - When the pull request is merged, a webhook will trigger an update
-   on the ReadTheDocs site.
+ - Commit the changes to the repository and ask people to review your
+   changes. 
+ - After review, merge the changes into the `master` branch.
 
 The following sections describe each of these steps in more detail.
+
+**Pushing changes to the `draft` and `master` branches trigger
+webhooks that make those versions visible on the ReadTheDocs site.**
 
 Clone Sources
 -------------
@@ -38,11 +42,12 @@ read-only URLs for it.
 Create Branch
 -------------
 
-Create a separate branch to hold your changes for review.  
+Checkout the `draft` branch for your changes. 
 ```
-$ git checkout -b mydocs
+$ git checkout draft
 ```
-Push the branch to GitHub when you want to create a pull request. 
+Push the changes to GitHub when you want to see the rendered draft
+material on the ReadTheDocs site. 
 
 Editing Documentation
 ---------------------
@@ -50,8 +55,8 @@ Editing Documentation
 All of the source documentation is written in [reStructured
 Text][reST] format.
 
-Simply update the documentation files in the `docs` subdirectory.  Use
-your own branch for changes.
+Simply update the documentation files in the `docs` subdirectory,
+using the `draft` branch.
 
 When updating or adding sources, please:
  - Ensure the files remain as plain text in US-ASCII encoding.
@@ -89,15 +94,15 @@ Commit Changes
 
 This is a standard git repository, so committing the changes means
 just following the standard git workflow.  Push your branch to the
-GitHub repository and create a pull request through the GitHub web
-interface. 
+GitHub repository.
 
 Publishing Changes
 ------------------
 
 The changes will be published on the ReadTheDocs site automatically
-when the pull request has been merged.  There is a GitHub webhook that
-triggers a rebuild of the documentation on changes. 
+when changes to the `draft` or `master` branches are pushed.  It may
+take a couple of minutes for the build process to run on the
+ReadTheDocs site.  
 
 
 [docs]: http://ssdocs.sixsq.com
