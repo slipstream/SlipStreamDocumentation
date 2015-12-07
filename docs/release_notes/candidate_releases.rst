@@ -30,7 +30,7 @@ For application developers [Clara]:
  - A script can now be defined for the orchestrator, which allows
    deployment-wide actions for an application.  (Warning: beta
    feature!).
-   
+
 For SlipStream administrators [Dave]:
  - Better consistency when setting the SlipStream theme: the method
    for configuring the default and non-default themes is now uniform.
@@ -70,7 +70,52 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-Database migration is **not** required from v2.19.1 to v2.20.
+Database migration is required from v2.19.1 to v2.20.
+The following steps MUST be followed:**
+
+1. Upgrade SlipStream
+2. Stop SlipStream
+
+  ::
+
+      $ service slipstream stop
+
+3. Stop HSQLDB (or your DB engine)
+
+  ::
+
+      $ service hsqldb stop
+
+4. Execute the following SQL script
+  */opt/slipstream/server/migrations/016_add_frequency_usage.sql*:
+
+  ::
+
+      $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/sscljdb,user=sa,password= /opt/slipstream/server/migrations/016_add_frequency_usage.sql
+
+5. Start HSQLDB (or your DB engine)
+
+  ::
+
+      $ service hsqldb start
+
+6. Delete all usage_summaries, and recompute them thanks to summarizer script:
+
+::
+
+    $ java -Dconfig.path=db.spec -cp \ "/opt/slipstream/ssclj/resources:/opt/slipstream/ssclj/lib/ext/*:/opt/slipstream/ssclj/lib/ssclj.jar" \
+     com.sixsq.slipstream.ssclj.usage.summarizer -f <frequency> -n <nb-in-past>
+
+Use 'daily, 'weekly' and 'monthly' for '-f' option.
+Adapt value given to '-n' option for each frequency.
+
+7. Start SlipStream
+
+  ::
+
+      $ service slipstream start
+
+
 
 Commits
 ~~~~~~~
@@ -138,7 +183,7 @@ For administrators [Dave]:
  - There is now a configuration option that will allow server metrics
    (e.g. request responses, request rates, service resource usage) to
    be pushed to a Graphite server.
- - Logging levels have been reduced in many cases to avoid noise in the 
+ - Logging levels have been reduced in many cases to avoid noise in the
    logs.
  - A new authentication system is being used that will allow external
    authentication mechanisms to be used for a SlipStream server.
