@@ -6,6 +6,60 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v2.21 (candidate) - 18 December 2015
+------------------------------------
+
+New features and bug fixes in v2.21
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For application users and developers [Alice, Clara]:
+ - The Dashboard can now filter out inactive runs, allowing you to
+   focus on your running applications.
+ - On the Dashboard and in the Run Dialog, only those clouds that you
+   have configured are shown, reducing visual clutter on the page.
+
+For SlipStream administrators [Dave]:
+ - Roles can now be added to a user profile.  Those roles can
+   eventually be used in the ACLs (Access Control Lists) for
+   resources. 
+ - The RPM packaging has been improved for several components, in
+   particular marking configuration files so that they are not
+   overwritten on upgrades.
+ - Spurious authentication failures after a server restart have been
+   eliminated. 
+
+For application users, developers, and SlipStream administrators
+[Alice, Clara, Dave]:
+ - OpenNebula cloud infrastructures can now be accessed from
+   SlipStream.
+ - SoftLayer cloud infrastructures can now be accessed from SlipStream
+   Enterprise Edition deployments.
+ - The foundations for a new implementation of service catalog with
+   definable attributes have been laid.  This will eventually allow
+   advanced searching of cloud services that can be used for automated
+   placement of applications. 
+ - The SlipStream testing pipeline has been extended, providing more
+   thorough testing and a more stable service for you.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Database migration is **not** required from v2.20 to v2.21.
+
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.20-community...v2.21-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.20-community...v2.21-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.20-community...v2.21-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.20-community...v2.21-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.20-community...v2.21-community>`__
+
+
 v2.20 (candidate) - 4 December 2015
 -----------------------------------
 
