@@ -28,8 +28,7 @@ For SlipStream administrators [Dave]:
  - Spurious authentication failures after a server restart have been
    eliminated. 
 
-For application users, developers, and SlipStream administrators
-[Alice, Clara, Dave]:
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - OpenNebula cloud infrastructures can now be accessed from
    SlipStream.
  - SoftLayer cloud infrastructures can now be accessed from SlipStream
