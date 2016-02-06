@@ -6,6 +6,46 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v2.22 (candidate) - 5 February 2016
+------------------------------------
+
+New features and bug fixes in v2.22
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For application users and developers [Alice, Clara]:
+ - Workaround application logging problem at log level 0
+ - Improve error reporting from the node executor
+
+For SlipStream administrators [Dave]:
+ - Roles for users can now be defined by the system administrator
+ - Remove unnecessary information from service error logs
+ - Update third-party dependencies for robustness and stability
+
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
+ - Support GitHub authentication
+ - Azure connector fully working for linux-based applications
+ - Fix problem that prevented horizontal scale down from working
+ - Fix poor or misleading authentication error messages 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Database migration is **not** required from v2.21 to v2.22.
+
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.21-community...v2.22-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.21-community...v2.22-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.21-community...v2.22-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.21-community...v2.22-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.21-community...v2.22-community>`__
+
+
 v2.21 (candidate) - 18 December 2015
 ------------------------------------
 
