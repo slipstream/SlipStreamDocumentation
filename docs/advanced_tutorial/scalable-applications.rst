@@ -2,9 +2,9 @@ Scalable Applications
 =====================
 
 Very few, if any, applications experience a constant load. Most
-experience large fluctuations that require adjustments to the
-allocated resources to maintain responsiveness at peak demand and to
-avoid wasting resources when demand declines.
+experience large fluctuations that require adjustments to maintain
+responsiveness at peak demand and to avoid wasting resources when
+demand declines.
 
 In this section you will learn how to:
 
@@ -103,7 +103,7 @@ The notification takes place by running the "On VM Add" script (if it
 exists) on all VMs, except the ones that were just added. On the newly
 added VMs only the deployment target script is executed.
 
-As an example, look at the Elasticsearch Cluster application.  Because
+As an example, look at the |elasticsearch-cluster|.  Because
 Elasticsearch has its own discovery service and was designed for
 horizontal scaling it doesn't need elaborate hook scripts in the
 SlipStream configuration.
@@ -112,15 +112,24 @@ In the "Deployment" script, we can allow Elasticsearch to discover
 other members of the cluster by listing its peers in the
 configuration.  The code to do this is the following::
 
-    # discover all of the workers
-    workers=$(echo `ss-get worker:ids` | tr ',' "\n")
+    # application or application component?
+    run_type=`ss-get ss:category`
 
-    # create list of their hostnames for discovery
-    hosts=""
-    for w in $workers; do
-      h=`ss-get worker.${w}:hostname`
-      hosts="${hosts} \"${h}\""
-    done
+    if [ "${run_type}" = "Image" ]; then
+      hosts=`ss-get hostname`
+    else
+      # discover all of the workers
+      nodename=`ss-get nodename`
+      workers=$(echo `ss-get ${nodename}:ids` | tr ',' "\n")
+
+      # create list of their hostnames for discovery
+      hosts=""
+      for w in $workers; do
+        h=`ss-get ${nodename}.${w}:hostname`
+        hosts="${hosts} \"${h}\""
+      done
+    fi
+
     hosts=$(echo ${hosts} | tr ' ' ',')
 
     # rewrite the elasticsearch configuration file
@@ -130,11 +139,26 @@ configuration.  The code to do this is the following::
     discovery.zen.ping.unicast.hosts: [${hosts}]
     EOF
 
-The interesting part for this tutorial is the special variable
-"worker:ids" that lists all of the identifiers of the machines in the
-"worker" class.  These identifiers can then be used to recover the
-host names of all of the machines.  Those parameters look like
-"worker.2:hostname".  
+The interesting part for this tutorial is how the list of
+Elasticsearch workers is built up.
+
+We initially detect whether the deployment was an application
+("Deployment") or an application component ("Image") because the
+parameters are slightly different in the two cases.  By doing this
+test, the resulting component can be run as a standalone image or as
+part of an application. 
+
+For an application, where more than one worker is possible, we use the
+``nodename`` and ``ids`` to iterate over all of the workers and
+collect their hostnames. After all of the values have been
+substituted, the variable names for the hosts of the workers look like
+"worker.1:hostname", "worker.2:hostname", etc.
+
+Note that we only need to do this in the deployment script because
+Elasticsearch keeps track of the cluster state and transmits this
+information to all of the nodes in the cluster itself.  If it didn't
+do this, we would need to tell each node of the changes through the
+"on VM add" script.
 
 After the configuration of the service, we restart Elasticsearch to
 take into account the configuration changes.  Look in the application
@@ -176,7 +200,10 @@ result::
     }
 
 The deployment worked correctly: the status is green and there are 2
-nodes. 
+nodes.
+
+Scale Up with CLI
+~~~~~~~~~~~~~~~~~
 
 To scale the run via the command line, use the `ss-node-add` command.
 It takes the run ID the type of node to scale ("worker" in our case)
@@ -190,9 +217,12 @@ the application will return to the "Ready" state.
 
 .. note::
 
-   Only one scaling action, on one type of node, can be done at any
-   one time.  Previous scaling actions must complete before a new one
-   can be started. 
+   Only one scaling action, on one type of node, can be active.
+   Previous scaling actions must complete before a new one can be
+   started.
+
+Scale Up with REST
+~~~~~~~~~~~~~~~~~~
 
 To do the same thing from the REST API, send a POST request to the
 URL::
@@ -235,7 +265,10 @@ health output from the service URL::
       "active_shards_percent_as_number" : 100.0
     }
 
-A heathy green with 4 nodes!  Perfect. 
+A heathy green with 4 nodes!  Perfect.
+
+Scale Down with CLI
+~~~~~~~~~~~~~~~~~~~
 
 We can also remove nodes in nearly the same way.  The only difference
 is that you must specify exactly which node(s) you want to remove.
@@ -243,17 +276,11 @@ From the command line, do the following::
 
     $ ss-node-remove ced28f99-e08b-4667-86db-73f53c059c58 worker 1 
 
-Before the removal of the node instances, the "Pre-scale" script gets
-run on them. This allows to execute any application related pre-removal
-actions on the targeted node instance.
-
-Similarly, the "On VM Remove" script will be run on each node instance
-after the given node instance(s) have been removed.
-
-None of those scripts are necessary for the Elasticsearch cluster. 
-
 Again, after the (un-)provisioning cycle, the removed node instances
 will disappear from the deployment.
+
+Scale Down with REST
+~~~~~~~~~~~~~~~~~~~~
 
 Doing the same with the REST API, requires sending a DELETE request to
 the URL::
@@ -295,6 +322,55 @@ nodes::
     }
 
 Everything looks to have worked correctly!
+
+Scale Down Scripts
+~~~~~~~~~~~~~~~~~~
+
+Before the removal of the node instances, the "Pre-scale" script gets
+run on them. This allows to execute any application related pre-removal
+actions on the targeted node instance.
+
+Similarly, the "On VM Remove" script will be run on each node instance
+after the given node instance(s) have been removed.
+
+None of these scripts is necessary for the Elasticsearch cluster
+itself.  However, we want to maintain a working service URL for the
+deployment as a whole.  If the node referenced in the service URL
+disappears, we want to update the service URL to a working node. 
+
+    #!/bin/bash -xe
+
+    # application or application component?
+    run_type=`ss-get ss:category`
+
+    if [ "${run_type}" = "Image" ]; then
+      # should never be called from a component deployment anyway
+      exit 0
+    else
+
+      # only run if my own node type is being scaled
+      nodename=`ss-get nodename`
+      if [ "${SLIPSTREAM_SCALING_NODE}" = "${nodename}" ]; then
+
+      # collect all of the remaining workers
+      workers=$(echo `ss-get ${nodename}:ids` | tr ',' "\n")
+
+      echo "WORKERS: ${workers}"
+      echo "REMOVED: ${SLIPSTREAM_SCALING_VMS}"
+
+      # update URL with first remaining host
+      for w in $workers; do
+        hostname=`ss-get ${nodename}.${w}:hostname`
+        link="http://${hostname}:9200/"
+        health="${link}_cluster/health?pretty=true"
+        ss-set ss:url.service ${health}
+        exit 0
+      done
+      fi
+    fi
+
+This script just resets the URL using the hostname associated with the
+first one in the cluster.
 
 Vertical Scaling
 ----------------
@@ -366,3 +442,7 @@ The examples of the **"Pre-Scale"** and **"Post-Scale"** can be found
    2. Add nodes through the command line or REST API.
    3. Remove nodes through the command line or REST API. 
 
+
+.. |elasticsearch-cluster| raw:: html
+
+   <a href="https://nuv.la/module/Training-2015-11/elasticsearch-cluster" target="_blank">Elasticsearch cluster application</a>
