@@ -14,25 +14,25 @@ Nuvla Account
 -------------
 
 SlipStream allows people to use multiple cloud infrastructures
-transparently and easily. Individual accounts allow users to keep
+transparently and easily. Personal accounts allow users to keep
 their work private and to protect their cloud credentials.
 
 This tutorial assumes that you're using Nuvla_, a free SlipStream
-server operated by SixSq.  You can register for a Nuvla account
-directly through the service.
+service ("SlipStream SaaS") operated by SixSq.  You can register for a
+Nuvla account directly through the service.
 
 .. image:: images/screenshots/nuvla-registration.png
    :width: 70%
    :align: center
 
 The registration procedure follows the usual pattern for web
-applications and should be familiar.  Nonetheless, the detailed
-instructions for creating an account on Nuvla are:
+applications and will probably be familiar to you.  Nonetheless, the
+detailed instructions for creating an account on Nuvla are:
 
 1. Fill in the registration form on the Nuvla `login page
    <https://nuv.la>`__, providing a username and an email address.
-2. Next you will receive an email with a link that is used to verify 
-   your email address.
+2. You will then receive an email with a link to verify your email
+   address.
 3. Visit the URL provided in that email, either by clicking on the link
    or copying it into your browser.
 4. You should then see a page that says that your email address was 
@@ -45,7 +45,8 @@ instructions for creating an account on Nuvla are:
 7. View your user profile by clicking on "Profile" under your username
    at the top, right side of the page.
 8. Change your temporary password by clicking on "Edit", updating the
-   password fields in the "Summary" secton and then clicking on "Save".
+   password fields in the "Summary" section and then clicking on
+   "Save".
 
 In your profile, you will also need to provide cloud credentials and
 optionally an SSH public key to make full use of SlipStream. The
@@ -172,8 +173,9 @@ the installation and configuration of these tools.**
 
 .. admonition:: EXERCISES
 
-   1. Configure your workstation with an SSH client and update your
-      SlipStream user profile with your SSH key.
+   1. Configure your workstation with an SSH client and provide your
+      SSH **public key** under the "General" section of your user
+      profile.
    2. Verify that you can start the Advanced REST client on Chrome.
 
 
@@ -185,6 +187,6 @@ the installation and configuration of these tools.**
 
 .. _Ultimum: https://ulticloud.com
 
-.. [#] The tutorial can be followed with only one account.  However
-       you won't be able to complete the exercises demonstrating the
-       multi-cloud features of SlipStream in this case.
+.. [#] You can follow the tutorial using only one cloud account, but
+       in this case, you won't be able to complete the exercises
+       demonstrating the multi-cloud features of SlipStream.

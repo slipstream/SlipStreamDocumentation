@@ -1,6 +1,6 @@
 
-Advanced Tutorial
-=================
+Tutorial
+========
 
 This hands-on training course will demonstrate the core features of
 SlipStream by building two example applications through a series of
@@ -34,7 +34,7 @@ tutorial in order.
    syntax.  If you're using a different shell (csh, PowerShell, etc.),
    you'll need to adjust the syntax accordingly. 
 
-   Similarly, the example application developed in the tutorial are
+   Similarly, the example applications developed in the tutorial are
    uniformly built over the Ubuntu operating system.  This is to
    reduce distractions and make the tutorial as uniform as possible.
    SlipStream supports a wide range of different operating systems,
@@ -49,6 +49,7 @@ tutorial in order.
    slipstream-ecosystem
    key-concepts
    web-interface-tour
+   user-profile
    lamp-demo
    workspace
    images

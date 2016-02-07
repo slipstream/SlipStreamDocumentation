@@ -9,27 +9,33 @@ Application Model
 -----------------
 
 SlipStream uses a hierarchical description of applications to allow
-for the maximum portability and easy scaling of applications when they
-are deployed.  Applications are composed of parameterized components
-which reference generic virtual machine images.  The following diagram
-shows this composition.
+for portability and easy scaling of applications when they are
+deployed.  Applications are composed of parameterized components which
+reference generic virtual machine images.  The following diagram shows
+this composition.
 
 .. image:: images/diagrams/application-model.png
    :width: 70%
    :align: center
 
 By isolating the cloud-specific information in the images, SlipStream
-enhances the portability of the applications.  Similarly by defining
-the application topology separate from the components, it makes it
-easier to scale the various functional parts of the application as
-needed.
+enhances the portability of the applications.  By defining the
+application topology separate from the components, it facilitates
+scaling the application's functional elements and reusing components
+across applications.
 
 As a concrete example consider a 3-tier web application: the LAMP
-(Linux, Apache, MongoDB, and PHP) stack.  The components are the
-individual HAProxy (load balancer), Apache Web Server (front-end), and
-MongoDB worker (database).  Each of these are built over a minimal
-Ubuntu 14.04 virtual machine image that exists in the cloud
-infrastructure being used.
+(Linux, Apache, MongoDB, and PHP) stack.  The components are:
+
+ * **HAProxy**: a single load-balancer between the client and web servers,
+ * **Apache Web Server(s)**: the front-end of the service, and
+ * **MongoDB Worker(s)**: providing resources for the application's
+   database.
+
+Each of these are built over a minimal Ubuntu 14.04 virtual machine
+image that exists in the cloud infrastructure being used. The numbers
+of web servers and/or workers could be scaled to deal with increasing
+or decreasing application load.
 
 Vocabulary
 ----------
@@ -47,7 +53,7 @@ Image (base or native image)
     cloud are expected to be effectively identical.
 
 Component (machine image, node)
-    A single virtual machine definition that references an Image and
+    A single virtual machine definition that references an image and
     may contain scripts for the installation and configuration of
     additional services.  These components can be parameterized and
     can often be run as standalone applications. 

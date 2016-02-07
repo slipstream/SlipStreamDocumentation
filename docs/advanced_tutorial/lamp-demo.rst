@@ -5,28 +5,26 @@ SlipStream can efficiently manage simple applications like Wordpress,
 but it really shines when trying to deploy large, multi-machine
 applications.
 
-Those types of applications, for example 3-tiered web applications,
-can be complex and error prone. SlipStream automates the deployment of
-such applications, ensuring both consistency and reliability of the
-deployment.
+Deployment of those types of applications, for example 3-tiered web
+applications, can be complex and error prone. SlipStream automates
+these deployments, ensuring both consistency and reliability.
 
 Description
 -----------
 
 The LAMP++ (Linux, Apache, MongoDB, and PHP) application is an example
-3-tier web application that uses a load balancer to distribute requests
-through multiple web front-ends and a distributed MongoDB database.
+3-tier web application that uses a load balancer to distribute
+requests through multiple web front-ends and a distributed MongoDB
+database. (The definition can be found in the
+`apps/LAMP/lamp-deployment
+<https://nuv.la/module/apps/LAMP/lamp-deployment>`__ module.)
 
-By default, the application has:
+.. image:: images/diagrams/lamp-diagram.png
+   :width: 70%
+   :align: center
 
--  1 HAProxy node for load-balancing the web front-ends
--  2 web front-ends running Apache
--  3 MongoDB nodes running with a quorum of 2
-
-The web front-end contains an application page that calls PHP scripts to
-read and write data in the MongoDB database. The information about how
-many requests have gone through each server shows how data flows through
-the front-ends.
+The previous diagram shows the components of the LAMP application.
+The web application simply displays the current request statistics.
 
 Operation
 ---------
@@ -63,11 +61,14 @@ nodes are stopped.
 
 .. admonition:: EXERCISES
 
-   1. Turn off the Apache server on one of the web front ends.  The
-      command is "service apache2 stop".  Then click the read/write
+   1. Deploy the LAMP example and make sure that the application shows
+      the request statistics and that the load balancer switches
+      between nodes.
+   2. Turn off the Apache server on one of the web front ends.  The
+      command is ``service apache2 stop``.  Then click the read/write
       buttons to verify that only one web front-end is responding.
-   2. Kill one of the MongoDB nodes and verify that writes to the
+   3. Kill one of the MongoDB nodes and verify that writes to the
       database will work correctly. 
-   3. Kill a second MongoDB node.  In this case, the database should
+   4. Kill a second MongoDB node.  In this case, the database should
       stop responding because it has fallen below its configured
       quorum of two nodes.
