@@ -179,8 +179,7 @@ The following steps MUST be followed:**
 
       $ service hsqldb stop
 
-4. Execute the following SQL script
-  */opt/slipstream/server/migrations/016_add_frequency_usage.sql*:
+4. Execute the following SQL script */opt/slipstream/server/migrations/016_add_frequency_usage.sql*:
 
   ::
 
