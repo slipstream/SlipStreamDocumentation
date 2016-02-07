@@ -66,8 +66,8 @@ Building an Image
 If you've followed the advice about what type of actions to put into
 each recipe, then your component should be nearly ready to be built.
 The important distinction is to ensure that **static** installation
-and configuration is done in the "Pre-install" recipe and before.  All
-dynamic configuration should be put into the "Deployment" recipe.
+and configuration is done in the "Post-install" recipe and before.
+All dynamic configuration should be put into the "Deployment" recipe.
 
 However to ensure that the component works identically on all of the
 clouds, you should consider adding a few things to your component
@@ -112,6 +112,6 @@ it will always use the optimized workflow for that cloud.
 .. warning:: 
 
    SlipStream will invalidate the built image if the component is
-   modified; you must rebuilt the component after any changes.  Also,
+   modified; you must rebuild the component after any changes.  Also,
    SlipStream will not delete the built image from the cloud. That
    must be done manually, if desired.

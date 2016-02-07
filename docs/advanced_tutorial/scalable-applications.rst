@@ -336,7 +336,7 @@ after the given node instance(s) have been removed.
 None of these scripts is necessary for the Elasticsearch cluster
 itself.  However, we want to maintain a working service URL for the
 deployment as a whole.  If the node referenced in the service URL
-disappears, we want to update the service URL to a working node. 
+disappears, we want to update the service URL to a working node::
 
     #!/bin/bash -xe
 
@@ -352,20 +352,20 @@ disappears, we want to update the service URL to a working node.
       nodename=`ss-get nodename`
       if [ "${SLIPSTREAM_SCALING_NODE}" = "${nodename}" ]; then
 
-      # collect all of the remaining workers
-      workers=$(echo `ss-get ${nodename}:ids` | tr ',' "\n")
+        # collect all of the remaining workers
+        workers=$(echo `ss-get ${nodename}:ids` | tr ',' "\n")
 
-      echo "WORKERS: ${workers}"
-      echo "REMOVED: ${SLIPSTREAM_SCALING_VMS}"
+        echo "WORKERS: ${workers}"
+        echo "REMOVED: ${SLIPSTREAM_SCALING_VMS}"
 
-      # update URL with first remaining host
-      for w in $workers; do
-        hostname=`ss-get ${nodename}.${w}:hostname`
-        link="http://${hostname}:9200/"
-        health="${link}_cluster/health?pretty=true"
-        ss-set ss:url.service ${health}
-        exit 0
-      done
+        # update URL with first remaining host
+        for w in $workers; do
+          hostname=`ss-get ${nodename}.${w}:hostname`
+          link="http://${hostname}:9200/"
+          health="${link}_cluster/health?pretty=true"
+          ss-set ss:url.service ${health}
+          exit 0
+        done
       fi
     fi
 
