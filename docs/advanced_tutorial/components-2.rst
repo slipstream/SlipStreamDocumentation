@@ -96,7 +96,8 @@ following questions to plan your attack strategy:
 - Where should the above checking script be installed?
 - Does the script need any additional software installed?
 - What input and/or output parameters need to be defined? 
-- How to pass the needed values to the checking script?
+- How are the needed values obtained and passed to the checking
+  script?
 - What happens if the checking starts before the web server is ready?
 
 

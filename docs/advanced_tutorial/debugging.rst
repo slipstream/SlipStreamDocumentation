@@ -35,7 +35,7 @@ Interactive Debugging
 When creating a new application, very often there are bugs in the
 deployment scripts. Iteratively modifying the scripts through
 SlipStream and redeploying the machines can cause unnecessary
-delays. **If you have selection the option to let failed deployments
+delays. **If you have selected an option that lets failed deployments
 continue to run**, you can instead:
 
 1. Log into a failed deployment,
@@ -56,10 +56,10 @@ copy them back into SlipStream.
 Modifying the Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-SlipStream minimizes its footprint within the machines it deploys to
-avoid any unintended interference with the deployed applications.
-Because of this, you must specifically setup the environment to make the
-SlipStream client commands accessible.
+SlipStream minimizes its footprint to avoid any unintended
+interference with the deployed applications.  Because of this, you
+must specifically setup the environment to make the SlipStream client
+commands accessible.
 
 Usually you will want to do the following::
 
@@ -90,10 +90,10 @@ summarizes them.
 | ``ss-random``  | Generates a random string value and optionally sets  |
 |                | a named parameter with this value.                   |
 +----------------+------------------------------------------------------+
-| ``ss-abort``   | Use to set (or to clear with the ``--cancel`` option)|
-|                | the deployment abort flag.                           |
+| ``ss-abort``   | Sets the deployment abort flag or clears it with the |
+|                | ``--cancel`` option.                                 |
 +----------------+------------------------------------------------------+
-| ``ss-display`` | Use to set a string in the run for display purposes. |
+| ``ss-display`` | Sets a string in the run for display purposes.       |
 +----------------+------------------------------------------------------+
 
 All of the parameters used in the deployment must have been defined in

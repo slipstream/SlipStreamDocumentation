@@ -204,12 +204,11 @@ create the component definition.
 
    All of the recipes must be executable by the underlying operating
    system.  Make sure that you've added the shebang line to all of the
-   recipes ``#!/bin/bash -xe`` (or similar)!  Note that the "-xe"
-   options help with debugging when there are problems. 
+   recipes ``#!/bin/bash -xe`` (or similar)!
 
 .. note::
 
-   Using the "-xe" options on the shebang line help with debugging
+   Using the "-xe" options on the shebang line helps with debugging
    when there are problems.  The "-x" option will print each line in
    the script to the stdout before executing it.  The "-e" option will
    stop the script on the first error.
@@ -230,7 +229,7 @@ Parameterized Web Server
 It wouldn't be very useful if we had to create a new component
 definition every time we wanted to change some behavior: like the
 location of a database, password for a server, descriptive text, etc.
-e want to parameterize the component to promote reuse.  In this case
+We want to parameterize the component to promote reuse.  In this case
 we'll keep it simple and parameterize the title of the page.
 
 At the same time, we'd like to provide more feedback (through
@@ -296,9 +295,9 @@ the deployment recipe add the following::
     # provide status information through web UI
     ss-display "Webserver ready on ${hostname}!"
 
-This uses some magic commands that you've not seen yet.  These will be
-described in the next section.  There is also some help for these
-commands below the editor window in the web interface.
+This uses some magic commands that will be described in the next
+section.  There is also some help for these commands below the editor
+window in the web interface.
 
 Now you can save the component and deploy it.  When deploying it, you
 should see an input parameter in the run dialog.  Change the value so
@@ -376,7 +375,7 @@ accessed with a username and password.  To do this you need to:
 
 - Create a page that we want to protect, 
 - Modify the nginx configuration to use basic authentication,
-- Create the credentials to use to access the page. 
+- Create the credentials to access the page. 
 
 You'll need a utility from Apache to generate a username and password
 for the protected content.  Add the package "apache2-utils" to the

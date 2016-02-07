@@ -7,7 +7,7 @@ different functional blocks. The typical 3-tiered web application
 falls into this category with its load balancer, application
 front-ends, and database, usually all with redundancy and failover.
 
-In this section, we will take a small step in this direction.  You
+In this section, we will build our first multi-node application.  You
 will learn how to:
 
 - Combine your components into multi-machine deployment
@@ -59,8 +59,8 @@ Deploying the Application
 -------------------------
 
 Now that the application has been defined, you can deploy the full
-application with a single click of the "Deploy..." button.  Doing so
-will bring up the usual run dialog.
+application by clicking the "Deploy..." button.  Doing so will bring
+up the usual run dialog.
 
 .. image:: images/screenshots/app-run-dialog.png
    :alt: Components in Application
