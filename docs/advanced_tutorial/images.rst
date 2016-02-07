@@ -17,28 +17,40 @@ In this section you'll learn how to:
 ---------------
 
 To have full application portability between clouds, you must have
-functionally equivalent virtual machine images available in each of
-the clouds.
+identical or functionally equivalent virtual machine images available
+in each of the clouds.
 
-One way to achieve this is to create identical virtual machine image
-files and upload them into every cloud you want to use.  In theory
-this is the best approach but in practice it doesn't work well
-because:
+Identical Images
+~~~~~~~~~~~~~~~~
+
+One possibility is to create your own virtual machine images and
+upload them into every cloud you want to use. In theory, this is the
+best approach.  In practice as with so many ideas, it doesn't work
+well because:
 
 - Some cloud providers do not allow user-created images,
 - Other cloud providers modify uploaded images (e.g. by changing the
   kernel), and
 - Maintaining images for every cloud becomes a significant burden.
 
-Practical cloud application portability requires another approach.
+The last point is particularly troublesome because making images
+(often tens of Gigabytes in size) and uploading them is
+time-consuming.  By doing this, we'd lose the dynamicity that is a
+fundamental for switching to cloud technologies.
 
-SlipStream's approach overcomes these problems by reusing existing
-images supplied by the cloud providers.  A SlipStream image definition
-references existing ("native") virtual machine images in each cloud,
-creating a group of functionally equivalent images (e.g. a "minimal
-Ubuntu 12.04" image).  The slight differences between the images in
-various clouds rarely (if ever) have any noticable affect on the cloud
-application and we free ourselves maintaining our own images.
+Identical Recipes
+~~~~~~~~~~~~~~~~~
+
+SlipStream's approach overcomes these problems by reusing existing,
+functionally equivalent images supplied by the cloud providers, then
+maintaining common recipes for customizing them.
+
+A SlipStream image definition references existing ("native") virtual
+machine images in each cloud, creating a group of functionally
+equivalent images (e.g. a "minimal Ubuntu 12.04" image).  The slight
+differences between the images in various clouds rarely (if ever) have
+noticable effects on the cloud application and we free ourselves
+maintaining our own images.
 
 .. note:
 
@@ -47,9 +59,9 @@ application and we free ourselves maintaining our own images.
    see in the coming chapters how SlipStream components allow you to
    customize the virtual machines that you use.
 
-If you look at the definition of the "examples/images/ubuntu-14.04"
-image, you'll see the list of native image identifiers in each cloud
-in the "Cloud Image Identifiers and Image Hierarchy" section. 
+If you look at the definition of the |ubuntu-14.04| image, you'll see
+the list of native image identifiers in each cloud in the "Cloud Image
+Identifiers and Image Hierarchy" section.
 
 .. image:: images/screenshots/ubuntu-image-ids.png
    :alt: Native Image Identifiers
@@ -58,10 +70,10 @@ in the "Cloud Image Identifiers and Image Hierarchy" section.
 
 When creating a new image, you'll need to find the appropriate image
 identifiers through the cloud provider's interface.  On Ultimum, you
-can find the identifiers through the "Images" tab in their `web
-console <https://console.ultimum-cloud.com>`__.  For Exoscale, the
-identifiers are available from a `separate web page
-<https://www.exoscale.ch/open-cloud/templates/>`__.
+can find the identifiers through the "Images" tab in their
+|ultimum-console|.
+For Exoscale, the
+identifiers are available from a |exoscale-images|.
 
 VM Size
 -------
@@ -69,7 +81,8 @@ VM Size
 Very often you will want to tailor the CPU, RAM, and other resources
 allocated to the machine.  Specifying the "size" of a virtual machine
 is another area where the cloud providers differ.  Within an image,
-the size is defined, per-cloud, in the "Cloud Configuration" section.
+the size is defined, per-cloud, in the "Cloud Configuration" section
+(see |ubuntu-14.04-cloud-params|).
 
 .. image:: images/screenshots/ubuntu-size.png
    :alt: Cloud Parameters
@@ -161,7 +174,7 @@ should see a screenshot like the following.
    :align: center
 
 From the run dialog you can choose the cloud to use and then deploy
-the image by clicking on the dialogs' "Deploy..." button.  This will
+the image by clicking on the dialog's "Deploy..." button.  This will
 redirect you to the dashboard, where you will see a new entry for the
 image. 
 
@@ -222,3 +235,20 @@ debugging or developing service installation recipes.
       and see an nginx welcome page.  You may have to add ``sudo``
       before these commands, if you had to log in with the "ubuntu"
       account rather than "root".
+
+.. |ubuntu-14.04| raw:: html
+
+   <a href="https://nuv.la/module/examples/images/ubuntu-14.04/2724#cloud-image-identifiers-and-image-hierarchy" target="_blank">examples/images/ubuntu-14.04</a>
+
+.. |ultimum-console| raw:: html
+
+   <a href="https://console.ultimum-cloud.com" target="_blank">web console</a>
+
+.. |exoscale-images| raw:: html
+
+   <a href="https://www.exoscale.ch/open-cloud/templates/" target="_blank">separate web
+   page </a>
+
+.. |ubuntu-14.04-cloud-params| raw:: html
+
+   <a href="https://nuv.la/module/examples/images/ubuntu-14.04/2724#cloud-configuration+exoscale-ch-gva" target="_blank">examples/images/ubuntu-14.04</a>

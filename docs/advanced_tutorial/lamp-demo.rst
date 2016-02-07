@@ -15,9 +15,7 @@ Description
 The LAMP++ (Linux, Apache, MongoDB, and PHP) application is an example
 3-tier web application that uses a load balancer to distribute
 requests through multiple web front-ends and a distributed MongoDB
-database. (The definition can be found in the
-`apps/LAMP/lamp-deployment
-<https://nuv.la/module/apps/LAMP/lamp-deployment>`__ module.)
+database. (The definition can be found in the |lamp| module.)
 
 .. image:: images/diagrams/lamp-diagram.png
    :width: 70%
@@ -72,3 +70,7 @@ nodes are stopped.
    4. Kill a second MongoDB node.  In this case, the database should
       stop responding because it has fallen below its configured
       quorum of two nodes.
+
+.. |lamp| raw:: html
+
+   <a href="https://nuv.la/module/apps/LAMP/lamp-deployment" target="_blank">apps/LAMP/lamp-deployment</a>
