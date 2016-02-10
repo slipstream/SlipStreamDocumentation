@@ -25,7 +25,7 @@ For application users, developers, and SlipStream administrators [Alice, Clara, 
  - Support GitHub authentication
  - Azure connector fully working for linux-based applications
  - Fix problem that prevented horizontal scale down from working
- - Fix poor or misleading authentication error messages 
+ - Fix poor or misleading authentication error messages
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -33,7 +33,42 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-Database migration is **not** required from v2.21 to v2.22.
+Database migration is required from v2.21 to v2.22.
+
+The following steps
+MUST be followed:**
+
+1. Upgrade SlipStream
+2. Stop SlipStream
+
+   ::
+
+       $ service slipstream stop
+
+3. Stop HSQLDB (or your DB engine)
+
+   ::
+
+       $ service hsqldb stop
+
+4. Execute the following SQL script
+   */opt/slipstream/server/migrations/017\_add\_external\_login.sql*:
+
+   ::
+
+       $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/017\_add\_external\_login.sql
+
+5. Start HSQLDB (or your DB engine)
+
+   ::
+
+       $ service hsqldb start
+
+6. Start SlipStream
+
+   ::
+
+       $ service slipstream start
 
 
 Commits
@@ -61,12 +96,12 @@ For application users and developers [Alice, Clara]:
 For SlipStream administrators [Dave]:
  - Roles can now be added to a user profile.  Those roles can
    eventually be used in the ACLs (Access Control Lists) for
-   resources. 
+   resources.
  - The RPM packaging has been improved for several components, in
    particular marking configuration files so that they are not
    overwritten on upgrades.
  - Spurious authentication failures after a server restart have been
-   eliminated. 
+   eliminated.
 
 For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - OpenNebula cloud infrastructures can now be accessed from
@@ -76,7 +111,7 @@ For application users, developers, and SlipStream administrators [Alice, Clara, 
  - The foundations for a new implementation of service catalog with
    definable attributes have been laid.  This will eventually allow
    advanced searching of cloud services that can be used for automated
-   placement of applications. 
+   placement of applications.
  - The SlipStream testing pipeline has been extended, providing more
    thorough testing and a more stable service for you.
 
