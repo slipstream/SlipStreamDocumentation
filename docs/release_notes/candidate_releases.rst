@@ -6,6 +6,61 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v2.23 (candidate) - 13 February 2016
+------------------------------------
+
+New features and bug fixes in v2.23
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For application users and developers [Alice, Clara]:
+ - Provide new Service Catalog (enterprise) implementation along with
+   API documentation for the new ServiceInfo and Attribute resources.
+
+For application developers [Clara]:
+ - An alpha version of a Clojure API has been created that supports
+   scale up/down features.
+ - Fix application logging when verbosity level is 0.
+
+For SlipStream administrators [Dave]:
+ - Optimize data flow by using nginx to route requests to the
+   appropriate SlipStream services.
+
+For application users, developers, and SlipStream administrators
+[Alice, Clara, Dave]:
+ - Error handling when starting and stopping runs has been improved.
+ - CloudStack and Exoscale (enterprise) connectors now support
+   multiple zones.
+ - OpenStack connector now supports the Keystone API v3 and has been
+   streamlined to avoid unnecessary API calls.
+ - OpenStack connector has been fixed to accommodate new VM states.
+ - StratusLab, OpenStack connectors have improved error messages.
+ - There is now an example application that demonstrates autoscaling.
+ - A SoftLayer connector (enterprise) that uses native SoftLayer
+   API and that supports vertical scaling is now available.
+ - Fix problem with vCloud connector (enterprise) caused by missing VM
+   states. 
+ - Fix Firefox display issues for message display and gauges on
+   dashboard.
+ - Fix bootstrapping failures on Ubuntu 14.04.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Database migration is **not** required from v2.22 to v2.23.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.22-community...v2.23-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.22-community...v2.23-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.22-community...v2.23-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.22-community...v2.23-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.22-community...v2.23-community>`__
+
+
 v2.22 (candidate) - 5 February 2016
 ------------------------------------
 
