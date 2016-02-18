@@ -151,6 +151,7 @@ Set up Github external authentication
 Github users can log in SlipStream with their Github account (if a match is found between Github email and SlipStream email, existing SlipStream account is then bound to the Github account, otherwise a new SlipStream user is created).
 
 First, register this new SlipStream application in Github: https://github.com/settings/applications/new
+
 The Homepage URL can be SlipStream end point.
 The Authorization callback URL must be <SlipStream end point>/auth/callback-github
 You will obtain a Github client ID and a Github secret (see next).
