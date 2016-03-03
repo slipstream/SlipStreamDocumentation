@@ -6,6 +6,87 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v2.24 (candidate) - 7 February 2016
+------------------------------------
+
+New features and bug fixes in v2.24
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+UI:
+ - warning sign for unknown VMs
+ - header subtitles enhanced for super
+ - make new terminology permanent
+ -
+
+SS Server Deps
+ - migrate hsqldb and nginx to centos 7
+ - move nginx cache from /tmp to run area
+
+Server
+ - improve query performance for /events
+ - migrate to systemd
+ - fix system params category
+ - clean up code for static analysis
+
+Connectors
+ - fixed --networks for cloudstack
+ - add custom template for opennebula
+ - openstack fix ip address retrieval
+ - openstack improve APIv3 support
+
+Client API
+ - refactor and update docs
+
+Client
+ - fix ss-get --noblock
+ - fix inconsistency in run states to avoid scaling failures
+ - fix ss-abort to allow empty message
+ - move from --mutable-run to --scalable
+ - fix problem when creating slipstream_managed group
+
+SlipStream
+ - migrate to centos 7
+
+Docs API
+ - add /api for URLs in API
+ - remove version number
+
+EC2
+ - fix bug with slipstream_managed
+ - keep only first key when creating keypair
+
+
+For application users and developers [Alice, Clara]:
+ - blah
+
+For application developers [Clara]:
+ - blah
+
+For SlipStream administrators [Dave]:
+ - blah
+
+For application users, developers, and SlipStream administrators
+[Alice, Clara, Dave]:
+ - blah
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Database migration is **not** required from v2.23 to v2.24.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.23-community...v2.24-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.23-community...v2.24-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.23-community...v2.24-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.23-community...v2.24-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.23-community...v2.24-community>`__
+
+
 v2.23 (candidate) - 13 February 2016
 ------------------------------------
 
