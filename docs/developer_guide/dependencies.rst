@@ -302,15 +302,11 @@ The SlipStream RPM packages will be built if you install the ``rpm`` and
 the SlipStream server. Follow the instructions for running a test
 version of the server from the respository sources.
 
-Build Tools
------------
+Build Tool: Maven
+-----------------
 
 The overall SlipStream build is controlled through
-`Maven <https://maven.apache.org/>`__ with a few modules also requiring
-`Leiningen <http://leiningen.org/>`__.
-
-Maven
------
+`Maven <https://maven.apache.org/>`__.
 
 Download and install the **latest**
 `Maven <https://maven.apache.org/>`__ release from the Apache Maven
@@ -335,14 +331,3 @@ environment with:
 
 The ``mvn`` command should now be visible. The software will build with
 any maven version later than 3.2+.
-
-Leiningen
----------
-
-Leiningen is a build tool similar to Maven, but targeted on Clojure and
-ClojureScript projects. This tool is used through Maven for several of
-the modules that are written in those languages.
-
-From the `Leiningen <http://leiningen.org/>`__ website, follow the
-`installation instructions <http://leiningen.org/#install>`__. The
-``lein`` executable must be available from the standard shell PATH.
