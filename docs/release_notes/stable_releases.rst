@@ -7,7 +7,7 @@ stable releases that are listed here. Stable releases are supported by
 SixSq and are appropriate for production deployments. In general, we
 recommend that people use the latest stable release.
 
-v2.23.3 (stable) - 3 March 2016
+v2.23.2 (stable) - 3 March 2016
 -------------------------------
 
 For application developers [Clara]:

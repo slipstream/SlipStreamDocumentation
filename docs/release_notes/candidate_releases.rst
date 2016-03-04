@@ -53,8 +53,8 @@ Commits
 -  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.23.2-community...v3.0-community>`__
 
 
-v2.23.2 (candidate) - 3 March 2016
-----------------------------------
+v2.23.2 (stable) - 3 March 2016
+-------------------------------
 
 New features and bug fixes in v2.23.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
