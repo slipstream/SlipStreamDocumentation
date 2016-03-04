@@ -104,7 +104,7 @@ The list of available cloud connectors has expanded and existing connectors have
      
  - CloudStack
    
-    - Connector now supports multiple zones.
+   - Connector now supports multiple zones.
       
  - Exoscale
    
