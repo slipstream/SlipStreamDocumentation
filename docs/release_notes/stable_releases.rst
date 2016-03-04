@@ -7,6 +7,58 @@ stable releases that are listed here. Stable releases are supported by
 SixSq and are appropriate for production deployments. In general, we
 recommend that people use the latest stable release.
 
+v2.23.3 (stable) - 3 March 2016
+-------------------------------
+
+For application developers [Clara]:
+ - Fixed issues with command line client so that the `ss-get
+   --noblock` option works correctly, `ss-abort` no longer requires a
+   message, and the `ss-execute` option `--mutable-run` has been
+   changed to `--scalable`. 
+ - Refactored client clojure API to make actions/functions correspond
+   better to end user needs.
+ - Fix a bug in which the same resource could be added twice.
+
+For SlipStream administrators [Dave]:
+ - Fix packaging issue which left out scripts for periodic usage
+   analysis. 
+
+For application users, developers, and SlipStream administrators
+[Alice, Clara, Dave]:
+ - Improved application state handling to avoid race conditions
+   leading to failures when scaling an application.
+ - Improve OpenStack connector to reduce time to retrieve the IP
+   address, to order parameters consistently, and to fix a problem
+   where the domain parameter was ignored.
+ - Extend the OpenStack connector to support the Keystone API v3.
+ - Stratuslab connector has improved logging of networking errors.
+ - CloudStack connector now supports multiple zones.
+ - AWS connector uses only the first SSH key to create a keypair to
+   avoid deployment failures.
+ - New terminology (application, component, image) is now the default
+   in the user interface.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+A database migration is required from v2.14 to v2.23.2.  Please
+execute the following procedures in order to perform the necessary
+migration.
+
+**TBD**
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.14-community...v2.23.2-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.14-community...v2.23.2-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.14-community...v2.23.2-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.14-community...v2.23.2-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.14-community...v2.23.2-community>`__
+
 v2.14 (stable) - 13 August 2015
 -------------------------------
 
