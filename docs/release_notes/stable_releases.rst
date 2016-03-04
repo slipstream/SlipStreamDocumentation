@@ -192,6 +192,10 @@ to '-n' option for each frequency.
 
        $ service slipstream start
 
+Known Issues
+~~~~~~~~~~~~
+
+No major known issues.
 
 Commits
 ~~~~~~~
