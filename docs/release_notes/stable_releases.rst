@@ -89,37 +89,51 @@ For application users, developers, and SlipStream administrators [Alice, Clara, 
  - Automatically create an open security group (on clouds that support
    it) to avoid application failures due to network connectivity.
 
-The list of available cloud connectors has expanded and existing
-connectors have been improved:
+The list of available cloud connectors has expanded and existing connectors have been improved:
  - AWS (EC2)
+
    - Connector only uses the first configured SSH key during
      deployment to avoid provisioning failures.
    - Errors messages in general and those related to the VPC change
      have been improved.
+     
  - Azure
+   
    - A complete connector for Azure is available that allows the full
      control of linux-based systems.
+     
  - CloudStack
+   
     - Connector now supports multiple zones.
+      
  - Exoscale
+   
    - This specialized cloud connector allows images to be referenced
      by name, disk sizes to be controlled, and platform-specific
      instance sizes.
+     
  - OpenNebula
+   
    - A connector to use OpenNebula platforms from SlipStream is
      available.
    - The OpenNebula machines templates can be customized from the
-     SlipStream interface. 
+     SlipStream interface.
+     
  - OpenStack
+   
    - Now supports the Keystone API v3.
    - Connector has been streamlines to reduce the time to retrieve the
      virtual machine's IP address.
    - Error messages have been improved to help resolve connectivity
-     and cloud problems. 
+     and cloud problems.
+     
  - SoftLayer
+   
    - A connector (enterprise) that uses the native SoftLayer API is
      now available.  The connector supports vertical scaling.
+     
  - StratusLab
+   
    - Improved logging of networking errors as well as error messages.
    
 Alice, Bob, Clara, and Dave can be found
