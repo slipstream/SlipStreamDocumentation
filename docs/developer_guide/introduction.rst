@@ -26,7 +26,7 @@ services. You only need to change the URLs to those for this edition.
 SlipStream is written primarily in `Java <https://www.java.com>`__,
 `Clojure <http://clojure.org>`__, `Python <https://www.python.org>`__,
 `ClojureScript <https://github.com/clojure/clojurescript>`__ and
-`JavaScript <https://developer.mozilla.org/en-US/docs/Web/JavaScript>`__.
-It uses `Maven <https://maven.apache.org/>`__ and
-`Leiningen <http://leiningen.org>`__ to build the software and various
-frameworks for unit testing.
+`JavaScript
+<https://developer.mozilla.org/en-US/docs/Web/JavaScript>`__.  It uses
+`Maven <https://maven.apache.org/>`__ to build the software and
+various frameworks for unit testing.
