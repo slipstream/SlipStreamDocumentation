@@ -6,68 +6,31 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
-v2.24 (candidate) - 7 February 2016
-------------------------------------
+v3.0 (candidate) - 7 February 2016
+----------------------------------
 
-New features and bug fixes in v2.24
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+New features and bug fixes in v3.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-UI:
- - warning sign for unknown VMs
- - header subtitles enhanced for super
- - make new terminology permanent
- -
-
-SS Server Deps
- - migrate hsqldb and nginx to centos 7
- - move nginx cache from /tmp to run area
-
-Server
- - improve query performance for /events
- - migrate to systemd
- - fix system params category
- - clean up code for static analysis
-
-Connectors
- - fixed --networks for cloudstack
- - add custom template for opennebula
- - openstack fix ip address retrieval
- - openstack improve APIv3 support
-
-Client API
- - refactor and update docs
-
-Client
- - fix ss-get --noblock
- - fix inconsistency in run states to avoid scaling failures
- - fix ss-abort to allow empty message
- - move from --mutable-run to --scalable
- - fix problem when creating slipstream_managed group
-
-SlipStream
- - migrate to centos 7
-
-Docs API
- - add /api for URLs in API
- - remove version number
-
-EC2
- - fix bug with slipstream_managed
- - keep only first key when creating keypair
-
-
-For application users and developers [Alice, Clara]:
- - blah
-
-For application developers [Clara]:
- - blah
+For managers and super users [Bob]:
+ - Provide better header information in the browser UI when a manager
+   or super users is viewing information from several users.
 
 For SlipStream administrators [Dave]:
- - blah
+ - **SlipStream must now be deployed on CentOS 7.** All services have
+   been updated to support systemd only.  Caches have been moved from
+   `/tmp` and `/var/tmp` to avoid startup problems. 
 
 For application users, developers, and SlipStream administrators
 [Alice, Clara, Dave]:
- - blah
+ - Improve query performance when retrieving event resources through
+   the API and in the dashboard.
+ - Improve graphical feedback when viewing virtual machines to
+   indicate those that are not known to SlipStream.
+ - OpenNebula connector allows custom template fields to be
+   specified to, for example, attach hardware devices or consoles.
+ - Fix a bug in the AWS connector that caused the creation of the
+   'slipstream_managed' security group to fail.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -75,16 +38,100 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-Database migration is **not** required from v2.23 to v2.24.
+Because SlipStream v3 requires the CentOS 7 operating system, an
+upgrade from the SlipStream v2 series to the SlipStream v3 series
+requires a complete database migration from the old machine to a new
+one running CentOS 7.  Details for this migration will come with a
+subsequent release.
 
 Commits
 ~~~~~~~
 
--  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.23-community...v2.24-community>`__
--  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.23-community...v2.24-community>`__
--  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.23-community...v2.24-community>`__
--  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.23-community...v2.24-community>`__
--  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.23-community...v2.24-community>`__
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.23.2-community...v3.0-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.23.2-community...v3.0-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.23.2-community...v3.0-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.23.2-community...v3.0-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.23.2-community...v3.0-community>`__
+
+
+v2.23.2 (candidate) - 3 March 2016
+----------------------------------
+
+New features and bug fixes in v2.23.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For SlipStream administrators [Dave]:
+ - Fix a packaging bug that caused the Service Catalog resources not
+   to appear.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Database migration is **not** required from v2.23.1 to v2.23.2.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.23.1-community...v2.23.2-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.23.1-community...v2.23.2-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.23.1-community...v2.23.2-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.23.1-community...v2.23.2-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.23.1-community...v2.23.2-community>`__
+
+
+v2.23.1 (candidate) - 22 February 2016
+--------------------------------------
+
+New features and bug fixes in v2.23.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For application developers [Clara]:
+ - Fixed issues with command line client so that the `ss-get
+   --noblock` option works correctly, `ss-abort` no longer requires a
+   message, and the `ss-execute` option `--mutable-run` has been
+   changed to `--scalable`. 
+ - Refactored client clojure API to make actions/functions correspond
+   better to end user needs.
+ - Fix a bug in which the same resource could be added twice.
+
+For SlipStream administrators [Dave]:
+ - Fix packaging issue which left out scripts for periodic usage
+   analysis. 
+
+For application users, developers, and SlipStream administrators
+[Alice, Clara, Dave]:
+ - Improved application state handling to avoid race conditions
+   leading to failures when scaling an application.
+ - Improve OpenStack connector to reduce time to retrieve the IP
+   address, to order parameters consistently, and to fix a problem
+   where the domain parameter was ignored.
+ - Extend the OpenStack connector to support the Keystone API v3.
+ - Stratuslab connector has improved logging of networking errors.
+ - CloudStack connector now supports multiple zones.
+ - AWS connector uses only the first SSH key to create a keypair to
+   avoid deployment failures.
+ - New terminology (application, component, image) is now the default
+   in the user interface.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Database migration is **not** required from v2.23 to v2.23.1.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.23-community...v2.23.1-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.23-community...v2.23.1-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.23-community...v2.23.1-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.23-community...v2.23.1-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.23-community...v2.23.1-community>`__
 
 
 v2.23 (candidate) - 13 February 2016
