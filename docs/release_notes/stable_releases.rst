@@ -10,6 +10,16 @@ recommend that people use the latest stable release.
 v2.23.2 (stable) - 3 March 2016
 -------------------------------
 
+v2.23.2
+~~~~~~~
+
+For SlipStream administrators [Dave]:
+ - Fix a packaging bug that caused the Service Catalog resources not
+   to appear.
+
+v2.23.1
+~~~~~~~
+
 For application developers [Clara]:
  - Fixed issues with command line client so that the `ss-get
    --noblock` option works correctly, `ss-abort` no longer requires a
@@ -38,17 +48,320 @@ For application users, developers, and SlipStream administrators
  - New terminology (application, component, image) is now the default
    in the user interface.
 
+v2.23
+~~~~~
+
+For application users and developers [Alice, Clara]:
+ - Provide new Service Catalog (enterprise) implementation along with
+   API documentation for the new ServiceInfo and Attribute resources.
+
+For application developers [Clara]:
+ - An alpha version of a Clojure API has been created that supports
+   scale up/down features.
+ - Fix application logging when verbosity level is 0.
+
+For SlipStream administrators [Dave]:
+ - Optimize data flow by using nginx to route requests to the
+   appropriate SlipStream services.
+
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
+ - Error handling when starting and stopping runs has been improved.
+ - CloudStack and Exoscale (enterprise) connectors now support
+   multiple zones.
+ - OpenStack connector now supports the Keystone API v3 and has been
+   streamlined to avoid unnecessary API calls.
+ - OpenStack connector has been fixed to accommodate new VM states.
+ - StratusLab, OpenStack connectors have improved error messages.
+ - There is now an example application that demonstrates autoscaling.
+ - A SoftLayer connector (enterprise) that uses native SoftLayer
+   API and that supports vertical scaling is now available.
+ - Fix problem with vCloud connector (enterprise) caused by missing VM
+   states. 
+ - Fix Firefox display issues for message display and gauges on
+   dashboard.
+ - Fix bootstrapping failures on Ubuntu 14.04.
+
+v2.22
+~~~~~
+
+For application users and developers [Alice, Clara]:
+ - Workaround application logging problem at log level 0
+ - Improve error reporting from the node executor
+
+For SlipStream administrators [Dave]:
+ - Roles for users can now be defined by the system administrator
+ - Remove unnecessary information from service error logs
+ - Update third-party dependencies for robustness and stability
+
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
+ - Support GitHub authentication
+ - Azure connector fully working for linux-based applications
+ - Fix problem that prevented horizontal scale down from working
+ - Fix poor or misleading authentication error messages
+
+v2.21
+~~~~~
+
+For application users and developers [Alice, Clara]:
+ - The Dashboard can now filter out inactive runs, allowing you to
+   focus on your running applications.
+ - On the Dashboard and in the Run Dialog, only those clouds that you
+   have configured are shown, reducing visual clutter on the page.
+
+For SlipStream administrators [Dave]:
+ - Roles can now be added to a user profile.  Those roles can
+   eventually be used in the ACLs (Access Control Lists) for
+   resources.
+ - The RPM packaging has been improved for several components, in
+   particular marking configuration files so that they are not
+   overwritten on upgrades.
+ - Spurious authentication failures after a server restart have been
+   eliminated.
+
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
+ - OpenNebula cloud infrastructures can now be accessed from
+   SlipStream.
+ - SoftLayer cloud infrastructures can now be accessed from SlipStream
+   Enterprise Edition deployments.
+ - The foundations for a new implementation of service catalog with
+   definable attributes have been laid.  This will eventually allow
+   advanced searching of cloud services that can be used for automated
+   placement of applications.
+ - The SlipStream testing pipeline has been extended, providing more
+   thorough testing and a more stable service for you.
+
+v2.20
+~~~~~
+
+For application users [Alice]:
+ - Improve text and workflow of the embedded SlipStream tour text,
+   making it easier understand and follow.
+
+For application users and developers [Alice, Clara]:
+ - The events on the "run page" that shows the details of a cloud
+   application deployment are automatically refreshed, making it
+   easier to follow the timeline of an application.
+ - Fix a bug which caused virtual machines that were removed from the
+   deployment via the "scale-down" feature to not be terminated
+   correctly.
+
+For application developers [Clara]:
+ - The organization of the archive (tarball) containing the reports
+   has been flattened, making navigation to the reports easier.
+ - A script can now be defined for the orchestrator, which allows
+   deployment-wide actions for an application.  (Warning: beta
+   feature!).
+
+For SlipStream administrators [Dave]:
+ - Better consistency when setting the SlipStream theme: the method
+   for configuring the default and non-default themes is now uniform.
+ - Extend the custom style sheet to allow the background of the active
+   menubar items to be set within a theme.
+ - Performance metrics related to the SlipStream servers themselves
+   are now pushed to the local Graphite server, where they can be
+   viewed.
+ - Username validation at registration is more strict to avoid
+   creation of accounts which wouldn't work correctly.
+ - Correct the CloudStack connector packaging which could cause the
+   symbolic links to CloudStack connector commands to be removed.
+ - Refine the nginx rate limits so that they do not kick in for normal
+   usage levels.
+ - Fix a bug where the administrator ("super") would not see the
+   events for all application deployments.
+
+For everyone [Alice, Bob, Clara, Dave]:
+ - Weekly and monthly summaries of the cloud resource usage are
+   available, in addition to the existing daily summary.
+ - New events have been added that provide a broader view of important
+   actions within the SlipStream server and managed cloud
+   applications.  The events indicate when the server was
+   started/stopped, when user profiles are updated, and when the
+   server configuration changes.
+ - Make the application deployment workflow more reliable by introducing
+   retries when encountering transient failures.
+ - Fix a bug where the usage records could be incorrect if the
+   SlipStream server was restarted.
+ - Fix pagination of entries on the run and module displays.
+   Requesting a new page happens immediately rather than waiting for
+   the next automatic refresh cycle.
+
+v2.19.1
+~~~~~~~
+
+For everyone [Alice, Bob, Clara, Dave], a couple bug fixes:
+ - Fix instabilities in the authentication system that caused erratic
+   behavior.
+ - Make the application deployment workflow more reliable by introducing
+   retries when encountering transient failures.
+
+v2.19
+~~~~~
+
+For users [Alice, Clara]:
+ - The run page has been enhanced to show the time-ordered list of
+   events associated with a run.
+ - The vocabulary in the interface has been made more clear and
+   precise to make understanding SlipStream easier.
+
+For users [Alice, Clara] and administrators [Dave]:
+ - There is now a prototype (alpha) Azure connector available, which
+   will be extended to a production connection over the next couple of
+   releases.
+ - There is a specialized cloud connector for the Exoscale cloud
+   platform that allows images to be referenced by name, disk sizes to
+   be controlled, and platform-specific instance sizes.
+ - Allow the proper inheritance of image parameters to avoid having to
+   edit/save child images when a parent has been modified.
+
+For administrators [Dave]:
+ - There is now a configuration option that will allow server metrics
+   (e.g. request responses, request rates, service resource usage) to
+   be pushed to a Graphite server.
+ - Logging levels have been reduced in many cases to avoid noise in the
+   logs.
+ - A new authentication system is being used that will allow external
+   authentication mechanisms to be used for a SlipStream server.
+ - SElinux can now be used for the machine running the SlipStream
+   server, allowing the service to be more tightly secured.
+
+For everyone [Alice, Bob, Clara, Dave], a few bug fixes:
+ - Modify the introductory tour to follow the new application layout.
+ - When an attribute error is raised, provide a correct error message
+   rather than a misleading one referring to an illegal state.
+ - Upgrade internal SSH libraries to allow deployment to work with
+   newer versions of Ubuntu (15.04+).
+ - Correct a problem that caused new projects to be created but not
+   visible.
+ - Truncate log error messages in run parameters to avoid masking the
+   real error with an internal server error (500).
+
+v2.18
+~~~~~
+
+-  Make the Dashboard the landing page for users
+-  Dashboard, Modules, App Store, and Service Catalog are split in the
+   UI and have direct links from top menubar
+-  Include root disk volumes for StratusLab clouds
+-  Improve units for displaying cloud resource usage
+-  Consolidated monthly usage available through API
+-  Improve EC2 connector to catch errors related to VPC change and to
+   provide more informative error message
+-  fix: add missing module in SlipStream client package for `pip`
+   (affected `ss-config-dump` command)
+
+v2.17
+~~~~~
+
+-  Allow use of the http-kit or aleph web application containers
+   (clojure server)
+-  Allow initialization of resources before starting server (clojure
+   server)
+-  Clean up main and server namespaces for ssclj server (clojure server)
+-  After launching a run, the user gets redirected to the dashboard
+   (previously the redirection was to the run page)
+-  Add back the environment variable SLIPSTREAM\_CONNECTOR\_INSTANCE
+-  fix: terminate button is properly updated after closing dialog in the
+   dashboard
+-  fix: fixed an issue which prevented multi-cloud deployment to work
+-  fix: add missing index in resources table (clojure server)
+
+v2.16
+~~~~~
+
+-  HTML representations of event and usage resources available
+-  improved configuration for cloud connector configuration
+-  upgrade to latest libcloud release (0.18.0) for all connectors
+-  allow easier automated installation from configuration files
+-  allow finer control over information dumped in ``ss-config-dump``
+-  create open security group to avoid app. failures on clouds that
+   support it
+-  add prototype user-editable service catalog (enterprise)
+-  fix: ``ss-config-dump`` for unaliased connector names
+-  fix: reintroduce older EC2 VM sizes
+-  fix: allow multiple versions of Java on SlipStream machines
+-  fix: missing python dependency in packages for cloud connectors
+-  fix: incorrect path for dependency in OpenStack and CloudStack
+   connectors
+-  fix: run parameters not shown on image module
+
+v2.15
+~~~~~
+
+-  documentation for horizontal and vertical scaling of applications
+   (horizontal scaling is supported by all connectors; **vertical
+   scaling is currently only supported by flexiant and okeanos
+   connectors**)
+-  update terminology in UI: mutable changed to scalable
+-  dashboard improvements: auto-refresh, service URL link, and terminate
+   button
+-  improve layout of workflow scripts on image modules
+-  allow SlipStream configuration to be dumped and restored from files
+-  change location of log files to permanent ``/var/log/slipstream``
+   location
+-  upgrade jetty (9.3.2), libcloud (0.18.0), and other java/clojure
+   dependencies
+-  fix: failures on CloudStack connector when service returns empty body
+   in requests
+-  fix: make CIMI CloudEntryPoint conform to standard
+-  fix: pagination in image and deployment pages
+-  fix: pagination in run section of a module
+
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
 
 Migration
 ~~~~~~~~~
 
-A database migration is required from v2.14 to v2.23.2.  Please
-execute the following procedures in order to perform the necessary
-migration.
+**When upgrading from previous versions two files must be renamed by
+hand**:
 
-**TBD**
+-  ``mv /etc/default/slipstream.rpmnew /etc/default/slipstream``
+-  ``mv /etc/default/ssclj.rpmnew /etc/default/ssclj``
+
+This is not needed on a fresh installations of v2.23.2.
+
+**Database migration is required from v2.14 to v2.23.2.  The following steps
+MUST be followed:**
+
+1. Upgrade SlipStream
+2. Stop SlipStream::
+
+       $ service slipstream stop
+
+3. Stop HSQLDB (or your DB engine)::
+
+       $ service hsqldb stop
+
+4. Execute the following SQL script
+   */opt/slipstream/server/migrations/015_compute_timestamp_usage.sql*::
+
+       $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/sscljdb,user=sa,password= /opt/slipstream/server/migrations/015_compute_timestamp_usage.sql
+
+5. Execute the following SQL script */opt/slipstream/server/migrations/016_add_frequency_usage.sql*::
+
+      $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/sscljdb,user=sa,password= /opt/slipstream/server/migrations/016_add_frequency_usage.sql
+
+6. Execute the following SQL script
+   */opt/slipstream/server/migrations/017\_add\_external\_login.sql*::
+
+       $ java -jar /opt/hsqldb/lib/sqltool.jar --autoCommit --inlineRc=url=jdbc:hsqldb:file:/opt/slipstream/SlipStreamDB/slipstreamdb,user=sa,password= /opt/slipstream/server/migrations/017\_add\_external\_login.sql
+
+7. Start HSQLDB (or your DB engine)::
+
+       $ service hsqldb start
+
+8. Delete all usage_summaries, and recompute them thanks to summarizer script::
+
+    $ java -Dconfig.path=db.spec -cp \ "/opt/slipstream/ssclj/resources:/opt/slipstream/ssclj/lib/ext/*:/opt/slipstream/ssclj/lib/ssclj.jar" \
+     com.sixsq.slipstream.ssclj.usage.summarizer -f <frequency> -n <nb-in-past>
+
+Use 'daily, 'weekly' and 'monthly' for '-f' option.  Adapt value given
+to '-n' option for each frequency.
+
+9. Start SlipStream::
+
+       $ service slipstream start
+
 
 Commits
 ~~~~~~~

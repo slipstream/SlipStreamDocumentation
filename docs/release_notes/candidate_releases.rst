@@ -213,9 +213,7 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-Database migration is required from v2.21 to v2.22.
-
-The following steps
+**Database migration is required from v2.21 to v2.22.  The following steps
 MUST be followed:**
 
 1. Upgrade SlipStream
@@ -378,7 +376,7 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-Database migration is required from v2.19.1 to v2.20.
+**Database migration is required from v2.19.1 to v2.20.
 The following steps MUST be followed:**
 
 1. Upgrade SlipStream
