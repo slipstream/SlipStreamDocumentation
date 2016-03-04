@@ -21,8 +21,7 @@ For SlipStream administrators [Dave]:
    been updated to support systemd only.  Caches have been moved from
    `/tmp` and `/var/tmp` to avoid startup problems. 
 
-For application users, developers, and SlipStream administrators
-[Alice, Clara, Dave]:
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - Improve query performance when retrieving event resources through
    the API and in the dashboard.
  - Improve graphical feedback when viewing virtual machines to
@@ -101,8 +100,7 @@ For SlipStream administrators [Dave]:
  - Fix packaging issue which left out scripts for periodic usage
    analysis. 
 
-For application users, developers, and SlipStream administrators
-[Alice, Clara, Dave]:
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - Improved application state handling to avoid race conditions
    leading to failures when scaling an application.
  - Improve OpenStack connector to reduce time to retrieve the IP
@@ -153,8 +151,7 @@ For SlipStream administrators [Dave]:
  - Optimize data flow by using nginx to route requests to the
    appropriate SlipStream services.
 
-For application users, developers, and SlipStream administrators
-[Alice, Clara, Dave]:
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - Error handling when starting and stopping runs has been improved.
  - CloudStack and Exoscale (enterprise) connectors now support
    multiple zones.
