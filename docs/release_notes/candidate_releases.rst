@@ -23,7 +23,7 @@ For SlipStream administrators [Dave]:
 
 For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - Improve query performance when retrieving event resources through
-   the API and in the dashboard.
+   the API and in the UI.
  - Improve graphical feedback when viewing virtual machines to
    indicate those that are not known to SlipStream.
  - OpenNebula connector allows custom template fields to be
@@ -88,10 +88,10 @@ New features and bug fixes in v2.23.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For application developers [Clara]:
- - Fixed issues with command line client so that the `ss-get
-   --noblock` option works correctly, `ss-abort` no longer requires a
-   message, and the `ss-execute` option `--mutable-run` has been
-   changed to `--scalable`. 
+ - Fixed issues with command line client so that the ``ss-get
+   --noblock`` option works correctly, ``ss-abort`` no longer requires a
+   message, and the ``ss-execute`` option ``--mutable-run`` has been
+   changed to ``--scalable``. 
  - Refactored client clojure API to make actions/functions correspond
    better to end user needs.
  - Fix a bug in which the same resource could be added twice.
