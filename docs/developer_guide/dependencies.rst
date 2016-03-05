@@ -302,8 +302,11 @@ The SlipStream RPM packages will be built if you install the ``rpm`` and
 the SlipStream server. Follow the instructions for running a test
 version of the server from the respository sources.
 
-Build Tool: Maven
------------------
+Build Tools
+-----------
+
+Maven
+~~~~~
 
 The overall SlipStream build is controlled through
 `Maven <https://maven.apache.org/>`__.
@@ -322,12 +325,37 @@ environment to make the ``mvn`` command visible.
     3.2.0.
 
 Once you have downloaded and unpacked Maven, you can setup the
-environment with:
-
-::
+environment with::
 
     $ export MAVEN_HOME=<installation directory>/apache-maven-3.3.3
     $ export PATH=$PATH:$MAVEN_HOME/bin
 
 The ``mvn`` command should now be visible. The software will build with
 any maven version later than 3.2+.
+
+Boot
+~~~~
+
+The clojure SlipStream server (ssclj) and its components are built
+using `Boot <http://boot-clj.com/>`__. ``Boot`` is triggered via Maven
+to allow for an integrated build process.
+
+To install ``boot``, follow its `installation instructions
+<https://github.com/boot-clj/boot#install>`__.
+
+After installation you must make sure that the ``boot`` command is in
+your path.  Setup the path with::
+
+    $ export PATH=$PATH:<installation directory>/bin
+
+you may also want to set the environment variables::
+  
+    $ export BOOT_JVM_OPTIONS=-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx2g -Xverify:none
+    $ export BOOT_HOME=${HOME}/.boot
+    $ export BOOT_EMIT_TARGET=no
+
+You will probably want to do this from your shell profile.  With the
+above configuration, you should now be able to execute the command
+``boot --help`` and see usage information and defined tasks.
+
+
