@@ -29,7 +29,7 @@ your work.
 There are two important projects that are shared with everyone:
 
 - The "examples/images" project contains basic operating system images
-  (like Ubuntu 14.04 and CentOS 6) that are reused extensively in the
+  (like Ubuntu 14.04 and CentOS 6 or 7) that are reused extensively in the
   definition of application components.
 - The "apps" project contains set of application definitions created
   by SixSq to highlight features of SlipStream and to serve as a basis

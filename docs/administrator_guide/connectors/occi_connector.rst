@@ -12,7 +12,8 @@ following script to install all required dependencies:
 
     # EPEL release
     echo "Installing EPEL release..."
-    rpm -ivH "http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm"
+    yum install -y yum-utils epel-release
+    yum-config-manager --enable epel
 
     # Install dependencies
     echo "Installing dependencies..."
@@ -20,7 +21,7 @@ following script to install all required dependencies:
 
     # Install EGI UMD release
     echo "Installing EGI UMD 3 release (check for other updates) ..."
-    rpm -ivH http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/updates/umd-release-3.0.1-1.el6.noarch.rpm
+    rpm -ivH http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/base/umd-release-4.0.0-1.el7.noarch.rpm
 
     # Install FedCloud CA Certificates
     echo "Installing FedCloud CA Certificates release..."
@@ -35,11 +36,11 @@ following script to install all required dependencies:
     # run it immediately (it can take some time...)
     /usr/sbin/fetch-crl
     # enable the periodic fetch-crl cron job
-    /sbin/chkconfig fetch-crl-cron on
-    /sbin/service fetch-crl-cron start
+    systemctl enable fetch-crl-cron
+    systemctl start fetch-crl-cron
 
     # Provider of rOCCI client -- occi-cli RPM.
-    wget -O /etc/yum.repos.d/rocci.repo http://repository.egi.eu/community/software/rocci.cli/4.2.x/releases/repofiles/sl-6-x86_64.repo
+    wget -O /etc/yum.repos.d/rocci.repo http://repository.egi.eu/community/software/rocci.cli/4.3.x/releases/repofiles/sl-7-x86_64.repo
     yum install -y occi-cli
 
 The server must also be configured to support the virtual organizations
@@ -80,7 +81,7 @@ in order for it to take the new connector into account:
 
 ::
 
-    $ service slipstream restart
+    $ systemctl restart slipstream
 
 Now we need to configure SlipStream to take advantage of the new
 connector.
