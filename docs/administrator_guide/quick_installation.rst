@@ -2,7 +2,7 @@ Quick Installation
 ==================
 
 An automated installation script is available to install SlipStream and
-all of it's dependencies on a CentOS machine.
+all of it's dependencies on a CentOS 7 machine.
 
 This script will do the following actions on your machine:
 
@@ -82,7 +82,7 @@ Once all needed connectors are installed, restart SlipStream with:
 
 ::
 
-    $ service slipstream restart
+    $ systemctl restart slipstream
 
 Testing the Service
 -------------------
@@ -148,13 +148,20 @@ again replacing the values as appropriate.
 Set up Github external authentication
 -------------------------------------
 
-Since version 2.22, Github users can log in SlipStream with their Github account (if a match is found between Github email and SlipStream email, existing SlipStream account is then bound to the Github account, otherwise a new SlipStream user is created).
+Since version 2.22, Github users can log in SlipStream with their Github account
+(if a match is found between Github email and SlipStream email, existing SlipStream account
+is then bound to the Github account, otherwise a new SlipStream user is created).
 
 First, register this new SlipStream instance in Github: https://github.com/settings/applications/new.
 The Homepage URL can be the SlipStream instance end point.
 The Authorization callback URL must be <SlipStream end point>/auth/callback-github.
 You will obtain a Github client ID and a Github secret (see next).
 
-Then, edit authentication server configuration (/opt/slipstream/ssclj/resources/db.spec) with these Github credentials. (Do not forget to provide values for :auth-server and :main-server entries).
+Then, edit authentication server configuration (/opt/slipstream/ssclj/resources/db.spec) with these
+Github credentials. (Do not forget to provide values for :auth-server and :main-server entries).
 
 Finally, restart ssclj service.
+
+::
+
+    $ systemctl restart ssclj

@@ -121,7 +121,7 @@ Restart authentication server:
 
 ::
 
-  service sssclj restart
+  systemctl restart ssclj
 
 Any error in configuration (keys do not match or wrong passphrase used) will result in errors (users login) like:
 
