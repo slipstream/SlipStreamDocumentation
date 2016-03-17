@@ -2,7 +2,7 @@ Quick Installation
 ==================
 
 An automated installation script is available to install SlipStream and
-all of it's dependencies on a CentOS 7 machine.
+all of its dependencies on a CentOS 7 machine.
 
 This script will do the following actions on your machine:
 
