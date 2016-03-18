@@ -30,7 +30,7 @@ in order for it to take the new connector into account:
 
 ::
 
-    $ service slipstream restart
+    $ systemctl restart slipstream
 
 Now we need to configure SlipStream to take advantage of the new
 connector.

@@ -4,9 +4,9 @@ Dependencies
 To build SlipStream, you need to have a variety of languages, tools, and
 libraries installed on your system.
 
-The current supported target platform is CentOS 6; however, the software
+The current supported target platform is CentOS 7; however, the software
 should build without problems on any Unix-like environment (Linux,
-FreeBSD, Mac OS X, etc.). Packages will only be built on platforms
+FreeBSD, Mac OS X, etc.). OS level packages will only be built on platforms
 supporting RPM.
 
 SlipStream will **not** build on Windows.
@@ -56,116 +56,12 @@ installed with:
 
 These dependencies are needed to run the unit tests for the python code.
 
-CentOS 6
---------
-
-CentOS 6 is the current target platform for production deployments of
-SlipStream. Builds on CentOS 6 are the only ones that are officially
-supported.
-
-These instructions assume that you are building the software on an
-**up-to-date, minimal CentOS 6 system**.
-
-Several of the packages required for the build are not available in the
-core CentOS 6 distribution. You will need to configure your machine to
-use the `EPEL 6 package
-repository <http://fedoraproject.org/wiki/EPEL>`__:
-
-::
-
-    $ yum install -y epel-release
-
-If you're not using a CentOS release, you'll need to find and install
-the RPM for EPEL configuration on their website. You can find the URL
-and package name via the information in the "How can I use these extra
-packages?" section on the `EPEL welcome
-page <http://fedoraproject.org/wiki/EPEL>`__.
-
-In the latest versions of CentOS 6 there are some conflicts between the
-versions of python crypto libraries and those needed by SlipStream. To
-avoid these conflicts, do the following:
-
-::
-
-    $ yum erase python-paramiko python-crypto
-
-The correct versions will then be installed with the other dependencies.
-
-Most (but not all!) of the build dependencies can be installed directly
-with ``yum``. The following table lists the RPM packages that must be
-installed and describes how those packages are used within the build.
-
-The command:
-
-::
-
-    $ yum install -y \
-          git \
-          java-1.8.0-openjdk-devel \
-          python \
-          python-devel \
-          pylint \
-          python-pip \
-          python-mock \
-          gcc \
-          rpm-build \
-          createrepo
-
-will install all of the listed packages.
-
-+----------------------------+---------------------------------------------+
-| Package                    | Comment                                     |
-+----------------------------+---------------------------------------------+
-| git                        | Download sources from GitHub                |
-+----------------------------+---------------------------------------------+
-| java-1.8.0-openjdk-devel   | Compile and run the server                  |
-+----------------------------+---------------------------------------------+
-| python                     | Client CLI build and testing                |
-+----------------------------+---------------------------------------------+
-| python-devel               | Needed for python module dependencies       |
-+----------------------------+---------------------------------------------+
-| pylint                     | Analysis of python code                     |
-+----------------------------+---------------------------------------------+
-| python-pip                 | Installation of python modules              |
-+----------------------------+---------------------------------------------+
-| python-mock                | Mocking library used in unit tests          |
-+----------------------------+---------------------------------------------+
-| gcc                        | c-bindings for python module dependencies   |
-+----------------------------+---------------------------------------------+
-| rpm-build                  | Creates binary distribution packages        |
-+----------------------------+---------------------------------------------+
-| createrepo                 | Create local yum repository                 |
-+----------------------------+---------------------------------------------+
-
-There are a few python modules that must be installed with ``pip``. The
-SlipStream code uses options and features that require more recent
-versions than those packaged for CentOS 6. The following table provides
-details. Use the command:
-
-::
-
-    $ pip install nose coverage paramiko
-
-to install all of these packages.
-
-+------------+----------------------------------------+
-| Package    | Comment                                |
-+------------+----------------------------------------+
-| nose       | Unit testing utility for python code   |
-+------------+----------------------------------------+
-| coverage   | Coverage testing for python code       |
-+------------+----------------------------------------+
-| paramiko   | SSH library for python                 |
-+------------+----------------------------------------+
-
 CentOS 7
 --------
 
-The official platform for SlipStream will shift to CentOS 7 sometime in
-the not-too-distant future. In preparation for this, the software is
-already being built on this platform. Because of the more recent
-packages provided in CentOS 7, the dependency installation is somewhat
-simplified from CentOS 6.
+CentOS 7 is the current target platform for production deployments of
+SlipStream. Builds on CentOS 7 are the only ones that are officially
+supported.
 
 These instructions assume that you are building the software on an
 **up-to-date, minimal CentOS 7 system**.
@@ -177,7 +73,8 @@ repository <http://fedoraproject.org/wiki/EPEL>`__.
 
 ::
 
-    $ yum install -y epel-release
+    $ yum install -y yum-utils epel-release
+    $ yum-config-manager --enable epel
 
 If you're not using a CentOS release, you'll need to find and install
 the RPM for EPEL configuration on their website. You can find the URL

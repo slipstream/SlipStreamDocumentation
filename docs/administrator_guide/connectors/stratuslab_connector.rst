@@ -17,6 +17,8 @@ StratusLab yum repository.
     gpgcheck=0
     EOF
 
+NB! It's OK to use StratusLab's CentOS 6 YUM repo on CentOS 7 SlipStream host.
+
 If the configuration was successful, a ``yum search`` for "stratuslab"
 should provide a list of all of the StratusLab packages.
 

@@ -10,8 +10,8 @@ resource requirements.
 Software Requirements
 ---------------------
 
-The software is tested, packaged, and supported for CentOS 6 systems.
-The packages should install and run correctly on any RHEL 6 compatible
+The software is tested, packaged, and supported for CentOS 7 systems.
+The packages should install and run correctly on any RHEL 7 compatible
 system. The software itself should build and run on any Unix-like
 system, although some changes may be needed for integration with the
 operating system's service management infrastructure.
