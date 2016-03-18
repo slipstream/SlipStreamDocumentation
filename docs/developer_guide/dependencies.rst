@@ -357,5 +357,3 @@ you may also want to set the environment variables::
 You will probably want to do this from your shell profile.  With the
 above configuration, you should now be able to execute the command
 ``boot --help`` and see usage information and defined tasks.
-
-
