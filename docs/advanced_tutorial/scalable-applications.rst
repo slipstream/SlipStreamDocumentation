@@ -44,7 +44,7 @@ client. **Scaling actions are not yet supported in the web
 interface.**
 
 The API calls to trigger the scaling actions are available under the
-`Run section <http://ssapi.sixsq.com/#create-a-mutable-run>`__ of the
+`Run section <http://ssapi.sixsq.com/#create-a-scalable-run>`__ of the
 SlipStream API documentation.
 
 The SlipStream CLI comes with the following commands that trigger the
