@@ -47,9 +47,7 @@ available.
 
 Most of the necessary dependencies are already installed by default in
 recent versions of Mac OS X. The few that are not already there, can be
-installed with:
-
-::
+installed with::
 
     $ sudo easy_install pip
     $ sudo pip install nose coverage paramiko mock pylint
@@ -86,9 +84,7 @@ All of the build dependencies can be installed directly with ``yum``.
 The following table lists the RPM packages that must be installed and
 describes how those packages are used within the build.
 
-The command:
-
-::
+The command::
 
     $ yum install -y \
           git \
@@ -144,9 +140,7 @@ All of the build dependencies can be installed directly with
 ``apt-get``. The following table lists the packages that must be
 installed and describes how those packages are used within the build.
 
-The command:
-
-::
+The command::
 
     $ apt-get install -y \
           git \
@@ -254,3 +248,32 @@ you may also want to set the environment variables::
 You will probably want to do this from your shell profile.  With the
 above configuration, you should now be able to execute the command
 ``boot --help`` and see usage information and defined tasks.
+
+PhantomJS
+~~~~~~~~~
+
+PhantomJS is a headless Javascript environment that is used to test
+the clojurescript-compatible client API.  It must be installed if the
+the unit tests are run during the SlipStream build.
+
+On Mac OS X, it can be installed easily with `brew`.  Just run the
+command::
+
+  $ brew install phantomjs
+
+You can test that it works by doing `phantomjs --version`.
+
+On Linux machines, you must download the PhantomJS binary tarball and
+then move the static executable into the path.  The tarball can be
+found on the `PhantomJS download webpage
+<http://phantomjs.org/download.html>`__.  Usually the binary is copied
+to `/usr/local/bin/phantomjs`, but any location available on the PATH
+will work.  The name of the executable must be `phantomjs`.
+
+On CentOS 7, you must also install a few dependencies::
+
+  $ yum install -y bzip2 fontconfig freetype libstdc++
+
+As above, you can test the installation with `phantomjs --version`.
+
+

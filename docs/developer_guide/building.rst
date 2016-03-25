@@ -3,9 +3,7 @@ Build Everything
 
 Maven is used to control the build of all of the SlipStream components.
 To perform the full build, just drop into the "SlipStream" repository
-that you've checked out and perform the usual maven dance:
-
-::
+that you've checked out and perform the usual maven dance::
 
     $ cd SlipStream
     $ mvn clean install
@@ -20,15 +18,11 @@ Local Yum Repository
 If you're using a CentOS machine, the build process will have created a
 YUM repository containing all of the generated RPM packages.
 
-Create the directory:
-
-::
+Create the directory::
 
     $ mkdir -p /opt/slipstream
 
-and then unpack the tarball there:
-
-::
+and then unpack the tarball there::
 
     $ cd /opt/slipstream
     $ tar -c /opt/slipstream zxf yum/target/SlipStream*.tar.gz
