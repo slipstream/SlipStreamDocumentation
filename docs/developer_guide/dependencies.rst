@@ -256,24 +256,24 @@ PhantomJS is a headless Javascript environment that is used to test
 the clojurescript-compatible client API.  It must be installed if the
 the unit tests are run during the SlipStream build.
 
-On Mac OS X, it can be installed easily with `brew`.  Just run the
+On Mac OS X, it can be installed easily with ``brew``.  Just run the
 command::
 
   $ brew install phantomjs
 
-You can test that it works by doing `phantomjs --version`.
+You can test that it works by doing ``phantomjs --version``.
 
 On Linux machines, you must download the PhantomJS binary tarball and
 then move the static executable into the path.  The tarball can be
 found on the `PhantomJS download webpage
 <http://phantomjs.org/download.html>`__.  Usually the binary is copied
-to `/usr/local/bin/phantomjs`, but any location available on the PATH
-will work.  The name of the executable must be `phantomjs`.
+to ``/usr/local/bin/phantomjs``, but any location available on the PATH
+will work.  The name of the executable must be ``phantomjs``.
 
 On CentOS 7, you must also install a few dependencies::
 
   $ yum install -y bzip2 fontconfig freetype libstdc++
 
-As above, you can test the installation with `phantomjs --version`.
+As above, you can test the installation with ``phantomjs --version``.
 
 
