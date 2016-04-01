@@ -142,8 +142,8 @@ nonetheless, it can be used for development and testing.
 These instructions assume that you are building the software on an
 up-to-date, minimal Ubuntu 14.04 system.
 
-Unfortunately, the default version of Java available on Ubuntu 14.04
-is too old to work with SlipStream.  You must pull the latest version
+**Unfortunately, the default version of Java available on Ubuntu 14.04
+is too old to work with SlipStream.** You must pull the latest version
 of Java (1.8) from a separate repository.  Run the following to do
 this::
 
