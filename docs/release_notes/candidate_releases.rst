@@ -6,6 +6,138 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v3.1 (candidate) - ?? March 2016
+--------------------------------
+
+New features and bug fixes in v3.1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For managers and super users [Bob]:
+
+-
+
+For SlipStream administrators [Dave]:
+
+-
+
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
+
+-
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+**NB!** Because SlipStream v3 requires the CentOS 7 operating system, an
+upgrade from the SlipStream v2 series to the SlipStream v3 series
+requires a complete database migration from the old machine to a new
+one running CentOS 7.
+
+Below are the full migration instructions.
+
+Installation of SlipStream
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Install SlipStream on CentOS 7 following `Administrators Guide <http://ssdocs.sixsq.com/en/latest/administrator_guide/index.html>`__.
+When installing cloud connectors, it's important to ensure that the list of the
+connectors to be installed matches the one configured on the previous SlipStream
+instance as we are going to fully migrate DB containing the complete service configuration of
+the current SlipStream instance to the new one.  The list of the installed connectors can be
+obtained on the current SlipStream by
+::
+
+    [admin@slipstream ~]# rpm -qa | grep slipstream-connector | grep -v python | cut -d'-' -f3 | tee installed-connectors.txt
+    cloudstack
+    ec2
+    opennebula
+    openstack
+    nuvlabox
+    nativesoftlayer
+    stratuslab
+    azure
+    exoscale
+    [admin@slipstream ~]#
+
+After installation of SlipStream and connectors on CentOS 7, verify that the service is
+properly up and running by accessing the main page of the service.
+
+Migration of DB, reports and logs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On the current CentOS 6 machine running SlipStream take the following steps.
+
+1. Stop the following services.
+::
+
+    $ service nginx stop
+    $ service slipstream stop
+    $ service ssclj stop
+
+2. Restart hsqldb to checkpoint the DB (this will trigger replay of the WAL log).
+::
+
+    $ service hsqldb restart
+
+3. Stop hsqldb.
+::
+
+    $ service hsqldb stop
+
+4. Archive SlipStream DB, deployment reports and service logs.
+::
+
+    $ tar -zc /opt/slipstream/SlipStreamDB \
+         /otp/slipstream/server/logs /var/log/slipstream/ssclj/ \
+         /var/tmp/slipstream/reports \
+         -f ~/SlipStream-backup.tgz
+
+5. Copy the archive to the new CentOS 7 machine that will be hosting SlipStream.
+
+
+On the new CentOS 7 machine, after installing SlipStream from scratch
+and validating that it works,
+
+1. stop all the services by running
+::
+
+    $ systemctl stop nginx
+    $ systemctl stop slipstream
+    $ systemctl stop ssclj
+    $ systemctl stop hsqldb
+
+2. Inflate the backup tarball as follows
+::
+
+    $ tar -zxvf ~/SlipStream-backup.tgz -C /
+
+This should inflate
+
+- database to `/opt/slipstream/SlipStreamDB`
+- reports to `/var/tmp/slipstream/reports`
+- logs to `/otp/slipstream/server/logs` and `/var/log/slipstream/ssclj/`
+
+3. Start all the services in the following order
+::
+
+    $ systemctl start hsqldb
+    $ systemctl start ssclj
+    $ systemctl start slipstream
+    $ systemctl start nginx
+
+This completes the migration process. Validate the migration by loging to
+the service and launching a test deployment.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.0-community...v3.1-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.0-community...v3.1-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.0-community...v3.1-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.0-community...v3.1-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.0-community...v3.1-community>`__
+
 v3.0 (candidate) - 7 February 2016
 ----------------------------------
 

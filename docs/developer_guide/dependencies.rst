@@ -47,9 +47,7 @@ available.
 
 Most of the necessary dependencies are already installed by default in
 recent versions of Mac OS X. The few that are not already there, can be
-installed with:
-
-::
+installed with::
 
     $ sudo easy_install pip
     $ sudo pip install nose coverage paramiko mock pylint
@@ -69,9 +67,7 @@ These instructions assume that you are building the software on an
 Several of the packages required for the build are not available in the
 core CentOS 7 distribution. You will need to configure your machine to
 use the `EPEL 7 package
-repository <http://fedoraproject.org/wiki/EPEL>`__.
-
-::
+repository <http://fedoraproject.org/wiki/EPEL>`__::
 
     $ yum install -y yum-utils epel-release
     $ yum-config-manager --enable epel
@@ -86,9 +82,7 @@ All of the build dependencies can be installed directly with ``yum``.
 The following table lists the RPM packages that must be installed and
 describes how those packages are used within the build.
 
-The command:
-
-::
+The command::
 
     $ yum install -y \
           git \
@@ -101,7 +95,11 @@ The command:
           python-coverage \
           python-paramiko \
           rpm-build \
-          createrepo
+          createrepo \
+          bzip2 \
+          fontconfig \
+          freetype \
+          libstdc++
 
 will install all of the listed packages.
 
@@ -130,6 +128,16 @@ will install all of the listed packages.
 +----------------------------+-----------------------------------------+
 | createrepo                 | Create local yum repository             |
 +----------------------------+-----------------------------------------+
+| fontconfig                 | Clojurescript testing (via phantomjs)   |
++----------------------------+-----------------------------------------+
+| bzip2                      | Clojurescript testing (phantomjs dep.)  |
++----------------------------+-----------------------------------------+
+| fontconfig                 | Clojurescript testing (phantomjs dep.)  |
++----------------------------+-----------------------------------------+
+| freetype                   | Clojurescript testing (phantomjs dep.)  |
++----------------------------+-----------------------------------------+
+| libstdc++                  | Clojurescript testing (phantomjs dep.)  |
++----------------------------+-----------------------------------------+
 
 Ubuntu 14.04
 ------------
@@ -144,9 +152,7 @@ All of the build dependencies can be installed directly with
 ``apt-get``. The following table lists the packages that must be
 installed and describes how those packages are used within the build.
 
-The command:
-
-::
+The command::
 
     $ apt-get install -y \
           git \
@@ -158,7 +164,11 @@ The command:
           python-coverage \
           python-paramiko \
           rpm \
-          createrepo
+          createrepo \
+          bzip2 \
+          fontconfig \
+          freetype \
+          libstdc++
 
 will install all of the listed packages.
 
@@ -186,6 +196,14 @@ will install all of the listed packages.
 | rpm               | Creates binary distribution packages    |
 +-------------------+-----------------------------------------+
 | createrepo        | Create local yum repository             |
++-------------------+-----------------------------------------+
+| bzip2             | Clojurescript testing (phantomjs dep.)  |
++-------------------+-----------------------------------------+
+| fontconfig        | Clojurescript testing (phantomjs dep.)  |
++-------------------+-----------------------------------------+
+| freetype          | Clojurescript testing (phantomjs dep.)  |
++-------------------+-----------------------------------------+
+| libstdc++         | Clojurescript testing (phantomjs dep.)  |
 +-------------------+-----------------------------------------+
 
 .. important:: 
@@ -254,3 +272,38 @@ you may also want to set the environment variables::
 You will probably want to do this from your shell profile.  With the
 above configuration, you should now be able to execute the command
 ``boot --help`` and see usage information and defined tasks.
+
+Note that if you're running as root on your machine, you will also
+need to add the variable::
+
+    $ export BOOT_AS_ROOT=true
+
+Otherwise ``boot`` will refuse to run.
+
+PhantomJS
+~~~~~~~~~
+
+PhantomJS is a headless Javascript environment that is used to test
+the clojurescript-compatible client API.  It must be installed if the
+the unit tests are run during the SlipStream build.
+
+On **Mac OS X**, it can be installed easily with ``brew``.  Just run
+the command::
+
+  $ brew install phantomjs
+
+You can test that it works by doing ``phantomjs --version``.
+
+On **Linux** machines, you must download the PhantomJS binary tarball
+and then move the static executable into the path.  The tarball can be
+found on the `PhantomJS download webpage
+<http://phantomjs.org/download.html>`__.  Usually the binary is copied
+to ``/usr/local/bin/phantomjs``, but any location available on the
+PATH will work.  The name of the executable must be ``phantomjs``.
+
+The dependencies you installed above for CentOS 7 or Ubuntu include
+the dependencies for phantomjs. 
+
+As above, you can test the installation with ``phantomjs --version``.
+
+
