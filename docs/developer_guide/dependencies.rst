@@ -186,7 +186,7 @@ will install all of the listed packages.
 +-------------------+-----------------------------------------+
 | git               | Download sources from GitHub            |
 +-------------------+-----------------------------------------+
-| openjdk-7-jdk     | Compile and run the server              |
+| openjdk-8-jdk     | Compile and run the server              |
 +-------------------+-----------------------------------------+
 | python-minimal    | Client CLI build and testing            |
 +-------------------+-----------------------------------------+
