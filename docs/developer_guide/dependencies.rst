@@ -142,7 +142,24 @@ nonetheless, it can be used for development and testing.
 These instructions assume that you are building the software on an
 up-to-date, minimal Ubuntu 14.04 system.
 
-All of the build dependencies can be installed directly with
+Unfortunately, the default version of Java available on Ubuntu 14.04
+is too old to work with SlipStream.  You must pull the latest version
+of Java (1.8) from a separate repository.  Run the following to do
+this::
+
+    $ add-apt-repository ppa:openjdk-r/ppa
+    $ apt-get update
+
+Confirm that you want to add this repository when asked.  If you have
+multiple versions of java installed, ensure that Java 8 is the
+default. You can update this, with the commands::
+
+    $ update-alternatives --config java
+    $ update-alternatives --config javac
+
+Choose the Java 8 option for both.
+
+All of the build dependencies can then be installed directly with
 ``apt-get``. The following table lists the packages that must be
 installed and describes how those packages are used within the build.
 
@@ -150,7 +167,7 @@ The command::
 
     $ apt-get install -y \
           git \
-          openjdk-7-jdk \
+          openjdk-8-jdk \
           python-minimal \
           pylint \
           python-mock \
@@ -253,7 +270,7 @@ your path.  Setup the path with::
 
 you may also want to set the environment variables::
   
-    $ export BOOT_JVM_OPTIONS=-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx2g -Xverify:none
+    $ export BOOT_JVM_OPTIONS='-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx2g -Xverify:none'
     $ export BOOT_HOME=${HOME}/.boot
     $ export BOOT_EMIT_TARGET=no
 
@@ -264,7 +281,7 @@ above configuration, you should now be able to execute the command
 Note that if you're running as root on your machine, you will also
 need to add the variable::
 
-    $ export BOOT_AS_ROOT=true
+    $ export BOOT_AS_ROOT=yes
 
 Otherwise ``boot`` will refuse to run.
 
