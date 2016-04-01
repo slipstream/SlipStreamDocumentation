@@ -97,9 +97,7 @@ The command::
           rpm-build \
           createrepo \
           bzip2 \
-          fontconfig \
-          freetype \
-          libstdc++
+          fontconfig
 
 will install all of the listed packages.
 
@@ -134,10 +132,6 @@ will install all of the listed packages.
 +----------------------------+-----------------------------------------+
 | fontconfig                 | Clojurescript testing (phantomjs dep.)  |
 +----------------------------+-----------------------------------------+
-| freetype                   | Clojurescript testing (phantomjs dep.)  |
-+----------------------------+-----------------------------------------+
-| libstdc++                  | Clojurescript testing (phantomjs dep.)  |
-+----------------------------+-----------------------------------------+
 
 Ubuntu 14.04
 ------------
@@ -166,9 +160,7 @@ The command::
           rpm \
           createrepo \
           bzip2 \
-          fontconfig \
-          freetype \
-          libstdc++
+          fontconfig
 
 will install all of the listed packages.
 
@@ -200,10 +192,6 @@ will install all of the listed packages.
 | bzip2             | Clojurescript testing (phantomjs dep.)  |
 +-------------------+-----------------------------------------+
 | fontconfig        | Clojurescript testing (phantomjs dep.)  |
-+-------------------+-----------------------------------------+
-| freetype          | Clojurescript testing (phantomjs dep.)  |
-+-------------------+-----------------------------------------+
-| libstdc++         | Clojurescript testing (phantomjs dep.)  |
 +-------------------+-----------------------------------------+
 
 .. important:: 
@@ -305,5 +293,3 @@ The dependencies you installed above for CentOS 7 or Ubuntu include
 the dependencies for phantomjs. 
 
 As above, you can test the installation with ``phantomjs --version``.
-
-
