@@ -62,7 +62,8 @@ SlipStream. Builds on CentOS 7 are the only ones that are officially
 supported.
 
 These instructions assume that you are building the software on an
-**up-to-date, minimal CentOS 7 system**.
+**up-to-date, minimal CentOS 7 system**.  You should upgrade your
+system to ensure you have the latest versions of dependencies.
 
 Several of the packages required for the build are not available in the
 core CentOS 7 distribution. You will need to configure your machine to
@@ -140,7 +141,8 @@ Ubuntu is **not** a supported production platform for SlipStream;
 nonetheless, it can be used for development and testing.
 
 These instructions assume that you are building the software on an
-up-to-date, minimal Ubuntu 14.04 system.
+up-to-date, minimal Ubuntu 14.04 system.  You should upgrade your
+system to make sure you have the latest versions of dependencies.
 
 **Unfortunately, the default version of Java available on Ubuntu 14.04
 is too old to work with SlipStream.** You must pull the latest version
