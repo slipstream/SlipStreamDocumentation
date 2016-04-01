@@ -1,22 +1,6 @@
 Build Everything
 ================
 
-Currently you **must** provide a couple of configuration files for the
-build.  Do the following::
-
-    $ touch /usr/bin/slipstream.client.conf
-
-    $ cat > ~/slipstream.context << EOF
-    [contextualization]
-    diid = 123
-    cookie = foo
-    serviceurl = http://example.com
-    node_instance_name = instance-name
-    EOF
-
-This should not be necessary and will be cleaned up in a future
-release. 
-
 Maven is used to control the build of all of the SlipStream components.
 To perform the full build, just drop into the "SlipStream" repository
 that you've checked out and perform the usual maven dance::
@@ -27,6 +11,24 @@ that you've checked out and perform the usual maven dance::
 This command will build and test all of the components. If you wish to
 skip the tests, you can add the option ``-DskipTests`` to the maven
 command line.
+
+.. warning::
+
+    Currently you **must** provide a couple of configuration files for
+    the build.  Do the following::
+
+        $ touch /usr/bin/slipstream.client.conf
+
+        $ cat > ~/slipstream.context << EOF
+        [contextualization]
+        diid = 123
+        cookie = foo
+        serviceurl = http://example.com
+        node_instance_name = instance-name
+        EOF
+
+    This should not be necessary and will be cleaned up in a future
+    release.
 
 Local Yum Repository
 --------------------
