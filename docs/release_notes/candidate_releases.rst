@@ -13,43 +13,43 @@ New features and bug fixes in v3.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For managers and super users [Bob]:
-- Cloud managers can now see an overview of the activity on their
-  cloud from all users.
+ - Cloud managers can now see an overview of the activity on their
+   cloud from all users.
 
 For SlipStream administrators [Dave]:
-- Allow direct proxying of the two SlipStream services through nginx
-  to provide more efficient and reliable system.
-- Improved installation and testing scripts.
-- Fix virtual machine state mapping for the OpenNebula connector.
-- Fix build image functionality for the OpenStack connector.
-- Fix various server-side exceptions to avoid "internal server error"
-  responses.
-- Remove unnecessary logging to make the server activity easier to
-  understand.
+ - Allow direct proxying of the two SlipStream services through nginx
+   to provide more efficient and reliable system.
+ - Improved installation and testing scripts.
+ - Fix virtual machine state mapping for the OpenNebula connector.
+ - Fix build image functionality for the OpenStack connector.
+ - Fix various server-side exceptions to avoid "internal server error"
+   responses.
+ - Remove unnecessary logging to make the server activity easier to
+   understand.
 
 For application users and developers [Alice, Clara]:
-- Application component definitions now inherit configuration scripts
-  from their parents, facilitating reuse of existing application
-  components. 
-- Updated dashboard provides more detailed information about virtual
-  machine states and to which run they belong.
-- User profile now provides visual clues as to which cloud connectors
-  are configured and which are not.
-- The command line client and API now use nuv.la as the default
-  endpoint for the SlipStream service.
-- An early alpha clojure(script) API is now available.  It contains
-  functions for scaling runs and for the CRUD actions on CIMI-like
-  resources. Feedback on the API is welcome.
-- Restarting an aborted run (through ``ss-abort --cancel`` now
-  generates an event in the run's event log.
-- Expand SlipStream bootstrap mechanism to more operating systems
-  (notably SuSE and OpenSuSE 11-13).
-- Improve the logs for machines deployed with SlipStream. 
+ - Application component definitions now inherit configuration scripts
+   from their parents, facilitating reuse of existing application
+   components. 
+ - Updated dashboard provides more detailed information about virtual
+   machine states and to which run they belong.
+ - User profile now provides visual clues as to which cloud connectors
+   are configured and which are not.
+ - The command line client and API now use nuv.la as the default
+   endpoint for the SlipStream service.
+ - An early alpha clojure(script) API is now available.  It contains
+   functions for scaling runs and for the CRUD actions on CIMI-like
+   resources. Feedback on the API is welcome.
+ - Restarting an aborted run (through ``ss-abort --cancel`` now
+   generates an event in the run's event log.
+ - Expand SlipStream bootstrap mechanism to more operating systems
+   (notably SuSE and OpenSuSE 11-13).
+ - Improve the logs for machines deployed with SlipStream. 
 
 For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
-- Update the general and API documentation to consistently use
-  "scalable" runs for those that can be dynamically scaled while
-  running.
+ - Update the general and API documentation to consistently use
+   "scalable" runs for those that can be dynamically scaled while
+   running.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
