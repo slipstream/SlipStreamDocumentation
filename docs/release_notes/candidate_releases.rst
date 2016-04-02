@@ -13,12 +13,10 @@ New features and bug fixes in v3.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For managers and super users [Bob]:
-
 - Cloud managers can now see an overview of the activity on their
   cloud from all users.
 
 For SlipStream administrators [Dave]:
-
 - Allow direct proxying of the two SlipStream services through nginx
   to provide more efficient and reliable system.
 - Improved installation and testing scripts.
@@ -30,7 +28,6 @@ For SlipStream administrators [Dave]:
   understand.
 
 For application users and developers [Alice, Clara]:
-
 - Application component definitions now inherit configuration scripts
   from their parents, facilitating reuse of existing application
   components. 
@@ -50,7 +47,6 @@ For application users and developers [Alice, Clara]:
 - Improve the logs for machines deployed with SlipStream. 
 
 For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
-
 - Update the general and API documentation to consistently use
   "scalable" runs for those that can be dynamically scaled while
   running.
