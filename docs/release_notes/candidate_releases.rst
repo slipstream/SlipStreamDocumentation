@@ -6,23 +6,54 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
-v3.1 (candidate) - ?? March 2016
---------------------------------
+v3.1 (candidate) - 2 April 2016
+-------------------------------
 
 New features and bug fixes in v3.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For managers and super users [Bob]:
 
--
+- Cloud managers can now see an overview of the activity on their
+  cloud from all users.
 
 For SlipStream administrators [Dave]:
 
--
+- Allow direct proxying of the two SlipStream services through nginx
+  to provide more efficient and reliable system.
+- Improved installation and testing scripts.
+- Fix virtual machine state mapping for the OpenNebula connector.
+- Fix build image functionality for the OpenStack connector.
+- Fix various server-side exceptions to avoid "internal server error"
+  responses.
+- Remove unnecessary logging to make the server activity easier to
+  understand.
+
+For application users and developers [Alice, Clara]:
+
+- Application component definitions now inherit configuration scripts
+  from their parents, facilitating reuse of existing application
+  components. 
+- Updated dashboard provides more detailed information about virtual
+  machine states and to which run they belong.
+- User profile now provides visual clues as to which cloud connectors
+  are configured and which are not.
+- The command line client and API now use nuv.la as the default
+  endpoint for the SlipStream service.
+- An early alpha clojure(script) API is now available.  It contains
+  functions for scaling runs and for the CRUD actions on CIMI-like
+  resources. Feedback on the API is welcome.
+- Restarting an aborted run (through ``ss-abort --cancel`` now
+  generates an event in the run's event log.
+- Expand SlipStream bootstrap mechanism to more operating systems
+  (notably SuSE and OpenSuSE 11-13).
+- Improve the logs for machines deployed with SlipStream. 
 
 For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
 
--
+- Update the general and API documentation to consistently use
+  "scalable" runs for those that can be dynamically scaled while
+  running.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -35,20 +66,29 @@ upgrade from the SlipStream v2 series to the SlipStream v3 series
 requires a complete database migration from the old machine to a new
 one running CentOS 7.
 
+In addition, the names for the service catalog resources have changed.
+Follow the migration instructions for those resources before migrating
+the database, if you are running the service catalog.
+
 Below are the full migration instructions.
 
 Installation of SlipStream
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Install SlipStream on CentOS 7 following `Administrators Guide <http://ssdocs.sixsq.com/en/latest/administrator_guide/index.html>`__.
-When installing cloud connectors, it's important to ensure that the list of the
-connectors to be installed matches the one configured on the previous SlipStream
-instance as we are going to fully migrate DB containing the complete service configuration of
-the current SlipStream instance to the new one.  The list of the installed connectors can be
-obtained on the current SlipStream by
-::
+Install SlipStream on CentOS 7 following `Administrators Guide
+<http://ssdocs.sixsq.com/en/latest/administrator_guide/index.html>`__.
+When installing cloud connectors, it's important to ensure that the
+list of the connectors to be installed matches the one configured on
+the previous SlipStream instance as we are going to fully migrate DB
+containing the complete service configuration of the current
+SlipStream instance to the new one.  The list of the installed
+connectors can be obtained on the current SlipStream by::
 
-    [admin@slipstream ~]# rpm -qa | grep slipstream-connector | grep -v python | cut -d'-' -f3 | tee installed-connectors.txt
+    # rpm -qa | \
+          grep slipstream-connector | \
+          grep -v python | \
+          cut -d'-' -f3 | \
+          tee installed-connectors.txt
     cloudstack
     ec2
     opennebula
@@ -58,57 +98,61 @@ obtained on the current SlipStream by
     stratuslab
     azure
     exoscale
-    [admin@slipstream ~]#
+    #
 
-After installation of SlipStream and connectors on CentOS 7, verify that the service is
-properly up and running by accessing the main page of the service.
+After installation of SlipStream and connectors on CentOS 7, verify
+that the service is properly up and running by accessing the main page
+of the service.
+
+Migration of Service Catalog Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**TBD**
 
 Migration of DB, reports and logs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On the current CentOS 6 machine running SlipStream take the following steps.
+On the current CentOS 6 machine running SlipStream take the following
+steps.
 
-1. Stop the following services.
-::
+1. Stop the following services::
 
     $ service nginx stop
     $ service slipstream stop
     $ service ssclj stop
 
-2. Restart hsqldb to checkpoint the DB (this will trigger replay of the WAL log).
-::
+2. Restart hsqldb to checkpoint the DB (this will trigger replay of
+   the WAL log)::
 
     $ service hsqldb restart
 
-3. Stop hsqldb.
-::
+3. Stop hsqldb::
 
     $ service hsqldb stop
 
-4. Archive SlipStream DB, deployment reports and service logs.
-::
+4. Archive SlipStream DB, deployment reports and service logs::
 
     $ tar -zc /opt/slipstream/SlipStreamDB \
-         /otp/slipstream/server/logs /var/log/slipstream/ssclj/ \
+         /opt/slipstream/server/logs \
+         /var/log/slipstream/ssclj/ \
          /var/tmp/slipstream/reports \
          -f ~/SlipStream-backup.tgz
 
-5. Copy the archive to the new CentOS 7 machine that will be hosting SlipStream.
+5. Copy the archive to the new CentOS 7 machine that will be hosting
+   SlipStream.
 
 
 On the new CentOS 7 machine, after installing SlipStream from scratch
 and validating that it works,
 
-1. stop all the services by running
-::
+1. Stop all the services by running::
 
     $ systemctl stop nginx
     $ systemctl stop slipstream
     $ systemctl stop ssclj
     $ systemctl stop hsqldb
 
-2. Inflate the backup tarball as follows
-::
+2. Inflate the backup tarball as follows::
 
     $ tar -zxvf ~/SlipStream-backup.tgz -C /
 
@@ -116,18 +160,17 @@ This should inflate
 
 - database to `/opt/slipstream/SlipStreamDB`
 - reports to `/var/tmp/slipstream/reports`
-- logs to `/otp/slipstream/server/logs` and `/var/log/slipstream/ssclj/`
+- logs to `/opt/slipstream/server/logs` and `/var/log/slipstream/ssclj/`
 
-3. Start all the services in the following order
-::
+3. Start all the services in the following order::
 
     $ systemctl start hsqldb
     $ systemctl start ssclj
     $ systemctl start slipstream
     $ systemctl start nginx
 
-This completes the migration process. Validate the migration by loging to
-the service and launching a test deployment.
+This completes the migration process. Validate the migration by
+logging to the service and launching a test deployment.
 
 Commits
 ~~~~~~~
