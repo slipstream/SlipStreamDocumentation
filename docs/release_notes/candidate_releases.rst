@@ -178,8 +178,8 @@ Commits
 -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.0-community...v3.1-community>`__
 -  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.0-community...v3.1-community>`__
 
-v3.0 (candidate) - 7 February 2016
-----------------------------------
+v3.0 (candidate) - 7 March 2016
+-------------------------------
 
 New features and bug fixes in v3.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
