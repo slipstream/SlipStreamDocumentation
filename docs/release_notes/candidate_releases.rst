@@ -154,9 +154,10 @@ and validating that it works,
 
 This should inflate
 
-- database to `/opt/slipstream/SlipStreamDB`
-- reports to `/var/tmp/slipstream/reports`
-- logs to `/opt/slipstream/server/logs` and `/var/log/slipstream/ssclj/`
+ - database to ``/opt/slipstream/SlipStreamDB``
+ - reports to ``/var/tmp/slipstream/reports``
+ - logs to ``/opt/slipstream/server/logs`` and
+   ``/var/log/slipstream/ssclj/``
 
 3. Start all the services in the following order::
 
