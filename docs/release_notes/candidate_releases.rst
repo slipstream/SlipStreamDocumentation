@@ -72,7 +72,17 @@ Installation of SlipStream
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Install SlipStream on CentOS 7 following `Administrators Guide
-<http://ssdocs.sixsq.com/en/latest/administrator_guide/index.html>`__.
+<../administrator_guide/index.html>`__.  Please note that for installation of
+SlipStream Enterprise edition you will have to (re-)use the client certificate
+to be able to access SlipStream Enterprise YUM repository.  The certificates are usually
+installed as `/etc/slipstream/yum-client.*`.  On the existing SlipStream
+installation this can be checked by::
+
+   # grep sslclient /etc/yum.repos.d/slipstream.repo
+   sslclientcert=/etc/slipstream/yum-client.crt
+   sslclientkey=/etc/slipstream/yum-client.key
+   ...
+
 When installing cloud connectors, it's important to ensure that the
 list of the connectors to be installed matches the one configured on
 the previous SlipStream instance as we are going to fully migrate DB
@@ -96,8 +106,9 @@ connectors can be obtained on the current SlipStream by::
     exoscale
     #
 
-After installation of SlipStream and connectors on CentOS 7, verify
-that the service is properly up and running by accessing the main page
+After installation of SlipStream and
+`connectors <../administrator_guide/quick_installation.html#cloud-connectors>`__
+on CentOS 7, verify that the service is properly up and running by accessing the main page
 of the service.
 
 Migration of Service Catalog Resources
@@ -126,12 +137,14 @@ steps.
 
     $ service hsqldb stop
 
-4. Archive SlipStream DB, deployment reports and service logs::
+4. Archive SlipStream DB, deployment reports, service logs, nginx configuration::
 
     $ tar -zc /opt/slipstream/SlipStreamDB \
          /opt/slipstream/server/logs \
-         /var/log/slipstream/ssclj/ \
+         /var/log/slipstream/ssclj \
          /var/tmp/slipstream/reports \
+         /etc/nginx/{ssl/,conf.d/} \
+         --dereference \
          -f ~/SlipStream-backup.tgz
 
 5. Copy the archive to the new CentOS 7 machine that will be hosting
@@ -159,7 +172,17 @@ This should inflate
  - logs to ``/opt/slipstream/server/logs`` and
    ``/var/log/slipstream/ssclj/``
 
-3. Start all the services in the following order::
+3. Change the service configuration to reference the new host IP the service is running on by::
+
+    # sed -i -e '/SERVICECONFIGURATIONPARAMETER/ s/<old-IP>/<new-IP>/g' \
+         /opt/slipstream/SlipStreamDB/slipstreamdb.{log,script}
+
+4. Update the SlipStream nginx cache location::
+
+    # sed -i -e 's|proxy_cache_path.*keys_zone=zone_one:10m;|proxy_cache_path /var/local/slipstream/nginx/cache keys_zone=zone_one:10m;|' \
+        /etc/nginx/conf.d/slipstream-ssl.conf
+
+5. Start all the services in the following order::
 
     $ systemctl start hsqldb
     $ systemctl start ssclj
