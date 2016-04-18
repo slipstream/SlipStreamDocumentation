@@ -30,7 +30,7 @@ For SlipStream administrators [Dave]:
 For application users and developers [Alice, Clara]:
  - Application component definitions now inherit configuration scripts
    from their parents, facilitating reuse of existing application
-   components. 
+   components.
  - Updated dashboard provides more detailed information about virtual
    machine states and to which run they belong.
  - User profile now provides visual clues as to which cloud connectors
@@ -44,7 +44,7 @@ For application users and developers [Alice, Clara]:
    generates an event in the run's event log.
  - Expand SlipStream bootstrap mechanism to more operating systems
    (notably SuSE and OpenSuSE 11-13).
- - Improve the logs for machines deployed with SlipStream. 
+ - Improve the logs for machines deployed with SlipStream.
 
 For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - Update the general and API documentation to consistently use
@@ -114,7 +114,12 @@ of the service.
 Migration of Service Catalog Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**TBD**
+Following renaming of resources linked to Service Catalog, this script needs to be executed:
+
+https://github.com/SixSq/SlipStreamServer/blob/issue_%23668-rename-service-info/ssclj/service-catalog/src/main/clojure/com/sixsq/slipstream/ssclj/scripts/main.clj
+
+with the `rename` option.
+This will duplicate in database (and rename attributes) corresponding resources.
 
 Migration of DB, reports and logs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -214,7 +219,7 @@ For managers and super users [Bob]:
 For SlipStream administrators [Dave]:
  - **SlipStream must now be deployed on CentOS 7.** All services have
    been updated to support systemd only.  Caches have been moved from
-   `/tmp` and `/var/tmp` to avoid startup problems. 
+   `/tmp` and `/var/tmp` to avoid startup problems.
 
 For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - Improve query performance when retrieving event resources through
@@ -286,14 +291,14 @@ For application developers [Clara]:
  - Fixed issues with command line client so that the ``ss-get
    --noblock`` option works correctly, ``ss-abort`` no longer requires a
    message, and the ``ss-execute`` option ``--mutable-run`` has been
-   changed to ``--scalable``. 
+   changed to ``--scalable``.
  - Refactored client clojure API to make actions/functions correspond
    better to end user needs.
  - Fix a bug in which the same resource could be added twice.
 
 For SlipStream administrators [Dave]:
  - Fix packaging issue which left out scripts for periodic usage
-   analysis. 
+   analysis.
 
 For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - Improved application state handling to avoid race conditions
@@ -358,7 +363,7 @@ For application users, developers, and SlipStream administrators [Alice, Clara, 
  - A SoftLayer connector (enterprise) that uses native SoftLayer
    API and that supports vertical scaling is now available.
  - Fix problem with vCloud connector (enterprise) caused by missing VM
-   states. 
+   states.
  - Fix Firefox display issues for message display and gauges on
    dashboard.
  - Fix bootstrapping failures on Ubuntu 14.04.
