@@ -114,12 +114,8 @@ of the service.
 Migration of Service Catalog Resources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Following renaming of resources linked to Service Catalog, this script needs to be executed:
-
-https://github.com/SixSq/SlipStreamServer/blob/issue_%23668-rename-service-info/ssclj/service-catalog/src/main/clojure/com/sixsq/slipstream/ssclj/scripts/main.clj
-
-with the `rename` option.
-This will duplicate in database (and rename attributes) corresponding resources.
+Following renaming of resources linked to Service Catalog, a script needs to be executed.
+Please contact support to obtain this script with information on how to run it.
 
 Migration of DB, reports and logs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
