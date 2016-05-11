@@ -6,6 +6,101 @@ candidate releases. We welcome feedback on these releases; however,
 these are **not** supported and **not** recommended for production
 deployments.
 
+v3.3 (candidate) - 12 May 2016
+------------------------------
+
+New features and bug fixes in v3.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+For application users and developers [Alice, Clara]:
+ - Added a field in the run list that indicates how many active VMs
+   are associated with the run.
+
+For application developers [Clara]:
+ - Use readable names for downloaded deployment scripts to make
+   debugging easier.
+ - Move deployment scripts out of ``/tmp`` to avoid them disappearing
+   on reboots.
+ - Ensure that parameter values starting with a dash do not disrupt
+   the application deployment.
+ - Fix get of ss:groups parameter.
+
+For SlipStream administrators [Dave]:
+ - Fixed module download/upload cycle so that migration of modules
+   between servers works.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is needed from v3.2 to v3.3.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.2-community...v3.3-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.2-community...v3.3-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.2-community...v3.3-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.2-community...v3.3-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.2-community...v3.3-community>`__
+
+v3.2 (candidate) - 21 April 2016
+--------------------------------
+
+New features and bug fixes in v3.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For application users and developers [Alice, Clara]:
+ - Rename service catalog and attribute resources for consistency.
+ - Fix problem with application component scale up from an initial
+   multiplicity of 0.
+ - REST API more strictly validates its inputs on scale up/down
+   requests. 
+ - Add functions to the clojure client API to launch and terminate
+   applications.
+
+For SlipStream administrators [Dave]:
+ - Improve logging by providing full URIs of application components.
+ - Fix error in script that prevented the service from being started. 
+ - Install service catalog by default (Enterprise Edition).
+
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
+ - Remove the save button on the service catalog when user isn't
+   authorized to make changes.
+ - Add a "+" to dashboard to make it easier to configure new cloud
+   connectors. 
+ - Make application thumbnails clickable in the App Store.
+ - Add terminated icon to terminated VMs in the dashboard.
+ - Fix serialization and calculation of usage information.
+ - Fix vCloud connector so that node multiplicity works correctly.
+ - Fix navigation and inactive run filter on the run page.
+ - Fix refresh for the list of runs on application and application
+   component pages. 
+ - Fix client-side code for sanitizing tags provided by users.
+ - Fix presentation of the gauges in the dashboard.
+ - Fix a problem where non-pending VMs were mistakenly marked as
+   pending.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is needed from v3.1 to v3.2.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.1-community...v3.2-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.1-community...v3.2-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.1-community...v3.2-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.1-community...v3.2-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.1-community...v3.2-community>`__
+
 v3.1 (candidate) - 2 April 2016
 -------------------------------
 
