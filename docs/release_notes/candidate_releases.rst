@@ -1,10 +1,9 @@
 Candidate Releases
 ==================
 
-Results from each development iteration (sprint) are packaged into
-candidate releases. We welcome feedback on these releases; however,
-these are **not** supported and **not** recommended for production
-deployments.
+Results from each development cycle are packaged into candidate
+releases. We welcome feedback on these releases; however, these are
+**not** supported and **not** recommended for production deployments.
 
 v3.3 (candidate) - 12 May 2016
 ------------------------------
@@ -12,10 +11,12 @@ v3.3 (candidate) - 12 May 2016
 New features and bug fixes in v3.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+**Because of a serious authentication bug that was introduced, this
+release has been removed from the YUM package repository.**
 
 For application users and developers [Alice, Clara]:
- - Added a field in the run list that indicates how many active VMs
-   are associated with the run.
+ - Added a field in the dashboard run list that indicates how many
+   active VMs are associated with the run.
 
 For application developers [Clara]:
  - Use readable names for downloaded deployment scripts to make
@@ -24,7 +25,7 @@ For application developers [Clara]:
    on reboots.
  - Ensure that parameter values starting with a dash do not disrupt
    the application deployment.
- - Fix get of ss:groups parameter.
+ - Fix GET action of ss:groups parameter.
 
 For SlipStream administrators [Dave]:
  - Fixed module download/upload cycle so that migration of modules
@@ -54,7 +55,8 @@ New features and bug fixes in v3.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For application users and developers [Alice, Clara]:
- - Rename service catalog and attribute resources for consistency.
+ - Rename service catalog offers (service-offer) and attribute
+   (service-attribute) resources for consistency.
  - Fix problem with application component scale up from an initial
    multiplicity of 0.
  - REST API more strictly validates its inputs on scale up/down
