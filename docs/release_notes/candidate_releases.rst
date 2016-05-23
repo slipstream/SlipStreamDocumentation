@@ -5,6 +5,151 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.4 (candidate) - 23 May 2016
+------------------------------
+
+New features and bug fixes in v3.4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**NB!** This release provides a fix for v3.3 and introduces the
+previously rolled back features and bug fixes of v3.3.  For the
+details of v3.3 release please see the corresponding announcement
+section below.
+
+The main feature of 3.4 release is introduction of on/off-line status
+reporting for `NuvlaBox <http://sixsq.com/products/nuvlabox/>`_.
+
+For application users and developers [Alice, Clara]:
+- Fixed disk size unit in describe instance action in OpenNebula
+   connector.
+
+For application developers [Clara]:
+- Please follow the migration procedure on SlipStream Enterprise for
+   NuvlaBox connectors.
+- DELETE on API resources now returns 200 instead of 204.
+- API documentation was updated to match the latest API
+   implementation.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+The following migration is required on SlipStream Enterprise instance.
+
+In this release the `Riemann <http://riemann.io/>`_ service was
+introduced.  It is intended to be used with `NuvlaBox
+<http://sixsq.com/products/nuvlabox/>`_ product.
+
+If you are using or intending to start using NuvlaBoxes with
+SlipStream Enterprise, please follow the migration procedure below.
+After following this procedure you will be able to see the connection
+status of the NuvlaBoxes on the SlipStream dashboard.
+
+1.
+
+Make sure that NuvlaBox connector is installed on the SlipStream
+instance. If not, install it with::
+
+   yum install slipstream-connector-nuvlabox-enterprise
+
+Restart SlipStream service on the current instance::
+
+   systemctl restart slipstream
+
+2.
+
+Add and configure NuvlaBox connector
+(e.g. `nuvlabox-james-chadwick:nuvlabox`) on the SlipStream instance.
+See NuvlaBox documentation for the details.
+
+The name of the connector should match the name under which the added
+NuvlaBox will be publishing its metrics.
+
+3.
+
+Connect NB to SS for publication of availability metrics::
+
+   /root/nuvlabox-register-mothership \
+      -U nuvlabox-<NB-name> \
+      -S "ssh-rsa <ssh-key> root@nuvlabox-<NB-name>"
+
+Add the following configuration parameters before first `Match`
+section in `/etc/ssh/sshd_config`::
+
+   ClientAliveInterval 15
+   ClientAliveCountMax 2
+
+Restart `sshd`::
+
+   systemctl restart sshd
+
+4.
+
+Populate Service Offer resource with the information on the NuvlaBox.
+This step has to be manually done each time when a new NuvlaBox needs
+to be made available on the SlipStream instance via the NuvlaBox
+connector.
+
+Add NuvlaBox info into the service offer::
+
+   curl -u super:<super-password> -k -s \
+      -D - https://<ss-ip>/api/service-offer -d @nuvlabox.json \
+      -H "Content-type: application/json"
+
+with the following content in `nuvlabox.json`::
+
+   {
+     "connector" : {
+       "href" : "nuvlabox-<nb-name>"
+     },
+
+     "state": "nok",
+
+     "acl" : {
+       "owner" : {
+         "principal" : "ADMIN",
+         "type" : "ROLE"
+       },
+       "rules" : [ {
+         "principal" : "USER",
+         "type" : "ROLE",
+         "right" : "VIEW"
+       } ]
+     }
+   }
+
+
+5.
+
+Run the following to install and configure Riemann service.
+
+The command below is required to be ran if you are upgrading an
+existing SlipStream instance.  You don't need to run the command below
+if you've just installed SlipStream from scratch::
+
+    curl -LkfsS https://raw.githubusercontent.com/slipstream/SlipStream/candidate-latest/install/ss-install-riemann.sh | bash
+
+Edit `/etc/sysconfig/riemann` and export the following environment
+variables::
+
+    export SLIPSTREAM_ENDPOINT=https://127.0.0.1
+    export SLIPSTREAM_SUPER_PASSWORD=change_me_password
+
+Restart Riemann service::
+
+    systemctl restart riemann
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.3-community...v3.4-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.3-community...v3.4-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.3-community...v3.4-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.3-community...v3.4-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.3-community...v3.4-community>`__
+
 v3.3 (candidate) - 12 May 2016
 ------------------------------
 
@@ -60,27 +205,27 @@ For application users and developers [Alice, Clara]:
  - Fix problem with application component scale up from an initial
    multiplicity of 0.
  - REST API more strictly validates its inputs on scale up/down
-   requests. 
+   requests.
  - Add functions to the clojure client API to launch and terminate
    applications.
 
 For SlipStream administrators [Dave]:
  - Improve logging by providing full URIs of application components.
- - Fix error in script that prevented the service from being started. 
+ - Fix error in script that prevented the service from being started.
  - Install service catalog by default (Enterprise Edition).
 
 For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
  - Remove the save button on the service catalog when user isn't
    authorized to make changes.
  - Add a "+" to dashboard to make it easier to configure new cloud
-   connectors. 
+   connectors.
  - Make application thumbnails clickable in the App Store.
  - Add terminated icon to terminated VMs in the dashboard.
  - Fix serialization and calculation of usage information.
  - Fix vCloud connector so that node multiplicity works correctly.
  - Fix navigation and inactive run filter on the run page.
  - Fix refresh for the list of runs on application and application
-   component pages. 
+   component pages.
  - Fix client-side code for sanitizing tags provided by users.
  - Fix presentation of the gauges in the dashboard.
  - Fix a problem where non-pending VMs were mistakenly marked as
