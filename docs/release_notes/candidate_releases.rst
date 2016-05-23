@@ -11,20 +11,24 @@ v3.4 (candidate) - 23 May 2016
 New features and bug fixes in v3.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**NB!** This release provides a fix for v3.3 and introduces the previously rolled back
-features and bug fixes of v3.3.  For the details of v3.3 release please see the corresponding
-announcement section below.
+**NB!** This release provides a fix for v3.3 and introduces the
+previously rolled back features and bug fixes of v3.3.  For the
+details of v3.3 release please see the corresponding announcement
+section below.
 
-The main feature of 3.4 release is introduction of on/off-line status reporting for
-`NuvlaBox <http://sixsq.com/products/nuvlabox/>`_.
+The main feature of 3.4 release is introduction of on/off-line status
+reporting for `NuvlaBox <http://sixsq.com/products/nuvlabox/>`_.
 
 For application users and developers [Alice, Clara]:
--  Fixed disk size unit in describe instance action in OpenNebula connector.
+- Fixed disk size unit in describe instance action in OpenNebula
+   connector.
 
 For application developers [Clara]:
--  Please follow the migration procedure on SlipStream Enterprise for NuvlaBox connectors.
--  DELETE on API resources now returns 200 instead of 204.
--  API documentation was updated to match the latest API implementation.
+- Please follow the migration procedure on SlipStream Enterprise for
+   NuvlaBox connectors.
+- DELETE on API resources now returns 200 instead of 204.
+- API documentation was updated to match the latest API
+   implementation.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
