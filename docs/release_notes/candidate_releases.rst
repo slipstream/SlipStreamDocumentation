@@ -38,16 +38,19 @@ Migration
 
 The following migration is required on SlipStream Enterprise instance.
 
-In this release the `Riemann <http://riemann.io/>`_ service was introduced.
-It is intended to be used with `NuvlaBox <http://sixsq.com/products/nuvlabox/>`_ product.
+In this release the `Riemann <http://riemann.io/>`_ service was
+introduced.  It is intended to be used with `NuvlaBox
+<http://sixsq.com/products/nuvlabox/>`_ product.
 
-If you are using or intending to start using NuvlaBoxes with SlipStream Enterprise, please
-follow the migration procedure below.  After following this procedure you will be able to see
-the connection status of the NuvlaBoxes on the SlipStream dashboard.
+If you are using or intending to start using NuvlaBoxes with
+SlipStream Enterprise, please follow the migration procedure below.
+After following this procedure you will be able to see the connection
+status of the NuvlaBoxes on the SlipStream dashboard.
 
 1.
 
-Make sure that NuvlaBox connector is installed on the SlipStream instance. If not, install it with::
+Make sure that NuvlaBox connector is installed on the SlipStream
+instance. If not, install it with::
 
    yum install slipstream-connector-nuvlabox-enterprise
 
@@ -57,10 +60,12 @@ Restart SlipStream service on the current instance::
 
 2.
 
-Add and configure NuvlaBox connector (e.g. `nuvlabox-james-chadwick:nuvlabox`) on the SlipStream instance.
+Add and configure NuvlaBox connector
+(e.g. `nuvlabox-james-chadwick:nuvlabox`) on the SlipStream instance.
 See NuvlaBox documentation for the details.
 
-The name of the connector should match the name under which the added NuvlaBox will be publishing its metrics.
+The name of the connector should match the name under which the added
+NuvlaBox will be publishing its metrics.
 
 3.
 
@@ -70,7 +75,8 @@ Connect NB to SS for publication of availability metrics::
       -U nuvlabox-<NB-name> \
       -S "ssh-rsa <ssh-key> root@nuvlabox-<NB-name>"
 
-Add the following configuration parameters before first `Match` section in `/etc/ssh/sshd_config`::
+Add the following configuration parameters before first `Match`
+section in `/etc/ssh/sshd_config`::
 
    ClientAliveInterval 15
    ClientAliveCountMax 2
@@ -81,9 +87,10 @@ Restart `sshd`::
 
 4.
 
-Populate Service Offer resource with the information on the NuvlaBox.  This step has
-to be manually done each time when a new NuvlaBox needs to be made available on the
-SlipStream instance via the NuvlaBox connector.
+Populate Service Offer resource with the information on the NuvlaBox.
+This step has to be manually done each time when a new NuvlaBox needs
+to be made available on the SlipStream instance via the NuvlaBox
+connector.
 
 Add NuvlaBox info into the service offer::
 
@@ -118,13 +125,14 @@ with the following content in `nuvlabox.json`::
 
 Run the following to install and configure Riemann service.
 
-The command below is required to be ran if you are upgrading an existing SlipStream instance.
-You don't need to run the command below if you've just installed SlipStream from scratch.
-::
+The command below is required to be ran if you are upgrading an
+existing SlipStream instance.  You don't need to run the command below
+if you've just installed SlipStream from scratch::
 
     curl -LkfsS https://raw.githubusercontent.com/slipstream/SlipStream/candidate-latest/install/ss-install-riemann.sh | bash
 
-Edit `/etc/sysconfig/riemann` and export the following environment variables::
+Edit `/etc/sysconfig/riemann` and export the following environment
+variables::
 
     export SLIPSTREAM_ENDPOINT=https://127.0.0.1
     export SLIPSTREAM_SUPER_PASSWORD=change_me_password
