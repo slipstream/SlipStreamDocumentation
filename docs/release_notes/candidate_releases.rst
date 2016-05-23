@@ -67,8 +67,8 @@ publishing its metrics.
 3. Connect NB to SS for publication of availability metrics::
 
    /root/nuvlabox-register-mothership \
-      -U nuvlabox-<NB-name> \
-      -S "ssh-rsa <ssh-key> root@nuvlabox-<NB-name>"
+     -U nuvlabox-<NB-name> \
+     -S "ssh-rsa <ssh-key> root@nuvlabox-<NB-name>"
 
 Add the following configuration parameters before first `Match`
 section in `/etc/ssh/sshd_config`::
