@@ -35,6 +35,21 @@ For application developers [Clara]:
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
 
+Known Issues
+~~~~~~~~~~~~
+
+ - Riemann service jar is missing ``service_offer.clj`` which causes
+   startup to fail.
+ - Local changes to the file ``/etc/hsqldb.cfg`` will be lost because
+   it isn't marked as a configuration file in the RPM package.
+ - Build execution scripts (pre-install, packages, and post-install)
+   are re-executed even when an image has been built, causing
+   deployment failures.
+ - Instabilities when running the ``ssclj`` service with the hsqldb
+   database.  This may cause the SlipStream service to stop responding
+   and restart of the hsqldb database may not be possible.
+   
+
 Migration
 ~~~~~~~~~
 
