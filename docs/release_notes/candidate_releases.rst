@@ -50,87 +50,82 @@ After following this procedure you will be able to see the connection
 status of the NuvlaBoxes on the SlipStream dashboard.
 
 1. Make sure that NuvlaBox connector is installed on the SlipStream
-instance. If not, install it with::
+   instance. If not, install it with::
+     
+     yum install slipstream-connector-nuvlabox-enterprise
 
-   yum install slipstream-connector-nuvlabox-enterprise
-
-Restart SlipStream service on the current instance::
-
-   systemctl restart slipstream
+   Restart SlipStream service on the current instance::
+     
+     systemctl restart slipstream
 
 2. Add and configure NuvlaBox connector
-(e.g. `nuvlabox-james-chadwick:nuvlabox`) on the SlipStream instance.
-See NuvlaBox documentation for the details. The name of the connector
-should match the name under which the added NuvlaBox will be
-publishing its metrics.
+   (e.g. `nuvlabox-james-chadwick:nuvlabox`) on the SlipStream
+   instance.  See NuvlaBox documentation for the details. The name of
+   the connector should match the name under which the added NuvlaBox
+   will be publishing its metrics.
 
 3. Connect NB to SS for publication of availability metrics::
+     
+     /root/nuvlabox-register-mothership \
+        -U nuvlabox-<NB-name> \
+        -S "ssh-rsa <ssh-key> root@nuvlabox-<NB-name>"
 
-   /root/nuvlabox-register-mothership \
-     -U nuvlabox-<NB-name> \
-     -S "ssh-rsa <ssh-key> root@nuvlabox-<NB-name>"
+   Add the following configuration parameters before first `Match`
+   section in `/etc/ssh/sshd_config`::
+     
+     ClientAliveInterval 15
+     ClientAliveCountMax 2
 
-Add the following configuration parameters before first `Match`
-section in `/etc/ssh/sshd_config`::
-
-   ClientAliveInterval 15
-   ClientAliveCountMax 2
-
-Restart `sshd`::
-
-   systemctl restart sshd
+   Restart `sshd`::
+     
+     systemctl restart sshd
 
 4. Populate Service Offer resource with the information on the
-NuvlaBox.  This step has to be manually done each time when a new
-NuvlaBox needs to be made available on the SlipStream instance via the
-NuvlaBox connector.
+   NuvlaBox.  This step has to be manually done each time when a new
+   NuvlaBox needs to be made available on the SlipStream instance via
+   the NuvlaBox connector.
 
-Add NuvlaBox info into the service offer::
+   Add NuvlaBox info into the service offer::
+     
+     curl -u super:<super-password> -k -s \
+       -D - https://<ss-ip>/api/service-offer -d @nuvlabox.json \
+       -H "Content-type: application/json"
 
-   curl -u super:<super-password> -k -s \
-      -D - https://<ss-ip>/api/service-offer -d @nuvlabox.json \
-      -H "Content-type: application/json"
+   with the following content in `nuvlabox.json`::
+     
+     {
+       "connector" : {"href" : "nuvlabox-<nb-name>"},
 
-with the following content in `nuvlabox.json`::
+       "state": "nok",
 
-   {
-     "connector" : {
-       "href" : "nuvlabox-<nb-name>"
-     },
-
-     "state": "nok",
-
-     "acl" : {
-       "owner" : {
-         "principal" : "ADMIN",
-         "type" : "ROLE"
-       },
-       "rules" : [ {
-         "principal" : "USER",
-         "type" : "ROLE",
-         "right" : "VIEW"
-       } ]
+       "acl" : {
+         "owner" : { "principal" : "ADMIN",
+                     "type" : "ROLE"},
+         "rules" : [
+           { "principal" : "USER",
+             "type" : "ROLE",
+             "right" : "VIEW"}
+         ]
+       }
      }
-   }
-
 
 5. Run the following to install and configure the Riemann service.
 
-The command below is required to be ran if you are upgrading an
-existing SlipStream instance.  You don't need to run the command below
-if you've just installed SlipStream from scratch::
+   The command below is required to be ran if you are upgrading an
+   existing SlipStream instance.  You don't need to run the command
+   below if you've just installed SlipStream from scratch::
+     
+     curl -LkfsS https://raw.githubusercontent.com/slipstream/SlipStream/candidate-latest/install/ss-install-riemann.sh | bash
 
-    curl -LkfsS https://raw.githubusercontent.com/slipstream/SlipStream/candidate-latest/install/ss-install-riemann.sh | bash
+   Edit `/etc/sysconfig/riemann` and export the following environment
+   variables::
+     
+     export SLIPSTREAM_ENDPOINT=https://127.0.0.1
+     export SLIPSTREAM_SUPER_PASSWORD=change_me_password
 
-Edit `/etc/sysconfig/riemann` and export the following environment
-variables::
-
-    export SLIPSTREAM_ENDPOINT=https://127.0.0.1
-    export SLIPSTREAM_SUPER_PASSWORD=change_me_password
-
-Restart Riemann service::
-
-    systemctl restart riemann
+   Restart Riemann service::
+     
+     systemctl restart riemann
 
 Commits
 ~~~~~~~
