@@ -53,7 +53,9 @@ Known Issues
    and restart of the hsqldb database may not be possible. (`GitHub
    Issue 725
    <https://github.com/slipstream/SlipStreamServer/issues/725>`_)
-   
+ - OpenStack connector does not properly deploy applications on
+   OpenStack cloud infrastuctures that do not use the "default"
+   domain.
 
 Migration
 ~~~~~~~~~
