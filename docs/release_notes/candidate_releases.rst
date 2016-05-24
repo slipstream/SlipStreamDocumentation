@@ -39,15 +39,20 @@ Known Issues
 ~~~~~~~~~~~~
 
  - Riemann service jar is missing ``service_offer.clj`` which causes
-   startup to fail.
+   startup to fail. (`GitHub Issue 5
+   <https://github.com/SixSq/SlipStreamServerDeps/issues/5>`_)
  - Local changes to the file ``/etc/hsqldb.cfg`` will be lost because
-   it isn't marked as a configuration file in the RPM package.
+   it isn't marked as a configuration file in the RPM
+   package. (`GitHub Issue 37
+   <https://github.com/slipstream/SlipStreamServerDeps/issues/37>`_)
  - Build execution scripts (pre-install, packages, and post-install)
    are re-executed even when an image has been built, causing
-   deployment failures.
+   deployment failures. 
  - Instabilities when running the ``ssclj`` service with the hsqldb
    database.  This may cause the SlipStream service to stop responding
-   and restart of the hsqldb database may not be possible.
+   and restart of the hsqldb database may not be possible. (`GitHub
+   Issue 725
+   <https://github.com/slipstream/SlipStreamServer/issues/725>`_)
    
 
 Migration
