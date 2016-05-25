@@ -47,7 +47,8 @@ Known Issues
    <https://github.com/slipstream/SlipStreamServerDeps/issues/37>`_)
  - Build execution scripts (pre-install, packages, and post-install)
    are re-executed even when an image has been built, causing
-   deployment failures. 
+   deployment failures. (`GitHub Issue 274
+   <https://github.com/slipstream/SlipStreamClient/issues/274>`_)
  - Instabilities when running the ``ssclj`` service with the hsqldb
    database.  This may cause the SlipStream service to stop responding
    and restart of the hsqldb database may not be possible. (`GitHub
@@ -55,7 +56,8 @@ Known Issues
    <https://github.com/slipstream/SlipStreamServer/issues/725>`_)
  - OpenStack connector does not properly deploy applications on
    OpenStack cloud infrastuctures that do not use the "default"
-   domain.
+   domain. (`GitHub Issue 107
+   <https://github.com/slipstream/SlipStreamConnectors/issues/107>`_)
 
 Migration
 ~~~~~~~~~
