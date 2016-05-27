@@ -244,7 +244,7 @@ environment to make the ``mvn`` command visible.
 
     The Maven version supplied by most operating systems is too old to
     work with the SlipStream build. You must have at least version
-    3.2.0.
+    3.3.
 
 Once you have downloaded and unpacked Maven, you can setup the
 environment with::
@@ -253,7 +253,7 @@ environment with::
     $ export PATH=$PATH:$MAVEN_HOME/bin
 
 The ``mvn`` command should now be visible. The software will build with
-any maven version later than 3.2+.
+any maven version later than 3.3+.
 
 Boot
 ~~~~
