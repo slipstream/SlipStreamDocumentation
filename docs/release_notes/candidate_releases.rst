@@ -58,6 +58,11 @@ Known Issues
    OpenStack cloud infrastuctures that do not use the "default"
    domain. (`GitHub Issue 107
    <https://github.com/slipstream/SlipStreamConnectors/issues/107>`_)
+ - Community Edition dashboard displays errors when trying to access
+   the (Enterprise-only) service catalog. (`GitHub Issue 615
+   <https://github.com/slipstream/SlipStreamUI/issues/615>`_)
+ - Configuration files are required to build software. (`GitHub Issue
+   277 <https://github.com/slipstream/SlipStreamClient/issues/277>`_)
 
 Migration
 ~~~~~~~~~
