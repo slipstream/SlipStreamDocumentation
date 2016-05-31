@@ -249,11 +249,11 @@ environment to make the ``mvn`` command visible.
 Once you have downloaded and unpacked Maven, you can setup the
 environment with::
 
-    $ export MAVEN_HOME=<installation directory>/apache-maven-3.3.3
+    $ export MAVEN_HOME=<installation directory>/apache-maven-3.3.9
     $ export PATH=$PATH:$MAVEN_HOME/bin
 
 The ``mvn`` command should now be visible. The software will build with
-any maven version later than 3.3+.
+any maven version later than 3.3.
 
 Boot
 ~~~~
