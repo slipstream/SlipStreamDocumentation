@@ -40,7 +40,7 @@ For application developers [Clara]:
 
 For administrators [Dave]:
  - Make the installation script more robust concerning RPM package
-   names. 
+   names.
  - Improve the configuration of the nginx configuration to enhance the
    security of the service.
  - FIX: Ensure that all services are enabled in systemd so that they
@@ -70,12 +70,30 @@ For data persistency, SlipStream is moving from hsqldb, a Java-based
 SQL relational database, to Elasticsearch, a high-performance,
 document-oriented data store.  The migration from one to the other
 will be incremental, so during the transition, both databases will be
-used.  This is the first release where Elasticsearch is used. 
+used.  This is the first release where Elasticsearch is used.
 
 The following procedure must be used to migrate a number of resources
-from the hsqldb database to Elasticsearch.
+from the hsqldb database to Elasticsearch::
 
-** TO BE WRITTEN **
+    java -cp /opt/slipstream/server/webapps/slipstream.war/WEB-INF/lib/clojure-1.8.0.jar:/opt/slipstream/ssclj/lib/ssclj.jar com.sixsq.slipstream.ssclj.migrate.script
+
+Resources are migrated (from hsqldb to elastic search) by batches of
+10'000 documents.  Example of output of this script::
+
+    ...
+    Creating ES client
+    Index resetted
+    Will create korma database with db-spec
+    ...
+    Migrating  usage , nb resources = XXX
+    Migrating usage 0  ->  9999
+    ...
+    Migrating  usage-record , nb resources = XXX
+    Migrating usage-record 0  ->  9999
+    ...
+    Migrating  event , nb resources = XXX
+    Migrating event 0  ->  9999
+    ...
 
 Commits
 ~~~~~~~
@@ -161,11 +179,11 @@ status of the NuvlaBoxes on the SlipStream dashboard.
 
 1. Make sure that NuvlaBox connector is installed on the SlipStream
    instance. If not, install it with::
-     
+
      yum install slipstream-connector-nuvlabox-enterprise
 
    Restart SlipStream service on the current instance::
-     
+
      systemctl restart slipstream
 
 2. Add and configure NuvlaBox connector
@@ -175,19 +193,19 @@ status of the NuvlaBoxes on the SlipStream dashboard.
    will be publishing its metrics.
 
 3. Connect NB to SS for publication of availability metrics::
-     
+
      /root/nuvlabox-register-mothership \
         -U nuvlabox-<NB-name> \
         -S "ssh-rsa <ssh-key> root@nuvlabox-<NB-name>"
 
    Add the following configuration parameters before first `Match`
    section in `/etc/ssh/sshd_config`::
-     
+
      ClientAliveInterval 15
      ClientAliveCountMax 2
 
    Restart `sshd`::
-     
+
      systemctl restart sshd
 
 4. Populate Service Offer resource with the information on the
@@ -196,13 +214,13 @@ status of the NuvlaBoxes on the SlipStream dashboard.
    the NuvlaBox connector.
 
    Add NuvlaBox info into the service offer::
-     
+
      curl -u super:<super-password> -k -s \
        -D - https://<ss-ip>/api/service-offer -d @nuvlabox.json \
        -H "Content-type: application/json"
 
    with the following content in `nuvlabox.json`::
-     
+
      {
        "connector" : {"href" : "nuvlabox-<nb-name>"},
 
@@ -224,17 +242,17 @@ status of the NuvlaBoxes on the SlipStream dashboard.
    The command below is required to be ran if you are upgrading an
    existing SlipStream instance.  You don't need to run the command
    below if you've just installed SlipStream from scratch::
-     
+
      curl -LkfsS https://raw.githubusercontent.com/slipstream/SlipStream/candidate-latest/install/ss-install-riemann.sh | bash
 
    Edit `/etc/sysconfig/riemann` and export the following environment
    variables::
-     
+
      export SLIPSTREAM_ENDPOINT=https://127.0.0.1
      export SLIPSTREAM_SUPER_PASSWORD=change_me_password
 
    Restart Riemann service::
-     
+
      systemctl restart riemann
 
 Commits
