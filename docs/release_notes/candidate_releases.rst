@@ -5,6 +5,87 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.5 (candidate) - 3 June 2016
+------------------------------
+
+New features and bug fixes in v3.5
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The primary feature for v3.5 is the introduction of Elasticsearch for
+data persistency.  This should make the service more stable and
+drastically improve response times for retrieving event and usage
+information.
+
+For everyone [Alice, Bob, Clara, Dave]:
+ - Provide a top-level support link for users, if the system
+   administrator has set a support email address.
+ - In the Enterprise Edition, improve the visualization of the Service
+   Catalog entries and allow more than one entry per cloud connector.
+ - FIX: Community Edition dashboard no longer displays errors related
+   to service catalog entries.
+ - FIX: Ensure build execution scripts (pre-install, packages, and
+   post-install) only run during the build phase.
+ - FIX: Ensure OpenStack connector works correctly on cloud
+   infrastructures that done use the "default" domain.
+
+For application users and developers [Alice, Clara]:
+ - Improve the retry mechanism for the SlipStream clients to make them
+   behave more uniformly and to be more robust.
+
+For application developers [Clara]:
+ - Update API documentation for cookie authentication.  Cookie
+   authentication is now the preferred method; basic authentication is
+   deprecated.
+ - Add a command to allow the reports from a run to be retrieved.
+
+For administrators [Dave]:
+ - Make the installation script more robust concerning RPM package
+   names. 
+ - Improve the configuration of the nginx configuration to enhance the
+   security of the service.
+ - FIX: Ensure that all services are enabled in systemd so that they
+   restart on reboot.
+ - FIX: Missing file in Riemann service that caused startup to fail.
+ - FIX: Mark ``/etc/hsqldb.cfg`` as a configuration file to avoid
+   losing local changes.
+ - FIX: Reducing reliance on hsqldb should reduce instabilities when
+   running the ``ssclj`` service.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Known Issues
+~~~~~~~~~~~~
+
+ - Configuration files are required to build software. (`GitHub Issue
+   277 <https://github.com/slipstream/SlipStreamClient/issues/277>`_)
+ - Logs for the ssclj service are in the wrong location. (`GitHub
+   Issue 737
+   <https://github.com/slipstream/SlipStreamServer/issues/737>`_)
+
+Migration
+~~~~~~~~~
+
+For data persistency, SlipStream is moving from hsqldb, a Java-based
+SQL relational database, to Elasticsearch, a high-performance,
+document-oriented data store.  The migration from one to the other
+will be incremental, so during the transition, both databases will be
+used.  This is the first release where Elasticsearch is used. 
+
+The following procedure must be used to migrate a number of resources
+from the hsqldb database to Elasticsearch.
+
+** TO BE WRITTEN **
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.4-community...v3.5-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.4-community...v3.5-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.4-community...v3.5-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.4-community...v3.5-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.4-community...v3.5-community>`__
+
 v3.4 (candidate) - 23 May 2016
 ------------------------------
 
