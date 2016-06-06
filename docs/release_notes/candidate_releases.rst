@@ -66,6 +66,41 @@ Known Issues
 Migration
 ~~~~~~~~~
 
+Elasticsearch is now required for the SlipStream service.  When
+upgrading, Elasticsearch will need to be installed, configured, and
+started by hand.  Start by adding the Elasticsearch repository::
+
+    $ yum install slipstream-es-repo-community
+
+Use "community" or "enterprise" as appropriate for you installation.
+
+Install Elasticsearch::
+
+    $ yum install elasticsearch
+    $ systemctl daemon-reload
+    $ systemctl enable elasticsearch.service
+
+Update the configuration::
+
+    $ cd /etc/elasticsearch/
+    $ mv elasticsearch.yml elasticsearch.yml.orig
+    $ cat > elasticsearch.yml <<EOF
+    network.host: 127.0.0.1
+    EOF
+
+And finally start the service::
+
+    $ systemctl start elasticsearch.service
+
+You can test that Elasticsearch is running correctly with::
+
+    $ systemctl status elasticsearch.service
+    $ curl http://localhost:9200/_cluster/health?pretty=true
+
+The first should show that the service is running and the second
+should provide the health of the Elasticsearch cluster.  It should
+contain one node and be in a "green" state.
+
 For data persistency, SlipStream is moving from hsqldb, a Java-based
 SQL relational database, to Elasticsearch, a high-performance,
 document-oriented data store.  The migration from one to the other
