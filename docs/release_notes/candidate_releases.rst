@@ -107,8 +107,11 @@ document-oriented data store.  The migration from one to the other
 will be incremental, so during the transition, both databases will be
 used.  This is the first release where Elasticsearch is used.
 
-The following procedure must be used to migrate a number of resources
-from the hsqldb database to Elasticsearch::
+Before starting the migration procedure, please make sure that
+``slipstream`` and ``ssclj`` are not running.  Both databases (hsqldb
+and Elasticsearch) must be running.
+
+Then you can migrate the resources with the following commands::
 
     $ export ES_HOST=localhost
     $ export ES_PORT=9300
