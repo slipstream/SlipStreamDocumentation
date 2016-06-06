@@ -110,7 +110,9 @@ used.  This is the first release where Elasticsearch is used.
 The following procedure must be used to migrate a number of resources
 from the hsqldb database to Elasticsearch::
 
-    java -cp /opt/slipstream/server/webapps/slipstream.war/WEB-INF/lib/clojure-1.8.0.jar:/opt/slipstream/ssclj/lib/ssclj.jar com.sixsq.slipstream.ssclj.migrate.script
+    $ export ES_HOST=localhost
+    $ export ES_PORT=9300
+    $ java -cp /opt/slipstream/server/webapps/slipstream.war/WEB-INF/lib/clojure-1.8.0.jar:/opt/slipstream/ssclj/lib/ssclj.jar com.sixsq.slipstream.ssclj.migrate.script
 
 Resources are migrated (from hsqldb to elastic search) by batches of
 10'000 documents.  Example of output of this script::
