@@ -62,6 +62,8 @@ Known Issues
  - Logs for the ssclj service are in the wrong location. (`GitHub
    Issue 737
    <https://github.com/slipstream/SlipStreamServer/issues/737>`_)
+ - CloudEntryPoint resource is not accessible. (`GitHub Issue 738
+   <https://github.com/slipstream/SlipStreamServer/issues/738>`_)
 
 Migration
 ~~~~~~~~~
