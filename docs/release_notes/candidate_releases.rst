@@ -64,6 +64,11 @@ Known Issues
    <https://github.com/slipstream/SlipStreamServer/issues/737>`_)
  - CloudEntryPoint resource is not accessible. (`GitHub Issue 738
    <https://github.com/slipstream/SlipStreamServer/issues/738>`_)
+ - The ``/usage`` resource hangs. (`GitHub Issue 618
+   <https://github.com/slipstream/SlipStreamUI/issues/618>`_)
+ - The admin users ``/usage`` does not render on Safari (`GitHub Issue
+   619 <https://github.com/slipstream/SlipStreamUI/issues/619>`_)
+ 
 
 Migration
 ~~~~~~~~~
