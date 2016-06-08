@@ -12,24 +12,6 @@ This command will build and test all of the components. If you wish to
 skip the tests, you can add the option ``-DskipTests`` to the maven
 command line.
 
-.. warning::
-
-    Currently you **must** provide a couple of configuration files for
-    the build.  Do the following::
-
-        $ touch /usr/bin/slipstream.client.conf
-
-        $ cat > ~/slipstream.context << EOF
-        [contextualization]
-        diid = 123
-        cookie = foo
-        serviceurl = http://example.com
-        node_instance_name = instance-name
-        EOF
-
-    This should not be necessary and will be cleaned up in a future
-    release.
-
 Local Yum Repository
 --------------------
 
