@@ -5,6 +5,33 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.6 (candidate) - 21 June 2016
+------------------------------
+
+New features and bug fixes in v3.6
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The primary goal of v3.6 is to fix known issues of v3.5. It also puts in place
+the infrasture required for Placement and Ranking service.
+
+For everyone [Alice, Bob, Clara, Dave]:
+
+For application users and developers [Alice, Clara]:
+ - FIX: Cloud usages are now visible in the web server.
+ - FIX: Consolidation and daily sending of usage emails.
+ - FIX: Service catalog uses the service-offer resource.
+
+For application developers [Clara]:
+ - FIX: CloudEntryPoint resource is now accessible.
+
+For administrators [Dave]:
+ - Rationalize logging and logging levels
+ - Cleanup unused libraries
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+
 v3.5 (candidate) - 3 June 2016
 ------------------------------
 
