@@ -31,6 +31,19 @@ For administrators [Dave]:
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
 
+Migration
+~~~~~~~~~
+
+ No migration is needed from v3.5 to v3.6.
+
+ Commits
+ ~~~~~~~
+
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.5-community...v3.6-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.5-community...v3.6-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.5-community...v3.6-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.5-community...v3.6-community>`__
+ -  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.5-community...v3.6-community>`__
 
 v3.5 (candidate) - 3 June 2016
 ------------------------------
