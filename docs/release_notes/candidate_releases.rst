@@ -21,6 +21,7 @@ For application users and developers [Alice, Clara]:
  - FIX: Cloud usages are now visible in the web server.
  - FIX: Consolidation and daily sending of usage emails.
  - FIX: Service catalog uses the service-offer resource.
+ - Allow to define relative and absolute path for module logo
 
 For application developers [Clara]:
  - FIX: CloudEntryPoint resource is now accessible.
