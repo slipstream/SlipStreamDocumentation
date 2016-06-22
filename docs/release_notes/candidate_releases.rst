@@ -5,6 +5,50 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.6 (candidate) - 21 June 2016
+------------------------------
+
+New features and bug fixes in v3.6
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The primary goal of v3.6 is to fix known issues of v3.5. It also puts in place
+the infrasture required for Placement and Ranking service.
+
+For everyone [Alice, Bob, Clara, Dave]:
+
+For application users and developers [Alice, Clara]:
+ - FIX: Fix the mapping resolution between a VM and a Run
+ - FIX: Cloud usages are now visible in the web server.
+ - FIX: Consolidation and daily sending of usage emails.
+ - FIX: Service catalog uses the service-offer resource.
+ - Allow to define relative and absolute path for module logo
+
+For application developers [Clara]:
+ - FIX: CloudEntryPoint resource is now accessible.
+ - FIX: Correct CIMI edit responses
+
+For administrators [Dave]:
+ - Rationalize logging and logging levels
+ - Remove http-kit support
+ - Cleanup unused libraries
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+ No migration is needed from v3.5 to v3.6.
+
+ Commits
+ ~~~~~~~
+
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.5-community...v3.6-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.5-community...v3.6-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.5-community...v3.6-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.5-community...v3.6-community>`__
+ -  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.5-community...v3.6-community>`__
+
 v3.5 (candidate) - 3 June 2016
 ------------------------------
 

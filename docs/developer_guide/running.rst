@@ -6,12 +6,13 @@ locally, primarily for development. If you are interested in running
 SlipStream in production, you should install it from the generated
 packages following the instructions in the Administrator Guide.
 
-Database
---------
+Databases
+---------
 
 SlipStream needs a JDBC friendly database. By default we use HSQLDB, but
 the persistence.xml file contains a number of other databases, including
 MySQL and PostgreSQL.
+SlipStream API server uses Elastic Search.
 
 Database Configuration
 ----------------------
@@ -45,6 +46,19 @@ database with the downloaded jar file:
 
 Note that starting the database in this way should not be done in
 production. This is intended only for development testing.
+
+Elastic Search installation
+---------------------------
+
+Follow instructions from Elastic Search documentation:
+https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html
+
+Please use same version as the one found used SlipStream server (see pom.xml in ``SlipStream`` project).
+
+To start Elastic Search engine, just type (in the ``bin`` directory):
+::
+
+    $ ./elasticsearch
 
 SlipStream Services
 -------------------
@@ -81,7 +95,7 @@ the server pointing to source static location as following:
 ::
 
     $ mvn jetty:run-war \
-          -Dstatic.content.location=file:../../SlipStreamUI/src/slipstream/ui/views 
+          -Dstatic.content.location=file:../../SlipStreamUI/src/slipstream/ui/views
 
 You can also change the database backend connection using the
 ``persistence.unit``. For example:
