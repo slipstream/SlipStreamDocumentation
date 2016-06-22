@@ -17,15 +17,18 @@ the infrasture required for Placement and Ranking service.
 For everyone [Alice, Bob, Clara, Dave]:
 
 For application users and developers [Alice, Clara]:
+ - FIX: Fix the mapping resolution between a VM and a Run
  - FIX: Cloud usages are now visible in the web server.
  - FIX: Consolidation and daily sending of usage emails.
  - FIX: Service catalog uses the service-offer resource.
 
 For application developers [Clara]:
  - FIX: CloudEntryPoint resource is now accessible.
+ - FIX: Correct CIMI edit responses
 
 For administrators [Dave]:
  - Rationalize logging and logging levels
+ - Remove http-kit support
  - Cleanup unused libraries
 
 Alice, Bob, Clara, and Dave can be found
