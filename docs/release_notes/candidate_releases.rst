@@ -11,15 +11,19 @@ v3.7 (candidate) - 1 July 2016
 New features and bug fixes in v3.7
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Version v3.7 is a consolidation release that fixes some issues regarding packaging. It also brings enhancement to bootstrap mechanism.
+Version v3.7 is a consolidation release that fixes some issues
+regarding packaging. It also brings enhancement to bootstrap
+mechanism.
 
 For application users and developers [Alice, Clara]:
-- FIX: Fix a bug that prevented selection of components during application creation
-- Improve bootstrap mechanism (especially useful for unreliable networks)
+ - FIX: Correct a problem where components could not be selected
+   during application creation
+ - Make the bootstrap mechanism more reliable over low-quality networks
+   (e.g. satellite connections)
 
 For administrators [Dave]:
-- FIX: PRS library artifact is now properly installed with maven
-- Remove hard-coded dependencies for PRS-lib component
+ - Avoid dependency version conflicts by removing hard-coded
+   dependencies for the PRS-lib component.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -29,8 +33,8 @@ Migration
 
  No migration is needed from v3.6 to v3.7.
 
- Commits
- ~~~~~~~
+Commits
+~~~~~~~
 
  -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.6-community...v3.7-community>`__
  -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.6-community...v3.7-community>`__
@@ -39,7 +43,7 @@ Migration
  -  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.5-community...v3.7-community>`__
 
 v3.6 (candidate) - 21 June 2016
-------------------------------
+-------------------------------
 
 New features and bug fixes in v3.6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,8 +77,8 @@ Migration
 
  No migration is needed from v3.5 to v3.6.
 
- Commits
- ~~~~~~~
+Commits
+~~~~~~~
 
  -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.5-community...v3.6-community>`__
  -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.5-community...v3.6-community>`__
