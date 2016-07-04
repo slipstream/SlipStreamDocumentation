@@ -5,8 +5,45 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
-v3.6 (candidate) - 21 June 2016
+v3.7 (candidate) - 1 July 2016
 ------------------------------
+
+New features and bug fixes in v3.7
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.7 is a consolidation release that fixes some issues
+regarding packaging. It also brings enhancement to bootstrap
+mechanism.
+
+For application users and developers [Alice, Clara]:
+ - FIX: Correct a problem where components could not be selected
+   during application creation
+ - Make the bootstrap mechanism more reliable over low-quality networks
+   (e.g. satellite connections)
+
+For administrators [Dave]:
+ - Avoid dependency version conflicts by removing hard-coded
+   dependencies for the PRS-lib component.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+ No migration is needed from v3.6 to v3.7.
+
+Commits
+~~~~~~~
+
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.6-community...v3.7-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.6-community...v3.7-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.6-community...v3.7-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.6-community...v3.7-community>`__
+ -  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.5-community...v3.7-community>`__
+
+v3.6 (candidate) - 21 June 2016
+-------------------------------
 
 New features and bug fixes in v3.6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,8 +77,8 @@ Migration
 
  No migration is needed from v3.5 to v3.6.
 
- Commits
- ~~~~~~~
+Commits
+~~~~~~~
 
  -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.5-community...v3.6-community>`__
  -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.5-community...v3.6-community>`__
@@ -112,7 +149,7 @@ Known Issues
    <https://github.com/slipstream/SlipStreamUI/issues/618>`_)
  - The admin users ``/usage`` does not render on Safari (`GitHub Issue
    619 <https://github.com/slipstream/SlipStreamUI/issues/619>`_)
- 
+
 
 Migration
 ~~~~~~~~~
