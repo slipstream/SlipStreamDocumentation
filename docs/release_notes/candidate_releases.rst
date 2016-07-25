@@ -6,7 +6,7 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 v3.8 (candidate) - 15 July 2016
-------------------------------
+-------------------------------
 
 New features and bug fixes in v3.8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
