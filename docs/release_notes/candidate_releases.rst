@@ -12,19 +12,22 @@ New features and bug fixes in v3.8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Version v3.8 is a consolidation release that fixes some issues
-regarding packaging. It also brings enhancement to bootstrap
-mechanism.
+regarding packaging and installation. It also brings some enhancements
+to bootstrap mechanism.
 
 For application users and developers [Alice, Clara]:
- - Inherited output parameters are visible to the users.
-   (e.g. allow to map an input parameter to an inherited output parameter)
- - Bootstrap is able to run on OS with only python 3 and improve it's robustness  
+ - Inherited output parameters are visible to the users, allowing
+   an input parameter to be mapped to an inherited output parameter.
+ - The SlipStream bootstrap process is now able to run on operating
+   system  with only Python 3 installed. The robustness of the
+   bootstrapping process has also been improved. 
  - OpenStack: Added support for Floating IPs.
  - OpenNebula: Added default values for image parameters 
 
 For administrators [Dave]:
- - Improve dependency with boot clojure tools.
- - Fix potential yum expand package name issue 
+ - Fix an issue with the SlipStream installation process where
+   connector installations would fail because of package name matching
+   in the yum repository. 
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
