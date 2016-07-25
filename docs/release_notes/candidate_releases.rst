@@ -5,6 +5,45 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.8 (candidate) - 15 July 2016
+-------------------------------
+
+New features and bug fixes in v3.8
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.8 is a consolidation release that fixes some issues
+regarding packaging. It also brings enhancement to bootstrap
+mechanism.
+
+For application users and developers [Alice, Clara]:
+ - Inherited output parameters are visible to the users.
+   (e.g. allow to map an input parameter to an inherited output parameter)
+ - Bootstrap is able to run on OS with only python 3 and improve it's robustness  
+ - OpenStack: Added support for Floating IPs.
+ - OpenNebula: Added default values for image parameters 
+
+For administrators [Dave]:
+ - Improve dependency with boot clojure tools.
+ - Fix potential yum expand package name issue 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+ No migration is needed from v3.7 to v3.8.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.7-community...v3.8-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.7-community...v3.8-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.7-community...v3.8-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.7-community...v3.8-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.7-community...v3.8-community>`__
+ -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.7-community...v3.8-community>`__
+
 v3.7 (candidate) - 1 July 2016
 ------------------------------
 
