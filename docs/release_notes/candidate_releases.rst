@@ -20,9 +20,16 @@ For application users and developers [Alice, Clara]:
    an input parameter to be mapped to an inherited output parameter.
  - The SlipStream bootstrap process is now able to run on operating
    system  with only Python 3 installed. The robustness of the
-   bootstrapping process has also been improved. 
+   bootstrapping process has also been improved.
+ - Display prices for running components and applications and certain
+   clouds in the run dialog.
+ - Exoscale: Add support for Mega and Titan instances.
  - OpenStack: Added support for Floating IPs.
- - OpenNebula: Added default values for image parameters 
+ - OpenNebula: Added default values for image parameters
+
+For application developers [Clara]:
+ - Allow the client API to be used for test instances of SlipStream
+   that use a self-signed certificate.
 
 For administrators [Dave]:
  - Fix an issue with the SlipStream installation process where
