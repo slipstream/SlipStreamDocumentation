@@ -5,6 +5,67 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.9 (candidate) - 3 August 2016
+--------------------------------
+
+New features and bug fixes in v3.9
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.9 is an incremental release that further improves the
+functionality of the placement and ranking service.  This is an
+alpha-level Enterprise feature.  This release also contains
+improvements and fixes for both the Community and Enterprise Editions.
+
+For application users and developers [Alice, Clara]:
+ - Provide pricing along with a filtered set of connectors on the run
+   dialog. (Enterprise Edition, alpha)
+ - Resolve an issue with the CIMI filter grammar that caused the
+   parsing to take several seconds.  After the fix, the parsing takes
+   a few milliseconds.
+ - Improve the bootstrapping process to avoid having the process hang
+   on CentOS 6 systems.
+ - Fix a regression that prevented run tags from being saved.
+ - Fix an issue where ghost nodes would appear in the run if their
+   names matched the regex for a node instance.
+ - Fix an issue with redirects on authentication that prevented
+   logging in.
+
+For application users [Alice]:
+ - Provide a better message when a cloud quota has been exceeded.  The
+   message now includes the quota, number of running VMs, and number
+   of requested VMs.
+
+For application developers [Clara]:
+ - Allow application developers to specify a placement policy for
+   application components, for example, limiting the places where a
+   component can run. (Enterprise Edition, alpha)
+ - Improve the error messages reported to users of the SlipStream
+   client API, providing more information about the underlying cause
+   of a problem.
+
+For administrators [Dave]:
+ - Streamline the installation of SlipStream with a packaged version
+   of PhantomJS and with a package for the Elasticsearch
+   repositories. 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+ No migration is needed from v3.8 to v3.9.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.8-community...v3.9-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.8-community...v3.9-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.8-community...v3.9-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.8-community...v3.9-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.8-community...v3.9-community>`__
+ -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.8-community...v3.9-community>`__
+
 v3.8 (candidate) - 15 July 2016
 -------------------------------
 
