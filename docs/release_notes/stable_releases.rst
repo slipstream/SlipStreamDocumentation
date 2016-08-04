@@ -15,7 +15,7 @@ Features
 
 Version v3.8 is the first stable release of the v3 series.  There are
 major underlying changes to make this release more stable, robust, and
-performant, including the introduction of Elasticsearch as a database,
+performant, including the introduction of Elasticsearch as a database (hsqldb still needed until the transition to Elastisearch is complete),
 switching from CentOS 6 to CentOS 7, and numerous bug fixes.
 
 In addition, there are a number of new features to make this attactive
@@ -361,7 +361,7 @@ status of the NuvlaBoxes on the SlipStream dashboard.
 
 5. Run the following to install and configure the Riemann service.
 
-   The command below is required to be ran if you are upgrading an
+   The command below is required to be run if you are upgrading an
    existing SlipStream instance.  You don't need to run the command
    below if you've just installed SlipStream from scratch::
 
