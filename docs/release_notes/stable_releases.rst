@@ -7,6 +7,463 @@ stable releases that are listed here. Stable releases are supported by
 SixSq and are appropriate for production deployments. In general, we
 recommend that people use the latest stable release.
 
+v3.8 (candidate) - 15 July 2016
+-------------------------------
+
+Features
+~~~~~~~~
+
+Version v3.8 is the first stable release of the v3 series.  There are
+major underlying changes to make this release more stable, robust, and
+performant, including the introduction of Elasticsearch as a database,
+switching from CentOS 6 to CentOS 7, and numerous bug fixes.
+
+In addition, there are a number of new features to make this attactive
+to both end-users and developers, including better support for
+scalable applications, improved usage information, an expanded REST
+API that uses the CIMI standard for new resources, and a streamlined
+user interface.  The Enterprise Edition also contains an alpha-preview
+of the placement and ranking service that allows policy-based
+selection of cloud infrastructures when deploying applications and
+integration with NuvlaBox appliances.
+
+The detailed change log is given below.  For brevity bug fixes have
+not been included, see the change logs for the intermediate releases
+for the full set of changes and fixes.
+
+For everyone [Alice, Bob, Clara, Dave]:
+ - Provide a top-level support link for users, if the system
+   administrator has set a support email address.
+ - In the Enterprise Edition, improve the visualization of the Service
+   Catalog entries and allow more than one entry per cloud connector.
+ - Provide for status reporting of the NuvlaBox appliances connected
+   to the SlipStream server.
+
+For application users, developers, and SlipStream administrators [Alice, Clara, Dave]:
+ - Update the general and API documentation to consistently use
+   "scalable" runs for those that can be dynamically scaled while
+   running.
+ - Improve query performance when retrieving event resources through
+   the API and in the UI.
+ - Remove the save button on the service catalog when user isn't
+   authorized to make changes.
+ - Add a "+" to dashboard to make it easier to configure new cloud
+   connectors.
+ - Make application thumbnails clickable in the App Store.
+ - Add terminated icon to terminated VMs in the dashboard.
+ - Improve graphical feedback when viewing virtual machines to
+   indicate those that are not known to SlipStream.
+ - OpenNebula connector allows custom template fields to be
+   specified to, for example, attach hardware devices or consoles.
+
+For application users and developers [Alice, Clara]:
+ - Inherited output parameters are visible to the users, allowing
+   an input parameter to be mapped to an inherited output parameter.
+ - The SlipStream bootstrap process is now able to run on operating
+   systems with only Python 3 installed. The robustness of the
+   bootstrapping process has also been improved.
+ - Display prices for running components and applications and certain
+   clouds in the run dialog (Enterprise Edition).
+ - Make the bootstrap mechanism more reliable over low-quality networks
+   (e.g. satellite connections).
+ - Allow to define relative and absolute paths for module logo.
+ - Improve the retry mechanism for the SlipStream clients to make them
+   behave more uniformly and to be more robust.
+ - Added a field in the dashboard run list that indicates how many
+   active VMs are associated with the run.
+ - Rename service catalog offers (service-offer) and attribute
+   (service-attribute) resources for consistency.
+ - REST API more strictly validates its inputs on scale up/down
+   requests.
+ - Add functions to the clojure client API to launch and terminate
+   applications.
+ - Application component definitions now inherit configuration scripts
+   from their parents, facilitating reuse of existing application
+   components.
+ - Updated dashboard provides more detailed information about virtual
+   machine states and to which run they belong.
+ - User profile now provides visual clues as to which cloud connectors
+   are configured and which are not.
+ - The command line client and API now use nuv.la as the default
+   endpoint for the SlipStream service.
+ - An early alpha clojure(script) API is now available.  It contains
+   functions for scaling runs and for the CRUD actions on CIMI-like
+   resources. Feedback on the API is welcome.
+ - Restarting an aborted run (through ``ss-abort --cancel`` now
+   generates an event in the run's event log.
+ - Expand SlipStream bootstrap mechanism to more operating systems
+   (notably SuSE and OpenSuSE 11-13).
+ - Improve the logs for machines deployed with SlipStream.
+ - Exoscale: Add support for Mega and Titan instances.
+ - OpenStack: Added support for Floating IPs.
+ - OpenNebula: Added default values for image parameters
+
+For application developers [Clara]:
+ - Allow the client API to be used for test instances of SlipStream
+   that use a self-signed certificate.
+ - Update API documentation for cookie authentication.  Cookie
+   authentication is now the preferred method; basic authentication is
+   deprecated.
+ - Add a command to allow the reports from a run to be retrieved.
+ - Fixed disk size unit in describe instance action in OpenNebula
+   connector.
+ - DELETE on API resources now returns 200 instead of 204.
+ - Use readable names for downloaded deployment scripts to make
+   debugging easier.
+ - Move deployment scripts out of ``/tmp`` to avoid them disappearing
+   on reboots.
+ - Ensure that parameter values starting with a dash do not disrupt
+   the application deployment.
+
+For administrators [Dave]:
+ - Avoid dependency version conflicts by removing hard-coded
+   dependencies for the PRS-lib component.
+ - Rationalize logging and logging levels
+ - Improved installation and testing scripts.
+ - Make the installation script more robust concerning RPM package
+   names.
+ - Improve the configuration of the nginx configuration to enhance the
+   security of the service.
+ - Improve logging by providing full URIs of application components.
+ - Install service catalog by default (Enterprise Edition).
+ - Allow direct proxying of the two SlipStream services through nginx
+   to provide more efficient and reliable system.
+ - Remove unnecessary logging to make the server activity easier to
+   understand.
+ - **SlipStream must now be deployed on CentOS 7.** All services have
+   been updated to support systemd only.  Caches have been moved from
+   `/tmp` and `/var/tmp` to avoid startup problems.
+
+For managers and super users [Bob]:
+ - Cloud managers can now see an overview of the activity on their
+   cloud from all users.
+ - Provide better header information in the browser UI when a manager
+   or super users is viewing information from several users.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+**NB!** Because SlipStream v3 requires the CentOS 7 operating system, an
+upgrade from the SlipStream v2 series to the SlipStream v3 series
+requires a complete database migration from the old machine to a new
+one running CentOS 7.
+
+In addition, the names for the service catalog resources have changed.
+Follow the migration instructions for those resources before migrating
+the database, if you are running the service catalog.
+
+Below are the full migration instructions.
+
+Installation of SlipStream
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Install SlipStream on CentOS 7 following `Administrators Guide
+<../administrator_guide/index.html>`__.  Please note that for installation of
+SlipStream Enterprise edition you will have to (re-)use the client certificate
+to be able to access SlipStream Enterprise YUM repository.  The certificates are usually
+installed as `/etc/slipstream/yum-client.*`.  On the existing SlipStream
+installation this can be checked by::
+
+   # grep sslclient /etc/yum.repos.d/slipstream.repo
+   sslclientcert=/etc/slipstream/yum-client.crt
+   sslclientkey=/etc/slipstream/yum-client.key
+   ...
+
+When installing cloud connectors, it's important to ensure that the
+list of the connectors to be installed matches the one configured on
+the previous SlipStream instance as we are going to fully migrate DB
+containing the complete service configuration of the current
+SlipStream instance to the new one.  The list of the installed
+connectors can be obtained on the current SlipStream by::
+
+    # rpm -qa | \
+          grep slipstream-connector | \
+          grep -v python | \
+          cut -d'-' -f3 | \
+          tee installed-connectors.txt
+    cloudstack
+    ec2
+    opennebula
+    openstack
+    nuvlabox
+    nativesoftlayer
+    stratuslab
+    azure
+    exoscale
+    #
+
+After installation of SlipStream and
+`connectors <../administrator_guide/quick_installation.html#cloud-connectors>`__
+on CentOS 7, verify that the service is properly up and running by accessing the main page
+of the service.
+
+Migration of Service Catalog Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Following renaming of resources linked to Service Catalog, a script needs to be executed.
+Please contact support to obtain this script with information on how to run it.
+
+Migration of DB, reports and logs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On the current CentOS 6 machine running SlipStream take the following
+steps.
+
+1. Stop the following services::
+
+    $ service nginx stop
+    $ service slipstream stop
+    $ service ssclj stop
+
+2. Restart hsqldb to checkpoint the DB (this will trigger replay of
+   the WAL log)::
+
+    $ service hsqldb restart
+
+3. Stop hsqldb::
+
+    $ service hsqldb stop
+
+4. Archive SlipStream DB, deployment reports, service logs, nginx configuration::
+
+    $ tar -zc /opt/slipstream/SlipStreamDB \
+         /opt/slipstream/server/logs \
+         /var/log/slipstream/ssclj \
+         /var/tmp/slipstream/reports \
+         /etc/nginx/{ssl/,conf.d/} \
+         --dereference \
+         -f ~/SlipStream-backup.tgz
+
+5. Copy the archive to the new CentOS 7 machine that will be hosting
+   SlipStream.
+
+
+On the new CentOS 7 machine, after installing SlipStream from scratch
+and validating that it works,
+
+1. Stop all the services by running::
+
+    $ systemctl stop nginx
+    $ systemctl stop slipstream
+    $ systemctl stop ssclj
+    $ systemctl stop hsqldb
+
+2. Inflate the backup tarball as follows::
+
+    $ tar -zxvf ~/SlipStream-backup.tgz -C /
+
+This should inflate
+
+ - database to ``/opt/slipstream/SlipStreamDB``
+ - reports to ``/var/tmp/slipstream/reports``
+ - logs to ``/opt/slipstream/server/logs`` and
+   ``/var/log/slipstream/ssclj/``
+
+3. Change the service configuration to reference the new host IP the service is running on by::
+
+    # sed -i -e '/SERVICECONFIGURATIONPARAMETER/ s/<old-IP>/<new-IP>/g' \
+         /opt/slipstream/SlipStreamDB/slipstreamdb.{log,script}
+
+4. Update the SlipStream nginx cache location::
+
+    # sed -i -e 's|proxy_cache_path.*keys_zone=zone_one:10m;|proxy_cache_path /var/local/slipstream/nginx/cache keys_zone=zone_one:10m;|' \
+        /etc/nginx/conf.d/slipstream-ssl.conf
+
+5. Start all the services in the following order::
+
+    $ systemctl start hsqldb
+    $ systemctl start ssclj
+    $ systemctl start slipstream
+    $ systemctl start nginx
+
+This completes the migration process. Validate the migration by
+logging to the service and launching a test deployment.
+
+Further Incremental Migration Steps
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Riemann Service
+***************
+
+The following migration is required on SlipStream Enterprise instance.
+
+In this release the `Riemann <http://riemann.io/>`_ service was
+introduced.  It is intended to be used with `NuvlaBox
+<http://sixsq.com/products/nuvlabox/>`_ product.
+
+If you are using or intending to start using NuvlaBoxes with
+SlipStream Enterprise, please follow the migration procedure below.
+After following this procedure you will be able to see the connection
+status of the NuvlaBoxes on the SlipStream dashboard.
+
+1. Make sure that NuvlaBox connector is installed on the SlipStream
+   instance. If not, install it with::
+
+     yum install slipstream-connector-nuvlabox-enterprise
+
+   Restart SlipStream service on the current instance::
+
+     systemctl restart slipstream
+
+2. Add and configure NuvlaBox connector
+   (e.g. `nuvlabox-james-chadwick:nuvlabox`) on the SlipStream
+   instance.  See NuvlaBox documentation for the details. The name of
+   the connector should match the name under which the added NuvlaBox
+   will be publishing its metrics.
+
+3. Connect NB to SS for publication of availability metrics::
+
+     /root/nuvlabox-register-mothership \
+        -U nuvlabox-<NB-name> \
+        -S "ssh-rsa <ssh-key> root@nuvlabox-<NB-name>"
+
+   Add the following configuration parameters before first `Match`
+   section in `/etc/ssh/sshd_config`::
+
+     ClientAliveInterval 15
+     ClientAliveCountMax 2
+
+   Restart `sshd`::
+
+     systemctl restart sshd
+
+4. Populate Service Offer resource with the information on the
+   NuvlaBox.  This step has to be manually done each time when a new
+   NuvlaBox needs to be made available on the SlipStream instance via
+   the NuvlaBox connector.
+
+   Add NuvlaBox info into the service offer::
+
+     curl -u super:<super-password> -k -s \
+       -D - https://<ss-ip>/api/service-offer -d @nuvlabox.json \
+       -H "Content-type: application/json"
+
+   with the following content in `nuvlabox.json`::
+
+     {
+       "connector" : {"href" : "nuvlabox-<nb-name>"},
+
+       "state": "nok",
+
+       "acl" : {
+         "owner" : { "principal" : "ADMIN",
+                     "type" : "ROLE"},
+         "rules" : [
+           { "principal" : "USER",
+             "type" : "ROLE",
+             "right" : "VIEW"}
+         ]
+       }
+     }
+
+5. Run the following to install and configure the Riemann service.
+
+   The command below is required to be ran if you are upgrading an
+   existing SlipStream instance.  You don't need to run the command
+   below if you've just installed SlipStream from scratch::
+
+     curl -LkfsS https://raw.githubusercontent.com/slipstream/SlipStream/candidate-latest/install/ss-install-riemann.sh | bash
+
+   Edit `/etc/sysconfig/riemann` and export the following environment
+   variables::
+
+     export SLIPSTREAM_ENDPOINT=https://127.0.0.1
+     export SLIPSTREAM_SUPER_PASSWORD=change_me_password
+
+   Restart Riemann service::
+
+     systemctl restart riemann
+
+Elasticsearch
+*************
+
+Elasticsearch is now required for the SlipStream service.  When
+upgrading, Elasticsearch will need to be installed, configured, and
+started by hand.  Start by adding the Elasticsearch repository::
+
+    $ yum install slipstream-es-repo-community
+
+Use "community" or "enterprise" as appropriate for you installation.
+
+Install Elasticsearch::
+
+    $ yum install elasticsearch
+    $ systemctl daemon-reload
+    $ systemctl enable elasticsearch.service
+
+Update the configuration::
+
+    $ cd /etc/elasticsearch/
+    $ mv elasticsearch.yml elasticsearch.yml.orig
+    $ cat > elasticsearch.yml <<EOF
+    network.host: 127.0.0.1
+    EOF
+
+And finally start the service::
+
+    $ systemctl start elasticsearch.service
+
+You can test that Elasticsearch is running correctly with::
+
+    $ systemctl status elasticsearch.service
+    $ curl http://localhost:9200/_cluster/health?pretty=true
+
+The first should show that the service is running and the second
+should provide the health of the Elasticsearch cluster.  It should
+contain one node and be in a "green" state.
+
+For data persistency, SlipStream is moving from hsqldb, a Java-based
+SQL relational database, to Elasticsearch, a high-performance,
+document-oriented data store.  The migration from one to the other
+will be incremental, so during the transition, both databases will be
+used.  This is the first release where Elasticsearch is used.
+
+Before starting the migration procedure, please make sure that
+``slipstream`` and ``ssclj`` are not running.  Both databases (hsqldb
+and Elasticsearch) must be running.
+
+Then you can migrate the resources with the following commands::
+
+    $ export ES_HOST=localhost
+    $ export ES_PORT=9300
+    $ java -cp /opt/slipstream/server/webapps/slipstream.war/WEB-INF/lib/clojure-1.8.0.jar:/opt/slipstream/ssclj/lib/ssclj.jar com.sixsq.slipstream.ssclj.migrate.script
+
+Resources are migrated (from hsqldb to elastic search) by batches of
+10'000 documents.  Example of output of this script::
+
+    ...
+    Creating ES client
+    Index resetted
+    Will create korma database with db-spec
+    ...
+    Migrating  usage , nb resources = XXX
+    Migrating usage 0  ->  9999
+    ...
+    Migrating  usage-record , nb resources = XXX
+    Migrating usage-record 0  ->  9999
+    ...
+    Migrating  event , nb resources = XXX
+    Migrating event 0  ->  9999
+    ...
+
+
+Known Issues
+~~~~~~~~~~~~
+
+No major known issues.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v2.23.2-community...v3.8-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v2.23.2-community...v3.8-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v2.23.2-community...v3.8-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v2.23.2-community...v3.8-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v2.23.2-community...v3.8-community>`__
+
 v2.23.2 (stable) - 3 March 2016
 -------------------------------
 
