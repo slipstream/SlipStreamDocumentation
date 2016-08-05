@@ -7,8 +7,8 @@ stable releases that are listed here. Stable releases are supported by
 SixSq and are appropriate for production deployments. In general, we
 recommend that people use the latest stable release.
 
-v3.8 (candidate) - 15 July 2016
--------------------------------
+v3.8 (stable) - 15 July 2016
+----------------------------
 
 Features
 ~~~~~~~~
