@@ -51,6 +51,14 @@ For administrators [Dave]:
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
 
+Known Issues
+~~~~~~~~~~~~
+
+- The process that collects information abouts users' virtual machines
+  can become saturated, resulting in the loss of this information for
+  most users.  When this issue appears, the slipstream service can be
+  restarted to return it to a normal state. 
+
 Migration
 ~~~~~~~~~
 
@@ -99,6 +107,14 @@ For administrators [Dave]:
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
+
+Known Issues
+~~~~~~~~~~~~
+
+- The process that collects information abouts users' virtual machines
+  can become saturated, resulting in the loss of this information for
+  most users.  When this issue appears, the slipstream service can be
+  restarted to return it to a normal state. 
 
 Migration
 ~~~~~~~~~
