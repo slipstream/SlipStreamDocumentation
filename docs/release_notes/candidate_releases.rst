@@ -5,6 +5,53 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.10 (candidate) - 12 August 2016
+----------------------------------
+
+New features and bug fixes in v3.10
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.10 provides a complete set of resources for the Service
+Catalog (Enterprise Edition), allowing policy (and priced) based
+placement of virtual machines.  This release also provides a complete
+Clojure and ClojureScript API for the SlipStream CIMI resources. 
+
+For application users and developers [Alice, Clara]:
+ - Provide complete set of service catalog resources (serviceOffer,
+   serviceAttribute, and serviceAttributeNamespace) to allow
+   policy-based placement using the service catalog
+   information. (Enterprise Edition)
+ - Provide clojure/clojurescript API for SlipStream CIMI resources.
+   The API provides asynchronous and synchronous implementations of
+   all SCRUD actions.  Filtering and subsetting are provided for
+   search operations.
+ - Use larger modal dialog to avoid truncating long parameter or
+   component names in run dialog.
+ - Improve the collection of virtual machine state information (used
+   in the dashboard) to make it more efficient and reliable.
+
+For administrators [Dave]:
+ - Modify service dependencies to ensure cleaner start up of all
+   SlipStream services on boot.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+ No migration is needed from v3.9 to v3.10.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.9-community...v3.10-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.9-community...v3.10-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.9-community...v3.10-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.9-community...v3.10-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.9-community...v3.10-community>`__
+ -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.9-community...v3.10-community>`__
+
 v3.9 (candidate) - 3 August 2016
 --------------------------------
 
