@@ -5,7 +5,7 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
-v3.10 (candidate) - 12 August 2016
+v3.10 (candidate) - 13 August 2016
 ----------------------------------
 
 New features and bug fixes in v3.10
@@ -27,12 +27,13 @@ For application users and developers [Alice, Clara]:
    search operations.
  - Use larger modal dialog to avoid truncating long parameter or
    component names in run dialog.
- - Improve the collection of virtual machine state information (used
-   in the dashboard) to make it more efficient and reliable.
 
 For administrators [Dave]:
  - Modify service dependencies to ensure cleaner start up of all
    SlipStream services on boot.
+ - Improve the collection of virtual machine state information (used
+   in the dashboard) to make it more efficient and reliable.  Put in
+   additional logging to make debugging easier.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
