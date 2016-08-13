@@ -99,6 +99,14 @@ For administrators [Dave]:
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
 
+Known Issues
+~~~~~~~~~~~~
+
+- The process that collects information abouts users' virtual machines
+  can become saturated, resulting in the loss of this information for
+  most users.  When this issue appears, the slipstream service can be
+  restarted to return it to a normal state. 
+
 Migration
 ~~~~~~~~~
 
@@ -114,8 +122,8 @@ Commits
  -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.8-community...v3.9-community>`__
  -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.8-community...v3.9-community>`__
 
-v3.8 (candidate) - 15 July 2016
--------------------------------
+v3.8 (stable) - 15 July 2016
+----------------------------
 
 New features and bug fixes in v3.8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -147,6 +155,14 @@ For administrators [Dave]:
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
+
+Known Issues
+~~~~~~~~~~~~
+
+- The process that collects information abouts users' virtual machines
+  can become saturated, resulting in the loss of this information for
+  most users.  When this issue appears, the slipstream service can be
+  restarted to return it to a normal state. 
 
 Migration
 ~~~~~~~~~
