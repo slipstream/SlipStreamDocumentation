@@ -5,6 +5,54 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.11 (candidate) - 26 August 2016
+----------------------------------
+
+New features and bug fixes in v3.11
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.11 is a preparatory release that provides much of the
+groundwork for future improvements.  The emphasis has been on
+preparing new server-side resources for cloud connectors and service
+configuration; these will improve the management of these resources in
+the future.  There has also been significant work done to streamline
+the code organization, packaging, and release process.  This should
+speed development of new features.
+
+For application users and developers [Alice, Clara]:
+ - Fix issue with pricing server that prevented prices from being
+   calculated.
+ - Alpha versions of connector and configuration resources.  These are
+   available through the API and will be integrated into the web
+   interface in a future release.
+
+For administrators [Dave]:
+ - Upgrade to the latest production libraries for all server
+   dependencies, improving the robustness of the server (in particular
+   Aleph, Buddy, and ClojureScript).
+ - Correct the systemd configuration for the ssclj service so that
+   successful shutdowns are not marked as failures.
+ - Clean up and reorganize the packaging for the pricing service.
+   Logging information will now appear in the standard OS directory.
+   
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is needed from v3.10 to v3.11.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.10-community...v3.11-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.10-community...v3.11-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.10-community...v3.11-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.10-community...v3.11-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.10-community...v3.11-community>`__
+ -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.10-community...v3.11-community>`__
+
 v3.10 (candidate) - 13 August 2016
 ----------------------------------
 
