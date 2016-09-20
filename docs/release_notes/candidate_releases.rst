@@ -5,7 +5,6 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
-<<<<<<< HEAD
 v3.12 (candidate) - 13 September 2016
 ----------------------------------
 
