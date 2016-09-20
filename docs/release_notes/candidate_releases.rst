@@ -5,13 +5,14 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+<<<<<<< HEAD
 v3.12 (candidate) - 13 September 2016
 ----------------------------------
 
 New features and bug fixes in v3.12
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Version v3.12 improves build systems and fixes some stability issues.
+Version v3.12 improves build system and fixes some stability issues.
 
 For application users and developers [Alice, Clara]:
  - Improves readability of failing unit tests
@@ -43,7 +44,6 @@ Commits
  -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.11-community...v3.12-community>`__
  -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.11-community...v3.12-community>`__
  -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.11-community...v3.12-community>`__
-
 
 v3.11 (candidate) - 26 August 2016
 ----------------------------------
