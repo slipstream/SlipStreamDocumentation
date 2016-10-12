@@ -5,6 +5,79 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.14 (candidate) - 7 october 2016
+----------------------------------
+
+New features and bug fixes in v3.14
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.14 adds the delete all versions for a module, and fixes some issues related to connectors.
+
+For application users [Alice]:
+ - Add the delete all versions for a module
+
+For application developers [Clara]:
+ - Fix ssh private key management to build image on StratusLab connector
+ - Selection of specific network for opennebula connector
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is needed from v3.13 to v3.14.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.13-community...v3.14-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.13-community...v3.14-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.13-community...v3.14-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.13-community...v3.14-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.13-community...v3.14-community>`__
+ -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.13-community...v3.14-community>`__
+
+v3.13 (candidate) - 28 September 2016
+----------------------------------
+
+New features and bug fixes in v3.13
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.13 fixes a bug in build image creation, and brings minor improvement in REST API.
+
+For application users and developers [Alice, Clara]:
+ 
+For application users [Alice]:
+ - Fix a bug for Safari users that prevented display of some pages with pagination
+ - Fix a bug in StratusLab connector that prevented the build of an image
+
+For application developers [Clara]:
+ - Add USER and ANON roles for logged in users (used to query REST api) 
+ - Refactor the parsing of running instances
+
+For administrators [Dave]:
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+
+Migration
+~~~~~~~~~
+
+No migration is needed from v3.12 to v3.13.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.12-community...v3.13-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.12-community...v3.13-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.12-community...v3.13-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.12-community...v3.13-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.12-community...v3.13-community>`__
+ -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.12-community...v3.13-community>`__
+
+
 v3.12 (candidate) - 13 September 2016
 ----------------------------------
 
