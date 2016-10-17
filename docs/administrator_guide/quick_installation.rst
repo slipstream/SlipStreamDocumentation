@@ -11,20 +11,23 @@ This script will do the following actions on your machine:
 -  Configure nginx yum repository
 -  Install SlipStream in /opt/slipstream
 -  Install HSQLDB in /opt/hsqldb
+-  Install Elasticsearch NoSQL datastore
 -  Install nginx
 -  Install some other dependencies with yum and python-pip
 -  Disable SElinux
--  Configure nginx, HSQLDB and SlipStream
+-  Configure nginx, HSQLDB, Elasticsearch and SlipStream
 -  Replace the firewall configuration with the following:
--  Allow all outgoing packets
--  Allow loopback connections
--  Allow incoming ICMP requests
--  Allow incoming SSH connections (port 22)
--  Allow incoming HTTP connections (port 80)
--  Allow incoming HTTPS connections (port 443)
--  Deny all other incoming connections
--  Deny forwarding
--  Start nginx, HSQLDB and SlipStream
+
+   -  Allow all outgoing packets
+   -  Allow loopback connections
+   -  Allow incoming ICMP requests
+   -  Allow incoming SSH connections (port 22)
+   -  Allow incoming HTTP connections (port 80)
+   -  Allow incoming HTTPS connections (port 443)
+   -  Deny all other incoming connections
+   -  Deny forwarding
+
+-  Start nginx, HSQLDB, Elasticsearch and SlipStream
 
 These instructions assume that you will be using the prebuilt binary
 packages for SlipStream. If you want to build your own packages from the
@@ -110,6 +113,7 @@ to the dedicated :ref:`configuration files documentation page
 
 This will allow you to define configuration for:
 
+-  Service
 -  Connectors
 -  Modules
 -  Users
@@ -158,7 +162,7 @@ The Authorization callback URL must be <SlipStream end point>/auth/callback-gith
 You will obtain a Github client ID and a Github secret (see next).
 
 Then, edit authentication server configuration (/opt/slipstream/ssclj/resources/db.spec) with these
-Github credentials. (Do not forget to provide values for :auth-server and :main-server entries).
+Github credentials. (Do not forget to provide values for ``:auth-server`` and ``:main-server entries``).
 
 Finally, restart ssclj service.
 

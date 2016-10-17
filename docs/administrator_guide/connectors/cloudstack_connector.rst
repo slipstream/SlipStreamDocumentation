@@ -28,13 +28,14 @@ To allow users to take advantage of this connector, you must add one or
 more instances of this connector by either:
 
 1. Using the `UI <#with-the-ui>`__.
-2. Drop a `configuration file <#with-a-configuration-file>`__ and
-   restart the service.
+2. Add a connector instance defined via `configuration file
+   <#with-a-configuration-file>`__ using `ss-config` utility and restart
+   the service.
 
 With the UI
 -----------
 
-Instanciate one or more instances of the connector
+Instantiate one or more instances of the connector
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once logged-in with a privileged user (e.g. *super*), open the
@@ -85,7 +86,7 @@ connector is to communicate with the IaaS cloud endpoint.
 
 You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
-```Parameters`` <#parameters>`__ paragraph below.
+`Parameters <#parameters>`__ paragraph below.
 
 With a Configuration File
 -------------------------
@@ -93,34 +94,40 @@ With a Configuration File
 Please see :ref:`dg-cfg-files` for details about this method of
 configuration.
 
-Here is an example, which will configure the CloudStack connector to
-interact with Exoscale:
+Here is an example, which will configure the Exoscale's flavour of CloudStack
+connector to interact with Exoscale:
 
 ::
 
-    > cat /etc/slipstream/connectors/exoscale-ch-gva.conf
-    cloud.connector.class = exoscale-ch-gva:cloudstack
-    exoscale-ch-gva.endpoint = https://api.exoscale.ch/compute
-    exoscale-ch-gva.zone = CH-GV2
-    exoscale-ch-gva.quota.vm = 20
-    exoscale-ch-gva.orchestrator.imageid = 605d1ad4-b3b2-4b60-af99-843c7b8278f8
-    exoscale-ch-gva.orchestrator.instance.type = Micro
-    exoscale-ch-gva.orchestrator.ssh.password =
-    exoscale-ch-gva.orchestrator.ssh.username =
-    exoscale-ch-gva.native-contextualization = linux-only
-    exoscale-ch-gva.max.iaas.workers = 20
+    {
+    :id "connector/exoscale-ch-gva"
+    :cloudServiceType "exoscale"
+
+    :endpoint "https://api.exoscale.ch/compute"
+    :zone "CH-GVA-2"
+    :maxIaasWorkers 20
+    :quotaVm "20"
+    :orchestratorImageid "Linux Ubuntu 14.04 LTS 64-bit"
+    :orchestratorInstanceType "Micro"
+    :orchestratorDisk "10G"
+    :orchestratorSSHUsername ""
+    :orchestratorSSHPassword ""
+    :securityGroups "slipstream_managed"
+    :nativeContextualization "linux-only"
+    :updateClientURL "https://<SS hostname>/downloads/exoscaleclient.tgz"
+    }
 
 You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
-```Parameters`` <#parameters>`__ paragraph below.
+`Parameters <#parameters>`__ paragraph below.
 
 Parameters
 ----------
 
-*Note: All the CloudStack API examples come from
+**Note:** All the CloudStack API examples come from
 `cloudmonkey <https://cwiki.apache.org/confluence/display/CLOUDSTACK/CloudStack+cloudmonkey+CLI>`__
 configured with `Exoscale Open Cloud
-API <https://community.exoscale.ch/api/compute/>`__ endpoint.*
+API <https://community.exoscale.ch/api/compute/>`__ endpoint.
 
 Zone
 ~~~~

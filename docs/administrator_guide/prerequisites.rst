@@ -3,9 +3,9 @@ Prerequisities
 
 The SlipStream server has a standard, n-tier web application
 architecture: the application runs within a Java web application
-container and stores data within an SQL database. Consequently, many
-administrators will be familiar with its configuration needs and modest
-resource requirements.
+container and stores data within SQL and NoSQL (document oriented)
+databases. Consequently, many administrators will be familiar with
+its configuration needs and modest resource requirements.
 
 Software Requirements
 ---------------------
@@ -26,7 +26,7 @@ Machine (JVM) running the service. Similarly 10-20 GB of disk space
 should be sufficient for initial use.
 
 As with any service, the resource requirements for the server will
-increase with the number of users and with the number of system
+increase with the number of users and with the number of user application
 deployments. Use a larger machine if you expect particularly large scale
 or intense use of the service.
 
@@ -41,9 +41,9 @@ may also allow access to the HTTP port.
 
 To administer and monitor the machine running the SlipStream service,
 you may also want to have the SSH port (22) and the Nagios NRPE port
-(5666) open to your administrators' machines.
+(5666) open to your administrators' and monitoring machines.
 
-The configured SlipStream connectors act as clients of the correponding
+The configured SlipStream connectors act as clients of the corresponding
 cloud service provider. Consequently, the server must also have
 *outgoing* access to the underlying cloud service endpoints. The ports
 used vary depending on the cloud service provider.
@@ -56,6 +56,6 @@ Cloud Requirements
 ------------------
 
 SlipStream is a cloud deployment engine and requires access to at least
-one supported cloud infrastucture. See the list of supported clouds and
+one supported cloud infrastructure. See the list of supported clouds and
 conditions on the associated cloud plugin to select the cloud(s) you
 will be making available through your SlipStream instance.

@@ -9,6 +9,31 @@ configure it.
 You can either use the web UI that you just started, or use
 :ref:`configuration files <dg-cfg-files>`.
 
+Service
+-------
+
+SlipStream global service level behaviour can be configured either
+via UI or by using ``ss-config`` utility. The latter allows to configure
+the service from CLI utilising configuration file(s).
+
+From version 3.15, SlipStream no longer reads service and/or connector
+configuration files, which used to be located in ``/etc/slipstream/``
+on the machine where the SlipStream service runs.
+Instead, to bootstrap the service with a required predefined
+configuration, it is now required to use ``ss-config`` utility with
+service and/or connector configuration files.
+
+Given the configuration file(s), ``ss-config`` utility connects to
+a defined Elasticsearch instance and adds/updates the respective
+configuration.  For more deatils on the usage of ``ss-config`` see
+:ref:`dg-cfg-ss-config`.
+
+The new way of configuration allows to remove the state and thus
+eliminate the need to read it in on the hosts running SlipStream
+service business logic.  This greatly simplifies deployment and
+maintenance of the service in a scalable or redundant setup for
+throughput and/or high availability.
+
 User(s)
 -------
 
@@ -32,8 +57,8 @@ Connector(s)
 Once the server is up and running you need to configure a connector
 before trying to deploy a module. Out of the box, using the local
 connector is the easiest way to get started. To do so, navigate to the
-`server configuration page <http://localhost:8080/configuration>`__ and
-define a cloud connector instance in the SlipStream Basics section:
+server configuration page ``https://<slipstream>/configuration``
+and define a cloud connector instance in the SlipStream Basics section:
 
 ::
 
@@ -46,6 +71,8 @@ isn't given, it defaults to the connector name.
 
 For configuration of other cloud connectors, check our
 `blog <http://sixsq.com/blog/index.html>`__.
+
+**FIXME: rewrite!!!!!**
 
 Alternatively, you can create new connector instance by :ref:`dropping
 connector configuration files in your configuration directory

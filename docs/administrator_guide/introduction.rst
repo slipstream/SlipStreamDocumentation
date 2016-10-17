@@ -83,9 +83,13 @@ The following table shows the availability of the cloud connectors.
 +-------------------------+---------------+----------------+
 | IBM Smart Cloud Entry   | proprietary   | coming soon    |
 +-------------------------+---------------+----------------+
-| Microsoft IaaS Azure    | proprietary   | coming soon    |
+| Microsoft IaaS Azure    | proprietary   | available      |
++-------------------------+---------------+----------------+
+| NuvlaBox                | proprietary   | available      |
 +-------------------------+---------------+----------------+
 | OCCI                    | open source   | available      |
++-------------------------+---------------+----------------+
+| OpenNebula              | open source   | available      |
 +-------------------------+---------------+----------------+
 | OpenStack               | open source   | available      |
 +-------------------------+---------------+----------------+
@@ -95,6 +99,8 @@ The following table shows the availability of the cloud connectors.
 +-------------------------+---------------+----------------+
 | VMWare vCloud           | proprietary   | available      |
 +-------------------------+---------------+----------------+
+
+All open-source connectors are licensed with Apache 2.0.
 
 SlipStream Edition
 ------------------

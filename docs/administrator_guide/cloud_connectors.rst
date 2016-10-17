@@ -61,13 +61,17 @@ that the connector names are case insensitive.
 +-----------------+------------------+----------------------------+
 | Cloud           | Connector Name   | License                    |
 +-----------------+------------------+----------------------------+
-| Amazon EC2      | AWS              | proprietary                |
+| Amazon EC2      | EC2              | proprietary                |
 +-----------------+------------------+----------------------------+
 | CloudSigma      | CloudSigma       | proprietary                |
 +-----------------+------------------+----------------------------+
 | CloudStack      | CloudStack       | open-source (Apache 2.0)   |
 +-----------------+------------------+----------------------------+
+| Microsoft Azure | Azure            | proprietary                |
++-----------------+------------------+----------------------------+
 | OCCI            | OCCI             | open-source (Apache 2.0)   |
++-----------------+------------------+----------------------------+
+| OpenNebula      | OpenNebula       | open-source (Apache 2.0)   |
 +-----------------+------------------+----------------------------+
 | OpenStack       | OpenStack        | open-source (Apache 2.0)   |
 +-----------------+------------------+----------------------------+
