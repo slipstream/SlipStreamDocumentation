@@ -29,8 +29,9 @@ To allow users to take advantage of this connector, you must add one or
 more instances of this connector by either:
 
 1. Using the `UI <#with-the-ui>`__.
-2. Drop a `configuration file <#with-a-configuration-file>`__ and
-   restart the service.
+2. Add a connector instance defined via `configuration file
+   <#with-a-configuration-file>`__ using `ss-config` utility and restart
+   the service.
 
 With the UI
 -----------
@@ -100,20 +101,24 @@ with Azure in the 'West Europe' region:
 
 ::
 
-    $ cat /etc/slipstream/connectors/azure-west-europe.conf
-    cloud.connector.class = azure-west-europe:azure
-    azure-west-europe.quota.vm = 
-    azure-west-europe.max.iaas.workers = 20
-    azure-west-europe.native-contextualization = linux-only
-    azure-west-europe.service.region = West Europe
-    azure-west-europe.orchestrator.instance.type = Small
-    azure-west-europe.orchestrator.imageid = TODO
-    azure-west-europe.orchestrator.ssh.username =
-    azure-west-europe.orchestrator.ssh.password = 
+    {
+    :id "connector/azure-west-europe"
+    :cloudServiceType "azure"
+
+    :maxIaasWorkers 20
+    :quotaVm ""
+    :orchestratorImageid "TODO"
+
+    :nativeContextualization "linux-only"
+    :orchestratorSSHUsername ""
+    :orchestratorSSHPassword ""
+    :serviceRegion "West Europe"
+    :orchestratorInstanceType "Small"
+    }
 
 You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
-```Parameters`` <#parameters>`__ paragraph below.
+`Parameters <#parameters>`__ paragraph below.
 
 Parameters
 ----------
