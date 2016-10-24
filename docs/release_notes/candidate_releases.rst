@@ -19,6 +19,10 @@ the processes running the business logic.
 For application users and application developers [Alice, Clara]:
  - Fixes and improvements in displaying placement and pricing information in
    application Deploy dialog.
+ - Improved retrieval of VM instance ID and IP to provide VM to run mapping in
+   failed runs.
+ - Fixed issue with linking to output parameter of parent image.
+ - Consistently display prices in Service Catalog in EUR.
 
 For application developers [Clara]:
  - Enabled editing of Pre/Post-Scale scripts in `Application Workflows` tab of
