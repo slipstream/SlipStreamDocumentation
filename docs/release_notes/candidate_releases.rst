@@ -27,7 +27,9 @@ For application developers [Clara]:
    section of the SlipStream tutorial on running scalable applications.
 
 For administrators [Dave]:
- - New way of managing the service configuration via `ss-config` utility.
+ - New way of managing the service configuration via configuration files and
+   `ss-config` utility.  See `documentation
+   <http://ssdocs.sixsq.com/en/draft/developer_guide/configuration_files.html>`_.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
