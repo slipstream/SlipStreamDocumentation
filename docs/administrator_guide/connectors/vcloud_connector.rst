@@ -37,8 +37,9 @@ To allow users to take advantage of this connector, you must add one or
 more instances of this connector by either:
 
 1. Using the `UI <#with-the-ui>`__.
-2. Drop a `configuration file <#with-a-configuration-file>`__ and
-   restart the service.
+2. Add a connector instance defined via `configuration file
+   <#with-a-configuration-file>`__ using `ss-config` utility and restart
+   the service.
 
 With the UI
 -----------
@@ -108,19 +109,23 @@ interact with a vCloud provider:
 
 ::
 
-    $ cat /etc/slipstream/connectors/my-vcloud.conf
-    cloud.connector.class = my-vcloud:vcloud
-    deac-lv1.quota.vm = 
-    deac-lv1.orchestrator.instance.type = 1,1
-    deac-lv1.virtual.datacenter.name = VDC-01
-    deac-lv1.orchestrator.imageid = Ubuntu_12_04
-    deac-lv1.update.clienturl = https://<slipstream-ip>/downloads/vcloudclient.tgz
-    deac-lv1.endpoint = https://vcloud.provider.com/api
-    deac-lv1.max.iaas.workers = 1
+    {
+    :id "connector/my-vcloud"
+    :cloudServiceType "vcloud"
+
+    :maxIaasWorkers 1
+    :quotaVm ""
+    :orchestratorImageid "Ubuntu_12_04"
+
+    :orchestratorInstanceType "1,1"
+    :virtualDatacenterName "VDC-01"
+    :updateClientURL "https://<slipstream-ip>/downloads/vcloudclient.tgz"
+    :endpoint "https://vcloud.provider.com/api"
+    }
 
 You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
-```Parameters`` <#parameters>`__ paragraph below.
+`Parameters <#parameters>`__ paragraph below.
 
 Parameters
 ----------
