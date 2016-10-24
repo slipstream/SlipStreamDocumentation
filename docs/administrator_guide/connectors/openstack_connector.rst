@@ -20,8 +20,9 @@ To allow users to take advantage of this connector, you must add one or
 more instances of this connector by either:
 
 1. Using the `UI <#with-the-ui>`__.
-2. Drop a `configuration file <#with-a-configuration-file>`__ and
-   restart the service.
+2. Add a connector instance defined via `configuration file
+   <#with-a-configuration-file>`__ using `ss-config` utility and restart
+   the service.
 
 With the UI
 -----------
@@ -91,25 +92,29 @@ interact with Ultimum:
 
 ::
 
-    $ cat /etc/slipstream/connectors/ultimum-cz1.conf
-    cloud.connector.class = ultimum-cz1:openstack
-    ultimum-cz1.quota.vm = 
-    ultimum-cz1.max.iaas.workers = 20
-    ultimum-cz1.service.name = nova
-    ultimum-cz1.native-contextualization = linux-only
-    ultimum-cz1.service.region = RegionOne
-    ultimum-cz1.network.private = private
-    ultimum-cz1.orchestrator.instance.type = Basic
-    ultimum-cz1.service.type = compute
-    ultimum-cz1.orchestrator.ssh.username =
-    ultimum-cz1.orchestrator.imageid = 970da64c-c4be-4bb3-879b-75433751e71f
-    ultimum-cz1.network.public = public
-    ultimum-cz1.endpoint = https://console.ulticloud.com:5000/v2.0/tokens
-    ultimum-cz1.orchestrator.ssh.password = 
+    {
+    :id "connector/ultimum-cz1"
+    :cloudServiceType "openstack"
+
+    :maxIaasWorkers 20
+    :quotaVm ""
+    :orchestratorImageid "970da64c-c4be-4bb3-879b-75433751e71f"
+
+    :serviceName "nova"
+    :nativeContextualization "linux-only"
+    :serviceRegion "RegionOne"
+    :networkPublic "public"
+    :networkPrivate "private"
+    :orchestratorInstanceType "Basic"
+    :serviceType "compute"
+    :orchestratorSSHUsername ""
+    :orchestratorSSHPassword ""
+    :endpoint "https://console.ulticloud.com:5000/v2.0/tokens"
+    }
 
 You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
-```Parameters`` <#parameters>`__ paragraph below.
+`Parameters <#parameters>`__ paragraph below.
 
 Parameters
 ----------
