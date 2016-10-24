@@ -37,6 +37,7 @@ Below is the help message printed by the SlipStream configuration utility ``ss-c
       -l, --list                    Lists available templates.
       -p, --persisted               Lists resources persisted in DB.
       -r, --resource RESOURCE  #{}  Prints out persisted resource document(s) by name.
+      -e, --edit-kv KEY=VALUE  #{}  Updates or adds key=value in first file from <list-of-files> (other files are ingnored).
       -h, --help
 
     Arguments:
@@ -213,6 +214,20 @@ commit the changes by following the steps below.
    $
    $ ss-config configuration-slipstream.edn
 
+By using ``-e`` option it's possible to update or add parameters in a
+configuration file.  For example:
+
+::
+
+    $ ss-config -e meteringEndpoint=http://1.2.3.4:1234/metering \
+                -e mailUsername=postman \
+                -e invalidKey=bad-key \
+                slipstream.edn
+
+updates ``:meteringEndpoint`` and ``:mailUsername`` parameters to new values,
+and adds a new one ``:invalidKey`` without needing to open the file.  This might
+be handy in atomated editing of the configuration files.
+
 All this can be done without SlipStream service running.
 
 .. warning::
@@ -341,6 +356,20 @@ edit parameters in the file and commit the changes by running
 ::
 
     $ ss-config connector-my-openstack.edn
+
+By using ``-e`` option it's possible to update or add parameters in a
+configuration file.  For example:
+
+::
+
+    $ ss-config -e identityVersion=v2 \
+                -e endpoint=http://another-opentack/openstack \
+                -e invalidKey=bad-key \
+                connector-my-openstack.edn
+
+updates ``:identityVersion`` and ``:endpoint`` parameters to new values, and
+adds a new one ``:invalidKey`` without needing to open the file.  This might
+be handy in atomated editing of the configuration files.
 
 All this can be done without SlipStream service running.
 
