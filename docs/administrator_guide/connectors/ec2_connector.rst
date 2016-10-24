@@ -42,8 +42,9 @@ To allow users to take advantage of this connector, you must add one or
 more instances of this connector by either:
 
 1. Using the `UI <#with-the-ui>`__.
-2. Drop a `configuration file <#with-a-configuration-file>`__ and
-   restart the service.
+2. Add a connector instance defined via `configuration file
+   <#with-a-configuration-file>`__ using `ss-config` utility and restart
+   the service.
 
 With the UI
 -----------
@@ -103,7 +104,6 @@ explaination of how to find the right value of them in the
 
 With a Configuration File
 -------------------------
-
 Please see :ref:`dg-cfg-files` for details about this method of
 configuration.
 
@@ -112,19 +112,23 @@ with the region eu-central-1:
 
 ::
 
-    > cat /etc/slipstream/connectors/ec2-eu-central-1.conf
-    cloud.connector.class = ec2-eu-central-1:ec2
-    ec2-eu-central-1.security.group = default
-    ec2-eu-central-1.update.clienturl = https://<slipstream-ip>/downloads/ec2client.tgz
-    ec2-eu-central-1.orchestrator.instance.type = t2.micro
-    ec2-eu-central-1.region = eu-central-1
-    ec2-eu-central-1.quota.vm = 
-    ec2-eu-central-1.max.iaas.workers = 20
-    ec2-eu-central-1.orchestrator.imageid = ami-accff2b1
+    {
+    :id "connector/ec2-eu-central-1"
+    :cloudServiceType "ec2"
+
+    :maxIaasWorkers 20
+    :quotaVm "20"
+    :orchestratorImageid "ami-accff2b1"
+
+    :securityGroups "default"
+    :updateClientURL "https://<SS hostname>/downloads/ec2client.tgz"
+    :orchestratorInstanceType "t2.micro"
+    :region "eu-central-1"
+    }
 
 You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
-```Parameters`` <#parameters>`__ paragraph below.
+`Parameters <#parameters>`__ paragraph below.
 
 Parameters
 ----------
