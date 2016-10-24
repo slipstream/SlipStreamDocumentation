@@ -93,8 +93,9 @@ To allow users to take advantage of this connector, you must add one or
 more instances of this connector by either:
 
 1. Using the `UI <#with-the-ui>`__.
-2. Drop a `configuration file <#with-a-configuration-file>`__ and
-   restart the service.
+2. Add a connector instance defined via `configuration file
+   <#with-a-configuration-file>`__ using `ss-config` utility and restart
+   the service.
 
 With the UI
 -----------
@@ -155,18 +156,21 @@ With a configuration file
 Please see :ref:`dg-cfg-files` for details about this method of
 configuration.
 
-Here is an example, which will configure the EC2 connector to interact
-with the region eu-central-1:
+Here is an example, which will configure the OCCI connector to interact
+with fedcloud-egi-eu cloud site:
 
 ::
 
-    > cat /etc/slipstream/connectors/fedcloud-egi-eu.conf
-    cloud.connector.class = fedcloud-egi-eu:occi
+    {
+    :id "connector/fedcloud-egi-eu"
+    :cloudServiceType "occi"
+
     <TODO>
+    }
 
 You can find a detailed description of each parameter as well as an
 explaination of how to find the right value of them in the
-```Parameters`` <#parameters>`__ paragraph below.
+`Parameters <#parameters>`__ paragraph below.
 
 Parameters
 ----------
