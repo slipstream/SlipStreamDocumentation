@@ -5,6 +5,88 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.15 (candidate) - 24 october 2016
+----------------------------------
+
+New features and bug fixes in v3.15
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.15 changes the approach to the service configuration bringing
+SlipStream closer to an ability to run the service in a distributed mode by
+decoupling the service state (including service's bootstrap configuration) from
+the processes running the business logic.
+
+For application users and application developers [Alice, Clara]:
+ - Fixes and improvements in displaying placement and pricing information in
+   application Deploy dialog.
+
+For application developers [Clara]:
+ - Enabled editing of Pre/Post-Scale scripts in `Application Workflows` tab of
+   components. For details, please see `Scalability Workflow Hooks 
+   <http://ssdocs.sixsq.com/en/v3.8/advanced_tutorial/scalable-applications.html#scalability-workflow-hooks-scripts>`_
+   section of the SlipStream tutorial on running scalable applications.
+
+For administrators [Dave]:
+ - New way of managing the service configuration via `ss-config` utility.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Migration is needed from v3.14 to v3.15. As the result of the migration the
+service and cloud connectors configuration information will be moved from
+HSQLDB to Elasticsearch.
+
+1. Declare downtime.
+
+2. Let SlipStream service running.
+
+3. Update ssclj and connector packages::
+
+    $ yum update slipstream-ssclj-enterprise
+    $ yum update slipstream-connector-*
+
+4. Perform the migration of service configuration::
+
+    $ export ES_HOST=localhost
+    $ export ES_PORT=9300
+
+and run::
+
+    $ ss-config-migrate -x http://<slipstream> -s super:<pass>
+    $ # Use -m old=new to update values of the parameters if needed.
+    $ # Example: -m localhost=127.0.0.1 -m smtp.gmail.com=smtp.example.com
+
+NB! In case your SlipStream instance is using self-signed certificate the above 
+command may fail and you'll need to download the service configuration as XML::
+
+    $ curl -k -s -D - https://<slipstream>/auth/login -X POST -d \
+        "username=super&password=<PASS>" -c cookie-user.txt
+    $ curl -k -b cookie-user.txt 'https://<slipstream>/configuration?media=xml' \
+        -H "Accept: application/xml" -o configuration.xml
+
+and then run::
+
+    $ ss-config-migrate -x configuration.xml
+
+Now you are ready to upgrade other SlipStream packages and restart the
+service::
+
+    $ yum update --disablerepo=* --enablerepo=SlipStream-Releases-enterprise
+    $ systemctl restart hsqldb elasticsearch ssclj slipstream
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.14-community...v3.15-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.14-community...v3.15-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.14-community...v3.15-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.14-community...v3.15-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.14-community...v3.15-community>`__
+ -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.14-community...v3.15-community>`__
+
 v3.14 (candidate) - 7 october 2016
 ----------------------------------
 
