@@ -42,8 +42,9 @@ To allow users to take advantage of this connector, you must add one or
 more instances of this connector by either:
 
 1. Using the `UI <#with-the-ui>`__.
-2. Drop a `configuration file <#with-a-configuration-file>`__ and
-   restart the service.
+2. Add a connector instance defined via `configuration file
+   <#with-a-configuration-file>`__ using `ss-config` utility and restart
+   the service.
 
 With the UI
 -----------
@@ -105,17 +106,20 @@ project:
 
 ::
 
-    $ cat /etc/slipstream/connectors/stratuslab.conf
-    cloud.connector.class = stratuslab:stratuslab
-    stratuslab.max.iaas.workers = 20
-    stratuslab.update.clienturl = http://<slipstream-ip>/downloads/stratuslabclient.tgz
-    stratuslab.messaging.endpoint = https://pdisk.lal.stratuslab.eu/pdisk
-    stratuslab.pdisk.endpoint = https://pdisk.lal.stratuslab.eu/pdisk
-    stratuslab.orchestrator.imageid = N-Bu1h1jt3K8ODnCTw4JiyPaH5k
-    stratuslab.quota.vm = 10
-    stratuslab.endpoint = https://cloud.lal.stratuslab.eu/one-proxy/xmlrpc
-    stratuslab.marketplace.endpoint = https://marketplace.stratuslab.eu/marketplace
-    stratuslab.orchestrator.instance.type = m1.small
+    {
+    :id "connector/stratuslab"
+    :cloudServiceType "stratuslab"
+
+    :maxIaasWorkers 20
+    :quotaVm "10"
+    :orchestratorImageid "N-Bu1h1jt3K8ODnCTw4JiyPaH5k"
+
+    :endpoint "https://cloud.lal.stratuslab.eu/one-proxy/xmlrpc"
+    :updateClientURL "http://<slipstream-ip>/downloads/stratuslabclient.tgz"
+    :pdiskEndpoint "https://pdisk.lal.stratuslab.eu/pdisk"
+    :marketplaceEndpoint "https://marketplace.stratuslab.eu/marketplace"
+    :orchestratorInstanceType "m1.small"
+    }
 
 Configure Native Images for This Connector Instance
 ---------------------------------------------------
