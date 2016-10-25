@@ -49,38 +49,39 @@ HSQLDB to Elasticsearch.
 
 2. Let SlipStream service running.
 
-3. Update ssclj and connector packages::
-
-    $ yum update slipstream-ssclj-enterprise
-    $ yum update slipstream-connector-*
-
-4. Perform the migration of service configuration::
-
-    $ export ES_HOST=localhost
-    $ export ES_PORT=9300
-
-and run::
-
-    $ ss-config-migrate -x http://<slipstream> -s super:<pass>
-    $ # Use -m old=new to update values of the parameters if needed.
-    $ # Example: -m localhost=127.0.0.1 -m smtp.gmail.com=smtp.example.com
-
-NB! In case your SlipStream instance is using self-signed certificate the above 
-command may fail and you'll need to download the service configuration as XML::
+3. Download the service configuration as XML::
 
     $ curl -k -s -D - https://<slipstream>/auth/login -X POST -d \
         "username=super&password=<PASS>" -c cookie-user.txt
     $ curl -k -b cookie-user.txt 'https://<slipstream>/configuration?media=xml' \
         -H "Accept: application/xml" -o configuration.xml
 
-and then run::
+4. Update ssclj and connector packages::
 
+    $ yum update slipstream-ssclj-enterprise
+    $ yum update slipstream-connector-*
+
+5. Perform the migration of service configuration::
+
+    $ export ES_HOST=localhost
+    $ export ES_PORT=9300
     $ ss-config-migrate -x configuration.xml
+    $ # Use -m old=new to update values of the parameters if needed.
+    $ # Example: -m localhost=127.0.0.1 -m smtp.gmail.com=smtp.example.com
 
-Now you are ready to upgrade other SlipStream packages and restart the
-service::
+Now you are ready to upgrade other SlipStream packages::
 
-    $ yum update --disablerepo=* --enablerepo=SlipStream-Releases-enterprise
+    $ yum update --disablerepo=* --enablerepo=SlipStream-<release>-<kind>
+
+Substitute ``<release>`` and ``<kind>`` according to your installation.
+
+
+Check ``/opt/slipstream/server/etc/default.slipstream.rpmsave`` file for your
+custom configurations and merge them with the new ones coming with
+``/opt/slipstream/server/etc/default.slipstream``.
+
+Restart services::
+
     $ systemctl restart hsqldb elasticsearch ssclj slipstream
 
 Commits
