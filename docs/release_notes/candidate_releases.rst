@@ -65,7 +65,7 @@ HSQLDB to Elasticsearch.
 
     $ export ES_HOST=localhost
     $ export ES_PORT=9300
-    $ ss-config-migrate -x configuration.xml
+    $ ss-config-migrate -x configuration.xml -m 3.14=3.15
     $ # Use -m old=new to update values of the parameters if needed.
     $ # Example: -m localhost=127.0.0.1 -m smtp.gmail.com=smtp.example.com
 
