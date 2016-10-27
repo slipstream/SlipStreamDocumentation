@@ -39,7 +39,7 @@ Commits
  -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.13-community...v3.14-community>`__
 
 v3.13 (candidate) - 28 September 2016
-----------------------------------
+-------------------------------------
 
 New features and bug fixes in v3.13
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -79,7 +79,7 @@ Commits
 
 
 v3.12 (candidate) - 13 September 2016
-----------------------------------
+-------------------------------------
 
 New features and bug fixes in v3.12
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
