@@ -7,6 +7,108 @@ stable releases that are listed here. Stable releases are supported by
 SixSq and are appropriate for production deployments. In general, we
 recommend that people use the latest stable release.
 
+
+v3.14 (stable) - 31 October 2016
+--------------------------------
+
+Features
+~~~~~~~~
+
+Below is the list of the main feature and improvements done in
+releases 3.9 to 3.14.
+
+ - Improvements in the functionality of the placement and ranking service.
+ - Added complete set of resources for the Service Catalog (Enterprise
+   Edition), allowing policy (and priced) based placement of virtual
+   machines.
+ - Introduced complete Clojure and ClojureScript API for the SlipStream
+   CIMI resources.
+ - This set of releases provides much of the groundwork for future
+   improvements.  The emphasis has been on preparing new server-side
+   resources for cloud connectors and service configuration; these will
+   improve the management of these resources in the future.  There has
+   also been significant work done to streamline the code organization,
+   packaging, and release process.  This should speed development of
+   new features.
+ - Added the delete all versions feature for a module.
+
+The detailed change log is given below.  For brevity bug fixes have
+not been included, see the change logs for the intermediate releases
+for the full set of changes and fixes.
+
+For application users and developers [Alice, Clara]:
+ - Provide pricing along with a filtered set of connectors on the run
+   dialog. (Enterprise Edition)
+ - Improve the bootstrapping process to avoid having the process hang
+   on CentOS 6 systems.
+ - Provide complete set of service catalog resources (serviceOffer,
+   serviceAttribute, and serviceAttributeNamespace) to allow
+   policy-based placement using the service catalog
+   information. (Enterprise Edition)
+ - Provide clojure/clojurescript API for SlipStream CIMI resources.
+   The API provides asynchronous and synchronous implementations of
+   all SCRUD actions.  Filtering and subsetting are provided for
+   search operations.
+ - Use larger modal dialog to avoid truncating long parameter or
+   component names in run dialog.
+ - Alpha versions of connector and configuration resources.  These are
+   available through the API and will be integrated into the web
+   interface in a future release.
+ - Increase the allowed maximum size of a report.
+ - Pass SNI information to backend services.
+ - Add the delete all versions for a module.
+
+For application users [Alice]:
+ - Provide a better message when a cloud quota has been exceeded.  The
+   message now includes the quota, number of running VMs, and number
+   of requested VMs.
+
+For application developers [Clara]:
+ - Allow application developers to specify a placement policy for
+   application components, for example, limiting the places where a
+   component can run. (Enterprise Edition)
+ - Improve the error messages reported to users of the SlipStream
+   client API, providing more information about the underlying cause
+   of a problem.
+ - Selection of specific network for opennebula connector.
+
+For administrators [Dave]:
+ - Streamline the installation of SlipStream with a packaged version
+   of PhantomJS and with a package for the Elasticsearch
+   repositories.
+ - Modify service dependencies to ensure cleaner start up of all
+   SlipStream services on boot.
+ - Improve the collection of virtual machine state information (used
+   in the dashboard) to make it more efficient and reliable.  Put in
+   additional logging to make debugging easier.
+ - Upgrade to the latest production libraries for all server
+   dependencies, improving the robustness of the server (in particular
+   Aleph, Buddy, and ClojureScript).
+ - Clean up and reorganize the packaging for the pricing service.
+   Logging information will now appear in the standard OS directory.
+ - Unify build system with boot for clojure code.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required from 3.8 to 3.14.
+
+Commits
+~~~~~~~
+
+-  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.8-community...v3.14-community>`__
+-  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.8-community...v3.14-community>`__
+-  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.8-community...v3.14-community>`__
+-  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.8-community...v3.14-community>`__
+-  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/v3.8-community...v3.14-community>`__
+
+
+==================================================================
+
+
 v3.8 (stable) - 15 July 2016
 ----------------------------
 
