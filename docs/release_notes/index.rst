@@ -3,7 +3,7 @@ SlipStream Releases
 ===================
 
 Production deployments should use recent stable releases. The latest
-**stable release** is **v2.14**.
+**stable release** is **v3.14**.
 
 SixSq also produces a **candidate release** after each development
 iteration (sprint). These provide a peek at new features. Feedback on
