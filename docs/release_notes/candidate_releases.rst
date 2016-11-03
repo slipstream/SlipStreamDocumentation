@@ -134,7 +134,7 @@ Commits
  -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.13-community...v3.14-community>`__
  -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.13-community...v3.14-community>`__
  -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.13-community...v3.14-community>`__
- -  `SlipStreamClientAPI <https://github.com/slipstream/SlipStreamClientAPI/compare/v3.13-community...v3.14-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.13-community...v3.14-community>`__
 
 v3.13 (candidate) - 28 September 2016
 -------------------------------------

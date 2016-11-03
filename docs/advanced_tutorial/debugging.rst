@@ -43,9 +43,10 @@ continue to run**, you can instead:
 3. Reset the abort flag with the ``ss-abort --cancel`` command, and
 4. Update and rerun the deployment script(s)
 
-This allows for a much faster development cycle. The deployment scripts
-can be found in the files ``/tmp/tmp*`` and the logs from the initial
-execution of these scripts are below
+This allows for a much faster development cycle. The deployment
+scripts can be found in the directory ``/var/lib/slipstream``, with
+names that correspond to each phase of the deployment.  The logs from
+the initial execution of these scripts are below
 
 -  ``/var/log/slipstream/client`` on Linux
 -  ``%TMP%\slipstream\reports`` on Windows.
