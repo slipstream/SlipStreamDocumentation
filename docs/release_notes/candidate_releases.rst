@@ -84,6 +84,15 @@ Restart services::
 
     $ systemctl restart hsqldb elasticsearch ssclj slipstream
 
+Known issues
+~~~~~~~~~~~~
+
+On enterprise edition, due to a bug in the UI part of the deployment
+placement and ranking, the Deploy dialog (for application or component)
+may display a certain choice of the cloud/price offer, but after clicking
+the Deploy button, the application/component may be deployed to a
+different cloud.  This was fixed in 3.16.
+
 Commits
 ~~~~~~~
 
