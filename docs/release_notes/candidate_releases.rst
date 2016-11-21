@@ -5,6 +5,47 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.16 (candidate) - 21 november 2016
+------------------------------------
+
+New features and bug fixes in v3.16
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The main features of the release v3.16 are addition of the support of CPU/RAM/Disk
+server side as module parameters and introduction of new Python CLI and API to
+SlipStream service like `nuv.la <https://nuv.la>`_.  Service Catalog was made
+available in the community version.
+
+For application users and application developers [Alice, Clara]:
+ - Users can now enter CPU/RAM/Disk sizes for the component instances in the
+   generic Cloud Configuration -> Cloud section on the components.  Depending
+   on the cloud (working with t-short sizes or directly with CPU/RAM/Disk),
+   these values will be mapped either directly to the corresponding CPU/RAM/Disk
+   or the closest match to the t-short size will be made.  The mapping is done
+   using service offers defined the Service Catalog.
+ - New Python CLI and API were released to be used with SlipStream services
+   like `nuv.la <https://nuv.la>`_.  For more details please see `CLI
+   <https://github.com/slipstream/SlipStreamCLI>`_ and
+   `API <https://github.com/slipstream/SlipStreamPythonAPI>`_.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is needed from v3.15 to v3.16.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.15-community...v3.16-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.15-community...v3.16-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.15-community...v3.16-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.15-community...v3.16-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.15-community...v3.16-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.15-community...v3.16-community>`__
+
 v3.15 (candidate) - 24 october 2016
 -----------------------------------
 
@@ -26,7 +67,7 @@ For application users and application developers [Alice, Clara]:
 
 For application developers [Clara]:
  - Enabled editing of Pre/Post-Scale scripts in `Application Workflows` tab of
-   components. For details, please see `Scalability Workflow Hooks 
+   components. For details, please see `Scalability Workflow Hooks
    <http://ssdocs.sixsq.com/en/v3.8/advanced_tutorial/scalable-applications.html#scalability-workflow-hooks-scripts>`_
    section of the SlipStream tutorial on running scalable applications.
 
@@ -145,13 +186,13 @@ New features and bug fixes in v3.13
 Version v3.13 fixes a bug in build image creation, and brings minor improvement in REST API.
 
 For application users and developers [Alice, Clara]:
- 
+
 For application users [Alice]:
  - Fix a bug for Safari users that prevented display of some pages with pagination
  - Fix a bug in StratusLab connector that prevented the build of an image
 
 For application developers [Clara]:
- - Add USER and ANON roles for logged in users (used to query REST api) 
+ - Add USER and ANON roles for logged in users (used to query REST api)
  - Refactor the parsing of running instances
 
 For administrators [Dave]:
