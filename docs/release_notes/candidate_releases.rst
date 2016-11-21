@@ -19,9 +19,9 @@ available in the community version.
 For application users and application developers [Alice, Clara]:
  - Users can now enter CPU/RAM/Disk sizes for the component instances in the
    generic Cloud Configuration -> Cloud section on the components.  Depending
-   on the cloud (working with t-short sizes or directly with CPU/RAM/Disk),
+   on the cloud (working with t-shirt sizes or directly with CPU/RAM/Disk),
    these values will be mapped either directly to the corresponding CPU/RAM/Disk
-   or the closest match to the t-short size will be made.  The mapping is done
+   or the closest match to the t-shirt size will be made.  The mapping is done
    using service offers defined the Service Catalog.
  - New Python CLI and API were released to be used with SlipStream services
    like `nuv.la <https://nuv.la>`_.  For more details please see `CLI
