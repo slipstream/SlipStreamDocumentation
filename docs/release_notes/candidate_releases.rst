@@ -34,7 +34,46 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-No migration is needed from v3.15 to v3.16.
+Upgrading to v3.16 requires each connector to be described by a corresponding service offer.
+To insert the service offer for a new connector, use the REST API to post on this resource.
+For example, for a connector named `connector-name1`, if ssh access to API server is available:
+- `curl -X POST -H "slipstream-authn-info: username role" -H "content-type: application/json" http://localhost:8201/api/service-offer -d@service-offer.json`
+
+The service-offer.json should have the following structure:
+
+    # 
+    {
+      "connector" : {
+        "href" : "connector-name1"
+      },
+      "schema-org:flexible" : "true",
+      "acl" : {
+        "owner" : {
+          "type" : "ROLE",
+          "principal" : "ADMIN"
+        },
+        "rules" : [ {
+          "principal" : "USER",
+          "right" : "VIEW",
+          "type" : "ROLE"
+        }, {
+          "principal" : "ADMIN",
+          "right" : "ALL",
+          "type" : "ROLE"
+        } ]
+      },  
+      "resourceURI" : "http://sixsq.com/slipstream/1/ServiceOffer"  
+    }
+    #
+
+Without SSH access to the API, the same command can be re-written with 
+
+- `curl -X POST -H "content-type: application/json" http[s]://slipstream-endpoint/api/service-offer -d@service-offer.json` -b token.txt
+
+(see SlipStream API documentation on how to obtain an authentication token).
+
+It is possible to check that a given connector named `connector-name-x` is described by a service offer by querying the Service offer resource with the following command:
+`curl -H "slipstream-authn-info: super ADMIN" "http://localhost:8201/api/service-offer?\$filter=connector/href='connector-name-x'"`
 
 Commits
 ~~~~~~~
