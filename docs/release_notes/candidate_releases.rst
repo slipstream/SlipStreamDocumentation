@@ -39,9 +39,9 @@ To insert the service offer for a new connector, use the REST API to post on thi
 For example, for a connector named `connector-name1`, if ssh access to API server is available:
 - `curl -X POST -H "slipstream-authn-info: username role" -H "content-type: application/json" http://localhost:8201/api/service-offer -d@service-offer.json`
 
-The service-offer.json should have the following structure:
+The service-offer.json should have the following structure::
 
-    # 
+    #
     {
       "connector" : {
         "href" : "connector-name1"
@@ -61,12 +61,12 @@ The service-offer.json should have the following structure:
           "right" : "ALL",
           "type" : "ROLE"
         } ]
-      },  
-      "resourceURI" : "http://sixsq.com/slipstream/1/ServiceOffer"  
+      },
+      "resourceURI" : "http://sixsq.com/slipstream/1/ServiceOffer"
     }
     #
 
-Without SSH access to the API, the same command can be re-written with 
+Without SSH access to the API, the same command can be re-written with
 
 - `curl -X POST -H "content-type: application/json" http[s]://slipstream-endpoint/api/service-offer -d@service-offer.json` -b token.txt
 
