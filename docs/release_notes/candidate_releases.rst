@@ -35,6 +35,14 @@ Migration
 
 No migration is required.
 
+Known issues
+~~~~~~~~~~~~
+
+Instance type chosen by placement and ranking service (based on the component
+global CPU/RAM/Disk definition) and displayed in the component Deploy dialog is
+ignored, and the instance type defined for the cloud on the component is used
+instead.
+
 Commits
 ~~~~~~~
 
@@ -114,6 +122,15 @@ Without SSH access to the API, the same command can be re-written with
 
 It is possible to check that a given connector named `connector-name-x` is described by a service offer by querying the Service offer resource with the following command:
 `curl -H "slipstream-authn-info: super ADMIN" "http://localhost:8201/api/service-offer?\$filter=connector/href='connector-name-x'"`
+
+
+Known issues
+~~~~~~~~~~~~
+
+Instance type chosen by placement and ranking service (based on the component
+global CPU/RAM/Disk definition) and displayed in the component Deploy dialog is
+ignored, and the instance type defined for the cloud on the component is used
+instead.
 
 Commits
 ~~~~~~~
