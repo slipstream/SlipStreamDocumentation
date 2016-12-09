@@ -5,6 +5,46 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.17 (candidate) - 09 december 2016
+------------------------------------
+
+New features and bug fixes in v3.17
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.17 brings new connector for Open Telecom Cloud
+https://cloud.telekom.de/ named OTC, a number of improvements to editing of
+Application module and JSON rendering of all module types and run.
+
+For application developers [Clara]:
+ - Improved modification of application component.
+ - Now it's possible to edit the description and category of input/output
+   parameters on components.
+ - Added JSON rendering for module type resources (project, component,
+   application) and run.
+ - CIMI filter can now handle "!=" operator.
+ - Various minor improvements in the code organization for OpenStack connector
+   and SlipStream Client.
+For organization manager and SlipStream administrator [Bob and Dave]:
+ - New connector named OTC for Open Telecom Cloud.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.16-community...v3.17-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.16-community...v3.17-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.16-community...v3.17-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.16-community...v3.17-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.16-community...v3.17-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.16-community...v3.17-community>`__
+
 v3.16 (candidate) - 21 november 2016
 ------------------------------------
 
