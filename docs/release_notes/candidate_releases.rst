@@ -5,6 +5,37 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.18 (candidate) - 17 december 2016
+------------------------------------
+
+New features and bug fixes in v3.18
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+v3.18 is a maintenance release.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+Instance type chosen by placement and ranking service (based on the component
+global CPU/RAM/Disk definition) and displayed in the component Deploy dialog is
+ignored, and the instance type defined for the cloud on the component is used
+instead.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.17-community...v3.18-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.17-community...v3.18-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.17-community...v3.18-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.17-community...v3.18-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.17-community...v3.18-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.17-community...v3.18-community>`__
+
 v3.17 (candidate) - 09 december 2016
 ------------------------------------
 
