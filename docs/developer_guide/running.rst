@@ -67,7 +67,7 @@ SlipStream is composed of a number of services. This section describes how
 to start these services.
 
 Strarting the Ancillary SlipStream Service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------
 
 This service should be started first and includes additional resources, such
 as ``event`` and ``usage`` resources.  As opposed to the main service, which is
@@ -87,7 +87,7 @@ REPL with boot and in the REPL run the commands listed below::
 
     $ export ES_HOST=localhost
     $ export ES_PORT=9300
-    $ export CONFIG_PATH=ssclj-conf.edn
+    $ export CONFIG_PATH=db.spec
 
     $ boot repl
       boot.user=> (require '[com.sixsq.slipstream.ssclj.app.server :as server :reload true])
@@ -97,22 +97,21 @@ REPL with boot and in the REPL run the commands listed below::
       boot.user=> ;; when needed, stop with
       boot.user=> ;; (server/stop stop-fn)
 
-The service will be started on port ``8201``.  You can set it as needed,
-taking into account that the port will be required later during the startup of
-the main SlipStream service.
+The services will be started on port ``8201``.  You can set it as needed,
+taking into account that it will be required later during the startup of the
+main SlipStream service.
 
-The directory containing the file pointed to by ``$CONFIG_PATH`` environment
-variable, must be on the classpath.  The ``$CONFIG_PATH`` is the file
-containing the HSQLDB database and other definitions.  Typical content
-looks like::
+The directory containing the ``db.spec`` file must be on the classpath.  The
+``db.spec`` is the path to the file containing the HSQLDB database definition.
+Typical content looks like::
 
-    {:auth-db   {
-                 :classname   "org.hsqldb.jdbc.JDBCDriver"
-                 :subprotocol "hsqldb"
-                 :subname     "hsql://localhost:9001/slipstream"
-                 :make-pool?  true}}
+    {:db {
+      :classname    "org.hsqldb.jdbc.JDBCDriver"
+      :subprotocol  "hsqldb"
+      :subname      "mem://localhost:9012/devresources"
+      :make-pool?   true}}
 
-By default, the service logs go to ``logs/ssclj-.log``.
+The service's log file can be found under ``logs/ssclj-.log``
 
 You can add other dependencies to the classpath
 as needed.  This can be done either by editing the list of dependencies in
@@ -127,46 +126,33 @@ as needed.  This can be done either by editing the list of dependencies in
     58                    [com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf]
     59                    ;; added OpenStack connector jar
 
-or by providing the dependencies to ``boot`` command as follows::
+or providing the dependencies to ``boot`` command as follows::
 
     $ boot -d com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf:3.17-SNAPSHOT repl
 
-.. note::
-  By adding connector jar(s) to the classpath of the service (by either ways as
-  shown above) we allow the service to create the connector instances.
-
-In the first case, the dependency will be search in the SixSq's artifacts
-repository.  However, in the second case the list of artifact repositories
-does not contain SixSq repository and thus, it is assumed that either the
-dependent artifact is available in the local maven repository or in some
-standard global repositories.
+By adding connectors jar to the classpath of the service (as shown above) we
+allow the service to create the connector instances.
 
 Starting Pricing and Ranking Service (PRS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------
 
 To start PRS service go to ``SlipStreamServer/jar-prs-service`` and run::
 
     $ boot run
 
-The service starts on ``localhost:3000`` by default.  The service logs go to
-stdout/err.
+The service starts on ``localhost:3000`` by default.  Logs go to stdout/err.
 
 Starting the Main SlipStream Service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------
 
-To run the main server, go into the ``war`` subdirectory in the
+To run the main server, drop into the ``war`` subdirectory in the
 ``SlipStreamServer`` project and then use Jetty to run the SlipStream web
 archive (war file).
 
 ::
 
     $ cd SlipStreamServer/war
-    $ export ES_HOST=localhost
-    $ export ES_PORT=9300
     $ mvn jetty:run-war
-
-The server makes use of Elasticsearch as database backend, therefore, you see
-the need to set the host and port of Elasticsearch.
 
 If the last command returns an error like
 ``JettyRunWarMojo : Unsupported major.minor version 51.0`` make sure you
@@ -178,8 +164,6 @@ for setting up the environment.
 As you can see, we run SlipStream as a war behind Jetty. Now that the
 server's running, visit http://localhost:8080/ with your Web browser.
 
-TODO: Add connector to classpath.
-
 During development, especially when working on the UI with css and
 JavaScript files, to avoid the war building round trip, you can start
 the server pointing to source static location as following:
@@ -189,8 +173,10 @@ the server pointing to source static location as following:
     $ export ES_HOST=localhost
     $ export ES_PORT=9300
     $ mvn jetty:run-war \
-          -Dstatic.content.location=file:../../SlipStreamUI/src/slipstream/ui/views
+          -Dstatic.content.location=file:../../SlipStreamUI/clj/src/slipstream/ui/views
 
+The server makes use of Elasticsearch as database backend, therefore, you see
+the need to set the host and port of Elasticsearch.
 You can also change the main database backend connection using the
 ``persistence.unit``. For example:
 
