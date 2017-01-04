@@ -87,7 +87,7 @@ REPL with boot and in the REPL run the commands listed below::
 
     $ export ES_HOST=localhost
     $ export ES_PORT=9300
-    $ export CONFIG_PATH=db.spec
+    $ export CONFIG_PATH=ssclj-conf.edn
 
     $ boot repl
       boot.user=> (require '[com.sixsq.slipstream.ssclj.app.server :as server :reload true])
@@ -101,8 +101,8 @@ The services will be started on port ``8201``.  You can set it as needed,
 taking into account that it will be required later during the startup of the
 main SlipStream service.
 
-The directory containing the ``db.spec`` file must be on the classpath.  The
-``db.spec`` is the path to the file containing the HSQLDB database definition.
+The directory containing the ``ssclj-conf.edn`` file must be on the classpath.  The
+``ssclj-conf.edn`` is the path to the file containing the HSQLDB database definition.
 Typical content looks like::
 
     {:db {
@@ -110,6 +110,9 @@ Typical content looks like::
       :subprotocol  "hsqldb"
       :subname      "mem://localhost:9012/devresources"
       :make-pool?   true}}
+
+The ``ssclj-conf.edn`` is part of the source code and located under
+``resources/`` subdirectory, which gets appended to the classpath.
 
 The service's log file can be found under ``logs/ssclj-.log``
 
@@ -192,6 +195,33 @@ or
 
 You will obviously need to have either MySQL or Postgresql running when
 configuring the server in this way.
+
+To add cloud connectors you need to modify ``pom.xml``.  Below is an example of
+adding Exoscale connector that depends on CloudStack connector.  Please note
+that both ``jar`` and ``conf`` artifacts should be added.
+
+::
+
+    <dependency>
+      <groupId>com.sixsq.slipstream</groupId>
+      <artifactId>SlipStreamConnector-Exoscale-jar</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sixsq.slipstream</groupId>
+      <artifactId>SlipStreamConnector-Exoscale-conf</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sixsq.slipstream</groupId>
+      <artifactId>SlipStreamConnector-CloudStack-jar</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sixsq.slipstream</groupId>
+      <artifactId>SlipStreamConnector-CloudStack-conf</artifactId>
+      <version>${project.version}</version>
+    </dependency>
 
 You are now ready to :ref:`configure <dg-cfg>` your new SlipStream
 server.
