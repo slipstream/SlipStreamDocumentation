@@ -11,16 +11,17 @@ v3.20 (candidate) - 28 January 2017
 New features and bug fixes in v3.20
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Version v3.17 allows better management of SlipStream from other
+Version v3.20 allows better management of SlipStream from other
 services as well as bug and security fixes.
 
 For everyone:
- - Add m2.2xlarge instance type for EC2 infrastructures.
+ - Add m2.2xlarge instance type for the Amazon cloud service.
  - Add checkbox to highlight option for multi-cloud deployment.
 
 For application developers [Clara]:
  - Allow managers to create and to manage a group of users.
- - FIX: Default is now taken into account when saving nodes in deployment
+ - FIX: Default is now taken into account when saving nodes in
+   deployment
 
 For SlipStream administrator [Dave]:
  - Bug and security fixes.
@@ -54,7 +55,8 @@ v3.19 (candidate) - 16 January 2017
 New features and bug fixes in v3.19
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-v3.19 is a maintenance release.
+Version v3.19 is a maintainence release that incorporates dependency
+upgrades with bug and security fixes.
 
 Migration
 ~~~~~~~~~
