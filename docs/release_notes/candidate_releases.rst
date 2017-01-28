@@ -5,6 +5,77 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.20 (candidate) - 28 January 2017
+-----------------------------------
+
+New features and bug fixes in v3.20
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.17 allows better management of SlipStream from other
+services as well as bug and security fixes.
+
+For everyone:
+ - Add m2.2xlarge instance type for EC2 infrastructures.
+ - Add checkbox to highlight option for multi-cloud deployment.
+
+For application developers [Clara]:
+ - Allow managers to create and to manage a group of users.
+ - FIX: Default is now taken into account when saving nodes in deployment
+
+For SlipStream administrator [Dave]:
+ - Bug and security fixes.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.19-community...v3.20-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.19-community...v3.20-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.19-community...v3.20-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.19-community...v3.20-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.19-community...v3.20-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.19-community...v3.20-community>`__
+
+v3.19 (candidate) - 16 January 2017
+-----------------------------------
+
+New features and bug fixes in v3.19
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+v3.19 is a maintenance release.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.18-community...v3.19-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.18-community...v3.19-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.18-community...v3.19-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.18-community...v3.19-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.18-community...v3.19-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.18-community...v3.19-community>`__
+
 v3.18 (candidate) - 17 december 2016
 ------------------------------------
 
