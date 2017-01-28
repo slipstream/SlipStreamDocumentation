@@ -63,14 +63,93 @@ To start Elastic Search engine, just type (in the ``bin`` directory):
 SlipStream Services
 -------------------
 
-SlipStream is composed of two main services. This section describes how
+SlipStream is composed of a number of services. This section describes how
 to start these services.
 
-Running the Main SlipStream Service
------------------------------------
+Strarting the Ancillary SlipStream Service
+------------------------------------------
+
+This service should be started first and includes additional resources, such
+as ``event`` and ``usage`` resources.  As opposed to the main service, which is
+written in Java, this service is written in Clojure.  The service uses both
+HSQLDB and Elasticsearch, so they should be up and running prior to starting
+the service.
+
+The service should be started from the ``ssclj/jar`` module of
+``SlipStreamServer`` project.
+
+::
+
+   $ cd SlipStreamServer/ssclj/jar
+
+To run the service, export the required environment variables, start Clojure
+REPL with boot and in the REPL run the commands listed below::
+
+    $ export ES_HOST=localhost
+    $ export ES_PORT=9300
+    $ export CONFIG_PATH=ssclj-conf.edn
+
+    $ boot repl
+      boot.user=> (require '[com.sixsq.slipstream.ssclj.app.server :as server :reload true])
+      nil
+      boot.user=> (def stop-fn (server/start 8201))
+      nil
+      boot.user=> ;; when needed, stop with
+      boot.user=> ;; (server/stop stop-fn)
+
+The services will be started on port ``8201``.  You can set it as needed,
+taking into account that it will be required later during the startup of the
+main SlipStream service.
+
+The directory containing the ``ssclj-conf.edn`` file must be on the classpath.  The
+``ssclj-conf.edn`` is the path to the file containing the HSQLDB database definition.
+Typical content looks like::
+
+    {:db {
+      :classname    "org.hsqldb.jdbc.JDBCDriver"
+      :subprotocol  "hsqldb"
+      :subname      "mem://localhost:9012/devresources"
+      :make-pool?   true}}
+
+The ``ssclj-conf.edn`` is part of the source code and located under
+``resources/`` subdirectory, which gets appended to the classpath.
+
+The service's log file can be found under ``logs/ssclj-.log``
+
+You can add other dependencies to the classpath
+as needed.  This can be done either by editing the list of dependencies in
+``build.boot``::
+
+    21   :dependencies
+    22   #(vec (concat %
+    23                 (merge-defaults
+    24                  ['sixsq/default-deps (get-env :version)]
+    25                  '[[org.clojure/clojure]
+    ...
+    58                    [com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf]
+    59                    ;; added OpenStack connector jar
+
+or providing the dependencies to ``boot`` command as follows::
+
+    $ boot -d com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf:3.17-SNAPSHOT repl
+
+By adding connectors jar to the classpath of the service (as shown above) we
+allow the service to create the connector instances.
+
+Starting Pricing and Ranking Service (PRS)
+------------------------------------------
+
+To start PRS service go to ``SlipStreamServer/jar-prs-service`` and run::
+
+    $ boot run
+
+The service starts on ``localhost:3000`` by default.  Logs go to stdout/err.
+
+Starting the Main SlipStream Service
+------------------------------------
 
 To run the main server, drop into the ``war`` subdirectory in the
-``SlipStreamServer`` module and then use Jetty to run the SlipStream web
+``SlipStreamServer`` project and then use Jetty to run the SlipStream web
 archive (war file).
 
 ::
@@ -94,10 +173,14 @@ the server pointing to source static location as following:
 
 ::
 
+    $ export ES_HOST=localhost
+    $ export ES_PORT=9300
     $ mvn jetty:run-war \
-          -Dstatic.content.location=file:../../SlipStreamUI/src/slipstream/ui/views
+          -Dstatic.content.location=file:../../SlipStreamUI/clj/src/slipstream/ui/views
 
-You can also change the database backend connection using the
+The server makes use of Elasticsearch as database backend, therefore, you see
+the need to set the host and port of Elasticsearch.
+You can also change the main database backend connection using the
 ``persistence.unit``. For example:
 
 ::
@@ -113,6 +196,33 @@ or
 You will obviously need to have either MySQL or Postgresql running when
 configuring the server in this way.
 
+To add cloud connectors you need to modify ``pom.xml``.  Below is an example of
+adding Exoscale connector that depends on CloudStack connector.  Please note
+that both ``jar`` and ``conf`` artifacts should be added.
+
+::
+
+    <dependency>
+      <groupId>com.sixsq.slipstream</groupId>
+      <artifactId>SlipStreamConnector-Exoscale-jar</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sixsq.slipstream</groupId>
+      <artifactId>SlipStreamConnector-Exoscale-conf</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sixsq.slipstream</groupId>
+      <artifactId>SlipStreamConnector-CloudStack-jar</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sixsq.slipstream</groupId>
+      <artifactId>SlipStreamConnector-CloudStack-conf</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
 You are now ready to :ref:`configure <dg-cfg>` your new SlipStream
 server.
 
@@ -121,41 +231,3 @@ server.
     If you intend to configure your system from configuration files, do
     not start your service just yet and read on.
 
-Running the Ancillary SlipStream Service
-----------------------------------------
-
-This service includes additional resources, such as ``event`` and
-``usage`` resources. As opposed to the main service written in Java,
-this service is written in Clojure.
-
-To run the service from the ``ssclj`` repository, use the jar file that
-contains all of the service dependencies:
-
-::
-
-    /usr/bin/java
-      -Ddb.config.path=<db.spec>
-      -Dlogfile.path=<environment.name>
-      -cp .:target/SlipStreamCljResources-jar-<version>-jar-with-dependencies.jar
-      com.sixsq.slipstream.ssclj.app.main 8201
-
-Changing the name of the generated jar file as needed.
-
-The directory containing the ``db.spec`` file must be on the classpath
-(here it is "``.``\ "). You can add other dependencies to the classpath
-as needed. The service will start on the port 8200 by default or you can
-provide an argument to change the port (port 8201 in the example).
-
-The ``db.spec`` is the path to the file containing the database
-definition (e.g. *config-hsqldb-mem.edn*). Typical content looks like:
-
-::
-
-    {:db {
-      :classname    "org.hsqldb.jdbc.JDBCDriver"
-      :subprotocol  "hsqldb"
-      :subname      "mem://localhost:9012/devresources"
-      :make-pool?   true}}
-
-Note that the log file will be named after the value of
-``environment.name``.

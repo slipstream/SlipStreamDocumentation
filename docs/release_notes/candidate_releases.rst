@@ -5,6 +5,174 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.18 (candidate) - 17 december 2016
+------------------------------------
+
+New features and bug fixes in v3.18
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+v3.18 is a maintenance release.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+Instance type chosen by placement and ranking service (based on the component
+global CPU/RAM/Disk definition) and displayed in the component Deploy dialog is
+ignored, and the instance type defined for the cloud on the component is used
+instead.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.17-community...v3.18-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.17-community...v3.18-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.17-community...v3.18-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.17-community...v3.18-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.17-community...v3.18-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.17-community...v3.18-community>`__
+
+v3.17 (candidate) - 09 december 2016
+------------------------------------
+
+New features and bug fixes in v3.17
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.17 brings new connector for Open Telecom Cloud
+https://cloud.telekom.de/ named OTC, a number of improvements to editing of
+Application module and JSON rendering of all module types and run.
+
+For application developers [Clara]:
+ - Improved modification of application component.
+ - Now it's possible to edit the description and category of input/output
+   parameters on components.
+ - Added JSON rendering for module type resources (project, component,
+   application) and run.
+ - CIMI filter can now handle "!=" operator.
+ - Various minor improvements in the code organization for OpenStack connector
+   and SlipStream Client.
+For organization manager and SlipStream administrator [Bob and Dave]:
+ - New connector named OTC for Open Telecom Cloud.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+Instance type chosen by placement and ranking service (based on the component
+global CPU/RAM/Disk definition) and displayed in the component Deploy dialog is
+ignored, and the instance type defined for the cloud on the component is used
+instead.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.16-community...v3.17-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.16-community...v3.17-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.16-community...v3.17-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.16-community...v3.17-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.16-community...v3.17-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.16-community...v3.17-community>`__
+
+v3.16 (candidate) - 21 november 2016
+------------------------------------
+
+New features and bug fixes in v3.16
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The main features of the release v3.16 are addition of the support of CPU/RAM/Disk
+server side as module parameters and introduction of new Python CLI and API to
+SlipStream service like `nuv.la <https://nuv.la>`_.  Service Catalog was made
+available in the community version.
+
+For application users and application developers [Alice, Clara]:
+ - Users can now enter CPU/RAM/Disk sizes for the component instances in the
+   generic Cloud Configuration -> Cloud section on the components.  Depending
+   on the cloud (working with t-shirt sizes or directly with CPU/RAM/Disk),
+   these values will be mapped either directly to the corresponding CPU/RAM/Disk
+   or the closest match to the t-shirt size will be made.  The mapping is done
+   using service offers defined the Service Catalog.
+ - New Python CLI and API were released to be used with SlipStream services
+   like `nuv.la <https://nuv.la>`_.  For more details please see `CLI
+   <https://github.com/slipstream/SlipStreamCLI>`_ and
+   `API <https://github.com/slipstream/SlipStreamPythonAPI>`_.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Upgrading to v3.16 requires each connector to be described by a corresponding service offer.
+To insert the service offer for a new connector, use the REST API to post on this resource.
+For example, for a connector named `connector-name1`, if ssh access to API server is available:
+- `curl -X POST -H "slipstream-authn-info: username role" -H "content-type: application/json" http://localhost:8201/api/service-offer -d@service-offer.json`
+
+The service-offer.json should have the following structure::
+
+    #
+    {
+      "connector" : {
+        "href" : "connector-name1"
+      },
+      "schema-org:flexible" : "true",
+      "acl" : {
+        "owner" : {
+          "type" : "ROLE",
+          "principal" : "ADMIN"
+        },
+        "rules" : [ {
+          "principal" : "USER",
+          "right" : "VIEW",
+          "type" : "ROLE"
+        }, {
+          "principal" : "ADMIN",
+          "right" : "ALL",
+          "type" : "ROLE"
+        } ]
+      },
+      "resourceURI" : "http://sixsq.com/slipstream/1/ServiceOffer"
+    }
+    #
+
+Without SSH access to the API, the same command can be re-written with
+
+- `curl -X POST -H "content-type: application/json" http[s]://slipstream-endpoint/api/service-offer -d@service-offer.json` -b token.txt
+
+(see SlipStream API documentation on how to obtain an authentication token).
+
+It is possible to check that a given connector named `connector-name-x` is described by a service offer by querying the Service offer resource with the following command:
+`curl -H "slipstream-authn-info: super ADMIN" "http://localhost:8201/api/service-offer?\$filter=connector/href='connector-name-x'"`
+
+
+Known issues
+~~~~~~~~~~~~
+
+Instance type chosen by placement and ranking service (based on the component
+global CPU/RAM/Disk definition) and displayed in the component Deploy dialog is
+ignored, and the instance type defined for the cloud on the component is used
+instead.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.15-community...v3.16-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.15-community...v3.16-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.15-community...v3.16-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.15-community...v3.16-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.15-community...v3.16-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.15-community...v3.16-community>`__
+
 v3.15 (candidate) - 24 october 2016
 -----------------------------------
 
@@ -26,7 +194,7 @@ For application users and application developers [Alice, Clara]:
 
 For application developers [Clara]:
  - Enabled editing of Pre/Post-Scale scripts in `Application Workflows` tab of
-   components. For details, please see `Scalability Workflow Hooks 
+   components. For details, please see `Scalability Workflow Hooks
    <http://ssdocs.sixsq.com/en/v3.8/advanced_tutorial/scalable-applications.html#scalability-workflow-hooks-scripts>`_
    section of the SlipStream tutorial on running scalable applications.
 
@@ -145,13 +313,13 @@ New features and bug fixes in v3.13
 Version v3.13 fixes a bug in build image creation, and brings minor improvement in REST API.
 
 For application users and developers [Alice, Clara]:
- 
+
 For application users [Alice]:
  - Fix a bug for Safari users that prevented display of some pages with pagination
  - Fix a bug in StratusLab connector that prevented the build of an image
 
 For application developers [Clara]:
- - Add USER and ANON roles for logged in users (used to query REST api) 
+ - Add USER and ANON roles for logged in users (used to query REST api)
  - Refactor the parsing of running instances
 
 For administrators [Dave]:
