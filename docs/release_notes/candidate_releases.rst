@@ -5,6 +5,52 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.21 (candidate) - 10 February 2017
+------------------------------------
+
+New features and bug fixes in v3.21
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.21 is primarily a bug fix release. 
+
+For everyone:
+ - FIX: Failure when installing packages should abort deployment.
+ - FIX: Fix missing dependency for pricing and ranking service that
+   caused the service not to start.
+ - FIX: Problem with user interface changes that caused deployments to
+   fail. 
+
+For application developers [Clara]:
+ - Move Riemann server package, used for autoscaling applications, to
+   the Community Edition. 
+
+For SlipStream administrator [Dave]:
+ - Simplify the organization of Community and Enterprise releases to
+   make building and deploying SlipStream easier.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.20-community...v3.21-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.20-community...v3.21-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.20-community...v3.21-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.20-community...v3.21-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.20-community...v3.21-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.20-community...v3.21-community>`__
+
 v3.20 (candidate) - 28 January 2017
 -----------------------------------
 
