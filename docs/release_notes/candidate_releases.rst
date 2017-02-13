@@ -39,7 +39,10 @@ No migration is required.
 Known issues
 ~~~~~~~~~~~~
 
-No known issues.
+The packages for the OTC and Azure connectors to not upgrade cleanly.
+You can work around this by deleting the connector packages and then
+installing the new packages after the rest of the system has been
+updated. 
 
 Commits
 ~~~~~~~
