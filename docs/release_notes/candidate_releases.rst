@@ -13,12 +13,12 @@ New features and bug fixes in v3.22
 
 Version v3.22 provides improvements aimed primarily at SlipStream
 administrators.  The major change being an upgrade from Elasticsearch
-2.x to 5.x. 
+2.x to 5.x.
 
 For SlipStream administrator [Dave]:
- - Upgrade of Elasticsearch to v5.x to take advantage of 
+ - Upgrade of Elasticsearch to v5.x to take advantage of
    database improvements.
- - Fix broken packaging for OTC and Azure connectors that 
+ - Fix broken packaging for OTC and Azure connectors that
    prevented upgrades.
  - Refactor placement and pricing service (PRS) to simplify
    the service and to improve the logging of errors.
@@ -30,10 +30,16 @@ Migration
 ~~~~~~~~~
 
 The version of Elasticsearch being used by SlipStream has changed to Version 5.
-This is a major revision and requires migration of the database.  Follow the
-instructions below to perform this upgrade.
 
-**TO BE COMPLETED**
+Migration of SlipStream database for Elasticsearch 5 is NOT required.
+
+Manual upgrade of Elasticsearch plugins is required.  Here it's shown on an
+example of S3 snapshot plugin::
+
+    systemctl stop elasticsearch
+    /usr/share/elasticsearch/bin/elasticsearch-plugin remove cloud-aws
+    echo y | /usr/share/elasticsearch/bin/elasticsearch-plugin -s install repository-s3
+    systemctl start elasticsearch
 
 Known issues
 ~~~~~~~~~~~~
@@ -56,18 +62,18 @@ v3.21 (candidate) - 10 February 2017
 New features and bug fixes in v3.21
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Version v3.21 is primarily a bug fix release. 
+Version v3.21 is primarily a bug fix release.
 
 For everyone:
  - FIX: Failure when installing packages should abort deployment.
  - FIX: Fix missing dependency for pricing and ranking service that
    caused the service not to start.
  - FIX: Problem with user interface changes that caused deployments to
-   fail. 
+   fail.
 
 For application developers [Clara]:
  - Move Riemann server package, used for autoscaling applications, to
-   the Community Edition. 
+   the Community Edition.
 
 For SlipStream administrator [Dave]:
  - Simplify the organization of Community and Enterprise releases to
@@ -87,7 +93,7 @@ Known issues
 The packages for the OTC and Azure connectors to not upgrade cleanly.
 You can work around this by deleting the connector packages and then
 installing the new packages after the rest of the system has been
-updated. 
+updated.
 
 Commits
 ~~~~~~~
