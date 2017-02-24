@@ -5,6 +5,51 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.22 (candidate) - 24 February 2017
+------------------------------------
+
+New features and bug fixes in v3.22
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.22 provides improvements aimed primarily at SlipStream
+administrators.  The major change being an upgrade from Elasticsearch
+2.x to 5.x. 
+
+For SlipStream administrator [Dave]:
+ - Upgrade of Elasticsearch to v5.x to take advantage of 
+   database improvements.
+ - Fix broken packaging for OTC and Azure connectors that 
+   prevented upgrades.
+ - Refactor placement and pricing service (PRS) to simplify
+   the service and to improve the logging of errors.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+The version of Elasticsearch being used by SlipStream has changed to Version 5.
+This is a major revision and requires migration of the database.  Follow the
+instructions below to perform this upgrade.
+
+**TO BE COMPLETED**
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.21-community...v3.22-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.21-community...v3.22-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.21-community...v3.22-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.21-community...v3.22-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.21-community...v3.22-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.21-community...v3.22-community>`__
+
 v3.21 (candidate) - 10 February 2017
 ------------------------------------
 
