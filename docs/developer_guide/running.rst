@@ -85,11 +85,7 @@ The service should be started from the ``ssclj/jar`` module of
 To run the service, export the required environment variables, start Clojure
 REPL with boot and in the REPL run the commands listed below::
 
-    $ export ES_HOST=localhost
-    $ export ES_PORT=9300
-    $ export CONFIG_PATH=ssclj-conf.edn
-
-    $ boot repl
+    $ boot server-repl
       boot.user=> (require '[com.sixsq.slipstream.ssclj.app.server :as server :reload true])
       nil
       boot.user=> (def stop-fn (server/start 8201))
@@ -101,20 +97,37 @@ The services will be started on port ``8201``.  You can set it as needed,
 taking into account that it will be required later during the startup of the
 main SlipStream service.
 
-The directory containing the ``ssclj-conf.edn`` file must be on the classpath.  The
-``ssclj-conf.edn`` is the path to the file containing the HSQLDB database definition.
-Typical content looks like::
+It is assumed that an instance of Elasticsearch is running on ``localhost:9300``.
+If this is not the case, export the following environment variables defining the
+coordinates of Elasticsearch::
 
-    {:db {
+    $ export ES_HOST=<es-host>
+    $ export ES_PORT=<es-port>
+
+The service uses the configuration file defined by ``CONFIG_NAME`` environment
+variable.  To be found by the service, the file should be on the service's
+classpath. ``SlipStreamServer/ssclj/jar/boot.build`` (the project's configuration file)
+sets the service configuration file name and extends the classpath to include
+the default location containing the file. Typically, the file is named
+``config-hsqldb-mem.edn`` and located in ``test-resources``::
+
+     (environ :env {:config-name      "config-hsqldb-mem.edn"
+        ...
+     (set-env! :source-paths #(set (concat % #{"test" "test-resources"})))
+        ...
+
+So, both the file name and its location can be modified in ``boot.build``.
+
+Apart from other configuration parameters the configuration file contains
+HSQLDB configuration definition.  Typical content looks like::
+
+    {:auth-db {
       :classname    "org.hsqldb.jdbc.JDBCDriver"
       :subprotocol  "hsqldb"
       :subname      "mem://localhost:9012/devresources"
       :make-pool?   true}}
 
-The ``ssclj-conf.edn`` is part of the source code and located under
-``resources/`` subdirectory, which gets appended to the classpath.
-
-The service's log file can be found under ``logs/ssclj-.log``
+The service's log file can be found under ``logs/ssclj-.log``.
 
 You can add other dependencies to the classpath
 as needed.  This can be done either by editing the list of dependencies in
