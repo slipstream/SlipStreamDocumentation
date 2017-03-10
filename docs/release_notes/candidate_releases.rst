@@ -38,9 +38,29 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-The schema for the server configuration has changed.  You will need to
-remove the parameters "PRS Endpoint" and "PRS Enabled" parameters from
-the configuration.
+1. IMPORTANT. Certificates for generation of authentication tokens are no
+   longer password-protected.  The new unencrypted certificates will be
+   generated under ``/etc/slipstream/auth`` as part of post-install script of
+   ``slipstream-ssclj`` RPM.  Next time when RPM gets updated the files will
+   not be overwritten.  You can update them at your will (check
+   `/opt/slipstream/ssclj/bin/generate-auth-keys.sh`).  Only one service
+   ``ssclj.service`` requires private key for encrypting the authentication
+   token.  All other services require only public key for decryption.
+   Locations of both can be configured in their respective ``systemd``
+   configuration files or in the respective ``/etc/default/<service>`` files.
+
+2. The schema for the server configuration has changed.  You will need to
+   remove the "PRS Endpoint" and "PRS Enabled" parameters from the
+   configuration before starting the updated service.  First, save the current
+   configuration into a file::
+
+      ss-config -r configuration/slipstream > config-ss.edn
+
+   Edit ``config-ss.edn`` and delete ``:prsEndpoint`` and ``:prsEnable``
+   key/value pairs from the configuration file.  Then, upload the updated
+   configuration back to DB with::
+
+      ss-config config-ss.edn
 
 Known issues
 ~~~~~~~~~~~~
