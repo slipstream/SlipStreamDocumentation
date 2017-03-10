@@ -5,6 +5,58 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.23 (candidate) - 10 March 2017
+---------------------------------
+
+New features and bug fixes in v3.23
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.23 makes some foundational changes for future improvements,
+improves the OpenNebula connector, makes the bootstrap process more
+reliable, and fixes a few bugs.
+
+For everyone:
+ - Improve the SlipStream VM bootstrap process to better handle
+   environments where Python 3 is the default (e.g. Ubuntu 16.04).
+ - Improve the OpenNebula connector to allow both OpenNebula native
+   contextualization and cloud-init contextualization.
+ - Fix hybrid cloud option in the deployment dialog which would
+   prevent the deployment of the application.
+ - Made foundational changes on the server and UI that will allow a
+   workflow more focused on cloud service provider offers in the
+   future.
+
+For SlipStream administrator [Dave]:
+ - Improve handling of certificates for generating authentication
+   tokens. 
+ - Fix startup failure of Riemann server.
+ - Add missing file in the server backup RPM package.
+ 
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+The schema for the server configuration has changed.  You will need to
+remove the parameters "PRS Endpoint" and "PRS Enabled" parameters from
+the configuration.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.22-community...v3.23-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.22-community...v3.23-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.22-community...v3.23-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.22-community...v3.23-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.22-community...v3.23-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.22-community...v3.23-community>`__
+
 v3.22 (candidate) - 24 February 2017
 ------------------------------------
 
