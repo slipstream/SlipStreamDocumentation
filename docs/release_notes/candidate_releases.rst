@@ -5,7 +5,7 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
-v3.23 (candidate) - 10 March 2017
+v3.23 (candidate) - 14 March 2017
 ---------------------------------
 
 New features and bug fixes in v3.23
