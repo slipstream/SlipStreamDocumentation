@@ -35,13 +35,13 @@ detailed instructions for creating an account on Nuvla are:
    address.
 3. Visit the URL provided in that email, either by clicking on the link
    or copying it into your browser.
-4. You should then see a page that says that your email address was 
-   validated. 
-5. A second email, containing a temporary password,  will then be sent. 
+4. You should then see a page that says that your email address was
+   validated.
+5. A second email, containing a temporary password,  will then be sent.
 6. Visit the Nuvla `login page <https://nuv.la>`__ again and log in
    with your username and temporary password.  **For now, close the
    splash screen offering a tour of SlipStream.  We'll get back to
-   that!** 
+   that!**
 7. View your user profile by clicking on "Profile" under your username
    at the top, right side of the page.
 8. Change your temporary password by clicking on "Edit", updating the
@@ -119,7 +119,7 @@ Nuvla.
    1. Follow the Exoscale registration procedure to obtain an account.
    2. Add your Exoscale credentials to your user profile.
    3. Set the "Default cloud" parameter to Exoscale in your user
-      profile. 
+      profile.
 
 Ultimum
 ~~~~~~~
@@ -164,7 +164,7 @@ tutorial.
 - Advanced REST client: Install the latest version of Chrome and
   install the "Advanced REST client" extension.
 - Secure Shell (SSH) client: This comes by default on most operating
-  systems.  With Windows, you'll need to install PuTTY. 
+  systems.  With Windows, you'll need to install PuTTY.
 - SSH Key: For the SSH connections, you'll need to have an SSH
   public/private keypair.
 
@@ -181,11 +181,11 @@ the installation and configuration of these tools.**
 
 .. _Nuvla: http://nuv.la
 
-.. _SixSq: http://sixsq.com 
+.. _SixSq: http://sixsq.com
 
 .. _Exoscale: https://www.exoscale.ch
 
-.. _Ultimum: https://ulticloud.com
+.. _Ultimum: http://ultimum.io
 
 .. [#] You can follow the tutorial using only one cloud account, but
        in this case, you won't be able to complete the exercises
