@@ -84,9 +84,16 @@ Exoscale
 ~~~~~~~~
 
 If you need to create an account at Exoscale, you can visit their
-`registration page <https://exoscale.ch/register>`__.  **If you have a
-promotional card with an initial credit, be sure to use it when you
-first sign up.**
+`registration page <https://exoscale.ch/register>`__.
+
+.. tip::
+
+   **If you have a promotional card with an initial credit, be sure to use it
+   when you first sign up.** To use the promotional card you need to access the
+   registration resource using the following URL
+   \https://portal.exoscale.ch/register?coupon=YOURCODEHERE by copy/pasting it
+   to browser's URL bar and replacing YOURCODEHERE with the promotional code
+   found on the card.
 
 Once you've obtained your account with Exoscale, then you'll need to
 provide your Exoscale credentials to Nuvla. To find the information
