@@ -137,7 +137,8 @@ access, you must provide your SSH public key in your user profile:
 1. Open your user profile and click on the "Edit" button.
 2. Open the "General" section by clicking on the section header.
 3. In the "SSH Public Key(s)" field, provide the contents of your SSH
-   public key file (usually ``~/.ssh/id_rsa.pub``).
+   public key file (usually ``~/.ssh/id_rsa.pub`` on Linux, or on Windows the
+   file in which you saved the public key after generating it with PuTTY).
 4. Save your profile.
 
 Changes to your SSH key will only affect virtual machines started after

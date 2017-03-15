@@ -61,7 +61,7 @@ ability to monitor resource utilization.
    :align: left
 
 **Clara** develops cloud applications for people within her
-organization. She benefits from SlipStream be creating a rich catalog
+organization. She benefits from SlipStream by creating a rich catalog
 of services that can be automatically and reliably deployed.
 
 --------------------

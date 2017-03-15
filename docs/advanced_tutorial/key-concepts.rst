@@ -20,7 +20,7 @@ this composition.
 
 By isolating the cloud-specific information in the images, SlipStream
 enhances the portability of the applications.  By defining the
-application topology separate from the components, it facilitates
+application topology, separate from the components, it facilitates
 scaling the application's functional elements and reusing components
 across applications.
 
@@ -44,7 +44,7 @@ We have recently updated the vocabulary we use to describe the various
 resources within SlipStream to make the concepts more intuitive.  This
 new vocabulary hasn't made it through all of the code and
 documentation, so you may come across some of the old terms.  The
-older terms are shown in parentheses. 
+older terms are shown in parentheses.
 
 Image (base or native image)
     A virtual machine image that encapsulates cloud-specific
@@ -56,7 +56,7 @@ Component (machine image, node)
     A single virtual machine definition that references an image and
     may contain scripts for the installation and configuration of
     additional services.  These components can be parameterized and
-    can often be run as standalone applications. 
+    can often be run as standalone applications.
 
 Application (deployment)
     An application brings together one or more components into a
@@ -66,7 +66,7 @@ Application (deployment)
 
 Project
     A "folder" that allows Image, Component, and Application
-    definitions to be organized hierarchically. 
+    definitions to be organized hierarchically.
 
 Module
     A generic name for Image, Component, Application, and Project

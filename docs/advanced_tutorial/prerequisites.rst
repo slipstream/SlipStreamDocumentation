@@ -132,7 +132,7 @@ Ultimum
 ~~~~~~~
 
 If you need to create an account at Ultimum, you can visit their
-`registration page <https://console.ulticloud.com/registration/>`__.
+`registration page <https://cz1.ultimum.io/auth/login/>`__.
 **For the paid training events, we will already have obtained an
 Ultimum account for you; so no need to register separately.**
 
