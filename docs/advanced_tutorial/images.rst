@@ -128,8 +128,9 @@ Networking
 
 Currently SlipStream takes a very simple approach to managing network
 connectivity to virtual machines.  On clouds that support it,
-SlipStream will create a security group (set of firewall rules) called
-"slipstream_managed" that allows access on any port from anywhere.
+SlipStream will create a security group (set of cloud-level (not VM OS)
+firewall rules) called "slipstream_managed" that allows access on any port from
+anywhere.
 
 When you use the standard shared image definitions, the
 "slipstream_managed" security group will be used, allowing the
@@ -140,7 +141,8 @@ security group(s) to use.
 You can more tightly secure your deployed applications by:
 
 - Running a firewall within your images (and components) and/or
-- Specifying a different security group in your image definitions
+- Specifying a different security group in your image definitions (the
+  referenced sequrity groups should be present on the cloud).
 
 In production, you should take every opportunity to secure your
 running systems.  In the interests of simplicity, this tutorial does
@@ -238,11 +240,11 @@ debugging or developing service installation recipes.
 
 .. |ubuntu-14.04| raw:: html
 
-   <a href="https://nuv.la/module/examples/images/ubuntu-14.04/2724#cloud-image-identifiers-and-image-hierarchy" target="_blank">examples/images/ubuntu-14.04</a>
+   <a href="https://nuv.la/module/examples/images/ubuntu-14.04#1-cloud-image-identifiers-and-image-hierarchy" target="_blank">examples/images/ubuntu-14.04</a>
 
 .. |ultimum-console| raw:: html
 
-   <a href="https://console.ultimum-cloud.com" target="_blank">web console</a>
+   <a href="https://cz1.ultimum.io/auth/login" target="_blank">web console</a>
 
 .. |exoscale-images| raw:: html
 
@@ -251,4 +253,4 @@ debugging or developing service installation recipes.
 
 .. |ubuntu-14.04-cloud-params| raw:: html
 
-   <a href="https://nuv.la/module/examples/images/ubuntu-14.04/2724#cloud-configuration+exoscale-ch-gva" target="_blank">examples/images/ubuntu-14.04</a>
+   <a href="https://nuv.la/module/examples/images/ubuntu-14.04#3-cloud-configuration+exoscale-ch-gva" target="_blank">examples/images/ubuntu-14.04</a>

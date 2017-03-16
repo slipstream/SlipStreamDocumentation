@@ -3,7 +3,7 @@ Components Part I
 
 A minimal operating system isn't very useful by itself.  We want to
 transform such a simple image into a component running services that
-we need for our cloud application. 
+we need for our cloud application.
 
 In this section you'll learn how to:
 
@@ -14,12 +14,12 @@ In this section you'll learn how to:
 In doing this you'll also understand:
 
 - How to reference images from components,
-- The purpose of the various SlipStream "recipes", and 
+- The purpose of the various SlipStream "recipes", and
 - When those recipes are executed.
 
 In this chapter, we'll create a web server component that can be
 customized when deployed and that protects a "secret" with basic
-authentication. 
+authentication.
 
 Web Server Component
 --------------------
@@ -30,7 +30,7 @@ to be automated to allow people to concentrate on less tedious tasks
 and to ensure that the process is consistent and error-free.
 
 Let's start by creating a new web server component that will
-automatically install and configure nginx, a standard web server. 
+automatically install and configure nginx, a standard web server.
 
 Create Component
 ~~~~~~~~~~~~~~~~
@@ -63,7 +63,7 @@ see a "chooser" dialog, like in the following screenshot.
 
 Navigate to the ``examples/images/ubuntu-14.04`` and click on the
 "Select" button.  This will add the reference to the image
-description.  **Do not click on "Create" yet.** 
+description.  **Do not click on "Create" yet.**
 
 .. warning::
 
@@ -71,7 +71,7 @@ description.  **Do not click on "Create" yet.**
    difference?
 
    - **Select**: Chooses the given image and will use the **latest**
-     version of the image when the component is deployed. 
+     version of the image when the component is deployed.
 
    - **Select exact version**: Chooses the given image and will always
      use this exact version when deploying the component.
@@ -98,9 +98,9 @@ To accomplish these tasks we want to add the appropriate "recipes" or
 "hooks" to the component definition.  Open the "Application Workflows"
 section of the component.  Along the left edge you'll see the set of
 recipes that you can add.  They are essentially run in the order that
-they are listed. 
+they are listed.
 
-.. important:: 
+.. important::
 
    What type of information do you add to each recipe?  Here is the
    general guide:
@@ -129,7 +129,8 @@ they are listed.
    - Deployment
       Dynamic configuration of the machine should be handled in this
       recipe.  This includes configuration based on the component's
-      parameters.
+      parameters and this is where one would use SlipStream CLI/API for
+      orchestrating the deploment between components.
 
    - Reporting
       This will be executed when gathering up the reports from the
@@ -148,16 +149,28 @@ they are listed.
       resources.  Ignore this recipe for now, you'll learn more about
       it in the application scaling chapter later.
 
+   - Pre-Scale
+      Runs on the node instance before scale IaaS action (any vertical (subject
+      to implementation by connector) and only horizontal down scaling).
+      Ignore this recipe for now, you'll learn more about it in the application
+      scaling chapter later.
+
+   - Post-Scale
+      Runs on the node instance after scale IaaS action (only after vertical
+      scaling (subject to implementation by connector)).  Ignore this recipe
+      for now, you'll learn more about it in the application scaling chapter
+      later.
+
 Using the recipe for installing the nginx server from before, add the
 following to the "Pre-install" recipe::
 
     #!/bin/bash -xe
     apt-get update -y
 
-which will update the configuration of the package manager. 
+which will update the configuration of the package manager.
 
 Then add the package "nginx" to the "Install packages" recipe.  Nginx
-is a high-performance web server. 
+is a high-performance web server.
 
 In the "Post-install" recipe, we want to create our customized welcome
 page, ensure that the nginx server is started, and that nginx always
@@ -244,7 +257,7 @@ Let's begin by defining an input parameter that allows the title to be
 specified.  You can copy your previous component (look under the
 triangle next to the "Edit" button) or just modify the old one
 directly.  Click "Edit" and then go to the "Application Parameters"
-section and add an input parameter called "title".
+section and add an **input** parameter called "title".
 
 .. image:: images/screenshots/nginx-title-param.png
    :alt: Nginx Customized Welcome Page
@@ -253,7 +266,7 @@ section and add an input parameter called "title".
 
 If you provide a value here, that will be the default value used when
 deploying the component.  If you don't specify anything, then this
-will force the user to provide a value. 
+will force the user to provide a value.
 
 Now we need to modify the recipes to use the value of this parameter
 in the configuration.  Change the welcome page definition in the
@@ -270,7 +283,7 @@ in the configuration.  Change the welcome page definition in the
       </body>
     </html>
 
-We will then replace "__TITLE__" with the actual parameter value. 
+We will then replace "__TITLE__" with the actual parameter value.
 
 Deployment Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -293,7 +306,7 @@ the deployment recipe add the following::
     ss-set ss:url.service ${link}
 
     # provide status information through web UI
-    ss-display "Webserver ready on ${hostname}!"
+    ss-display "Webserver ready on ${link}!"
 
 This uses some magic commands that will be described in the next
 section.  There is also some help for these commands below the editor
@@ -302,10 +315,10 @@ window in the web interface.
 Now you can save the component and deploy it.  When deploying it, you
 should see an input parameter in the run dialog.  Change the value so
 that you can be sure that it was used in the configuration.  Verify
-that it shows up in the welcome page. 
+that it shows up in the welcome page.
 
 In the dashboard, you should see that a service URL has been provided
-for the web server.  This makes accessing the service much easier. 
+for the web server.  This makes accessing the service much easier.
 
 .. image:: images/screenshots/nginx-service-url.png
    :alt: Nginx Customized Welcome Page
@@ -321,7 +334,7 @@ run page.
    :align: center
 
 And finally, you should also see that the value of your title
-parameter has been taken into account. 
+parameter has been taken into account.
 
 .. image:: images/screenshots/nginx-new-title.png
    :alt: Nginx Customized Welcome Page
@@ -339,7 +352,7 @@ In this run database, there are some global variables that are always
 defined.  One of these is the ``ss:url.service`` parameter, which is
 the service URL for the deployed component.  The web interface picks
 up this value and displays it as a link in the dashboard and run
-page.  All of the global variables are prefixed with ``ss:``.  
+page.  All of the global variables are prefixed with ``ss:``.
 
 .. note::
 
@@ -355,7 +368,7 @@ defined for the title, also shows up in the parameters of the machine.
 
 As seen above the ``hostname`` is automatically defined by SlipStream
 for each node.  This can reliably be used to recover the hostname of
-the machine running the recipe. 
+the machine running the recipe.
 
 The commands such as ``ss-set``, ``ss-get``, etc. are installed
 automatically by SlipStream on the machine and can be used in the
@@ -365,7 +378,7 @@ deployment recipe.
 
    The ``ss-*`` commands are installed at the end of the post-install
    recipe.  They **cannot** be used in the recipes that are executed
-   earlier. 
+   earlier.
 
 Secured Web Server
 ------------------
@@ -373,9 +386,9 @@ Secured Web Server
 Enhance the web server to also serve a protected page that can only be
 accessed with a username and password.  To do this you need to:
 
-- Create a page that we want to protect, 
+- Create a page that we want to protect,
 - Modify the nginx configuration to use basic authentication,
-- Create the credentials to access the page. 
+- Create the credentials to access the page.
 
 You'll need a utility from Apache to generate a username and password
 for the protected content.  Add the package "apache2-utils" to the
@@ -454,4 +467,4 @@ page.
    2. Parameterize the web server and verify that you can change the
       title through the input parameter.
    3. Secure a part of the web server and verify that this protection
-      works as expected. 
+      works as expected.
