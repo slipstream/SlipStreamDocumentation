@@ -10,7 +10,7 @@ In this section you'll learn how to:
 
 - Reference cloud-specific images,
 - Change the resource allocations,
-- Define the security group, and 
+- Define the security group, and
 - Deploy an image through SlipStream.
 
 "Native" Images
@@ -47,7 +47,7 @@ maintaining common recipes for customizing them.
 
 A SlipStream image definition references existing ("native") virtual
 machine images in each cloud, creating a group of functionally
-equivalent images (e.g. a "minimal Ubuntu 12.04" image).  The slight
+equivalent images (e.g. a "minimal Ubuntu 14.04" image).  The slight
 differences between the images in various clouds rarely (if ever) have
 noticable effects on the cloud application and we free ourselves
 maintaining our own images.
@@ -110,7 +110,7 @@ Huge         --             8       32
 --           Large Plus    16       16
 --           Extra Large   32       32
 ============ ============= === ========
-  
+
 You will not be able to change the resource allocation for image
 definitions for the shared images (or more generally for any image not
 owned by you).  However you can get around this by:
@@ -121,7 +121,7 @@ owned by you).  However you can get around this by:
   shared image.
 
 We will see how values can be inherited or changed when we see what
-can be done with components. 
+can be done with components.
 
 Networking
 ----------
@@ -129,7 +129,7 @@ Networking
 Currently SlipStream takes a very simple approach to managing network
 connectivity to virtual machines.  On clouds that support it,
 SlipStream will create a security group (set of firewall rules) called
-"slipstream_managed" that allows access on any port from anywhere. 
+"slipstream_managed" that allows access on any port from anywhere.
 
 When you use the standard shared image definitions, the
 "slipstream_managed" security group will be used, allowing the
@@ -139,7 +139,7 @@ security group(s) to use.
 
 You can more tightly secure your deployed applications by:
 
-- Running a firewall within your images (and components) and/or 
+- Running a firewall within your images (and components) and/or
 - Specifying a different security group in your image definitions
 
 In production, you should take every opportunity to secure your
@@ -150,13 +150,13 @@ not follow best practices in this respect.
 
    If you do specify your own security group in your images, you
    need to maintain the same security group on all the clouds you use
-   to ensure that you can switch between clouds easily. 
+   to ensure that you can switch between clouds easily.
 
 .. important::
 
    For clouds that do not support security groups (or their
    equivalent), you must manually adjust the networking parameters for
-   the machines that are deployed. 
+   the machines that are deployed.
 
 Deploy a VM
 -----------
@@ -176,7 +176,7 @@ should see a screenshot like the following.
 From the run dialog you can choose the cloud to use and then deploy
 the image by clicking on the dialog's "Deploy..." button.  This will
 redirect you to the dashboard, where you will see a new entry for the
-image. 
+image.
 
 .. image:: images/screenshots/ubuntu-run1.png
    :alt: Run Monitoring Page
@@ -200,10 +200,10 @@ IP address on the run page::
     [...]
     Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.13.0-49-generic x86_64)
     [...]
-    root@machine3b8f1456-cb5d-49ba-b7d5-430f97642850:~# 
+    root@machine3b8f1456-cb5d-49ba-b7d5-430f97642850:~#
 
 Or if your browser is configured for SSH links, you can click on the
-link for the parameter "machine:url.ssh". 
+link for the parameter "machine:url.ssh".
 
 .. important::
 
@@ -213,14 +213,14 @@ link for the parameter "machine:url.ssh".
     are not always uniform across cloud providers.
 
 Running simple virtual machines in this way is often useful for quick
-debugging or developing service installation recipes. 
+debugging or developing service installation recipes.
 
-.. admonition:: EXERCISES 
+.. admonition:: EXERCISES
 
    1. Create a copy of the Ubuntu 14.04 image and change the size
       for either Exoscale or Ultimum.  Leave the other unchanged.
    2. Deploy the copy on both Exoscale and Ultimum. Note the
-      deployment times. 
+      deployment times.
    3. Verify that you can log into both machines with SSH.
    4. Verify that the number of CPUs (``/proc/cpuinfo``) and the RAM
       (``/proc/meminfo``) are the values expected from the size.

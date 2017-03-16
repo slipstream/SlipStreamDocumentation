@@ -24,16 +24,16 @@ as any projects that have been shared with you.
 "Projects" are essentially folders, in which you can keep related
 images, components, and applications together.  As projects can
 contain other projects, you can create hierarchies to help organize
-your work. 
+your work.
 
 There are two important projects that are shared with everyone:
 
 - The "examples/images" project contains basic operating system images
-  (like Ubuntu 14.04 and CentOS 6 or 7) that are reused extensively in the
-  definition of application components.
+  (like Ubuntu 14.04 or 16.04 and CentOS 6 or 7) that are reused extensively in
+  the definition of application components.
 - The "apps" project contains set of application definitions created
   by SixSq to highlight features of SlipStream and to serve as a basis
-  for your own applications. 
+  for your own applications.
 
 When you have time, it is instructive to look through the definitions
 of those components and applications to understand how to take
@@ -108,10 +108,10 @@ available in the "Summary" section of the module.
 
    1. Create your top-level project.
    2. Verify with your neighbors that you can see your own project but
-      not theirs. 
+      not theirs.
    3. Change the permissions on the module (either Group or Public)
-      and then verify that others can see your project. 
+      and then verify that others can see your project.
    4. Change your project back to a private module when your
-      finished. 
+      finished.
    5. View the history of your project, containing the versions and
-      comments.  Are the version numbers sequential? 
+      comments.  Are the version numbers sequential?
