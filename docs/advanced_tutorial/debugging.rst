@@ -60,14 +60,7 @@ Modifying the Environment
 SlipStream minimizes its footprint to avoid any unintended
 interference with the deployed applications.  Because of this, you
 must specifically setup the environment to make the SlipStream client
-commands accessible.
-
-Usually you will want to do the following::
-
-    $ source /tmp/slipstream.setenv
-
-or alternatively, if the above file is not present (e.g., after the VM
-reboot it can be deleted by the system)::
+commands accessible.  Usually you will want to do the following::
 
     $ source /opt/slipstream/client/sbin/slipstream.setenv
 
@@ -98,10 +91,11 @@ summarizes them.
 +----------------+------------------------------------------------------+
 
 All of the parameters used in the deployment must have been defined in
-the images used in the deployment. Trying to set or get an undefined
-parameter will cause the command to raise an error.
+the components used in the deployment. Trying to set or get an undefined
+parameter will cause the command to raise an error, which in turn aborts the
+run.
 
-.. important:: 
+.. important::
 
    Although the "parameter database" and the associated commands are
    quite simple, the fact that ``ss-get`` will wait for a value to be
