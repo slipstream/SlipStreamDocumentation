@@ -11,19 +11,24 @@ v3.24 (candidate) - 26 March 2017
 New features and bug fixes in v3.24
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Version v3.24 about refactoring token module to maximize code reusability,
-add resize root disk feature to the OpenNebula connector,
-make SlipStream python API able to update existing users and fixes a few bugs.
+Version v3.24 allows the OpenNebula cloud connector to resize the root
+disk of virtual machines and enhances the user management capabilities
+of the SlipStream Python API. Several bugs have been fixed and some
+foundational changes have been made to improve consistency and
+reliability.
 
 For everyone:
- - Improve the SlipStream OpenNebula and NuvlaBox connectors to make them
-   able to resize root disk.
- - Fix aleph hang for SS-Pricing server.
- - Force SlipStream client to not be installed under python 3.x.
- - SlipStream client is now able to use disk generic cloud parameter.
+ - Improve the SlipStream OpenNebula and NuvlaBox cloud connectors to
+   allow them to resize the root disk of a virtual machine.
+ - Fix a problem where the pricing service would hang, causing the
+   deployment dialog to wait for a timeout.
+ - Ensure that the SlipStream client is only installed under Python
+   2.7+, not under Python 3.x (which isn't supported).
+ - The SlipStream client can now the use the "disk" generic cloud
+   parameter.
 
 For SlipStream administrator [Dave]:
- - Fix SlipStream user manageabilty through SlipStream Python API.
+ - Improve management of users through SlipStream Python API.
  
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
