@@ -55,6 +55,8 @@ scaling actions on deployments and VMs::
     ss-scale-resize [options] [--cpu <num>, --ram <num>]|[--instance-type <type>] <run> <node-name> <ids> [<ids> ...]
     ss-scale-disk [options] [--attach <GB> | --detach <device>] <run> <node-name> <ids> [<ids> ...]
 
+Where ``node-name`` stands for application component name.
+
 Scalability Workflow Hooks (Scripts)
 ------------------------------------
 
@@ -65,27 +67,27 @@ components can be correctly reconfigured when scaling actions happen.
 
 The available hooks are defined in the following table.
 
-============== ========================== =================================================== 
-Script         Action                     When Executed                                       
-============== ========================== =================================================== 
-"On VM Add"    *horizontal scale up*      | after addition of new VMs on all the VMs of the    
-                                          | deployment except the ones that were just added.   
--------------- -------------------------- --------------------------------------------------- 
-"On VM Remove" *horizontal scale down*    | after the removal of the requested VMs on all      
-                                          | the VMs left in the deployment.                    
--------------- -------------------------- --------------------------------------------------- 
-"Pre-Scale"    *horizontal scale down*    | before VMs removal action, on the VMs targeted     
-                                          | for the removal, and therefore, before the         
-                                          | "On VM Remove" script                              
--------------- -------------------------- --------------------------------------------------- 
-"Pre-Scale"    *vertical scale up/down*   | before any vertical scaling action (VM resizing    
+============== ========================== ===================================================
+Script         Action                     When and Where Executed
+============== ========================== ===================================================
+"On VM Add"    *horizontal scale up*      | after addition of new VMs on all the VMs of the
+                                          | deployment except the ones that were just added.
+-------------- -------------------------- ---------------------------------------------------
+"On VM Remove" *horizontal scale down*    | after the removal of the requested VMs on all
+                                          | the VMs left in the deployment.
+-------------- -------------------------- ---------------------------------------------------
+"Pre-Scale"    *horizontal scale down*    | before VMs removal action, on the VMs targeted
+                                          | for the removal, and therefore, before the
+                                          | "On VM Remove" script.
+-------------- -------------------------- ---------------------------------------------------
+"Pre-Scale"    *vertical scale up/down*   | before any vertical scaling action (VM resizing
                                           | or attaching/detaching of extra disk) on the
-                                          | VMs that are subject to the scaling action.            
--------------- -------------------------- --------------------------------------------------- 
-"Post-Scale"   *vertical scale up/down*   | after any vertical scaling action (VM resizing
-                                          | or attaching/detaching of extra disk) on the 
                                           | VMs that are subject to the scaling action.
-============== ========================== =================================================== 
+-------------- -------------------------- ---------------------------------------------------
+"Post-Scale"   *vertical scale up/down*   | after any vertical scaling action (VM resizing
+                                          | or attaching/detaching of extra disk) on the
+                                          | VMs that are subject to the scaling action.
+============== ========================== ===================================================
 
 Detailed information about `how to write those scripts
 <https://github.com/slipstream/SlipStreamClient/tree/master/client>`__
@@ -94,10 +96,10 @@ is available from the SixSq GitHub repository.
 Horizontal Scaling - Add or Remove VMs
 --------------------------------------
 
-When adding a node instance (VM), you must specify the node type of the
-machine that you want to add. The server (and then orchestrator) will
-mutate the deployment, provisioning the new node instance and then
-notifying all of the machines in the application.
+When adding a component instance (VM), you must specify the component type of
+the machine that you want to add. The server (and then orchestrator) will
+mutate the deployment, provisioning the new node instance and then notifying
+all of the machines in the application.
 
 The notification takes place by running the "On VM Add" script (if it
 exists) on all VMs, except the ones that were just added. On the newly
@@ -146,7 +148,7 @@ We initially detect whether the deployment was an application
 ("Deployment") or an application component ("Image") because the
 parameters are slightly different in the two cases.  By doing this
 test, the resulting component can be run as a standalone image or as
-part of an application. 
+part of an application.
 
 For an application, where more than one worker is possible, we use the
 ``nodename`` and ``ids`` to iterate over all of the workers and
@@ -162,7 +164,7 @@ do this, we would need to tell each node of the changes through the
 
 After the configuration of the service, we restart Elasticsearch to
 take into account the configuration changes.  Look in the application
-and component definition for details. 
+and component definition for details.
 
 To see how the scaling works, deploy the elasticsearch-cluster
 application.
@@ -174,12 +176,12 @@ application.
 
 To be able to scale the application later, **it is very important to
 tick the checkbox indicating that this is a scalable deployment!**  By
-default, this will deploy a cluster with two nodes.  
+default, this will deploy a cluster with two nodes.
 
 When the deployment is complete, it will provide a URL that gives the
 health of the cluster.  The important thing to look at is the number
 of nodes in the cluster.  It should initially be 2.  This is the
-result:: 
+result::
 
     {
       "cluster_name" : "elasticsearch",
@@ -206,18 +208,18 @@ Scale Up with CLI
 ~~~~~~~~~~~~~~~~~
 
 To scale the run via the command line, use the `ss-node-add` command.
-It takes the run ID the type of node to scale ("worker" in our case)
+It takes the run ID, the type of node to scale ("worker" in our case)
 and the number of nodes to add::
 
     $ ss-node-add ced28f99-e08b-4667-86db-73f53c059c58 worker 1
 
 This will drive the application through another provisioning phase for
 the new worker.  When the provisioning and configuration is complete,
-the application will return to the "Ready" state. 
+the application will return to the "Ready" state.
 
 .. note::
 
-   Only one scaling action, on one type of node, can be active.
+   Only one scaling action, on one type of component, can be active.
    Previous scaling actions must complete before a new one can be
    started.
 
@@ -230,7 +232,7 @@ URL::
     https://nuv.la/run/ced28f99-e08b-4667-86db-73f53c059c58/worker
 
 the body of the request should be a form with the parameter "n" and
-the number of nodes to add. 
+the number of nodes to add.
 
 .. image:: images/screenshots/elasticsearch-rest-add-request.png
    :alt: Request to Add Node with REST
@@ -242,7 +244,7 @@ the number of nodes to add.
    :width: 70%
    :align: center
 
-Note that the response gives the created node(s). 
+Note that the response gives the created node(s).
 
 Just to verify that both of the add requests worked, look again at the
 health output from the service URL::
@@ -274,7 +276,7 @@ We can also remove nodes in nearly the same way.  The only difference
 is that you must specify exactly which node(s) you want to remove.
 From the command line, do the following::
 
-    $ ss-node-remove ced28f99-e08b-4667-86db-73f53c059c58 worker 1 
+    $ ss-node-remove ced28f99-e08b-4667-86db-73f53c059c58 worker 1
 
 Again, after the (un-)provisioning cycle, the removed node instances
 will disappear from the deployment.
@@ -288,7 +290,7 @@ the URL::
     https://nuv.la/run/ced28f99-e08b-4667-86db-73f53c059c58/worker
 
 with a form body containing the "ids" parameter.  The values of "ids"
-must be a comma-separated list of machines to remove. 
+must be a comma-separated list of machines to remove.
 
 .. image:: images/screenshots/elasticsearch-rest-remove-request.png
    :alt: Request to Remove a Node with REST
@@ -375,8 +377,8 @@ first one in the cluster.
 Vertical Scaling
 ----------------
 
-.. important:: 
-   
+.. important::
+
    Vertical scalability is not available for all clouds.  It requires
    the availability of the feature in the underlying cloud as well as
    in the SlipStream cloud connector.
@@ -440,7 +442,7 @@ The examples of the **"Pre-Scale"** and **"Post-Scale"** can be found
 
    1. Deploy an Elasticsearch cluster.
    2. Add nodes through the command line or REST API.
-   3. Remove nodes through the command line or REST API. 
+   3. Remove nodes through the command line or REST API.
 
 
 .. |elasticsearch-cluster| raw:: html
