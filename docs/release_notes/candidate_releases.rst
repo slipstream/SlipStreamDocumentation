@@ -5,6 +5,295 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.24 (candidate) - 26 March 2017
+---------------------------------
+
+New features and bug fixes in v3.24
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.24 about refactoring token module to maximize code reusability,
+add resize root disk feature to the OpenNebula connector,
+make SlipStream python API able to update existing users and fixes a few bugs.
+
+For everyone:
+ - Improve the SlipStream OpenNebula and NuvlaBox connectors to make them
+   able to resize root disk.
+ - Fix aleph hang for SS-Pricing server.
+ - Force SlipStream client to not be installed under python 3.x.
+ - SlipStream client is now able to use disk generic cloud parameter.
+
+For SlipStream administrator [Dave]:
+ - Fix SlipStream user manageabilty through SlipStream Python API.
+ 
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.23...v3.24>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.23...v3.24>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.23...v3.24>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.23...v3.24>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.23...v3.24>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.23...v3.24>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.23...v3.24>`__
+
+3.23 (candidate) - 14 March 2017
+---------------------------------
+
+New features and bug fixes in v3.23
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.23 makes some foundational changes for future improvements,
+improves the OpenNebula connector, makes the bootstrap process more
+reliable, and fixes a few bugs.
+
+For everyone:
+ - Improve the SlipStream VM bootstrap process to better handle
+   environments where Python 3 is the default (e.g. Ubuntu 16.04).
+ - Improve the OpenNebula connector to allow both OpenNebula native
+   contextualization and cloud-init contextualization.
+ - Fix hybrid cloud option in the deployment dialog which would
+   prevent the deployment of the application.
+ - Made foundational changes on the server and UI that will allow a
+   workflow more focused on cloud service provider offers in the
+   future.
+
+For SlipStream administrator [Dave]:
+ - Improve handling of certificates for generating authentication
+   tokens. 
+ - Fix startup failure of Riemann server.
+ - Add missing file in the server backup RPM package.
+ 
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+1. IMPORTANT. Certificates for generation of authentication tokens are no
+   longer password-protected.  The new unencrypted certificates will be
+   generated under ``/etc/slipstream/auth`` as part of post-install script of
+   ``slipstream-ssclj`` RPM.  Next time when RPM gets updated the files will
+   not be overwritten.  You can update them at your will (check
+   `/opt/slipstream/ssclj/bin/generate-auth-keys.sh`).  Only one service
+   ``ssclj.service`` requires private key for encrypting the authentication
+   token.  All other services require only public key for decryption.
+   Locations of both can be configured in their respective ``systemd``
+   configuration files or in the respective ``/etc/default/<service>`` files.
+
+2. The schema for the server configuration has changed.  You will need to
+   remove the "PRS Endpoint" and "PRS Enabled" parameters from the
+   configuration before starting the updated service.  First, save the current
+   configuration into a file::
+
+      ss-config -r configuration/slipstream > config-ss.edn
+
+   Edit ``config-ss.edn`` and delete ``:prsEndpoint`` and ``:prsEnable``
+   key/value pairs from the configuration file.  Then, upload the updated
+   configuration back to DB with::
+
+      ss-config config-ss.edn
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.22-community...v3.23-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.22-community...v3.23-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.22-community...v3.23-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.22-community...v3.23-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.22-community...v3.23-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.22-community...v3.23-community>`__
+
+v3.22 (candidate) - 24 February 2017
+------------------------------------
+
+New features and bug fixes in v3.22
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.22 provides improvements aimed primarily at SlipStream
+administrators.  The major change being an upgrade from Elasticsearch
+2.x to 5.x.
+
+For SlipStream administrator [Dave]:
+ - Upgrade of Elasticsearch to v5.x to take advantage of
+   database improvements.
+ - Fix broken packaging for OTC and Azure connectors that
+   prevented upgrades.
+ - Refactor placement and pricing service (PRS) to simplify
+   the service and to improve the logging of errors.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+The version of Elasticsearch being used by SlipStream has changed to Version 5.
+
+Migration of SlipStream database for Elasticsearch 5 is NOT required.
+
+Manual upgrade of Elasticsearch plugins is required.  Here it's shown on an
+example of S3 snapshot plugin::
+
+    systemctl stop elasticsearch
+    /usr/share/elasticsearch/bin/elasticsearch-plugin remove cloud-aws
+    echo y | /usr/share/elasticsearch/bin/elasticsearch-plugin -s install repository-s3
+    systemctl start elasticsearch
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.21-community...v3.22-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.21-community...v3.22-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.21-community...v3.22-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.21-community...v3.22-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.21-community...v3.22-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.21-community...v3.22-community>`__
+
+v3.21 (candidate) - 10 February 2017
+------------------------------------
+
+New features and bug fixes in v3.21
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.21 is primarily a bug fix release.
+
+For everyone:
+ - FIX: Failure when installing packages should abort deployment.
+ - FIX: Fix missing dependency for pricing and ranking service that
+   caused the service not to start.
+ - FIX: Problem with user interface changes that caused deployments to
+   fail.
+
+For application developers [Clara]:
+ - Move Riemann server package, used for autoscaling applications, to
+   the Community Edition.
+
+For SlipStream administrator [Dave]:
+ - Simplify the organization of Community and Enterprise releases to
+   make building and deploying SlipStream easier.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+The packages for the OTC and Azure connectors to not upgrade cleanly.
+You can work around this by deleting the connector packages and then
+installing the new packages after the rest of the system has been
+updated.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.20-community...v3.21-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.20-community...v3.21-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.20-community...v3.21-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.20-community...v3.21-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.20-community...v3.21-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.20-community...v3.21-community>`__
+
+v3.20 (candidate) - 28 January 2017
+-----------------------------------
+
+New features and bug fixes in v3.20
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.20 allows better management of SlipStream from other
+services as well as bug and security fixes.
+
+For everyone:
+ - Add m2.2xlarge instance type for the Amazon cloud service.
+ - Add checkbox to highlight option for multi-cloud deployment.
+
+For application developers [Clara]:
+ - Allow managers to create and to manage a group of users.
+ - FIX: Default is now taken into account when saving nodes in
+   deployment
+
+For SlipStream administrator [Dave]:
+ - Bug and security fixes.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.19-community...v3.20-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.19-community...v3.20-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.19-community...v3.20-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.19-community...v3.20-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.19-community...v3.20-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.19-community...v3.20-community>`__
+
+v3.19 (candidate) - 16 January 2017
+-----------------------------------
+
+New features and bug fixes in v3.19
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.19 is a maintainence release that incorporates dependency
+upgrades with bug and security fixes.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.18-community...v3.19-community>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.18-community...v3.19-community>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.18-community...v3.19-community>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.18-community...v3.19-community>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.18-community...v3.19-community>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.18-community...v3.19-community>`__
+
 v3.18 (candidate) - 17 december 2016
 ------------------------------------
 
