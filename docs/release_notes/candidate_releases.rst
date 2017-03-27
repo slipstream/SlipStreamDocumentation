@@ -5,6 +5,55 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.24 (candidate) - 26 March 2017
+---------------------------------
+
+New features and bug fixes in v3.24
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.24 allows the OpenNebula cloud connector to resize the root
+disk of virtual machines and enhances the user management capabilities
+of the SlipStream Python API. Several bugs have been fixed and some
+foundational changes have been made to improve consistency and
+reliability.
+
+For everyone:
+ - Improve the SlipStream OpenNebula and NuvlaBox cloud connectors to
+   allow them to resize the root disk of a virtual machine.
+ - Fix a problem where the pricing service would hang, causing the
+   deployment dialog to wait for a timeout.
+ - Ensure that the SlipStream client is only installed under Python
+   2.7+, not under Python 3.x (which isn't supported).
+ - The SlipStream client can now the use the "disk" generic cloud
+   parameter.
+
+For SlipStream administrator [Dave]:
+ - Improve management of users through SlipStream Python API.
+ 
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.23...v3.24>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.23...v3.24>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.23...v3.24>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.23...v3.24>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.23...v3.24>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.23...v3.24>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.23...v3.24>`__
+ 
 v3.23 (candidate) - 14 March 2017
 ---------------------------------
 
