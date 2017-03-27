@@ -124,7 +124,7 @@ private key that you saved earlier.
 
    PuTTyGen Key
 
-You may want to download and configure ``paegent.exe`` with your private
+You may want to download and configure ``pagent.exe`` with your private
 key to avoid having to specify the private key for each session. See the
 PuTTy documentation for how to do this.
 
