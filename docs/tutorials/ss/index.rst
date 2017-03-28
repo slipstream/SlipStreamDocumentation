@@ -1,13 +1,20 @@
 
-Tutorial
-========
+SlipStream Tutorial
+===================
 
-This hands-on training course will demonstrate the core features of
-SlipStream by building two example applications through a series of
+This hands-on training course demonstrates the core features of SlipStream. The
+course is built of sufficiently autonomous learning modules covering different
+aspects of the solutions.
+
+The path through the tutorial is cross referenced, providing the hints and
+guidelines on the most suitable module/section to follow after completion of
+the current one.
+
+... by building two example applications through a series of
 exercises.  The tutorial will show how SlipStream:
 
  - Abstracts away differences between clouds, making **cloud
-   portability** possible 
+   portability** possible
  - Speeds application development by **promoting reuse** of
    parameterized application components,
  - Ensures **consistent, fast, and error-free deployment** of
@@ -32,7 +39,7 @@ tutorial in order.
 
    The command line examples throughout the tutorial use Linux bash
    syntax.  If you're using a different shell (csh, PowerShell, etc.),
-   you'll need to adjust the syntax accordingly. 
+   you'll need to adjust the syntax accordingly.
 
    Similarly, the example applications developed in the tutorial are
    uniformly built over the Ubuntu operating system.  This is to
