@@ -3,7 +3,7 @@ Building and Running Applications
 
 Building and Running Applications
 
-Conventional applications
+Conventional Applications
 -------------------------
 
 There is no differece between running on a cloud or NuvlaBox.  Link to SS
