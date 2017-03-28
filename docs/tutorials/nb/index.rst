@@ -1,6 +1,6 @@
 
 NuvlaBox Tutorial
-================
+=================
 
 A simple and secure private cloud solution which offers easy and affordable
 access to the benefits of cloud computing.
