@@ -1,11 +1,20 @@
 
-Hardware Architecture
-=====================
+Hardware Specifications
+=======================
 
-Types, specifications, capabilities.
+Supply chain
+------------
 
-NuvlaBox v2
------------
+SixSq choose `Logic Supply`_ to design, assemble and initialize NuvlaBox hardware.
+Each NuvlaBox is individualized and named after a prize nobel. 
+NuvlaBox come with a specific prospectus which list all necessary credentials to connect to the box.
+
+
+.. _Logic Supply: https://www.logicsupply.com
+
+
+NuvlaBox Standard v2
+--------------------
 
 ======================================  =========================================================================================================
 Description                             
@@ -25,11 +34,12 @@ Operating Temperature Range             0°C ~ 50°C
 LAN Controller                          Intel 82583V PCIe GbE
 Expected Life Cycle                     5 Years
 Regulatory Information                  CE standards / FCC / RoHS
+Mounting Options                        VESA / DIN / Wall
 Warranty                                2 year limited warranty on parts and services
 ======================================  =========================================================================================================
 
 
-NuvlaBox v2 mini
+NuvlaBox Mini v2
 ----------------
 
 ======================================  =========================================================================================================
@@ -48,6 +58,7 @@ Operating Temperature Range             0°C ~ 50°C
 LAN Controller                          Intel 82583V PCIe GbE
 Expected Life Cycle                     4 Years
 Regulatory Information                  CE standards / FCC / RoHS
+Mounting Options                        VESA / DIN / Wall
 Warranty                                2 year limited warranty on parts and services
 ======================================  =========================================================================================================
 

@@ -11,16 +11,14 @@ Smart Cloud-in-a-box Appliance
 - Private and secure cloud
 - Edge Computing Solution
 - Remote management & application update capabilities
-
-TODO.
+- DevOps tool
 
 .. toctree::
    :maxdepth: 2
 
    nuvlabox-defined
-   hw-arch
-   supply-chain
-   boot-and-use
+   hw-spec
+   plug-and-play
    sw-arch
    remote-ss
    deploy-app
