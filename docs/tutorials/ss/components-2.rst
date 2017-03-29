@@ -79,7 +79,7 @@ username, and password::
 .. important::
 
    Be careful to escape variable references (or avoid them entirely)
-   when writing the above script to the system. 
+   when writing the above script to the system.
 
 .. important::
 
@@ -95,7 +95,7 @@ following questions to plan your attack strategy:
 
 - Where should the above checking script be installed?
 - Does the script need any additional software installed?
-- What input and/or output parameters need to be defined? 
+- What input and/or output parameters need to be defined?
 - How are the needed values obtained and passed to the checking
   script?
 - What happens if the checking starts before the web server is ready?
@@ -108,5 +108,5 @@ following questions to plan your attack strategy:
    3. Start your web server component.
    4. Using interactive debugging, verify that the test client works.
    5. Start a new client with the web server running, does the full
-      test work correctly without any manual intervention? 
+      test work correctly without any manual intervention?
    6. Verify the correct behavior by downloading the reports.

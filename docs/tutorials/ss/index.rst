@@ -2,16 +2,14 @@
 SlipStream Tutorial
 ===================
 
-This hands-on training course demonstrates the core features of SlipStream by
+This hands-on tutorial demonstrates the core features of SlipStream by
 building a number of example applications through a series of exercises.  The
 tutorial will show how SlipStream:
 
  - Abstracts away differences between clouds, making **cloud portability**
-   possible: `What is SlipStream? <slipstream-defined.html>`_, `Key Concepts
-   <key-concepts.html>`_.
+   possible,
  - Speeds application development by **promoting reuse** of parameterized
-   application components: `Components Part I <components-1.html>`_,
-   `Components Part II <components-2.html>`_
+   application components,
  - Ensures **consistent, fast, and error-free deployment** of
    applications through automation,
  - Coordinates the configuration of an application's component
@@ -42,10 +40,10 @@ view on the technologies and their usage by different types of users.
  - `SlipStream Ecosystem <slipstream-ecosystem.html>`_
  - `Key Concepts <key-concepts.html>`_
 
-Module II - `SlipStream Web Interface Tour and User Profile.`
--------------------------------------------------------------
+Module II - `SlipStream Web Interface Tour`
+-------------------------------------------
 
-You'll be presented with prerequisites for using SlipStream and acquire the
+You will be presented with prerequisites for using SlipStream and acquire the
 first experience of working with it by going through the online guided tour of
 SlipStream in SlipStream itself.  You'll be guided through most all the parts
 of SlipStream and explained how to use them, and as part of it, you will deploy
@@ -59,7 +57,7 @@ help you with this.
  - `User Profile <user-profile.html>`_
  - `Multi-tier Demo Application - LAMP <lamp-demo.html>`_. Optional. Advanced.
    Deploy multi-tier demo application. Check its topology on Run page. Go
-   through exercises around the application.
+   through exercises around the application runtime.
 
 Module III - `Building, Deploying and Managing Applications with SlipStream`
 ----------------------------------------------------------------------------
@@ -79,7 +77,7 @@ Cloud (see `Prerequiseites <prerequisites.html>`_ in Module II).
  - `Applications <applications.html>`_
  - `Faster Deployments (Build image) <faster-deployment.html>`_.  Optional.
    Advanced.  Building your own images to speedup application deployment
-   process.
+   process.  Part of Module V.
 
 Module IV - `Advanced topics: Scalable Applications`
 ----------------------------------------------------
@@ -118,6 +116,9 @@ which provides optimization of deployments.
    reduce distractions and make the tutorial as uniform as possible.
    SlipStream supports a wide range of different operating systems,
    including Windows.
+
+Tutorial Table of Contents
+--------------------------
 
 .. toctree::
    :maxdepth: 2

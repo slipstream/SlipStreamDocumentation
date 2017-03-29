@@ -2,12 +2,12 @@
 Tutorials
 =========
 
-This hands-on training course demonstrates the core features of SlipStream and
-NuvlaBox.
+These hands-on tutorials demonstrate the core features of SlipStream_ and
+NuvlaBox_.
 
-The course is built of sufficiently autonomous learning modules covering
+The tutorials are built of sufficiently autonomous learning modules covering
 different aspects of the solutions.  It is assembled so that it's possible to
-follow it independently for SlipStream or NuvlaBox while, whenever necessary,
+follow it independently for SlipStream_ or NuvlaBox_ while, whenever necessary,
 bridging the two.
 
 The path through the tutorial is cross referenced, providing the hints and
@@ -25,3 +25,5 @@ a current one.
 
    ss/index
    nb/index
+
+.. include:: global.rst

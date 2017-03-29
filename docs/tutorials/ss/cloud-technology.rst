@@ -10,7 +10,7 @@ users and organizations. With cloud infrastructures, people can easily
 deploy large applications and can dynamically tune the allocated
 resources to maximize responsiveness and reliability.  This flexibilty
 has made the use of cloud technologies economically attractive by
-reducing capital and/or personnel costs. 
+reducing capital and/or personnel costs.
 
 Critical Components
 -------------------
