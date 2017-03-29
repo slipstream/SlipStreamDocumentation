@@ -11,6 +11,7 @@ Smart Cloud-in-a-box Appliance
 - Private and secure cloud
 - Edge Computing Solution
 - Remote management & application update capabilities
+- DevOps tool
 
 TODO.
 
