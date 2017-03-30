@@ -2,62 +2,67 @@
 Networking
 ==========
 
-NuvlaBox acts as a wireless or wired access point.
-The clients connect to that access point to access the running services and virtual machines.
-The clients are allocated IP addresses in the subnet 172.17.0.0/24.
+NuvlaBox have been designed to be flexible and support several network scenarios.
 
-A bridge (br0) is defined that attaches to the eth0 interface.
-The WAN interface has no IP address.  The bridge obtains its IP address through DHCP.
-Packets from the wireless card (WLAN) are forwarded to the bridge; only DHCP requests from WLAN are filtered out.
+Nonetheless, by default, NuvlaBox is configured with the most common used scendario, which is name `Confined Networking`.
 
-A bridge alias (br0:vm) for br0 is also defined and is assigned the address 172.16.0.1 (note the separate subnet 172.16.0.0/24).
-All of the services that require a domain name are running on the 172.16.0.1 address.
-This is also the subnet on which the virtual machines run.
+Here is a list of well tested network scenarios on the NuvlaBox:
 
-Wireless clients can access all services on the NuvlaBox as well as any running virtual machines.
-They can also access the internet (via NAT) through the bridge/eth0 if the machine is connected to a network.
+- Confined Network
+- Shared Network
+- NuvlaBox VPN Network
+- VM level VPN connection
 
-People on the external network should not be able to access the services running on the NuvlaBox.
 
-Confined Networking
--------------------
+Confined Network
+----------------
+
+The idea about this network scenario is to have all VMs and connected users managed by the NuvlaBox.
+The advantage of this network scenario is that no configuration is needed at first use of the NuvlaBox.
+
+Specificity:
+
+- Virtual machines (VMs) are created into internal virtual networks inside the NuvlaBox.
+- An internal DHCP is responsible to allocate IPs to VMs and to users.
+- Connected users in `LAN / WLAN network` and virtual machines in `VM network` have access to the Company Network and to the Internet through NAT (Network Address Translation).
+- VMs are reachable through LAN / WLAN network.
 
 .. image:: images/nb-network-confined.png
    :scale: 90 %
    :align: center
 
-Corp Net
---------
-copnet
 
-VPN
----
-vpn
+Shared Network
+--------------
 
-Overview of Services
---------------------
+The idea about this network scenario is to have all VMs reachable from the `Company Network` without being connected directly to the NuvlaBox.
+The advantage of this network scenario is to give a direct access to VMs from the `Company Network`.
 
-Unix Services
-`````````````
+Specificity:
 
-- DNS: named, ports 172.\*.0.1:53, 127.0.0.1:53, 127.0.0.1:953
-- DHCP: dhcpd, port 67
-- SSH: sshd, port \*:22
+- Virtual machines and connected users are bridged onto the `Company Network`.
+- The Company DHCP allocate connected users IPs, but for VMs, a range of IPs into the `Company Network` should be managed by the NuvlaBox itself.
 
-OpenNebula Services
-```````````````````
+TODO Add image about shared network
 
-- HTTP  OpenNebula endpoint: port 127.0.0.1:2633
-- HTTPS OpenNebula endpoint proxy: port \*:2634
-- HTTP  OpenNebula Sunstone 127.0.0.1:9869
-- HTTPS OpenNebula Sunstone proxy: \*:9870
 
-SlipStream Services
-```````````````````
+VPN Network
+-----------
 
-- HSQLDB: port \*:9001
-- ElasticSearch: port 127.0.0.1:9200-9300
-- SlipStream: port 127.0.0.1:8201
-- SlipStream proxy: port \*:443
-- SSCLJ port: port 127.0.0.1:8182
+The idea about this network scenario is to have running VMs on a shared VPN network transparently to the VMs. 
+The advantage of this network scenario is to have access to VMs from anywhere from the internet by using a VPN connection.
+
+Virtual machines are bridged onto the `VPN Network`. 
+If a local connection is available with access to the Internet, VMs use this connection to access internet and VPN connection to communicate with the `VPN Network`.
+
+TODO Add image about VPN network
+
+
+VM level VPN connection
+-----------------------
+
+This is not a real network scenario, because it use the `Confined Network` scenario and SlipStream recipe configuration to make the VMs connect to a remote VPN server.
+The advantage of this network scenario is to have access to VMs from anywhere from the internet without changing the default network scenario of the NuvlaBox.
+
+TODO Add image about VM level VPN connection
 

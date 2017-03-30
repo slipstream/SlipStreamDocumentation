@@ -1,35 +1,33 @@
 Connection to a remote SlipStream
 =================================
 
-Connection/relation with SlipStream.
+NuvlaBox connect to remote SlipStream (mothership) by using SSH tunneling. 
+When an Internet access is available, the NuvlaBox try to contact the remote SlipStream and register in it.
+You can check if your NuvlaBox is connected in the remote SlipStream by checking the status of the box in the corresponding gauges in the dashboard.
 
-How NB connect to remote SS, tunneling
+TODO Image Gauges.
 
-url NuvlaBox.com urls
+From remote SlipStream, a remote tunnels ports are opened and allow remote SlipStream to access NuvlaBox endpoints:
 
-References to SS... (KS). ../ss/slipstream-defined and others.
+- SlipStream
+- OpenNebula
+- SSH
 
-Tunneling to Remote SlipStream
-------------------------------
-By default tunnel is enabled, check contextualization in /etc/default/nuvlabox-tunnels
+.. NOTE:: Contact SixSq if you are interested in installing your own on permise remote SlipStream
 
-To stop and disable the SSH tunnel, run following command:
-```sh
-systemctl stop nuvlabox-ssh-tunnel
-systemctl disable nuvlabox-ssh-tunnel
-```
+.. HINT:: Check how to change to remote SlipStream in NuvlaBox Admin UI
+
+How to disable tunneling to remote SlipStream
+---------------------------------------------
+By default the SSH tunnel to the remote SlipStream is enabled. You can disable it from the NuvlaBox Admin UI or from the NuvlaBox console.
+
+Run following commands from the console of the NuvlaBox to disable SSH tunneling to remote SlipStream:
+
+.. code:: bash
+   
+   systemctl stop nuvlabox-ssh-tunnel.service
+   systemctl disable nuvlabox-ssh-tunnel.service
 
 The username and host to use for the tunnels can be configured in the
 file `/etc/default/nuvlabox-tunnels`. The most likely parameters to
-be needed are ID and HOST.  See the command source for all parameters
-that can be set.
-
-**NOTE**: The host key of the remote SlipStream server needs to be in
-the `known_hosts` file for the root account on the NuvlaBox.
-
-### Configuration of Remote SlipStream Machine
-
-The remote SlipStream must have a **non-root** account for the
-NuvlaBox to use to connect.  That account should be a normal user
-account with the NuvlaBox's root `id_rsa.pub` file in the
-`authorized_keys` file.
+be needed HOST and ports to use.
