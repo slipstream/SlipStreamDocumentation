@@ -1,3 +1,6 @@
+
+.. include:: ../global.rst
+
 What is SlipStream?
 ===================
 
@@ -18,4 +21,3 @@ You can use SlipStream from the Nuvla_ service maintained by SixSq, a
 SlipStream.
 
 
-.. include:: ../global.rst

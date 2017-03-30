@@ -25,12 +25,17 @@ and SlipStream's place within it.  It then describes the prerequisites
 for following the tutorial before jumping into the development of the
 example applications.
 
-.. As the exercises build on one another, readers will want to follow the
-   tutorial in order.
+The tutorial consists of five modules. One of the options is to follow them in
+order (see `Table of Contents`_).  The exercises provided in the tutorial
+build on one another starting from a simple single machine web server and
+ending with an auto-scalable distributed multi-component application.  However,
+if you are familiar with Cloud technologies and had already used SlipStream the
+modularization allows you to enter the tutorial at the desired level / topics.
 
+.. _module-1:
 
-Module I - `Overview of Cloud and SlipStream`
----------------------------------------------
+Module I - Overview of Cloud and SlipStream
+-------------------------------------------
 
 To get an overview of Cloud technology and SlipStream we recommend reading
 the following sections. They don't include any exercises and provide high level
@@ -40,8 +45,10 @@ view on the technologies and their usage by different types of users.
  - `SlipStream Ecosystem <slipstream-ecosystem.html>`_
  - `Key Concepts <key-concepts.html>`_
 
-Module II - `SlipStream Web Interface Tour`
--------------------------------------------
+.. _module-2:
+
+Module II - SlipStream Web Interface Tour
+-----------------------------------------
 
 You will be presented with prerequisites for using SlipStream and acquire the
 first experience of working with it by going through the online guided tour of
@@ -49,8 +56,8 @@ SlipStream in SlipStream itself.  You'll be guided through most all the parts
 of SlipStream and explained how to use them, and as part of it, you will deploy
 your first application on Cloud with SlipStream.  Also, you'll get an overview
 of the User Profile.  This module assumes you are familiar with Cloud
-technologies and the key concepts of SlipStream.  If not, then Module I can
-help you with this.
+technologies and the key concepts of SlipStream.  If not, then :ref:`Module I
+<module-1>` can help you with this.
 
  - `Prerequiseites <prerequisites.html>`_
  - `Web Interface Tour <web-interface-tour.html>`_
@@ -59,15 +66,18 @@ help you with this.
    Deploy multi-tier demo application. Check its topology on Run page. Go
    through exercises around the application runtime.
 
-Module III - `Building, Deploying and Managing Applications with SlipStream`
-----------------------------------------------------------------------------
+.. _module-3:
+
+Module III - Building, Deploying and Managing Applications with SlipStream
+--------------------------------------------------------------------------
 
 This module goes in depth about creation, deployment and management of
 applications.  After passing it you'll be able to build, share and deploy your
 own applications of different complexity on clouds of your choice.  The mode
 builds on the knowledge acquired about Slipstream in the main sections of the
-Module II. It assumes that your User Profile is configured with at least one
-Cloud (see `Prerequiseites <prerequisites.html>`_ in Module II).
+:ref:`Module II <module-2>`. It assumes that your User Profile is configured
+with at least one Cloud (see `Prerequiseites <prerequisites.html>`_ in
+:ref:`Module II <module-2>`).
 
  - `Workspace <workspace.html>`_
  - `Images <images.html>`_
@@ -77,23 +87,28 @@ Cloud (see `Prerequiseites <prerequisites.html>`_ in Module II).
  - `Applications <applications.html>`_
  - `Faster Deployments (Build image) <faster-deployment.html>`_.  Optional.
    Advanced.  Building your own images to speedup application deployment
-   process.  Part of Module V.
+   process.  Part of :ref:`Module V <module-5>`.
 
-Module IV - `Advanced topics: Scalable Applications`
-----------------------------------------------------
+.. _module-4:
+
+Module IV - Advanced topics: Scalable Applications
+--------------------------------------------------
 
 In this module you will learn how to: deploy an application that can be scaled
 horizontally and vertically; scale the application through the API; respond to
 resource changes to update configurations; automate the scaling process by
-using auto scaling approach available in SlipStream.  The module requires a good
-knowledge of application development and management with SlipStream, which one
-can obtain by going through Module III (and its prerequisites).
+using auto scaling approach available in SlipStream.  The module requires a
+good knowledge of application development and management with SlipStream, which
+one can obtain by going through :ref:`Module III <module-3>` (and its
+prerequisites).
 
  - `Scalable Applications <scalable-applications.html>`_
  - `Autoscalable Applications <autoscalable-applications.html>`_
 
-Module V - `Advanced topics: Automation and Optimization`
----------------------------------------------------------
+.. _module-5:
+
+Module V - Advanced topics: Automation and Optimization
+-------------------------------------------------------
 
 Working with SlipStream via SlipStream CLI or directly with its API via pure
 REST calls.  This module gives an overview of SlipStream API and shows for
@@ -117,8 +132,8 @@ which provides optimization of deployments.
    SlipStream supports a wide range of different operating systems,
    including Windows.
 
-Tutorial Table of Contents
---------------------------
+Table of Contents
+-----------------
 
 .. toctree::
    :maxdepth: 2
