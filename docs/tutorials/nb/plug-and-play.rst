@@ -10,35 +10,47 @@ Here are the first things to do with the NuvlaBox:
 2. Screw the Wi-Fi antenna in place
 3. Connect the box’s power cord to the mains and NuvlaBox
 4. Push the power button
+5. Keep credentials prospectus in a safe place
+
+.. figure:: images/prospectus-example.png
+   :scale: 80 %
+   :alt: Credentials prospectus example
+
+   Example of prospectus credentials for the NuvlaBox named after Albert Einstein
 
 How to use the NuvlaBox
 -----------------------
 
-NuvlaBox is your private *mini* IaaS_ Cloud.  And as with any IaaS Cloud you
+Using another device such as laptop, smartphone or tablet (not included) connect to the NuvlaBox Wi-Fi or LAN network.
+This connection give you access to a local SlipStream and allows you later on to access your running virtual machines.
+
+You can see the NuvlaBox as your private *mini* IaaS_ Cloud.  And as with any IaaS Cloud you
 want a friendly SaaS_ or PaaS_ service to help you with building and deploying
 applications on IaaS.  This is where SlipStream comes into the picture.  As with
 any onther Clouds, SlipStream can be used to manage your applications on your
 NuvlaBox(s).
 
-From the local SlipStream
-`````````````````````````
 
+Manage the NuvlaBox from a local SlipStream
+````````````````````````````````````````````
 Using another device such as laptop, smartphone or tablet (not included)
 connect to the NuvlaBox Wi-Fi or LAN network.
 
 Then connect to the URL: https://nuvlabox. This URL corresponds to the
 SlipStream service.
 
-From a remote SlipStream
-````````````````````````
+Choose local in NuvlaBox welcome page and login into SlipStream with the "nuvlabox" user account.
 
-By default, NuvlaBox are configured to connect to a remote SlipStream named
-Nuvla managed by SixSq.
+Manage the NuvlaBox from a remote SlipStream
+````````````````````````````````````````````
 
-Connect the box's WAN port to a local network with an Internet access and a
-DHCP/DNS services available.
+By default, NuvlaBoxes are pre-configured to connect to a remote SlipStream named Nuvla_ managed by SixSq.
+Connect the NuvlaBox's WAN port to a network with an Internet access and where a DHCP/DNS services are available.
 
-Then connect to the URL: https://nuv.la.
+.. HINT::
+   TODO If no DHCP is available in your network please refer to advanced configuration.
+
+Then connect to Nuvla with following URL: https://nuv.la.
 
 TODO (What about cloud config on Nuvla, user should configure his account to
 access his box)
@@ -46,12 +58,14 @@ access his box)
 Deploying Applications
 -----------------------
 
-There is no differece between running on a cloud or NuvlaBox. Link to SS
-tutorial.
+There is no differece between running on a cloud or NuvlaBox. 
+TODO Link to SS tutorial. 
 
 Accessing VMs
 -------------
 
-Here is the easiest method to access VMs.  To advanced access via tunnel VPN or
-remote tunnels or via Nuvla redirection please refer to Networking section
+Use an SSH client to connect to your VMs by using default port 22 and using the IP displayed in SlipStream your deployment.
+
+.. HINT::
+   TODO To advanced access via tunnel VPN or remote tunnels or via Nuvla redirection please refer to Networking section
 
