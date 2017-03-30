@@ -2,10 +2,9 @@
 Networking
 ==========
 
-NuvlaBox acts as a wireless access point.
-The clients connect to that access point *SSID NuvlaBox <Nobel Prize Name>; Password <PASSWORD>* to access the running services and virtual machines.
-The clients are allocated IP addresses in the subnet 172.17.0.0/24 (currently a maximum of 50 clients are allowed).
-Any wireless device should be able to connect to it.
+NuvlaBox acts as a wireless or wired access point.
+The clients connect to that access point to access the running services and virtual machines.
+The clients are allocated IP addresses in the subnet 172.17.0.0/24.
 
 A bridge (br0) is defined that attaches to the eth0 interface.
 The WAN interface has no IP address.  The bridge obtains its IP address through DHCP.
@@ -20,8 +19,20 @@ They can also access the internet (via NAT) through the bridge/eth0 if the machi
 
 People on the external network should not be able to access the services running on the NuvlaBox.
 
-![Diagram of the Network](images/network.png)
+Confined Networking
+-------------------
 
+.. image:: images/nb-network-confined.png
+   :scale: 90 %
+   :align: center
+
+Corp Net
+--------
+copnet
+
+VPN
+---
+vpn
 
 Overview of Services
 --------------------
@@ -49,25 +60,4 @@ SlipStream Services
 - SlipStream: port 127.0.0.1:8201
 - SlipStream proxy: port \*:443
 - SSCLJ port: port 127.0.0.1:8182
-
-Internal Net
-------------
-internal
-
-iptables rules
-``````````````
-
-dhcp ranges
-```````````
-
-bridge states
-`````````````
-
-Corp Net
---------
-copnet
-
-VPN
----
-vpn
 
