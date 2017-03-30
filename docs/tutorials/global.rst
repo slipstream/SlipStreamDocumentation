@@ -8,3 +8,8 @@
 
 .. _DevOps: https://en.wikipedia.org/wiki/DevOps
 
+.. _IaaS: https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29
+
+.. _PaaS: https://en.wikipedia.org/wiki/Platform_as_a_service
+
+.. _SaaS: https://en.wikipedia.org/wiki/Software_as_a_service
