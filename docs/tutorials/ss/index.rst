@@ -48,7 +48,8 @@ view on the technologies and their usage by different types of users.
  - `Key Concepts <key-concepts.html>`_
 
 After you've got an overview of Cloud technology, SlipStream and key
-concepts around it, the next module to take is :ref:`Module II <module-2>`.
+concepts around it, the next module to take is :ref:`Module II <module-2>`,
+where you'll obtain first hands-on experience with SlipStream.
 
 .. _module-2:
 
