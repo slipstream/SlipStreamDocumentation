@@ -21,7 +21,7 @@ Smart Cloud-in-a-box Appliance
    plug-and-play
    sw-arch
    remote-ss
-   deploy-app
+   networking
    management
    build-and-run-apps
    usages

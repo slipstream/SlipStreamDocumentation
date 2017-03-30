@@ -16,6 +16,8 @@ NuvlaBox come with a specific prospectus which list all necessary credentials to
 NuvlaBox Standard v2
 --------------------
 
+Up to 8 VM, sharing 14 GB of RAM and 215 GB disk space
+
 ======================================  =========================================================================================================
 Description                             
 ======================================  =========================================================================================================
@@ -41,6 +43,8 @@ Warranty                                2 year limited warranty on parts and ser
 
 NuvlaBox Mini v2
 ----------------
+
+Up to 8 VM, sharing 6GB of RAM and 98 GB of disk space
 
 ======================================  =========================================================================================================
 Description                             
