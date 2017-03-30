@@ -1,4 +1,6 @@
 
+.. include:: global.rst
+
 Tutorials
 =========
 
@@ -26,4 +28,3 @@ a current one.
    ss/index
    nb/index
 
-.. include:: global.rst
