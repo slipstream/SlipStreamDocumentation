@@ -1,3 +1,4 @@
+
 .. include:: ../global.rst
 
 Plug And Play
@@ -32,15 +33,18 @@ NuvlaBox(s).
 
 Manage the NuvlaBox from a local SlipStream
 ````````````````````````````````````````````
+Using another device such as laptop, smartphone or tablet (not included)
+connect to the NuvlaBox Wi-Fi or LAN network.
 
-Then connect to the URL: https://nuvlabox. This URL corresponds to the SlipStream service.
+Then connect to the URL: https://nuvlabox. This URL corresponds to the
+SlipStream service.
 
 Choose local in NuvlaBox welcome page and login into SlipStream with the "nuvlabox" user account.
 
 Manage the NuvlaBox from a remote SlipStream
 ````````````````````````````````````````````
 
-By default, NuvlaBoxes are pre-configured to connect to a remote SlipStream named Nuvla managed by SixSq.
+By default, NuvlaBoxes are pre-configured to connect to a remote SlipStream named Nuvla_ managed by SixSq.
 Connect the NuvlaBox's WAN port to a network with an Internet access and where a DHCP/DNS services are available.
 
 .. HINT::
@@ -48,7 +52,8 @@ Connect the NuvlaBox's WAN port to a network with an Internet access and where a
 
 Then connect to Nuvla with following URL: https://nuv.la.
 
-TODO (What about cloud config on Nuvla, user should configure his account to access his box)
+TODO (What about cloud config on Nuvla, user should configure his account to
+access his box)
 
 Deploying Applications
 -----------------------
@@ -63,11 +68,4 @@ Use an SSH client to connect to your VMs by using default port 22 and using the 
 
 .. HINT::
    TODO To advanced access via tunnel VPN or remote tunnels or via Nuvla redirection please refer to Networking section
-
-
-.. _IaaS: https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29
-
-.. _PaaS: https://en.wikipedia.org/wiki/Platform_as_a_service
-
-.. _SaaS: https://en.wikipedia.org/wiki/Software_as_a_service
 
