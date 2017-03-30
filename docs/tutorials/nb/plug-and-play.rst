@@ -1,3 +1,4 @@
+.. include:: ../global.rst
 
 Plug And Play
 =============
@@ -11,6 +12,12 @@ Here are the first things to do with the NuvlaBox:
 
 How to use the NuvlaBox
 -----------------------
+
+NuvlaBox is your private *mini* IaaS_ Cloud.  And as with any IaaS Cloud you
+want a friendly SaaS_ or PaaS_ service to help you with building and deploying
+applications on IaaS.  This is where SlipStream comes into the picture.  As with
+any onther Clouds, SlipStream can be used to manage your applications on your
+NuvlaBox(s).
 
 From the local SlipStream
 `````````````````````````
@@ -32,9 +39,18 @@ TODO (What about cloud config on Nuvla, user should configure his account to acc
 
 Deploying Applications
 -----------------------
+
 There is no differece between running on a cloud or NuvlaBox. Link to SS tutorial.
 
 Accessing VMs
 -------------
-Here is the easiest method to access VMs.
-To advanced access via tunnel VPN or remote tunnels or via Nuvla redirection please refer to Networking section
+
+Here is the easiest method to access VMs.  To advanced access via tunnel VPN or
+remote tunnels or via Nuvla redirection please refer to Networking section
+
+
+.. _IaaS: https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29
+
+.. _PaaS: https://en.wikipedia.org/wiki/Platform_as_a_service
+
+.. _SaaS: https://en.wikipedia.org/wiki/Software_as_a_service
