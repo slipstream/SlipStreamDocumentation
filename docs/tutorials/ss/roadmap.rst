@@ -16,16 +16,16 @@ In addition to the continual bugfixing, robustness, and usability
 improvements, there are several areas where important new
 functionality is planned:
 
-- Networking: component-level control of firewall rules and dynamic
-  control over network connectivity and quality
-- Containers: Support for container-based technologies in addition to
-  virtual machine technologies
-- Storage: Incorporating storage (block and object) as first-class
-  resources within the SlipStream computing model
 - Connectors: Continued expansion of the supported cloud
   infrastructures 
 - APIs: A gradual shift away from our custom REST API towards the CIMI
   standard, accompanied by a shift from XML to JSON. 
+- Storage: Incorporating storage (block and object) as first-class
+  resources within the SlipStream computing model
+- Containers: Support for container-based technologies in addition to
+  virtual machine technologies
+- Networking: component-level control of firewall rules and dynamic
+  control over network connectivity and quality
 
 Your feedback on what features you'd like to see in SlipStream is
 important.  We continuously adjust our development priorities based on
