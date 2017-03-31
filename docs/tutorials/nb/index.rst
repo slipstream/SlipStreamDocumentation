@@ -23,6 +23,7 @@ Smart Cloud-in-a-box Appliance
    remote-ss
    networking
    management
-   build-and-run-apps
+   sensors-attach
+   robustness
    usages
    roadmap

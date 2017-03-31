@@ -16,7 +16,7 @@ Here are the first things to do with the NuvlaBox:
    :scale: 80 %
    :alt: Credentials prospectus example
 
-   Example of prospectus credentials for the NuvlaBox named after Albert Einstein
+   Example of credentials prospectus for the NuvlaBox named after Albert Einstein
 
 How to use the NuvlaBox
 -----------------------
@@ -48,7 +48,7 @@ By default, NuvlaBoxes are pre-configured to connect to a remote SlipStream name
 Connect the NuvlaBox's WAN port to a network with an Internet access and where a DHCP/DNS services are available.
 
 .. HINT::
-   TODO If no DHCP is available in your network please refer to advanced configuration.
+   TODO If no DHCP is available in your network, you can connect to your LAN, access NuvlaBox admin UI and set a static IP for the NuvlaBox WAN interface.
 
 Then connect to Nuvla with following URL: https://nuv.la.
 
@@ -64,7 +64,7 @@ TODO Link to SS tutorial.
 Accessing VMs
 -------------
 
-Use an SSH client to connect to your VMs by using default port 22 and using the IP displayed in SlipStream your deployment.
+Use a SSH client to connect to your VM by using default SSH ``port 22`` and by using the ``displayed IP`` in your deployment on SlipStream.
 
 .. HINT::
    TODO To advanced access via tunnel VPN or remote tunnels or via Nuvla redirection please refer to Networking section
