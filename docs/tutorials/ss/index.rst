@@ -6,7 +6,7 @@ SlipStream Tutorial
 
 This hands-on tutorial demonstrates the core features of SlipStream by
 building a number of example applications through a series of exercises.  The
-tutorial will show how SlipStream:
+tutorial shows how SlipStream:
 
  - Abstracts away differences between clouds, making **cloud portability**
    possible,
@@ -22,59 +22,65 @@ tutorial will show how SlipStream:
    interface, and a REST API, and
  - Optimizes resource use though **horizontal and vertical scaling**.
 
-The tutorial starts with a short description of the cloud ecosystem
-and SlipStream's place within it.  It then describes the prerequisites
-for following the tutorial before jumping into the development of the
-example applications.
+The tutorial is divided into a number of modules that treat specific
+topics (see `Table of Contents`_).  The first two provide an overview
+of the cloud ecosystem and SlipStream concepts.  These provide a good
+foundation for understanding the core SlipStream functionality that is
+presented in Module III.  The subsequent modules treat more advanced
+topics and can be followed in any order.
 
-The tutorial consists of five modules. One of the options is to follow them in
-order (see `Table of Contents`_).  The exercises provided in the tutorial build
-on one another starting from a simple single machine web server and ending with
-an auto-scalable distributed multi-component application.  However, if you are
-familiar with Cloud technologies and had already used SlipStream, the
-modularization allows you to enter the tutorial at the desired level / topics.
+The exercises provided in the tutorial build on one another starting
+from a simple, single machine web server and ending with an
+auto-scalable distributed multi-component application. Solutions to
+the exercises can be found on Nuvla.
 
 .. _module-1:
 
 Module I - Overview of Cloud and SlipStream
 -------------------------------------------
 
-To get an overview of Cloud technology and SlipStream we recommend reading
-the following sections. They don't include any exercises and provide high level
-view on the technologies and their usage by different types of users.
+To get an overview of cloud technology and SlipStream, we recommend
+reading the following sections. They provide a high-level view on the
+technologies and how different users can benefit from them.
 
  - `Cloud Technology <cloud-technology.html>`_
  - `SlipStream Ecosystem <slipstream-ecosystem.html>`_
  - `Key Concepts <key-concepts.html>`_
 
-After you've got an overview of Cloud technology, SlipStream and key
-concepts around it, the next module to take is :ref:`Module II <module-2>`.
+These sections do not contain any exercises and can be read without
+needing access to a SlipStream server.
+
+Once you understand the technologies and key concepts, follow
+:ref:`Module II <module-2>` that provides a tour of the SlipStream
+cloud application management platform.
 
 .. _module-2:
 
 Module II - SlipStream Web Interface Tour
 -----------------------------------------
 
-You will be presented with prerequisites for using SlipStream and acquire the
-first experience of working with it by going through the online guided tour of
-SlipStream in SlipStream itself.  You'll be guided through most all the parts
-of SlipStream and explained how to use them, and as part of it, you will deploy
-your first application on Cloud with SlipStream.  Also, you'll get an overview
-of the User Profile.  This module assumes you are familiar with Cloud
-technologies and the key concepts of SlipStream.  If not, then :ref:`Module I
+You will be presented with prerequisites for using SlipStream and
+acquire the first experience of working with it by going through the
+online guided tour of SlipStream in SlipStream itself.  You'll be
+guided through most all the parts of SlipStream and explained how to
+use them, and as part of it, you will deploy your first application on
+Cloud with SlipStream.  Also, you'll get an overview of the User
+Profile.  This module assumes you are familiar with Cloud technologies
+and the key concepts of SlipStream.  If not, then :ref:`Module I
 <module-1>` can help you with this.
 
- - `Prerequiseites <prerequisites.html>`_
+ - `Prerequisites <prerequisites.html>`_
  - `Web Interface Tour <web-interface-tour.html>`_
  - `User Profile <user-profile.html>`_
- - `Multi-tier Demo Application - LAMP <lamp-demo.html>`_. Optional. Advanced.
-   Deploy multi-tier demo application. Check its topology on Run page. Go
-   through exercises around the application runtime.
+ - `Multi-tier Demo Application - LAMP <lamp-demo.html>`_.
+   Optional. Advanced.  Deploy multi-tier demo application. Check its
+   topology on Run page. Go through exercises around the application
+   runtime.
 
-In this module you've acquired enough knowledge about SlipStream and its basic
-capabilities.  Now you are ready to proceed to :ref:`Module III <module-3>`,
-where you will learn how to build, deploy and manager your own applications
-with SlipStream on multiple clouds.
+In this module you've acquired enough knowledge about SlipStream and
+its basic capabilities.  Now you are ready to proceed to :ref:`Module
+III <module-3>`, where you will learn how to build, deploy and manage
+your own applications with SlipStream on multiple clouds.
 
 .. _module-3:
 
@@ -86,7 +92,7 @@ applications.  After passing it you'll be able to build, share and deploy your
 own applications of different complexity on clouds of your choice.  The mode
 builds on the knowledge acquired about Slipstream in the main sections of the
 :ref:`Module II <module-2>`. It assumes that your User Profile is configured
-with at least one Cloud (see `Prerequiseites <prerequisites.html>`_ in
+with at least one Cloud (see `Prerequisites <prerequisites.html>`_ in
 :ref:`Module II <module-2>`).
 
  - `Workspace <workspace.html>`_
