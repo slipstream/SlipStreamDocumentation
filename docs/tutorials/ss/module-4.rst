@@ -13,7 +13,6 @@ material in :doc:`Module III <module-3>`.
 .. toctree::
    :maxdepth: 1
 
-   automating-slipstream
    scalable-applications
    autoscalable-applications
 
