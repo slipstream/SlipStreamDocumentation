@@ -43,6 +43,7 @@ To get an overview of cloud technology and SlipStream, we recommend
 reading the following sections. They provide a high-level view on the
 technologies and how different users can benefit from them.
 
+ - `What is SlipStream <slipstream-defined.html>`_
  - `Cloud Technology <cloud-technology.html>`_
  - `SlipStream Ecosystem <slipstream-ecosystem.html>`_
  - `Key Concepts <key-concepts.html>`_
