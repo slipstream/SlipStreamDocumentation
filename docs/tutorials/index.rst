@@ -7,6 +7,12 @@ Tutorials
 These hands-on tutorials demonstrate the core features of SlipStream_ and
 NuvlaBox_.
 
+.. toctree::
+   :maxdepth: 1
+
+   ss/index
+   nb/index
+
 The tutorials are built of sufficiently autonomous learning modules covering
 different aspects of the solutions.  It is assembled so that it's possible to
 follow it independently for SlipStream_ or NuvlaBox_ while, whenever necessary,
@@ -21,10 +27,4 @@ a current one.
    The command line examples throughout the tutorial use Linux bash
    syntax.  If you're using a different shell (csh, PowerShell, etc.),
    you'll need to adjust the syntax accordingly.
-
-.. toctree::
-   :maxdepth: 1
-
-   ss/index
-   nb/index
 
