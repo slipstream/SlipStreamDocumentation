@@ -2,8 +2,8 @@ Roadmap
 =======
 
 SixSq produces a new, incremental release of SlipStream approximately
-every two weeks.  Those candidate releases are deployed on Nuvla to
-allow everyone to benefit from bugfixes and new features.  
+every two weeks.  Those "candidate" releases are deployed on Nuvla to
+allow everyone to benefit from bugfixes and new features.
 
 SixSq promotes a release to "stable" about once a quarter.  These
 releases are fully supported by SixSq and recommended for other
@@ -29,4 +29,5 @@ functionality is planned:
 
 Your feedback on what features you'd like to see in SlipStream is
 important.  We continuously adjust our development priorities based on
-user feedback, so speak up!  Just contact us at support@sixsq.com. 
+user feedback.  Give us your feedback by contacting us at
+support@sixsq.com.
