@@ -1,5 +1,5 @@
 
-.. include:: global.rst
+.. include:: links.txt
 
 Tutorials
 =========
