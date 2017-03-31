@@ -1,6 +1,29 @@
 Manageability
 =============
 
+Configuration of the NuvlaBox
+-----------------------------
+
+An administration UI is available and accessible from the local SlipStream.
+To access it, login with "super" account in local SlipStream, click on **Configuration** in the menubar and choose **NuvlaBox**.
+
+Available actions in NuvlaBox UI admin:
+
+- System activity (CPU usage, RAM usage, partition usage)
+- USB status. This is the listing of plugged USB devices in the NuvlaBox.
+- Remote SSH SlipStream tunnel settings
+- Network configuration (WAN, LAN, WLAN)
+- System actions (restart, poweroff or Factory reset)
+
+All this actions are also available from the NuvlaBox console by using a CLI tool named ``nuvlabox-admin``.
+
+
+Updating a NuvlaBox
+--------------------
+
+Using a USB key with last version, or by using a migration script.
+An update through the admin UI should be possible check the roadmap.
+
 Installation from Scratch
 -------------------------
 
@@ -45,24 +68,3 @@ Install Scripts
 Contact SixSq if you are interested in installing NuvlaBox Firmware on specific hardware.
 This is often the case when you need a more powerfull NuvlaBox which is able to run more than 8 VMs.
 
-Updating a NuvlaBox
---------------------
-
-TODO Using a USB key with last version, or by using a migration script.
-An update through the admin UI should be possible check the roadmap.
-
-Configuration of the NuvlaBox
------------------------------
-
-An administration UI is available and accessible from the local SlipStream.
-To access it, login with "super" account in local SlipStream, click on **Configuration** in the menubar and choose **NuvlaBox**.
-
-Available actions in NuvlaBox UI admin:
-
-- System activity (CPU usage, RAM usage, partition usage)
-- USB status. This is the listing of plugged USB devices in the NuvlaBox.
-- Remote SSH SlipStream tunnel settings
-- Network configuration (WAN, LAN, WLAN)
-- System actions (restart, poweroff or Factory reset)
-
-All this actions are also available from the NuvlaBox console by using a CLI tool named ``nuvlabox-admin``.

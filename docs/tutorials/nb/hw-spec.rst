@@ -67,3 +67,6 @@ Warranty                                2 year limited warranty on parts and ser
 ======================================  =========================================================================================================
 
 
+.. NOTE:: Contact SixSq if you are interested in installing NuvlaBox Firmware on specific hardware.
+          This is often the case when you need a more powerfull.
+

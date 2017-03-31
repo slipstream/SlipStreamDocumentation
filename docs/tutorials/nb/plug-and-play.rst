@@ -1,8 +1,8 @@
 
 .. include:: ../links.txt
 
-Plug And Play
-=============
+How to use the NuvlaBox
+-----------------------
 
 Here are the first things to do with the NuvlaBox:
 
@@ -17,9 +17,6 @@ Here are the first things to do with the NuvlaBox:
    :alt: Credentials prospectus example
 
    Example of credentials prospectus for the NuvlaBox named after Albert Einstein
-
-How to use the NuvlaBox
------------------------
 
 Using another device such as laptop, smartphone or tablet (not included) connect to the NuvlaBox Wi-Fi or LAN network.
 This connection give you access to a local SlipStream and allows you later on to access your running virtual machines.
@@ -59,13 +56,11 @@ Deploying Applications
 -----------------------
 
 There is no differece between running on a cloud or NuvlaBox. 
+
 TODO Link to SS tutorial. 
 
 Accessing VMs
 -------------
 
 Use a SSH client to connect to your VM by using default SSH ``port 22`` and by using the ``displayed IP`` in your deployment on SlipStream.
-
-.. HINT::
-   TODO To advanced access via tunnel VPN or remote tunnels or via Nuvla redirection please refer to Networking section
 

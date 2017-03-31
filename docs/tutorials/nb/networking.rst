@@ -28,7 +28,7 @@ Specificity:
 - VMs are reachable through LAN / WLAN network.
 
 .. image:: images/nb-network-confined.png
-   :scale: 90 %
+   :scale: 80 %
    :align: center
 
 
@@ -43,7 +43,9 @@ Specificity:
 - Virtual machines and connected users are bridged onto the `Company Network`.
 - The Company DHCP allocate connected users IPs, but for VMs, a range of IPs into the `Company Network` should be managed by the NuvlaBox itself.
 
-TODO Add image about shared network
+.. image:: images/nb-network-shared.png
+   :scale: 80 %
+   :align: center
 
 
 VPN Network
@@ -57,7 +59,9 @@ Specificity:
 - Virtual machines are bridged onto the `VPN Network`. 
 - If a local connection is available with access to the Internet, VMs use this connection to access internet and VPN connection to communicate with the `VPN Network`.
 
-TODO Add image about VPN network
+.. image:: images/nb-network-vpn.png
+   :scale: 80 %
+   :align: center
 
 
 VM level VPN connection
@@ -67,4 +71,6 @@ This is not a real network scenario, because it use the `Confined Network` scena
 The advantage of this network scenario is to have access to VMs from anywhere from the internet without changing the default network scenario of the NuvlaBox.
 
 TODO Add image about VM level VPN connection
+
+.. NOTE:: Contact SixSq if you need a custom network scenario.
 
