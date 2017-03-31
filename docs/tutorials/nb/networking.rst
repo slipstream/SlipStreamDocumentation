@@ -52,8 +52,10 @@ VPN Network
 The idea about this network scenario is to have running VMs on a shared VPN network transparently to the VMs. 
 The advantage of this network scenario is to have access to VMs from anywhere from the internet by using a VPN connection.
 
-Virtual machines are bridged onto the `VPN Network`. 
-If a local connection is available with access to the Internet, VMs use this connection to access internet and VPN connection to communicate with the `VPN Network`.
+Specificity:
+
+- Virtual machines are bridged onto the `VPN Network`. 
+- If a local connection is available with access to the Internet, VMs use this connection to access internet and VPN connection to communicate with the `VPN Network`.
 
 TODO Add image about VPN network
 

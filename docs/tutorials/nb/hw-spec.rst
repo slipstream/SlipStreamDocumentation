@@ -7,7 +7,7 @@ Supply chain
 
 SixSq choose `Logic Supply`_ to design, assemble and initialize NuvlaBox hardware.
 Each NuvlaBox is individualized and named after a prize nobel. 
-NuvlaBox come with a specific prospectus which list all necessary credentials to connect to the box.
+NuvlaBox come with a specific credentials prospectus which list all necessary credentials to connect to the box.
 
 
 .. _Logic Supply: https://www.logicsupply.com
@@ -23,7 +23,7 @@ Description
 ======================================  =========================================================================================================
 Hardware Line                           Industrial Fanless Intel Haswell Computer
 Processor                               Intel Core i5-4570TE Haswell / 2 Cores - 4 Threads / 2.7 GHz
-Memory  	                        2 x 8 GB - DDR3 1600 SO-DIMM Memory
+Memory  	                            2 x 8 GB - DDR3 1600 SO-DIMM Memory
 Primary Storage                         256 GB - Transcend 370 2.5" SSD
 WiFi/Bluetooth                          Intel 7260 Dual Band 802.11ac/n/g/a/b
 Graphics/GPU                            Intel 4th Generation HD Graphics

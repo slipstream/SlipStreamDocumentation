@@ -1,5 +1,5 @@
 
-.. include:: ../global.rst
+.. include:: ../links.txt
 
 Module III - Creating, Deploying, and Managing Cloud Applications (Basic)
 -------------------------------------------------------------------------
@@ -12,7 +12,7 @@ clouds of your choice.
 This module builds on the knowledge acquired about Slipstream in the
 previous module :doc:`Module II <module-2>`. Your user profile must
 contain credentials for at least one cloud.  If necessary, review the
-`Prerequisites <prerequisites.html>`_ from the previous module.
+:doc:`Prerequisites <prerequisites>` from the previous module.
 
 .. toctree::
    :maxdepth: 1

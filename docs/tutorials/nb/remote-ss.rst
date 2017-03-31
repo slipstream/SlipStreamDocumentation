@@ -5,7 +5,11 @@ NuvlaBox connect to remote SlipStream (mothership) by using SSH tunneling.
 When an Internet access is available, the NuvlaBox try to contact the remote SlipStream and register in it.
 You can check if your NuvlaBox is connected in the remote SlipStream by checking the status of the box in the corresponding gauges in the dashboard.
 
-TODO Image Gauges.
+.. figure:: images/gauges-nb-states.png
+   :scale: 50 %
+   :align: center
+
+   Gauges of a NuvlaBox when disconnected vs when connected
 
 From remote SlipStream, a remote tunnels ports are opened and allow remote SlipStream to access NuvlaBox endpoints:
 
@@ -17,9 +21,8 @@ From remote SlipStream, a remote tunnels ports are opened and allow remote SlipS
 
 .. HINT:: Check how to change to remote SlipStream in NuvlaBox Admin UI
 
-How to disable tunneling to remote SlipStream
----------------------------------------------
-By default the SSH tunnel to the remote SlipStream is enabled. You can disable it from the NuvlaBox Admin UI or from the NuvlaBox console.
+By default the SSH tunnel to the remote SlipStream is enabled. 
+You can disable it from the NuvlaBox Admin UI or from the NuvlaBox console.
 
 Run following commands from the console of the NuvlaBox to disable SSH tunneling to remote SlipStream:
 
@@ -29,5 +32,5 @@ Run following commands from the console of the NuvlaBox to disable SSH tunneling
    systemctl disable nuvlabox-ssh-tunnel.service
 
 The username and host to use for the tunnels can be configured in the
-file `/etc/default/nuvlabox-tunnels`. The most likely parameters to
-be needed HOST and ports to use.
+following file ``/etc/default/nuvlabox-tunnels``. 
+The most likely parameters to be needed are HOST and remote ports to use.
