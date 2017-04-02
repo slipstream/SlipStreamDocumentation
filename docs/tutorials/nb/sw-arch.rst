@@ -23,12 +23,24 @@ When a user is connected to the WiFi/LAN network or from the of the NuvlaBox, he
 If you are not connected to the NuvlaBox on WLAN, you can connect to those services by using the IP of the NuvlaBox in your network.
 
 ===================  ================
-Services Names       Listening Ports
+Services Names       Listening Ports 
 ===================  ================
-SlipStream           443
-OpenNebula Sunstone  9870
-SSH                  22
+SlipStream           443             
+OpenNebula Sunstone  9870            
+SSH                  22              
 ===================  ================
+
+User Accounts
+`````````````
+============  ========  =============================  ========================================================
+Service Name  Username  Password location              Description
+============  ========  =============================  ========================================================
+SSH           root      In credentials prospectus      NuvlaBox administrator
+SlipStream    nuvlabox  In credentials prospectus      NuvlaBox cloud user
+SlipStream    super     In credentials prospectus      SlipStream administrator
+OpenNebula    ssuser    In credentials prospectus      OpenNebula cloud user configured for NuvlaBox cloud user
+OpenNebula    oneadmin  In /var/lib/one/.one/one_auth  OpenNebula cloud administrator
+============  ========  =============================  ========================================================
 
 Other Services
 --------------

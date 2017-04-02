@@ -1,10 +1,12 @@
 How to attach sensors
 =====================
 
-Edit the image in SlipStream and add an `Additional custom tesxtual VM template`:
+To attach a sensor, you have to edit your component in SlipStream and add an `Additional custom textual VM template`.
+Anything placed in this field is transmited unmodified to KVM hypervisor.
 
-In the following example, we have added the most common USB controllers on which we attach the usb devce.
-For USB 2.0 or USB 3.0 devices, use the following template to attach it to your virtual machine.
+First of all, we need to add a USB controller, on which we attach the USB device.
+To do so, for USB 2.0 or USB 3.0 devices, use the following template to attach your device to your virtual machine at startup.
+
 You should only update the ``vendo id`` value and the ``product id`` with values corresponding to your device.
 
 .. code:: xml
@@ -16,8 +18,15 @@ You should only update the ``vendo id`` value and the ``product id`` with values
 .. HINT::
    In NuvlaBox admin UI, you can easily get ``vendor id`` and ``product id`` of attached devices.
 
+
+.. WARNING:: 
+   You have to attach specified devices in `Additional custom textual VM template` to your NuvlaBox, otherwise deployed concerned Virtual machine can't boot.
+
+
 To attach other host devices, please refer to `libvirt documentation`_.
 
+Other examples
+--------------
 
 SixSq is participating in an European Union’s Horizon 2020 project named `SCISSOR`_. 
 The aim of this project is to designs a new generation SCADA security monitoring framework. 
