@@ -21,6 +21,10 @@ Here are the first things to do with the NuvlaBox:
 Using another device such as laptop, smartphone or tablet (not included) connect to the NuvlaBox Wi-Fi or LAN network.
 This connection give you access to a local SlipStream and allows you later on to access your running virtual machines.
 
+.. note::
+  Please follow `Module II <../ss/module-2.html>`_ of the SlipStream tutorial
+  to learn the necessery basiscs about SlipStream.
+
 You can see the NuvlaBox as your private *mini* IaaS_ Cloud.  And as with any IaaS Cloud you
 want a friendly SaaS_ or PaaS_ service to help you with building and deploying
 applications on IaaS.  This is where SlipStream comes into the picture.  As with
