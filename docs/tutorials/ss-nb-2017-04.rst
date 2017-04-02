@@ -77,7 +77,7 @@ Automation, Optimization and Debugging
 Scalable Applications
 ---------------------
 
-Base on `Module IV <ss/module-4.html>`.
+Base on `Module IV <ss/module-4.html>`_.
 
  * Application (auto-)scalability with SlipStream. Theory
 
