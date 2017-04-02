@@ -41,26 +41,34 @@ Choose local in NuvlaBox welcome page and login into SlipStream with the "nuvlab
 Manage the NuvlaBox from a remote SlipStream
 ````````````````````````````````````````````
 
-By default, NuvlaBoxes are pre-configured to connect to a remote SlipStream named Nuvla_ managed by SixSq.
-Connect the NuvlaBox's WAN port to a network with an Internet access and where a DHCP/DNS services are available.
+By default, NuvlaBoxes are pre-configured to connect to a remote SlipStream
+named Nuvla_ managed by SixSq.  Connect the NuvlaBox's WAN port to a network
+with an Internet access and where a DHCP/DNS services are available.
 
 .. HINT::
-   TODO If no DHCP is available in your network, you can connect to your LAN, access NuvlaBox admin UI and set a static IP for the NuvlaBox WAN interface.
+   If no DHCP is available in your network, you can connect to your LAN, access
+   NuvlaBox admin UI and set a static IP for the NuvlaBox WAN interface.
 
 Then connect to Nuvla with following URL: https://nuv.la.
 
-TODO (What about cloud config on Nuvla, user should configure his account to
-access his box)
+To be able to manage applications on NuvlaBoxes from SlipStream one has to
+configure credentials of the corresponding Nuvlabox in the SlipStream's user
+profile.  Please follow `this section
+<ss/prerequisites.html#cloud-infrastructure-accounts>`_ of the SlipStream
+tutorial to achieve this.
 
 Deploying Applications
 -----------------------
 
-There is no differece between running on a cloud or NuvlaBox. 
-
-TODO Link to SS tutorial. 
+The preferred way to manage applications on NuvlaBox is through SlipStream.
+There is no difference between deploying applications on Clouds or NuvlaBox
+when using SlipStream.  Please follow `Module III <../ss/module-3.html>`_ of
+the SlipStream tutorial to learn how to create, deploy and manage your
+applications on NuvlaBox.
 
 Accessing VMs
 -------------
 
-Use a SSH client to connect to your VM by using default SSH ``port 22`` and by using the ``displayed IP`` in your deployment on SlipStream.
+Use a SSH client to connect to your VM by using default SSH ``port 22`` and by
+using the ``displayed IP`` in your deployment on SlipStream.
 
