@@ -13,3 +13,8 @@
 .. _PaaS: https://en.wikipedia.org/wiki/Platform_as_a_service
 
 .. _SaaS: https://en.wikipedia.org/wiki/Software_as_a_service
+
+.. _IoT: https://en.wikipedia.org/wiki/Internet_of_things
+
+.. _Edge Computing: https://en.wikipedia.org/wiki/Edge_computing
+
