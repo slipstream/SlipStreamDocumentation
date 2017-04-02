@@ -9,14 +9,14 @@ The NuvlaBox’s ability to work both autonomously and as a remote controlled co
 
 Key business benefits
 ---------------------
-- Built-in security. All communication is encrypted and deployments automated for increased security.
-- Plug & Play device. The NuvlaBox is pre-configured so the end user has to simply plug it in and it’s operational.
-- Central control point. Using a user-friendly web interface the NuvlaBox can be controlled via simple dashboard.
-- Remote updates mean reduced costs. No need to send an engineer or expert on site to update hardware or software.
-- Secure web access to the apps running in your NuvlaBox.
-- Supports hybrid cloud deployment scenarios. Workloads can be easily moved from private to public cloud giving flexibility and cost savings.
-- Reliable local connectivity. Once powered up the NuvlaBox creates its own local WiFi network, which can be used by any device.
-- Connectivity agnostic. The NuvlaBox can be connected to the wide area network using a number of connectivity technologies, including Ethernet, mobile, WiFi and satellite.
+- Built-in **security**. All communication is encrypted and deployments automated for increased security.
+- **Plug & Play** device. The NuvlaBox is pre-configured so the end user has to simply plug it in and it’s operational.
+- Central control point. Using a **user-friendly web interface** the NuvlaBox can be controlled via simple dashboard.
+- **Remote updates** mean reduced costs. No need to send an engineer or expert on site to update hardware or software.
+- **Secure web access** to the apps running in your NuvlaBox.
+- Supports **hybrid cloud** deployment scenarios. Workloads can be easily moved from private to public cloud giving flexibility and cost savings.
+- **Reliable local connectivity**. Once powered up the NuvlaBox creates its own local WiFi network, which can be used by any device.
+- **Connectivity agnostic**. The NuvlaBox can be connected to the wide area network using a number of connectivity technologies, including Ethernet, mobile, WiFi and satellite.
 
 Who is it for?
 --------------

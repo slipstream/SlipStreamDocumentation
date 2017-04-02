@@ -3,8 +3,8 @@ Networking
 ==========
 
 NuvlaBox have been designed to be flexible and support several network scenarios.
-
-Nonetheless, by default, NuvlaBox is configured with the most common used scendario, which is name `Confined Networking`.
+Nonetheless, by default, NuvlaBox is configured with a specific network scenario which doesn't need any manipulation from the operator.
+The default network scenario used by the NuvlaBox is named `Confined Network`.
 
 Here is a list of well tested network scenarios on the NuvlaBox:
 
