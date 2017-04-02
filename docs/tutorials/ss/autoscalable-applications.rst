@@ -195,8 +195,8 @@ Client API. It consists of the following components:
 * **webapp:** a stateless web application that takes requests, synchronously
   performs a moderately intensive computation (calculating Pi up to 100
   digits), and returns the result,
-* **nginx:** a load balancer based on Nginx_ that distributes client requests to
-  the set of stateless web servers,
+* **nginx:** a load balancer based on Nginx_ that distributes client requests
+  to the set of stateless web servers,
 * **client:** a test client based on Locust_ that simulates a varying number of
   clients, and
 * **autoscaler:** Standard SlipStream autoscaler component that makes scaling
@@ -253,8 +253,8 @@ This file is application-specific; for this example, it comes from the user
 application module on GitHub.
 
 Clicking on Deploy button brings the Application Deployment dialog (see figure
-below). In this dialog, you must check the box to indicate that this is a scalable
-application; you can optionally change the multiplicity of the webapp
+below). In this dialog, you must check the box to indicate that this is a
+scalable application; you can optionally change the multiplicity of the webapp
 component. Select the cloud and proceed with the deployment.
 
 .. figure:: images/diagrams/autoscale-app-deploy.png
@@ -318,12 +318,12 @@ Based on the load metrics reported by the `webapp` instances, a Riemann stream
 dynamically calculates the current number of the instances and indexes it to
 allow the Riemann dashboard to query and display it.
 
-The current multiplicity of the `webapp` component is queried by a Riemann stream
-directly from SlipStream and indexed. As one can see in the figure below, there is a
-delay between the provision request (multiplicity as reported by SlipStream)
-and availability of the virtual machine (as reported by the load metrics). This
-is almost entirely due to the provisioning latency on IaaS level; SlipStream’s
-control flow contributes negligibly to the latency.
+The current multiplicity of the `webapp` component is queried by a Riemann
+stream directly from SlipStream and indexed. As one can see in the figure
+below, there is a delay between the provision request (multiplicity as reported
+by SlipStream) and availability of the virtual machine (as reported by the load
+metrics). This is almost entirely due to the provisioning latency on IaaS
+level; SlipStream’s control flow contributes negligibly to the latency.
 
 .. figure:: images/diagrams/autoscale-riemann-dash-3vms.png
    :width: 70%
@@ -338,8 +338,8 @@ average response time metric within the requested bounds.
 
 All the application level metrics (native or generated) are published to
 Graphite, which is deployed on the autoscaler and runs alongside Riemann. See
-the figure below, which shows historical evolution of the average response time in
-Graphite.
+the figure below, which shows historical evolution of the average response time
+in Graphite.
 
 
 .. figure:: images/diagrams/autoscale-graphite-avg_resp_time.png
