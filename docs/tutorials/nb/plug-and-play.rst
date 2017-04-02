@@ -54,7 +54,7 @@ Then connect to Nuvla with following URL: https://nuv.la.
 To be able to manage applications on NuvlaBoxes from SlipStream one has to
 configure credentials of the corresponding Nuvlabox in the SlipStream's user
 profile.  Please follow `this section
-<ss/prerequisites.html#cloud-infrastructure-accounts>`_ of the SlipStream
+<../ss/prerequisites.html#cloud-infrastructure-accounts>`_ of the SlipStream
 tutorial to achieve this.
 
 Deploying Applications
