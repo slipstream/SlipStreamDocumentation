@@ -1,7 +1,7 @@
 Module II - SlipStream Web Interface Tour (Basic)
 -------------------------------------------------
 
-This model lists the prerequisites for working with SlipStream and
+This module lists the prerequisites for working with SlipStream and
 then guides you through the core features via the embedded SlipStream
 tour.  As part of this tour, you will deploy your first application on
 a cloud with SlipStream.  You will also learn to view and edit your

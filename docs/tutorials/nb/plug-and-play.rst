@@ -45,7 +45,7 @@ included) connect to the NuvlaBox WiFi or LAN network.
 Then connect to the URL: https://nuvlabox. This URL corresponds to the
 SlipStream service.
 
-Choose local in NuvlaBox welcome page and login into SlipStream with
+Choose ``local`` in NuvlaBox welcome page and login into SlipStream with
 the "nuvlabox" user account.
 
 Manage the NuvlaBox from a Remote SlipStream
