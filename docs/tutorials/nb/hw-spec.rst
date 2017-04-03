@@ -5,10 +5,11 @@ Hardware Specifications
 Supply chain
 ------------
 
-SixSq choose `Logic Supply`_ to design, assemble and initialize NuvlaBox hardware.
-Each NuvlaBox is individualized and named after a prize nobel. 
-NuvlaBox come with a specific credentials prospectus which list all necessary credentials to connect to the box.
-
+SixSq choose `Logic Supply`_ to design, assemble, and initialize the
+NuvlaBox hardware.  Each NuvlaBox is individualized and each one in
+the current production series is named after a prize nobel recipient.
+Each NuvlaBox comes with a prospectus that provides all the unique
+credentials to connect to it.
 
 .. _Logic Supply: https://www.logicsupply.com
 
@@ -16,14 +17,14 @@ NuvlaBox come with a specific credentials prospectus which list all necessary cr
 NuvlaBox Standard v2
 --------------------
 
-Up to 8 VM, sharing 14 GB of RAM and 215 GB disk space
+Up to 8 Virtual Machines, sharing 14 GB of RAM and 215 GB disk space.
 
 ======================================  =========================================================================================================
 Description                             
 ======================================  =========================================================================================================
 Hardware Line                           Industrial Fanless Intel Haswell Computer
 Processor                               Intel Core i5-4570TE Haswell / 2 Cores - 4 Threads / 2.7 GHz
-Memory  	                            2 x 8 GB - DDR3 1600 SO-DIMM Memory
+Memory                                  2 x 8 GB - DDR3 1600 SO-DIMM Memory
 Primary Storage                         256 GB - Transcend 370 2.5" SSD
 WiFi/Bluetooth                          Intel 7260 Dual Band 802.11ac/n/g/a/b
 Graphics/GPU                            Intel 4th Generation HD Graphics
@@ -44,7 +45,7 @@ Warranty                                2 year limited warranty on parts and ser
 NuvlaBox Mini v2
 ----------------
 
-Up to 8 VM, sharing 6GB of RAM and 98 GB of disk space
+Up to 8 Virtual Machines, sharing 6 GB of RAM and 98 GB of disk space.
 
 ======================================  =========================================================================================================
 Description                             
@@ -67,6 +68,8 @@ Warranty                                2 year limited warranty on parts and ser
 ======================================  =========================================================================================================
 
 
-.. NOTE:: Contact SixSq if you are interested in installing NuvlaBox Firmware on specific hardware.
-          This is often the case when you need a more powerfull.
+.. NOTE:: Contact SixSq if you are interested in installing NuvlaBox
+          Firmware on your own hardware.  This is often the case if
+          you need to use precertified hardware or need larger
+          resources than those provided by the standard hardware.
 

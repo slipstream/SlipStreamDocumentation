@@ -1,28 +1,43 @@
-Robustness
-==========
+Reliability & Security
+======================
 
-Goals
------
+The NuvlaBox software has been designed to make the machines as
+reliable and secure as possible, while keeping the flexibility and
+remote management features of cloud technologies.
 
 - Security
  
-  - All communication with the box are encrypted
-  - Only needed port should be exposed
-  - Default credentials for each box is different from another
+  - All communications with the NuvlaBox are encrypted
+  - Only needed ports are exposed over the local and wide area
+    networks
+  - Default credentials are unique for each NuvlaBox
 
 - Privacy
 
-  - It's all yours, keep your data within your network
+  - The NuvlaBox lets you keep your data within your network, making
+    maintaining privacy and confidentiality easier
 
 - Connectivity
 
-  - Try hard to keep and restore networking when plugged to a network
-  - When NuvlaBox is connected to the Internet, it would try to connect to remote SlipStream
+  - The NuvlaBox offers many ways to connect to the local or wide area
+    network
+  - Multiple layers try hard to maintain network connectivity once
+    established
+  - When the NuvlaBox is connected to the Internet, it tries to
+    connect to a remote SlipStream instance to allow for remote
+    operation 
    
 - Resiliency
 
-  - If a power cut occur, NuvlaBox try to restore existing VMs when power is restored
-  - To avoid system performance deterioration, all non necessary system data are erased at each reboot
-  - Firmware persist only some configuration files, logs and used services databases. System corruption after a power cut is thereby limited
-  - Watchdog is configured to restart the system in case of kernel crash
+  - In the case of a power outage, the NuvlaBox will restore existing
+    VMs when power is restored
+  - To ensure consistency and to avoid system performance
+    deterioration, all unnecessary system data are erased at each
+    reboot; VM data and user configurations are maintained across
+    reboots 
+  - The firmware persists only some configuration files, logs, and
+    services databases. The possibility of system corruption after a
+    power cut is extremely small.
+  - A watchdog is configured to restart the system in case of kernel
+    crash, ensuring high availability of the system
 

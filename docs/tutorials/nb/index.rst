@@ -2,16 +2,12 @@
 NuvlaBox Tutorial
 =================
 
-This hands-on tutorial demonstrates the core features of NuvlaBox which is a simple and secure private cloud solution. 
-It offers easy and affordable access to the benefits of cloud computing.
-
-**NuvlaBox in a nutshell:**
-
-- Private and secure cloud
-- Edge Computing Solution
-- Ideal for IoT & Smart City projects
-- Remote management & application update capabilities
-- DevOps tool
+This hands-on tutorial demonstrates the core features of NuvlaBox, a
+**simple and secure private cloud appliance**. It is ideal for **edge
+computing**, **IoT**, **Smart City**, and **Smart Grid** projects,
+allowing for **remote management** and application updates.  It can
+also be easily incorporated into **DevOps** processes to speed
+development and validation of such projects.
 
 .. toctree::
    :maxdepth: 2
