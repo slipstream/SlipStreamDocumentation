@@ -8,7 +8,7 @@ What is SlipStream?
 management platform**.
 
 Using resources from **Infrastructure as a Service (IaaS)** cloud
-infrastructures, SlipStream manages cloud application through the full
+infrastructures, SlipStream manages cloud applications through the full
 lifecycle: deployment, configuration, validation, scaling, and
 termination.
 
