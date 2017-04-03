@@ -24,7 +24,7 @@ remote management features of cloud technologies.
   - Multiple layers try hard to maintain network connectivity once
     established
   - When the NuvlaBox is connected to the Internet, it tries to
-    connect to a remove SlipStream instance to allow for remote
+    connect to a remote SlipStream instance to allow for remote
     operation 
    
 - Resiliency
