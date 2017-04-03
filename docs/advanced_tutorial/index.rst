@@ -1,5 +1,5 @@
 
-SlipStraem Tutorial
+SlipStream Tutorial
 ===================
 
-`SlipStream tutorial <../tutorials/ss/index.html>`_.
+:doc:`SlipStream tutorial </tutorials/ss/index>`.

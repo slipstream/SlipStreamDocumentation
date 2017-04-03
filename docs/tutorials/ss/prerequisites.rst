@@ -21,8 +21,13 @@ transparently and easily. Personal accounts allow users to keep
 their work private and to protect their cloud credentials.
 
 This tutorial assumes that you're using Nuvla_, a free SlipStream
-service ("SlipStream SaaS") operated by SixSq.  You can register for a
-Nuvla account directly through the service.
+service ("SlipStream SaaS") operated by SixSq.
+
+Registration (New Account)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can create a new account by registering directly through the
+service.
 
 .. image:: images/screenshots/nuvla-registration.png
    :width: 70%
@@ -65,6 +70,39 @@ configuration steps are provided below.
 .. admonition:: EXERCISES
 
    1. Follow the Nuvla registration procedure to obtain an account.
+   2. Change the temporary password and logout/login to verify that
+      it works.
+
+Reset Password (Existing Account)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If an account has been created for you, then you can reset the
+password to gain access to the account.  To do this, you must have the
+username associated with your account.  The administrator of the
+SlipStream service should have provided you with this information.
+
+First, from Nuvla_ click on the password reset link.  You can find the
+location in the following screenshot. 
+
+.. image:: images/screenshots/reset-link.png
+   :width: 70%
+   :align: center
+
+Next, provide your username and then request the password reset. 
+
+.. image:: images/screenshots/reset-dialog.png
+   :width: 70%
+   :align: center
+
+You will receive a message sent to the email address associated with
+the account.  Validate the password reset request by visiting the link
+in the message.  You'll then receive a new password for the account.
+You can change the password to something you'll remember on your user
+profile page.
+
+.. admonition:: EXERCISES
+
+   1. Reset the password on your account.
    2. Change the temporary password and logout/login to verify that
       it works.
 
