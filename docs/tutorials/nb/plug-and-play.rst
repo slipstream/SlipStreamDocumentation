@@ -36,6 +36,19 @@ SlipStream comes into the picture.  SlipStream can be used to manage
 your applications on your NuvlaBox(es) just like you can do for other
 cloud infrastructures.
 
+.. HINT:: If no DHCP is available in your network, you can connect to
+   your LAN, access NuvlaBox admin UI and set a static IP for the
+   NuvlaBox WAN interface.
+
+Deploying Applications
+----------------------
+
+The preferred way to manage applications on NuvlaBox is through
+SlipStream.  There is no difference between deploying applications on
+clouds or the NuvlaBox when using SlipStream.  Please follow
+:doc:`SlipStream Module III </tutorials/ss/module-3>` of the
+SlipStream tutorial to learn how to create, deploy and manage your
+applications on a NuvlaBox.
 
 Manage the NuvlaBox from the Local SlipStream
 `````````````````````````````````````````````
@@ -52,14 +65,23 @@ the "nuvlabox" user account.
 Manage the NuvlaBox from a Remote SlipStream
 ````````````````````````````````````````````
 
+A NuvlaBox is able to connect to a remote SlipStream via SSH tunneling.
+When an Internet access is available, the NuvlaBox
+tries to contact the remote SlipStream and register with it.  You can
+check if your NuvlaBox is connected in the remote SlipStream server by
+checking the status of the NuvlaBox in the corresponding gauges in the
+dashboard.
+
+.. figure:: images/gauges-nb-states.png
+   :scale: 50 %
+   :align: center
+
+   Gauges of disconnected and connected NuvlaBox machines
+
 By default, NuvlaBoxes are pre-configured to connect to a remote SlipStream
 named Nuvla_, which is a managed service run by SixSq.  Connect the NuvlaBox's
 WAN port to a network with an Internet access and where a DHCP/DNS services are
 available.
-
-.. HINT:: If no DHCP is available in your network, you can connect to
-   your LAN, access NuvlaBox admin UI and set a static IP for the
-   NuvlaBox WAN interface.
 
 Then connect to Nuvla with following URL: https://nuv.la.
 
@@ -69,15 +91,15 @@ SlipStream's user profile.  Please follow "Accounts" section of the
 :doc:`SlipStream Prerequisites </tutorials/ss/prerequisites>` to
 achieve this.
 
-Deploying Applications
-----------------------
+From the remote SlipStream, remote tunnel ports are opened that allow
+the remote SlipStream to access NuvlaBox endpoints for SlipStream,
+OpenNebula, and SSH.
 
-The preferred way to manage applications on NuvlaBox is through
-SlipStream.  There is no difference between deploying applications on
-clouds or the NuvlaBox when using SlipStream.  Please follow
-:doc:`SlipStream Module III </tutorials/ss/module-3>` of the
-SlipStream tutorial to learn how to create, deploy and manage your
-applications on a NuvlaBox.
+.. NOTE:: Contact SixSq if you are interested in installing your own
+          on premise SlipStream service instead of using Nuvla.
+
+.. HINT:: Check how to change the remote SlipStream in the NuvlaBox
+          Admin UI.
 
 Accessing VMs
 -------------

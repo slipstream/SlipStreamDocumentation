@@ -10,6 +10,12 @@ non-technical operator.  The NuvlaBox’s ability to work both
 autonomously and as a remote controlled connected device gives great
 flexibility, supporting a diverse set of deployment scenarios.
 
+.. figure:: images/NuvlaBox-Custom-ML600-v1-angled.jpeg
+   :scale: 20 %
+   :alt: NuvlaBox Standard v2
+   :align: center
+
+   NuvlaBox Standard v2
 
 Key business benefits
 ---------------------

@@ -41,6 +41,12 @@ Mounting Options                        VESA / DIN / Wall
 Warranty                                2 year limited warranty on parts and services
 ======================================  =========================================================================================================
 
+.. figure:: images/nuvlabox-custom-ml600-v1-back-1.jpeg
+   :scale: 50 %
+   :alt: NuvlaBox Standard v2
+   :align: center
+
+
 
 NuvlaBox Mini v2
 ----------------

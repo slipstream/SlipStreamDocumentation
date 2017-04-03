@@ -33,22 +33,22 @@ Understanding NuvlaBox hardware and software architectures
 
  * `Hardware Architecture <nb/hw-spec.html>`_.  Types, specifications,
    capabilities of NuvlaBox capacity wise.
- * `Robustness <nb/robustness.html>`_
+ * `Reliability & Security <nb/robustness.html>`_
+ * `Using the NuvlaBox <nb/plug-and-play.html>`_.  Deploying application,
+   Accessing VMs.
  * `Software Architecture <nb/sw-arch.html>`_
  * `Networking <nb/networking.html>`_
- * `Connection to a remote SlipStream <nb/remote-ss.html>`_
+ * `NuvlaBox administration UI <nb/management.html>`_
+ * `Sensors <nb/sensors-attach.html>`_
 
-   * Deploying and accessing applications on NuvlaBox with remote SlipStream
-
-     * Services: WordPress, from Nuvla (all class)
-
- * Deploying and accessing images on NuvlaBox with local SlipStream
-
-   * Image: Ubuntu, from local SlipStream (all class)
-
- * Sensors
-
-   * Sensor-based application: Faces, from Nuvla (all class)
+Demo
+----
+  * Deploying and accessing applications on NuvlaBox with remote SlipStream
+     * Services: WordPress on NuvlaBox, from Nuvla
+  * Deploying and accessing applications on NuvlaBox with local SlipStream
+     * Services: RStudio on NuvlaBox
+  * Sensor-based application
+     * Services: People recognition from Nuvla (all class)
 
 Building and running applications on NuvlaBoxes and Clouds
 ----------------------------------------------------------
@@ -68,10 +68,9 @@ NuvlaBox.  For multi-cloud deployment run on NuvlaBox and Exoscale.
 Demo
 ----
 
-Sensor-based applications on NuvlaBox and NuvlaBox over a satellite link.
+Sensor-based applications on NuvlaBox.
 
  *  Cars counting camera and application
- *  NuvlaBox connected via satellite
 
 Automation, Optimization and Debugging
 --------------------------------------
