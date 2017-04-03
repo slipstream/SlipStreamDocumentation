@@ -51,10 +51,10 @@ the "nuvlabox" user account.
 Manage the NuvlaBox from a Remote SlipStream
 ````````````````````````````````````````````
 
-By default, NuvlaBoxes are pre-configured to connect to a remote
-SlipStream named Nuvla_ managed by SixSq.  Connect the NuvlaBox's WAN
-port to a network with an Internet access and where a DHCP/DNS
-services are available.
+By default, NuvlaBoxes are pre-configured to connect to a remote SlipStream
+named Nuvla_, which is a managed service run by SixSq.  Connect the NuvlaBox's
+WAN port to a network with an Internet access and where a DHCP/DNS services are
+available.
 
 .. HINT:: If no DHCP is available in your network, you can connect to
    your LAN, access NuvlaBox admin UI and set a static IP for the
