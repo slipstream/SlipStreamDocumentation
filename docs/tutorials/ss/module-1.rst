@@ -8,8 +8,8 @@ technologies and how different users can benefit from them.
 .. toctree::
    :maxdepth: 1
 
-   slipstream-defined
    cloud-technology
+   slipstream-defined
    slipstream-ecosystem
    key-concepts
 
