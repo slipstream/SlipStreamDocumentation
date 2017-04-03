@@ -20,6 +20,7 @@ contain credentials for at least one cloud.  If necessary, review the
    workspace
    images
    components-1
+   deployment-logs
    components-2
    applications
 

@@ -4,34 +4,6 @@ Debugging
 Things go wrong.  That is just the nature of the world.  SlipStream
 provides various methods for debugging problems when they arise.
 
-In this section you'll:
-
-- Find out where to find logs from the SlipStream recipes,
-- Add your own files to the deployment reports, and
-- Do interactive debugging on a live system.
-
-Reports
--------
-
-Although it has not yet been mentioned, perhaps you have noticed that
-for each deployment there is a "Reports" section on the run page.
-
-At the end of the deployment phase, all of the logs from the
-SlipStream recipes are collected into a tarball and sent back to the
-server.  From there you can download them to diagnose any problems.
-
-.. image:: images/screenshots/lamp-reports.png
-   :alt: Report Section
-   :width: 70%
-   :align: center
-
-In the "Reporting" recipe, you can copy any additional files that you
-would like bundled with the reports into the location defined by the
-environmental variable ``SLIPSTREAM_REPORT_DIR``.
-
-Interactive Debugging
----------------------
-
 When creating a new application, very often there are bugs in the
 deployment scripts. Iteratively modifying the scripts through
 SlipStream and redeploying the machines can cause unnecessary
@@ -55,7 +27,7 @@ Once the problems in the deployment scripts have been ironed out, just
 copy them back into SlipStream.
 
 Modifying the Environment
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 SlipStream minimizes its footprint to avoid any unintended
 interference with the deployed applications.  Because of this, you
@@ -69,7 +41,7 @@ with ``ss-``) in your path. All of the commands support the ``--help``
 option to give you information about the command.
 
 Major Client Commands
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 There are actually just a few commands in the SlipStream client that are
 used in deployment scripts and in debugging. The following table

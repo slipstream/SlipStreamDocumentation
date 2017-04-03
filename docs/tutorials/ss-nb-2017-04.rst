@@ -56,7 +56,7 @@ NuvlaBox and Exoscale.
  * :doc:`Images </tutorials/ss/images>` (native images)
  * :doc:`Components I </tutorials/ss/components-1>` (parameterized and
    secured web server)
- * `Deployment logs <ss/debugging.html#reports>`_
+ * :doc:`Deployment Logs </tutorials/ss/deployment-logs>`
  * :doc:`Components II </tutorials/ss/components-2>` (test client for
    the web server)
  * :doc:`Applications </tutorials/ss/applications>` (multi-machine
