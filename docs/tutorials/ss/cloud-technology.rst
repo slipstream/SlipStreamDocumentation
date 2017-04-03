@@ -8,9 +8,9 @@ using cloud rather than the other way around.
 This has occurred because cloud technologies offer real benefits to
 users and organizations. With cloud infrastructures, people can easily
 deploy large applications and can dynamically tune the allocated
-resources to maximize responsiveness and reliability.  This flexibilty
+resources to maximize responsiveness and reliability.  This flexibility
 has made the use of cloud technologies economically attractive by
-reducing capital and/or personnel costs. 
+reducing capital and/or personnel costs.
 
 Critical Components
 -------------------

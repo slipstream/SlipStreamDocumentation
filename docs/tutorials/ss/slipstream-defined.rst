@@ -1,3 +1,6 @@
+
+.. include:: ../links.txt
+
 What is SlipStream?
 ===================
 
@@ -18,6 +21,3 @@ You can use SlipStream from the Nuvla_ service maintained by SixSq, a
 SlipStream.
 
 
-.. _Nuvla: http://nuv.la
-
-.. _SixSq: http://sixsq.com

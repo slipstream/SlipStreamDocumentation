@@ -17,7 +17,7 @@ Application Management Platform from `SixSq <http://sixsq.com>`__.
 
    features.rst
    release_notes/index.rst
-   advanced_tutorial/index.rst
+   tutorials/index.rst
    administrator_guide/index.rst
    developer_guide/index.rst
    legal/index.rst

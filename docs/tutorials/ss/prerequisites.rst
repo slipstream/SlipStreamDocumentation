@@ -1,3 +1,6 @@
+
+.. include:: ../links.txt
+
 Prerequisites
 =============
 
@@ -175,8 +178,8 @@ tutorial.
 - SSH Key: For the SSH connections, you'll need to have an SSH
   public/private keypair.
 
-**See the appendix of this tutorial for more detailed information for
-the installation and configuration of these tools.**
+**See the** Appendix_ **of this tutorial for more detailed
+information for the installation and configuration of these tools.**
 
 .. admonition:: EXERCISES
 
@@ -186,9 +189,7 @@ the installation and configuration of these tools.**
    2. Verify that you can start the Advanced REST client on Chrome.
 
 
-.. _Nuvla: http://nuv.la
-
-.. _SixSq: http://sixsq.com
+.. _Appendix: appendix.html
 
 .. _Exoscale: https://www.exoscale.ch
 

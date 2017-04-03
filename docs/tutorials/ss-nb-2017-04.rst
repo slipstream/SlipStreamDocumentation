@@ -1,0 +1,90 @@
+.. include:: links.txt
+
+SlipStream and NuvlaBox Tutorial - 2017-04
+==========================================
+
+Introduction
+------------
+
+ * `Cloud Technology and Jargon <ss/cloud-technology.html>`_
+ * `What is SlipStream <ss/slipstream-defined.html>`_
+ * `What is NuvlaBox <nb/nuvlabox-defined.html>`_
+ * IoT_
+ * `Edge Computing`_
+
+Understanding SlipStream
+------------------------
+
+Understanding SlipStream using https://nuv.la (SixSq managed SlipStream
+service).
+
+ * `SlipStream Ecosystem <ss/slipstream-ecosystem.html>`_
+ * `Key concepts <ss/key-concepts.html>`_
+ * `Prerequisites for the tutorial <ss/prerequisites.html>`_
+    * `Account on nuv.la <ss/prerequisites.html#nuvla-account>`_
+    * `Clouds for the tutorial: Exoscale (public) and NuvlaBox (private)
+      <ss/prerequisites.html#cloud-infrastructure-accounts>`_
+    * `Workstation configuration
+      <ss/prerequisites.html#workstation-configuration>`_
+ * `SlipStream Web UI Tour <ss/web-interface-tour.html>`_
+
+Understanding NuvlaBox hardware and software architectures
+----------------------------------------------------------
+
+ * `Hardware Architecture <nb/hw-spec.html>`_.  Types, specifications,
+   capabilities of NuvlaBox capacity wise.
+ * `Robustness <nb/robustness.html>`_
+ * `Software Architecture <nb/sw-arch.html>`_
+ * `Networking <nb/networking.html>`_
+ * `Connection to a remote SlipStream <nb/remote-ss.html>`_
+ * Deploying and accessing images/applications on NuvlaBox with local/remote
+   SlipStream
+
+   * Image: Ubuntu, from local SlipStream (demonstrated by presenter)
+   * Sensor-based application: Faces, from Nuvla (all class)
+   * Services: LAMP++, from Nuvla (all class)
+
+Building and running applications on NuvlaBoxes and Clouds
+----------------------------------------------------------
+
+Based on `Module III <ss/module-3.html>`_. Use Nuvla. Run all deployments on
+NuvlaBox.  For multi-cloud deployment run on NuvlaBox and Exoscale.
+
+ * `Workspace <ss/workspace.html>`_ (projects, ACLs, versioninig)
+ * `Images <ss/images.html>`_ (native images)
+ * `Components I <ss/components-1.html>`_ (parameterized and secured web server)
+ * `Deployment logs <ss/debugging.html#reports>`_
+ * `Components II <ss/components-2.html>`_ (test client for the web server)
+ * `Applications <ss/applications.html>`_ (multi-machine deployment, parameters
+   exchange, component multiplicity, multi-cloud deployment (test clients on
+   NuvlaBox and web server on Exoscale))
+
+Demo
+----
+
+Sensor-based applications on NuvlaBox and NuvlaBox over a satellite link.
+
+ *  Cars counting camera and application
+ *  NuvlaBox connected via satellite
+
+Automation, Optimization and Debugging
+--------------------------------------
+
+ * `Automating SlipStream <ss/automating-slipstream.html>`_
+ * `Faster Deployment with build image feature <ss/faster-deployment.html>`_
+ * `Debugging applications <ss/debugging.html>`_
+
+Scalable Applications
+---------------------
+
+Base on `Module IV <ss/module-4.html>`_.
+
+ * Application (auto-)scalability with SlipStream. Theory
+
+   * `Scalable applications <ss/scalable-applications.html>`_
+   * `Auto-scaling user applications
+     <ss/autoscalable-applications.html#auto-scaling-of-user-applications>`_
+
+ * Demo of `Auto-scalable application in SlipStream
+   <ss/autoscalable-applications.html>`_ on Exoscale.
+
