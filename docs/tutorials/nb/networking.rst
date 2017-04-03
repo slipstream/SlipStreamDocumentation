@@ -77,7 +77,5 @@ connect to a remote VPN server.  The advantage of this network
 scenario is to have access to VMs from anywhere from the internet
 without changing the default network scenario of the NuvlaBox.
 
-TODO Add image about VM level VPN connection
-
 .. NOTE:: Contact SixSq if you need a custom network scenario.
 
