@@ -17,11 +17,10 @@ Nuvla Account
 -------------
 
 SlipStream allows people to use multiple cloud infrastructures
-transparently and easily. Personal accounts allow users to keep
-their work private and to protect their cloud credentials.
-
-This tutorial assumes that you're using Nuvla_, a free SlipStream
-service ("SlipStream SaaS") operated by SixSq.
+transparently and easily. Personal accounts allow users to keep their
+work private and to protect their cloud credentials. This tutorial
+assumes that you're using Nuvla_, a free SlipStream service
+("SlipStream SaaS") operated by SixSq.
 
 Registration (New Account)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -112,7 +111,8 @@ Cloud Infrastructure Accounts
 You will also need to provide the credentials for at least one cloud
 infrastructure before being able to use SlipStream to deploy cloud
 applications.  To complete the **multi-cloud** examples in this
-tutorial, you will need access to **two cloud infrastructures**.
+tutorial, you will need access to **two cloud infrastructures** or
+**one cloud service with two regions**.
 
 SlipStream supports nearly all major cloud service providers and open
 source cloud solutions.  The registration procedure is similar for all
@@ -234,6 +234,8 @@ information for the installation and configuration of these tools.**
 
 .. _Ultimum: http://ultimum.io
 
-.. [#] You can follow the tutorial using only one cloud account, but
-       in this case, you won't be able to complete the exercises
-       demonstrating the multi-cloud features of SlipStream.
+.. [#] You can also use an account on a cloud infrastructure with more
+       than one region.  You can also follow the tutorial using only
+       one cloud account, but in this case, you won't be able to
+       complete the exercises demonstrating the multi-cloud features
+       of SlipStream.
