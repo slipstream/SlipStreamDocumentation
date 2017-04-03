@@ -33,7 +33,6 @@ Understanding the NuvlaBox (KB)
  * :doc:`Reliability & Security </tutorials/nb/robustness>`
  * :doc:`Using the NuvlaBox </tutorials/nb/plug-and-play>`
    
-    * WordPress on NuvlaBox from Nuvla (demo and exercise)
     * RStudio on NuvlaBox (demo and exercise)
       
  * :doc:`NuvlaBox administration UI </tutorials/nb/management>`
