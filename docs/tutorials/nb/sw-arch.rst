@@ -7,14 +7,19 @@ Software Stack
 
 The NuvlaBox is built atop a robust Open Source foundation, benefiting
 from the reliability and diverse features of tested, open software.
+No other cloud appliance has the level of functionality and
+integration provided by the NuvlaBox.
 
-- Operating System: CentOS
-- Virtualization: KVM Hypervisor
-- Cloud layer - Infrastructure as a Service (IaaS): OpenNebula
-- App Store - Platform as a Service (PaaS): SlipStream
+.. figure:: images/nb-sw-stack.png
+   :scale: 50%
+   :alt: NuvlaBox Software Stack
+   :align: center
 
-No other cloud appliance provides this level of functionality and
-integration.
+   NuvlaBox Software Stack
+
+The NuvlaBox also takes advantage of numerous system-level services to
+support the core software stack.  Many of them can be configured to
+support customized NuvlaBox installations.
 
 Accessible Service Endpoints
 ----------------------------
@@ -48,24 +53,3 @@ SlipStream    super     In credentials prospectus      SlipStream administrator
 OpenNebula    ssuser    In credentials prospectus      OpenNebula cloud user configured for NuvlaBox cloud user
 OpenNebula    oneadmin  In /var/lib/one/.one/one_auth  OpenNebula cloud administrator
 ============  ========  =============================  ========================================================
-
-Other Services
---------------
-
-A bunch of services are being used to make the NuvlaBox system easy to
-use and highly configurable:
-
-- Nginx
-- Hsqldb
-- ElasticSearch
-- Hostapd
-- Dnsmasq
-- Iptables
-- Collectd
-- Graphite
-- Carbon-cache
-- Chrony
-- OverlayFS
-- Watchdog
-- Custom utilities
-- etc.
