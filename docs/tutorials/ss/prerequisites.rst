@@ -86,8 +86,9 @@ The detailed procedure is provided for Exoscale_ and Ultimum_ below.
 Exoscale
 ~~~~~~~~
 
-If you need to create an account at Exoscale, you can visit their
-`registration page <https://exoscale.ch/register>`__.
+If you need to create an account at Exoscale, you can visit their `registration
+page <https://exoscale.ch/register>`__.  If you already have an account go
+directly to `Exoscale login <https://portal.exoscale.ch/login>`_ page.
 
 .. tip::
 
