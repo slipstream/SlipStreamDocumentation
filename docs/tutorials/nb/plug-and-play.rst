@@ -15,6 +15,7 @@ Here are the first things to do with the NuvlaBox:
 .. figure:: images/prospectus-example.png
    :scale: 80 %
    :alt: Credentials prospectus example
+   :align: center
 
    Example of credentials prospectus for the NuvlaBox named after
    Albert Einstein
