@@ -9,8 +9,6 @@ Introduction
  * `Cloud Technology and Jargon <ss/cloud-technology.html>`_
  * `What is SlipStream <ss/slipstream-defined.html>`_
  * `What is NuvlaBox <nb/nuvlabox-defined.html>`_
- * IoT_
- * `Edge Computing`_
 
 Understanding SlipStream
 ------------------------

@@ -19,5 +19,4 @@ not the case.
 
 After completing this module you should be familiar with the using the
 NuvlaBox and understanding how it functions.  From here, you can view
-the :doc:`Usage Scenarios <usages>` and the :doc:`Roadmap
-<roadmap>` of future developments.
+the :doc:`Roadmap <roadmap>` of future developments.

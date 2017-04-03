@@ -15,5 +15,4 @@ development and validation of such projects.
    module-1
    module-2
    module-3
-   usages
    roadmap

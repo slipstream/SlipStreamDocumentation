@@ -1,3 +1,4 @@
+.. include:: ../links.txt
 
 What is a NuvlaBox?
 ===================
@@ -41,19 +42,60 @@ Key business benefits
   wide area network using many popular connectivity technologies,
   including Ethernet, mobile, WiFi, and satellite.
 
-Who is it for?
---------------
+Usage Scenarios
+---------------
 
-The NuvlaBox is ideal for Internet of Things (IoT), Smart City, and
-Smart Grid projects. It offers a solution for service providers who
-suffer from problems at the edge of the network, providing flexible
-computing power within the "last mile". It's perfect for SMEs wishing
-to create a small private and secure cloud without incurring large
-infrastructure costs. The NuvlaBox supports hybrid deployment
-scenarios. Scale out to remote or public clouds give them the simplest
-complete hybrid cloud solution. It's for who needs remote management
-and update application capabilities. The NuvlaBox can be used also as
-DevOps tool.
+The NuvlaBox platform has been designed to bring the flexibility and
+ease-of-use of cloud infrastructures to Internet-of-Things (IoT_) and
+`Edge Computing`_ platforms.  Incorporating NuvlaBox machines into
+these platforms improves their reliability, performance, and
+security. A wide range of scenarios can benefit from NuvlaBox systems.
+
+Smart Grid
+``````````
+
+All industrial control systems acquire equipment monitoring and
+performance data.  They use this data to control operations and to
+ensure that the industrial plant is working correctly.  Unfortunately,
+these platforms are static, limited by the hardcoded algorithms
+embedded into the system. They cannot quickly react and adapt to
+changes within the industrial environment.
+
+Through the `SCISSOR project <https://scissor-project.com>`_,
+co-funded by the European Commission, SixSq has demonstrated how cloud
+technologies including the NuvlaBox can provide a SCADA platform that
+can react rapidly to changes and evolves as the knowledge of the
+industrial platform improves.  The platform benefits both from the
+remote management possible from SlipStream and the NuvlaBox, while
+allowing for autonomous operation in cases where remote locations are
+temporarily isolated from the rest of the platform.
+
+Smart Cities
+````````````
+
+Communities can markedly improve the life of their citizens and
+streamline their operations by taking advantage of the vast amount of
+data provided by public transport systems, traffic monitoring,
+environmental sensors, and the like.
+
+NuvlaBox deployments can improve these "Smart City" platforms by:
+
+ - Avoiding large data flows over low-bandwidth connections, though
+   local analysis of data.
+ - Protecting data with privacy concerning by limited the diffusion of
+   such data to a local area.
+ - Remove silos of information allowing the platforms to increase
+   performance by understanding the correlations between different
+   data sources.
+
+SixSq, through the `CityZen initiative <http://cityzen.ch>`_ , has
+shown how lighting systems can adapt to changing traffic conditions to
+increase safety and energy efficiency. 
+
+DevOps
+``````
+
+TODO: CAL
 
 How does it work?
 -----------------
