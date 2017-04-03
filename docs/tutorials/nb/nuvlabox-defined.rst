@@ -95,7 +95,18 @@ increase safety and energy efficiency.
 DevOps
 ``````
 
-TODO: CAL
+Cloud technologies can drastically speed up DevOps_ processes.  Cloud
+infrastructures allow new resources to be created on demand and to be
+available within minutes.  Deploying test and production
+services onto those infrastructures can allow quick testing of full
+systems and the quick, incremental upgrades.
+
+The NuvlaBox can fulfill this role for applications of a limited
+size or for those applications that require access to real sensors or
+controllers.  Given the small footprint of the NuvlaBox and its
+ability to run autonomously, development and operations personnel can
+build confidence in an (updated) application before deploying it to a
+public cloud.
 
 How does it work?
 -----------------
