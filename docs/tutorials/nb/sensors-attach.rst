@@ -43,7 +43,7 @@ To attach other host devices, please refer to `libvirt documentation`_.
 Deploying Sensor-based Applications
 -----------------------------------
 
-`Here on Nuvla <https://nuv.la/module/nuvlabox-training/>`_ you can find
+`Here on Nuvla <https://nuv.la/module/nuvlabox-training>`_ you can find
 different sensor-based applications to be launched from Nuvla on your
 NuvlaBox.
 
