@@ -50,7 +50,7 @@ machine images in each cloud, creating a group of functionally
 equivalent images (e.g. a "minimal Ubuntu 14.04" image).  The slight
 differences between the images in various clouds rarely (if ever) have
 noticable effects on the cloud application and we free ourselves
-maintaining our own images.
+from maintaining our own images.
 
 .. note:
 
@@ -128,9 +128,9 @@ Networking
 
 Currently SlipStream takes a very simple approach to managing network
 connectivity to virtual machines.  On clouds that support it,
-SlipStream will create a security group (set of cloud-level (not VM OS)
-firewall rules) called "slipstream_managed" that allows access on any port from
-anywhere.
+SlipStream will create a security group (set of cloud-level firewall
+rules, not VM Operating System firewall rules) called
+"slipstream_managed" that allows access on any port from anywhere.
 
 When you use the standard shared image definitions, the
 "slipstream_managed" security group will be used, allowing the
@@ -142,7 +142,7 @@ You can more tightly secure your deployed applications by:
 
 - Running a firewall within your images (and components) and/or
 - Specifying a different security group in your image definitions (the
-  referenced sequrity groups should be present on the cloud).
+  referenced security groups should be present on the cloud).
 
 In production, you should take every opportunity to secure your
 running systems.  In the interests of simplicity, this tutorial does
