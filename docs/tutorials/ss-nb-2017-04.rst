@@ -52,9 +52,9 @@ NuvlaBox.  For multi-cloud deployment run on NuvlaBox and Exoscale.
 
  * `Workspace <ss/workspace.html>`_ (projects, ACLs, versioninig)
  * `Images <ss/images.html>`_ (native images)
- * `Components I <ss/omponents-1.html>`_ (parameterized and secured web server)
+ * `Components I <ss/components-1.html>`_ (parameterized and secured web server)
  * `Deployment logs <ss/debugging.html#reports>`_
- * `Components II <ss/omponents-2.html>`_ (test client for the web server)
+ * `Components II <ss/components-2.html>`_ (test client for the web server)
  * `Applications <ss/applications.html>`_ (multi-machine deployment, parameters
    exchange, component multiplicity, multi-cloud deployment (test clients on
    NuvlaBox and web server on Exoscale))
