@@ -2,7 +2,7 @@ Module III - NuvlaBox configuration (Advanced)
 ----------------------------------------------
 
 In this module you will learn a little more about the NuvlaBox
-software stack, networking configuration, and how to attach a devices
+software stack, networking configuration, and how to attach a device
 to the NuvlaBox.
 
 This module presumes familiarity with NuvlaBox basic usage.  Review

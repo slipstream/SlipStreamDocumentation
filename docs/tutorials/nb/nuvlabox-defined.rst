@@ -31,7 +31,7 @@ Key business benefits
   flexibility and potential cost savings.
 - **Reliable local connectivity**. Once powered up the NuvlaBox
   creates its own local WiFi network, which can be used by any device.
-- **Flexible WAN Connectivity**. The NuvlaBox can be connected to the
+- **Flexible WAN connectivity**. The NuvlaBox can be connected to the
   wide area network using many popular connectivity technologies,
   including Ethernet, mobile, WiFi, and satellite.
 
