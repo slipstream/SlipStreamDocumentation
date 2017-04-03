@@ -15,6 +15,7 @@ concepts, and with the key concepts of SlipStream.  Review
    :maxdepth: 1 
 
    plug-and-play
+   deploy-apps
 
 In this module you've acquired enough knowledge about NuvlaBox.  After
 working through this module, you will be ready to proceed to

@@ -12,10 +12,10 @@ not the case.
 .. toctree::
    :maxdepth: 1 
 
+   management
+   sensors-attach
    sw-arch
    networking
-   sensors-attach
-   management
 
 After completing this module you should be familiar with the using the
 NuvlaBox and understanding how it functions.  From here, you can view
