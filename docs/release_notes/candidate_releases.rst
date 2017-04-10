@@ -5,6 +5,47 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.25 (candidate) - 7 April 2017
+--------------------------------
+
+New features and bug fixes in v3.25
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.25 fixes a problem where the server could effectively hang
+when accessing resources in the underlying database.  The release also
+include a couple other fixes and clean ups of the underlying code.
+
+For everyone:
+ - Diagnose and fix an issue with the underlying database that caused
+   the service to hang.
+ - Fix broken links in the deployment dialog (to SSH configuration)
+   and in the tour (to external documentation).
+ - Fix the Kubernetes deployment in the App Store.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.24...v3.25>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.24...v3.25>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.24...v3.25>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.24...v3.25>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.24...v3.25>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.24...v3.25>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.24...v3.25>`__
+ 
 v3.24 (candidate) - 26 March 2017
 ---------------------------------
 
