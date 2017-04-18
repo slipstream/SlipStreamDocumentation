@@ -69,10 +69,7 @@ Identifiers and Image Hierarchy" section.
    :align: center
 
 When creating a new image, you'll need to find the appropriate image
-identifiers through the cloud provider's interface.  On Ultimum, you
-can find the identifiers through the "Images" tab in their
-|ultimum-console|.
-For Exoscale, the
+identifiers through the cloud provider's interface.  For Exoscale, the
 identifiers are available from a |exoscale-images|.
 
 VM Size
@@ -93,7 +90,8 @@ Some providers allow you to specify the CPU and RAM resources
 explicitly; others only allow you to specify a "t-shirt" size.  **You
 will have to consult documentation from the cloud providers to
 understand the allowed values and their meanings.** The following
-table shows the differing sizes for Exoscale and Ultimum.
+table shows the differing sizes for Exoscale and Ultimum (just another cloud
+brought here for a comparision).
 
 ============ ============= === ========
 Exoscale     Ultimum       CPU RAM (GB)
@@ -219,10 +217,11 @@ debugging or developing service installation recipes.
 
 .. admonition:: EXERCISES
 
-   1. Create a copy of the Ubuntu 14.04 image and change the size
-      for either Exoscale or Ultimum.  Leave the other unchanged.
-   2. Deploy the copy on both Exoscale and Ultimum. Note the
-      deployment times.
+   1. Create a copy of the Ubuntu 14.04 image and change the size for either
+         Exoscale exoscale-ch-gva or exoscale-ch-dk.  Leave the other
+         unchanged.
+   2. Deploy the copy on both Exoscale exoscale-ch-gva or exoscale-ch-dk. Note
+         the deployment times.
    3. Verify that you can log into both machines with SSH.
    4. Verify that the number of CPUs (``/proc/cpuinfo``) and the RAM
       (``/proc/meminfo``) are the values expected from the size.
@@ -241,10 +240,6 @@ debugging or developing service installation recipes.
 .. |ubuntu-14.04| raw:: html
 
    <a href="https://nuv.la/module/examples/images/ubuntu-14.04#1-cloud-image-identifiers-and-image-hierarchy" target="_blank">examples/images/ubuntu-14.04</a>
-
-.. |ultimum-console| raw:: html
-
-   <a href="https://cz1.ultimum.io/auth/login" target="_blank">web console</a>
 
 .. |exoscale-images| raw:: html
 

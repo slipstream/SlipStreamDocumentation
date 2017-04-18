@@ -24,7 +24,7 @@ definitions) that will be deployed together. The application will also
 define the mapping between the input/output parameters of the nodes
 that are tied together as well as the multiplicity of each node.
 
-Create a new application definition in your home project.  
+Create a new application definition in your home project.
 The first section of the new application page just asks for generic
 information.
 
@@ -48,7 +48,7 @@ Add two nodes for this deployment, the web server and the test client.
 There are several important things to notice about the application
 definition.  You can:
 
-- Add any number of different components to the application. 
+- Add any number of different components to the application.
 - Define the default multiplicity for each node (default is 1).
 - Define the cloud to use for the node (although you usually want to
   use "default").
@@ -70,17 +70,17 @@ up the usual run dialog.
 Verify that all of the input parameter values are OK and then run the
 application.  As usual you will be redirected to the dashboard.  You
 can view the advancement of the application from there or from the run
-page. 
+page.
 
 When the application completes the deployment, review the reports to
-ensure that everything worked correctly. 
+ensure that everything worked correctly.
 
 Advanced Deployments
 --------------------
 
 From the run dialog you can make a number of significant changes to
 the application deployment without having to change the application
-definition itself. 
+definition itself.
 
 Changing Multiplicity
 ~~~~~~~~~~~~~~~~~~~~~
@@ -91,7 +91,7 @@ client.  It doesn't make much sense for this application to have more
 than one server, but having more than one client could be interesting.
 
 You can do this by changing the client multiplicity in the run
-dialog. 
+dialog.
 
 .. image:: images/screenshots/app-change-mult.png
    :alt: Change the Client Multiplicity
@@ -99,13 +99,14 @@ dialog.
    :align: center
 
 This will then deploy three machines in total.  You can check that the
-reports for each of the clients shows successful results. 
+reports for each of the clients shows successful results.
 
 Multi-Cloud Deployments
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-You can also deploy the nodes of the application into different
-clouds, creating a real multi-cloud deployment.  
+You can also deploy the nodes of the application into different clouds or
+different cloud regions of the same cloud, creating a real multi-cloud
+deployment.
 
 .. image:: images/screenshots/app-multi-cloud.png
    :alt: Multi-Cloud Deployment
@@ -114,7 +115,8 @@ clouds, creating a real multi-cloud deployment.
 
 To do this, choose the option to set the cloud for each node
 separately.  Then do so for each node type.  In the above screenshot,
-I'm running the server in Exoscale and the client in Ultimum.
+I'm running the server on Exoscale in exoscale-ch-gva and exoscale-ch-dk
+regions.
 
 Orchestrators
 -------------
@@ -128,10 +130,10 @@ The orchestrators remain active only when the application can go
 through a "provisioning" stage.  For the types of deployments that
 we've done up to this point, the orchestrators will be terminated
 after all of the reports have been sent back to the SlipStream
-server. 
+server.
 
 Although very lightweight, the orchestrator does represent a small
-overhead when deploying applications through SlipStream. 
+overhead when deploying applications through SlipStream.
 
 
 .. admonition:: EXERCISES
@@ -140,7 +142,7 @@ overhead when deploying applications through SlipStream.
       everything worked correctly.
    2. Change the number of clients and then verify from the reports
       that all of the clients had the correct responses from the
-      server. 
+      server.
    3. Deploy the client node and server nodes in different clouds and
       verify that the deployment works.
    4. Can you modify the application so that you can put clients in

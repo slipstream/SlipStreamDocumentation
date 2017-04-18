@@ -119,7 +119,7 @@ source cloud solutions.  The registration procedure is similar for all
 cloud services, but you may need to contact your cloud administrator
 for all of the necessary configuration parameters.
 
-The detailed procedure is provided for Exoscale_ and Ultimum_ below.
+The detailed procedure is provided for Exoscale_ below.
 
 Exoscale
 ~~~~~~~~
@@ -151,17 +151,20 @@ you need in the Exoscale portal:
    :width: 70%
    :align: center
 
-Add your Exoscale credential to your Nuvla account:
+Add your Exoscale credential to your Nuvla account for the Exoscale regions
+defined there by repeating steps 3. and 4. for "exoscale-ch-gva" and
+"exoscale-ch-dk" connector instances.
 
 1. Open your user profile (top-right, under your username).
 2. Click on "Edit".
-3. Open the section "exoscale-ch-gva" by clicking on the section header.
+3. Open the section "exoscale-ch-gva" (or "exoscale-ch-dk") by clicking on the
+   section header.
 4. Provide the "API Key" value in the "Key" field and the "Secret Key"
    value in the "Secret" field.
 5. Click on "Save".
 
-You will now be able to use the Exoscale cloud with your account through
-Nuvla.
+You will now be able to use two regions of the Exoscale cloud with your account
+through Nuvla.
 
 .. admonition:: EXERCISES
 
@@ -169,37 +172,6 @@ Nuvla.
    2. Add your Exoscale credentials to your user profile.
    3. Set the "Default cloud" parameter to Exoscale in your user
       profile.
-
-Ultimum
-~~~~~~~
-
-If you need to create an account at Ultimum, you can visit their
-`registration page <https://cz1.ultimum.io/auth/login/>`__.
-**For the paid training events, we will already have obtained an
-Ultimum account for you; so no need to register separately.**
-
-Once you've obtained your account with Ultimum, then you'll need to
-provide your Ultimum credentials (username and password) to SlipStream.
-The username is your email address.
-
-To add your Ultimum credentials to your SlipStream account:
-
-1. Open your user profile (top-right, under your username).
-2. Click on "Edit".
-3. Open the section "ultimum-cz1" by clicking on the section header.
-4. Provide values for your username (email), password, and "Project
-   name (Tenant name). **Your "Project name" is the same as your
-   username.**
-5. Click on "Save".
-
-You will now be able to use the Ultimum cloud with your account through
-Nuvla.
-
-.. admonition:: EXERCISES
-
-   1. Follow the Ultimum registration procedure to obtain an account.
-   2. Add your Ultimum credentials to your user profile.
-
 
 Workstation Configuration
 -------------------------
@@ -231,8 +203,6 @@ information for the installation and configuration of these tools.**
 .. _Appendix: appendix.html
 
 .. _Exoscale: https://www.exoscale.ch
-
-.. _Ultimum: http://ultimum.io
 
 .. [#] You can also use an account on a cloud infrastructure with more
        than one region.  You can also follow the tutorial using only
