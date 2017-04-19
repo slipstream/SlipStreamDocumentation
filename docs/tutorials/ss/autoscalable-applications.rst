@@ -216,7 +216,7 @@ Application Configuration and Deployment
 The figure below shows the definition of the autoscalable application in
 SlipStream.
 
-.. figure:: images/diagrams/autoscale-app.png
+.. figure:: images/screenshots/autoscale-app.png
    :width: 70%
    :align: center
 
@@ -257,7 +257,7 @@ below). In this dialog, you must check the box to indicate that this is a
 scalable application; you can optionally change the multiplicity of the webapp
 component. Select the cloud and proceed with the deployment.
 
-.. figure:: images/diagrams/autoscale-app-deploy.png
+.. figure:: images/screenshots/autoscale-app-deploy.png
    :width: 70%
    :align: center
 
@@ -267,11 +267,18 @@ Usage of the Application After Deployment
 -----------------------------------------
 
 After a successful deployment of the application one should first open the HTTP
-URL published by the client component. It provides a page with a description of
-the application, a deployment diagram, and links to the services running on
-other components (see figure below).
+URL published by the client component (see ellow arrow on the figure below).
 
-.. figure:: images/diagrams/autoscale-app-entry-point.png
+.. figure:: images/screenshots/autoscale-app-deployed.png
+   :width: 70%
+   :align: center
+
+   Deployed Autoscalable Application
+
+It provides a page with a description of the application, a deployment diagram,
+and links to the services running on other components (see figure below).
+
+.. figure:: images/screenshots/autoscale-app-entry-point.png
    :width: 70%
    :align: center
 
@@ -286,7 +293,7 @@ to contact and the resource of the web application were already automatically
 configured during the component deployment.
 
 
-.. figure:: images/diagrams/autoscale-app-locust-3clients.png
+.. figure:: images/screenshots/autoscale-app-locust-3clients.png
    :width: 70%
    :align: center
 
@@ -325,7 +332,7 @@ by SlipStream) and availability of the virtual machine (as reported by the load
 metrics). This is almost entirely due to the provisioning latency on IaaS
 level; SlipStream’s control flow contributes negligibly to the latency.
 
-.. figure:: images/diagrams/autoscale-riemann-dash-3vms.png
+.. figure:: images/screenshots/autoscale-riemann-dash-3vms.png
    :width: 70%
    :align: center
 
@@ -342,7 +349,7 @@ the figure below, which shows historical evolution of the average response time
 in Graphite.
 
 
-.. figure:: images/diagrams/autoscale-graphite-avg_resp_time.png
+.. figure:: images/screenshots/autoscale-graphite-avg_resp_time.png
    :width: 70%
    :align: center
 
