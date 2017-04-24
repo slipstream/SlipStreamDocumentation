@@ -39,7 +39,12 @@ No migration is required.
 Known issues
 ~~~~~~~~~~~~
 
-There are no known issues with this release.
+When accessing the v3.26 server with an old cookie that is still valid, the
+server responds with an internal server error (500).  See `old cookie causes
+internal server error <https://github.com/slipstream/SlipStreamServer/issues/1007>`__.
+The issue is already fixed in master branch and the updated RPM with the fix is
+available from *SlipStream-Snapshots-** repos.  The next release will contain
+the fix by default.
 
 Commits
 ~~~~~~~
