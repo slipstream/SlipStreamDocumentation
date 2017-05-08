@@ -5,6 +5,46 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.27 (candidate) - 8 May 2017
+--------------------------------
+
+New features and bug fixes in v3.27
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This release v3.27 improves the implementation of the internal SlipStream
+inter-service communication implementation, unifies the implementation of the
+users' authentication code as well as provides various bug fixes.
+
+For Dave:
+ - Introduced installation of Metricbeat with SlipStream.  This provides the OS
+   level monitoring and storage of the metrics to Elasticsearch for later
+   visualization with Kibana.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.26...v3.27>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.26...v3.27>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.26...v3.27>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.26...v3.27>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.26...v3.27>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.26...v3.27>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.26...v3.27>`__
+
+
 v3.26 (candidate) - 21 April 2017
 --------------------------------
 
