@@ -66,7 +66,7 @@ SlipStream Services
 SlipStream is composed of a number of services. This section describes how
 to start these services.
 
-Strarting the Ancillary SlipStream Service
+Starting the Ancillary SlipStream Service
 ------------------------------------------
 
 This service should be started first and includes additional resources, such
