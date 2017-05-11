@@ -39,7 +39,7 @@ database with the downloaded jar file:
 
 ::
 
-    $ java -cp ~/.m2/repository/org/hsqldb/hsqldb/2.3.2/hsqldb-2.3.2.jar \
+    $ java -cp ~/.m2/repository/org/hsqldb/hsqldb/2.3.4/hsqldb-2.3.4.jar \
            org.hsqldb.server.Server \
            --database.0 file:slipstreamdb \
            --dbname.0 slipstream &
