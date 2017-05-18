@@ -6,7 +6,7 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 v3.27 (candidate) - 8 May 2017
---------------------------------
+------------------------------
 
 New features and bug fixes in v3.27
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,7 +46,7 @@ Commits
 
 
 v3.26 (candidate) - 21 April 2017
---------------------------------
+~--------------------------------
 
 New features and bug fixes in v3.26
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

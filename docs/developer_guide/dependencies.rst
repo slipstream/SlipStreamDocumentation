@@ -49,8 +49,10 @@ Most of the necessary dependencies are already installed by default in
 recent versions of Mac OS X. The few that are not already there, can be
 installed with::
 
-    $ sudo easy_install pip
-    $ sudo pip install nose coverage paramiko mock pylint
+    $ easy_install pip
+    $ curl -O \
+      https://raw.githubusercontent.com/slipstream/SlipStreamClient/master/client/requirements.txt
+    $ pip install -r requirements.txt
 
 These dependencies are needed to run the unit tests for the python code.
 
@@ -90,11 +92,7 @@ The command::
           java-1.8.0-openjdk-devel \
           python \
           python-devel \
-          pylint \
-          python-mock \
-          python-nose \
-          python-coverage \
-          python-paramiko \
+          python-pip \
           rpm-build \
           createrepo \
           bzip2 \
@@ -113,15 +111,7 @@ will install all of the listed packages.
 +----------------------------+-----------------------------------------+
 | python-devel               | Needed for python module dependencies   |
 +----------------------------+-----------------------------------------+
-| pylint                     | Analysis of python code                 |
-+----------------------------+-----------------------------------------+
-| python-mock                | Mocking library used in unit tests      |
-+----------------------------+-----------------------------------------+
-| python-nose                | Unit testing for python code            |
-+----------------------------+-----------------------------------------+
-| python-coverage            | Coverage testing for python code        |
-+----------------------------+-----------------------------------------+
-| python-paramiko            | SSH library for python                  |
+| python-pip                 | Needed for dependencies installation    |
 +----------------------------+-----------------------------------------+
 | rpm-build                  | Creates binary distribution packages    |
 +----------------------------+-----------------------------------------+
@@ -133,6 +123,13 @@ will install all of the listed packages.
 +----------------------------+-----------------------------------------+
 | fontconfig                 | Clojurescript testing (phantomjs dep.)  |
 +----------------------------+-----------------------------------------+
+
+Install the following dependencies that are needed to run the unit tests for
+the python code::
+
+    $ curl -O \
+      https://raw.githubusercontent.com/slipstream/SlipStreamClient/master/client/requirements.txt
+    $ pip install -r requirements.txt
 
 Ubuntu 14.04
 ------------
@@ -172,10 +169,7 @@ The command::
           openjdk-8-jdk \
           python-minimal \
           pylint \
-          python-mock \
-          python-nose \
-          python-coverage \
-          python-paramiko \
+          python-pip \
           rpm \
           createrepo \
           bzip2 \
@@ -194,15 +188,7 @@ will install all of the listed packages.
 +-------------------+-----------------------------------------+
 | python-devel      | Needed for python module dependencies   |
 +-------------------+-----------------------------------------+
-| pylint            | Analysis of python code                 |
-+-------------------+-----------------------------------------+
-| python-mock       | Mocking library used in unit tests      |
-+-------------------+-----------------------------------------+
-| python-nose       | Unit testing for python code            |
-+-------------------+-----------------------------------------+
-| python-coverage   | Coverage testing for python code        |
-+-------------------+-----------------------------------------+
-| python-paramiko   | SSH library for python                  |
+| python-pip        | Needed for dependencies installation    |
 +-------------------+-----------------------------------------+
 | rpm               | Creates binary distribution packages    |
 +-------------------+-----------------------------------------+
@@ -213,7 +199,7 @@ will install all of the listed packages.
 | fontconfig        | Clojurescript testing (phantomjs dep.)  |
 +-------------------+-----------------------------------------+
 
-.. important:: 
+.. important::
 
     Running the tests requires Java 1.8 to run. Either you can install
     Java 1.8 from an unofficial repository or simply skip the tests
@@ -223,6 +209,13 @@ The SlipStream RPM packages will be built if you install the ``rpm`` and
 ``createrepo`` packages; however, they cannot be used to install and run
 the SlipStream server. Follow the instructions for running a test
 version of the server from the respository sources.
+
+Install the following dependencies that are needed to run the unit tests for
+the python code::
+
+    $ curl -O \
+      https://raw.githubusercontent.com/slipstream/SlipStreamClient/master/client/requirements.txt
+    $ pip install -r requirements.txt
 
 Build Tools
 -----------
@@ -271,7 +264,7 @@ your path.  Setup the path with::
     $ export PATH=$PATH:<installation directory>/bin
 
 you may also want to set the environment variables::
-  
+
     $ export BOOT_JVM_OPTIONS='-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx2g -Xverify:none'
     $ export BOOT_HOME=${HOME}/.boot
     $ export BOOT_EMIT_TARGET=no
@@ -309,6 +302,6 @@ to ``/usr/local/bin/phantomjs``, but any location available on the
 PATH will work.  The name of the executable must be ``phantomjs``.
 
 The dependencies you installed above for CentOS 7 or Ubuntu include
-the dependencies for phantomjs. 
+the dependencies for phantomjs.
 
 As above, you can test the installation with ``phantomjs --version``.
