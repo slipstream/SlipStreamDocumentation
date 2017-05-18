@@ -45,6 +45,13 @@ development environment. We're going to assume you're running OS X with
 `easy\_install <https://pythonhosted.org/setuptools/easy_install.html>`__
 available.
 
+Your default locale settings may conflict with some of the programs we’ll
+need. If you want to be on the safe side, add these lines to your
+**.bash_profile** file::
+
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
+
 Most of the necessary dependencies are already installed by default in
 recent versions of Mac OS X. The few that are not already there, can be
 installed with::
