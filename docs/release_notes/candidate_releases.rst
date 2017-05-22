@@ -5,6 +5,59 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.28 (candidate) - 21 May 2017
+-------------------------------
+
+New features and bug fixes in v3.28
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+For Alice and Clara:
+ - Server:
+    - Various updates and fixes around authentication: adding sessions, fixing
+      eduGAIN workflow and OIDC.
+ - Client:
+    - Fix: accept parameter values containing `=` sign.
+ - Client API:
+    - Added functions for CIMI resources.
+ - Connectors:
+    - EC2: added support for extra disk.
+    - OpenStack:
+       - fixed leaking of private IPs.
+       - improved retrieval of IPs on OpenStack.
+
+Documentation:
+  - Improved contributor documentation around setting up Python environment.
+
+For contributors:
+ - Improved conditional building of RPMs on systems with no rpmbuild installed.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.27...v3.28>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.27...v3.28>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.27...v3.28>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.27...v3.28>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.27...v3.28>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.27...v3.28>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.27...v3.28>`__
+
 v3.27 (candidate) - 8 May 2017
 ------------------------------
 
