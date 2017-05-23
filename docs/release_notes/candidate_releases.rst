@@ -11,9 +11,6 @@ v3.28 (candidate) - 21 May 2017
 New features and bug fixes in v3.28
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Alice, Bob, Clara, and Dave can be found
-`here <http://sixsq.com/personae/>`_.
-
 For Alice and Clara:
  - Server:
     - Various updates and fixes around authentication: adding sessions, fixing
@@ -28,10 +25,8 @@ For Alice and Clara:
        - fixed leaking of private IPs.
        - improved retrieval of IPs on OpenStack.
 
-Documentation:
-  - Improved contributor documentation around setting up Python environment.
-
 For contributors:
+ - Improved contributor documentation around setting up Python environment.
  - Improved conditional building of RPMs on systems with no rpmbuild installed.
 
 Alice, Bob, Clara, and Dave can be found
