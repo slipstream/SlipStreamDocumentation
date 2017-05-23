@@ -87,9 +87,9 @@ REPL with boot and in the REPL run the commands listed below::
 
     $ export ES_HOST=localhost
     $ export ES_PORT=9300
-    $ export CONFIG_PATH=ssclj-conf.edn
+    $ export CONFIG_NAME=ssclj-conf.edn
 
-    $ boot repl
+    $ boot dev-env repl
       boot.user=> (require '[com.sixsq.slipstream.ssclj.app.server :as server :reload true])
       nil
       boot.user=> (def stop-fn (server/start 8201))
@@ -112,7 +112,8 @@ Typical content looks like::
       :make-pool?   true}}
 
 The ``ssclj-conf.edn`` is part of the source code and located under
-``resources/`` subdirectory, which gets appended to the classpath.
+``test-resources/`` subdirectory, which gets appended to the classpath thanks to the ``dev-env``
+option for the ``boot`` command above.
 
 The service's log file can be found under ``logs/ssclj-.log``
 
@@ -222,6 +223,148 @@ that both ``jar`` and ``conf`` artifacts should be added.
       <artifactId>SlipStreamConnector-CloudStack-conf</artifactId>
       <version>${project.version}</version>
     </dependency>
+
+Starting the HTTP Server
+------------------------
+
+`Nginx <https://www.nginx.com/resources/wiki/>`__ is required to serve SlipsStream pages.
+
+* Nginx installation
+
+Linux users should install it from the official `documentation <https://www.nginx.com/resources/wiki/start/topics/tutorials/install/>`__ page.
+
+Mac OS X users can simply run ::
+
+    brew install nginx
+
+* Nginx configuration
+
+By default, the main Nginx configuration file is named ``nginx.conf`` and placed in the directory ``/usr/local/nginx/conf``, ``/etc/nginx``, or ``/usr/local/etc/nginx``.
+
+It should contain the following ::
+
+    worker_processes  1;
+
+    events {
+        worker_connections  1024;
+    }
+
+
+    http {
+        include       mime.types;
+        default_type  application/octet-stream;
+        sendfile        on;
+        keepalive_timeout  65;
+        include servers/*.conf;
+    }
+
+
+
+Create a ``servers`` directory realative to your ``nginx.conf`` location and add the following two files into it
+
+- ``slipstream.conf``::
+
+    upstream slipstream_servers {
+        server 127.0.0.1:8080;
+
+        keepalive 50;
+    }
+
+    upstream ssclj_servers {
+        server 127.0.0.1:8201;
+
+        keepalive 50;
+    }
+
+    ssl_session_cache shared:SSL:1m;
+    ssl_session_timeout 30m;
+    ssl_session_tickets on;
+    #ssl_dhparam /etc/nginx/ssl/dhparam.pem;
+    ssl_prefer_server_ciphers on;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ecdh_curve prime256v1;
+    ssl_ciphers "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4:!3DES:AES128-GCM-SHA256";
+    resolver 8.8.8.8 8.8.4.4;
+    #ssl_stapling on;
+    #ssl_stapling_verify on;
+
+    # Tells browsers to ONLY connect via HTTPS to SlipStream.
+    # The timeout is set to 1 year, which is reset with each visit.
+    #add_header Strict-Transport-Security "max-age=31536000; includeSubdomains" always;
+
+    server {
+        listen 443 ssl http2; # deferred reuseport;
+
+        ssl_certificate /usr/local/etc/nginx/ssl/nginx.crt;
+        ssl_certificate_key /usr/local/etc/nginx/ssl/nginx.key;
+
+        # Include SlipStream common configuration parameters
+        location / {
+            proxy_pass http://slipstream_servers;
+            include servers/slipstream-proxy.params;
+        }
+
+        location /auth {
+            proxy_pass http://ssclj_servers;
+            include servers/slipstream-proxy.params;
+        }
+
+        location /api {
+            proxy_pass http://ssclj_servers;
+            include servers/slipstream-proxy.params;
+        }
+
+    }
+
+ - and ``slipstream-proxy.params``::
+
+    proxy_http_version 1.1;
+
+    set $via "1.1 $host";
+    if ($http_via) {
+       set $via "$http_via, $via";
+    }
+
+    proxy_set_header Via $via;
+    proxy_set_header Host $http_host;
+    proxy_set_header Connection "";
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    proxy_set_header slipstream-authn-info "";
+    proxy_set_header slipstream-ssl-server-name $ssl_server_name;
+
+    proxy_redirect off;
+
+At the same level as the ``servers`` directory, create a ``ssl`` directory and jump into it.
+From there,  you will generate key and certificate files ::
+
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx.key -out nginx.crt
+
+At this stage, your Nginx configuration directory should look like::
+
+    ├── [...]
+    ├── nginx.conf
+    ├── servers
+    │   ├── slipstream-proxy.params
+    │   └── slipstream.conf
+    ├── ssl
+    │   ├── nginx.crt
+    │   └── nginx.key
+
+
+* Optionally you may want to test your Nginx configuration::
+
+    sudo nginx -t
+
+* Finally launch Nginx::
+
+    sudo nginx
+
+TCP port 443 which you have configured in ``servers\slipstream.conf`` is the standard TCP port that is used for websites which use SSL, therefore your Slipstream is available at
+``https://localhost``
+
 
 You are now ready to :ref:`configure <dg-cfg>` your new SlipStream
 server.
