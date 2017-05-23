@@ -20,7 +20,7 @@ releases 3.15 to 3.27.
   configuration can be managed with the help of the extra tooling directly in
   the Elasticsearch DB.
 - Service Catalog displays prices consistently in EUR.
-- Added of the support of CPU/RAM/Disk server side as module parameters.
+- Added support of CPU/RAM/Disk server side as module parameters.
 - Introduced new Python CLI and API to SlipStream service like `nuv.la
   <https://nuv.la>`_.
 - Made Service Catalog available in the community version.
@@ -68,7 +68,7 @@ For application users and developers [Alice, Clara]:
 For application developers [Clara]:
  - Enabled editing of Pre/Post-Scale scripts in `Application Workflows` tab of
    components. For details, please see `Scalability Workflow Hooks
-   <http://ssdocs.sixsq.com/en/v3.8/advanced_tutorial/scalable-applications.html#scalability-workflow-hooks-scripts>`_
+   <http://ssdocs.sixsq.com/en/latest/tutorials/ss/scalable-applications.html#scalability-workflow-hooks-scripts>`_
    section of the SlipStream tutorial on running scalable applications.
  - Improved modification of application component.
  - Allowed the possibility to edit the description and category of input/output
@@ -80,7 +80,7 @@ For application developers [Clara]:
 For administrators [Dave]:
  - New way of managing the service configuration via configuration files and
    `ss-config` utility.  See `documentation
-   <http://ssdocs.sixsq.com/en/draft/developer_guide/configuration_files.html>`_.
+   <http://ssdocs.sixsq.com/en/latest/developer_guide/configuration_files.html>`_.
  - Introduced installation of Metricbeat with SlipStream.  This provides the OS
    level monitoring and storage of the metrics to Elasticsearch for later
    visualization with Kibana.
