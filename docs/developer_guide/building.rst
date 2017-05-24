@@ -2,6 +2,10 @@ Build Everything
 ================
 
 Maven is used to control the build of all of the SlipStream components.
+
+Mac users should be warned that building from Mac OS X is currently
+not supported
+
 To perform the full build, just drop into the "SlipStream" repository
 that you've checked out and perform the usual maven dance::
 
