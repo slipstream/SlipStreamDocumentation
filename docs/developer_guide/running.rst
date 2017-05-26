@@ -82,14 +82,25 @@ The service should be started from the ``ssclj/jar`` module of
 
    $ cd SlipStreamServer/ssclj/jar
 
-To run the service, export the required environment variables, start Clojure
-REPL with boot and in the REPL run the commands listed below::
+To run the service, export the required environment variables::
 
     $ export ES_HOST=localhost
     $ export ES_PORT=9300
-    $ export CONFIG_NAME=ssclj-conf.edn
+    $ export CONFIG_NAME=config-hsqldb.edn
 
-    $ boot dev-env repl
+SlipStream authentication requires you define environment variables ``AUTH_PUBLIC_KEY`` and ``AUTH_PRIVATE_KEY``
+pointing to your public and private keys absolute paths.
+
+Sample files are provided in ```ssclj/jar/test-resources``` ::
+
+    test-resources
+    ├── auth_privkey.pem
+    ├── auth_pubkey.pem
+    ├── ...
+
+Start Clojure REPL with boot and in the REPL run the commands listed below::
+
+    $ boot repl
       boot.user=> (require '[com.sixsq.slipstream.ssclj.app.server :as server :reload true])
       nil
       boot.user=> (def stop-fn (server/start 8201))
@@ -101,19 +112,34 @@ The services will be started on port ``8201``.  You can set it as needed,
 taking into account that it will be required later during the startup of the
 main SlipStream service.
 
-The directory containing the ``ssclj-conf.edn`` file must be on the classpath.  The
-``ssclj-conf.edn`` is the path to the file containing the HSQLDB database definition.
+The directory containing the ``config-hsqldb.edn`` file must be on the classpath.  The
+``config-hsqldb.edn`` is the path to the file containing the HSQLDB database definition.
 Typical content looks like::
 
-    {:db {
-      :classname    "org.hsqldb.jdbc.JDBCDriver"
-      :subprotocol  "hsqldb"
-      :subname      "mem://localhost:9012/devresources"
-      :make-pool?   true}}
+    {:auth-db                 {
+                               :classname   "org.hsqldb.jdbc.JDBCDriver"
+                               :subprotocol "hsqldb"
+                               :subname     "hsql://localhost:9001/slipstream"
+                               :make-pool?  true}
 
-The ``ssclj-conf.edn`` is part of the source code and located under
-``test-resources/`` subdirectory, which gets appended to the classpath thanks to the ``dev-env``
-option for the ``boot`` command above.
+     :token-nb-minutes-expiry 120
+
+     ;; Used by front server when redirecting (URL accessed only locally)
+     :upstream-server         "http://localhost:8080"
+
+     ;; Used by external authentication providers
+     :auth-server             "http://localhost:8201"
+     :main-server             "http://localhost:8080"
+
+     ;; Application must be registered on Github
+     ;; See https://github.com/settings/applications/new
+     ;; Homepage URL can be <SlipStream end point>
+     ;; The Authorization callback URL must be <SlipStream end point>/auth/callback-github
+     :github-client-id        "changeme"
+     :github-client-secret    "changeme"}
+
+The ``config-hsqldb.edn`` is part of the source code and located under
+``resources/`` subdirectory.
 
 The service's log file can be found under ``logs/ssclj-.log``
 
@@ -156,7 +182,7 @@ archive (war file).
 ::
 
     $ cd SlipStreamServer/war
-    $ mvn jetty:run-war
+    $ mvn jetty:run-war -Dpersistence.unit=hsqldb-schema
 
 If the last command returns an error like
 ``JettyRunWarMojo : Unsupported major.minor version 51.0`` make sure you
@@ -177,11 +203,12 @@ the server pointing to source static location as following:
     $ export ES_HOST=localhost
     $ export ES_PORT=9300
     $ mvn jetty:run-war \
+          -Dpersistence.unit=hsqldb-schema \
           -Dstatic.content.location=file:../../SlipStreamUI/clj/src/slipstream/ui/views
 
 The server makes use of Elasticsearch as database backend, therefore, you see
 the need to set the host and port of Elasticsearch.
-You can also change the main database backend connection using the
+You can also change the main database backend connection updating the
 ``persistence.unit``. For example:
 
 ::
