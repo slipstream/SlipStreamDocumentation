@@ -254,7 +254,10 @@ that both ``jar`` and ``conf`` artifacts should be added.
 Starting the HTTP Server
 ------------------------
 
-`Nginx <https://www.nginx.com/resources/wiki/>`__ is required to serve SlipsStream pages.
+`Nginx <https://www.nginx.com/resources/wiki/>`__ is required to serve SlipStream pages and calls done to Api(s).
+As there are complementary SlipStream services (SlipStream server, SSCLJ server) which run behind different ports,
+and the fact that SlipStream force the usage of secure cookies, all services should be run behind an SSL encryption.
+We use following simplified configuration of Nginx to fulfill this need.
 
 * Nginx installation
 
@@ -338,6 +341,11 @@ Create a ``servers`` directory realative to your ``nginx.conf`` location and add
 
         location /api {
             proxy_pass http://ssclj_servers;
+            include servers/slipstream-proxy.params;
+        }
+        
+        location /filter-rank {
+            proxy_pass http://prs_servers;
             include servers/slipstream-proxy.params;
         }
 
