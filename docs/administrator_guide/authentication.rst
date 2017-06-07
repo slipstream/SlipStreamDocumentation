@@ -41,16 +41,20 @@ SlipStream deployment.
 Assuming that you've configured ``ss-curl`` as described in the
 tutorial and that you've logged into the server as an administrator
 using ``ss-curl``, you can then download the existing template with
-the command::
+the command:
 
-  ss-curl https://_slipstream_host_/api/session-template/internal
+.. code-block:: bash
+                
+   ss-curl https://_slipstream_host_/api/session-template/internal
 
 substituting your SlipStream host name.  You can then modify the JSON
-document and upload the modified version like so::
+document and upload the modified version like so:
 
-  ss-curl -XPUT -H content-type:application/json \
-          -d@internal-modified.json \
-          https://_slipstream_host_/api/session-template/internal
+.. code-block:: bash
+                
+   ss-curl -XPUT -H content-type:application/json \
+           -d@internal-modified.json \
+           https://_slipstream_host_/api/session-template/internal
 
 Your modifications will be persisted in the database and will survive
 restarts of the ``ssclj`` service.  You should generally not add or
@@ -157,11 +161,12 @@ use this Session Template for logging into the server.
 
 Assuming that you've configured ``ss-curl`` as described in the
 tutorial and that you've logged into the server as an administrator
-using ``ss-curl``, you can then upload your template like so::
+using ``ss-curl``, you can then upload your template like so:
 
-  ss-curl -XPOST -H content-type:application/json \
-          -d@github.json \
-          https://_slipstream_node_/api/session-template
+.. code-block:: bash
+   ss-curl -XPOST -H content-type:application/json \
+           -d@github.json \
+           https://_slipstream_node_/api/session-template
 
 If this responds with a "201 Created" response, then the resource was
 properly created.
@@ -250,11 +255,13 @@ use this Session Template for logging into the server.
 
 Assuming that you've configured ``ss-curl`` as described in the
 tutorial and that you've logged into the server as an administrator
-using ``ss-curl``, you can then upload your template like so::
+using ``ss-curl``, you can then upload your template like so:
 
-  ss-curl -XPOST -H content-type:application/json \
-          -d@keycloak.json \
-          https://_slipstream_node_/api/session-template
+.. code-block:: bash
+                
+   ss-curl -XPOST -H content-type:application/json \
+           -d@keycloak.json \
+           https://_slipstream_node_/api/session-template
 
 If this responds with a "201 Created" response, then the resource was
 properly created.
