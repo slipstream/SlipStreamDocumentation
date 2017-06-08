@@ -5,6 +5,187 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.28 (candidate) - 21 May 2017
+-------------------------------
+
+New features and bug fixes in v3.28
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Alice and Clara:
+ - Server:
+    - Various updates and fixes around authentication: adding sessions, fixing
+      eduGAIN workflow and OIDC.
+ - Client:
+    - Fix: accept parameter values containing `=` sign.
+ - Client API:
+    - Added functions for CIMI resources.
+ - Connectors:
+    - EC2: added support for extra disk.
+    - OpenStack:
+       - fixed leaking of private IPs.
+       - improved retrieval of IPs on OpenStack.
+
+For contributors:
+ - Improved contributor documentation around setting up Python environment.
+ - Improved conditional building of RPMs on systems with no rpmbuild installed.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.27...v3.28>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.27...v3.28>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.27...v3.28>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.27...v3.28>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.27...v3.28>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.27...v3.28>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.27...v3.28>`__
+
+v3.27 (candidate) - 8 May 2017
+------------------------------
+
+New features and bug fixes in v3.27
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This release v3.27 improves the implementation of the internal SlipStream
+inter-service communication implementation, unifies the implementation of the
+users' authentication code as well as provides various bug fixes.
+
+For Dave:
+ - Introduced installation of Metricbeat with SlipStream.  This provides the OS
+   level monitoring and storage of the metrics to Elasticsearch for later
+   visualization with Kibana.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.26...v3.27>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.26...v3.27>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.26...v3.27>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.26...v3.27>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.26...v3.27>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.26...v3.27>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.26...v3.27>`__
+
+
+v3.26 (candidate) - 21 April 2017
+~--------------------------------
+
+New features and bug fixes in v3.26
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This release v3.26 brings updates to EC2 connector. The release also includes a
+couple of other fixes and clean ups of the underlying code.  Read below for
+more details.
+
+For Clara and Alice:
+ - EC2 connector: added new instance types and regions; added support for extra
+   disk; updated to the latest version of *boto*.
+ - OCCI connector was removed.
+ - Updated help messages and fixed an issue with HTTP redirection in SlipStream
+   CLI.
+ - Fixed outdated links in the Web UI Tour.
+
+For Dave:
+ - Installation of SlipStream server installs full ELK stack for collection of
+   the logs from different components of the service.
+ - SlipStream server logs were moved to /var/log/slipstream/server.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+When accessing the v3.26 server with an old cookie that is still valid, the
+server responds with an internal server error (500).  See `old cookie causes
+internal server error <https://github.com/slipstream/SlipStreamServer/issues/1007>`__.
+The issue is already fixed in master branch and the updated RPM with the fix is
+available from *SlipStream-Snapshots-** repos.  The next release will contain
+the fix by default.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.25...v3.26>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.25...v3.26>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.25...v3.26>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.25...v3.26>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.25...v3.26>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.25...v3.26>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.25...v3.26>`__
+
+v3.25 (candidate) - 7 April 2017
+--------------------------------
+
+New features and bug fixes in v3.25
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Version v3.25 fixes a problem where the server could effectively hang
+when accessing resources in the underlying database.  The release also
+include a couple other fixes and clean ups of the underlying code.
+
+For everyone:
+ - Diagnose and fix an issue with the underlying database that caused
+   the service to hang.
+ - Fix broken links in the deployment dialog (to SSH configuration)
+   and in the tour (to external documentation).
+ - Fix the Kubernetes deployment in the App Store.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.24...v3.25>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.24...v3.25>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.24...v3.25>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.24...v3.25>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.24...v3.25>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.24...v3.25>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.24...v3.25>`__
+
 v3.24 (candidate) - 26 March 2017
 ---------------------------------
 
@@ -29,7 +210,7 @@ For everyone:
 
 For SlipStream administrator [Dave]:
  - Improve management of users through SlipStream Python API.
- 
+
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
 
@@ -54,7 +235,7 @@ Commits
  -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.23...v3.24>`__
  -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.23...v3.24>`__
 
-3.23 (candidate) - 14 March 2017
+v3.23 (candidate) - 14 March 2017
 ---------------------------------
 
 New features and bug fixes in v3.23
@@ -77,10 +258,10 @@ For everyone:
 
 For SlipStream administrator [Dave]:
  - Improve handling of certificates for generating authentication
-   tokens. 
+   tokens.
  - Fix startup failure of Riemann server.
  - Add missing file in the server backup RPM package.
- 
+
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
 

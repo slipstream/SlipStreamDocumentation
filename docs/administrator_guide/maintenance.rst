@@ -92,42 +92,25 @@ All error pages are static files that you can find in
 Authentication keys
 -------------------
 
-SlipStream is automatically installed with a default set of public/private keys for user authentication.
+Certificates for generation of authentication tokens are not
+password-protected.  The new unencrypted certificates are by default generated
+under ``/etc/slipstream/auth`` as part of the post-install script of
+``slipstream-ssclj`` RPM.  Next time when RPM gets updated the files will not
+be overwritten.
 
-Keys regeneration
-~~~~~~~~~~~~~~~~~
+Regeneration of Authentication keys
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You may want to regenerate public and private keys. To do so, execute the following commands:
+The authentication keys can be regenerated at any time. Check
+``/opt/slipstream/ssclj/bin/generate-auth-keys.sh`` script for the details.
 
-::
+Only one service ``ssclj.service`` requires private key for encrypting the
+authentication token. All other services require only public key for
+decryption. Locations of both can be configured in their respective ``systemd``
+configuration files or in the respective ``/etc/default/<service>`` files.
 
-  $ cd /tmp
-   $ mkdir keys
-   $ cd keys
-   $ openssl genrsa -aes128 -out auth_privkey.pem 2048
-   $ openssl rsa -pubout -in auth_privkey.pem -out auth_pubkey.pem
-   // Remember the passphrase you will choose during this process !
+After the new keys are generated and/or their locations are updated in the
+configuration files, restart the following services::
 
-   // copy both keys for authentication server
-   $ cp *pem /opt/slipstream/ssclj/resources/
-   // copy public key for Web Server
-   $ cp auth_pubkey.pem \
-     /opt/slipstream/server/webapps/slipstream.war/WEB-INF/classes/
+  systemctl restart ssclj slipstream ss-pricing
 
-
-Adapt passphrase value in ``/opt/slipstream/ssclj/resources/db.spec``.
-
-Restart authentication server:
-
-::
-
-  systemctl restart ssclj
-
-Any error in configuration (keys do not match or wrong passphrase used) will result in errors (users login) like:
-
-::
-
-  2015-11-04 14:13:42,470 ERROR - Unexpected exception thrown: exception using cipher - please check password and data.
-  org.bouncycastle.openssl.EncryptionException: exception using cipher - please check password and data.
-  ...
-  Caused by: javax.crypto.BadPaddingException: Given final block not properly padded

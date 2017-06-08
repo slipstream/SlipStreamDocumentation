@@ -1,0 +1,91 @@
+.. include:: links.txt
+
+SlipStream and NuvlaBox Training - 2017-04
+==========================================
+
+Introduction (CL)
+-----------------
+
+ * :doc:`Cloud Technology </tutorials/ss/cloud-technology>`
+ * :doc:`What is SlipStream? </tutorials/ss/slipstream-defined>`
+ * :doc:`What is a NuvlaBox? </tutorials/nb/nuvlabox-defined>`
+
+Understanding SlipStream (KS)
+-----------------------------
+
+Understanding SlipStream by using Nuvla_, SixSq's managed SlipStream
+service.
+
+ * :doc:`SlipStream Ecosystem </tutorials/ss/slipstream-ecosystem>`
+ * :doc:`Key concepts </tutorials/ss/key-concepts>`
+ * :doc:`Prerequisites </tutorials/ss/prerequisites>`
+
+    * Nuvla account
+    * Cloud accounts: Exoscale (public) and NuvlaBox (private)
+    * Workstation configuration
+
+ * :doc:`SlipStream Web UI Tour </tutorials/ss/web-interface-tour>`
+
+Understanding the NuvlaBox (KB)
+-------------------------------
+
+ * :doc:`Hardware Configuration </tutorials/nb/hw-spec>`
+ * :doc:`Reliability & Security </tutorials/nb/robustness>`
+ * :doc:`Using the NuvlaBox </tutorials/nb/plug-and-play>`
+   
+    * RStudio on NuvlaBox (demo and exercise)
+      
+ * :doc:`NuvlaBox administration UI </tutorials/nb/management>`
+ * :doc:`Sensors </tutorials/nb/sensors-attach>`
+   
+    * People recognition (video sensor) from Nuvla (exercise)
+      
+ * :doc:`Software Architecture </tutorials/nb/sw-arch>`
+ * :doc:`Networking </tutorials/nb/networking>`
+
+Building and Running Cloud Applications (KS)
+--------------------------------------------
+
+Based on :doc:`Module III </tutorials/ss/module-3>`. Use Nuvla. Run
+all deployments on NuvlaBox.  For multi-cloud deployment run on
+NuvlaBox and Exoscale.
+
+ * :doc:`Workspace </tutorials/ss/workspace>` (projects, ACLs,
+   versioning)
+ * :doc:`Images </tutorials/ss/images>` (native images)
+ * :doc:`Components I </tutorials/ss/components-1>` (parameterized and
+   secured web server)
+ * :doc:`Deployment Logs </tutorials/ss/deployment-logs>`
+ * :doc:`Components II </tutorials/ss/components-2>` (test client for
+   the web server)
+ * :doc:`Applications </tutorials/ss/applications>` (multi-machine
+   deployment, parameters exchange, component multiplicity,
+   multi-cloud deployment (test clients on NuvlaBox and web server on
+   Exoscale))
+
+Demo (LS)
+---------
+
+Sensor-based applications on NuvlaBox.
+
+ *  Car counting camera and application
+
+Automation, Optimization and Debugging (KS)
+-------------------------------------------
+
+ * :doc:`Automating SlipStream </tutorials/ss/automating-slipstream>`
+ * :doc:`Faster Deployments </tutorials/ss/faster-deployment>`
+ * :doc:`Debugging applications </tutorials/ss/debugging>`
+
+Scalable Applications (KS)
+--------------------------
+
+Theory and demonstration of scalable and autoscalable application in
+SlipStream.  Based on :doc:`SlipStream Module IV
+</tutorials/ss/module-4>`.
+
+ * :doc:`Scalable applications <ss/scalable-applications>`
+ * :doc:`Auto-scalable applications
+   </tutorials/ss/autoscalable-applications>`
+
+    * Demo of autoscalable application on Exoscale
