@@ -8,6 +8,7 @@ Administrators Guide
    introduction
    prerequisites
    quick_installation
+   authentication
    maintenance
    cloud_connectors
    connectors/index

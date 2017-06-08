@@ -47,6 +47,8 @@ In this case, be sure to modify your ``PYTHONPATH`` and ``PATH``
 to include the directories used by the ``pip`` user-level
 installation.
 
+.. _ss-curl:
+
 cURL
 ~~~~
 
@@ -114,30 +116,61 @@ information::
 again changing ``ssuser`` to your username.  This should return an XML
 representation of your user account.
 
+.. _ss-curl-login:
+
 cURL
 ~~~~
 
 It is strongly recommended to use cookie-based authentication when
-using the REST API; the basic authentication method will be removed at
-some point in the near future.
+using the REST API. The basic authentication method is deprecated and
+will be removed at some point in the near future.
 
 To obtain a valid authentication cookie, you must login to SlipStream,
-much like you'd do with the web interface.  To do this, execute a POST
-request to the `login resource <https://nuv.la/login>`_ with a form
-that includes the ``username`` and ``password`` parameters.
+much like you'd do with the web interface.  To do this, create a
+"session create" document like the following:
+
+.. code-block:: json
+
+   {
+     "sessionTemplate": {
+        "href": "session-template/internal",
+        "username" : "your-username",
+        "password" : "your-password"
+     }
+   }
+
+substituting ``your-username`` and ``your-password`` with your actual
+username and password.  Name the file something like
+``session-create-internal.json``. 
+
+You can then POST this document to the session resource collection to
+create a new session and to recover an authentication cookie. 
 
 Doing this with cURL (and the alias defined above!)::
 
-    $ ss-curl https://nuv.la/auth/login \
+    $ ss-curl https://nuv.la/api/session \
         -D - \
         -o /dev/null \
         -XPOST \
-        -d "username=ssuser" \
-        -d "password=sspass"
+        -H content-type:application/json \
+        -d@session-create-internal.json
 
 This should return only the headers from the response, which should
-include a "Set-Cookie" header with a value and a redirect response
-code.  The cookie should also end up in the ``~/cookies`` file.
+include a "Set-Cookie" header with a value and a "201 created"
+response code.  The cookie should also end up in the ``~/cookies``
+file.
+
+If you provide the wrong credentials, you will get a "403 forbidden"
+response.
+
+The "internal" login method is always available.  You may also be able
+to log in via another method.  You can find the full list of available
+methods by listing the Session Template resources::
+
+  $ ss-curl https://nuv.la/api/session-template
+
+Note that external methods (e.g. GitHub) may not support login
+workflows that are adapted to command line interactions.
 
 Advanced REST Client
 ~~~~~~~~~~~~~~~~~~~~

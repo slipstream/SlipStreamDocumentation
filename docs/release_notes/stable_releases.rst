@@ -89,8 +89,8 @@ For administrators [Dave]:
 For organization manager and SlipStream administrator [Bob and Dave]:
  - New connector named OTC for Open Telecom Cloud.
 
-Alice, Bob, Clara, and Dave can be found
-`here <http://sixsq.com/personae/>`_.
+The Alice, Bob, Clara, and Dave personae_ can be found on the SixSq
+website.
 
 Migration
 ~~~~~~~~~
@@ -102,12 +102,12 @@ Multiple migrations are required between 3.14 and 3.27:
  3. 3.21 -> 3.22
  4. 3.22 -> 3.23
 
-See the release notes for each of the corresponding candidate release `here
-<candidate_releases.html>`_.  The migrations should be applied in the order
-defined above.  Upgrades of the SlipStream packages should be carried out
-carefully step by step from the release to release that require migration.  To
-accomplish this, one has to explicitly define the version numbers of the
-packages.  For example::
+For details see the release notes for each of the `corresponding
+candidate releases <candidate_releases.html>`_.  The migrations should
+be applied in the order defined above.  Upgrades of the SlipStream
+packages should be carried out carefully step by step from the release
+to release that require migration.  To accomplish this, one has to
+explicitly define the version numbers of the packages.  For example::
 
     # List available version numbers
     $ yum --showduplicates list slipstream-server
@@ -213,8 +213,8 @@ For administrators [Dave]:
    Logging information will now appear in the standard OS directory.
  - Unify build system with boot for clojure code.
 
-Alice, Bob, Clara, and Dave can be found
-`here <http://sixsq.com/personae/>`_.
+The Alice, Bob, Clara, and Dave personae_ can be found on the SixSq
+website.
 
 Migration
 ~~~~~~~~~
@@ -367,8 +367,8 @@ For managers and super users [Bob]:
  - Provide better header information in the browser UI when a manager
    or super users is viewing information from several users.
 
-Alice, Bob, Clara, and Dave can be found
-`here <http://sixsq.com/personae/>`_.
+The Alice, Bob, Clara, and Dave personae_ can be found on the SixSq
+website.
 
 Migration
 ~~~~~~~~~
@@ -823,8 +823,8 @@ The list of available cloud connectors has expanded and existing connectors have
 
    - Improved logging of networking errors as well as error messages.
 
-Alice, Bob, Clara, and Dave can be found
-`here <http://sixsq.com/personae/>`_.
+The Alice, Bob, Clara, and Dave personae_ can be found on the SixSq
+website.
 
 Migration
 ~~~~~~~~~
@@ -1790,3 +1790,5 @@ Commits
 -  `Client <https://github.com/slipstream/SlipStreamClient/compare/SlipStreamClient-2.1.16...SlipStreamClient-2.2.0>`__
 -  `Documentation <https://github.com/slipstream/SlipStreamDocumentation/compare/SlipStreamDocumentation-2.1.16...SlipStreamDocumentation-2.2.0>`__
 
+
+.. _personae: http://sixsq.com/personae/
