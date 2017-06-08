@@ -47,7 +47,7 @@ with the command:
 
 .. code-block:: bash
                 
-   ss-curl https://_slipstream_host_/api/session-template/internal
+   ss-curl https://<slipstream_host>/api/session-template/internal
 
 substituting your SlipStream host name.  You can then modify the JSON
 document and upload the modified version like so:
@@ -56,7 +56,7 @@ document and upload the modified version like so:
                 
    ss-curl -XPUT -H content-type:application/json \
            -d@internal-modified.json \
-           https://_slipstream_host_/api/session-template/internal
+           https://<slipstream_host>/api/session-template/internal
 
 Your modifications will be persisted in the database and will survive
 restarts of the ``ssclj`` service.  You should generally not add or
@@ -107,9 +107,9 @@ must contain the right value for the full GitHub authentication
 workflow to complete correctly.  This field prevents other servers
 from spoofing your SlipStream installation.  The value should be::
 
-  https://_slipstream_host_/api/session/
+  https://<slipstream_host>/api/session/
 
-where you replace "_slipstream_host_" with the hostname of your
+where you replace "<slipstream_host>" with the hostname of your
 SlipStream server.
 
 Once you have provided all of this information, you can click on the
@@ -163,17 +163,27 @@ use this Session Template for logging into the server.
 
 Assuming that you've configured ``ss-curl`` (:ref:`ss-curl`) that
 you've logged into the server as an administrator using ``ss-curl``
-(:ref:`ss-curl-login`), you can then upload your template like so:
+(:ref:`ss-curl-login`), you can then **create** a new resource from
+your file like so:
 
 .. code-block:: bash
 
    ss-curl -XPOST \
            -H content-type:application/json \
            -d@github.json \
-           https://_slipstream_node_/api/session-template
+           https://<slipstream_host>/api/session-template
 
 If this responds with a "201 Created" response, then the resource was
 properly created.
+
+If the resource already exists, you'll get a "409 conflict" response.
+If you want to modify an existing resource, simply use PUT the entire
+modified resource to the resource URL::
+
+  https://<slipstream_host>/api/session-template/<methodKey>
+
+where the last part corresponds to the "methodKey" of the resource.
+To delete, the session template, just use DELETE on the same URL.
 
 Configure SlipStream
 ~~~~~~~~~~~~~~~~~~~~
@@ -213,7 +223,9 @@ services even if they are not directly supported by SlipStream.
 
 **The deployment and configuration of a Keycloak server is not
 described here.  Please see the Keycloak website for that
-information.**
+information.** You take a look at SixSq's `Keycloak
+configuration <https://github.com/SixSq/fed-id/blob/master/README.md>`_
+for the Nuvla service.
 
 Upload Session Template
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -267,10 +279,19 @@ you've logged into the server as an administrator using ``ss-curl``
    ss-curl -XPOST \
            -H content-type:application/json \
            -d@keycloak.json \
-           https://_slipstream_node_/api/session-template
+           https://<slipstream_host>/api/session-template
 
 If this responds with a "201 Created" response, then the resource was
 properly created.
+
+If the resource already exists, you'll get a "409 conflict" response.
+If you want to modify an existing resource, simply use PUT the entire
+modified resource to the resource URL::
+
+  https://<slipstream_host>/api/session-template/<methodKey>
+
+where the last part corresponds to the "methodKey" of the resource.
+To delete, the session template, just use DELETE on the same URL.
 
 Configure SlipStream
 ~~~~~~~~~~~~~~~~~~~~
