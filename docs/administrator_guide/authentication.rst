@@ -23,25 +23,27 @@ Internal
 --------
 
 When the ``ssclj`` server starts, it will create a Session Template
-resource that allows users to authenticate with SlipStream via
-usernames and passwords within its own database.
+resource (``session-template/internal``) that allows users to
+authenticate with SlipStream via usernames and passwords within its
+own database.
 
 .. warning::
 
-   Although the administrator can delete this Session Template, this
-   is **not** recommended.  Deleting this resource will prevent
-   everyone from logging in via their usernames and passwords, until
-   the server is restarted.
+   Although the administrator can delete the
+   ``session-template/internal`` resource, this is **not**
+   recommended.  Deleting this resource will prevent everyone from
+   logging in via their usernames and passwords until the server is
+   restarted.
 
 The values in this template are used by browser and command line
 clients to guide users during the login process.  You may want to
-change the "name" or "description" values to better suit your
+customize the "name" or "description" values to better suit your
 SlipStream deployment.
 
-Assuming that you've configured ``ss-curl`` as described in the
-tutorial and that you've logged into the server as an administrator
-using ``ss-curl``, you can then download the existing template with
-the command:
+Assuming that you've configured ``ss-curl`` (:ref:`ss-curl`) and that
+you've logged into the server as an administrator using ``ss-curl``
+(:ref:`ss-curl-login`), you can then download the existing template
+with the command:
 
 .. code-block:: bash
                 
@@ -147,24 +149,26 @@ Template resource looks like the following:
              }
    }
 
-For GitHub OAuth Apps, the value for the "method" key must be
-"github".  You may set "methodKey" to any identifier that you would
+**For GitHub OAuth Apps, the value for the "method" key must be
+"github".** You may set "methodKey" to any identifier that you would
 like; this identifier is used in the server configuration described
 below.
 
-The values for the "name" and "description" keys are usually used by
-the clients to present useful information to the users.
+The values for the "name" and "description" keys are used by the
+clients to present useful information to the users.
 
 The ACL must allow the "ANON" role to view the template; if you do not
 allow this, then unauthenticated users will not be able to view and to
 use this Session Template for logging into the server.
 
-Assuming that you've configured ``ss-curl`` as described in the
-tutorial and that you've logged into the server as an administrator
-using ``ss-curl``, you can then upload your template like so:
+Assuming that you've configured ``ss-curl`` (:ref:`ss-curl`) that
+you've logged into the server as an administrator using ``ss-curl``
+(:ref:`ss-curl-login`), you can then upload your template like so:
 
 .. code-block:: bash
-   ss-curl -XPOST -H content-type:application/json \
+
+   ss-curl -XPOST \
+           -H content-type:application/json \
            -d@github.json \
            https://_slipstream_node_/api/session-template
 
@@ -216,8 +220,9 @@ Upload Session Template
 
 Each available authentication method is associated with a "Session
 Template" resource.  You must create one that will use the OIDC
-protocol with Keycloak.  A JSON representation of the Session Template
-resource looks like the following:
+protocol with Keycloak (or another compatible OIDC identity provider).
+A JSON representation of the Session Template resource looks like the
+following:
 
 .. code-block:: json
 
@@ -241,25 +246,26 @@ resource looks like the following:
              }
    }
 
-For OIDC-based services, the value for the "method" key must be
-"oidc".  You may set "methodKey" to any identifier that you would
+**For OIDC-based services, the value for the "method" key must be
+"oidc".** You may set "methodKey" to any identifier that you would
 like; this identifier is used in the server configuration described
 below.
 
-The values for the "name" and "description" keys are usually used by
-the clients to present useful information to the users.
+The values for the "name" and "description" keys are used by the
+clients to present useful information to the users.
 
 The ACL must allow the "ANON" role to view the template; if you do not
 allow this, then unauthenticated users will not be able to view and to
 use this Session Template for logging into the server.
 
-Assuming that you've configured ``ss-curl`` as described in the
-tutorial and that you've logged into the server as an administrator
-using ``ss-curl``, you can then upload your template like so:
+Assuming that you've configured ``ss-curl`` (:ref:`ss-curl`) and that
+you've logged into the server as an administrator using ``ss-curl``
+(:ref:`ss-curl-login`), you can then upload your template like so:
 
 .. code-block:: bash
                 
-   ss-curl -XPOST -H content-type:application/json \
+   ss-curl -XPOST \
+           -H content-type:application/json \
            -d@keycloak.json \
            https://_slipstream_node_/api/session-template
 
@@ -278,12 +284,21 @@ the ``ssclj`` server.  Add the following fields to the
   OIDC_PUBLIC_KEY_METHODKEY=/etc/slipstream/auth/_certificate_.pem
 
 The administrator of the Keycloak server can provide you with the
-appropriate values and the server's public key.  The public key, you
-must copy to the SlipStream server and change the ownership to the
-``slipstream`` user.
+appropriate values and the server's public key.
 
-You must replace "METHODKEY" with the munged value of "methodKey" in
-your Session Template.  To munge the value:
+The public key, you must copy to the SlipStream server and save in a
+file.  The file contents must look like the following::
+
+  -----BEGIN PUBLIC KEY-----
+  MIIBI...
+  -----END PUBLIC KEY-----
+
+You'll likely need to add the begin and end markers.  Change the
+ownership of this file to ``slipstream:slipstream``.
+
+For the configuration parameters, you must replace "METHODKEY" with
+the munged value of "methodKey" in your Session Template.  To munge
+the value:
 
  1. Convert all letters to uppercase and
  2. Replace any hyphens ("-") with underscores ("_").
