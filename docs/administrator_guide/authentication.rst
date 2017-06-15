@@ -71,9 +71,9 @@ to use GitHub as an identity provider.  To configure SlipStream to use
 GitHub as an identity provider you must:
 
  1. Register an OAuth application within your GitHub organization,
- 2. Configure the ``/etc/default/ssclj`` file with the GitHub OAuth
-    application parameters, and
- 3. Add an appropriate Session Template resource to your SlipStream
+ 2. Add an appropriate Session Template resource to your SlipStream
+    server, and
+ 3. Add the associated Configuration resource to your SlipStream
     server.
 
 The following sections provide detailed instructions for each of these
@@ -131,7 +131,7 @@ Template resource looks like the following:
 
    {
       "method": "github",
-      "methodKey": "github-test",
+      "instance": "github-test",
       "name": "Sign In with GitHub (Test)",
       "description": "GitHub Authentication Using the Test Application Definition",
       "acl": {
@@ -150,7 +150,7 @@ Template resource looks like the following:
    }
 
 **For GitHub OAuth Apps, the value for the "method" key must be
-"github".** You may set "methodKey" to any identifier that you would
+"github".** You may set "instance" to any identifier that you would
 like; this identifier is used in the server configuration described
 below.
 
@@ -180,34 +180,48 @@ If the resource already exists, you'll get a "409 conflict" response.
 If you want to modify an existing resource, simply use PUT the entire
 modified resource to the resource URL::
 
-  https://<slipstream_host>/api/session-template/<methodKey>
+  https://<slipstream_host>/api/session-template/<instance>
 
-where the last part corresponds to the "methodKey" of the resource.
+where the last part corresponds to the "instance" of the resource.
 To delete, the session template, just use DELETE on the same URL.
 
 Configure SlipStream
 ~~~~~~~~~~~~~~~~~~~~
 
 You must provide the configuration parameters for the GitHub OAuth
-application to the ``ssclj`` server.  Add the following fields to the
-``/etc/default/ssclj`` file::
+application to the ``ssclj`` server.  This is done by adding a
+Configuration resource to the server.
 
-  GITHUB_CLIENT_ID_METHODKEY=...
-  GITHUB_CLIENT_SECRET_METHODKEY=...
+.. code-block:: json
 
-where you must provide the "Client ID" and "Client Secret" values that
-you obtained from your application registration in GitHub.  You must
-replace "METHODKEY" with the munged value of "methodKey" in your
-Session Template.  To munge the value:
+   {
+       "configurationTemplate": {
+           "href": "configuration-template/session-github",
+           "instance": "github-test",
+           "clientID": "<your client id>",
+           "clientSecret": "<your client secret>"
+       }
+   }
 
- 1. Convert all letters to uppercase and
- 2. Replace any hyphens ("-") with underscores ("_").
+Note that the value of the ``href`` attribute must be exactly as above
+and the value of the ``instance`` must be the same as in your Session
+Template resource.
 
-For example for the the value "github-test", you would replace
-"METHODKEY" above with the string "GITHUB_TEST".
+The "Client ID" and "Client Secret" are the values that you obtained
+from your application registration in GitHub.
 
-After making changes to the ``/etc/default/ssclj`` file, you must
-restart ``ssclj``, usually with ``systemctl restart ssclj``.
+Like the other resources, this can be added to the server via a POST
+request. 
+
+.. code-block:: bash
+
+   ss-curl -XPOST \
+           -H content-type:application/json \
+           -d@configuration-github.json \
+           https://<slipstream_host>/api/configuration
+
+This will create the resource.  Use a PUT or DELETE on the created
+resource to modify or delete it, respectively.
 
 OpenID Connect (OIDC)
 ---------------------
@@ -240,7 +254,7 @@ following:
 
    {
       "method": "oidc",
-      "methodKey": "keycloak",
+      "instance": "keycloak",
       "name": "Sign In with eduGAIN or Elixir AAI",
       "description": "OIDC Authentication Using Nuvla Keycloak Server for eduGAIN or Elixir AAI",
       "acl": {
@@ -259,7 +273,7 @@ following:
    }
 
 **For OIDC-based services, the value for the "method" key must be
-"oidc".** You may set "methodKey" to any identifier that you would
+"oidc".** You may set "instance" to any identifier that you would
 like; this identifier is used in the server configuration described
 below.
 
@@ -288,48 +302,48 @@ If the resource already exists, you'll get a "409 conflict" response.
 If you want to modify an existing resource, simply use PUT the entire
 modified resource to the resource URL::
 
-  https://<slipstream_host>/api/session-template/<methodKey>
+  https://<slipstream_host>/api/session-template/<instance>
 
-where the last part corresponds to the "methodKey" of the resource.
+where the last part corresponds to the "instance" of the resource.
 To delete, the session template, just use DELETE on the same URL.
 
 Configure SlipStream
 ~~~~~~~~~~~~~~~~~~~~
 
 You must provide the configuration parameters for the OIDC server to
-the ``ssclj`` server.  Add the following fields to the
-``/etc/default/ssclj`` file::
+the ``ssclj`` server by adding a Configuration resource.
 
-  OIDC_CLIENT_ID_METHODKEY=...
-  OIDC_BASE_URL_METHODKEY=https://_keycloak_node_/auth/realms/master/protocol/openid-connect
-  OIDC_PUBLIC_KEY_METHODKEY=/etc/slipstream/auth/_certificate_.pem
+.. code-block:: json
 
-The administrator of the Keycloak server can provide you with the
-appropriate values and the server's public key.
+   {
+       "configurationTemplate": {
+           "href": "configuration-template/session-oidc",
+           "instance": "keycloak",
+           "clientID": "<your client ID>",
+           "baseURL": "<your base URL>",
+           "publicKey": "<your RSA public key>",
+       }
+   }
 
-The public key, you must copy to the SlipStream server and save in a
-file.  The file contents must look like the following::
+Note that the value of the ``href`` attribute must be exactly as above
+and the value of the ``instance`` must be the same as in your Session
+Template resource.
 
-  -----BEGIN PUBLIC KEY-----
-  MIIBI...
-  -----END PUBLIC KEY-----
+The "Client ID", "baseURL", and "publicKey" can be obtained from the
+administrator of the OIDC service which you are using.
 
-You'll likely need to add the begin and end markers.  Change the
-ownership of this file to ``slipstream:slipstream``.
+Like the other resources, this can be added to the server via a POST
+request. 
 
-For the configuration parameters, you must replace "METHODKEY" with
-the munged value of "methodKey" in your Session Template.  To munge
-the value:
+.. code-block:: bash
 
- 1. Convert all letters to uppercase and
- 2. Replace any hyphens ("-") with underscores ("_").
+   ss-curl -XPOST \
+           -H content-type:application/json \
+           -d@configuration-keycloak.json \
+           https://<slipstream_host>/api/configuration
 
-For example for the the value "keycloak-test", you would replace
-"METHODKEY" above with the string "KEYCLOAK_TEST".
-
-After making changes to the ``/etc/default/ssclj`` file, you must
-restart ``ssclj``, usually with ``systemctl restart ssclj``.
-
+This will create the resource.  Use a PUT or DELETE on the created
+resource to modify or delete it, respectively.
 
 
 .. _OIDC: http://openid.net/connect/
