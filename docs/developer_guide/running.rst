@@ -82,25 +82,9 @@ The service should be started from the ``ssclj/jar`` module of
 
    $ cd SlipStreamServer/ssclj/jar
 
-To run the service, export the required environment variables::
-
-    $ export ES_HOST=localhost
-    $ export ES_PORT=9300
-    $ export CONFIG_NAME=config-hsqldb.edn
-
-SlipStream authentication requires you define environment variables ``AUTH_PUBLIC_KEY`` and ``AUTH_PRIVATE_KEY``
-pointing to your public and private keys absolute paths.
-
-Sample files are provided in ```ssclj/jar/test-resources``` ::
-
-    test-resources
-    ├── auth_privkey.pem
-    ├── auth_pubkey.pem
-    ├── ...
-
 Start Clojure REPL with boot and in the REPL run the commands listed below::
 
-    $ boot repl
+    $ boot server-repl
       boot.user=> (require '[com.sixsq.slipstream.ssclj.app.server :as server :reload true])
       nil
       boot.user=> (def stop-fn (server/start 8201))
@@ -112,36 +96,40 @@ The services will be started on port ``8201``.  You can set it as needed,
 taking into account that it will be required later during the startup of the
 main SlipStream service.
 
-The directory containing the ``config-hsqldb.edn`` file must be on the classpath.  The
-``config-hsqldb.edn`` is the path to the file containing the HSQLDB database definition.
-Typical content looks like::
+It is assumed that an instance of `Elasticsearch <https://www.elastic.co>`__ is
+running on ``localhost:9300``.  If this is not the case, export the following
+environment variables defining the coordinates of Elasticsearch::
 
-    {:auth-db                 {
-                               :classname   "org.hsqldb.jdbc.JDBCDriver"
-                               :subprotocol "hsqldb"
-                               :subname     "hsql://localhost:9001/slipstream"
-                               :make-pool?  true}
+    $ export ES_HOST=<es-host>
+    $ export ES_PORT=<es-port>
 
-     :token-nb-minutes-expiry 120
+The service uses the configuration file defined by ``CONFIG_NAME`` environment
+variable.  To be found by the service, the file should be on the service's
+classpath. ``SlipStreamServer/ssclj/jar/boot.build`` (the project's
+configuration file) sets the service configuration file name and extends the
+classpath to include the default location containing the file. Typically, the
+file is named ``config-hsqldb-mem.edn`` and located in ``test-resources``::
 
-     ;; Used by front server when redirecting (URL accessed only locally)
-     :upstream-server         "http://localhost:8080"
+    (environ :env {:config-name      "config-hsqldb-mem.edn"
+        ...
+    (set-env! :source-paths #(set (concat % #{"test" "test-resources"})))
+        ...
 
-     ;; Used by external authentication providers
-     :auth-server             "http://localhost:8201"
-     :main-server             "http://localhost:8080"
+So, both the file name and its location can be modified in ``boot.build``.
 
-     ;; Application must be registered on Github
-     ;; See https://github.com/settings/applications/new
-     ;; Homepage URL can be <SlipStream end point>
-     ;; The Authorization callback URL must be <SlipStream end point>/auth/callback-github
-     :github-client-id        "changeme"
-     :github-client-secret    "changeme"}
+Apart from other configuration parameters the configuration file contains
+HSQLDB configuration definition.  Typical content looks like::
+
+    {:auth-db {
+       :classname    "org.hsqldb.jdbc.JDBCDriver"
+       :subprotocol  "hsqldb"
+       :subname      "mem://localhost:9012/devresources"
+       :make-pool?   true}}
 
 The ``config-hsqldb.edn`` is part of the source code and located under
 ``resources/`` subdirectory.
 
-The service's log file can be found under ``logs/ssclj-.log``
+The service's log file can be found under ``logs/ssclj-.log``.
 
 You can add other dependencies to the classpath
 as needed.  This can be done either by editing the list of dependencies in
@@ -184,11 +172,11 @@ archive (war file).
     $ cd SlipStreamServer/war
     $ mvn jetty:run-war -Dpersistence.unit=hsqldb-schema
 
-If the last command returns an error like
-``JettyRunWarMojo : Unsupported major.minor version 51.0`` make sure you
-have Java 8 installed. You can find the appropriate download from the
-Java web site. You may also want to consult `this
-article <http://www.jayway.com/2013/03/08/configuring-maven-to-use-java-7-on-mac-os-x/>`__
+If the last command returns an error like ``JettyRunWarMojo : Unsupported
+major.minor version 51.0`` make sure you have Java 8 installed. You can find
+the appropriate download from the Java web site. You may also want to consult
+`this article
+<http://www.jayway.com/2013/03/08/configuring-maven-to-use-java-7-on-mac-os-x/>`__
 for setting up the environment.
 
 As you can see, we run SlipStream as a war behind Jetty. Now that the
@@ -251,17 +239,21 @@ that both ``jar`` and ``conf`` artifacts should be added.
       <version>${project.version}</version>
     </dependency>
 
-Starting the HTTP Server
-------------------------
+Starting HTTP Server and Reverce Proxy
+--------------------------------------
 
-`Nginx <https://www.nginx.com/resources/wiki/>`__ is required to serve SlipStream pages and calls done to Api(s).
-As there are complementary SlipStream services (SlipStream server, SSCLJ server) which run behind different ports,
-and the fact that SlipStream force the usage of secure cookies, all services should be run behind an SSL encryption.
-We use following simplified configuration of Nginx to fulfill this need.
+HTTP server and reverse proxy are required to serve SlipStream static content
+and calls to API.  Below this is done on an example of `Nginx
+<https://www.nginx.com>`__.  As there are complementary SlipStream services
+(SlipStream server, SSCLJ server) which run on different ports, and the
+fact that SlipStream force the usage of secure cookies, all services should be
+run behind an SSL encryption.  We use following simplified configuration of
+Nginx to fulfill this need.
 
 * Nginx installation
 
-Linux users should install it from the official `documentation <https://www.nginx.com/resources/wiki/start/topics/tutorials/install/>`__ page.
+Linux users should install it from the official `documentation
+<https://www.nginx.com/resources/wiki/start/topics/tutorials/install/>`__ page.
 
 Mac OS X users can simply run ::
 
@@ -269,7 +261,9 @@ Mac OS X users can simply run ::
 
 * Nginx configuration
 
-By default, the main Nginx configuration file is named ``nginx.conf`` and placed in the directory ``/usr/local/nginx/conf``, ``/etc/nginx``, or ``/usr/local/etc/nginx``.
+By default, the main Nginx configuration file is named ``nginx.conf`` and
+placed in the directory ``/usr/local/nginx/conf``, ``/etc/nginx``, or
+``/usr/local/etc/nginx``.
 
 It should contain the following ::
 
@@ -289,10 +283,11 @@ It should contain the following ::
     }
 
 
+You need to create configuration for upstream SlipStream services and SSL that will be located
+in ``nginx/servers`` and ``nginx/ssl`` respectively ::
 
-Create a ``servers`` directory realative to your ``nginx.conf`` location and add the following two files into it
-
-- ``slipstream.conf``::
+    $ mkdir {servers,ssl}
+    $ cat > servers/slipstream.conf<<EOF
 
     upstream slipstream_servers {
         server 127.0.0.1:8080;
@@ -309,18 +304,11 @@ Create a ``servers`` directory realative to your ``nginx.conf`` location and add
     ssl_session_cache shared:SSL:1m;
     ssl_session_timeout 30m;
     ssl_session_tickets on;
-    #ssl_dhparam /etc/nginx/ssl/dhparam.pem;
     ssl_prefer_server_ciphers on;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
     ssl_ecdh_curve prime256v1;
     ssl_ciphers "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4:!3DES:AES128-GCM-SHA256";
     resolver 8.8.8.8 8.8.4.4;
-    #ssl_stapling on;
-    #ssl_stapling_verify on;
-
-    # Tells browsers to ONLY connect via HTTPS to SlipStream.
-    # The timeout is set to 1 year, which is reset with each visit.
-    #add_header Strict-Transport-Security "max-age=31536000; includeSubdomains" always;
 
     server {
         listen 443 ssl http2; # deferred reuseport;
@@ -343,15 +331,16 @@ Create a ``servers`` directory realative to your ``nginx.conf`` location and add
             proxy_pass http://ssclj_servers;
             include servers/slipstream-proxy.params;
         }
-        
+
         location /filter-rank {
             proxy_pass http://prs_servers;
             include servers/slipstream-proxy.params;
         }
 
     }
+    EOF
 
- - and ``slipstream-proxy.params``::
+    $ cat > servers/slipstream-proxy.params<< EOF
 
     proxy_http_version 1.1;
 
@@ -372,9 +361,7 @@ Create a ``servers`` directory realative to your ``nginx.conf`` location and add
 
     proxy_redirect off;
 
-At the same level as the ``servers`` directory, create a ``ssl`` directory and jump into it.
-From there,  you will generate key and certificate files ::
-
+    $ cd ssl
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx.key -out nginx.crt
 
 At this stage, your Nginx configuration directory should look like::
@@ -397,8 +384,9 @@ At this stage, your Nginx configuration directory should look like::
 
     sudo nginx
 
-TCP port 443 which you have configured in ``servers\slipstream.conf`` is the standard TCP port that is used for websites which use SSL, therefore your Slipstream is available at
-``https://localhost``
+TCP port 443 which you have configured in ``servers/slipstream.conf`` is the
+standard TCP port that is used for websites which use SSL, therefore your
+Slipstream is available at ``https://localhost``
 
 
 You are now ready to :ref:`configure <dg-cfg>` your new SlipStream
