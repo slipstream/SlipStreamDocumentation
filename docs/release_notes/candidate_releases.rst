@@ -40,7 +40,7 @@ No migration is required.
 Known issues
 ~~~~~~~~~~~~
 
-There are no known issues with this release.
+- OpenStack connector fail to deploy a component (application deployment work).
 
 Commits
 ~~~~~~~
