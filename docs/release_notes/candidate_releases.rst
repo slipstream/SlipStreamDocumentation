@@ -8,7 +8,7 @@ releases. We welcome feedback on these releases; however, these are
 v3.31 (candidate) - 30 June 2017
 -------------------------------
 
-New features and bug fixes in v3.28
+New features and bug fixes in v3.31
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For Alice:
