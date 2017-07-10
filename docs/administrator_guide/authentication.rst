@@ -183,6 +183,7 @@ modified resource to the resource URL::
   https://<slipstream_host>/api/session-template/<instance>
 
 where the last part corresponds to the "instance" of the resource.
+
 To delete, the session template, just use DELETE on the same URL.
 
 Configure SlipStream
@@ -305,6 +306,7 @@ modified resource to the resource URL::
   https://<slipstream_host>/api/session-template/<instance>
 
 where the last part corresponds to the "instance" of the resource.
+
 To delete, the session template, just use DELETE on the same URL.
 
 Configure SlipStream
