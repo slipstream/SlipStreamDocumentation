@@ -5,6 +5,67 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.31 (candidate) - 30 June 2017
+-------------------------------
+
+New features and bug fixes in v3.28
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Alice:
+ - UI:
+    - If PRS is available use by default the fields CPU, RAM, Disk to
+      find the most appropriate service offers
+    - CPU, RAM, Disk values can be changed from the deployment dialog
+ - Server:
+    - Various enhancement to the PRS service
+    - Improved authentication with federated identity
+    - Separated OIDC and Cyclone authentication methods
+
+For Clara:
+ - Python API:
+    - Improved error handling of CIMI resources in SlipStreamPythonAPI
+
+For Dave:
+ - Client:
+    - Reduced the size of the SlipStreamClient tarball
+ - Connectors:
+    - Added service offers scraper to connectors
+ - Server:
+    - Improved logging for CIMI resources
+    - Added ability to start a deployment with service offers
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Service offers schema has been changed.
+To use PRS, please delete all service offers and regenerate them with
+``*-service-offers`` commands (eg: ``openstack-service-offers``)
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.29...v3.31>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.29...v3.31>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.29...v3.31>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.29...v3.31>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.29...v3.31>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.29...v3.31>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.29...v3.31>`__
+
+v3.30 (candidate) - 23 June 2017
+-------------------------------
+
+This release is an internal release.
+Please look at the release notes of v3.31.
+
 v3.28 (candidate) - 21 May 2017
 -------------------------------
 
@@ -92,9 +153,8 @@ Commits
  -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.26...v3.27>`__
  -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.26...v3.27>`__
 
-
 v3.26 (candidate) - 21 April 2017
-~--------------------------------
+---------------------------------
 
 New features and bug fixes in v3.26
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
