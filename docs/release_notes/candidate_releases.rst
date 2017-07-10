@@ -6,7 +6,7 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 v3.31 (candidate) - 30 June 2017
--------------------------------
+--------------------------------
 
 New features and bug fixes in v3.31
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -61,7 +61,7 @@ Commits
  -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.29...v3.31>`__
 
 v3.30 (candidate) - 23 June 2017
--------------------------------
+--------------------------------
 
 This release is an internal release.
 Please look at the release notes of v3.31.
