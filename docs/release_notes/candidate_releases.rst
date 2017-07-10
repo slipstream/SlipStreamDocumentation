@@ -17,7 +17,7 @@ For Alice:
       find the most appropriate service offers
     - CPU, RAM, Disk values can be changed from the deployment dialog
  - Server:
-    - Various enhancement to the PRS service
+    - Various enhancements to the PRS service
     - Improved authentication with federated identity
     - Separated OIDC and Cyclone authentication methods
 
