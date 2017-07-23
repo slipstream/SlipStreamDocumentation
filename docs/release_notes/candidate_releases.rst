@@ -20,19 +20,19 @@ For Alice:
 
 For Clara:
  - CIMI resources:
-    - $orderby query parameter now support sorting by fields
-      containing `:` (colon) character
+    - ``$orderby`` query parameter now support sorting by fields
+      containing ``:`` (colon) character
 
 For Dave:
  - Client:
     - Service Offers scrapers delete only obsolete service offers
-      of type `VM`
+      of type ``VM``
  - Server:
     - Allow to internally create account with special characters
       in username (for external auth)
     - PRS now use one query per Node per Cloud. Each query return
       maximum one element. Queries are threaded.
-    - PRS only search service offers of type `VM`
+    - PRS only search service offers of type ``VM``
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
