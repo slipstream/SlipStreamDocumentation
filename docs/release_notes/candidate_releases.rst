@@ -5,6 +5,59 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.32 (candidate) - 14 July 2017
+--------------------------------
+
+New features and bug fixes in v3.32
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Alice:
+ - UI:
+    - On the "Deploy" dialog, the Cloud you selected will stay
+      selected after a service offers refresh even if it's not
+      the cheapest one
+    - Allow to enter the amount of RAM as a float
+
+For Clara:
+ - CIMI resources:
+    - $orderby query parameter now support sorting by fields
+      containing `:` (colon) character
+
+For Dave:
+ - Client:
+    - Service Offers scrapers delete only obsolete service offers
+      of type `VM`
+ - Server:
+    - Allow to internally create account with special characters
+      in username (for external auth)
+    - PRS now use one query per Node per Cloud. Each query return
+      maximum one element. Queries are threaded.
+    - PRS only search service offers of type `VM`
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.31...v3.32>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.31...v3.32>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.31...v3.32>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.31...v3.32>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.31...v3.32>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.31...v3.32>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.31...v3.32>`__
+
 v3.31 (candidate) - 30 June 2017
 --------------------------------
 
