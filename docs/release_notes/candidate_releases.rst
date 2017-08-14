@@ -14,7 +14,8 @@ New features and bug fixes in v3.34
 For Alice:
  - UI:
     - Fixed minor typo in help hint
-
+ - Connectors:
+    - Fixed the disk resizing for VMs in the OTC provider
 For Dave:
  - Client:
     - Use Python's "requests" lib instead of "httplib2"
