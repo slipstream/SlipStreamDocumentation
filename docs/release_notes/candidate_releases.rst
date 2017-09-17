@@ -5,6 +5,86 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+
+v3.36 (candidate) - 8 September 2017
+------------------------------------
+
+New features and bug fixes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Clara:
+ - Server:
+    - First version of the CIMI VirtualMachines resource
+For Dave:
+ - Client:
+    - The node executor now start only after a valid network configuration is available on OS with SystemD. 
+ - Server:
+    - Install Zookeeper together with SlipStream
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+- The new CIMI VirtualMachines resource will not be populated by the server because of a schema issue.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.35...v3.36>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.35...v3.36>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.35...v3.36>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.35...v3.36>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.35...v3.36>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.35...v3.36>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.35...v3.36>`__
+
+
+v3.35 (candidate) - 25 August 2017
+----------------------------------
+
+New features and bug fixes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Alice:
+ - UI:
+    - The usage page is now rendered correctly
+    - Weekly and monthly usages have been removed
+For Clara:
+ - Server:
+    - Implementation of the `$aggregation` query parameters on CIMI resources
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues with this release.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.34...v3.35>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.34...v3.35>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.34...v3.35>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.34...v3.35>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.34...v3.35>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.34...v3.35>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.34...v3.35>`__
+
+
 v3.34 (candidate) - 11 August 2017
 --------------------------------
 
