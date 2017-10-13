@@ -6,6 +6,78 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 
+v3.38 (candidate) - 13 October 2017
+-----------------------------------
+
+New features and bug fixes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Clara:
+ - TBD
+For Dave:
+ - TBD
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+ - No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.37...v3.38>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.37...v3.38>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.37...v3.38>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.37...v3.38>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.37...v3.38>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.37...v3.38>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.37...v3.38>`__
+
+
+v3.37 (candidate) - 1 October 2017
+----------------------------------
+
+New features and bug fixes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Clara:
+ - TBD
+For Dave:
+ - TBD
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+ - No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.36...v3.37>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.36...v3.37>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.36...v3.37>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.36...v3.37>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.36...v3.37>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.36...v3.37>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.36...v3.37>`__
+
+
 v3.36 (candidate) - 8 September 2017
 ------------------------------------
 
