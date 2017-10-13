@@ -21,5 +21,6 @@ Application Management Platform from `SixSq <http://sixsq.com>`__.
    administrator_guide/index.rst
    developer_guide/index.rst
    legal/index.rst
+   reference/index.rst
 
 
