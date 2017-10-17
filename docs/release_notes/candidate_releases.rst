@@ -12,10 +12,39 @@ v3.38 (candidate) - 13 October 2017
 New features and bug fixes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+For Alice:
+ - Fix issue with credentials for users that have long usernames from
+   External authentication methods (e.g. eduGAIN or Elixir).
+ - Treat entitlements coming from the Elixir AAI federation as
+   SlipStream roles.
+   
+For Bob:
+ - Attach pricing information to metering resource to allow
+   approximate cost estimates to be provided.
+
 For Clara:
- - TBD
-For Dave:
- - TBD
+ - Provide links in the "reference" section to the specific API
+   documentation (Clojure, Python, and Libcloud) in the main
+   SlipStream documentation.
+ - Improve the documentation for using the API key/secret pairs
+   through the API.
+ - Allow users to supply their own server token when using the Clojure
+   API.
+ - Support Debian for package installation.
+ - Add an ``ss-terminate`` command and ensure that ``ss-login`` and
+   ``ss-logout`` are packaged.
+
+For Clara and Dave:
+ - Initial implementation of Job resource to allow for asynchronous
+   actions on the server.
+
+For Everyone:
+ - Fix an issue with updating the internal ACL representation when
+   editing resources, which affected the accuracy of search requests.
+ - Fix an issue with some cloud connectors to avoid collisions (and
+   failures) when creating SSH key resources.
+ - Add support for private network addresses for the Open Telekom
+   Cloud. 
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -49,9 +78,26 @@ New features and bug fixes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For Clara:
- - TBD
-For Dave:
- - TBD
+ - Improve the error messages when trying to upload CIMI resources
+   that do not follow the defined resource schema.
+ - Provide a ServiceBenchmark resource that allows users to post
+   performance and reliability information concerning cloud resources
+   and services.
+ - Adapt language-specific libraries to use "Session" resources for
+   authentication, allowing also the use of API key/secret pairs.
+ - Provide a Libcloud driver for SlipStream.  See the documentation
+   for details.
+
+For Bob:
+ - Implement new resource usage and metering scheme to provide
+   flexible mechanism for usage and billing reports.  This involves
+   the new VirtualMachine, Quota, and Metering resources.
+ - Provide an initial implementation of a cloud credentials resource
+   that will eventually permit sharing of credentials between users.
+
+For Everyone:
+ - Add a wait for a routable IP address in the node executor to avoid
+   unnecessary deployment failures.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
