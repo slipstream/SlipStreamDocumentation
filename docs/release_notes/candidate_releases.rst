@@ -6,6 +6,78 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 
+v3.39 (candidate) - 4 November 2017
+-----------------------------------
+
+The v3.39 release includes a number of underlying improvements to
+improve the scalability and resilience of the SlipStream service. One
+major improvement is the deployment of a new monitoring infrastruture
+that will allow more rapid feedback on resource utilization. This
+includes a new Job resource that will allow many tasks from the API to
+be performed asynchronously.
+
+
+New features and bug fixes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Everyone:
+ - New monitoring infrastructure based on asynchronous Job resource to
+   provide faster feedback on resource utilization and to improve
+   reliability. 
+ - Fixed issues with certificate validation and packaging that caused
+   some deployments to fail.
+
+For Bob:
+ - Added quota enforcement algorithm.
+ - Fixed missing usage collection script that causes resource usage
+   information to not be collected.
+ - Fixed exception when collecting metering information that caused
+   some information to be lost.
+
+For Clara:
+ - Added support for CIMI aggregations to the Python API and
+   refactored for obtaining credential resources.
+ - Ensure that operations for credential resources are correct. (The
+   edit operation is not allowed.)
+
+For Dave:
+ - Updated clojure dependencies to ensure that bug and security fixes
+   are included.
+ - Remove hardcoded endpoint in Java server configuration to allow for
+   more flexible SlipStream deployments.
+ - Use common application server to reduce duplicated code between
+   servers to reduce service footprint.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+ - A migration of the user credentials is required to run the new
+   collector service.  This is currently optional but will be required
+   in upcoming releases.
+
+Known issues
+~~~~~~~~~~~~
+
+ - Connector jar files are installed in the wrong directory.  Copy
+   links from ``/opt/slipstream/ssclj/lib/ext`` to
+   ``/opt/slipstream/ssclj/lib`` or add the previous path to the
+   service deployment file to work around the issue.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.38...v3.39>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.38...v3.39>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.38...v3.39>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.38...v3.39>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.38...v3.39>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.38...v3.39>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.38...v3.39>`__
+
+
 v3.38 (candidate) - 13 October 2017
 -----------------------------------
 
