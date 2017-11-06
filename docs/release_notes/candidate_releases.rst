@@ -60,12 +60,14 @@ Migration
 
  - Install a zookeeper server (needed for the new CIMI job resource)
 
- - A migration of CIMI server default configuration is needed:
-   Edit following file => /etc/default/ssclj
-   `NEW`    ``SLIPSTREAM_RING_CONTAINER_INIT=com.sixsq.slipstream.ssclj.app.server/init``
-   `NEW`    ``SLIPSTREAM_RING_CONTAINER_PORT=<SSCLJ_PORT>``
-   `REMOVE` ``SSCLJ_PORT``
-   `NEW`    ``ZK_ENDPOINTS=<ZK_SERVER_IP>:<ZK_SERVER_PORT>``
+ - A migration of CIMI server default configuration is needed `/etc/default/ssclj`.
+
+   - Add followings:
+      ``SLIPSTREAM_RING_CONTAINER_INIT=com.sixsq.slipstream.ssclj.app.server/init``
+      ``SLIPSTREAM_RING_CONTAINER_PORT=<SSCLJ_PORT>``
+      ``ZK_ENDPOINTS=<ZK_SERVER_IP>:<ZK_SERVER_PORT>``
+   - Remove following:
+      ``SSCLJ_PORT``
 
 Known issues
 ~~~~~~~~~~~~
@@ -74,14 +76,17 @@ Known issues
    links from ``/opt/slipstream/ssclj/lib/ext`` to
    ``/opt/slipstream/ssclj/lib`` or add the previous path to the
    service deployment file to work around the issue.
-   `Issue SixSq/SlipStreamConnectors#115 <https://github.com/SixSq/SlipStreamConnectors/issues/115>`_
-   `Issue slipstream/SlipStreamConnectors#179 <https://github.com/slipstream/SlipStreamConnectors/issues/179>`_
 
- - ss-config command fail to connect to Elasticsearch.
-   `Issue slipstream/SlipStreamServer#1285 <https://github.com/slipstream/SlipStreamServer/issues/1285>`_
+   - `Issue SixSq/SlipStreamConnectors#115 <https://github.com/SixSq/SlipStreamConnectors/issues/115>`_
+   - `Issue slipstream/SlipStreamConnectors#179 <https://github.com/slipstream/SlipStreamConnectors/issues/179>`_
 
- - Insert virtual-machine-mapping with a service offer fail.
-   `Issue slipstream/SlipStreamServer#1287 <https://github.com/slipstream/SlipStreamServer/issues/1287>`_
+ - ``ss-config`` command fail to connect to Elasticsearch.
+
+   - `Issue slipstream/SlipStreamServer#1285 <https://github.com/slipstream/SlipStreamServer/issues/1285>`_
+
+ - Insert a ``virtual-machine-mapping`` with a service offer fail.
+
+   - `Issue slipstream/SlipStreamServer#1287 <https://github.com/slipstream/SlipStreamServer/issues/1287>`_
 
 Commits
 ~~~~~~~
