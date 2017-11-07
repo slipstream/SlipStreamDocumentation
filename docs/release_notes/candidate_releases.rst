@@ -55,8 +55,24 @@ Migration
 ~~~~~~~~~
 
  - A migration of the user credentials is required to run the new
-   collector service.  This is currently optional but will be required
+   collector service.  This is currently optional but will be required 
    in upcoming releases.
+  
+   - Add the followings:
+      ``DBMIGRATION_USER=<username>``
+      ``DBMIGRATION_PASSWORDS=<password>``
+      ``DBMIGRATION_ENDPOINT``: e.g ``http://localhost:8201/api/cloud-entry-point``
+      ``DBMIGRATION_OPTIONS``: defaults to ``{:insecure? false}``
+
+   - Set the `CLASSPATH` to::
+
+        export CLASSPATH=/opt/slipstream/ssclj/lib/SlipStreamCljResources-jar-<version>.jar: \
+        /opt/slipstream/ssclj/lib/:/opt/slipstream/ring-container/lib/
+
+   - Launch the migration script::
+
+        java -cp $CLASSPATH com/sixsq/slipstream/ssclj/migrate/user_cred
+
 
  - Install a zookeeper server (needed for the new CIMI job resource)
 
@@ -315,7 +331,7 @@ For Dave:
       characters
  - Server:
     - Reduce memory consumption of ElasticSearch if it is 
-      installed locally    
+      installed locally
     - On deploy, do not use service-offer if it is empty
     - Fixed memory leak when using ElasticSearch client
     - Improve error logging
