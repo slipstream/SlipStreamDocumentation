@@ -60,14 +60,13 @@ Migration
   
    - Add the followings:
       ``DBMIGRATION_USER=<username>``
-      ``DBMIGRATION_PASSWORDS=<password>``
+      ``DBMIGRATION_PASSWORD=<password>``
       ``DBMIGRATION_ENDPOINT``: e.g ``http://localhost:8201/api/cloud-entry-point``
       ``DBMIGRATION_OPTIONS``: defaults to ``{:insecure? false}``
 
    - Set the `CLASSPATH` to::
 
-        export CLASSPATH=/opt/slipstream/ssclj/lib/SlipStreamCljResources-jar-<version>.jar: \
-        /opt/slipstream/ssclj/lib/:/opt/slipstream/ring-container/lib/
+        export CLASSPATH=/opt/slipstream/ring-container/lib/*:/opt/slipstream/ssclj/lib/*
 
    - Launch the migration script::
 
