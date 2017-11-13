@@ -5,6 +5,49 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.40 (candidate) - 10 November 2017
+------------------------------------
+
+
+This release v3.40 add new job actions implementation to the new job
+resource as well as provides various bug fixes.
+
+
+New features and bug fixes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Clara:
+ - Add an ElasticSearch client to SlipStreamJobEngine.
+
+For Dave:
+ - Add cleanup job and vms job distribution and implementation.
+ - Fix bad directory location of slipstream connectors configuration jar.
+ - Fix type of service offer attribute in Virtual machine mapping resource.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+ - No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.39...v3.40>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.39...v3.40>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.39...v3.40>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.39...v3.40>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.39...v3.40>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.39...v3.40>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.39...v3.40>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.39...v3.40>`__
 
 v3.39 (candidate) - 4 November 2017
 -----------------------------------
