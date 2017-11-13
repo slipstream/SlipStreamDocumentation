@@ -16,6 +16,10 @@ resource as well as provides various bug fixes.
 New features and bug fixes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+For Everyone:
+ - Directly from SlipStream, create an Exoscale account or add trial credit to an existing one
+   by using a coupon code.
+
 For Clara:
  - Add an ElasticSearch client to SlipStreamJobEngine.
 
