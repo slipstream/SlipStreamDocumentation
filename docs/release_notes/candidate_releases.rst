@@ -107,9 +107,24 @@ Migration
   
    - Add the followings:
       ``DBMIGRATION_USER=<username>``
+
       ``DBMIGRATION_PASSWORD=<password>``
+
       ``DBMIGRATION_ENDPOINT``: e.g ``http://localhost:8201/api/cloud-entry-point``
-      ``DBMIGRATION_OPTIONS``: defaults to ``{:insecure? false}``
+
+      ``DBMIGRATION_OPTIONS``: defaults to ``{:insecure? false}`` and can be set to ``{:insecure? false}``
+
+      ``DBMIGRATION_CONFIGFILE`` : (optional) path to specific migration configuration file
+
+The optional migration file is a EDN formatted file looking like::
+
+   {
+   :my-category       {:connectors    #{"my-connector1", "myconnector2", ....}
+                        :template-keys [:key1 :key2 :key3 ....]}
+   ...
+   }
+
+where the list of keys in ``:template-keys`` must match the credential-template corresponding to your connectors category
 
    - Set the `CLASSPATH` to::
 
