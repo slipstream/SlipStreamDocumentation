@@ -86,16 +86,16 @@ To run the service, export the required environment variables, start Clojure
 REPL with boot and in the REPL run the commands listed below::
 
     $ boot server-repl
-      boot.user=> (require '[com.sixsq.slipstream.ssclj.app.server :as server :reload true])
+      boot.user=> (require '[sixsq.slipstream.server.ring-container :as rc])
       nil
-      boot.user=> (def stop-fn (server/start 8201))
+      boot.user=> (def stop-fn (rc/start "com.sixsq.slipstream.ssclj.app.server/init" 8201))
       nil
       boot.user=> ;; when needed, stop with
-      boot.user=> ;; (server/stop stop-fn)
+      boot.user=> ;; (stop-fn)
 
 The services will be started on port ``8201``.  You can set it as needed,
 taking into account that it will be required later during the startup of the
-main SlipStream service.
+main SlipStream service.  The default port is `rc/default-port`.
 
 It is assumed that an instance of Elasticsearch is running on ``localhost:9300``.
 If this is not the case, export the following environment variables defining the
