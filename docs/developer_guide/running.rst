@@ -168,7 +168,7 @@ archive (war file).
 ::
 
     $ cd SlipStreamServer/war
-    $ mvn jetty:run-war
+    $ mvn jetty:run-war -Dorg.eclipse.jetty.annotations.maxWait=120
 
 If the last command returns an error like
 ``JettyRunWarMojo : Unsupported major.minor version 51.0`` make sure you
