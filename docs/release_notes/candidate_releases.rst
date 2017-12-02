@@ -9,7 +9,9 @@ v3.41 (candidate) - 2 December 2017
 -----------------------------------
 
 
-This release v3.41 ...
+This release v3.41 provides more reliable information via the
+dashboard for everyone and improves the Clojure and Python APIs for
+developers.
 
 
 New features and bug fixes
