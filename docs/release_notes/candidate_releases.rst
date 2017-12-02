@@ -5,6 +5,61 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.41 (candidate) - 2 December 2017
+-----------------------------------
+
+
+This release v3.41 ...
+
+
+New features and bug fixes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Everyone:
+ - Dashboard has been updated to take virtual machine information from
+   new monitoring subsystem, that is both more scalable and more
+   reliable.
+ - Fix ACLs on virtual machine records to make them visible to the
+   correct users.
+
+For Clara:
+ - Updates to the Python API to allow the cloud image identifier to be
+   obtained, to get all parameters of a modules, and to update a
+   module.
+ - Updates to the Clojure API to respect the insecure? flag with the
+   pricing, modules, and run resources, allow start/termination of
+   runs, and to remove unnecesary XML processing.
+
+For Dave:
+ - Provide a better mechanism for configuring the user migration
+   script. 
+ - Remove code related to old, unused authentication methods.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+Known issues
+~~~~~~~~~~~~
+
+ - No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.40...v3.41>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.40...v3.41>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.40...v3.41>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.40...v3.41>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.40...v3.41>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.40...v3.41>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.40...v3.41>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.40...v3.41>`__
+
 v3.40 (candidate) - 10 November 2017
 ------------------------------------
 
