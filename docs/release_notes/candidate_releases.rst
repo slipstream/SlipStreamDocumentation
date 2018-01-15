@@ -5,6 +5,68 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+
+v3.42 (candidate) - 12 January 2018
+-----------------------------------
+
+This release brings the following changes.
+
+The persistence of the user entities was moved from HSQLDB to Elasticsearch and
+from now on will be managed through CIMI server.  On already deployed systems
+this assumes that a migration is required.  Check *Migration* section below.
+
+The following connectors were removed and are no longer supported
+
+* StratusLab
+* Azure
+* NativeSoftlayer
+* VCloud
+
+Fixes and improvements:
+
+* fixed and improved VMs information collection service.
+
+Migration
+~~~~~~~~~
+
+The steps below perform migration of users from HSQLDB to Elasticsearch (via
+CIMI server).
+
+Download migration script::
+   
+   $ wget https://raw.githubusercontent.com/slipstream/SlipStreamServer/master/rpm/src/main/migrations/020_migrate_users_to_cimi.py
+   $ chmod +x 020_migrate_users_to_cimi.py
+   $ yum install python-lxml
+   $ # or
+   $ pip install lxml
+
+Dump users with::
+
+   $ export SLIPSTREAM_USERNAME=super
+   $ export SLIPSTREAM_PASSWORD=<password>
+   $ ss-login --endpoint https://<slipstream>
+   $ ./020_migrate_users_to_cimi.py --endpoint https://<slipstream> --get users-3.41/
+
+Perform the upgrade::
+
+   $ yum upgrade -y
+   $ systemctl restart hsqldb ss-pricing ssclj slipstream \
+        slipstream-job-distributor@vms_collect \
+        slipstream-job-distributor@vms_cleanup \
+        slipstream-job-distributor@jobs_cleanup \
+        slipstream-job-executor \
+        elasticsearch logstash filebeat kibana
+
+
+In *https://<slipstream>/configuration -> SlipStream Basics -> java class
+names* remove any instances of the following connectors: nativesoftlayer,
+stratuslab, stratuslabiter, azure, vcloud. Save the configuration.
+
+Push users back to SlipStream::
+
+   $ ./020_migrate_users_to_cimi.py --endpoint https://<slipstream> --put users-3.41/
+
+
 v3.41 (candidate) - 2 December 2017
 -----------------------------------
 
