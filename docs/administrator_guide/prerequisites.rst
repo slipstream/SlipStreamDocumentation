@@ -1,11 +1,13 @@
 Prerequisities
 ==============
 
-The SlipStream server has a standard, n-tier web application
-architecture: the application runs within a Java web application
-container and stores data within an SQL database. Consequently, many
-administrators will be familiar with its configuration needs and modest
-resource requirements.
+SlipStream is migrating towards a micro-server architecture and has a
+number of individual services that work together.  The front-end
+services are stateless and store server state in persistent databases
+(currently Elasticsearch and HSQLDB are used). Many administrators are
+familiar with this type of architecture and will be comfortable
+running the necessary services and databases.
+
 
 Software Requirements
 ---------------------
@@ -20,10 +22,11 @@ Hardware Requirements
 ---------------------
 
 The hardware requirements of SlipStream are modest. Any modern,
-multicore, server-class machine should run the server without problems.
-At least 2 gigabytes of RAM should be dedicated to the Java Virtual
-Machine (JVM) running the service. Similarly 10-20 GB of disk space
-should be sufficient for initial use.
+multicore, server-class machine should run the server without
+problems.  At least 2 gigabytes of RAM should be dedicated to the Java
+Virtual Machines (JVMs) running the services; consequently, the
+physical machine should have 4 or more GB of RAM.  Similarly, 20-50 GB
+of disk space should be sufficient for initial use.
 
 As with any service, the resource requirements for the server will
 increase with the number of users and with the number of system
@@ -43,6 +46,13 @@ To administer and monitor the machine running the SlipStream service,
 you may also want to have the SSH port (22) and the Nagios NRPE port
 (5666) open to your administrators' machines.
 
+For an initial test deployment, the Elasticsearch database is deployed
+on the same machine as the other servers.  In this case, no additional
+ports need to be opened to the outside world.  Production deployments
+should have the Elasticsearch database deployed on separate machines.
+In this case, the Elasticsearch ports 9200 and 9300 will need to be
+opened to the machine(s) running the other SlipStream services.
+
 The configured SlipStream connectors act as clients of the correponding
 cloud service provider. Consequently, the server must also have
 *outgoing* access to the underlying cloud service endpoints. The ports
@@ -55,7 +65,12 @@ contextualization mechanism, the server requires direct SSH access (port
 Cloud Requirements
 ------------------
 
-SlipStream is a cloud deployment engine and requires access to at least
-one supported cloud infrastucture. See the list of supported clouds and
-conditions on the associated cloud plugin to select the cloud(s) you
-will be making available through your SlipStream instance.
+SlipStream is a cloud deployment engine and requires access to at
+least one supported cloud infrastucture. See the list of supported
+clouds and conditions on the associated cloud connector to select the
+cloud(s) you will be making available through your SlipStream
+instance. You will also need to have at least one working account on
+each cloud you want to support to verify the SlipStream configuration
+for the cloud.
+
+
