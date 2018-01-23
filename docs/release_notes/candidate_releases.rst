@@ -66,6 +66,23 @@ Push users back to SlipStream::
 
    $ ./020_migrate_users_to_cimi.py --endpoint https://<slipstream> --put users-3.41/
 
+Known issues
+~~~~~~~~~~~~
+
+ - No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.41...v3.42>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.41...v3.42>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.41...v3.42>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.41...v3.42>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.41...v3.42>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.41...v3.42>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.41...v3.42>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.41...v3.42>`__
+
 
 v3.41 (candidate) - 2 December 2017
 -----------------------------------
