@@ -6,6 +6,98 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 
+v3.44 (candidate) - 24 January 2018
+-----------------------------------
+
+This is primarily a bug fix release that makes improvements for
+SlipStream administrators.
+
+For Everyone:
+ - Fix bug in the deployment garbage collection that caused the clean
+   up to fail.
+
+For Dave:
+ - Extend OpenNebula and NuvlaBox connectors to allow the vCPU/CPU
+   ratio to be defined.  The default value is 0.5.
+ - Correct Logstash and Filebeat configurations when using the
+   installation script to avoid having Logstash logs fill with
+   errors. 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.43...v3.44>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.43...v3.44>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.43...v3.44>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.43...v3.44>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.43...v3.44>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.43...v3.44>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.43...v3.44>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.43...v3.44>`__
+
+
+v3.43 (candidate) - 22 January 2018
+-----------------------------------
+
+For Everyone:
+ - Remove deprecated basic authentication and related parameters from
+   the Python API and Command Line Client.
+ - Fix concurrency issue with cookie handling in the Python API and
+   Command Line Client.
+
+For Dave:
+ - Mark ``/etc/default/slipstream`` as a configuration file to avoid
+   having the configuration overwritten on upgrades.
+ - Improve template handling for the Exoscale connector so that the
+   most recent templates are used by default.  Avoids a problem with
+   running in the DK region.
+ - Rationalize and reduce the default logging of the services to allow
+   for better discovery and debugging of problems.
+ - Optimize the loading of the user resources from the database and
+   provide metrics.
+ - Minimize connections requests from connectors on initialization.
+ - Refactor the deployment garbage collector to reduce object creation
+   and database churn.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+ - Missing dependency for the ssclj server blocks start of service.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.42...v3.43>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.42...v3.43>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.42...v3.43>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.42...v3.43>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.42...v3.43>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.42...v3.43>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.42...v3.43>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.42...v3.43>`__
+
+
 v3.42 (candidate) - 12 January 2018
 -----------------------------------
 
