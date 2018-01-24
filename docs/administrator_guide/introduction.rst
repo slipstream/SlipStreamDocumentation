@@ -1,12 +1,9 @@
 Introduction
 ============
 
-SlipStream, developed by SixSq, is a multi-cloud, coordinated
-provisioning and image factory engine. In other words, it is an
-engineering Platform as a Service (PaaS) solution, supporting production
-deployment in the cloud, as well as development, testing, certification
-and deployment processes using Infrastructure as a Service (IaaS) cloud
-infrastructures.
+SlipStream, developed by SixSq, is an affordable, multi-cloud
+application management platform that supports DevOps, Big Data and
+Smart City strategies platform.
 
 Main Features
 -------------
@@ -37,7 +34,7 @@ reduce latencies by co-locating data and computing resources, while
 reducing costs.
 
 **Support continuous integration processes with continuous deployment**:
-SlipStream encourages users to parameterise image creation and
+SlipStream encourages users to parameterize image creation and
 deployment recipes, such that key parameters (e.g. software version,
 package location, dependencies, inter-relationships) can be provided at
 runtime. This means that it is easy to integrate SlipStream with
@@ -70,44 +67,45 @@ implementations are released under the same license (Apache 2) as the
 SlipStream core; connectors for proprietary solutions are closed source
 and available via a commercial license.
 
-The following table shows the availability of the cloud connectors.
+The following table shows the production connectors.  Alpha and beta
+connectors for other proprietary clouds may also be available; request
+information via the SlipStream support.
 
-+-------------------------+---------------+----------------+
-| Connector               | Type          | Availability   |
-+-------------------------+---------------+----------------+
-| Amazon EC2              | proprietary   | available      |
-+-------------------------+---------------+----------------+
-| CloudSigma              | proprietary   | available      |
-+-------------------------+---------------+----------------+
-| CloudStack              | proprietary   | available      |
-+-------------------------+---------------+----------------+
-| IBM Smart Cloud Entry   | proprietary   | coming soon    |
-+-------------------------+---------------+----------------+
-| Microsoft IaaS Azure    | proprietary   | coming soon    |
-+-------------------------+---------------+----------------+
-| OCCI                    | open source   | available      |
-+-------------------------+---------------+----------------+
-| OpenStack               | open source   | available      |
-+-------------------------+---------------+----------------+
-| Physical/Fixed          | open source   | available      |
-+-------------------------+---------------+----------------+
-| StratusLab              | open source   | available      |
-+-------------------------+---------------+----------------+
-| VMWare vCloud           | proprietary   | available      |
-+-------------------------+---------------+----------------+
++--------------------+---------------+
+|   Connector        |   Type        |
++====================+===============+
+| Amazon EC2         | proprietary   |
++--------------------+---------------+
+| CloudStack         | open source   |
++--------------------+---------------+
+| Exoscale           | proprietary   |
++--------------------+---------------+
+| OpenNebula         | open source   |
++--------------------+---------------+
+| OpenStack          | open source   |
++--------------------+---------------+
+| Open Telekom Cloud | proprietary   |
++--------------------+---------------+
+| NuvlaBox           | proprietary   |
++--------------------+---------------+
+| VMWare vCloud      | proprietary   |
++--------------------+---------------+
+
 
 SlipStream Edition
 ------------------
 
-SlipStream is available in two editions, the **Community** one and the
-**Enterprise** one.
+SlipStream is available in two editions, **Community** and
+**Enterprise**. Commercial support and proprietary connectors (see
+above) are only available on the Enterprise edition; otherwise the two
+editions are identical.
 
-Proprietary connectors (see above) are only available on the Enterprise
-edition.
+For each edition, we maintain three repositories:
 
-For each edition we maintain three repositories:
+- **Snapshots**: most recent code base but software may be unstable
+- **Candidates**: software releases that may be stable but not yet
+  been validated for production
+- **Releases**: stable releases verified for production
 
--  Snapshots (most recent code base but may be unstable)
--  Candidates (possibly stable releases but not yet validated for
-   production)
--  Releases (stable releases for production)
+We create new candidate releases every two weeks and deploy those
+candidates on our Nuvla service.
