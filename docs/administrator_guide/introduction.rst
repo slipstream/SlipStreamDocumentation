@@ -34,7 +34,7 @@ reduce latencies by co-locating data and computing resources, while
 reducing costs.
 
 **Support continuous integration processes with continuous deployment**:
-SlipStream encourages users to parameterise image creation and
+SlipStream encourages users to parameterize image creation and
 deployment recipes, such that key parameters (e.g. software version,
 package location, dependencies, inter-relationships) can be provided at
 runtime. This means that it is easy to integrate SlipStream with
@@ -71,36 +71,41 @@ The following table shows the production connectors.  Alpha and beta
 connectors for other proprietary clouds may also be available; request
 information via the SlipStream support.
 
-+-----------------+---------------+
-| **Connector**   | **Type**      |
-+-----------------+---------------+
-| Amazon EC2      | proprietary   |
-+-----------------+---------------+
-| CloudStack      | open source   |
-+-----------------+---------------+
-| Exoscale        | proprietary   |
-+-----------------+---------------+
-| OpenNebula      | open source   |
-+-----------------+---------------+
-| OpenStack       | open source   |
-+-----------------+---------------+
-| VMWare vCloud   | proprietary   |
-+-----------------+---------------+
++--------------------+---------------+
+|   Connector        |   Type        |
++====================+===============+
+| Amazon EC2         | proprietary   |
++--------------------+---------------+
+| CloudStack         | open source   |
++--------------------+---------------+
+| Exoscale           | proprietary   |
++--------------------+---------------+
+| OpenNebula         | open source   |
++--------------------+---------------+
+| OpenStack          | open source   |
++--------------------+---------------+
+| Open Telekom Cloud | proprietary   |
++--------------------+---------------+
+| NuvlaBox           | proprietary   |
++--------------------+---------------+
+| VMWare vCloud      | proprietary   |
++--------------------+---------------+
+
 
 SlipStream Edition
 ------------------
 
-SlipStream is available in two editions, the **Community** one and the
-**Enterprise** one. Commercial support and proprietary connectors (see
+SlipStream is available in two editions, **Community** and
+**Enterprise**. Commercial support and proprietary connectors (see
 above) are only available on the Enterprise edition; otherwise the two
 editions are identical.
 
-For each edition we maintain three repositories:
+For each edition, we maintain three repositories:
 
--  Snapshots (most recent code base but may be unstable)
--  Candidates (possibly stable releases but not yet validated for
-   production)
--  Releases (stable releases for production)
+- **Snapshots**: most recent code base but software may be unstable
+- **Candidates**: software releases that may be stable but not yet
+  been validated for production
+- **Releases**: stable releases verified for production
 
 We create new candidate releases every two weeks and deploy those
 candidates on our Nuvla service.

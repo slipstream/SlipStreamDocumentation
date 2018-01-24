@@ -1,13 +1,11 @@
 
-Connector Installation and Configuration
-========================================
+Connector-Specific Info
+=======================
 
 .. toctree::
    :maxdepth: 2
 
    cloudstack_connector
    ec2_connector
-   occi_connector
    openstack_connector
-   stratuslab_connector
    vcloud_connector
