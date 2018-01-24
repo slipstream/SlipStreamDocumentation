@@ -4,27 +4,52 @@ Quick Installation
 An automated installation script is available to install SlipStream and
 all of its dependencies on a CentOS 7 machine.
 
-This script will do the following actions on your machine:
+The script will **not** perform a general upgrade of your CentOS 7
+system. You may want to run::
 
--  Configure SlipStream yum repositories
--  Configure epel yum repositories
--  Configure nginx yum repository
--  Install SlipStream in /opt/slipstream
--  Install HSQLDB in /opt/hsqldb
--  Install nginx
--  Install some other dependencies with yum and python-pip
--  Disable SElinux
--  Configure nginx, HSQLDB and SlipStream
--  Replace the firewall configuration with the following:
--  Allow all outgoing packets
--  Allow loopback connections
--  Allow incoming ICMP requests
--  Allow incoming SSH connections (port 22)
--  Allow incoming HTTP connections (port 80)
--  Allow incoming HTTPS connections (port 443)
--  Deny all other incoming connections
--  Deny forwarding
--  Start nginx, HSQLDB and SlipStream
+  $ yum upgrade -y
+
+to make your system consistent with the latest packages and security
+patches. 
+
+This installation script will run through the following phases:
+
+- Prepares the node:
+   - Adds YUM repositories (EPEL, Nginx, Elasticstack, SlipStream)
+   - Installs global dependencies (unzip, curl, wget, ...)
+   - Configures the firewall
+      - Allow all outgoing packets
+      - Allow loopback connections
+      - Allow incoming ICMP requests
+      - Allow incoming SSH connections (port 22)
+      - Allow incoming HTTP connections (port 80)
+      - Allow incoming HTTPS connections (port 443)
+      - Deny all other incoming connections
+      - Deny forwarding
+   - Disables SELinux
+
+- Installs SlipStream dependencies:
+   - Elasticsearch
+   - HSQLDB
+   - Graphite
+   - Zookeeper
+
+- Installs the SlipStream client
+
+- Installs the SlipStream servers
+   - Stops running services
+   - Installs and configures packages
+   - Starts SlipStream services
+   - Installs and configures nginx proxy
+    
+- Installs and configures time synchronization service
+   - Required for checking validity of certificates, etc.
+- Install SlipStream in /opt/slipstream
+- Install HSQLDB in /opt/hsqldb
+- Install nginx
+- Install some other dependencies with yum and python-pip
+- Configure nginx, HSQLDB and SlipStream
+- Start nginx, HSQLDB and SlipStream
 
 These instructions assume that you will be using the prebuilt binary
 packages for SlipStream. If you want to build your own packages from the
