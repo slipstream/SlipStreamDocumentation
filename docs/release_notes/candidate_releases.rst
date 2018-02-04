@@ -6,7 +6,7 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 
-v3.45 (candidate) - 2 February 2018
+v3.45 (candidate) - 4 February 2018
 -----------------------------------
 
 This is primarily a bug fix release, but also includes a prototype for
