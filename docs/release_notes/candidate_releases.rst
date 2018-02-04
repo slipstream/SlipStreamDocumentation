@@ -6,6 +6,53 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 
+v3.45 (candidate) - 2 February 2018
+-----------------------------------
+
+This is primarily a bug fix release, but also includes a prototype for
+a new web interface.  Feedback on that prototype is welcome. 
+
+For Everyone:
+ - An SSH configuration bug that blocked SSH logins on machines
+   without pre-existing ``.ssh`` directories was fixed.
+ - A bug with the Exoscale connector that caused deployments to fail
+   was corrected.
+ - A prototype user interface has been included in the release, which
+   is available by default on the ``/webui`` relative URL.
+
+For Dave:
+ - The configuration for the Job Engine has been added to the quick
+   installation script.
+ - CIMI resources for NuvlaBox registrations have been added.
+ - Unnecessary dependencies have been removed from services and
+   packages have been cleaned up.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.44...v3.45>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.44...v3.45>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.44...v3.45>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.44...v3.45>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.44...v3.45>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.44...v3.45>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.44...v3.45>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.44...v3.45>`__
+
+
 v3.44 (candidate) - 24 January 2018
 -----------------------------------
 
