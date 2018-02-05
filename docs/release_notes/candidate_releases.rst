@@ -38,7 +38,18 @@ No migration is necessary.
 Known issues
 ~~~~~~~~~~~~
 
-No known issues.
+ - When upgrading rename the ``/etc/default/ssclj`` file to
+   ``/etc/default/cimi`` if you've made changes to the configuration
+   file.
+ - If you've made changes to the nginx configuration files, you will
+   need to remove the reference to ``authn.block`` in
+   ``/etc/nginx/conf.d/slipstream.params``.
+ - The wrong version of ``cheshire.jar`` was included in the RPM
+   package for the ``ss-pricing`` service.  Replace
+   ``/opt/slipstream/ss-pricing/lib/cheshire.jar`` with version 5.8.0
+   that can be found at ``clojars.org``.
+ - The RPM package ``slipstream-client-clojure`` was not generated for
+   this release. The v3.44 version works fine. 
 
 Commits
 ~~~~~~~
