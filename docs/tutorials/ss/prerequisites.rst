@@ -166,6 +166,12 @@ defined there by repeating steps 3. and 4. for "exoscale-ch-gva" and
 You will now be able to use two regions of the Exoscale cloud with your account
 through Nuvla.
 
+.. tip::
+
+   The optional "domain" parameter allows you to delegate control of a DNS
+   zone that you own, to Exoscale.  **This parameter for advanced use cases
+   can be left blank.**
+
 .. admonition:: EXERCISES
 
    1. Follow the Exoscale registration procedure to obtain an account.
