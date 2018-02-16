@@ -9,26 +9,42 @@ releases. We welcome feedback on these releases; however, these are
 v3.46 (candidate) - 16 February 2018
 ------------------------------------
 
-TBD...
+This is largely a bug fix release, although a few foundational
+features have been added (external objects, Docker connector,
+credential sharing) that will improve cloud resource management in the
+future.
 
 For Everyone:
- - Changes to allow credential sharing between users/groups.
- - Normalization of styles for webui, improve editing of resources
-   (form and json)
- - Fix login display on mobile devices
+ - User resource implementation was changed to allow credential
+   sharing between users and groups with ACLs.
+ - The login dialog was changed to avoid it being obscured on mobile
+   devices. 
+ - The prototype for the new web browser UI has been improved to
+   provide better editing capabilities with forms and JSON.
+ - Styles of cubic have been normalized to provide a consistent look
+   and feel.
 
 For Clara:
- - Improve Python API to cache credentials for managing access.
- - Python API: CIMI operation call.
- - Python API: package in RPM.
- - Prototype SS connector for Docker.
+ - The login methods of the Python API have been improved to cache
+   credentials to make managing access easier.
+ - Improved the CIMI support in the Python API to allow CIMI actions
+   to be called.
+ - The Python API is now part of the SlipStream RPM packages.
+ - A prototype "cloud" connector (alpha) for Docker infrastructures is
+   now available.
    
 For Dave:
- - Replace machine cookie with API key/secret.
- - External object CIMI resource.
- - Split CIMI server and resources (MF2C)
- - Rationalize and correct dependencies, more to be done.
- - Clean up old authentication code
+ - The "machine" cookies that were used by VMs within a deployment to
+   interact with SlipStream have been replaced by an API key/secret
+   pair. These can be revoked if necessary.
+ - An "external object" CIMI resource has been created to allow links
+   to external files and resources, such as report, data files, etc.
+   This will replace reports and other server-specific resources in
+   future releases.
+ - The server organization has been more finely segmented to allow for
+   wider reuse of the servers and to make containerization easier.
+ - Package dependencies have be rationalized and corrected. More work
+   on this will occur in the future to reduce the servers' footprints.
 
 Old issues: 
  - The wrong version of ``cheshire.jar`` was included in the RPM
