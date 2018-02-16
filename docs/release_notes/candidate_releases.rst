@@ -43,17 +43,11 @@ For Dave:
    future releases.
  - The server organization has been more finely segmented to allow for
    wider reuse of the servers and to make containerization easier.
- - Package dependencies have be rationalized and corrected. More work
-   on this will occur in the future to reduce the servers' footprints.
-
-Old issues: 
- - The wrong version of ``cheshire.jar`` was included in the RPM
-   package for the ``ss-pricing`` service.  Replace
-   ``/opt/slipstream/ss-pricing/lib/cheshire.jar`` with version 5.8.0
-   that can be found at ``clojars.org``.
- - The RPM package ``slipstream-client-clojure`` was not generated for
-   this release. The v3.44 version works fine. 
-
+ - Package dependencies have be rationalized and corrected (including
+   the ``cheshire.jar`` verson in the pricing service). More work on
+   this will occur in the future to reduce the servers' footprints.
+ - SlipStream package dependency on ``slipstream-client-clojure`` (no
+   longer created) has been removed.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -66,20 +60,22 @@ No migration is necessary.
 Known issues
 ~~~~~~~~~~~~
 
-No known issues.
+ - The switch to using API key/secret pairs will only have an effect
+   on running scalable deployments. These will need to be stopped and
+   redeployed.
 
 
 Commits
 ~~~~~~~
 
- -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.44...v3.45>`__
- -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.44...v3.45>`__
- -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.44...v3.45>`__
- -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.44...v3.45>`__
- -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.44...v3.45>`__
- -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.44...v3.45>`__
- -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.44...v3.45>`__
- -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.44...v3.45>`__
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.45...v3.46>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.45...v3.46>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.45...v3.46>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.45...v3.46>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.45...v3.46>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.45...v3.46>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.45...v3.46>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.45...v3.46>`__
 
 
 v3.45 (candidate) - 4 February 2018
