@@ -6,6 +6,66 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 
+v3.46 (candidate) - 16 February 2018
+------------------------------------
+
+TBD...
+
+For Everyone:
+ - Changes to allow credential sharing between users/groups.
+ - Normalization of styles for webui, improve editing of resources
+   (form and json)
+ - Fix login display on mobile devices
+
+For Clara:
+ - Improve Python API to cache credentials for managing access.
+ - Python API: CIMI operation call.
+ - Python API: package in RPM.
+ - Prototype SS connector for Docker.
+   
+For Dave:
+ - Replace machine cookie with API key/secret.
+ - External object CIMI resource.
+ - Split CIMI server and resources (MF2C)
+ - Rationalize and correct dependencies, more to be done.
+ - Clean up old authentication code
+
+Old issues: 
+ - The wrong version of ``cheshire.jar`` was included in the RPM
+   package for the ``ss-pricing`` service.  Replace
+   ``/opt/slipstream/ss-pricing/lib/cheshire.jar`` with version 5.8.0
+   that can be found at ``clojars.org``.
+ - The RPM package ``slipstream-client-clojure`` was not generated for
+   this release. The v3.44 version works fine. 
+
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.44...v3.45>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.44...v3.45>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.44...v3.45>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.44...v3.45>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.44...v3.45>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.44...v3.45>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.44...v3.45>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.44...v3.45>`__
+
+
 v3.45 (candidate) - 4 February 2018
 -----------------------------------
 
