@@ -9,10 +9,13 @@ releases. We welcome feedback on these releases; however, these are
 v3.46 (candidate) - 23 February 2018
 ------------------------------------
 
-This is largely a bug fix release, although a few foundational
-features have been added (external objects, Docker connector,
-credential sharing) that will improve cloud resource management in the
-future.
+This release contains a few foundational features have been added
+(external objects, Docker connector, credential sharing) that will
+improve cloud resource management in the future.  It also includes
+changes to the way machines within a deployment access the server and
+how deployment reports are stored.  Both require administrator
+attention during upgrades. (See migration section.)  The release also
+contains a number of bug fixes.
 
 For Everyone:
  - User resource implementation was changed to allow credential
