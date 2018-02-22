@@ -6,7 +6,7 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 
-v3.46 (candidate) - 16 February 2018
+v3.46 (candidate) - 23 February 2018
 ------------------------------------
 
 This is largely a bug fix release, although a few foundational
@@ -19,10 +19,16 @@ For Everyone:
    sharing between users and groups with ACLs.
  - The login dialog was changed to avoid it being obscured on mobile
    devices. 
+ - The default ACL for Connector resources was changed to allow all
+   authentication users to see them.
+ - The bootstrap script has been corrected to avoid an issue where
+   machine deployments on Ubuntu 16 machines would fail.
  - The prototype for the new web browser UI has been improved to
-   provide better editing capabilities with forms and JSON.
- - Styles of cubic have been normalized to provide a consistent look
-   and feel.
+   provide better editing capabilities with forms and JSON, to plot
+   server metrics, and to render ``href`` attributes as links to other
+   resources. 
+ - Styles of cubic (new web browser UI) have been normalized to
+   provide a consistent look and feel.
 
 For Clara:
  - The login methods of the Python API have been improved to cache
@@ -30,6 +36,10 @@ For Clara:
  - Improved the CIMI support in the Python API to allow CIMI actions
    to be called.
  - The Python API is now part of the SlipStream RPM packages.
+ - A utility method was added to the Python API to retrieve deployment
+   events.
+ - A function was added to the Clojure(Script) API to allow the server
+   metrics to be retrieved.
  - A prototype "cloud" connector (alpha) for Docker infrastructures is
    now available.
    
@@ -38,9 +48,9 @@ For Dave:
    interact with SlipStream have been replaced by an API key/secret
    pair. These can be revoked if necessary.
  - An "external object" CIMI resource has been created to allow links
-   to external files and resources, such as report, data files, etc.
-   This will replace reports and other server-specific resources in
-   future releases.
+   to external files and resources, such as report, data files,
+   etc. Reports are now handled with these resources.  (See migration
+   below.) 
  - The server organization has been more finely segmented to allow for
    wider reuse of the servers and to make containerization easier.
  - Package dependencies have be rationalized and corrected (including
@@ -49,13 +59,25 @@ For Dave:
  - SlipStream package dependency on ``slipstream-client-clojure`` (no
    longer created) has been removed.
 
+
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
 
 Migration
 ~~~~~~~~~
 
-No migration is necessary.
+API key/secret pairs are now being used to manage access to the server
+from deployed machines.  For non-scalable deployments, this change
+will have no effect.  However, scalable deployments will lose access
+to the server. They need to be terminated and restarted.
+
+The method of storing reports has changed with this release.  They are
+now stored in S3 rather than on the server's disk. This requires that
+the administrator have access to an S3 instance and migration of the
+existing reports to S3.
+
+The full procedure to configure S3 and then to migrate the reports is:
+ - TBD...
 
 Known issues
 ~~~~~~~~~~~~
