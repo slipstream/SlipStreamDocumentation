@@ -74,6 +74,22 @@ from deployed machines.  For non-scalable deployments, this change
 will have no effect.  However, scalable deployments will lose access
 to the server. They need to be terminated and restarted.
 
+Below is the migration procedure to enable the view of the connector instances
+by users of your SlipStream instance. From now on this is required for the
+deployments to succeed.
+
+ - login to SlipStream instance as super user
+ - go to \https://\<slipstream\>/webui/cimi/connector
+ - click on `magnifying glass` pictogram (this will fetch all connector config instances)
+ - click on a connector name link
+ - click on `update` button
+ - in the edit window add the following into the list under `"acl" -> "rules"`::
+
+   { "principal": "USER", "right": "VIEW", "type": "ROLE" }
+
+ - click on `update` button to persist the configuration
+ - repeat this for each connector.
+
 The method of storing reports has changed with this release.  They are
 now stored in S3 rather than on the server's disk. This requires that
 the administrator have access to an S3 instance and migration of the
