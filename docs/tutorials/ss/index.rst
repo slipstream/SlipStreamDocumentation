@@ -39,5 +39,6 @@ the exercises can be found on Nuvla.
    module-3
    module-4
    module-5
+   module-6
    roadmap
    appendix
