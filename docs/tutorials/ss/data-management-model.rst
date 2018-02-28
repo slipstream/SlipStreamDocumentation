@@ -11,7 +11,7 @@ provide:
  - The ability to cache and to replicate data objects effectively
 
 Together, these features satisfy the data management requirements for
-applications from a wide range of domains.
+applications from a wide variety of domains.
 
 In detail, the model contains three entities that interact to provide
 all the data management features:
@@ -34,8 +34,9 @@ object's ExternalObject resource.
 
 For simple use cases, the limited, common metadata of CIMI resources
 can be used to search the list of ExternalObject resources
-directly. For most use cases, richer filtering functionality is
-required.  To support this, ServiceOffer resources can be created that
-describe one or many ExternalObject resources.  The open schema of the
-ServiceOffer resource allows any general or domain-specific attributes
-to be associated with the data objects.
+directly. For most use cases however, richer filtering functionality
+is required.  To satisfy this requirement, ServiceOffer resources may
+be created that describe one or many ExternalObject resources.  The
+open schema of the ServiceOffer resource allows any general or
+domain-specific attributes to be associated with the data objects and
+the standard CIMI filtering provides rich queries.
