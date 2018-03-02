@@ -28,3 +28,16 @@ these resources is shown below.
 
    SlipStream Data Management Resources
 
+Once the ServiceOffer and ExternalObject resources have been
+registered in the system, users can find data objects of interest by
+doing the following:
+
+ 1. Using the standard CIMI search and filtering capabilities to find
+    ServiceOffer resources that describe data objects of interest.
+ 2. Follow the "href" links to ExternalObject resources that provide a
+    proxy for the underlying data object.
+ 3. Request a presigned, read URL from the ExternalObject resources to
+    get direct access to the data via the HTTPS protocol.
+
+This process combines high-level filtering capabilities with
+efficient, direct access to data.
