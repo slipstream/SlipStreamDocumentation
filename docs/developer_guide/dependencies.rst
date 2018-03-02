@@ -133,8 +133,22 @@ CentOS 7
 ~~~~~~~~
 
 The correct version of Python will have been installed with the system
-packages described above.  You must also install some Python
-dependencies via ``pip``.  See the common configuration below.
+packages described above.  Nonetheless, it is recommended that you
+install and use ``pyenv``::
+
+  $ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash 
+
+You should also add the following to you bash login script::
+
+  export PATH="/root/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+
+This wil configure your Python environment and let you choose between
+different Python versions.
+
+You must also install some Python dependencies via ``pip``.  See the
+common configuration below.
 
 MacOS
 ~~~~~
@@ -152,7 +166,7 @@ account), adjust your bash login::
 
   export PATH="/Users/username/.pyenv:$PATH"
   eval "$(pyenv init -)"
-  export PATH=$PATH:$HOME/.local/bin
+  eval "$(pyenv virtualenv-init -)"
 
 This will allow you to change dynamically the version of Python being
 used.
@@ -223,33 +237,18 @@ Leiningen
 ~~~~~~~~~
 
 The clojure SlipStream server (ssclj) and its components are built
-using `Boot <http://boot-clj.com/>`__. ``Boot`` is triggered via Maven
-to allow for an integrated build process.
+using `Leiningen <https://leiningen.org/>`__. Leiningen (``lein``) is
+triggered via Maven to allow for an integrated build process.
 
-To install ``boot``, follow its `installation instructions
-<https://github.com/boot-clj/boot#install>`__.
+To install ``lein``, follow its `installation instructions
+<https://leiningen.org/#install>`__.  After installation you must make
+sure that the ``lein`` command is in your path by executing::
 
-After installation you must make sure that the ``boot`` command is in
-your path.  Setup the path with::
+    $ lein -v
 
-    $ export PATH=$PATH:<installation directory>/bin
-
-you may also want to set the environment variables::
-
-    $ export BOOT_JVM_OPTIONS='-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx2g -Xverify:none'
-    $ export BOOT_HOME=${HOME}/.boot
-    $ export BOOT_EMIT_TARGET=no
-
-You will probably want to do this from your shell profile.  With the
-above configuration, you should now be able to execute the command
-``boot --help`` and see usage information and defined tasks.
-
-Note that if you're running as root on your machine, you will also
-need to add the variable::
-
-    $ export BOOT_AS_ROOT=yes
-
-Otherwise ``boot`` will refuse to run.
+This will download the most recent version of Leiningen and provide
+you with the version number.  The download will only happen on the
+first invocation of the command.
 
 PhantomJS
 ~~~~~~~~~
@@ -269,9 +268,14 @@ to ``/usr/local/bin/phantomjs``, but any location available on the
 PATH will work.  The name of the executable must be ``phantomjs``.
 
 The dependencies you installed above for CentOS 7 or Ubuntu include
-the dependencies for phantomjs.
+the dependencies for phantomjs. You can test the installation with
+``phantomjs --version``.
 
-As above, you can test the installation with ``phantomjs --version``.
+.. warning::
+
+   The latest version of PhantomJS does not work correctly on
+   CentOS 7.  Use instead version 2.1.1, which can be found from
+   https://bitbucket.org/ariya/phantomjs/downloads/.
 
 MacOS
 $$$$$
@@ -281,5 +285,5 @@ the command::
 
   $ brew install phantomjs
 
-You can test that it works by doing ``phantomjs --version``.
+As above, you can test that it works by doing ``phantomjs --version``.
 
