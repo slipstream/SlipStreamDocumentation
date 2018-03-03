@@ -140,12 +140,13 @@ install and use ``pyenv``::
 
 You should also add the following to you bash login script::
 
-  export PATH="/root/.pyenv/bin:$PATH"
+  export PATH="/username/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 
 This wil configure your Python environment and let you choose between
-different Python versions.
+different Python versions.  **Be sure to change the path to match your
+username.**
 
 You must also install some Python dependencies via ``pip``.  See the
 common configuration below.
@@ -169,7 +170,17 @@ account), adjust your bash login::
   eval "$(pyenv virtualenv-init -)"
 
 This will allow you to change dynamically the version of Python being
-used.
+used. **Be sure to change the path to match your username.**
+
+If you have errors related to the ``virtualenv-init`` command, then
+run the command::
+
+  git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+
+which will install the missing plugin.
+
+If Python plugin executables are not visible, then you may also need
+to add the path ``/Users/username/.local/bin`` to your PATH variable.
 
 Next install the latest 2.7 release of Python and set this as the
 default::
