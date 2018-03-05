@@ -12,7 +12,7 @@ Databases
 SlipStream needs a JDBC friendly database. By default we use HSQLDB, but
 the persistence.xml file contains a number of other databases, including
 MySQL and PostgreSQL.
-SlipStream API server uses Elastic Search.
+SlipStream API server uses Elasticsearch.
 
 Database Configuration
 ----------------------
@@ -47,15 +47,15 @@ database with the downloaded jar file:
 Note that starting the database in this way should not be done in
 production. This is intended only for development testing.
 
-Elastic Search installation
+Elasticsearch installation
 ---------------------------
 
-Follow instructions from Elastic Search documentation:
+Follow instructions from Elasticsearch documentation:
 https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html
 
 Please use same version as the one found used SlipStream server (see pom.xml in ``SlipStream`` project).
 
-To start Elastic Search engine, just type (in the ``bin`` directory):
+To start Elasticsearch engine, just type (in the ``bin`` directory):
 ::
 
     $ ./elasticsearch
@@ -75,12 +75,12 @@ written in Java, this service is written in Clojure.  The service uses both
 HSQLDB and Elasticsearch, so they should be up and running prior to starting
 the service.
 
-The service should be started from the ``ssclj/jar`` module of
+The service should be started from the ``cimi`` module of
 ``SlipStreamServer`` project.
 
 ::
 
-   $ cd SlipStreamServer/ssclj/jar
+   $ cd SlipStreamServer/cimi
 
 To run the service, export the required environment variables, start Clojure
 REPL with boot and in the REPL run the commands listed below::
@@ -106,7 +106,7 @@ coordinates of Elasticsearch::
 
 The service uses the configuration file defined by ``CONFIG_NAME`` environment
 variable.  To be found by the service, the file should be on the service's
-classpath. ``SlipStreamServer/ssclj/jar/boot.build`` (the project's configuration file)
+classpath. ``SlipStreamServer/cimi/boot.build`` (the project's configuration file)
 sets the service configuration file name and extends the classpath to include
 the default location containing the file. Typically, the file is named
 ``config-hsqldb-mem.edn`` and located in ``test-resources``::
