@@ -65,8 +65,6 @@ The command::
           python-pip \
           rpm-build \
           createrepo \
-          bzip2 \
-          fontconfig \
           gcc \
           docker \
           which
@@ -89,12 +87,6 @@ will install all of the listed packages.
 | rpm-build                  | Creates binary distribution packages    |
 +----------------------------+-----------------------------------------+
 | createrepo                 | Create local yum repository             |
-+----------------------------+-----------------------------------------+
-| fontconfig                 | Clojurescript testing (via phantomjs)   |
-+----------------------------+-----------------------------------------+
-| bzip2                      | Clojurescript testing (phantomjs dep.)  |
-+----------------------------+-----------------------------------------+
-| fontconfig                 | Clojurescript testing (phantomjs dep.)  |
 +----------------------------+-----------------------------------------+
 | gcc                        | Needed for building python dependencies |
 +----------------------------+-----------------------------------------+
@@ -264,41 +256,3 @@ sure that the ``lein`` command is in your path by executing::
 This will download the most recent version of Leiningen and provide
 you with the version number.  The download will only happen on the
 first invocation of the command.
-
-PhantomJS
-~~~~~~~~~
-
-PhantomJS is a headless Javascript environment that is used to test
-the clojurescript-compatible client API.  It must be installed if the
-the unit tests are run during the SlipStream build.
-
-Linux
-$$$$$
-
-On **Linux** machines, you must download the PhantomJS binary tarball
-and then move the static executable into the path.  The tarball can be
-found on the `PhantomJS download webpage
-<http://phantomjs.org/download.html>`__.  Usually the binary is copied
-to ``/usr/local/bin/phantomjs``, but any location available on the
-PATH will work.  The name of the executable must be ``phantomjs``.
-
-The dependencies you installed above for CentOS 7 or Ubuntu include
-the dependencies for phantomjs. You can test the installation with
-``phantomjs --version``.
-
-.. warning::
-
-   The latest version of PhantomJS does not work correctly on
-   CentOS 7.  Use instead version 2.1.1, which can be found from
-   https://bitbucket.org/ariya/phantomjs/downloads/.
-
-MacOS
-$$$$$
-
-On **Mac OS X**, it can be installed easily with ``brew``.  Just run
-the command::
-
-  $ brew install phantomjs
-
-As above, you can test that it works by doing ``phantomjs --version``.
-
