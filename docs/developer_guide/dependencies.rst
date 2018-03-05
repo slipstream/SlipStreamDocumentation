@@ -126,8 +126,8 @@ and install the JDK 8 package from Oracle's `Java download page
 <https://www.java.com/en/download/manual.jsp>`__.
 
 **You must also install Docker.** You can find the DMG package from
- the `Docker website
- <https://docs.docker.com/docker-for-mac/install/>`__.
+the `Docker website
+<https://docs.docker.com/docker-for-mac/install/>`__.
 
 
 Python Dependencies
