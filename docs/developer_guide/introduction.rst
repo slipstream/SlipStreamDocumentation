@@ -15,18 +15,24 @@ on how to:
 -  Build and package the software, and
 -  Run SlipStream locally for development.
 
-It also references the complete `SlipStream
-API <http://ssapi.sixsq.com>`__ for those developers who want to
-integrate SlipStream in their own application DevOps processes.
+**This guide does not cover the SlipStream API.** If you want to use
+SlipStream programmatically, you can find the `complete API
+documentation <http://ssapi.sixsq.com>`__ on a separate, dedicated
+site.
 
 The procedures (and API) are identical for the **Enterprise Edition**,
-which includes a number of additional cloud connectors for public cloud
-services. You only need to change the URLs to those for this edition.
+except that modules for additional cloud connectors for public cloud
+services must be included.
 
-SlipStream is written primarily in `Java <https://www.java.com>`__,
-`Clojure <http://clojure.org>`__, `Python <https://www.python.org>`__,
-`ClojureScript <https://github.com/clojure/clojurescript>`__ and
-`JavaScript
-<https://developer.mozilla.org/en-US/docs/Web/JavaScript>`__.  It uses
-`Maven <https://maven.apache.org/>`__ to build the software and
-various frameworks for unit testing.
+The primary programming languages for SlipStream are `Clojure
+<http://clojure.org>`__, `ClojureScript
+<https://github.com/clojure/clojurescript>`__, and `Python
+<https://www.python.org>`__.  Other languages such as `Java
+<https://www.java.com>`__, `JavaScript
+<https://developer.mozilla.org/en-US/docs/Web/JavaScript>`__, bash,
+etc. are also used.
+
+`Maven <https://maven.apache.org/>`__ and `Leiningen
+<https://leiningen.org/>`__ are used to build the software and various
+language-specific frameworks are used for testing.
+

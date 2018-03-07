@@ -1,72 +1,35 @@
 Dependencies
 ============
 
-To build SlipStream, you need to have a variety of languages, tools, and
-libraries installed on your system.
+To build SlipStream, you need to have a variety of languages, tools,
+and libraries installed on your system.
 
-The current supported target platform is CentOS 7; however, the software
+**The target production platform is CentOS 7.** However, the software
 should build without problems on any Unix-like environment (Linux,
-FreeBSD, Mac OS X, etc.). OS level packages will only be built on platforms
-supporting RPM.
+FreeBSD, MacOS, etc.). Binary packages will only be built on platforms
+supporting RPM. The core developers primarily use MacOS.
 
-SlipStream will **not** build on Windows.
+.. note::
+   
+   The SlipStream build is **not** supported on Windows and will
+   **not** work.
 
-Languages
----------
+The following sections describe how to configure your development
+environment on CentOS 7 and MacOS. If you are using another Unix-like
+platform, use the CentOS 7 instructions as a guide.
 
-The core languages used in development are Java and Python. Make sure
-that you have the development environments for those two languages
-installed. You will need the versions:
+There is also a Docker container that has the entire SlipStream build
+environment preconfigured. See the :ref:`build-container` section for
+details.
 
--  Java 1.8+
--  Python 2.6+ (but not 3.0+)
 
-See the appropriate installation instructions for your operating system.
-
-Other languages used by the SlipStream code are either pulled in
-automatically (e.g. Clojure) or are already installed on all machines by
-default (e.g. bash).
-
-Build Dependencies
-------------------
-
-There are a fairly sizable number of external libraries and tools that
-must be installed for a full build of SlipStream. This section describes
-how to install those dependencies on the primary systems we use. If you
-want to use other systems, you will need to adapt the information below.
-
-Mac OS X
---------
-
-The primary platform used by the SlipStream developers is Mac OS X.
-Consequently, this is a well-understood and well-supported SlipStream
-development environment. We're going to assume you're running OS X with
-`Homebrew <http://brew.sh/>`__ and
-`easy\_install <https://pythonhosted.org/setuptools/easy_install.html>`__
-available.
-
-Your default locale settings may conflict with some of the programs we’ll
-need. If you want to be on the safe side, add these lines to your
-**.bash_profile** file::
-
-    export LC_ALL=en_US.UTF-8
-    export LANG=en_US.UTF-8
-
-Most of the necessary dependencies are already installed by default in
-recent versions of Mac OS X. The few that are not already there, can be
-installed with::
-
-    $ easy_install pip
-    $ curl -O \
-      https://raw.githubusercontent.com/slipstream/SlipStreamClient/master/client/requirements.txt
-    $ pip install -r requirements.txt
-
-These dependencies are needed to run the unit tests for the python code.
+System Packages
+---------------
 
 CentOS 7
---------
+~~~~~~~~
 
-CentOS 7 is the current target platform for production deployments of
+CentOS 7 is the target platform for production deployments of
 SlipStream. Builds on CentOS 7 are the only ones that are officially
 supported.
 
@@ -88,9 +51,9 @@ and package name via the information in the "How can I use these extra
 packages?" section on the `EPEL welcome
 page <http://fedoraproject.org/wiki/EPEL>`__.
 
-All of the build dependencies can be installed directly with ``yum``.
-The following table lists the RPM packages that must be installed and
-describes how those packages are used within the build.
+All of the packaged dependencies can be installed directly with
+``yum``.  The following table lists the RPM packages that must be
+installed and describes how those packages are used within the build.
 
 The command::
 
@@ -102,8 +65,9 @@ The command::
           python-pip \
           rpm-build \
           createrepo \
-          bzip2 \
-          fontconfig
+          gcc \
+          docker \
+          which
 
 will install all of the listed packages.
 
@@ -124,105 +88,126 @@ will install all of the listed packages.
 +----------------------------+-----------------------------------------+
 | createrepo                 | Create local yum repository             |
 +----------------------------+-----------------------------------------+
-| fontconfig                 | Clojurescript testing (via phantomjs)   |
+| gcc                        | Needed for building python dependencies |
 +----------------------------+-----------------------------------------+
-| bzip2                      | Clojurescript testing (phantomjs dep.)  |
+| docker                     | Needed to build containers              |
 +----------------------------+-----------------------------------------+
-| fontconfig                 | Clojurescript testing (phantomjs dep.)  |
+| which                      | Needed for maven configuration          |
 +----------------------------+-----------------------------------------+
+
+MacOS
+~~~~~
+
+The primary platform used by the SlipStream developers is Mac OS X.
+Consequently, this is a well-understood and well-supported SlipStream
+development environment. We're going to assume you're running MacOS
+with `Homebrew <http://brew.sh/>`__.
+
+Your default locale settings may conflict with some of the programs we’ll
+need. If you want to be on the safe side, add these lines to your
+**.bash_profile** file::
+
+    export LC_ALL=en_US.UTF-8
+    export LANG=en_US.UTF-8
+
+Most of the necessary dependencies are already installed by default in
+recent versions of MacOS.
+
+**You must install the Java Development Kit on your system.** Download
+and install the JDK 8 package from Oracle's `Java download page
+<https://www.java.com/en/download/manual.jsp>`__.
+
+**You must also install Docker.** You can find the DMG package from
+the `Docker website
+<https://docs.docker.com/docker-for-mac/install/>`__.
+
+
+Python Dependencies
+-------------------
+
+CentOS 7
+~~~~~~~~
+
+The correct version of Python will have been installed with the system
+packages described above.  Nonetheless, it is recommended that you
+install and use ``pyenv``::
+
+  $ curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash 
+
+You should also add the following to you bash login script::
+
+  export PATH="/username/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+
+This wil configure your Python environment and let you choose between
+different Python versions.  **Be sure to change the path to match your
+username.**
+
+You must also install some Python dependencies via ``pip``.  See the
+common configuration below.
+
+MacOS
+~~~~~
+
+It is strongly recommended that you install and use ``pyenv``.  This
+provides a more flexible and consistent Python environment on MacOS.
+
+From an account with administrator access, install ``pyenv``::
+
+  $ brew update
+  $ brew install pyenv
+
+Then from your normal account (if different from the administrator
+account), adjust your bash login::
+
+  export PATH="/Users/username/.pyenv:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+
+This will allow you to change dynamically the version of Python being
+used. **Be sure to change the path to match your username.**
+
+If you have errors related to the ``virtualenv-init`` command, then
+run the command::
+
+  git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+
+which will install the missing plugin.
+
+If Python plugin executables are not visible, then you may also need
+to add the path ``/Users/username/.local/bin`` to your PATH variable.
+
+Next install the latest 2.7 release of Python and set this as the
+default::
+
+  $ pyenv install 2.7.13
+  $ pyenv global 2.7.13
+
+Note the the download, compilation, and installation of Python will
+take some time.
+
+Verify that you are using the correct version of Python with::
+
+  $ pyenv versions
+
+and verify with ``pip -V`` that ``pip`` works and comes from the
+Python installation that you just performed.
+
+Proceed with the installation of the Python package dependencies
+described in the next section.
+
+
+All Platforms
+~~~~~~~~~~~~~
 
 Install the following dependencies that are needed to run the unit tests for
 the python code::
 
-    $ curl -O \
-      https://raw.githubusercontent.com/slipstream/SlipStreamClient/master/client/requirements.txt
-    $ pip install -r requirements.txt
+    $ pip install tox
 
-Ubuntu 14.04
-------------
+You can verify that ``tox`` is available with ``which``.
 
-Ubuntu is **not** a supported production platform for SlipStream;
-nonetheless, it can be used for development and testing.
-
-These instructions assume that you are building the software on an
-up-to-date, minimal Ubuntu 14.04 system.  You should upgrade your
-system to make sure you have the latest versions of dependencies.
-
-**Unfortunately, the default version of Java available on Ubuntu 14.04
-is too old to work with SlipStream.** You must pull the latest version
-of Java (1.8) from a separate repository.  Run the following to do
-this::
-
-    $ add-apt-repository ppa:openjdk-r/ppa
-    $ apt-get update
-
-Confirm that you want to add this repository when asked.  If you have
-multiple versions of java installed, ensure that Java 8 is the
-default. You can update this, with the commands::
-
-    $ update-alternatives --config java
-    $ update-alternatives --config javac
-
-Choose the Java 8 option for both.
-
-All of the build dependencies can then be installed directly with
-``apt-get``. The following table lists the packages that must be
-installed and describes how those packages are used within the build.
-
-The command::
-
-    $ apt-get install -y \
-          git \
-          openjdk-8-jdk \
-          python-minimal \
-          pylint \
-          python-pip \
-          rpm \
-          createrepo \
-          bzip2 \
-          fontconfig
-
-will install all of the listed packages.
-
-+-------------------+-----------------------------------------+
-| Package           | Comment                                 |
-+-------------------+-----------------------------------------+
-| git               | Download sources from GitHub            |
-+-------------------+-----------------------------------------+
-| openjdk-8-jdk     | Compile and run the server              |
-+-------------------+-----------------------------------------+
-| python-minimal    | Client CLI build and testing            |
-+-------------------+-----------------------------------------+
-| python-devel      | Needed for python module dependencies   |
-+-------------------+-----------------------------------------+
-| python-pip        | Needed for dependencies installation    |
-+-------------------+-----------------------------------------+
-| rpm               | Creates binary distribution packages    |
-+-------------------+-----------------------------------------+
-| createrepo        | Create local yum repository             |
-+-------------------+-----------------------------------------+
-| bzip2             | Clojurescript testing (phantomjs dep.)  |
-+-------------------+-----------------------------------------+
-| fontconfig        | Clojurescript testing (phantomjs dep.)  |
-+-------------------+-----------------------------------------+
-
-.. important::
-
-    Running the tests requires Java 1.8 to run. Either you can install
-    Java 1.8 from an unofficial repository or simply skip the tests
-    using the maven ``-skipTests`` option.
-
-The SlipStream RPM packages will be built if you install the ``rpm`` and
-``createrepo`` packages; however, they cannot be used to install and run
-the SlipStream server. Follow the instructions for running a test
-version of the server from the respository sources.
-
-Install the following dependencies that are needed to run the unit tests for
-the python code::
-
-    $ curl -O \
-      https://raw.githubusercontent.com/slipstream/SlipStreamClient/master/client/requirements.txt
-    $ pip install -r requirements.txt
 
 Build Tools
 -----------
@@ -255,60 +240,19 @@ environment with::
 The ``mvn`` command should now be visible. The software will build with
 any maven version later than 3.3.
 
-Boot
-~~~~
-
-The clojure SlipStream server (ssclj) and its components are built
-using `Boot <http://boot-clj.com/>`__. ``Boot`` is triggered via Maven
-to allow for an integrated build process.
-
-To install ``boot``, follow its `installation instructions
-<https://github.com/boot-clj/boot#install>`__.
-
-After installation you must make sure that the ``boot`` command is in
-your path.  Setup the path with::
-
-    $ export PATH=$PATH:<installation directory>/bin
-
-you may also want to set the environment variables::
-
-    $ export BOOT_JVM_OPTIONS='-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx2g -Xverify:none'
-    $ export BOOT_HOME=${HOME}/.boot
-    $ export BOOT_EMIT_TARGET=no
-
-You will probably want to do this from your shell profile.  With the
-above configuration, you should now be able to execute the command
-``boot --help`` and see usage information and defined tasks.
-
-Note that if you're running as root on your machine, you will also
-need to add the variable::
-
-    $ export BOOT_AS_ROOT=yes
-
-Otherwise ``boot`` will refuse to run.
-
-PhantomJS
+Leiningen
 ~~~~~~~~~
 
-PhantomJS is a headless Javascript environment that is used to test
-the clojurescript-compatible client API.  It must be installed if the
-the unit tests are run during the SlipStream build.
+The clojure SlipStream server (ssclj) and its components are built
+using `Leiningen <https://leiningen.org/>`__. Leiningen (``lein``) is
+triggered via Maven to allow for an integrated build process.
 
-On **Mac OS X**, it can be installed easily with ``brew``.  Just run
-the command::
+To install ``lein``, follow its `installation instructions
+<https://leiningen.org/#install>`__.  After installation you must make
+sure that the ``lein`` command is in your path by executing::
 
-  $ brew install phantomjs
+    $ lein -v
 
-You can test that it works by doing ``phantomjs --version``.
-
-On **Linux** machines, you must download the PhantomJS binary tarball
-and then move the static executable into the path.  The tarball can be
-found on the `PhantomJS download webpage
-<http://phantomjs.org/download.html>`__.  Usually the binary is copied
-to ``/usr/local/bin/phantomjs``, but any location available on the
-PATH will work.  The name of the executable must be ``phantomjs``.
-
-The dependencies you installed above for CentOS 7 or Ubuntu include
-the dependencies for phantomjs.
-
-As above, you can test the installation with ``phantomjs --version``.
+This will download the most recent version of Leiningen and provide
+you with the version number.  The download will only happen on the
+first invocation of the command.
