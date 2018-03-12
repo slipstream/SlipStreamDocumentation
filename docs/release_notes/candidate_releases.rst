@@ -6,6 +6,60 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 
+
+v3.47 (candidate) - 9 March 2018
+------------------------------------
+
+This is primarily a bug fix release that makes improvements for
+SlipStream administrators.
+
+For Everyone:
+ - Deployments older than 3 months are removed for better performance.
+
+For Clara:
+ - The CIMI external objects have a content-type attribute
+   allowing to set metadata while uploading on S3.
+ - The edition of a resource from the Web UI has been improved
+
+For Dave:
+ - The application deployment can be limited
+   according to `scaling guidelines
+   <http://hn-docs.readthedocs.io/en/latest/researcher/scaling-guidelines.html>`_.
+ - The documentation has a new section about Docker Container for builds
+ - User exec parameters are automatically added when new external
+   user is created
+ - Performance improvements are expected on the Job executor
+ - The `Nashorn library <http://openjdk.java.net/projects/nashorn/>`_
+   replaces the (now deprecated) PhantomJS for clojurescript unit tests
+ - User roles are added to the request for api key/secret generation
+   when provisioning VMs
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.46...v3.47>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.46...v3.47>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.46...v3.47>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.46...v3.47>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.46...v3.47>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.46...v3.47>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.46...v3.47>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.46...v3.47>`__
+
 v3.46 (candidate) - 23 February 2018
 ------------------------------------
 

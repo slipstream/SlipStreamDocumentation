@@ -57,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'SlipStream Documentation'
-copyright = u'2017, SixSq'
+copyright = u'2018, SixSq'
 author = u'SixSq'
 
 # The version info for the project you're documenting, acts as replacement for
