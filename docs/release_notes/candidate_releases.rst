@@ -14,25 +14,29 @@ This is primarily a bug fix release that makes improvements for
 SlipStream administrators.
 
 For Everyone:
- - Deployments older than 3 months are removed for better performance.
+ - The size of the application deployments are limited as described in
+   the `scaling guidelines
+   <http://hn-docs.readthedocs.io/en/latest/researcher/scaling-guidelines.html>`_.
+ - Fixed a problem where new users had to edit their profiles before
+   the account could be used.
 
 For Clara:
- - The CIMI external objects have a content-type attribute
-   allowing to set metadata while uploading on S3.
- - The edition of a resource from the Web UI has been improved
+ - The CIMI externalObject resource has been extended to include an
+   optional ``content-type`` attribute, making downloads of the
+   referenced objects easier.
+ - The editing process for resources through the new browser interface
+   has been improved.
 
 For Dave:
- - The application deployment can be limited
-   according to `scaling guidelines
-   <http://hn-docs.readthedocs.io/en/latest/researcher/scaling-guidelines.html>`_.
- - The documentation has a new section about Docker Container for builds
- - User exec parameters are automatically added when new external
-   user is created
- - Performance improvements are expected on the Job executor
+ - The documentation has a new section about using a Docker container
+   for SlipStream builds.
+ - Fixed an issue with the Job executor where it would send large
+   numbers of useless requests to the CIMI server.
  - The `Nashorn library <http://openjdk.java.net/projects/nashorn/>`_
-   replaces the (now deprecated) PhantomJS for clojurescript unit tests
- - User roles are added to the request for api key/secret generation
-   when provisioning VMs
+   replaces the (now deprecated) PhantomJS for clojurescript unit
+   tests.
+ - User roles are added to the request for API key/secret generation
+   when provisioning VMs.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
