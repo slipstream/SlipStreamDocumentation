@@ -6,9 +6,8 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 
-
 v3.47 (candidate) - 9 March 2018
-------------------------------------
+--------------------------------
 
 This is primarily a bug fix release that makes improvements for
 SlipStream administrators.
