@@ -5,6 +5,64 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.48 (candidate) - 23 March 2018
+------------------------------------
+
+This is primarily a bug fix release that makes improvements for
+SlipStream administrators.
+
+For Everyone:
+ - A `usage page <https://nuv.la/webui/usage>`_ is gradually replacing
+   the automatic usage report email. The page is internationalized.
+
+For Clara:
+ - The CIMI externalObject resource has been extended to include an
+   optional ``filename`` attribute, making downloads of the
+   referenced objects easier.
+
+For Dave:
+ - Add compatibility with python 2.6 so that images like Centos6
+   can be deployed.
+ - Fixed bug where OpenStack connector always tried to get a
+   floating ip even when the feature was disabled
+ - When login with super, the page is now loaded with much faster
+   response time
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+- Since reports are stored on S3, credentials should temprarly be set
+  manually in `/opt/slipstream/server/.credentials/object-store-conf.edn`
+  file, following the below format::
+
+   {:key                 "<KEY>"
+    :secret              "<SECRET>"
+    :objectStoreEndpoint "<ENDPOINT>"
+    :reportsBucketName   "<REPORTS_BUCKET_NAME>"}
+
+ - When opening the usage page, the default time period will not be
+   set until the ``filter`` is opened and the calendar objects are initialized.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.47...v3.48>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.47...v3.48>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.47...v3.48>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.47...v3.48>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.47...v3.48>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.47...v3.48>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.47...v3.48>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.47...v3.48>`__
+
 
 v3.47 (candidate) - 9 March 2018
 --------------------------------
