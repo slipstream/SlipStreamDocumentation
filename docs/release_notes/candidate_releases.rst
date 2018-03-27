@@ -6,7 +6,7 @@ releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
 v3.48 (candidate) - 23 March 2018
-------------------------------------
+---------------------------------
 
 This is primarily a bug fix release that makes improvements for
 SlipStream administrators.
@@ -21,12 +21,12 @@ For Clara:
    referenced objects easier.
 
 For Dave:
- - Add compatibility with python 2.6 so that images like Centos6
-   can be deployed.
- - Fixed bug where OpenStack connector always tried to get a
-   floating ip even when the feature was disabled
- - When login with super, the page is now loaded with much faster
-   response time
+ - Add compatibility with Python 2.6 to the SlipStream bootstapping
+   code so that images like Centos6 can be deployed.
+ - Fixed bug where the OpenStack connector always tried to get a
+   floating IP even when the feature was disabled.
+ - When logged in as an administrator, the pages now load much more
+   quickly.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -34,22 +34,26 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-No migration is necessary.
-
-Known issues
-~~~~~~~~~~~~
-
-- Since reports are stored on S3, credentials should temprarly be set
-  manually in `/opt/slipstream/server/.credentials/object-store-conf.edn`
-  file, following the below format::
+Since reports are stored on S3, credentials should temporarily be set
+manually in
+``/opt/slipstream/server/.credentials/object-store-conf.edn`` file,
+following the below format::
 
    {:key                 "<KEY>"
     :secret              "<SECRET>"
     :objectStoreEndpoint "<ENDPOINT>"
     :reportsBucketName   "<REPORTS_BUCKET_NAME>"}
 
- - When opening the usage page, the default time period will not be
-   set until the ``filter`` is opened and the calendar objects are initialized.
+Note that the location and format of the file have changed since the
+previous release.
+
+
+Known issues
+~~~~~~~~~~~~
+
+- When opening the usage page, the default time period will not be set
+  until the ``filter`` is opened and the calendar objects are
+  initialized.
 
 Commits
 ~~~~~~~
@@ -210,8 +214,17 @@ now stored in S3 rather than on the server's disk. This requires that
 the administrator have access to an S3 instance and migration of the
 existing reports to S3.
 
-The full procedure to configure S3 and then to migrate the reports is:
- - TBD...
+You must provide an S3 configuration file
+``/opt/slipstream/server/.aws/credentials`` with the following
+contents::
+
+  aws_secret_access_key=<KEY>
+  aws_access_key_id=<SECRET>
+  aws_endpoint=<S3ENDPOINT>
+
+Note that the name of the bucket is not configurable.  It is set to
+"slipstream-reports" and must be created before being used.
+
 
 Known issues
 ~~~~~~~~~~~~
