@@ -75,23 +75,20 @@ written in Java, this service is written in Clojure.  The service uses both
 HSQLDB and Elasticsearch, so they should be up and running prior to starting
 the service.
 
-The service should be started from the ``cimi`` module of
+The service should be started from the ``cimi-resources`` module of
 ``SlipStreamServer`` project.
 
 ::
 
-   $ cd SlipStreamServer/cimi
+   $ cd SlipStreamServer/cimi-resources
 
 To run the service, export the required environment variables, start Clojure
-REPL with boot and in the REPL run the commands listed below::
+REPL with lein and in the REPL run the commands listed below::
 
-    $ boot server-repl
-      boot.user=> (require '[sixsq.slipstream.server.ring-container :as rc])
-      nil
-      boot.user=> (def stop-fn (rc/start "com.sixsq.slipstream.ssclj.app.server/init" 8201))
-      nil
-      boot.user=> ;; when needed, stop with
-      boot.user=> ;; (stop-fn)
+    $ lein repl
+    user=> (do
+             (require '[sixsq.slipstream.server.ring-container :as rc])
+             (def stop (rc/start 'com.sixsq.slipstream.ssclj.app.server/init 8201)))
 
 The services will be started on port ``8201``.  You can set it as needed,
 taking into account that it will be required later during the startup of the
@@ -104,47 +101,21 @@ coordinates of Elasticsearch::
     $ export ES_HOST=<es-host>
     $ export ES_PORT=<es-port>
 
-The service uses the configuration file defined by ``CONFIG_NAME`` environment
-variable.  To be found by the service, the file should be on the service's
-classpath. ``SlipStreamServer/cimi/boot.build`` (the project's configuration file)
-sets the service configuration file name and extends the classpath to include
-the default location containing the file. Typically, the file is named
-``config-hsqldb-mem.edn`` and located in ``test-resources``::
-
-     (environ :env {:config-name      "config-hsqldb-mem.edn"
-        ...
-     (set-env! :source-paths #(set (concat % #{"test" "test-resources"})))
-        ...
-
-So, both the file name and its location can be modified in ``boot.build``.
-
-Apart from other configuration parameters the configuration file contains
-HSQLDB configuration definition.  Typical content looks like::
-
-    {:auth-db {
-      :classname    "org.hsqldb.jdbc.JDBCDriver"
-      :subprotocol  "hsqldb"
-      :subname      "mem://localhost:9012/devresources"
-      :make-pool?   true}}
-
 The service's log file can be found under ``logs/ssclj-.log``.
 
 You can add other dependencies to the classpath
 as needed.  This can be done either by editing the list of dependencies in
-``build.boot``::
+``project.clj``::
 
-    21   :dependencies
-    22   #(vec (concat %
-    23                 (merge-defaults
-    24                  ['sixsq/default-deps (get-env :version)]
-    25                  '[[org.clojure/clojure]
-    ...
-    58                    [com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf]
-    59                    ;; added OpenStack connector jar
+    44   :dev      {:resource-paths ["test-resources"]
+    45              :dependencies [[com.sixsq.slipstream/slipstream-ring-container]
+    46                             [com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf]]}})
 
-or providing the dependencies to ``boot`` command as follows::
+or providing the dependencies to ``lein`` command as follows::
 
-    $ boot -d com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf:3.17-SNAPSHOT repl
+    $ lein update-in :profiles merge \
+      '{:dev {:resource-paths ["test-resources"] :dependencies [[com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf]]}}' \
+      -- repl
 
 By adding connectors jar to the classpath of the service (as shown above) we
 allow the service to create the connector instances.
@@ -152,9 +123,9 @@ allow the service to create the connector instances.
 Starting Pricing and Ranking Service (PRS)
 ------------------------------------------
 
-To start PRS service go to ``SlipStreamServer/jar-prs-service`` and run::
+To start PRS service go to ``SlipStreamServer/prs`` and run::
 
-    $ boot run
+    $ lein run
 
 The service starts on ``localhost:3000`` by default.  Logs go to stdout/err.
 
