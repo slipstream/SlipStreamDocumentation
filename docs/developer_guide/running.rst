@@ -103,13 +103,13 @@ coordinates of Elasticsearch::
 
 The service's log file can be found under ``logs/ssclj-.log``.
 
-You can add other dependencies to the classpath
-as needed.  This can be done either by editing the list of dependencies in
-``project.clj``::
+You can add other dependencies to the classpath as needed.  This can be done
+either by editing the list of dependencies in ``project.clj`` under
+``defproject -> :profiles`` and adding::
 
-    44   :dev      {:resource-paths ["test-resources"]
-    45              :dependencies [[com.sixsq.slipstream/slipstream-ring-container]
-    46                             [com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf]]}})
+    :dev      {:resource-paths ["test-resources"]
+               :dependencies [[com.sixsq.slipstream/slipstream-ring-container ~+version+]
+                              [com.sixsq.slipstream/SlipStreamConnector-OpenStack-conf ~+version+]]}})
 
 or providing the dependencies to ``lein`` command as follows::
 
