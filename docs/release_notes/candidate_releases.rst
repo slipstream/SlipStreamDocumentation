@@ -5,6 +5,101 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.49 (candidate) - 13 April 2018
+---------------------------------
+
+External Object now has two types: generic and report.  The latter one is used
+for storing the deployment reports. The ``generic`` one can be used by anyone
+willing to store data on clouds' Object Store.  For details `see
+<http://ssdocs.sixsq.com/en/latest/tutorials/ss/data-management-model.html>_`.
+
+For Everyone:
+ - x
+
+For Clara:
+ - x
+
+For Dave:
+ - x
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+This release moves the configuration of the S3 backend for reports from
+``/opt/slipstream/server/.credentials/object-store-conf.edn`` file to the
+``configuration/slipstream`` resource.
+
+The following migration steps are required.  
+
+1. After the upgrade of the packages make sure that elasticsearch service is
+   running: ``systemctl start elasticserach``
+
+2. Create the following JSON file::
+
+    # cat configuration-slipstream.edn
+    {
+      :id "configuration/slipstream"
+      :slipstreamVersion "3.49"
+      :reportsObjectStoreBucketName "<bucket-name>"
+      :reportsObjectStoreCreds      "credential/<CHANGE-ME-UUID>"
+      }
+
+    
+  The value for ``<bucket-name>`` should either be taken from your previous
+  configuration file
+  ``/opt/slipstream/server/.credentials/object-store-conf.edn`` (where it is
+  defined as ``:reportsBucketName``) or you can define a new name.  Note, that
+  according to the S3 standard, the bucket name should be unique on the S3
+  endpoint.
+  
+  The value for ``:reportsObjectStoreCreds`` should be the URI of the
+  credential that you intend to be used for storing the reports of the
+  SlipStream users.  Because each credential refers to a connector, you have to
+  make sure that the connector (and, hence, IaaS cloud) behind the credential
+  implements and actually exposes S3 endpoint.  All the connectors were updated
+  to provide an extra configuration option ``:objectStoreEndpoint``.  It has to
+  be set to a valid S3 endpoint before the persistence of the user deployment
+  reports can be done.
+
+3. After the configuration file is ready, run the following command to actually
+   configure the service::
+
+   # ss-conifg configuration-slipstream.edn
+   #
+  
+4. Delete the previous configuration file::
+
+   # rm -f /opt/slipstream/server/.credentials/object-store-conf.edn
+   #
+
+
+The configuration can be always be updated via web UI by going to
+``https://<ss-host>/webui/cimi/configuration/slipstream`` resource and editing
+the configuration document there.
+
+
+Known issues
+~~~~~~~~~~~~
+
+- x
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.48...v3.49>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.48...v3.49>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.48...v3.49>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.48...v3.49>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.48...v3.49>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.48...v3.49>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.48...v3.49>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.48...v3.49>`__
+
+
+
 v3.48 (candidate) - 23 March 2018
 ---------------------------------
 
