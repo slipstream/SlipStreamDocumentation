@@ -75,8 +75,7 @@ The following migration steps are required.
    # rm -f /opt/slipstream/server/.credentials/object-store-conf.edn
    #
 
-
-The configuration can be always be updated via web UI by going to
+The configuration can always be updated via web UI by going to
 ``https://<ss-host>/webui/cimi/configuration/slipstream`` resource and editing
 the configuration document there.
 
