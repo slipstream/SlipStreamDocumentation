@@ -11,7 +11,7 @@ v3.49 (candidate) - 13 April 2018
 External Object now has two types: generic and report.  The latter one is used
 for storing the deployment reports. The ``generic`` one can be used by anyone
 willing to store data on clouds' Object Store.  For details `see
-<http://ssdocs.sixsq.com/en/latest/tutorials/ss/data-management-model.html>_`.
+<http://ssdocs.sixsq.com/en/latest/tutorials/ss/data-management-model.html>`_.
 
 For Everyone:
  - x
