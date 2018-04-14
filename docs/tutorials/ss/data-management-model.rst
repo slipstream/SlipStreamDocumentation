@@ -2,41 +2,71 @@
 Data Management Model
 =====================
 
-The data management model adopted by SlipStream was designed to
-provide: 
+The SlipStream multi-cloud object storage provides Write-Once,
+Read-Mostly (WORM) semantics. That is, a particular object is created,
+populated with data, and then remains immutable for the rest of its
+lifecycle. This makes strategies for replication and caching easier to
+implement.
 
- - An abstraction that allows uniform access across multiple clouds
- - Rich search capabilities to find appropriate data objects
- - Direct access to data within objects to maximize performance
- - The ability to cache and to replicate data objects effectively
+Model Entities
+--------------
 
-Together, these features satisfy the data management requirements for
-applications from a wide variety of domains.
+The full data management model contains three entities that interact
+to provide all the stated benefits:
 
-In detail, the model contains three entities that interact to provide
-all the data management features:
-
- - S3 object storage on the supported cloud infrastructures,
- - "ExternalObject" resources within SlipStream that provide links to
-   the real data objects in the S3 object storage, and
- - ServiceOffer resources that optionally provide metadata describing
-   a data object or a set of data objects.
-
-The model follows a "write-once, read many" policy to allow for easier
-reasoning about caching and replication in a distributed, multi-cloud
-environment.
+ - **S3 object storage** on the supported cloud infrastructures,
+ - **ExternalObject** resources within SlipStream that provide links
+   to the real data objects in the S3 object storage, and
+ - **ServiceOffer** resources that optionally provide rich,
+   user-defined metadata for an object or set of objects.
 
 For reading and writing (once) a data object, users will be referred
 to the S3 object store for direct access. However, the management
 functions, like creating, updating properties, and deleting, are
-handled through SlipStream via the standard CRUD actions on the data
-object's ExternalObject resource.
+handled through SlipStream via the standard CIMI CRUD actions on the data
+object's ExternalObject and/or ServiceOffer resource.
 
-For simple use cases, the limited, common metadata of CIMI resources
-can be used to search the list of ExternalObject resources
-directly. For most use cases however, richer filtering functionality
-is required.  To satisfy this requirement, ServiceOffer resources may
-be created that describe one or many ExternalObject resources.  The
+Operations
+----------
+
+A person who wants to access stored objects, follows the simple,
+three-step process shown in the following diagram.
+
+.. figure:: images/diagrams/multi-cloud-object-store.png
+   :width: 70%
+   :align: center
+
+   Data Access Process
+
+The process for creating data objects is similarly easy:
+
+ 1) Create ExternalObject resource in SlipStream,
+ 2) Request a pre-signed upload URL,
+ 3) Upload the data, and
+ 4) Mark the ExternalObject as "ready".
+
+Deleting an object is a single step process. 
+
+Object Metadata
+---------------
+
+The metadata for objects is stored in SlipStream, either in
+ExternalObject or ServiceOffer resources.
+
+For many, simple use cases, the attributes available on the
+ExternalObject resource will be sufficient.  These attributes include
+a name, description, simple properties, bucket name, and object name. 
+
+For those use cases that require richer metadata, ServiceOffer
+resources can be used together with the ExternalObject resources.  The
 open schema of the ServiceOffer resource allows any general or
 domain-specific attributes to be associated with the data objects and
 the standard CIMI filtering provides rich queries.
+
+Authorization
+-------------
+
+Access to objects is controlled through SlipStream ACLs.  Those
+users/roles with "modify" access to an object can upload data,
+download data, and delete the object.  Those with "view" access can
+only download data.  Any authenticated user can create an object.

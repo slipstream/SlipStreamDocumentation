@@ -22,21 +22,21 @@ Create
 
 The ExternalObject resource is a templated CIMI resource.  This means
 that the creation request must reference an ExternalObjectTemplate
-(which will then require a reference to a cloud credential and a
-bucket name) when creating a new ExternalObject resource.
+(which will then require a reference to a cloud credential) when
+creating a new ExternalObject resource.
 
 When the server creates the resource, it:
 
- - Checks that the bucket exists, creating it if necessary using the
-   referenced credentials,
- - Creates the ExternalObject resource with the provided information,
-   and
- - Sets the state of the resource to "created" in preparation of
-   having the data uploaded to the object.
+ - Checks that the bucket exists, **creating the bucket** if necessary
+   using the referenced credentials,
+ - **Creates the ExternalObject** resource with the provided
+   information, and
+ - **Sets the state to "new"** in preparation of having the data
+   uploaded to the object.
 
 If the bucket doesn't exist and cannot be created, an error will be
-returned.  The name of the object within the bucket is the same as the
-identifier of the created ExternalObject resource.
+returned.  The name of the object within the bucket depends on the
+template used to create the object.
 
 To create a report, for example, navigate to the `CIMI ExternalObject
 collection <https://nuv.la/webui/cimi/external-object>`_ and click on
@@ -78,29 +78,29 @@ case, the identifier is:
 You can always use the search functionalities to find the resource
 later, if necessary.
 
-Write Data
-----------
+Upload Data
+-----------
 
 When the ExternalObject resource is in the "new" state, anyone with
-"modify" access to the resource can request a presigned write URL for
-the S3 object via the CIMI action "getWriteURL" on the resource.  A
+"modify" access to the resource can request a presigned upload URL for
+the S3 object via the CIMI action "getUploadURL" on the resource.  A
 lifetime can be specified for the returned URL to limit security
 concerns with a presigned URL.
 
-The returned presigned URL can be used to directly upload the contents
-of the object directly on the S3 object store via HTTPS.  This is
-convenient because it does not require 1) direct authentication or 2)
-special software to be installed by the client uploading the data.
+The returned presigned URL can be used to upload the contents of the
+object directly to the S3 object store via HTTPS.  This is convenient
+because it does not require 1) direct authentication or 2) special
+software to be installed by the client uploading the data.
 
-Once the presigned, write URL has been provided, the state of the
-ExternalObject resource will be changed to "ready" and no further
-write URLs can be requested.
+Once the presigned, upload URL has been provided, the state of the
+ExternalObject resource will be changed to "uploading".  Upload URLs
+can still be requested (for example, in the case of a data upload
+error), but the object cannot be downloaded.
 
 In our case, we will visit the detail page for the created
 ExternalObject resource.  You can click on the link in the collection
 or directly navigate to the URL which will have the UUID of the
 resource appended to ``https://nuv.la/webui/cimi/external-object/``.
-
 
 .. figure:: images/screenshots/external-object-detail.png
    :width: 70%
@@ -133,19 +133,29 @@ create and upload data, you can do the following:
    $ echo $?
    0
 
-This example uses ``curl``, but any HTTP client could have been used. 
+This example uses ``curl``, but any HTTP client could have been used.
 
-Read Data
----------
+Ready
+-----
+
+To prevent further changes to the object and to allow others to
+download the data, you must set the ExternalObject resource's state to
+"ready".  This is done by sending a POST request to the "ready" action
+URL.  Once the object is in the ready state, upload URLs can no longer
+be requested; the download action will be available to those with
+"view" access. 
+
+Download Data
+-------------
 
 When the ExternalObject resource is in the "ready" state, anyone with
-"view" access to the resource can request a presigned read URL for the
-S3 object via the CIMI action "getReadURL" on the resource. A lifetime
-can be specified for the returned presigned URL.
+"view" access to the resource can request a presigned download URL for
+the S3 object via the CIMI action "getDownloadURL" on the resource. A
+lifetime can be specified for the returned presigned URL.
 
-Similarly to the write URL, the returned URL allows access to the data
-object directly on S3.  It does not require direct authentication or
-special software by the client reading the data.
+Similarly to the upload URL, the returned URL allows access to the
+data object directly on S3.  It does not require direct authentication
+or special software by the client reading the data.
 
 From the detail page, click on the "download" button and recover the
 URL in the same way that was done for the upload URL.  With this URL,

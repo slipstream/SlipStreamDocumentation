@@ -3,13 +3,14 @@ Metadata
 ========
 
 ExternalObject resources support the common CIMI attributes, such as
-``name`` and ``description``. These attributes can be used to provide
-descriptive metadata for the underlying data objects.  The standard
-CIMI filtering mechanisms can then be used to select ExternalObject
-resources based on that metadata.  These limited attributes can be
-sufficient for simple use cases.
+``name``, ``description``, and ``property``, as well as a
+``bucketName`` and ``objectName``. These attributes can be used to
+provide descriptive metadata for the underlying data objects.  The
+standard CIMI filtering mechanisms can then be used to select
+ExternalObject resources based on that metadata.  These limited
+attributes are sufficient for many use cases.
 
-Most use cases, however, will require a richer set of metadata.
+Some use cases, however, will require a richer set of metadata.
 SlipStream already provides a resource that allows for rich metadata
 to be provided for other managed resources--the ServiceOffer.  In the
 same way that ServiceOffers can describe Virtual Machines offers, they
