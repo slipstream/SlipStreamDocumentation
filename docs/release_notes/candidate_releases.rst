@@ -14,13 +14,22 @@ willing to store data on clouds' Object Store.  For details `see
 <http://ssdocs.sixsq.com/en/latest/tutorials/ss/data-management-model.html>`_.
 
 For Everyone:
- - x
-
-For Clara:
- - x
+ - Fix access to a metering resource details by its identifier
+ - CIMI connector collection is now searchable by users
+ - Fix User interface issues related to long usernames in logout button, breadcrumbs,
+   and session information panel.
+ - CIMI filter interface : fix cursor position into input when using controlled value
+ - Usage page : default period,  sorting of results
+ - Login button : separated from dropdowns for federated logins
 
 For Dave:
- - x
+ - Fix number of taken entries in zookeeper which should always be equal to
+   number of threads used by job executors
+ - Fix deletion of api key/secret
+ - Fix User registration callback when validating an email
+ - Service configuration is dynamically refreshed on Configuration singleton from backend
+ - Specify the version of nginx to be installed (in order to prevent a conflict
+   with configuration files)
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -67,7 +76,7 @@ The following migration steps are required.
 3. After the configuration file is ready, run the following command to actually
    configure the service::
 
-   # ss-conifg configuration-slipstream.edn
+   # ss-config configuration-slipstream.edn
    #
   
 4. Delete the previous configuration file::
@@ -83,7 +92,7 @@ the configuration document there.
 Known issues
 ~~~~~~~~~~~~
 
-- x
+No known issues.
 
 Commits
 ~~~~~~~
