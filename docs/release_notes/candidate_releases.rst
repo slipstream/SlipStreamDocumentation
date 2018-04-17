@@ -92,7 +92,18 @@ the configuration document there.
 Known issues
 ~~~~~~~~~~~~
 
-No known issues.
+Due to this `bug <https://github.com/slipstream/SlipStreamServer/issues/1480>`_,
+the credential chosen for persisting the user reports should be shared with
+all the users of the SlipStream instance. This should be avoided though. 
+Thus, either do not upgrade to v3.49 or apply the patch as describe below.
+
+How to patch SS instance: Check this patch release 
+https://github.com/slipstream/SlipStreamServer/releases/tag/v3.49.1.
+It provides a patched jar with the issue #1480 fixed.  Please see the details 
+on how to patch your instance there.
+
+Next release `v3.50` will contain the fix.
+
 
 Commits
 ~~~~~~~
