@@ -1,7 +1,7 @@
 Module VI - Data Management
 ---------------------------
 
-S3 (Simple Storage Service) object storage has become a de facto
+S3 (Simple Storage Service) object storage has become a `de facto`
 standard since its introduction by Amazon Web Services in 2006.  IaaS
 cloud infrastructures and cloud software provide S3-compatible object
 storage nearly universally. SlipStream takes advantage of these
@@ -22,6 +22,8 @@ Benefits of the SlipStream multi-cloud object storage include:
    Read-Mostly (WORM) semantics.
  - Definition of **rich object metadata** via optional use of the
    SlipStream Service Catalog.
+ - **Low complexity** to facilitate use.
+ - **Scalable** architecture to handle large datasets.
 
 With this solution, you can take advantage of cloud-native storage
 from multiple providers without the pain of manual bookkeeping and
@@ -41,6 +43,3 @@ application-level authorization.
    external-objects
    metadata
    data-management-gotchas
-
-
-

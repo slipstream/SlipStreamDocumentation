@@ -2,11 +2,11 @@
 Data Management Model
 =====================
 
-The SlipStream multi-cloud object storage provides Write-Once,
-Read-Mostly (WORM) semantics. That is, a particular object is created,
-populated with data, and then remains immutable for the rest of its
-lifecycle. This makes strategies for replication and caching easier to
-implement.
+The SlipStream multi-cloud object storage provides **Write-Once,
+Read-Mostly (WORM) semantics**. That is, a particular object is
+created, populated with data, and then remains immutable for the rest
+of its lifecycle. This makes strategies for replication and caching
+easier to implement.
 
 Model Entities
 --------------
@@ -20,17 +20,18 @@ to provide all the stated benefits:
  - **ServiceOffer** resources that optionally provide rich,
    user-defined metadata for an object or set of objects.
 
-For reading and writing (once) a data object, users will be referred
-to the S3 object store for direct access. However, the management
-functions, like creating, updating properties, and deleting, are
-handled through SlipStream via the standard CIMI CRUD actions on the data
-object's ExternalObject and/or ServiceOffer resource.
+For efficiency, all IO operations on a data object occur directly
+between the client and the S3 object store containing the object.  In
+contrast, the management functions (creating, updating properties, and
+deleting) are handled through SlipStream via the standard CIMI CRUD
+actions on the data object's ExternalObject and/or ServiceOffer
+resource.
 
 Operations
 ----------
 
-A person who wants to access stored objects, follows the simple,
-three-step process shown in the following diagram.
+**Accessing a data object** follows the simple, three-step process
+shown in the following diagram.
 
 .. figure:: images/diagrams/multi-cloud-object-store.png
    :width: 70%
@@ -38,14 +39,19 @@ three-step process shown in the following diagram.
 
    Data Access Process
 
-The process for creating data objects is similarly easy:
+The process for **creating data objects** is similarly easy:
 
  1) Create ExternalObject resource in SlipStream,
  2) Request a pre-signed upload URL,
  3) Upload the data, and
  4) Mark the ExternalObject as "ready".
 
-Deleting an object is a single step process. 
+Here, the explicit state change of the object to "ready" allows the
+owner of the object to indicate when the object is ready for
+consumption by others.
+
+**Deleting an object** is a single step process that synchonizes the
+deletion of the metadata and the actual object within the S3 storage.
 
 Object Metadata
 ---------------
