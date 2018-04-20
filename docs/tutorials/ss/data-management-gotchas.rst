@@ -20,7 +20,7 @@ In particular, data managers should be aware of the following:
     in referenced buckets or update metadata based on changes in S3.
  3. Follow the write-once, read-mostly model.  Only modify objects
     through an upload URL provided by SlipStream.  Do not modify objects
-    directly via the cloud storage API.
+    directly via the cloud's object storage API.
  4. If you use ServiceOffer resources, ensure that the ACLs for the
     ServiceOffer and ExternalObject resources are aligned.  If they
     are not, you may leak information to unauthorized people or lose
@@ -28,8 +28,11 @@ In particular, data managers should be aware of the following:
  5. When deleting ExternalObject resources, be sure to propagate
     changes to ServiceOffer resources that reference them.
 
-In general, these guidelines boil down to not using the S3 API
-directly and synchronizing changes between the ServiceOffer and
-ExternalObject resources.  The synchronization is not difficult in
-most cases. SlipStream may at some point in the future, provide a
-higher-level API to further simplify the data management.
+In general, these guidelines boil down to: **do not use the S3 API
+directly for data objects managed by SlipStream** and **keep the
+ExternalObject and ServiceOffer resources synchronized**.
+
+The synchronization is not difficult in most cases. SlipStream may at
+some point in the future, provide a higher-level API to simplify this
+and other aspects of the data management.  **Proposals for desirable
+high-level functions is particularly welcome feedback.**
