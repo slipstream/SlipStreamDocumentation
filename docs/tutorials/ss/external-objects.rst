@@ -158,8 +158,8 @@ concerns with a presigned URL.
 
 The returned presigned URL can be used to upload the contents of the
 object directly to the S3 object store via HTTPS.  This is convenient
-because it does not require 1) direct authentication or 2) special
-software to be installed by the client uploading the data.
+because it **does not require direct authentication or special
+software** to be installed by the client uploading the data.
 
 Once the presigned upload URL has been provided, the state of the
 ExternalObject resource will be changed to "uploading".  Upload URLs
@@ -193,13 +193,18 @@ and still have an active session.)
 
 .. code-block:: sh
 
-   $ ss-curl -XGET \
-       https://nuv.la/api/external-object/0565e3953e2f7ee033779b10533c826/upload
+   $ # get resource to find operation URLs
+   $ export LINK=https://nuv.la/api/external-object/0565...
+   $ ss-curl ${LINK}
+   $
+   $ # use upload operation URL to get upload URL
+   $ export GET_UPLOAD_LINK=${LINK}/upload
+   $ ss-curl ${GET_UPLOAD_LINK}
    $
    $ # response: JSON with uri key with the upload URL
 
 You should extract the correct URL to use from the "operations" key
-provided in the object itself. 
+provided in the object itself.  
 
 With the upload URL (either from the web interface or the command
 line), any HTTP client can upload contents to the ExternalObject. This
@@ -208,7 +213,7 @@ contents, you can do the following:
 
 .. code-block:: sh
                 
-   $ export LINK="https://slipstream-reports.sos-ch-dk-2.exo.io/..."
+   $ export LINK="https://cal-exo-gva-4567.sos-ch-dk-2.exo.io/..."
    $
    $ curl -XPUT \
        -T@screenshot.png \
@@ -220,8 +225,9 @@ contents, you can do the following:
 This example uses ``curl``, but any HTTP client could have been
 used.
 
-.. warning: If you provided a content type for the object, you MUST
-            provide a header in the request with the exact same value.
+.. warning: If you provided a content type for the object, you **must
+            provide a content-type header** in the request with the
+            exact same value.
 
 .. note: Direct uploads of data from the web browser interface are not
          yet supported.
@@ -249,9 +255,17 @@ refresh the detail page, you'll see that the status has changed to
 When using ``curl`` or another HTTP client, the request looks like the
 following.
 
-.. code-block: sh
+.. code-block:: sh
 
-   $ ss-curl ...TBD...
+   $ # get resource to find operation URLs
+   $ export LINK=https://nuv.la/api/external-object/0565...
+   $ ss-curl ${LINK}
+   $
+   $ # use ready operation URL to get ready URL
+   $ export GET_READY_LINK=${LINK}/ready
+   $ ss-curl ${GET_READY_LINK}
+   $
+   $ # response: JSON with uri key with the ready URL
 
 Again this assumes that you have an active session.  The URL that you
 use should be taken from the "operations" attribute in the
@@ -266,7 +280,7 @@ Download Data
 
 When the ExternalObject resource is in the "ready" state, anyone with
 "view" access to the resource can request a presigned download URL for
-the S3 object via the CIMI action "getDownloadURL" on the resource. A
+the S3 object via the CIMI operation "download" on the resource. A
 lifetime can be specified for the returned presigned URL.
 
 Similarly to the upload URL, the returned URL allows access to the
@@ -277,55 +291,64 @@ For the web browser interface, you can just click on the "download"
 button that appears on the detail page of the ExternalObject
 resource.
 
-.. figure:: images/screenshots/external-object-upload-url.png
-   :width: 70%
-   :align: center
-
-   Getting Download URL for ExternalObject (TBD...)
-
-When using ``curl`` or another HTTP client, the request looks like the
-following.
-
-.. code-block: sh
-
-   $ ss-curl ...TBD...
-
-With this download URL, we can then verify the contents of the
-ExternalObject.  You can either visit this URL with a web browser or
-use another HTTP client.
+With the returned download URL, you can verify the contents of the
+ExternalObject by either visiting this URL with a web browser or using
+another HTTP client (like ``curl`` above).
 
 .. code-block:: sh
-                
-   $ export LINK="https://slipstream-reports.sos-ch-dk-2.exo.io/..."
-   $
-   $ curl $LINK 
-   This is new data! 
-   $
 
-Again, this is a time-limited, presigned URL that can be used by any
-HTTP client.
+   $ # get resource to find operation URLs
+   $ export LINK=https://nuv.la/api/external-object/0565...
+   $ ss-curl ${LINK}
+   $
+   $ # use download operation URL to get download URL
+   $ export GET_DOWNLOAD_LINK=${LINK}/download
+   $ ss-curl ${GET_DOWNLOAD_LINK}
+   $
+   $ # response: JSON with uri key with the download URL
+   $ export DOWNLOAD_URL=...
+   $
+   $ # note: this doesn't need authentication information
+   $ #       using normal curl operation
+   $ curl ${DOWNLOAD_URL}
 
+The download URL can be accessed from anywhere without the need for
+authentication or special software.
 
 Delete
 ------
 
 Deleting an ExternalObject uses the standard CIMI delete pattern. This
-action with also delete the referenced object in S3 storage.
+action will also delete the referenced object in S3 storage.
 
 The resource can also be deleted by clicking on the "delete" button on
 the ExternalObject detail page in the web browser interface.  You must
 confirm this via a dialog before it will actually be deleted.
 
+.. figure:: images/screenshots/external-object-delete.png
+   :width: 70%
+   :align: center
+
+   Deleting an ExternalObject
+
 The ``curl`` command to do the same thing is:
 
-.. code-block: sh
+.. code-block:: sh
 
-   $ ss-curl ...TBD...
+   $ # get resource to find operation URLs
+   $ export LINK=https://nuv.la/api/external-object/0565...
+   $ ss-curl -XDELETE ${LINK}
+   $
+   $ # response: JSON object with 200 status and delete message
+   $
+   $ # further 'gets' should fail with 404 status code
+   $ ss-curl ${LINK}
+   $
+   $ # response: JSON object with 404 status
 
 As usual you must have an active session to successfully execute the
 delete action. 
 
-ServiceOffer resources that reference that ExternalObject must be
-kept synchonized manually for any changes to the ExternalObject
-resources.  (Notably the ACLs and the references to ExternalObject
-resources.)
+ServiceOffer resources that reference that ExternalObject must be kept
+synchonized manually for any changes to the ExternalObject resources,
+notably the ACLs and the references to ExternalObject resources.
