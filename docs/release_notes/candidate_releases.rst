@@ -5,6 +5,52 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.50 (candidate) - 30 April 2018
+---------------------------------
+
+This is primarily a bug fix release that makes improvements for
+SlipStream administrators.
+
+For Everyone:
+
+ - Fix Usage page regarding how numbers are calculated
+ - Allow displaying more than 10 cloud names in WebUI
+ - Improved searching against list of connectors
+ - BugFix on states when uploading from ObjectStore
+ - BugFix on Reports ACL
+ - Extended external objects templating
+ - Improved documentation regarding data management
+
+For Dave:
+
+ - Ensured presence of Python 2 in built images.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.49...v3.50>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.49...v3.50>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.49...v3.50>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.49...v3.50>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.49...v3.50>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.49...v3.50>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.49...v3.50>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.49...v3.50>`__
+
+
 v3.49 (candidate) - 13 April 2018
 ---------------------------------
 
