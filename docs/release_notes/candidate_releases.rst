@@ -5,6 +5,55 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.51 (candidate) - 11 May 2018
+-------------------------------
+
+This is a major release that updates the version of Elasticsearch and
+changes the mapping of resources to Elasticsearch indices. This
+impacts mainly SlipStream administrators.  **All upgrades require a
+full migration of the database.**
+
+For Dave:
+ - Allow different database bindings to be configured for the server.
+ - Provide alpha release for Elasticsearch binding based on its REST
+   API. 
+ - Simplify dependencies by taking SlipStream version from code rather
+   than the service configuration.
+ - Upgrade to Elasticsearch 6, separating indices for resources and
+   providing explicit mappings.  This should improve performance and
+   make management easier.
+ - Change session resource expiry date to make it possible to clean up
+   expired sessions with simple Elasticsearch queries.
+ - Allow default ordering of events to be overridden through the API.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+The version requires a full migration of the Elasticsearch database.
+
+Migration: TBD...
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.50...v3.51>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.50...v3.51>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.50...v3.51>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.50...v3.51>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.50...v3.51>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.50...v3.51>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.50...v3.51>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.50...v3.51>`__
+
+
 v3.50 (candidate) - 30 April 2018
 ---------------------------------
 
@@ -12,18 +61,17 @@ This is primarily a bug fix release that makes improvements for
 SlipStream administrators.
 
 For Everyone:
-
- - Fix Usage page regarding how numbers are calculated
- - Allow displaying more than 10 cloud names in WebUI
- - Improved searching against list of connectors
- - BugFix on states when uploading from ObjectStore
- - BugFix on Reports ACL
- - Extended external objects templating
- - Improved documentation regarding data management
+ - Fix resource usage page calculations to provide correct values
+ - Allow displaying more than 10 cloud names in the WebUI on the
+   resource page
+ - Improved documentation regarding data management with
+   ExternalObject resources
+ - Fix bug with state management when uploading ExternalObject
+   resources
+ - Correct the ACLs on run reports
 
 For Dave:
-
- - Ensured presence of Python 2 in built images.
+ - Ensured presence of Python 2 in generated images.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
