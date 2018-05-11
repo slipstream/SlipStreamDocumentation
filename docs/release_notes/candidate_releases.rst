@@ -102,28 +102,31 @@ Commits
 v3.49 (candidate) - 13 April 2018
 ---------------------------------
 
-External Object now has two types: generic and report.  The latter one is used
-for storing the deployment reports. The ``generic`` one can be used by anyone
-willing to store data on clouds' Object Store.  For details `see
+External Object now has two types: generic and report.  The latter one
+is used for storing the deployment reports. The ``generic`` one can be
+used by anyone willing to store data on clouds' Object Store.  For
+details `see
 <http://ssdocs.sixsq.com/en/latest/tutorials/ss/data-management-model.html>`_.
 
 For Everyone:
  - Fix access to a metering resource details by its identifier
  - CIMI connector collection is now searchable by users
- - Fix User interface issues related to long usernames in logout button, breadcrumbs,
-   and session information panel.
- - CIMI filter interface : fix cursor position into input when using controlled value
- - Usage page : default period,  sorting of results
- - Login button : separated from dropdowns for federated logins
+ - Fix User interface issues related to long usernames in logout
+   button, breadcrumbs, and session information panel.
+ - CIMI filter interface: fix cursor position into input when using
+   controlled value
+ - Usage page: default period, sorting of results
+ - Login button: separated from dropdowns for federated logins
 
 For Dave:
- - Fix number of taken entries in zookeeper which should always be equal to
-   number of threads used by job executors
+ - Fix number of taken entries in zookeeper which should always be
+   equal to number of threads used by job executors
  - Fix deletion of api key/secret
  - Fix User registration callback when validating an email
- - Service configuration is dynamically refreshed on Configuration singleton from backend
- - Specify the version of nginx to be installed (in order to prevent a conflict
-   with configuration files)
+ - Service configuration is dynamically refreshed on Configuration
+   singleton from backend
+ - Specify the version of nginx to be installed (in order to prevent a
+   conflict with configuration files)
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -131,14 +134,14 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-This release moves the configuration of the S3 backend for reports from
-``/opt/slipstream/server/.credentials/object-store-conf.edn`` file to the
-``configuration/slipstream`` resource.
+This release moves the configuration of the S3 backend for reports
+from ``/opt/slipstream/server/.credentials/object-store-conf.edn``
+file to the ``configuration/slipstream`` resource.
 
-The following migration steps are required.  
+The following migration steps are required.
 
-1. After the upgrade of the packages make sure that elasticsearch service is
-   running: ``systemctl start elasticserach``
+1. After the upgrade of the packages make sure that elasticsearch
+   service is running: ``systemctl start elasticserach``
 
 2. Create the following JSON file::
 
@@ -151,21 +154,22 @@ The following migration steps are required.
       }
 
     
-  The value for ``<bucket-name>`` should either be taken from your previous
-  configuration file
-  ``/opt/slipstream/server/.credentials/object-store-conf.edn`` (where it is
-  defined as ``:reportsBucketName``) or you can define a new name.  Note, that
-  according to the S3 standard, the bucket name should be unique on the S3
-  endpoint.
+   The value for ``<bucket-name>`` should either be taken from your
+   previous configuration file
+   ``/opt/slipstream/server/.credentials/object-store-conf.edn``
+   (where it is defined as ``:reportsBucketName``) or you can define a
+   new name.  Note, that according to the S3 standard, the bucket name
+   should be unique on the S3 endpoint.
   
-  The value for ``:reportsObjectStoreCreds`` should be the URI of the
-  credential that you intend to be used for storing the reports of the
-  SlipStream users.  Because each credential refers to a connector, you have to
-  make sure that the connector (and, hence, IaaS cloud) behind the credential
-  implements and actually exposes S3 endpoint.  All the connectors were updated
-  to provide an extra configuration option ``:objectStoreEndpoint``.  It has to
-  be set to a valid S3 endpoint before the persistence of the user deployment
-  reports can be done.
+   The value for ``:reportsObjectStoreCreds`` should be the URI of the
+   credential that you intend to be used for storing the reports of
+   the SlipStream users.  Because each credential refers to a
+   connector, you have to make sure that the connector (and, hence,
+   IaaS cloud) behind the credential implements and actually exposes
+   S3 endpoint.  All the connectors were updated to provide an extra
+   configuration option ``:objectStoreEndpoint``.  It has to be set to
+   a valid S3 endpoint before the persistence of the user deployment
+   reports can be done.
 
 3. After the configuration file is ready, run the following command to actually
    configure the service::
@@ -179,22 +183,24 @@ The following migration steps are required.
    #
 
 The configuration can always be updated via web UI by going to
-``https://<ss-host>/webui/cimi/configuration/slipstream`` resource and editing
-the configuration document there.
+``https://<ss-host>/webui/cimi/configuration/slipstream`` resource and
+editing the configuration document there.
 
 
 Known issues
 ~~~~~~~~~~~~
 
-Due to this `bug <https://github.com/slipstream/SlipStreamServer/issues/1480>`_,
-the credential chosen for persisting the user reports should be shared with
-all the users of the SlipStream instance. This should be avoided though. 
-Thus, either do not upgrade to v3.49 or apply the patch as describe below.
+Due to this `bug
+<https://github.com/slipstream/SlipStreamServer/issues/1480>`_, the
+credential chosen for persisting the user reports should be shared
+with all the users of the SlipStream instance. This should be avoided
+though.  Thus, either do not upgrade to v3.49 or apply the patch as
+describe below.
 
-How to patch SS instance: Check this patch release 
+How to patch SS instance: Check this patch release
 https://github.com/slipstream/SlipStreamServer/releases/tag/v3.49.1.
-It provides a patched jar with the issue #1480 fixed.  Please see the details 
-on how to patch your instance there.
+It provides a patched jar with the issue #1480 fixed.  Please see the
+details on how to patch your instance there.
 
 Next release `v3.50` will contain the fix.
 
