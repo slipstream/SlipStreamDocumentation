@@ -79,7 +79,7 @@ documents are migrated from the old database.**  Execute the following
 commands::
 
   $ export ES_HOST=es6-01.example.com
-  $ export ES_HOST=9300
+  $ export ES_PORT=9300
   $ lein with-profile +dbinit,+community,+enterprise run
 
 Replace the hostname with your Elasticsearch 6 host. The "+community"
