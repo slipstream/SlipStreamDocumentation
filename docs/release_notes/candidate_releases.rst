@@ -5,7 +5,7 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
-v3.51 (candidate) - 11 May 2018
+v3.51 (candidate) - 18 May 2018
 -------------------------------
 
 This is a major release that updates the version of Elasticsearch and
@@ -32,9 +32,162 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-The version requires a full migration of the Elasticsearch database.
+The version requires a full migration of the Elasticsearch
+database.
 
-Migration: TBD...
+Both the old and new Elasticsearch clusters must be accessible during
+the migration process.  You must run the upgrade process from a
+machine that can access both the old and new Elasticsearch
+clusters. Normally, this is the machine running the SlipStream
+services and we refer to this as the "SlipStream machine" below.
+
+If you've not done so already, install a new `Elasticsearch 6 cluster
+<https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html>`_. Use
+the `health checks
+<https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html>`_
+to ensure that the cluster is functioning correctly before starting
+the migration process.  This must be on a different machine from the
+one running your current production Elasticsearch cluster.
+
+The first step is to download and setup the migration tools.  
+
+ - On the SlipStream machine, `install the Leiningen build tool
+   <https://leiningen.org/#install>`_.  This will be used to download
+   the dependencies required by the migration tools and then to run
+   them.
+ - Ensure that Leiningen works by running ``lein --help``.  If it
+   doesn't work, check the troubleshooting information on the
+   Leiningen website.
+ - Download the `SlipStreamMigration tarball
+   <https://nexus.sixsq.com/content/repositories/snapshots-community-rhel7/com/sixsq/slipstream/SlipStreamMigration/3.51-SNAPSHOT/SlipStreamMigration-3.51-20180515.095210-3.tar.gz>`_
+   that contains the migration tools.
+ - Unpack these tools in a convenient location on the SlipStream
+   machine.  The command to use is ``tar zxf
+   SlipStreamMigration-3.51.tar.gz``.
+ - **From the root of the unpacked tarball**, execute the command
+   ``lein with-profile +dbinit run -- --help``.  Apologies for the
+   tortured syntax. 
+
+This last command should download a large number of dependencies and
+end with usage information for the command.  If it does not, verify
+that you are in the correct directory and that everything has been
+setup correctly.  Contact support if you cannot resolve the issues.
+
+The next step is to initialize the database with the indicies and
+mappings for the SlipStream resources. **This must be done before any
+documents are migrated from the old database.**  Execute the following
+commands::
+
+  $ export ES_HOST=es6-01.example.com
+  $ export ES_HOST=9300
+  $ lein with-profile +dbinit,+community,+enterprise run
+
+Replace the hostname with your Elasticsearch 6 host. The "+community"
+and "+enterprise" initialize the database for the Community Edition
+and Enterprise Edition cloud connectors, respectively.  Leave out
+those terms if they are not appropriate for your SlipStream
+installation.
+
+Review the output from the dbinit tool.  You should see the successful
+initialization of a large number of CIMI resources.  You can ignore
+the zookeeper error concerning the initialization of the Job resource.
+
+You can check the initialization by looking at the indicies in
+Elasticsearch::
+
+  $ curl "http://$ES_HOST:9200/_cat/indices?v"
+
+This should return a listing like the following::
+
+  health status index                                  uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+  green  open   slipstream-email                       Vy-Jjm4xQZaSyqTR3efRXQ   3   0          0            0       690b           690b
+  green  open   slipstream-cloud-entry-point           tSxKHYdARhC4oZMZce-sPA   3   0          1            0      7.2kb          7.2kb
+  green  open   slipstream-session-template            N4tSpCoASRKRmSUG7ktMxg   3   0          1            0     10.4kb         10.4kb
+  green  open   slipstream-service-attribute-namespace rbQfhMpUQOy0OwvSGnRDQw   3   0          0            0       690b           690b
+  green  open   slipstream-metering                    db9dnHslR-eHPDthFQVsVA   3   0          0            0       690b           690b
+  green  open   slipstream-service-benchmark           yqGaNj78TKaXtucljKQ7mA   3   0          0            0       690b           690b
+  green  open   slipstream-service-attribute           78PBD90cRRWVqr0d0URz5w   3   0          0            0       690b           690b
+  green  open   slipstream-configuration               9vsI538_QnCScw-RF4LNbQ   3   0          1            0     18.9kb         18.9kb
+  green  open   slipstream-job                         Iu6e2DGWQU2TZAntV_Ukxw   3   0          0            0       690b           690b
+  green  open   slipstream-session                     J5CGY_SyREOTY9Rhm1JPOg   3   0          0            0       690b           690b
+  green  open   slipstream-virtual-machine             s9b6i0tbRFO45S4UT_Vkcg   3   0          0            0       690b           690b
+  green  open   slipstream-virtual-machine-mapping     1X_Fn6n2RhiKLgXdnMGzjw   3   0          0            0       690b           690b
+  green  open   slipstream-user                        G9362RHRRgmjR_ZrrLvvKA   3   0          0            0       690b           690b
+  green  open   slipstream-connector                   DMfNpYSATKKTbDFMzUISfQ   3   0          0            0       690b           690b
+  green  open   slipstream-quota                       PWxlyO-zRb-c0R8EeQT8Aw   3   0          0            0       690b           690b
+  green  open   slipstream-callback                    kqxw-TdaS2ORXg7_XuImsA   3   0          0            0       690b           690b
+  green  open   slipstream-credential                  gQ-Ti6OnTKuKRpfoGxOBgw   3   0          0            0       690b           690b
+  green  open   slipstream-service-offer               Qmoxk_5qT-GtcuJVbG1bVw   3   0          0            0       690b           690b
+  green  open   slipstream-user-param                  Zxq2XAYjRyy9xnk-i7VTPw   3   0          0            0       690b           690b
+  green  open   slipstream-event                       K5dYKP1nRkGWLAA6GKzAmw   3   0          0            0       690b           690b
+  green  open   slipstream-external-object             oCe09WZeQb2jnL0_-iB3DQ   3   0          0            0       690b           690b
+
+The database should be empty except for the CloudEntryPoint, a
+SessionTemplate, and a Configuration.  This command can be rerun
+without problems if you have trouble.
+
+To avoid conflicts with the migration, we will remove those documents
+that have been created automatically.  Execute the following
+commands::
+
+  $ curl -XDELETE http://$ES_HOST:9200/slipstream-cloud-entry-point/_doc/cloud-entry-point?pretty=true
+  $ curl -XDELETE http://$ES_HOST:9200/slipstream-session-template/_doc/internal?pretty=true
+  $ curl -XDELETE http://$ES_HOST:9200/slipstream-configuration/_doc/slipstream?pretty=true
+
+This removes those autogenerated documents, which will be replace
+during the migration process. 
+  
+Now that the new Elasticsearch database has been prepared, you are
+ready to migrate documents from the old database to the new one.  **To
+ensure that you have a coherent, all of the SlipStream services must
+be shutdown.** Verify that this is the case.
+
+The organization of the documents in Elasticsearch has changed.  In
+ES5, all the document types were stored in a single index.  In ES6,
+each document type is in a separate index.  Because of this, the
+migration of documents from the old database to the new one will be
+done document type by document type.
+
+To reduce the repetition, you may want to create a script to make the
+process easier::
+
+  #!/bin/bash -x                                                                                                                                        
+
+  DOC_TYPE=$1
+
+  if [ -n "$DOC_TYPE" ]; then
+    time lein with-profile +dbcopy run -- \
+         --src-host es5-01.example.com \
+         --src-type $DOC_TYPE \
+         --dest-host es6-01.example.com \
+         --dest-index slipstream-$DOC_TYPE
+  fi
+
+**Be sure to replace the hostnames in the script with your
+hostnames.** You can then just provide the type argument to migrate a
+given class of documents.  We call this script ``dbcopy.sh``.
+
+Now to migrate the user resources, do the following::
+
+  $ ./dbcopy.sh user
+
+When the command finishes, you should see a message like the
+following::
+
+  18-05-15 07:14:04 ...  - finished copy documents from ["resources-index" "user" :_search] - [788 788 788]
+
+showing the number of documents copied.  (The script will also show
+the elapsed time.) The numbers in the tuple should all be the same.
+
+Repeat this process for all of the resource types in your listing of
+Elasticsearch indices above.  You can skip some document types: for
+example, do not copy the "session" resources if you do not wait to
+maintain open sessions or do not copy the "metering" resources if you
+do not care about past usage information.
+
+Once the migration is complete, you can upgrade your SlipStream
+installation and configure the services to use the new database.
+
 
 Known issues
 ~~~~~~~~~~~~
