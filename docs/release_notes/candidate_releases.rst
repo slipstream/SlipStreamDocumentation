@@ -73,7 +73,7 @@ end with usage information for the command.  If it does not, verify
 that you are in the correct directory and that everything has been
 setup correctly.  Contact support if you cannot resolve the issues.
 
-The next step is to initialize the database with the indicies and
+The next step is to initialize the database with the indices and
 mappings for the SlipStream resources. **This must be done before any
 documents are migrated from the old database.**  Execute the following
 commands::
@@ -92,7 +92,7 @@ Review the output from the dbinit tool.  You should see the successful
 initialization of a large number of CIMI resources.  You can ignore
 the zookeeper error concerning the initialization of the Job resource.
 
-You can check the initialization by looking at the indicies in
+You can check the initialization by looking at the indices in
 Elasticsearch::
 
   $ curl "http://$ES_HOST:9200/_cat/indices?v"
@@ -165,7 +165,8 @@ process easier::
 
 **Be sure to replace the hostnames in the script with your
 hostnames.** You can then just provide the type argument to migrate a
-given class of documents.  We call this script ``dbcopy.sh``.
+given class of documents.  We call this script ``dbcopy.sh`` and set
+execution permission with ``chmod a+x dbcopy.sh``.
 
 Now to migrate the user resources, do the following::
 
