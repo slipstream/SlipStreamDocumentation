@@ -22,5 +22,6 @@ Application Management Platform from `SixSq <http://sixsq.com>`__.
    developer_guide/index.rst
    legal/index.rst
    reference/index.rst
+   nuvlacity/index.rst
 
 
