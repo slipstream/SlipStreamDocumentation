@@ -1,6 +1,4 @@
 
-.. include:: links.txt
-
 NuvlaCity
 =========
 
