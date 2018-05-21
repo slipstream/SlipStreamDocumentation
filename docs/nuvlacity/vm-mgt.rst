@@ -144,6 +144,14 @@ hitting return to advance through the demo.
 When you are finished, you can terminate the RStudio application with
 the ``Terminate`` action.
 
+Summary
+-------
+
+SlipStream allows you to define both simple and complex cloud
+applications.  Once defined, you can manage the lifecycle of those
+applications easily.  We will see an example of a complex application
+when we deploy Docker Swarm later. 
+
 .. _CentOS: https://www.centos.org/
 
 .. _Ubuntu: https://www.ubuntu.com/
