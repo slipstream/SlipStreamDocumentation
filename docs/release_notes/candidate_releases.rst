@@ -59,7 +59,7 @@ The first step is to download and setup the migration tools.
    doesn't work, check the troubleshooting information on the
    Leiningen website.
  - Download the `SlipStreamMigration tarball
-   <https://nexus.sixsq.com/content/repositories/snapshots-community-rhel7/com/sixsq/slipstream/SlipStreamMigration/3.51-SNAPSHOT/SlipStreamMigration-3.51-20180515.095210-3.tar.gz>`_
+   <https://nexus.sixsq.com/content/repositories/releases-community-rhel7/com/sixsq/slipstream/SlipStreamMigration/3.51/SlipStreamMigration-3.51.tar.gz>`_
    that contains the migration tools.
  - Unpack these tools in a convenient location on the SlipStream
    machine.  The command to use is ``tar zxf
@@ -193,7 +193,9 @@ installation and configure the services to use the new database.
 Known issues
 ~~~~~~~~~~~~
 
-No known issues.
+ - SlipStream version number is not correctly displayed in page
+   footer. (See https://github.com/slipstream/SlipStreamUI/pull/783.)
+
 
 Commits
 ~~~~~~~
