@@ -193,7 +193,9 @@ installation and configure the services to use the new database.
 Known issues
 ~~~~~~~~~~~~
 
-No known issues.
+ - SlipStream version number is not correctly displayed in page
+   footer. (See https://github.com/slipstream/SlipStreamUI/pull/783.)
+
 
 Commits
 ~~~~~~~
