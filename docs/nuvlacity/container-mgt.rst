@@ -11,7 +11,7 @@ NuvlaCity targets container technologies to allow users to take
 advantage of their benefits, especially on resource-constrained
 hardware that is common in edge-computing environments. Although
 planned, NuvlaCity does not yet treat containers as first-class
-entities, instead deploying containers with virtual machines. This
+entities, instead deploying containers within virtual machines. This
 technique allows containers to be exploited now with NuvlaCity.
 
 Single Container Deployment
