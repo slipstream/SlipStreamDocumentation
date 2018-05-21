@@ -1,3 +1,0 @@
-
-NuvlaBox Activation
-===================

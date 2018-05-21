@@ -7,7 +7,7 @@ NuvlaCity
 
    overview
    nuvla
-   activation
+   nuvlabox
    vm-mgt
    container-mgt
    container-orch
