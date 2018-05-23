@@ -3,25 +3,93 @@ NuvlaBox
 ========
 
 The NuvlaBox is a secure and intelligent edge computing solution that
-integrates seamlessly with Nuvla, providing a unified view of your
-edge resources.  Hardware from `Hewlett Packard Enterprise`_ (HPE) and
-`Logic Supply`_ are certified for the NuvlaBox software.
+integrates seamlessly with Nuvla, which provides management and a
+unified view of your edge resources.  Hardware from `Hewlett Packard
+Enterprise`_ (HPE) and `Logic Supply`_ are certified for the NuvlaBox
+software.
 
 This demonstration shows how to install the NuvlaBox software stack on
 certified HPE hardware and then to activate the NuvlaBox to make it
 accessible from Nuvla.
 
+Network Access
+--------------
+
+**A NuvlaBox can be installed without a network connection, but it
+must have a connection to be activated.**
+
+The Internet connection must be provided via a physical ethernet cable
+connected to the NuvlaBox machine's primary network interface. For
+certified hardware with multiple ports, SixSq support can tell you
+which ethernet port to use on your machine for the Internet
+connection.
+
+DHCP
+~~~~
+
+Your local network must be configured to provide an IPv4 address via
+DHCP to the NuvlaBox machine. Static IP address assignment is
+recommended.
+
+Outbound Connectivity
+~~~~~~~~~~~~~~~~~~~~~
+
+It is strongly recommended that your firewall be configured to permit
+**unrestricted outbound access** from the assigned IP address. As a
+strict minimum, the firewall must allow access to port 443 (HTTPS) on
+nuv.la; other ports may be required depending on which inbound
+connectivity scenario is chosen.
+
+Inbound Connectivity
+~~~~~~~~~~~~~~~~~~~~
+
+In many cases, inbound access to applications running on a NuvlaBox is
+required.  The NuvlaBox can be configured is several ways to provide
+this type of access.
+
+ - By default, the NuvlaBox will provide direct access to applications
+   running on the NuvlaBox to clients that are attached to the
+   NuvlaBox's **local network**, either via a physical cable or via
+   WiFi (if available).  The NuvlaBox bridges access to the Internet
+   for client connected to the local network.  **This is the network
+   configuration used in this demonstration.**
+
+ - Nuvla and the NuvlaBox can be configured to **proxy ports to the
+   nuvlabox.com domain**. This makes services running on those ports
+   globally available to the Internet, although the number of
+   available ports is limited.  This solution relies on SSH tunneling
+   between Nuvla and the NuvlaBox.
+
+ - The NuvlaBox can be integrated with the organization's **corporate
+   network**. This allows full access to services running on the
+   NuvlaBox from clients within the corporate network. This requires
+   specific configuration of the NuvlaBox and the corporate network's
+   DHCP server.
+
+ - Finally, the NuvlaBox can be integrated with a **Virtual Private
+   Network (VPN)**. This allows full access to services running on the
+   NuvlaBox from other clients within the same VPN, but credentials
+   for accessing the VPN must be managed.
+
+You are invited to discuss with SixSq engineers which solution best
+meets the requirements of your NuvlaBox deployment. 
+
 Installation
 ------------
 
-If you order NuvlaBox machines directly through SixSq, the NuvlaBox
-software stack will already have been installed on the machines. If
-this is the case, you can skip ahead to the activation step.
+.. note:: If you order NuvlaBox machines directly through SixSq, the
+   NuvlaBox software stack will already have been installed on the
+   machines. If this case, you can skip ahead to the activation
+   section.
+
+.. note:: If your NuvlaBox is connected to the Internet during the
+   installation process, then it will automatically perform **both**
+   the installation and activation.
 
 The installation and configuration of the NuvlaBox hardware is
 accomplished by booting from an installation USB stick.
 
-First, obtain a USB stick to use:
+First, find a USB stick to use for the installation:
 
  - Obtain a USB stick with at least 2 GB of space.  Using a USB 3
    stick will allow faster installation, but USB 2 will work as well.
@@ -33,8 +101,10 @@ First, obtain a USB stick to use:
 Second, download and copy the NuvlaBox installation image to your USB
 stick.
 
- - Download `NuvlaBox USB Image`_ to a laptop where you have attached
-   the USB stick.
+ - Ask SixSq support for the URL to download the latest NuvlaBox USB
+   image. 
+ - Using this URL, download the image to a laptop where you have
+   attached the USB stick.
  - Determine the USB device for your stick.
  - Perform a raw copy of the image to your USB stick.
 
@@ -60,30 +130,8 @@ Third, boot the target machine from the USB stick:
 Fourth, select the installation method.  The normal choice is the
 default.
 
-The machine will then boot several times.  Finally, when the process
-is finished, remove the USB key.
-
-.. note:: If your NuvlaBox is connected to the Internet during the
-   installation process, then it will automatically perform the
-   activation process described below.
-
-
-Network Connection
-------------------
-
-A NuvlaBox must be connected to the Internet to be activated.  This
-must be done with a physical ethernet cable connected to the NuvlaBox
-machine's primary network interface.
-
-For certified hardware with multiple ports, SixSq support can tell you
-which ethernet port to use on your machine for the Internet
-connection.
-
-.. warning:: Your local network must be configured to provide an IPv4
-   address via DHCP. Your firewall should permit unrestricted
-   **outbound** access from the assigned IP address and must allow
-   access to port 443 (HTTPS) on nuv.la. 
-
+The machine will then boot several times; when the process is
+finished, remove the USB key.
 
 Activation
 ----------
@@ -121,31 +169,27 @@ NuvlaBox connector is available on Nuvla.**
 Reboot to Activate
 ~~~~~~~~~~~~~~~~~~
 
-To start the activation process, simply reboot the machine.  You can
-watch the progress from the machine's console and see the activation
-status on the Nuvla Dashboard.
+To start the activation process, simply reboot the machine once the
+machine has network access.  You can watch the progress from the
+machine's console and see the activation status on the Nuvla
+Dashboard.
 
-For a NuvlaBox that has been registered with Nuvla (that is, the
-NuvlaBox connector with the correct MAC address is present), the
-dashboard will show the machine but without a status indicator in the
-upper right corner of the cloud's tile.
+(As a reminder, if network access was available during the
+installation process, the machine will initiate the activation process
+without a reboot.)
 
-.. image:: images/screenshots/nuvlabox-not-activated.png
-   :width: 60%
-   :align: center
+The Nuvla dashboard indicates the status of a NuvlaBox machine with an
+icon in the upper-right corner of the tile:
 
-When the activation process is complete, it will initial show the
-NuvlaBox to be offline.  This is indicated by a red cross in the
-upper-right corner of the cloud's tile.
+ - For a NuvlaBox that has been **registered** with Nuvla (that is,
+   the NuvlaBox connector with the correct MAC address is present),
+   the dashboard will show the machine with a **yellow clock icon**.
+ - When the activation process is complete, it will initially show the
+   NuvlaBox to be **offline**.  This is indicated by a **red cross**.
+ - After a final reboot, the machine will be **online**, indicated by
+   a **green checkmark**.
 
-.. image:: images/screenshots/nuvlabox-offline.png
-   :width: 60%
-   :align: center
-
-After a final reboot, the machine will be online.  This is indicated
-by a green checkmark in the upper-right corder of the cloud's tile. 
-
-.. image:: images/screenshots/nuvlabox-online.png
+.. image:: images/diagrams/nuvlabox-states.png
    :width: 60%
    :align: center
 
@@ -165,6 +209,3 @@ using the NuvlaBox to run your applications.
 .. _Hewlett Packard Enterprise: https://sixsq.com/products-and-services/nuvlabox/tech-spec#hpe
 
 .. _Logic Supply: https://sixsq.com/products-and-services/nuvlabox/tech-spec#logic-supply
-
-.. _NuvlaBox USB Image: https://example.com/to-be-provided-as-external-object
-
