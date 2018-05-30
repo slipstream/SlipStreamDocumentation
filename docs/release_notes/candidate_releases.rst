@@ -182,7 +182,7 @@ the elapsed time.) The numbers in the tuple should all be the same.
 
 Repeat this process for all of the resource types in your listing of
 Elasticsearch indices above.  You can skip some document types: for
-example, do not copy the "session" resources if you do not wait to
+example, do not copy the "session" resources if you do not want to
 maintain open sessions or do not copy the "metering" resources if you
 do not care about past usage information.
 
