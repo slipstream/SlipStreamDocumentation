@@ -5,6 +5,57 @@ Results from each development cycle are packaged into candidate
 releases. We welcome feedback on these releases; however, these are
 **not** supported and **not** recommended for production deployments.
 
+v3.52 (candidate) - 2 June 2018
+-------------------------------
+
+This releases fixes the known issues from the previous release and
+refactors the authentication processes to make them more robust and
+more easily maintainable. For end-users, the primary changes are that
+the CYCLONE authentication method is no longer supported and
+SlipStream accounts are not created automatically for external logins
+(e.g. via GitHub or OpenID Connect).
+
+For Everyone:
+ - Remove CYCLONE authentication support.  Users who were using that
+   authentication method must use another one
+   (e.g. username/password).
+ - Fix display of version in footer.
+
+For Dave:
+ - Refactor authentication processes to use explicit callback
+   resource.
+ - Remove test dependencies leaking into production deployments.
+ - Ensure that deployment-specific API key/secret credentials are
+   cleaned up even when a deployment is aborted.
+ - Fix job engine to use correct database index. 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required for this release.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.51...v3.52>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.51...v3.52>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.51...v3.52>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.51...v3.52>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.51...v3.52>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.51...v3.52>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.51...v3.52>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.51...v3.52>`__
+
+
 v3.51 (candidate) - 18 May 2018
 -------------------------------
 
