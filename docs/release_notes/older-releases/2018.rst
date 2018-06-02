@@ -1,0 +1,171 @@
+2018 Releases
+=============
+
+v3.44 - 24 January 2018
+-----------------------
+
+This is primarily a bug fix release that makes improvements for
+SlipStream administrators.
+
+For Everyone:
+ - Fix bug in the deployment garbage collection that caused the clean
+   up to fail.
+
+For Dave:
+ - Extend OpenNebula and NuvlaBox connectors to allow the vCPU/CPU
+   ratio to be defined.  The default value is 0.5.
+ - Correct Logstash and Filebeat configurations when using the
+   installation script to avoid having Logstash logs fill with
+   errors. 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.43...v3.44>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.43...v3.44>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.43...v3.44>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.43...v3.44>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.43...v3.44>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.43...v3.44>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.43...v3.44>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.43...v3.44>`__
+
+
+v3.43 - 22 January 2018
+-----------------------
+
+For Everyone:
+ - Remove deprecated basic authentication and related parameters from
+   the Python API and Command Line Client.
+ - Fix concurrency issue with cookie handling in the Python API and
+   Command Line Client.
+
+For Dave:
+ - Mark ``/etc/default/slipstream`` as a configuration file to avoid
+   having the configuration overwritten on upgrades.
+ - Improve template handling for the Exoscale connector so that the
+   most recent templates are used by default.  Avoids a problem with
+   running in the DK region.
+ - Rationalize and reduce the default logging of the services to allow
+   for better discovery and debugging of problems.
+ - Optimize the loading of the user resources from the database and
+   provide metrics.
+ - Minimize connections requests from connectors on initialization.
+ - Refactor the deployment garbage collector to reduce object creation
+   and database churn.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+ - Missing dependency for the ssclj server blocks start of service.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.42...v3.43>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.42...v3.43>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.42...v3.43>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.42...v3.43>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.42...v3.43>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.42...v3.43>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.42...v3.43>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.42...v3.43>`__
+
+
+v3.42 - 12 January 2018
+-----------------------
+
+This release brings the following changes.
+
+The persistence of the user entities was moved from HSQLDB to Elasticsearch and
+from now on will be managed through CIMI server.  On already deployed systems
+this assumes that a migration is required.  Check *Migration* section below.
+
+The following connectors were removed and are no longer supported
+
+* StratusLab
+* Azure
+* NativeSoftlayer
+* VCloud
+
+Fixes and improvements:
+
+* fixed and improved VMs information collection service.
+
+Migration
+~~~~~~~~~
+
+The steps below perform migration of users from HSQLDB to Elasticsearch (via
+CIMI server).
+
+Download migration script::
+   
+   $ wget https://raw.githubusercontent.com/slipstream/SlipStreamServer/master/rpm/src/main/migrations/020_migrate_users_to_cimi.py
+   $ chmod +x 020_migrate_users_to_cimi.py
+   $ yum install python-lxml
+   $ # or
+   $ pip install lxml
+
+Dump users with::
+
+   $ export SLIPSTREAM_USERNAME=super
+   $ export SLIPSTREAM_PASSWORD=<password>
+   $ ss-login --endpoint https://<slipstream>
+   $ ./020_migrate_users_to_cimi.py --endpoint https://<slipstream> --get users-3.41/
+
+Perform the upgrade::
+
+   $ yum upgrade -y
+   $ systemctl restart hsqldb ss-pricing ssclj slipstream \
+        slipstream-job-distributor@vms_collect \
+        slipstream-job-distributor@vms_cleanup \
+        slipstream-job-distributor@jobs_cleanup \
+        slipstream-job-executor \
+        elasticsearch logstash filebeat kibana
+
+
+In *https://<slipstream>/configuration -> SlipStream Basics -> java class
+names* remove any instances of the following connectors: nativesoftlayer,
+stratuslab, stratuslabiter, azure, vcloud. Save the configuration.
+
+Push users back to SlipStream::
+
+   $ ./020_migrate_users_to_cimi.py --endpoint https://<slipstream> --put users-3.41/
+
+Known issues
+~~~~~~~~~~~~
+
+ - No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.41...v3.42>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.41...v3.42>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.41...v3.42>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.41...v3.42>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.41...v3.42>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.41...v3.42>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.41...v3.42>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.41...v3.42>`__

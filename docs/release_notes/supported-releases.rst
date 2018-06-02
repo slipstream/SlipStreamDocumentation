@@ -1,0 +1,724 @@
+Supported Releases
+==================
+
+v3.52 - 2 June 2018
+-------------------
+
+This releases fixes the known issues from the previous release and
+refactors the authentication processes to make them more robust and
+more easily maintainable. For end-users, the primary changes are that
+the CYCLONE authentication method is no longer supported and
+SlipStream accounts are not created automatically for external logins
+(e.g. via GitHub or OpenID Connect).
+
+For Everyone:
+ - Remove CYCLONE authentication support.  Users who were using that
+   authentication method must use another one
+   (e.g. username/password).
+ - Fix display of version in footer.
+
+For Dave:
+ - Refactor authentication processes to use explicit callback
+   resource.
+ - Remove test dependencies leaking into production deployments.
+ - Ensure that deployment-specific API key/secret credentials are
+   cleaned up even when a deployment is aborted.
+ - Fix job engine to use correct database index. 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required for this release.
+
+Known issues
+~~~~~~~~~~~~
+
+There are no known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.51...v3.52>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.51...v3.52>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.51...v3.52>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.51...v3.52>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.51...v3.52>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.51...v3.52>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.51...v3.52>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.51...v3.52>`__
+
+
+v3.51 - 18 May 2018
+-------------------
+
+This is a major release that updates the version of Elasticsearch and
+changes the mapping of resources to Elasticsearch indices. This
+impacts mainly SlipStream administrators.  **All upgrades require a
+full migration of the database.**
+
+For Dave:
+ - Allow different database bindings to be configured for the server.
+ - Provide alpha release for Elasticsearch binding based on its REST
+   API. 
+ - Simplify dependencies by taking SlipStream version from code rather
+   than the service configuration.
+ - Upgrade to Elasticsearch 6, separating indices for resources and
+   providing explicit mappings.  This should improve performance and
+   make management easier.
+ - Change session resource expiry date to make it possible to clean up
+   expired sessions with simple Elasticsearch queries.
+ - Allow default ordering of events to be overridden through the API.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+The version requires a full migration of the Elasticsearch
+database.
+
+Both the old and new Elasticsearch clusters must be accessible during
+the migration process.  You must run the upgrade process from a
+machine that can access both the old and new Elasticsearch
+clusters. Normally, this is the machine running the SlipStream
+services and we refer to this as the "SlipStream machine" below.
+
+If you've not done so already, install a new `Elasticsearch 6 cluster
+<https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html>`_. Use
+the `health checks
+<https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html>`_
+to ensure that the cluster is functioning correctly before starting
+the migration process.  This must be on a different machine from the
+one running your current production Elasticsearch cluster.
+
+The first step is to download and setup the migration tools.  
+
+ - On the SlipStream machine, `install the Leiningen build tool
+   <https://leiningen.org/#install>`_.  This will be used to download
+   the dependencies required by the migration tools and then to run
+   them.
+ - Ensure that Leiningen works by running ``lein --help``.  If it
+   doesn't work, check the troubleshooting information on the
+   Leiningen website.
+ - Download the `SlipStreamMigration tarball
+   <https://nexus.sixsq.com/content/repositories/releases-community-rhel7/com/sixsq/slipstream/SlipStreamMigration/3.51/SlipStreamMigration-3.51.tar.gz>`_
+   that contains the migration tools.
+ - Unpack these tools in a convenient location on the SlipStream
+   machine.  The command to use is ``tar zxf
+   SlipStreamMigration-3.51.tar.gz``.
+ - **From the root of the unpacked tarball**, execute the command
+   ``lein with-profile +dbinit run -- --help``.  Apologies for the
+   tortured syntax. 
+
+This last command should download a large number of dependencies and
+end with usage information for the command.  If it does not, verify
+that you are in the correct directory and that everything has been
+setup correctly.  Contact support if you cannot resolve the issues.
+
+The next step is to initialize the database with the indices and
+mappings for the SlipStream resources. **This must be done before any
+documents are migrated from the old database.**  Execute the following
+commands::
+
+  $ export ES_HOST=es6-01.example.com
+  $ export ES_PORT=9300
+  $ lein with-profile +dbinit,+community,+enterprise run
+
+Replace the hostname with your Elasticsearch 6 host. The "+community"
+and "+enterprise" initialize the database for the Community Edition
+and Enterprise Edition cloud connectors, respectively.  Leave out
+those terms if they are not appropriate for your SlipStream
+installation.
+
+Review the output from the dbinit tool.  You should see the successful
+initialization of a large number of CIMI resources.  You can ignore
+the zookeeper error concerning the initialization of the Job resource.
+
+You can check the initialization by looking at the indices in
+Elasticsearch::
+
+  $ curl "http://$ES_HOST:9200/_cat/indices?v"
+
+This should return a listing like the following::
+
+  health status index                                  uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+  green  open   slipstream-email                       Vy-Jjm4xQZaSyqTR3efRXQ   3   0          0            0       690b           690b
+  green  open   slipstream-cloud-entry-point           tSxKHYdARhC4oZMZce-sPA   3   0          1            0      7.2kb          7.2kb
+  green  open   slipstream-session-template            N4tSpCoASRKRmSUG7ktMxg   3   0          1            0     10.4kb         10.4kb
+  green  open   slipstream-service-attribute-namespace rbQfhMpUQOy0OwvSGnRDQw   3   0          0            0       690b           690b
+  green  open   slipstream-metering                    db9dnHslR-eHPDthFQVsVA   3   0          0            0       690b           690b
+  green  open   slipstream-service-benchmark           yqGaNj78TKaXtucljKQ7mA   3   0          0            0       690b           690b
+  green  open   slipstream-service-attribute           78PBD90cRRWVqr0d0URz5w   3   0          0            0       690b           690b
+  green  open   slipstream-configuration               9vsI538_QnCScw-RF4LNbQ   3   0          1            0     18.9kb         18.9kb
+  green  open   slipstream-job                         Iu6e2DGWQU2TZAntV_Ukxw   3   0          0            0       690b           690b
+  green  open   slipstream-session                     J5CGY_SyREOTY9Rhm1JPOg   3   0          0            0       690b           690b
+  green  open   slipstream-virtual-machine             s9b6i0tbRFO45S4UT_Vkcg   3   0          0            0       690b           690b
+  green  open   slipstream-virtual-machine-mapping     1X_Fn6n2RhiKLgXdnMGzjw   3   0          0            0       690b           690b
+  green  open   slipstream-user                        G9362RHRRgmjR_ZrrLvvKA   3   0          0            0       690b           690b
+  green  open   slipstream-connector                   DMfNpYSATKKTbDFMzUISfQ   3   0          0            0       690b           690b
+  green  open   slipstream-quota                       PWxlyO-zRb-c0R8EeQT8Aw   3   0          0            0       690b           690b
+  green  open   slipstream-callback                    kqxw-TdaS2ORXg7_XuImsA   3   0          0            0       690b           690b
+  green  open   slipstream-credential                  gQ-Ti6OnTKuKRpfoGxOBgw   3   0          0            0       690b           690b
+  green  open   slipstream-service-offer               Qmoxk_5qT-GtcuJVbG1bVw   3   0          0            0       690b           690b
+  green  open   slipstream-user-param                  Zxq2XAYjRyy9xnk-i7VTPw   3   0          0            0       690b           690b
+  green  open   slipstream-event                       K5dYKP1nRkGWLAA6GKzAmw   3   0          0            0       690b           690b
+  green  open   slipstream-external-object             oCe09WZeQb2jnL0_-iB3DQ   3   0          0            0       690b           690b
+
+The database should be empty except for the CloudEntryPoint, a
+SessionTemplate, and a Configuration.  This command can be rerun
+without problems if you have trouble.
+
+To avoid conflicts with the migration, we will remove those documents
+that have been created automatically.  Execute the following
+commands::
+
+  $ curl -XDELETE http://$ES_HOST:9200/slipstream-cloud-entry-point/_doc/cloud-entry-point?pretty=true
+  $ curl -XDELETE http://$ES_HOST:9200/slipstream-session-template/_doc/internal?pretty=true
+  $ curl -XDELETE http://$ES_HOST:9200/slipstream-configuration/_doc/slipstream?pretty=true
+
+This removes those autogenerated documents, which will be replace
+during the migration process. 
+  
+Now that the new Elasticsearch database has been prepared, you are
+ready to migrate documents from the old database to the new one.  **To
+ensure that you have a coherent, all of the SlipStream services must
+be shutdown.** Verify that this is the case.
+
+The organization of the documents in Elasticsearch has changed.  In
+ES5, all the document types were stored in a single index.  In ES6,
+each document type is in a separate index.  Because of this, the
+migration of documents from the old database to the new one will be
+done document type by document type.
+
+To reduce the repetition, you may want to create a script to make the
+process easier::
+
+  #!/bin/bash -x                                                                                                                                        
+
+  DOC_TYPE=$1
+
+  if [ -n "$DOC_TYPE" ]; then
+    time lein with-profile +dbcopy run -- \
+         --src-host es5-01.example.com \
+         --src-type $DOC_TYPE \
+         --dest-host es6-01.example.com \
+         --dest-index slipstream-$DOC_TYPE
+  fi
+
+**Be sure to replace the hostnames in the script with your
+hostnames.** You can then just provide the type argument to migrate a
+given class of documents.  We call this script ``dbcopy.sh`` and set
+execution permission with ``chmod a+x dbcopy.sh``.
+
+Now to migrate the user resources, do the following::
+
+  $ ./dbcopy.sh user
+
+When the command finishes, you should see a message like the
+following::
+
+  18-05-15 07:14:04 ...  - finished copy documents from ["resources-index" "user" :_search] - [788 788 788]
+
+showing the number of documents copied.  (The script will also show
+the elapsed time.) The numbers in the tuple should all be the same.
+
+Repeat this process for all of the resource types in your listing of
+Elasticsearch indices above.  You can skip some document types: for
+example, do not copy the "session" resources if you do not want to
+maintain open sessions or do not copy the "metering" resources if you
+do not care about past usage information.
+
+Once the migration is complete, you can upgrade your SlipStream
+installation and configure the services to use the new database.
+
+
+Known issues
+~~~~~~~~~~~~
+
+ - SlipStream version number is not correctly displayed in page
+   footer. (See https://github.com/slipstream/SlipStreamUI/pull/783.)
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.50...v3.51>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.50...v3.51>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.50...v3.51>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.50...v3.51>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.50...v3.51>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.50...v3.51>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.50...v3.51>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.50...v3.51>`__
+
+
+v3.50 - 30 April 2018
+---------------------
+
+This is primarily a bug fix release that makes improvements for
+SlipStream administrators.
+
+For Everyone:
+ - Fix resource usage page calculations to provide correct values
+ - Allow displaying more than 10 cloud names in the WebUI on the
+   resource page
+ - Improved documentation regarding data management with
+   ExternalObject resources
+ - Fix bug with state management when uploading ExternalObject
+   resources
+ - Correct the ACLs on run reports
+
+For Dave:
+ - Ensured presence of Python 2 in generated images.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.49...v3.50>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.49...v3.50>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.49...v3.50>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.49...v3.50>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.49...v3.50>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.49...v3.50>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.49...v3.50>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.49...v3.50>`__
+
+
+v3.49 - 13 April 2018
+---------------------
+
+External Object now has two types: generic and report.  The latter one
+is used for storing the deployment reports. The ``generic`` one can be
+used by anyone willing to store data on clouds' Object Store.  For
+details `see
+<http://ssdocs.sixsq.com/en/latest/tutorials/ss/data-management-model.html>`_.
+
+For Everyone:
+ - Fix access to a metering resource details by its identifier
+ - CIMI connector collection is now searchable by users
+ - Fix User interface issues related to long usernames in logout
+   button, breadcrumbs, and session information panel.
+ - CIMI filter interface: fix cursor position into input when using
+   controlled value
+ - Usage page: default period, sorting of results
+ - Login button: separated from dropdowns for federated logins
+
+For Dave:
+ - Fix number of taken entries in zookeeper which should always be
+   equal to number of threads used by job executors
+ - Fix deletion of api key/secret
+ - Fix User registration callback when validating an email
+ - Service configuration is dynamically refreshed on Configuration
+   singleton from backend
+ - Specify the version of nginx to be installed (in order to prevent a
+   conflict with configuration files)
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+This release moves the configuration of the S3 backend for reports
+from ``/opt/slipstream/server/.credentials/object-store-conf.edn``
+file to the ``configuration/slipstream`` resource.
+
+The following migration steps are required.
+
+1. After the upgrade of the packages make sure that elasticsearch
+   service is running: ``systemctl start elasticserach``
+
+2. Create the following JSON file::
+
+    # cat configuration-slipstream.edn
+    {
+      :id "configuration/slipstream"
+      :slipstreamVersion "3.49"
+      :reportsObjectStoreBucketName "<bucket-name>"
+      :reportsObjectStoreCreds      "credential/<CHANGE-ME-UUID>"
+      }
+
+    
+   The value for ``<bucket-name>`` should either be taken from your
+   previous configuration file
+   ``/opt/slipstream/server/.credentials/object-store-conf.edn``
+   (where it is defined as ``:reportsBucketName``) or you can define a
+   new name.  Note, that according to the S3 standard, the bucket name
+   should be unique on the S3 endpoint.
+  
+   The value for ``:reportsObjectStoreCreds`` should be the URI of the
+   credential that you intend to be used for storing the reports of
+   the SlipStream users.  Because each credential refers to a
+   connector, you have to make sure that the connector (and, hence,
+   IaaS cloud) behind the credential implements and actually exposes
+   S3 endpoint.  All the connectors were updated to provide an extra
+   configuration option ``:objectStoreEndpoint``.  It has to be set to
+   a valid S3 endpoint before the persistence of the user deployment
+   reports can be done.
+
+3. After the configuration file is ready, run the following command to actually
+   configure the service::
+
+   # ss-config configuration-slipstream.edn
+   #
+  
+4. Delete the previous configuration file::
+
+   # rm -f /opt/slipstream/server/.credentials/object-store-conf.edn
+   #
+
+The configuration can always be updated via web UI by going to
+``https://<ss-host>/webui/cimi/configuration/slipstream`` resource and
+editing the configuration document there.
+
+
+Known issues
+~~~~~~~~~~~~
+
+Due to this `bug
+<https://github.com/slipstream/SlipStreamServer/issues/1480>`_, the
+credential chosen for persisting the user reports should be shared
+with all the users of the SlipStream instance. This should be avoided
+though.  Thus, either do not upgrade to v3.49 or apply the patch as
+describe below.
+
+How to patch SS instance: Check this patch release
+https://github.com/slipstream/SlipStreamServer/releases/tag/v3.49.1.
+It provides a patched jar with the issue #1480 fixed.  Please see the
+details on how to patch your instance there.
+
+Next release `v3.50` will contain the fix.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.48...v3.49>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.48...v3.49>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.48...v3.49>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.48...v3.49>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.48...v3.49>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.48...v3.49>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.48...v3.49>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.48...v3.49>`__
+
+
+
+v3.48 - 23 March 2018
+---------------------
+
+This is primarily a bug fix release that makes improvements for
+SlipStream administrators.
+
+For Everyone:
+ - A `usage page <https://nuv.la/webui/usage>`_ is gradually replacing
+   the automatic usage report email. The page is internationalized.
+
+For Clara:
+ - The CIMI externalObject resource has been extended to include an
+   optional ``filename`` attribute, making downloads of the
+   referenced objects easier.
+
+For Dave:
+ - Add compatibility with Python 2.6 to the SlipStream bootstapping
+   code so that images like Centos6 can be deployed.
+ - Fixed bug where the OpenStack connector always tried to get a
+   floating IP even when the feature was disabled.
+ - When logged in as an administrator, the pages now load much more
+   quickly.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Since reports are stored on S3, credentials should temporarily be set
+manually in
+``/opt/slipstream/server/.credentials/object-store-conf.edn`` file,
+following the below format::
+
+   {:key                 "<KEY>"
+    :secret              "<SECRET>"
+    :objectStoreEndpoint "<ENDPOINT>"
+    :reportsBucketName   "<REPORTS_BUCKET_NAME>"}
+
+Note that the location and format of the file have changed since the
+previous release.
+
+
+Known issues
+~~~~~~~~~~~~
+
+- When opening the usage page, the default time period will not be set
+  until the ``filter`` is opened and the calendar objects are
+  initialized.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.47...v3.48>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.47...v3.48>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.47...v3.48>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.47...v3.48>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.47...v3.48>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.47...v3.48>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.47...v3.48>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.47...v3.48>`__
+
+
+v3.47 - 9 March 2018
+--------------------
+
+This is primarily a bug fix release that makes improvements for
+SlipStream administrators.
+
+For Everyone:
+ - The size of the application deployments are limited as described in
+   the `scaling guidelines
+   <http://hn-docs.readthedocs.io/en/latest/researcher/scaling-guidelines.html>`_.
+ - Fixed a problem where new users had to edit their profiles before
+   the account could be used.
+
+For Clara:
+ - The CIMI externalObject resource has been extended to include an
+   optional ``content-type`` attribute, making downloads of the
+   referenced objects easier.
+ - The editing process for resources through the new browser interface
+   has been improved.
+
+For Dave:
+ - The documentation has a new section about using a Docker container
+   for SlipStream builds.
+ - Fixed an issue with the Job executor where it would send large
+   numbers of useless requests to the CIMI server.
+ - The `Nashorn library <http://openjdk.java.net/projects/nashorn/>`_
+   replaces the (now deprecated) PhantomJS for clojurescript unit
+   tests.
+ - User roles are added to the request for API key/secret generation
+   when provisioning VMs.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.46...v3.47>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.46...v3.47>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.46...v3.47>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.46...v3.47>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.46...v3.47>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.46...v3.47>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.46...v3.47>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.46...v3.47>`__
+
+v3.46 - 23 February 2018
+------------------------
+
+This release contains a few foundational features have been added
+(external objects, Docker connector, credential sharing) that will
+improve cloud resource management in the future.  It also includes
+changes to the way machines within a deployment access the server and
+how deployment reports are stored.  Both require administrator
+attention during upgrades. (See migration section.)  The release also
+contains a number of bug fixes.
+
+For Everyone:
+ - User resource implementation was changed to allow credential
+   sharing between users and groups with ACLs.
+ - The login dialog was changed to avoid it being obscured on mobile
+   devices. 
+ - The default ACL for Connector resources was changed to allow all
+   authentication users to see them.
+ - The bootstrap script has been corrected to avoid an issue where
+   machine deployments on Ubuntu 16 machines would fail.
+ - The prototype for the new web browser UI has been improved to
+   provide better editing capabilities with forms and JSON, to plot
+   server metrics, and to render ``href`` attributes as links to other
+   resources. 
+ - Styles of cubic (new web browser UI) have been normalized to
+   provide a consistent look and feel.
+
+For Clara:
+ - The login methods of the Python API have been improved to cache
+   credentials to make managing access easier.
+ - Improved the CIMI support in the Python API to allow CIMI actions
+   to be called.
+ - The Python API is now part of the SlipStream RPM packages.
+ - A utility method was added to the Python API to retrieve deployment
+   events.
+ - A function was added to the Clojure(Script) API to allow the server
+   metrics to be retrieved.
+ - A prototype "cloud" connector (alpha) for Docker infrastructures is
+   now available.
+   
+For Dave:
+ - The "machine" cookies that were used by VMs within a deployment to
+   interact with SlipStream have been replaced by an API key/secret
+   pair. These can be revoked if necessary.
+ - An "external object" CIMI resource has been created to allow links
+   to external files and resources, such as report, data files,
+   etc. Reports are now handled with these resources.  (See migration
+   below.) 
+ - The server organization has been more finely segmented to allow for
+   wider reuse of the servers and to make containerization easier.
+ - Package dependencies have be rationalized and corrected (including
+   the ``cheshire.jar`` verson in the pricing service). More work on
+   this will occur in the future to reduce the servers' footprints.
+ - SlipStream package dependency on ``slipstream-client-clojure`` (no
+   longer created) has been removed.
+
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+API key/secret pairs are now being used to manage access to the server
+from deployed machines.  For non-scalable deployments, this change
+will have no effect.  However, scalable deployments will lose access
+to the server. They need to be terminated and restarted.
+
+Below is the migration procedure to enable the view of the connector instances
+by users of your SlipStream instance. From now on this is required for the
+deployments to succeed.
+
+ - login to SlipStream instance as super user
+ - go to \https://\<slipstream\>/webui/cimi/connector
+ - click on `magnifying glass` pictogram (this will fetch all connector config instances)
+ - click on a connector name link
+ - click on `update` button
+ - in the edit window add the following into the list under `"acl" -> "rules"`::
+
+   { "principal": "USER", "right": "VIEW", "type": "ROLE" }
+
+ - click on `update` button to persist the configuration
+ - repeat this for each connector.
+
+The method of storing reports has changed with this release.  They are
+now stored in S3 rather than on the server's disk. This requires that
+the administrator have access to an S3 instance and migration of the
+existing reports to S3.
+
+You must provide an S3 configuration file
+``/opt/slipstream/server/.aws/credentials`` with the following
+contents::
+
+  aws_secret_access_key=<KEY>
+  aws_access_key_id=<SECRET>
+  aws_endpoint=<S3ENDPOINT>
+
+Note that the name of the bucket is not configurable.  It is set to
+"slipstream-reports" and must be created before being used.
+
+
+Known issues
+~~~~~~~~~~~~
+
+ - The switch to using API key/secret pairs will only have an effect
+   on running scalable deployments. These will need to be stopped and
+   redeployed.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.45...v3.46>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.45...v3.46>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.45...v3.46>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.45...v3.46>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.45...v3.46>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.45...v3.46>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.45...v3.46>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.45...v3.46>`__
+
+
+v3.45 - 4 February 2018
+-----------------------
+
+This is primarily a bug fix release, but also includes a prototype for
+a new web interface.  Feedback on that prototype is welcome. 
+
+For Everyone:
+ - An SSH configuration bug that blocked SSH logins on machines
+   without pre-existing ``.ssh`` directories was fixed.
+ - A bug with the Exoscale connector that caused deployments to fail
+   was corrected.
+ - A prototype user interface has been included in the release, which
+   is available by default on the ``/webui`` relative URL.
+
+For Dave:
+ - The configuration for the Job Engine has been added to the quick
+   installation script.
+ - CIMI resources for NuvlaBox registrations have been added.
+ - Unnecessary dependencies have been removed from services and
+   packages have been cleaned up.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is necessary.
+
+Known issues
+~~~~~~~~~~~~
+
+ - When upgrading rename the ``/etc/default/ssclj`` file to
+   ``/etc/default/cimi`` if you've made changes to the configuration
+   file.
+ - If you've made changes to the nginx configuration files, you will
+   need to remove the reference to ``authn.block`` in
+   ``/etc/nginx/conf.d/slipstream.params``.
+ - The wrong version of ``cheshire.jar`` was included in the RPM
+   package for the ``ss-pricing`` service.  Replace
+   ``/opt/slipstream/ss-pricing/lib/cheshire.jar`` with version 5.8.0
+   that can be found at ``clojars.org``.
+ - The RPM package ``slipstream-client-clojure`` was not generated for
+   this release. The v3.44 version works fine. 
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.44...v3.45>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.44...v3.45>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.44...v3.45>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.44...v3.45>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.44...v3.45>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.44...v3.45>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.44...v3.45>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.44...v3.45>`__
+
+
