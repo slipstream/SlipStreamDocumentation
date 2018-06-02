@@ -27,6 +27,11 @@ with the NuvlaCity platform.  The example builds on Ubuntu 16.04,
 installs git and ansible, and uses a short (40 line) shell script to
 integrate with NuvlaCity.
 
+.. image:: images/screenshots/ansible-component.png
+   :width: 60%
+   :align: center
+
+
 Ansible Repository
 ------------------
 
@@ -155,18 +160,8 @@ the web server. To do this:
  - For lighttpd, set "state" to "stopped",
  - Uncomment the nginx section.
 
-The resulting playbook should look like the following screenshot.
-
-.. image:: images/screenshots/ansible-updated-playbook.png
-   :width: 60%
-   :align: center
-
 Once this playbook is saved, Ansible should update the machine with
 the changes and the abort status should be cleared.
-
-.. image:: images/screenshots/ansible-nginx-success.png
-   :width: 60%
-   :align: center
 
 Visiting the same web server URL should now show the nginx welcome
 page instead of the lighttpd page that was seen before.

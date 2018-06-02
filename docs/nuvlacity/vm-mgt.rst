@@ -137,8 +137,8 @@ screenshot.
    :width: 60%
    :align: center
 
-In the "Console" tab on the left you can type "demo(graphics)" to see
-a demonstration of the RStudio graphics capabilities.  Just keep
+In the "Console" tab on the left you can type ``demo(graphics)`` to
+see a demonstration of the RStudio graphics capabilities.  Just keep
 hitting return to advance through the demo.
 
 When you are finished, you can terminate the RStudio application with

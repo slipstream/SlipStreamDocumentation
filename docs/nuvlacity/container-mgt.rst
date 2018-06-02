@@ -46,10 +46,6 @@ Once the deployment reaches the "Ready" state, you can browse to port
 80 on the deployed machine to verify that the nginx welcome page
 appears.
 
-.. image:: images/screenshots/docker-run-ready.png
-   :width: 60%
-   :align: center
-
 .. image:: images/screenshots/docker-run-nginx-welcome.png
    :width: 60%
    :align: center

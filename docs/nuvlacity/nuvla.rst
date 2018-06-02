@@ -12,7 +12,7 @@ in this demonstration).
 Account
 -------
 
-You will have been either asked to register for an account or given a
+You will have been either asked to register for an account or given an
 account already created by Nuvla administrators. To log into your
 account:
 
@@ -36,7 +36,7 @@ on the Dashboard menu item at the top to see your Dashboard.
 
 On the Dashboard, you will see NuvlaBox edge devices and clouds that
 you can access and an empty list of deployments.  The user in the
-screenshot has access to one NuvlaBox device (nuvlabox-leo-esaki), one
+screenshot has access to one NuvlaBox device (nuvlabox-carl-cori), one
 region in the Exoscale_ cloud, and one region in the AWS_ cloud.
 
 User Profile
@@ -76,7 +76,4 @@ NuvlaBox.
 .. _Exoscale: https://exoscale.ch
 
 .. _AWS: https://aws.amazon.com/
-
-
-
 

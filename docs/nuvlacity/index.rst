@@ -2,9 +2,8 @@
 NuvlaCity
 =========
 
-NuvlaCity provides an edge computing platform that transparently
-integrates a wide variety of cloud infrastructures and edge
-devices.
+NuvlaCity provides an **edge computing** platform that transparently
+integrates a wide variety of cloud infrastructures and edge devices.
 
  - **Nuvla**, a SlipStream service operated by SixSq, allows users to
    define, manage, and monitor their applications from a single point.

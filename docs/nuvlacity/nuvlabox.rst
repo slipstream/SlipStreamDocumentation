@@ -44,7 +44,7 @@ Inbound Connectivity
 ~~~~~~~~~~~~~~~~~~~~
 
 In many cases, inbound access to applications running on a NuvlaBox is
-required.  The NuvlaBox can be configured is several ways to provide
+required.  The NuvlaBox can be configured in several ways to provide
 this type of access.
 
  - By default, the NuvlaBox will provide direct access to applications
@@ -57,8 +57,9 @@ this type of access.
  - Nuvla and the NuvlaBox can be configured to **proxy ports to the
    nuvlabox.com domain**. This makes services running on those ports
    globally available to the Internet, although the number of
-   available ports is limited.  This solution relies on SSH tunneling
-   between Nuvla and the NuvlaBox.
+   available ports is limited.  This solution currently relies on SSH
+   tunneling between Nuvla and the NuvlaBox, but will use the VPN
+   (described below) in the future.
 
  - The NuvlaBox can be integrated with the organization's **corporate
    network**. This allows full access to services running on the
@@ -89,6 +90,9 @@ Installation
 The installation and configuration of the NuvlaBox hardware is
 accomplished by booting from an installation USB stick.
 
+USB Stick
+~~~~~~~~~
+
 First, find a USB stick to use for the installation:
 
  - Obtain a USB stick with at least 2 GB of space.  Using a USB 3
@@ -97,6 +101,9 @@ First, find a USB stick to use for the installation:
    data you want to save.
  - Attach the USB stick to the laptop (or other machine) that you will
    use to initialize the stick.
+
+Copy Installation Image
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Second, download and copy the NuvlaBox installation image to your USB
 stick.
@@ -108,13 +115,13 @@ stick.
  - Determine the USB device for your stick.
  - Perform a raw copy of the image to your USB stick.
 
-On a Linux or Mac OS machine, the copy can be done with the command::
-
-  $ dd ...
-
-If you are on a Windows machine, there are a number of tools that can
+On a Linux or Mac OS machine, the copy can be done with the ``dd``
+command.  On a Windows machine, there are a number of tools that can
 be used to create a bootable USB stick from an image.  Use your
 favorite!
+
+Boot from USB
+~~~~~~~~~~~~~
 
 Third, boot the target machine from the USB stick:
 
@@ -127,8 +134,15 @@ Third, boot the target machine from the USB stick:
  - **Do not change the default boot device to the USB stick.**
  - Exit the BIOS and allow the machine to start from the USB stick.
 
-Fourth, select the installation method.  The normal choice is the
-default.
+Installation Type
+~~~~~~~~~~~~~~~~~
+
+Fourth, select the installation type.  The option you want is "USB
+Recovery" for a fresh installation.  This is the default.
+
+.. image:: images/screenshots/nuvlabox-boot-screen.jpg
+   :width: 60%
+   :align: center
 
 The machine will then boot several times; when the process is
 finished, remove the USB key.
@@ -174,9 +188,9 @@ machine has network access.  You can watch the progress from the
 machine's console and see the activation status on the Nuvla
 Dashboard.
 
-(As a reminder, if network access was available during the
-installation process, the machine will initiate the activation process
-without a reboot.)
+.. note:: As a reminder, if network access was available during the
+          installation process, the machine will initiate the
+          activation process without a reboot.
 
 The Nuvla dashboard indicates the status of a NuvlaBox machine with an
 icon in the upper-right corner of the tile:
