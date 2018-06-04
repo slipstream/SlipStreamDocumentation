@@ -36,7 +36,9 @@ No migration is required for this release.
 Known issues
 ~~~~~~~~~~~~
 
-There are no known issues.
+ - The parameter description for the NuvlaBox connector (if installed)
+   prevents the SlipStream server from starting. ([GitHub
+   issue](https://github.com/SixSq/SlipStreamConnectors/issues/165))
 
 
 Commits
