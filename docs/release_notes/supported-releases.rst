@@ -1,6 +1,67 @@
 Supported Releases
 ==================
 
+v3.53 - 16 June 2018
+--------------------
+
+The main changes for this release concern the user authentication and
+registration features.  Those people using external identity providers
+must first register with SlipStream; previously accounts were created
+automatically.  This release expands support for OIDC servers and lays
+the groundwork for linking multiple authentication methods to a single
+account.
+
+For Everyone:
+ - Users identified via external identity providers must now
+   explicitly register with SlipStream before being able to log into
+   the service.
+ - OpenID Connect (OIDC) support has been expanded to support the
+   MITREid Connect implementation (in addition to the existing
+   Keycloak support), allowing more external identity providers to be
+   used.
+ - Links to the Terms and Conditions document have been updated to
+   those reflecting changing coming from the recent GDPR legislation.
+
+For Alice:
+ - Fix an issue for the ``ss-module-download`` utility that caused it
+   to fail when the module contained non-ASCII characters.
+ - Allow the ``ss-module-download`` utility to continue when errors
+   (e.g. access permissions) occur.
+
+For Dave:
+ - The OpenStack connector now contains an option to use and reuse
+   floating IP addresses from an allocated pool. (Patch provided by
+   IFB.)
+ - Fix issue where the NuvlaBox connector description would prevent
+   the server from starting. 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required for this release.
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.52...v3.53>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.52...v3.53>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.52...v3.53>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.52...v3.53>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.52...v3.53>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.52...v3.53>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.52...v3.53>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.52...v3.53>`__
+
+
 v3.52 - 2 June 2018
 -------------------
 
