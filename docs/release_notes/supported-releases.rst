@@ -46,7 +46,12 @@ No migration is required for this release.
 Known issues
 ~~~~~~~~~~~~
 
-No known issues.
+ - The self-registration template is not added by default as
+   before. The sign up form will not be visible in the WebUI, unless
+   it is added manually.
+
+ - The CIMI server takes an extremely long time to start.  The cause
+   of this is being investigated.
 
 
 Commits
