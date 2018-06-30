@@ -1,6 +1,73 @@
 Supported Releases
 ==================
 
+v3.54 - 30 June 2018
+--------------------
+
+This release focused on improving the performance and reliability of
+the SlipStream server.  This included identifying and fixing problems
+with the monitoring subsystem, properly catching exceptions to ensure
+relevant error messages for users, and improving the startup time for
+the CIMI server.
+
+For Everyone:
+ - Improve monitoring subsystem to ensure that monitoring information
+   for applications is not lost.
+ - Streamlined user registration with an Exoscale coupon.  Creates
+   accounts on SlipStream and Exoscale and automatically includes
+   credentials in SlipStream.
+ - Ensure the user receives relevant error messages and status codes
+   by catching exceptions within the server related to invalid input
+   and resource conflicts.
+
+For Bob:
+ - Fix UI issues for resource usage that would result in a blank page
+   being presented.
+
+For Dave:
+ - Updated workflow to ensure that all user information is included in
+   user registrations from OpenID Connect (OIDC) identity providers
+   based on MITREid.
+ - Provide simple job statistics on the WebUI to identify problems
+   with the job subsystem.
+ - The CIMI server was starting slowly because of insufficient entropy
+   for cryptographic actions.  The SlipStream installation script now
+   installs the "haveged" daemon.  This is recommended for all
+   installations.
+
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required for this release.
+
+Known issues
+~~~~~~~~~~~~
+
+ - The self-registration template is not added by default as
+   before. The sign up form will not be visible in the WebUI, unless
+   it is added manually.
+
+ - The CIMI server takes an extremely long time to start.  The cause
+   of this is being investigated.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.53...v3.54>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.53...v3.54>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.53...v3.54>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.53...v3.54>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.53...v3.54>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.53...v3.54>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.53...v3.54>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.53...v3.54>`__
+
+
 v3.53 - 16 June 2018
 --------------------
 
