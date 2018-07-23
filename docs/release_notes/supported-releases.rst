@@ -65,14 +65,17 @@ Migration
 ~~~~~~~~~
 
 Migration of external users is required.  See the usage instructions
-in the [README on
-GitHub](https://github.com/slipstream/SlipStreamServer/blob/master/cimi-migration/README.md).
+in the `README on GitHub
+<https://github.com/slipstream/SlipStreamServer/blob/master/cimi-migration/README.md>`_.
 
 
 Known issues
 ~~~~~~~~~~~~
 
-No known issues.
+ - The deployment reports are not shown in the standard UI.  See
+   `GitHub Issue
+   <https://github.com/slipstream/SlipStreamWebUI/pull/181>`_ for
+   resolution of this.
 
 
 Commits
