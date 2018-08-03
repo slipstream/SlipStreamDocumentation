@@ -1,6 +1,77 @@
 Supported Releases
 ==================
 
+v3.56 - 3 August 2018
+---------------------
+
+Release v3.56 has focused on improving the resource monitoring system
+within SlipStream to improve its coverage, precision, and
+reliability. In parallel, the usage dashboard has been improved to
+allow users to search, visualize, and download the usage information
+more efficiently.
+
+In addition, a number of bugs were fixed and other enhancements have
+been rolled in. 
+
+For Everyone:
+ - The usage dashboard available from the [newer web
+   interface](https://nuv.la/webui) has been significantly enhanced to
+   provide better search (and sort) capabilities, to view data more
+   efficiently, and to allow download of the report data.
+ - As a result of the work on the usage dashboard, the newer web
+   interface has been cleaned up, with more visual consistency between
+   elements and many small interaction bugs corrected.
+ - Fixed a bug that prevented the deployment reports from being shown
+   in the web interfaces.
+ - Fixed that caused user registration with a username/password to
+   fail.
+
+For Bob:
+ - Recovery of quota information from cloud service providers
+   (starting with Exoscale) has been put in place to allow
+   synchronization between SlipStream and provider quotas.
+ - Fixed the schema of the quotas to allow for zero limits,
+   effectively blocking access to a particular resource.
+ - Metering has been improved to ensure that the correct people have
+   access to the records and that the information is more precise.
+
+For Dave:
+ - The logging for the job executor has been significantly improved.
+   It now uses its own log file (rather than logging to syslog) and
+   all messages have a consistent format and reasonable logging
+   level. 
+ - Support for both MITREid server and token authentication has been
+   improved to allow a shared configuration of both authentication
+   methods. 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.55...v3.56>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.55...v3.56>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.55...v3.56>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.55...v3.56>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.55...v3.56>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.55...v3.56>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.55...v3.56>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.55...v3.56>`__
+
+
 v3.55 - 21 July 2018
 --------------------
 
