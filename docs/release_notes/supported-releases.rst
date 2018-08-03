@@ -14,9 +14,9 @@ In addition, a number of bugs were fixed and other enhancements have
 been rolled in. 
 
 For Everyone:
- - The usage dashboard available from the [newer web
-   interface](https://nuv.la/webui) has been significantly enhanced to
-   provide better search (and sort) capabilities, to view data more
+ - The usage dashboard available from the `newer web interface
+   <https://nuv.la/webui>`_ has been significantly enhanced to provide
+   better search (and sort) capabilities, to view data more
    efficiently, and to allow download of the report data.
  - As a result of the work on the usage dashboard, the newer web
    interface has been cleaned up, with more visual consistency between
