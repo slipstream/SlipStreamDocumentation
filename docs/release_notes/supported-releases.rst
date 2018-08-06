@@ -56,7 +56,10 @@ No migration is required.
 Known issues
 ~~~~~~~~~~~~
 
-No known issues.
+ - The login and sign up dialogs are not properly centered from the
+   SlipStream welcome page.  See `GitHub Issue
+   <https://github.com/slipstream/SlipStreamUI/issues/789>`_ for a
+   description of the problem and the fix.
 
 
 Commits
