@@ -1,6 +1,68 @@
 Supported Releases
 ==================
 
+v3.57 - 17 August 2018
+----------------------
+
+Release v3.57 has focused on improving the reliability of the resource
+usage data and its visualization.  A number of bug fixes and
+improvements related to the usage data (e.g. job engine to collect
+information) have also been applied.
+
+For Everyone:
+ - Partially fix a problem with showing the deployment reports.
+ - Fix user identifier issue when registering using OIDC servers.
+ - Fix a problem with the visualization of errors when blank values
+   are provided in the login forms.
+ - Improve the loading times and accessibility support in the WebUI
+   interface.
+ - Fix occasional unresponsive pages when viewing resource details
+   with the WebUI.
+ - Force consistent initialization state of the WebUI to avoid
+   spurious errors being displayed.
+   
+For Bob:
+ - Improve the reliability of the resource usage data.
+ - Improve the prototype visualization of this resource usage data in
+   the WebUI.
+ - Add prototype metering resources for object storage.
+
+For Dave:
+ - Allow the administrator to configure authentication of users
+   directly with OIDC tokens.
+ - Fixes for deadlocked threads when treating jobs in the job engine.
+ - Support the SIGUSR1 signal in the job engine to retrieve thread
+   stacktraces.
+
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.56...v3.57>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.56...v3.57>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.56...v3.57>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.56...v3.57>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.56...v3.57>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.56...v3.57>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.56...v3.57>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.56...v3.57>`__
+
+
 v3.56 - 3 August 2018
 ---------------------
 
