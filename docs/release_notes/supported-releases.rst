@@ -1,6 +1,170 @@
 Supported Releases
 ==================
 
+v3.56 - 3 August 2018
+---------------------
+
+Release v3.56 has focused on improving the resource monitoring system
+within SlipStream to improve its coverage, precision, and
+reliability. In parallel, the usage dashboard has been improved to
+allow users to search, visualize, and download the usage information
+more efficiently.
+
+In addition, a number of bugs were fixed and other enhancements have
+been rolled in. 
+
+For Everyone:
+ - The usage dashboard available from the `newer web interface
+   <https://nuv.la/webui>`_ has been significantly enhanced to provide
+   better search (and sort) capabilities, to view data more
+   efficiently, and to allow download of the report data.
+ - As a result of the work on the usage dashboard, the newer web
+   interface has been cleaned up, with more visual consistency between
+   elements and many small interaction bugs corrected.
+ - Fixed a bug that prevented the deployment reports from being shown
+   in the web interfaces.
+ - Fixed that caused user registration with a username/password to
+   fail.
+
+For Bob:
+ - Recovery of quota information from cloud service providers
+   (starting with Exoscale) has been put in place to allow
+   synchronization between SlipStream and provider quotas.
+ - Fixed the schema of the quotas to allow for zero limits,
+   effectively blocking access to a particular resource.
+ - Metering has been improved to ensure that the correct people have
+   access to the records and that the information is more precise.
+
+For Dave:
+ - The logging for the job executor has been significantly improved.
+   It now uses its own log file (rather than logging to syslog) and
+   all messages have a consistent format and reasonable logging
+   level. 
+ - Support for both MITREid server and token authentication has been
+   improved to allow a shared configuration of both authentication
+   methods. 
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+ - The login and sign up dialogs are not properly centered from the
+   SlipStream welcome page.  See `GitHub Issue
+   <https://github.com/slipstream/SlipStreamUI/issues/789>`_ for a
+   description of the problem and the fix.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.55...v3.56>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.55...v3.56>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.55...v3.56>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.55...v3.56>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.55...v3.56>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.55...v3.56>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.55...v3.56>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.55...v3.56>`__
+
+
+v3.55 - 21 July 2018
+--------------------
+
+Two features dominated the work for this release:
+
+ - Enhancing the authentication process to allow users to authenticate
+   with multiple methods for a single account and
+ - Refining the monitoring infrastructure to provide more accurate and
+   better overviews of resource usage.
+
+In addition, a number of bugs were fixed and other enhancements have
+been rolled in. 
+
+For Everyone:
+ - Fix a problem where external users making use of shared credentials
+   could not terminate deployments.
+ - Allow for user registration with an Exoscale voucher that
+   automatically creates an Exoscale account and configures the Nuvla
+   account for all Exoscale regions.
+ - Change external authentication via MITREid (OIDC) servers to use
+   unique identifier rather than the MITREid username.
+ - Fix the user registration workflow for browser-based clients.
+ - Fix an issue where specifying multiple SSH keys on an OpenStack
+   deployment could prevent the key pair from being created.
+ - Simplify the user login and user sign up modals.
+
+For Clara:
+ - Add full text search capabilities for the description attribute of
+   CIMI resources. (Alpha feature subject to change.)
+ - Add CIMI-based modules (images, components, applications) to the
+   server. (Alpha feature subject to change.)
+
+For Bob:
+ - Add the concept of "credential managers" to allow for managers to
+   have an overview of all resource usage related to the credential.
+ - Add disk size monitoring for virtual machine resources.
+
+For Dave:
+ - Enhance the Exoscale connector to use a separate parameter for the
+   root disk size, rather than relying on separate images with
+   different default disk sizes.
+ - Fix a minor (and rare) problem with the job engine where there was
+   a missing format in exception handling that affected the logs.
+ - Fix a problem with the handling of credentials when creating the
+   monitoring resources for virtual machines.
+ - Allow multiple identities per user account. (See the migration
+   instructions below concerning this change.)
+ - The self-registration template is not added by default.  This must
+   be added by the administrator to authorize self-registration of
+   users. 
+ - The problem with the slow start of the CIMI server was caused by
+   insufficient entropy.  It is recommended to always run the
+   "haveged" service to avoid this problem.  This has been added to
+   the standard SlipStream installation. 
+ - Multiple fixes and additions to the WebUI interface. 
+
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+Migration of external users is required.  See the usage instructions
+in the `README on GitHub
+<https://github.com/slipstream/SlipStreamServer/blob/master/cimi-migration/README.md>`_.
+
+
+Known issues
+~~~~~~~~~~~~
+
+ - The deployment reports are not shown in the standard UI.  See
+   `GitHub Issue
+   <https://github.com/slipstream/SlipStreamWebUI/pull/181>`_ for
+   resolution of this.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.54...v3.55>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.54...v3.55>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.54...v3.55>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.54...v3.55>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.54...v3.55>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.54...v3.55>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.54...v3.55>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.54...v3.55>`__
+
+
 v3.54 - 30 June 2018
 --------------------
 
@@ -676,184 +840,4 @@ Commits
  -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.46...v3.47>`__
  -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.46...v3.47>`__
  -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.46...v3.47>`__
-
-v3.46 - 23 February 2018
-------------------------
-
-This release contains a few foundational features have been added
-(external objects, Docker connector, credential sharing) that will
-improve cloud resource management in the future.  It also includes
-changes to the way machines within a deployment access the server and
-how deployment reports are stored.  Both require administrator
-attention during upgrades. (See migration section.)  The release also
-contains a number of bug fixes.
-
-For Everyone:
- - User resource implementation was changed to allow credential
-   sharing between users and groups with ACLs.
- - The login dialog was changed to avoid it being obscured on mobile
-   devices. 
- - The default ACL for Connector resources was changed to allow all
-   authentication users to see them.
- - The bootstrap script has been corrected to avoid an issue where
-   machine deployments on Ubuntu 16 machines would fail.
- - The prototype for the new web browser UI has been improved to
-   provide better editing capabilities with forms and JSON, to plot
-   server metrics, and to render ``href`` attributes as links to other
-   resources. 
- - Styles of cubic (new web browser UI) have been normalized to
-   provide a consistent look and feel.
-
-For Clara:
- - The login methods of the Python API have been improved to cache
-   credentials to make managing access easier.
- - Improved the CIMI support in the Python API to allow CIMI actions
-   to be called.
- - The Python API is now part of the SlipStream RPM packages.
- - A utility method was added to the Python API to retrieve deployment
-   events.
- - A function was added to the Clojure(Script) API to allow the server
-   metrics to be retrieved.
- - A prototype "cloud" connector (alpha) for Docker infrastructures is
-   now available.
-   
-For Dave:
- - The "machine" cookies that were used by VMs within a deployment to
-   interact with SlipStream have been replaced by an API key/secret
-   pair. These can be revoked if necessary.
- - An "external object" CIMI resource has been created to allow links
-   to external files and resources, such as report, data files,
-   etc. Reports are now handled with these resources.  (See migration
-   below.) 
- - The server organization has been more finely segmented to allow for
-   wider reuse of the servers and to make containerization easier.
- - Package dependencies have be rationalized and corrected (including
-   the ``cheshire.jar`` verson in the pricing service). More work on
-   this will occur in the future to reduce the servers' footprints.
- - SlipStream package dependency on ``slipstream-client-clojure`` (no
-   longer created) has been removed.
-
-
-Alice, Bob, Clara, and Dave can be found
-`here <http://sixsq.com/personae/>`_.
-
-Migration
-~~~~~~~~~
-
-API key/secret pairs are now being used to manage access to the server
-from deployed machines.  For non-scalable deployments, this change
-will have no effect.  However, scalable deployments will lose access
-to the server. They need to be terminated and restarted.
-
-Below is the migration procedure to enable the view of the connector instances
-by users of your SlipStream instance. From now on this is required for the
-deployments to succeed.
-
- - login to SlipStream instance as super user
- - go to \https://\<slipstream\>/webui/cimi/connector
- - click on `magnifying glass` pictogram (this will fetch all connector config instances)
- - click on a connector name link
- - click on `update` button
- - in the edit window add the following into the list under `"acl" -> "rules"`::
-
-   { "principal": "USER", "right": "VIEW", "type": "ROLE" }
-
- - click on `update` button to persist the configuration
- - repeat this for each connector.
-
-The method of storing reports has changed with this release.  They are
-now stored in S3 rather than on the server's disk. This requires that
-the administrator have access to an S3 instance and migration of the
-existing reports to S3.
-
-You must provide an S3 configuration file
-``/opt/slipstream/server/.aws/credentials`` with the following
-contents::
-
-  aws_secret_access_key=<KEY>
-  aws_access_key_id=<SECRET>
-  aws_endpoint=<S3ENDPOINT>
-
-Note that the name of the bucket is not configurable.  It is set to
-"slipstream-reports" and must be created before being used.
-
-
-Known issues
-~~~~~~~~~~~~
-
- - The switch to using API key/secret pairs will only have an effect
-   on running scalable deployments. These will need to be stopped and
-   redeployed.
-
-
-Commits
-~~~~~~~
-
- -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.45...v3.46>`__
- -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.45...v3.46>`__
- -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.45...v3.46>`__
- -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.45...v3.46>`__
- -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.45...v3.46>`__
- -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.45...v3.46>`__
- -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.45...v3.46>`__
- -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.45...v3.46>`__
-
-
-v3.45 - 4 February 2018
------------------------
-
-This is primarily a bug fix release, but also includes a prototype for
-a new web interface.  Feedback on that prototype is welcome. 
-
-For Everyone:
- - An SSH configuration bug that blocked SSH logins on machines
-   without pre-existing ``.ssh`` directories was fixed.
- - A bug with the Exoscale connector that caused deployments to fail
-   was corrected.
- - A prototype user interface has been included in the release, which
-   is available by default on the ``/webui`` relative URL.
-
-For Dave:
- - The configuration for the Job Engine has been added to the quick
-   installation script.
- - CIMI resources for NuvlaBox registrations have been added.
- - Unnecessary dependencies have been removed from services and
-   packages have been cleaned up.
-
-Alice, Bob, Clara, and Dave can be found
-`here <http://sixsq.com/personae/>`_.
-
-Migration
-~~~~~~~~~
-
-No migration is necessary.
-
-Known issues
-~~~~~~~~~~~~
-
- - When upgrading rename the ``/etc/default/ssclj`` file to
-   ``/etc/default/cimi`` if you've made changes to the configuration
-   file.
- - If you've made changes to the nginx configuration files, you will
-   need to remove the reference to ``authn.block`` in
-   ``/etc/nginx/conf.d/slipstream.params``.
- - The wrong version of ``cheshire.jar`` was included in the RPM
-   package for the ``ss-pricing`` service.  Replace
-   ``/opt/slipstream/ss-pricing/lib/cheshire.jar`` with version 5.8.0
-   that can be found at ``clojars.org``.
- - The RPM package ``slipstream-client-clojure`` was not generated for
-   this release. The v3.44 version works fine. 
-
-Commits
-~~~~~~~
-
- -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.44...v3.45>`__
- -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.44...v3.45>`__
- -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.44...v3.45>`__
- -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.44...v3.45>`__
- -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.44...v3.45>`__
- -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.44...v3.45>`__
- -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.44...v3.45>`__
- -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.44...v3.45>`__
-
 

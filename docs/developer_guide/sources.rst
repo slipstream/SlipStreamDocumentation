@@ -83,9 +83,8 @@ different branch or tag, then use the following command:
 setting the value of "master" to the desired branch or tag. This will
 consistently use the same branch or tag for all components.
 
-The tags for releases follow the pattern: "v2.5-community". Look at the
-release notes to determine which tags correspond stable or candidate
-releases.
+The tags for releases follow the pattern: "v3.55". Look at the release
+notes to determine tag to use.
 
 Although not recommended, it is sometimes useful to mix and match
 versions of different components. Look at the ``pom.xml`` file for the

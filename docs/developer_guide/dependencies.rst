@@ -140,7 +140,7 @@ You should also add the following to you bash login script::
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 
-This wil configure your Python environment and let you choose between
+This will configure your Python environment and let you choose between
 different Python versions.  **Be sure to change the path to match your
 username.**
 

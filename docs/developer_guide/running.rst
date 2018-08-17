@@ -9,17 +9,13 @@ packages following the instructions in the Administrator Guide.
 Databases
 ---------
 
-SlipStream needs a JDBC friendly database. By default we use HSQLDB, but
-the persistence.xml file contains a number of other databases, including
-MySQL and PostgreSQL.
-SlipStream API server uses Elasticsearch.
+SlipStream needs a JDBC friendly database. We use HSQLDB.  The
+SlipStream CIMI server uses Elasticsearch.
 
 Database Configuration
 ----------------------
 
-Create an HSQLDB definition file in your home area:
-
-::
+Create an HSQLDB definition file in your home area::
 
     $ cat > ~/sqltool.rc << EOF
     urlid slipstream
@@ -35,9 +31,7 @@ Starting the Database
 
 The HSQLDB database (a pure Java database) will have been downloaded to
 your local maven repository when you built SlipStream. You can run the
-database with the downloaded jar file:
-
-::
+database with the downloaded jar file::
 
     $ java -cp ~/.m2/repository/org/hsqldb/hsqldb/2.3.4/hsqldb-2.3.4.jar \
            org.hsqldb.server.Server \
@@ -53,10 +47,10 @@ Elasticsearch installation
 Follow instructions from Elasticsearch documentation:
 https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html
 
-Please use same version as the one found used SlipStream server (see pom.xml in ``SlipStream`` project).
+Please use same version as the one found used SlipStream server (see
+pom.xml in ``SlipStream`` project).
 
-To start Elasticsearch engine, just type (in the ``bin`` directory):
-::
+To start Elasticsearch engine, just type (in the ``bin`` directory)::
 
     $ ./elasticsearch
 
@@ -164,21 +158,6 @@ the server pointing to source static location as following:
 
 The server makes use of Elasticsearch as database backend, therefore, you see
 the need to set the host and port of Elasticsearch.
-You can also change the main database backend connection using the
-``persistence.unit``. For example:
-
-::
-
-    -Dpersistence.unit=mysql-schema
-
-or
-
-::
-
-    -Dpersistence.unit=postgres-schema
-
-You will obviously need to have either MySQL or Postgresql running when
-configuring the server in this way.
 
 To add cloud connectors you need to modify ``pom.xml``.  Below is an example of
 adding Exoscale connector that depends on CloudStack connector.  Please note

@@ -9,7 +9,8 @@ Node Preparation
 
 Deploy the machine that you'll be using for your SlipStream server
 with the CentOS 7 operating system.  (See the prerequisites in the
-previous section for sizing information.)
+previous section for sizing information.  A machine with 4 CPU cores,
+8 GB of RAM and 20 GB of disk space is recommended as a minimum.)
 
 The installation script will **not** perform a general upgrade of your
 CentOS 7 system. You may want to run::

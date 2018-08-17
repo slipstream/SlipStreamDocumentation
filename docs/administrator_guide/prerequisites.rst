@@ -27,10 +27,9 @@ Hardware Requirements
 
 The hardware requirements of SlipStream are modest. Any modern,
 multicore, server-class machine should run the SlipStream services
-without problems.  At least 2 gigabytes of RAM should be dedicated to
-the Java Virtual Machines (JVMs) running the services; consequently,
-the physical machine should have 4 or more GB of RAM.  Similarly,
-20-50 GB of disk space should be sufficient for initial use.
+without problems.  We recommend a machine with a minimum of 4 CPU
+cores and 8 GB of RAM.  A machine with 20-50 GB of disk space should
+be sufficient for initial use.
 
 As with any service, the resource requirements for the server will
 increase with the number of users and with the number of system
