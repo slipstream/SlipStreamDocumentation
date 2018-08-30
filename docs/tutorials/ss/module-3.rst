@@ -23,6 +23,7 @@ contain credentials for at least one cloud.  If necessary, review the
    deployment-logs
    components-2
    applications
+   deleting
 
 After finishing this module, building, deploying and managing cloud
 applications should no longer be a problem for you, especially with
