@@ -1,6 +1,53 @@
 Supported Releases
 ==================
 
+v3.58 - 31 August 2018
+----------------------
+
+Release v3.58 has focused on the reliability of the resource
+usage data and its visualization.
+
+For Everyone:
+ - Partially fix a problem with showing the usage data 
+ (Disk size)
+ - Optimize database for deletions
+ - Have Exoscale compatible with CIMI deployments
+
+   
+For Bob:
+ - Have a distinction in usage between compute and S3 storage
+ - Fix bug on UI for deployment panel causing blank page
+
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.57...v3.58>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.57...v3.58>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.57...v3.58>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.57...v3.58>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.57...v3.58>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.57...v3.58>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.57...v3.58>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.57...v3.58>`__
+
+
+
 v3.57 - 17 August 2018
 ----------------------
 
