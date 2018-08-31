@@ -8,8 +8,7 @@ Release v3.58 has focused on the reliability of the resource
 usage data and its visualization.
 
 For Everyone:
- - Partially fix a problem with showing the usage data 
- (Disk size)
+ - Partially fix a problem with showing the usage data (Disk size)
  - Optimize database for deletions
  - Have Exoscale compatible with CIMI deployments
 
