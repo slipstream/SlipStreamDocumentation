@@ -441,3 +441,67 @@ resource to modify or delete it, respectively.
 .. _Google: https://developers.google.com/identity/protocols/OpenIDConnect
 
 .. _LinkedIn: https://developer.linkedin.com/docs/oauth2
+
+Link an authentication to a user account
+----------------------------------------
+
+Via the browser interface
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to know which authencation(s)(aka user identifier) are currently linked
+to a given user :
+visit the page https://nuv.la/webui/cimi/user-identifier , 
+and add a filter text such as::
+
+    user/href="user/my-user"
+
+Use the ``Columns`` button to include the `identifier` 
+attribute to the list.
+
+An `identifier` is composed of :
+ - A domain instance name  prefix, followed by 
+ - a ``:`` separator, and 
+ - the actual external login name
+
+Example : ``"github:agithublogin"``
+or something more complex like 
+``"sixsq:john.smith@unitedid.orghttps://idp.unitedid.org/idp/shibboleth!https://fed-id.nuv.la/samlbridge/module.php/saml/sp/metadata.php/sixsq-saml-bridge!aaa-bbb-ccc"``
+
+Tie a new authentication to your user via the ``Add`` 
+button (available after an initial ``Search`` 
+on page https://nuv.la/webui/cimi/user-identifier)
+
+Replace the values ``<MY_USER>``, ``<INSTANCE>`` and ``<EXTERNAL_LOGIN>`` 
+to the JSON document which will be submitted , using the below pattern::
+
+    {    
+    "user" : {"href" : "user/<MY_USER>"},
+    "identifier" : "<INSTANCE>:<EXTERNAL_LOGIN>"
+    }
+
+NB : Attempting to assign the same identifier to more than 
+one Nuvla user will cause a conflict and an error 409
+
+
+Via the ss-curl command
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A new user identifier can be added to the server via a POST
+request. 
+
+.. code-block:: bash
+
+   ss-curl -XPOST \
+           -H content-type:application/json \
+           -d@user-identifier.json \
+           https://<slipstream_host>/api/user-identifier
+
+where the ``user-identifier.json`` content follows the pattern::
+
+    {    
+    "user" : {"href" : "user/<MY_USER>"},
+    "identifier" : "<INSTANCE>:<EXTERNAL_LOGIN>"
+    }
+
+Like when using the web interface, you can not assign the same 
+identifier value (<INSTANCE>:<EXTERNAL_LOGIN>) to more than one Nuvla user    
