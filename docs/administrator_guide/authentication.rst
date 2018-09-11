@@ -432,6 +432,96 @@ This will create the resource.  Use a PUT or DELETE on the created
 resource to modify or delete it, respectively.
 
 
+Link Authentications to a User Account
+--------------------------------------
+
+A user may login to her account using multiple different
+authentication methods.  For example, the user may have both a
+username/password pair and be able to authenticate via GitHub.
+Currently, the administrator must configure the server to link
+multiple authentication methods to a single account.
+
+.. warning::
+
+   Although each authentication method will link to the same
+   SlipStream account, the rights given to the user may be different
+   depending on the authentication method.  This is particularly true
+   when using external identity federations that pass attributes to
+   SlipStream.
+
+Via the Browser Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to know which authentication(s) (aka user identifiers) are
+currently linked to a given user: visit the page `user-identifier link
+on the CIMI resources page
+<https://nuv.la/webui/cimi/user-identifier>`_, and add a filter such
+as::
+
+    user/href="user/my-user"
+
+Use the ``Columns`` button to include the `identifier` attribute in
+the displayed table.
+
+An `identifier` is composed of :
+ - A domain instance name prefix, followed by 
+ - A ``:`` separator, and 
+ - The actual external login name.
+
+Examples include::
+
+  github:agithublogin
+  sixsq:john.smith@unitedid.orghttps://idp.unitedid.org/idp/shibboleth!https://fed-id.nuv.la/samlbridge/module.php/saml/sp/metadata.php/sixsq-saml-bridge!aaa-bbb-ccc
+
+The prefix comes from that last part of the ``id`` field of the
+associated ``session-template`` resource.
+
+To link a new authentication to a user via the ``Add`` button
+(available after an initial ``Search`` on user-identifier listing
+page), replace the values ``<MY_USER>``, ``<INSTANCE>`` and
+``<EXTERNAL_LOGIN>`` in the JSON document that will be submitted,
+using the pattern below::
+
+    {    
+    "user" : {"href" : "user/<MY_USER>"},
+    "identifier" : "<INSTANCE>:<EXTERNAL_LOGIN>"
+    }
+
+Once the document has been created, the user will be able to login to
+SlipStream with the associated method and identifier.
+
+.. note::
+
+   Attempting to assign the same identifier to more than one Nuvla
+   user will return a 409 (conflict) status and will not create the
+   document.
+
+
+Via the ss-curl Command
+~~~~~~~~~~~~~~~~~~~~~~~
+
+A new user identifier can be added to the server via a POST request.
+
+.. code-block:: bash
+
+   ss-curl -XPOST \
+           -H content-type:application/json \
+           -d@user-identifier.json \
+           https://<slipstream_host>/api/user-identifier
+
+where the ``user-identifier.json`` content follows the same pattern as
+above::
+
+    {    
+    "user" : {"href" : "user/<MY_USER>"},
+    "identifier" : "<INSTANCE>:<EXTERNAL_LOGIN>"
+    }
+
+Like when using the web interface, you can not assign the same
+identifier value (<INSTANCE>:<EXTERNAL_LOGIN>) to more than one Nuvla
+user.
+
+
 .. _OIDC: http://openid.net/connect/
 
 .. _OAuth: https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/
@@ -442,66 +532,3 @@ resource to modify or delete it, respectively.
 
 .. _LinkedIn: https://developer.linkedin.com/docs/oauth2
 
-Link an authentication to a user account
-----------------------------------------
-
-Via the browser interface
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In order to know which authencation(s)(aka user identifier) are currently linked
-to a given user :
-visit the page https://nuv.la/webui/cimi/user-identifier , 
-and add a filter text such as::
-
-    user/href="user/my-user"
-
-Use the ``Columns`` button to include the `identifier` 
-attribute to the list.
-
-An `identifier` is composed of :
- - A domain instance name  prefix, followed by 
- - a ``:`` separator, and 
- - the actual external login name
-
-Example : ``"github:agithublogin"``
-or something more complex like 
-``"sixsq:john.smith@unitedid.orghttps://idp.unitedid.org/idp/shibboleth!https://fed-id.nuv.la/samlbridge/module.php/saml/sp/metadata.php/sixsq-saml-bridge!aaa-bbb-ccc"``
-
-Tie a new authentication to your user via the ``Add`` 
-button (available after an initial ``Search`` 
-on page https://nuv.la/webui/cimi/user-identifier)
-
-Replace the values ``<MY_USER>``, ``<INSTANCE>`` and ``<EXTERNAL_LOGIN>`` 
-to the JSON document which will be submitted , using the below pattern::
-
-    {    
-    "user" : {"href" : "user/<MY_USER>"},
-    "identifier" : "<INSTANCE>:<EXTERNAL_LOGIN>"
-    }
-
-NB : Attempting to assign the same identifier to more than 
-one Nuvla user will cause a conflict and an error 409
-
-
-Via the ss-curl command
-~~~~~~~~~~~~~~~~~~~~~~~
-
-A new user identifier can be added to the server via a POST
-request. 
-
-.. code-block:: bash
-
-   ss-curl -XPOST \
-           -H content-type:application/json \
-           -d@user-identifier.json \
-           https://<slipstream_host>/api/user-identifier
-
-where the ``user-identifier.json`` content follows the pattern::
-
-    {    
-    "user" : {"href" : "user/<MY_USER>"},
-    "identifier" : "<INSTANCE>:<EXTERNAL_LOGIN>"
-    }
-
-Like when using the web interface, you can not assign the same 
-identifier value (<INSTANCE>:<EXTERNAL_LOGIN>) to more than one Nuvla user    
