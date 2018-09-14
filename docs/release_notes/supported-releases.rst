@@ -1,6 +1,59 @@
 Supported Releases
 ==================
 
+v3.59 - 14 September 2018
+--------------------------
+
+Release v3.59 has focused on enhanced performance of the WebUI
+and the introduction to a docker connector
+
+For Everyone:
+ - Fix missing display of reports for users with long usernames
+ - Added about / welcome pages
+ - Enhanced display for metric charts
+
+
+For Bob :
+ - Better display of billable resource 
+ - Updated filter on the Usage page  
+
+   
+For Dave:
+ - Additions to the Administrator Guide regarding "How to link Authentications to a User Account"
+ - Added priority support for job resource
+ - Support of a `disabledMonitoring` attribute for cloud connectors (performance optimisation)
+ - Implementation of a docker connector
+ - Fix on the describe instance command for connectors
+
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.58...v3.59>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.58...v3.59>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.58...v3.59>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.58...v3.59>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.58...v3.59>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.58...v3.59>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.58...v3.59>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.58...v3.59>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.58...v3.59>`__
+
 v3.58 - 31 August 2018
 ----------------------
 
