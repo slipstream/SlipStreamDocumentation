@@ -5,17 +5,17 @@ v3.60 - 28 September 2018
 --------------------------
 
 Release v3.60 focused on improving the reliability of
-the SlipStream jobs and the performance of some WebUi pages
+the SlipStream jobs and the performance of some WebUI pages
 
 For Everyone:
  - Improvement for Deployments as CIMI resource
- - WebUi Improved performances  (dashboard refresh, animations)
- - WebUI page for NuvlaBox (paging added)
+ - WebUI Improved performances (dashboard refresh, animations for  charts)
+ - WebUI page for NuvlaBox (pagination added)
 
    
 For Dave:
  - Better yield handling while collecting VMs
- - Job includes started time and total execution time
+ - Job includes started time and total duration
  - Docker connnector now part of the upgrade process
 
 Alice, Bob, Clara, and Dave can be found
