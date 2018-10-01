@@ -11,6 +11,7 @@ For Everyone:
  - Improvement for Deployments as CIMI resource
  - WebUI Improved performances (dashboard refresh, animations for  charts)
  - WebUI page for NuvlaBox (pagination added)
+ - Credential api key secret bug fix in claims edition
 
    
 For Dave:
