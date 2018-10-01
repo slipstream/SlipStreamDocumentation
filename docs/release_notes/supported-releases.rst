@@ -15,9 +15,7 @@ For Everyone:
 
    
 For Dave:
- - Better yield handling while collecting VMs
- - Job includes started time and total duration
- - Job collect vms action and executor behavior enhanced
+ - Improved monitoring of VMs, including error handling
  - Docker connnector now part of the upgrade process
 
 Alice, Bob, Clara, and Dave can be found
