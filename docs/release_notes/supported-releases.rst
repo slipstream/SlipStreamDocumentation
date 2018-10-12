@@ -1,6 +1,51 @@
 Supported Releases
 ==================
 
+v3.60 - 28 September 2018
+--------------------------
+
+Release v3.60 focused on improving the reliability of
+the SlipStream jobs and the performance of some WebUI pages
+
+For Everyone:
+ - Improvement for Deployments as CIMI resource
+ - WebUI Improved performances (dashboard refresh, animations for  charts)
+ - WebUI page for NuvlaBox (pagination added)
+ - Credential api key secret bug fix in claims edition
+
+   
+For Dave:
+ - Improved monitoring of VMs, including error handling
+ - Docker connnector now part of the upgrade process
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.59...v3.60>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.59...v3.60>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.59...v3.60>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.59...v3.60>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.59...v3.60>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.59...v3.60>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.59...v3.60>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.59...v3.60>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.59...v3.60>`__
+
 v3.59 - 14 September 2018
 --------------------------
 
