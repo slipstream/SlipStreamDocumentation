@@ -131,7 +131,7 @@ process looks like the following.
       },
     "bucketName": "data-exo-gva",
     "objectName": "dataset1/object1.png",
-    "contentType": "images/png"
+    "contentType": "image/png"
     }
   }
   EOF
@@ -216,8 +216,8 @@ contents, you can do the following:
    $ export LINK="https://cal-exo-gva-4567.sos-ch-dk-2.exo.io/..."
    $
    $ curl -XPUT \
-       -T@screenshot.png \
-       -H content-type:images/png \       
+       -T screenshot.png \
+       -H content-type:image/png \       
        ${LINK} 
    $ echo $?
    0
