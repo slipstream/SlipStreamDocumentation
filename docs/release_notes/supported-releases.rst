@@ -1,6 +1,54 @@
 Supported Releases
 ==================
 
+v3.62 - 26 October 2018
+--------------------------
+
+Release v3.62 focused on bugfixes, cleaning up of dead/deprecated code and 
+update of the Slipstream API documentation
+
+For Everyone:
+ - Removal of Electron as part of the UI
+ - Removal of deprecated 'vms' resource
+ - Implementation of the CIMI ResourceMetadata resource
+ - Update of API documentation (https://ssapi.sixsq.com)
+ e.g  vm, storage, metering and the new Quota resource
+ - Fixed bug when displaying the reset password dialog
+
+
+For Dave:
+ - Upgrade of clojure to 1.10.0-beta3.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.61...v3.62>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.61...v3.62>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.61...v3.62>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.61...v3.62>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.61...v3.62>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.61...v3.62>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.61...v3.62>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.61...v3.62>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.61...v3.62>`__
+
+
+
 v3.61 - 12 October 2018
 --------------------------
 
