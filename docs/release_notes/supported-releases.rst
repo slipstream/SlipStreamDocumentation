@@ -1,6 +1,56 @@
 Supported Releases
 ==================
 
+v3.63 - 9 November 2018
+--------------------------
+
+Release v3.63 introduced the Metadata resource, added improvements on UI and bugfixes in some resources schema.
+
+For Everyone:
+ - Upgrade of datepicker in the UI
+ - Added copy to clipboard
+ - Appstore new UI based on deployment template and cimi deployment
+ - Visualization for Metadata
+ - Fix external-object authorizations for actions like Download
+ - Attributes added  (`acceptProtocols` and `acceptContentTypes`) to the modules resources 
+ - Attribute added (`data`) to deployment resource 
+ - Update on the schema for the ServiceOffer resource to allow both a fully-qualified connector identifier and the current abbreviated one.
+
+For Dave:
+ - Using shadow-cljs for dependencies
+ - The latest version of the CIMI specification has introduced "parent", therefore fixes were required when this introduced conflicts
+ - Fix in email resource schema
+ - Automatic resource metadata generation (using ephemeral storage)
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.62...v3.63>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.62...v3.63>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.62...v3.63>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.62...v3.63>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.62...v3.63>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.62...v3.63>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.62...v3.63>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.62...v3.63>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.62...v3.63>`__
+
+
 v3.62 - 26 October 2018
 --------------------------
 
