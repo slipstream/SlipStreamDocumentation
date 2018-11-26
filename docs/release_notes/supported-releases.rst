@@ -1,6 +1,55 @@
 Supported Releases
 ==================
 
+v3.64 - 23 November 2018
+--------------------------
+
+Release v3.64 focused on introducing new CIMI resource for deployments and upgrade of clojurescript
+libraries.  
+
+For Everyone:
+ - Implementation of an initial set of deployment resources that will allow the CIMI modules to be deployed
+ - Added events on deployment state change and on execution state change
+
+For Dave:
+ - Module actions for the application panel
+ - The module migration script is updated to comply with the latest changes of the schema.
+ - Fixed compiler warnings coming from latest ClojureScript release (1.10.439).
+ - Upgrade to the latest shadow-cljs (2.7.2) and closure (v20181028) releases.
+ - Moved metadata utilities to make them accessible to other submodules.
+
+
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.63...v3.64>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.63...v3.64>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.63...v3.64>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.63...v3.64>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.63...v3.64>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.63...v3.64>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.63...v3.64>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.63...v3.64>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.63...v3.64>`__
+
+
+
 v3.63 - 9 November 2018
 --------------------------
 
