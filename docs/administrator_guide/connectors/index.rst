@@ -8,4 +8,3 @@ Connector-Specific Info
    cloudstack_connector
    ec2_connector
    openstack_connector
-   vcloud_connector
