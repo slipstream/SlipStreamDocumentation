@@ -111,7 +111,7 @@ For Everyone:
  - Removal of deprecated 'vms' resource
  - Implementation of the CIMI ResourceMetadata resource
  - Update of API documentation (https://ssapi.sixsq.com)
- e.g  vm, storage, metering and the new Quota resource
+   e.g  vm, storage, metering and the new Quota resource
  - Fixed bug when displaying the reset password dialog
 
 
@@ -453,7 +453,7 @@ Known issues
 ~~~~~~~~~~~~
 
  - The login and sign up dialogs are not properly centered from the
-   SlipStream welcome page.  See `GitHub Issue
+   SlipStream welcome page.  See `GitHub Issue 789
    <https://github.com/slipstream/SlipStreamUI/issues/789>`_ for a
    description of the problem and the fix.
 
@@ -543,7 +543,7 @@ Known issues
 ~~~~~~~~~~~~
 
  - The deployment reports are not shown in the standard UI.  See
-   `GitHub Issue
+   `GitHub Issue 181
    <https://github.com/slipstream/SlipStreamWebUI/pull/181>`_ for
    resolution of this.
 
@@ -730,8 +730,8 @@ Known issues
 ~~~~~~~~~~~~
 
  - The parameter description for the NuvlaBox connector (if installed)
-   prevents the SlipStream server from starting. ([GitHub
-   issue](https://github.com/SixSq/SlipStreamConnectors/issues/165))
+   prevents the SlipStream server from starting (see `GitHub issue 165
+   <https://github.com/SixSq/SlipStreamConnectors/issues/165>`_).
 
 
 Commits
