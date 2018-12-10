@@ -1,5 +1,49 @@
 Supported Releases
 ==================
+v3.65 - 07 December 2018
+--------------------------
+
+Release v3.65 introduces data volume options on deployments 
+and improvements on S3 objects management
+
+For Everyone:
+ - S3 objects metadata are collected and stored in the resource 
+ - Deleting the last S3 object of a bucket also deletes the bucket
+ - Better error handling when interacting with S3
+ - Full support for data volume options
+ - Mounting volumes in containers feature
+ - Data page implements a full text search 
+ - Deployment dialog is refined (progress as steps and jobs are detailled)
+ - use of SlipStream state machine state only when in started/stopped states
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.64...v3.65>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.64...v3.65>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.64...v3.65>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.64...v3.65>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.64...v3.65>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.64...v3.65>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.64...v3.65>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.64...v3.65>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.64...v3.65>`__
+
 
 v3.64 - 23 November 2018
 --------------------------
