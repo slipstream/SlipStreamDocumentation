@@ -1,5 +1,48 @@
 Supported Releases
 ==================
+
+v3.66 - 21 December 2018
+--------------------------
+
+Release v3.66 improves the deployments workflow and user interface 
+when datasets are included. It also introduces public external objects
+
+For Everyone:
+ - UI improvements regarding datasets information to deployments
+ - External objects can be made public and downloadable
+
+For Dave
+ - Add datasets to deployment service offers
+ - Support alpine for the bootstrap (needed primarily for containers).
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.65...v3.66>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.65...v3.66>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.65...v3.66>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.65...v3.66>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.65...v3.66>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.65...v3.66>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.65...v3.66>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.65...v3.66>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.65...v3.66>`__
+
 v3.65 - 07 December 2018
 --------------------------
 
