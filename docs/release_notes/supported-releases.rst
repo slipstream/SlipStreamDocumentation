@@ -11,7 +11,8 @@ For Everyone:
  - Fix regression when downloading reports
 
 For Dave
- - Update of schema to save dataset information for objects.
+ - Update of schema of the Deployment resource to save dataset information 
+   for data objects.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
