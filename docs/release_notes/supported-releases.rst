@@ -1,6 +1,48 @@
 Supported Releases
 ==================
 
+v3.67 - 18 Janvier 2019
+--------------------------
+
+Release v3.67 fixes the known issues from the previous release
+and improve the dataset information description.
+
+For Everyone:
+ - Fix regression when downloading reports
+
+For Dave
+ - Update of schema to save dataset information for objects.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.66...v3.67>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.66...v3.67>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.66...v3.67>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.66...v3.67>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.66...v3.67>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.66...v3.67>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.66...v3.67>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.66...v3.67>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.66...v3.67>`__
+
+
+
 v3.66 - 21 December 2018
 --------------------------
 
