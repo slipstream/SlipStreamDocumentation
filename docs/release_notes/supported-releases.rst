@@ -12,6 +12,7 @@ For Everyone:
 
 For Dave
  - Fix for incorrect metadata reference
+ - Use kebab-case for resource attributes
 
 
 Alice, Bob, Clara, and Dave can be found
