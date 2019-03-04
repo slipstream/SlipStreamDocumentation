@@ -1,20 +1,21 @@
 Supported Releases
 ==================
-v3.65 - 07 December 2018
---------------------------
 
-Release v3.65 introduces data volume options on deployments 
-and improvements on S3 objects management
+
+v3.70 - 01 March 2019
+---------------------
+
+Release v3.70 contains a couple of bug fixes and a new notification
+resource.
+
 
 For Everyone:
- - S3 objects metadata are collected and stored in the resource 
- - Deleting the last S3 object of a bucket also deletes the bucket
- - Better error handling when interacting with S3
- - Full support for data volume options
- - Mounting volumes in containers feature
- - Data page implements a full text search 
- - Deployment dialog is refined (progress as steps and jobs are detailled)
- - use of SlipStream state machine state only when in started/stopped states
+ - Fix compatibility problem with using ExternalObject resources
+   against a Minio S3 server.
+ - Fix issue with webui where the redirects when deleting resources
+   pointed to non-existant paths.
+ - Addition of a new notification resource that will allow more
+   flexible management of user notifications.
 
 Alice, Bob, Clara, and Dave can be found
 `here <http://sixsq.com/personae/>`_.
@@ -34,15 +35,15 @@ No known issues.
 Commits
 ~~~~~~~
 
- -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.64...v3.65>`__
- -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.64...v3.65>`__
- -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.64...v3.65>`__
- -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.64...v3.65>`__
- -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.64...v3.65>`__
- -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.64...v3.65>`__
- -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.64...v3.65>`__
- -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.64...v3.65>`__
- -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.64...v3.65>`__
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.69...v3.70>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.69...v3.70>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.69...v3.70>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.69...v3.70>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.69...v3.70>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.69...v3.70>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.69...v3.70>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.69...v3.70>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.69...v3.70>`__
 
 
 v3.69 - 15 February 2019
