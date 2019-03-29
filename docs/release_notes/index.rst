@@ -3,10 +3,14 @@ SlipStream Releases
 ===================
 
 Results from each development cycle are packaged and released. The
-process occurs approximately once every two weeks. **Releases from the
-past four months are supported**, although we generally recommend that
-you use the latest available release. Older releases are available,
-but not supported.
+process occurred approximately once every two weeks.
+
+SlipStream version v3.71 is the **last planned release for
+SlipStream**.  It is the only version of SlipStream supported at this
+time.  The evolution of SlipStream will be called Nuvla 2.0.  Browse
+the (preliminary) Nuvla 2.0 `documentation
+<https://nuvla.github.io/nuvla/>`_ to follow its development.
+
 
 .. toctree::
    :maxdepth: 2
