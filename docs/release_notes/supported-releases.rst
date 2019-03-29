@@ -23,7 +23,7 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-No migration is required.
+No migration is required..
 
 
 Known issues
