@@ -1,6 +1,49 @@
 Supported Releases
 ==================
 
+**The SlipStream version v3.71 is the last planned release for
+SlipStream.  The next version of SlipStream will be called Nuvla 2.0.
+Browse the (preliminary) Nuvla 2.0
+[documentation](https://nuvla.github.io/nuvla/) to follow the progress
+on the new release.**
+
+
+v3.71 - 29 March 2019
+---------------------
+
+Release v3.71 contains a single bug fix for the webui.
+
+For Everyone:
+ - Fix issue with webui where the redirects when deleting resources
+   pointed to non-existant paths.
+
+Alice, Bob, Clara, and Dave can be found
+`here <http://sixsq.com/personae/>`_.
+
+Migration
+~~~~~~~~~
+
+No migration is required.
+
+
+Known issues
+~~~~~~~~~~~~
+
+No known issues.
+
+Commits
+~~~~~~~
+
+ -  `SlipStream <https://github.com/slipstream/SlipStream/compare/v3.70...v3.71>`__
+ -  `Server <https://github.com/slipstream/SlipStreamServer/compare/v3.70...v3.71>`__
+ -  `UI <https://github.com/slipstream/SlipStreamUI/compare/v3.70...v3.71>`__
+ -  `WebUI <https://github.com/slipstream/SlipStreamWebUI/compare/v3.70...v3.71>`__
+ -  `Connectors <https://github.com/slipstream/SlipStreamConnectors/compare/v3.70...v3.71>`__
+ -  `Client <https://github.com/slipstream/SlipStreamClient/compare/v3.70...v3.71>`__
+ -  `SlipStreamClojureAPI <https://github.com/slipstream/SlipStreamClojureAPI/compare/v3.70...v3.71>`__
+ -  `SlipStreamPythonAPI <https://github.com/slipstream/SlipStreamPythonAPI/compare/v3.70...v3.71>`__
+ -  `SlipStreamJobEngine <https://github.com/slipstream/SlipStreamJobEngine/compare/v3.70...v3.71>`__
+
 
 v3.70 - 01 March 2019
 ---------------------
@@ -12,8 +55,6 @@ resource.
 For Everyone:
  - Fix compatibility problem with using ExternalObject resources
    against a Minio S3 server.
- - Fix issue with webui where the redirects when deleting resources
-   pointed to non-existant paths.
  - Addition of a new notification resource that will allow more
    flexible management of user notifications.
 
@@ -23,7 +64,7 @@ Alice, Bob, Clara, and Dave can be found
 Migration
 ~~~~~~~~~
 
-No migration is required..
+No migration is required.
 
 
 Known issues
