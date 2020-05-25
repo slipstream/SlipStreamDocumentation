@@ -1,3 +1,5 @@
+# SlipStream is now deprecated -> replaced by https://github.com/nuvla
+
 SlipStream Documentation Sources
 ================================
 
