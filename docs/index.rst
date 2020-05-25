@@ -1,7 +1,8 @@
-# SlipStream is now deprecated -> replaced by https://github.com/nuvla
+SlipStream is now deprecated -> replaced by https://github.com/nuvla
+========================
 
 SlipStream Documentation
-========================
+------------------------
 
 Documentation for users, administrators, and developers of the
 `SlipStream <http://sixsq.com/products/slipstream.html>`__ Cloud
